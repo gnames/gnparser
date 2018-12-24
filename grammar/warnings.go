@@ -13,10 +13,11 @@ const (
 	AuthShortWarn
 	AuthUnknownWarn
 	BadCharsWarn
+	BadUTF8ConvWarn
 	CapWordQuestionWarn
 	CompWarning
 	ExWithDotWarn
-	RareRankWarn
+	UncommonRankWarn
 	SuperSpWarn
 	UninomialComboWarn
 	YearCharWarn

@@ -2,7 +2,9 @@ package gnparser
 
 import (
 	"log"
+	"os"
 	"runtime"
+	"strings"
 
 	"gitlab.com/gogna/gnparser/grammar"
 	"gitlab.com/gogna/gnparser/output"
@@ -14,8 +16,8 @@ type GNparser struct {
 	workersNum int
 	// format defines the output format of the parser.
 	format
-	// sn keeps AST resulting parsing.
-	// sn *grm.ScientificNameNode
+	// e keeps parsing engine
+	parser *grammar.Engine
 }
 
 // Option is a function that creates a new option for GNparser.
@@ -43,6 +45,9 @@ func NewGNparser(opts ...Option) GNparser {
 	for _, opt := range opts {
 		opt(&gnp)
 	}
+	e := &grammar.Engine{Buffer: ""}
+	e.Init()
+	gnp.parser = e
 	return gnp
 }
 
@@ -53,68 +58,67 @@ func (gnp *GNparser) WorkersNum() int {
 // Parse function parses input using GNparser's supplied options.
 // The abstract syntax tree formed by the parser is stored in an
 // `sn` private field.
-func (gnp *GNparser) Parse(s string) (*grammar.Engine, error) {
-	e := &grammar.Engine{Buffer: s, Pretty: true}
-	e.Init()
-	err := e.Parse()
+func (gnp *GNparser) Parse(s string) error {
+	gnp.parser.Buffer = s
+	gnp.parser.Reset()
+	err := gnp.parser.Parse()
 	if err != nil {
 		log.Println(s)
 		log.Printf("No parse for '%s': %s", s, err)
-		return e, err
+		return err
 	}
-	return e, nil
+	gnp.parser.ASTfactory()
+	gnp.parser.NewScientificNameNode()
+	return nil
 }
 
 // ParseAndFormat function parses input and formats results according
 // to format setting of GNparser.
 func (gnp *GNparser) ParseAndFormat(s string) (string, error) {
-	e, err := gnp.Parse(s)
+	err := gnp.Parse(s)
 	if err != nil {
 		return "", err
 	}
-	return e.ParsedName(), nil
+	var bs []byte
+	switch gnp.format {
+	case Compact:
+		bs, err = gnp.ToJSON()
+		if err != nil {
+			return "", err
+		}
+	case Pretty:
+		bs, err = gnp.ToPrettyJSON()
+		if err != nil {
+			return "", err
+		}
+	case Simple:
+		bs = []byte(strings.Join(gnp.ToSlice(), "|"))
+	}
+	return string(bs), nil
 }
 
-// 	var s []byte
-// 	var err error
-// 	err = gnp.Parse(n)
-// 	if err != nil {
-// 		return "", err
-// 	}
-// 	switch gnp.Format {
-// 	case output.Compact:
-// 		s, err = gnp.ToJSON()
-// 		if err != nil {
-// 			return "", err
-// 		}
-// 	case output.Pretty:
-// 		s, err = gnp.ToPrettyJSON()
-// 		if err != nil {
-// 			return "", err
-// 		}
-// 	case output.Simple:
-// 		s = []byte(strings.Join(gnp.ToSlice(), "|"))
-// 	}
-// 	return string(s), nil
-// }
+// ToPrettyJSON function creates pretty JSON output out of parsed results.
+func (gnp *GNparser) ToPrettyJSON() ([]byte, error) {
+	o := output.NewOutput(gnp.parser.SN)
+	return o.ToJSON(true)
+}
 
-// // ToPrettyJSON function creates pretty JSON output out of parsed results.
-// func (gnp *GNparser) ToPrettyJSON() ([]byte, error) {
-// 	o := output.NewOutput(gnp.sn)
-// 	return o.ToJSON(true)
-// }
+// ToJSON function creates a 'compact' output out of parsed results.
+func (gnp *GNparser) ToJSON() ([]byte, error) {
+	o := output.NewOutput(gnp.parser.SN)
+	return o.ToJSON(false)
+}
 
-// // ToJSON function creates a 'compact' output out of parsed results.
-// func (gnp *GNparser) ToJSON() ([]byte, error) {
-// 	o := output.NewOutput(gnp.sn)
-// 	return o.ToJSON(false)
-// }
+// ToSlice function creates a flat simplified output of parsed results.
+func (gnp *GNparser) ToSlice() []string {
+	so := output.NewSimpleOutput(gnp.parser.SN)
+	return so.ToSlice()
+}
 
-// // ToSlice function creates a flat simplified output of parsed results.
-// func (gnp *GNparser) ToSlice() []string {
-// 	so := output.NewSimpleOutput(gnp.sn)
-// 	return so.ToSlice()
-// }
+func (gnp *GNparser) Debug() {
+	// gnp.parser.PrintSyntaxTree()
+	gnp.parser.PrintAST(os.Stdout)
+}
 
 // Version function returns version number of `gnparser`.
 func Version() string {

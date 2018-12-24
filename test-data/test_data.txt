@@ -22,14 +22,6 @@
 # "parsed: false"
 ####
 
-### TODO
-Nototriton matama Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños, and Wake, 2012
-Nototriton matama Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños, and Wake, 2012
-{"quality":1,"parsed":true,"verbatim":"Nototriton matama Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños, and Wake, 2012","surrogate":false,"normalized":"Nototriton matama Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños & Wake 2012","canonicalName":{"value":"Nototriton matama","valueRanked":"Nototriton matama"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,17],["authorWord",18,29],["authorWord",31,37],["authorWord",39,45],["authorWord",47,63],["authorWord",65,72],["authorWord",74,81],["authorWord",87,91],["year",93,97]],"nameStringId":"49503e24-3297-57c6-bc6e-c1a68a338fd3","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Nototriton"},"specificEpithet":{"value":"matama","authorship":{"value":"Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños & Wake 2012","basionymAuthorship":{"authors":["Boza-Oviedo","Rovito","Chaves","García-Rodríguez","Artavia","Bolaños","Wake"],"years":[{"value":"2012"}]}}}}],"bacteria":false}
-49503e24-3297-57c6-bc6e-c1a68a338fd3|Nototriton matama Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños, and Wake, 2012|Nototriton matama|Nototriton matama|Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños & Wake 2012|2012|1
-
-###
-
 ### Uninomials
 
 #SECTION: Uninomial<
@@ -315,6 +307,11 @@ Aëtosaurus ferratus
 #>
 
 #SECTION: Binomial with authorship<
+Nototriton matama Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños, and Wake, 2012
+Nototriton matama Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños, and Wake, 2012
+{"quality":1,"parsed":true,"verbatim":"Nototriton matama Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños, and Wake, 2012","surrogate":false,"normalized":"Nototriton matama Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños & Wake 2012","canonicalName":{"value":"Nototriton matama","valueRanked":"Nototriton matama"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,17],["authorWord",18,29],["authorWord",31,37],["authorWord",39,45],["authorWord",47,63],["authorWord",65,72],["authorWord",74,81],["authorWord",87,91],["year",93,97]],"nameStringId":"49503e24-3297-57c6-bc6e-c1a68a338fd3","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Nototriton"},"specificEpithet":{"value":"matama","authorship":{"value":"Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños & Wake 2012","basionymAuthorship":{"authors":["Boza-Oviedo","Rovito","Chaves","García-Rodríguez","Artavia","Bolaños","Wake"],"years":[{"value":"2012"}]}}}}],"bacteria":false}
+49503e24-3297-57c6-bc6e-c1a68a338fd3|Nototriton matama Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños, and Wake, 2012|Nototriton matama|Nototriton matama|Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños & Wake 2012|2012|1
+
 Architectonica offlexa Iredale, 1931
 Architectonica offlexa Iredale, 1931
 {"quality":1,"parsed":true,"verbatim":"Architectonica offlexa Iredale, 1931","surrogate":false,"normalized":"Architectonica offlexa Iredale 1931","canonicalName":{"value":"Architectonica offlexa","valueRanked":"Architectonica offlexa"},"virus":false,"positions":[["genus",0,14],["specificEpithet",15,22],["authorWord",23,30],["year",32,36]],"nameStringId":"d8088d2a-6d20-5ef6-9ec8-68753e2e6da0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Architectonica"},"specificEpithet":{"value":"offlexa","authorship":{"value":"Iredale 1931","basionymAuthorship":{"authors":["Iredale"],"years":[{"value":"1931"}]}}}}],"bacteria":false}

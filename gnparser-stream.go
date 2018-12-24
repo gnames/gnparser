@@ -2,8 +2,6 @@ package gnparser
 
 import (
 	"sync"
-
-	"gitlab.com/gogna/gnparser/grammar"
 )
 
 // ParseResult structure contains parsing output and/or error generated
@@ -28,16 +26,13 @@ func (gnp *GNparser) ParseStream(in <-chan string, out chan<- *ParseResult,
 
 func (gnp *GNparser) parserWorker(i int, in <-chan string, out chan<- *ParseResult,
 	wg *sync.WaitGroup, opts ...Option) {
-	e := &grammar.Engine{}
-	e.Init()
+	gnp1 := NewGNparser(opts...)
 	defer wg.Done()
 	for s := range in {
-		e.Buffer = s
-		e.Reset()
-		err := e.Parse()
+		res, err := gnp1.ParseAndFormat(s)
 		if err != nil {
 			out <- &ParseResult{Output: "", Error: err}
 		}
-		out <- &ParseResult{Output: e.ParsedName(), Error: nil}
+		out <- &ParseResult{Output: res, Error: nil}
 	}
 }

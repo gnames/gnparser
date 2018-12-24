@@ -1,9 +1,12 @@
 package grammar
 
 type Engine Peg {
+  BaseEngine
 }
 
-SciName <- _? SciName1 (.*) !.
+SciName <- _? SciName1 Tail !.
+
+Tail <- .*
 
 SciName1 <- SciName2
 
@@ -129,7 +132,7 @@ AuthorsTeam <- Author (AuthorSep Author)* (','? _? Year)?
 
 AuthorSep <- AuthorSep1 / AuthorSep2
 
-AuthorSep1 <- _? (',' _)? ( '&' / 'et' / 'apud') _?
+AuthorSep1 <- _? (',' _)? ( '&' / 'et' / 'and' / 'apud') _?
 
 AuthorSep2 <- _? ',' _?
 
@@ -189,7 +192,7 @@ YearWithPage <- (YearWithChar / YearNum)  _? ":" _? nums+
 
 YearWithParens <- '(' (YearWithChar / YearNum) ')'
 
-YearWithChar <- YearNum lASCII
+YearWithChar <- YearNum lASCII { p.addWarn(YearCharWarn) }
 
 YearNum <- [12] [0789] nums (nums / '?') '?'*
 

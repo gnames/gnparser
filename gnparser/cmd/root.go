@@ -53,6 +53,14 @@ gnparser names.txt [flags] > parsed_names.txt
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
+		// ff, _ := os.Create("prof")
+		// // pprof.StartCPUProfile(ff)
+		// trace.Start(ff)
+		// defer func() {
+		// 	trace.Stop()
+		// 	// pprof.StopCPUProfile()
+		// 	ff.Close()
+		// }()
 		versionFlag(cmd)
 		f := formatFlag(cmd)
 		wn := workersNumFlag(cmd)
