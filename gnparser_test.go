@@ -2,6 +2,7 @@ package gnparser
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	. "github.com/onsi/ginkgo"
@@ -22,6 +23,7 @@ var _ = Describe("grammar", func() {
 				e.Reset()
 				err := e.Parse()
 				parsedStr := e.ParsedName()
+				e.PrintOutputSyntaxTree(os.Stdout)
 				Expect(err).NotTo(HaveOccurred())
 				Expect(parsedStr).To(Equal(v.Parsed))
 			}
@@ -43,7 +45,6 @@ var _ = Describe("GNparser", func() {
 				res, err := gnp.ToJSON()
 				Expect(err).NotTo(HaveOccurred())
 				Expect(len(res)).To(BeNumerically(">", 300))
-				gnp.Debug()
 				json := strings.Replace(string(res), "\\u0026", "&", -1)
 				fmt.Println(json)
 				Expect(json).To(Equal(string(v.Compact)))

@@ -113,43 +113,43 @@ func (sn *ScientificNameNode) LastAuthorship() *authorshipOutput {
 	return an.details()
 }
 
-// func (sp *speciesNode) pos() []Pos {
-// 	pos := []Pos{sp.Genus.Pos}
-// 	pos = append(pos, sp.Species.Word.Pos)
-// 	pos = append(pos, sp.Species.Authorship.pos()...)
-// 	return pos
-// }
+func (sp *speciesNode) pos() []Pos {
+	pos := []Pos{sp.Genus.Pos}
+	pos = append(pos, sp.Species.Word.Pos)
+	pos = append(pos, sp.Species.Authorship.pos()...)
+	return pos
+}
 
-// func (sp *speciesNode) value() string {
-// 	res := str.JoinStrings(sp.Genus.NormValue, sp.Species.Word.NormValue, " ")
-// 	res = str.JoinStrings(res, sp.Species.Authorship.value(), " ")
-// 	return res
-// }
+func (sp *speciesNode) value() string {
+	res := str.JoinStrings(sp.Genus.NormValue, sp.Species.Word.NormValue, " ")
+	res = str.JoinStrings(res, sp.Species.Authorship.value(), " ")
+	return res
+}
 
-// func (sp *speciesNode) canonical() Canonical {
-// 	spPart := str.JoinStrings(sp.Genus.NormValue, sp.Species.Word.NormValue, " ")
-// 	return Canonical{Value: spPart, ValueRanked: spPart}
-// }
+func (sp *speciesNode) canonical() Canonical {
+	spPart := str.JoinStrings(sp.Genus.NormValue, sp.Species.Word.NormValue, " ")
+	return Canonical{Value: spPart, ValueRanked: spPart}
+}
 
-// func (sp *speciesNode) lastAuthorship() *authorshipNode {
-// 	return sp.Species.Authorship
-// }
+func (sp *speciesNode) lastAuthorship() *authorshipNode {
+	return sp.Species.Authorship
+}
 
-// func (sp *speciesNode) details() interface{} {
-// 	se := specEpithetOutput{
-// 		Value: sp.Species.Word.Value,
-// 	}
-// 	if sp.Species.Authorship != nil {
-// 		se.Authorship = sp.Species.Authorship.details()
-// 	}
+func (sp *speciesNode) details() interface{} {
+	se := specEpithetOutput{
+		Value: sp.Species.Word.Value,
+	}
+	if sp.Species.Authorship != nil {
+		se.Authorship = sp.Species.Authorship.details()
+	}
 
-// 	g := sp.Genus.Value
-// 	so := &SpeciesOutput{
-// 		Genus:       &genusOutput{Value: g},
-// 		SpecEpithet: &se,
-// 	}
-// 	return so
-// }
+	g := sp.Genus.Value
+	so := &SpeciesOutput{
+		Genus:       &genusOutput{Value: g},
+		SpecEpithet: &se,
+	}
+	return so
+}
 
 func (u *uninomialNode) pos() []Pos {
 	pos := []Pos{u.Word.Pos}
@@ -178,49 +178,49 @@ func (u *uninomialNode) details() interface{} {
 	return &uo
 }
 
-// func (u *uninomialComboNode) pos() []Pos {
-// 	pos := []Pos{u.Uninomial1.Word.Pos}
-// 	if u.Rank.Word.Pos.Start != 0 {
-// 		pos = append(pos, u.Rank.Word.Pos)
-// 	}
-// 	pos = append(pos, u.Uninomial2.Word.Pos)
-// 	pos = append(pos, u.Uninomial2.Authorship.pos()...)
-// 	return pos
-// }
+func (u *uninomialComboNode) pos() []Pos {
+	pos := []Pos{u.Uninomial1.Word.Pos}
+	if u.Rank.Word.Pos.Start != 0 {
+		pos = append(pos, u.Rank.Word.Pos)
+	}
+	pos = append(pos, u.Uninomial2.Word.Pos)
+	pos = append(pos, u.Uninomial2.Authorship.pos()...)
+	return pos
+}
 
-// func (u *uninomialComboNode) value() string {
-// 	vl := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.Value, " ")
-// 	tail := str.JoinStrings(u.Uninomial2.Word.NormValue,
-// 		u.Uninomial2.Authorship.value(), " ")
-// 	return str.JoinStrings(vl, tail, " ")
-// }
+func (u *uninomialComboNode) value() string {
+	vl := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.Value, " ")
+	tail := str.JoinStrings(u.Uninomial2.Word.NormValue,
+		u.Uninomial2.Authorship.value(), " ")
+	return str.JoinStrings(vl, tail, " ")
+}
 
-// func (u *uninomialComboNode) canonical() Canonical {
-// 	ranked := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.Value, " ")
-// 	ranked = str.JoinStrings(ranked, u.Uninomial2.Word.NormValue, " ")
+func (u *uninomialComboNode) canonical() Canonical {
+	ranked := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.Value, " ")
+	ranked = str.JoinStrings(ranked, u.Uninomial2.Word.NormValue, " ")
 
-// 	return Canonical{
-// 		Value:       u.Uninomial2.Word.NormValue,
-// 		ValueRanked: ranked,
-// 	}
-// }
+	return Canonical{
+		Value:       u.Uninomial2.Word.NormValue,
+		ValueRanked: ranked,
+	}
+}
 
-// func (u *uninomialComboNode) lastAuthorship() *authorshipNode {
-// 	return u.Uninomial2.Authorship
-// }
+func (u *uninomialComboNode) lastAuthorship() *authorshipNode {
+	return u.Uninomial2.Authorship
+}
 
-// func (u *uninomialComboNode) details() interface{} {
-// 	ud := uniDetails{
-// 		Value:  u.Uninomial2.Word.NormValue,
-// 		Rank:   u.Rank.Word.Value,
-// 		Parent: u.Uninomial1.Word.NormValue,
-// 	}
-// 	if u.Uninomial2.Authorship != nil {
-// 		ud.Authorship = u.Uninomial2.Authorship.details()
-// 	}
-// 	uo := UninomialOutput{Uninomial: &ud}
-// 	return &uo
-// }
+func (u *uninomialComboNode) details() interface{} {
+	ud := uniDetails{
+		Value:  u.Uninomial2.Word.NormValue,
+		Rank:   u.Rank.Word.Value,
+		Parent: u.Uninomial1.Word.NormValue,
+	}
+	if u.Uninomial2.Authorship != nil {
+		ud.Authorship = u.Uninomial2.Authorship.details()
+	}
+	uo := UninomialOutput{Uninomial: &ud}
+	return &uo
+}
 
 func (au *authorshipNode) details() *authorshipOutput {
 	if au == nil {

@@ -11,9 +11,10 @@ const (
 	Compact format = iota
 	Pretty
 	Simple
+	Debug
 )
 
-var formats = []string{"compact", "pretty", "simple"}
+var formats = []string{"compact", "pretty", "simple", "debug"}
 
 func (of format) String() string {
 	return formats[of]

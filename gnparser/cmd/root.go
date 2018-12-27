@@ -53,14 +53,6 @@ gnparser names.txt [flags] > parsed_names.txt
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
-		// ff, _ := os.Create("prof")
-		// // pprof.StartCPUProfile(ff)
-		// trace.Start(ff)
-		// defer func() {
-		// 	trace.Stop()
-		// 	// pprof.StopCPUProfile()
-		// 	ff.Close()
-		// }()
 		versionFlag(cmd)
 		f := formatFlag(cmd)
 		wn := workersNumFlag(cmd)
@@ -73,8 +65,9 @@ gnparser names.txt [flags] > parsed_names.txt
 	},
 }
 
-// Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the rootCmd.
+// Execute adds all child commands to the root command and sets flags
+// appropriately. This is called by main.main(). It only needs to happen once to
+// the rootCmd.
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
@@ -84,7 +77,7 @@ func Execute() {
 
 func init() {
 	gnp := gnparser.NewGNparser()
-	rootCmd.Flags().BoolP("version", "v", false, "Show build version and date")
+	rootCmd.PersistentFlags().BoolP("version", "v", false, "Show build version and date")
 
 	df := gnp.OutputFormat()
 	formats := strings.Join(gnparser.AvailableFormats(), ", ")
@@ -152,6 +145,8 @@ func getInput(cmd *cobra.Command, args []string) string {
 		data = string(bs)
 	case 1:
 		data = args[0]
+	case 2:
+		data = args[1]
 	default:
 		cmd.Help()
 		os.Exit(0)

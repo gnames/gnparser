@@ -1,9 +1,7 @@
 package grammar
 
 import (
-	"fmt"
 	"io"
-	"strconv"
 
 	"github.com/gnames/uuid5"
 	"gitlab.com/gogna/gnparser/str"
@@ -68,7 +66,7 @@ var nodeRules = map[pegRule]struct{}{
 
 type BaseEngine struct {
 	SN       *ScientificNameNode
-	root     *nodegn
+	root     *node32
 	Warnings map[Warning]struct{}
 }
 
@@ -81,39 +79,12 @@ func (p *Engine) addWarn(w Warning) {
 	}
 }
 
-type nodegn struct {
-	token32  token32
-	vals     map[string]string
-	up, next *nodegn
-}
-
-func (node *nodegn) print(w io.Writer, buffer string) {
-	var print func(node *nodegn, depth int)
-	print = func(node *nodegn, depth int) {
-		for node != nil {
-			for c := 0; c < depth; c++ {
-				fmt.Fprintf(w, "  ")
-			}
-			rule := rul3s[node.token32.pegRule]
-			quote := strconv.Quote(
-				string(([]rune(buffer)[node.token32.begin:node.token32.end])),
-			)
-			fmt.Fprintf(w, "%v %v\n", rule, quote)
-			if node.up != nil {
-				print(node.up, depth+1)
-			}
-			node = node.next
-		}
-	}
-	print(node, 0)
-}
-
-func (p *Engine) ASTfactory() {
+func (p *Engine) OutputAST() {
 	type element struct {
-		node *nodegn
+		node *node32
 		down *element
 	}
-	var node *nodegn
+	var node *node32
 	var skip bool
 	var stack *element
 	for _, token := range p.Tokens() {
@@ -132,18 +103,18 @@ func (p *Engine) ASTfactory() {
 	}
 }
 
-func (p *Engine) PrintAST(w io.Writer) {
-	p.root.print(w, p.Buffer)
+func (p *Engine) PrintOutputSyntaxTree(w io.Writer) {
+	p.root.print(w, true, p.Buffer)
 }
 
-func stackNodeIsWithin(n *nodegn, t token32) bool {
+func stackNodeIsWithin(n *node32, t token32) bool {
 	return n.token32.begin >= t.begin && n.token32.end <= t.end
 }
 
-func (p *Engine) newNode(t token32) (*nodegn, bool) {
-	var node *nodegn
+func (p *Engine) newNode(t token32) (*node32, bool) {
+	var node *node32
 	if _, ok := nodeRules[t.pegRule]; ok {
-		node := &nodegn{token32: t}
+		node := &node32{token32: t}
 		return node, false
 	}
 	return node, true
@@ -159,7 +130,7 @@ type ScientificNameNode struct {
 
 func (p *Engine) NewScientificNameNode() {
 	n := p.root.up
-	var nameNodes []*nodegn
+	var nameNodes []*node32
 	var tail string
 
 	for n != nil {
@@ -183,6 +154,8 @@ func (p *Engine) NewScientificNameNode() {
 		warns[i] = k
 		i++
 	}
+	var warnReset map[Warning]struct{}
+	p.Warnings = warnReset
 
 	sn := ScientificNameNode{
 		Verbatim:   p.Buffer,
@@ -194,7 +167,7 @@ func (p *Engine) NewScientificNameNode() {
 	p.SN = &sn
 }
 
-func (p *Engine) tailValue(n *nodegn) string {
+func (p *Engine) tailValue(n *node32) string {
 	t := n.token32
 	if t.begin == t.end {
 		return ""
@@ -203,16 +176,105 @@ func (p *Engine) tailValue(n *nodegn) string {
 	return string([]rune(p.Buffer)[t.begin:t.end])
 }
 
-func (p *Engine) newName(n *nodegn) Name {
+func (p *Engine) newName(n *node32) Name {
 	var name Name
-	node := n.up
-	switch node.token32.pegRule {
+	n = n.up
+	switch n.token32.pegRule {
+	case ruleUninomialCombo:
+		p.addWarn(UninomialComboWarn)
+		return p.newUninomialComboNode(n)
 	case ruleUninomial:
-		return p.newUninomialNode(node)
-		// case ruleNameSpecies:
-		// 	return p.newSpeciesNode(node)
+		return p.newUninomialNode(n)
+	case ruleNameSpecies:
+		return p.newSpeciesNode(n)
 	}
 	return name
+}
+
+type uninomialComboNode struct {
+	Uninomial1 *uninomialNode
+	Uninomial2 *uninomialNode
+	Rank       *rankUninomialNode
+}
+
+func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
+	u1n := n.up
+	u1 := p.newUninomialNode(u1n)
+	rn := u1n.next
+	r := p.newRankUninomialNode(rn)
+	u2n := rn.next
+	u2 := p.newUninomialNode(u2n)
+	ucn := uninomialComboNode{
+		Uninomial1: u1,
+		Rank:       r,
+		Uninomial2: u2,
+	}
+	return &ucn
+}
+
+type rankUninomialNode struct {
+	Word *wordNode
+}
+
+func (p *Engine) newRankUninomialNode(n *node32) *rankUninomialNode {
+	r := p.newWordNode(n, RankUniType)
+	run := rankUninomialNode{Word: r}
+	return &run
+}
+
+type speciesNode struct {
+	Genus    *wordNode
+	SubGenus *wordNode
+	Species  *spEpithetNode
+	Infrasp  []*infraspEpithetNode
+}
+
+func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
+	var sp *spEpithetNode
+	n = n.up
+	gen := p.newWordNode(n, GenusType)
+	n = n.next
+	if n != nil {
+		switch n.token32.pegRule {
+		case ruleSpeciesEpithet:
+			sp = p.newSpeciesEpithetNode(n)
+		}
+	}
+	sn := speciesNode{
+		Genus:   gen,
+		Species: sp,
+	}
+	return &sn
+}
+
+type spEpithetNode struct {
+	Word       *wordNode
+	Authorship *authorshipNode
+}
+
+func (p *Engine) newSpeciesEpithetNode(n *node32) *spEpithetNode {
+	var au *authorshipNode
+	n = n.up
+	se := p.newWordNode(n, SpEpithetType)
+	n = n.next
+	if n != nil {
+		au = p.newAuthorship(n)
+	}
+	sen := spEpithetNode{
+		Word:       se,
+		Authorship: au,
+	}
+	return &sen
+}
+
+type infraspEpithetNode struct {
+	Word       *wordNode
+	Rank       *rankNode
+	Authorship *authorshipNode
+}
+
+type rankNode struct {
+	Word *wordNode
 }
 
 type uninomialNode struct {
@@ -220,7 +282,7 @@ type uninomialNode struct {
 	Authorship *authorshipNode
 }
 
-func (p *Engine) newUninomialNode(n *nodegn) *uninomialNode {
+func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 	var au *authorshipNode
 	wn := n.up
 	w := p.newWordNode(wn, UninomialType)
@@ -239,13 +301,13 @@ type authorshipNode struct {
 	CombinationAuthors *authorsGroupNode
 }
 
-func (p *Engine) newAuthorship(an *nodegn) *authorshipNode {
+func (p *Engine) newAuthorship(n *node32) *authorshipNode {
 	var oa, ca *authorsGroupNode
-	oan := an.up
-	oa = p.newAuthorsGroupNode(oan)
-	can := oan.next
-	if can != nil {
-		ca = p.newAuthorsGroupNode(can)
+	n = n.up
+	oa = p.newAuthorsGroupNode(n)
+	n = n.next
+	if n != nil {
+		ca = p.newAuthorsGroupNode(n)
 	}
 	a := authorshipNode{
 		OriginalAuthors:    oa,
@@ -261,10 +323,10 @@ type authorsGroupNode struct {
 	Parens    bool
 }
 
-func (p *Engine) newAuthorsGroupNode(agn *nodegn) *authorsGroupNode {
+func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 	var t1, t2 *authorsTeamNode
 	var t2t *wordNode
-	t1n := agn.up
+	t1n := n.up
 	t1 = p.newAuthorTeam(t1n)
 	// TODO the rest
 	ag := authorsGroupNode{
@@ -280,10 +342,10 @@ type authorsTeamNode struct {
 	Years   []*yearNode
 }
 
-func (p *Engine) newAuthorTeam(at *nodegn) *authorsTeamNode {
-	var anodes []*nodegn
-	var ynodes []*nodegn
-	n := at.up
+func (p *Engine) newAuthorTeam(n *node32) *authorsTeamNode {
+	var anodes []*node32
+	var ynodes []*node32
+	n = n.up
 	for n != nil {
 		switch n.token32.pegRule {
 		case ruleAuthor:
@@ -318,10 +380,10 @@ type authorNode struct {
 	Words []*wordNode
 }
 
-func (p *Engine) newAuthorNode(an *nodegn) *authorNode {
+func (p *Engine) newAuthorNode(n *node32) *authorNode {
 	var ws []*wordNode
 	val := ""
-	n := an.up
+	n = n.up
 	for n != nil {
 		w := p.newWordNode(n, AuthorWordType)
 		ws = append(ws, w)
@@ -340,12 +402,58 @@ type yearNode struct {
 	Approximate bool
 }
 
-func (p *Engine) newYearNode(ngn *nodegn) *yearNode {
-	w := p.newWordNode(ngn, YearType)
+func (p *Engine) newYearNode(nd *node32) *yearNode {
+	var w *wordNode
+	appr := false
+	nodes := nd.flatChildren()
+	for _, v := range nodes {
+		switch v.token32.pegRule {
+		case ruleYearWithParens:
+			p.addWarn(YearParensWarn)
+			appr = true
+		case ruleYearWithChar:
+			p.addWarn(YearCharWarn)
+			w = p.newWordNode(v, YearType)
+			w.Value = w.Value[0 : len(w.Value)-1]
+		case ruleYearNum:
+			if w == nil {
+				w = p.newWordNode(v, YearType)
+			}
+			if w.Value[len(w.Value)-1] == '?' {
+				p.addWarn(YearQuestionWarn)
+				appr = true
+			}
+		}
+	}
+	if w == nil {
+		w = p.newWordNode(nd, YearType)
+	}
+	if appr {
+		w.Pos.Type = ApproximateYearType
+	}
 	yr := yearNode{
-		Word: w,
+		Word:        w,
+		Approximate: appr,
 	}
 	return &yr
+}
+
+func (n *node32) flatChildren() []*node32 {
+	var ns []*node32
+	if n.up == nil {
+		return ns
+	}
+	n = n.up
+	for n != nil {
+		ns = append(ns, n)
+		nn := n.next
+		for nn != nil {
+			ns = append(ns, nn)
+			nn = nn.next
+		}
+		n = n.up
+	}
+	return ns
 }
 
 type wordNode struct {
@@ -354,7 +462,7 @@ type wordNode struct {
 	Pos       Pos
 }
 
-func (p *Engine) newWordNode(n *nodegn, wt WordType) *wordNode {
+func (p *Engine) newWordNode(n *node32, wt WordType) *wordNode {
 	t := n.token32
 	val := string([]rune(p.Buffer)[t.begin:t.end])
 	pos := Pos{Type: wt, Start: int(t.begin), End: int(t.end)}
