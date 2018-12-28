@@ -2,6 +2,7 @@ package grammar
 
 import (
 	"io"
+	"strings"
 
 	"github.com/gnames/uuid5"
 	"gitlab.com/gogna/gnparser/str"
@@ -39,6 +40,8 @@ var nodeRules = map[pegRule]struct{}{
 	ruleApproxNameIgnored:               empty,
 	ruleApproximation:                   empty,
 	ruleAuthorship:                      empty,
+	ruleOriginalAuthorship:              empty,
+	ruleCombinationAuthorship:           empty,
 	ruleBasionymAuthorshipYearMisformed: empty,
 	ruleBasionymAuthorship:              empty,
 	ruleAuthorsGroup:                    empty,
@@ -49,6 +52,7 @@ var nodeRules = map[pegRule]struct{}{
 	ruleAuthor:                          empty,
 	ruleUnknownAuthor:                   empty,
 	ruleAuthorWord:                      empty,
+	ruleAllCapsAuthorWord:               empty,
 	ruleFilius:                          empty,
 	ruleAuthorPrefix:                    empty,
 	ruleYear:                            empty,
@@ -117,7 +121,17 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 		node := &node32{token32: t}
 		return node, false
 	}
+	switch t.pegRule {
+	case ruleMultipleSpace:
+		p.addWarn(SpaceMultipleWarn)
+	}
 	return node, true
+}
+
+func (p *Engine) nodeValue(n *node32) string {
+	t := n.token32
+	v := string([]rune(p.Buffer)[t.begin:t.end])
+	return v
 }
 
 type ScientificNameNode struct {
@@ -191,6 +205,161 @@ func (p *Engine) newName(n *node32) Name {
 	return name
 }
 
+type speciesNode struct {
+	Genus        *wordNode
+	SubGenus     *wordNode
+	Species      *spEpithetNode
+	InfraSpecies []*infraspEpithetNode
+}
+
+func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
+	var sp *spEpithetNode
+	var sg *wordNode
+	var infs []*infraspEpithetNode
+	n = n.up
+	gen := p.newWordNode(n, GenusType)
+	if n.up.token32.pegRule == ruleAbbrGenus {
+		p.addWarn(GenusAbbrWarn)
+	}
+	n = n.next
+	for n != nil {
+		switch n.token32.pegRule {
+		case ruleSubGenus:
+			sg = p.newWordNode(n.up, SubGenusType)
+		case ruleSpeciesEpithet:
+			sp = p.newSpeciesEpithetNode(n)
+		case ruleInfraspGroup:
+			infs = p.newInfraspeciesGroup(n)
+		}
+		n = n.next
+	}
+	sn := speciesNode{
+		Genus:        gen,
+		SubGenus:     sg,
+		Species:      sp,
+		InfraSpecies: infs,
+	}
+	return &sn
+}
+
+type spEpithetNode struct {
+	Word       *wordNode
+	Authorship *authorshipNode
+}
+
+func (p *Engine) newSpeciesEpithetNode(n *node32) *spEpithetNode {
+	var au *authorshipNode
+	n = n.up
+	se := p.newWordNode(n, SpEpithetType)
+	n = n.next
+	if n != nil {
+		au = p.newAuthorshipNode(n)
+	}
+	sen := spEpithetNode{
+		Word:       se,
+		Authorship: au,
+	}
+	return &sen
+}
+
+type infraspEpithetNode struct {
+	Word       *wordNode
+	Rank       *rankNode
+	Authorship *authorshipNode
+}
+
+func (p *Engine) newInfraspeciesGroup(n *node32) []*infraspEpithetNode {
+	var infs []*infraspEpithetNode
+	n = n.up
+	if n == nil || n.token32.pegRule != ruleInfraspEpithet {
+		return infs
+	}
+	for n != nil {
+		inf := p.newInfraspEpithetNode(n)
+		infs = append(infs, inf)
+		n = n.next
+	}
+	return infs
+}
+
+func (p *Engine) newInfraspEpithetNode(n *node32) *infraspEpithetNode {
+	var inf infraspEpithetNode
+	var r *rankNode
+	var w *wordNode
+	var au *authorshipNode
+	n = n.up
+	if n == nil {
+		return &inf
+	}
+
+	for n != nil {
+		switch n.token32.pegRule {
+		case ruleWord:
+			w = p.newWordNode(n, InfraSpEpithetType)
+		case ruleRank:
+			r = p.newRankNode(n)
+		case ruleAuthorship:
+			au = p.newAuthorshipNode(n)
+		}
+		n = n.next
+	}
+	inf = infraspEpithetNode{
+		Word:       w,
+		Rank:       r,
+		Authorship: au,
+	}
+	return &inf
+}
+
+type rankNode struct {
+	Word *wordNode
+}
+
+func (p *Engine) newRankNode(n *node32) *rankNode {
+	if n.up == nil {
+		w := p.newWordNode(n, RankType)
+		r := rankNode{Word: w}
+		return &r
+	}
+	n = n.up
+	w := p.newWordNode(n, RankType)
+	switch n.token32.pegRule {
+	case ruleRankForma:
+		w.NormValue = "fm."
+	case ruleRankVar:
+		if w.Value[0] == 'n' {
+			w.NormValue = "nvar."
+		} else {
+			w.NormValue = "var."
+		}
+	case ruleRankSsp:
+		w.NormValue = "ssp."
+	case ruleRankOtherUncommon:
+		p.addWarn(RankUncommonWarn)
+	}
+	r := rankNode{Word: w}
+	return &r
+}
+
+type uninomialNode struct {
+	Word       *wordNode
+	Authorship *authorshipNode
+}
+
+func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
+	var au *authorshipNode
+	wn := n.up
+	w := p.newWordNode(wn, UninomialType)
+	if an := wn.next; an != nil {
+		au = p.newAuthorshipNode(an)
+	}
+	un := uninomialNode{
+		Word:       w,
+		Authorship: au,
+	}
+	return &un
+}
+
 type uninomialComboNode struct {
 	Uninomial1 *uninomialNode
 	Uninomial2 *uninomialNode
@@ -198,12 +367,31 @@ type uninomialComboNode struct {
 }
 
 func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
-	u1n := n.up
-	u1 := p.newUninomialNode(u1n)
-	rn := u1n.next
-	r := p.newRankUninomialNode(rn)
-	u2n := rn.next
-	u2 := p.newUninomialNode(u2n)
+	var u1, u2 *uninomialNode
+	var r *rankUninomialNode
+	n = n.up
+	switch n.token32.pegRule {
+	case ruleUninomial:
+		u1n := n
+		u1 = p.newUninomialNode(u1n)
+		rn := u1n.next
+		r = p.newRankUninomialNode(rn)
+		u2n := rn.next
+		u2 = p.newUninomialNode(u2n)
+	case ruleUninomialWord:
+		uw := p.newWordNode(n, UninomialType)
+		u1 = &uninomialNode{Word: uw}
+		n = n.next
+		u2w := p.newWordNode(n.up, UninomialType)
+		n := n.next
+		au2 := p.newAuthorshipNode(n)
+		rw := &wordNode{Value: "subgen.", Pos: Pos{Type: RankUniType}}
+		r = &rankUninomialNode{Word: rw}
+		u2 = &uninomialNode{
+			Word:       u2w,
+			Authorship: au2,
+		}
+	}
 	ucn := uninomialComboNode{
 		Uninomial1: u1,
 		Rank:       r,
@@ -222,93 +410,35 @@ func (p *Engine) newRankUninomialNode(n *node32) *rankUninomialNode {
 	return &run
 }
 
-type speciesNode struct {
-	Genus    *wordNode
-	SubGenus *wordNode
-	Species  *spEpithetNode
-	Infrasp  []*infraspEpithetNode
-}
-
-func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
-	var sp *spEpithetNode
-	n = n.up
-	gen := p.newWordNode(n, GenusType)
-	n = n.next
-	if n != nil {
-		switch n.token32.pegRule {
-		case ruleSpeciesEpithet:
-			sp = p.newSpeciesEpithetNode(n)
-		}
-	}
-	sn := speciesNode{
-		Genus:   gen,
-		Species: sp,
-	}
-	return &sn
-}
-
-type spEpithetNode struct {
-	Word       *wordNode
-	Authorship *authorshipNode
-}
-
-func (p *Engine) newSpeciesEpithetNode(n *node32) *spEpithetNode {
-	var au *authorshipNode
-	n = n.up
-	se := p.newWordNode(n, SpEpithetType)
-	n = n.next
-	if n != nil {
-		au = p.newAuthorship(n)
-	}
-	sen := spEpithetNode{
-		Word:       se,
-		Authorship: au,
-	}
-	return &sen
-}
-
-type infraspEpithetNode struct {
-	Word       *wordNode
-	Rank       *rankNode
-	Authorship *authorshipNode
-}
-
-type rankNode struct {
-	Word *wordNode
-}
-
-type uninomialNode struct {
-	Word       *wordNode
-	Authorship *authorshipNode
-}
-
-func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
-	var au *authorshipNode
-	wn := n.up
-	w := p.newWordNode(wn, UninomialType)
-	if an := wn.next; an != nil {
-		au = p.newAuthorship(an)
-	}
-	un := uninomialNode{
-		Word:       w,
-		Authorship: au,
-	}
-	return &un
-}
-
 type authorshipNode struct {
 	OriginalAuthors    *authorsGroupNode
 	CombinationAuthors *authorsGroupNode
 }
 
-func (p *Engine) newAuthorship(n *node32) *authorshipNode {
+func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 	var oa, ca *authorsGroupNode
+	var parens bool
 	n = n.up
-	oa = p.newAuthorsGroupNode(n)
-	n = n.next
-	if n != nil {
-		ca = p.newAuthorsGroupNode(n)
+	for n != nil {
+		switch n.token32.pegRule {
+		case ruleOriginalAuthorship:
+			on := n.up
+			if on.token32.pegRule == ruleBasionymAuthorshipYearMisformed {
+				p.addWarn(AuthMisformedYearWarn)
+				on = on.up
+				parens = true
+			} else if on.token32.pegRule == ruleBasionymAuthorship {
+				on = on.up
+				parens = true
+			}
+			oa = p.newAuthorsGroupNode(on)
+			oa.Parens = parens
+		case ruleCombinationAuthorship:
+			ca = p.newAuthorsGroupNode(n.up)
+		}
+		n = n.next
 	}
+
 	a := authorshipNode{
 		OriginalAuthors:    oa,
 		CombinationAuthors: ca,
@@ -326,14 +456,27 @@ type authorsGroupNode struct {
 func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 	var t1, t2 *authorsTeamNode
 	var t2t *wordNode
-	t1n := n.up
-	t1 = p.newAuthorTeam(t1n)
-	// TODO the rest
+	n = n.up
+	t1 = p.newAuthorTeam(n)
 	ag := authorsGroupNode{
 		Team1:     t1,
 		Team2Type: t2t,
 		Team2:     t2,
 	}
+	n = n.next
+	if n == nil || n.token32.pegRule != ruleAuthorEx {
+		return &ag
+	}
+	p.addWarn(AuthExWarn)
+	t2t = p.newWordNode(n, AuthorWordType)
+	t2t.NormValue = "ex"
+	n = n.next
+	if n == nil || n.token32.pegRule != ruleAuthorsTeam {
+		return &ag
+	}
+	t2 = p.newAuthorTeam(n)
+	ag.Team2Type = t2t
+	ag.Team2 = t2
 	return &ag
 }
 
@@ -381,20 +524,40 @@ type authorNode struct {
 }
 
 func (p *Engine) newAuthorNode(n *node32) *authorNode {
+	var w *wordNode
 	var ws []*wordNode
 	val := ""
 	n = n.up
 	for n != nil {
-		w := p.newWordNode(n, AuthorWordType)
+		switch n.token32.pegRule {
+		case ruleFilius:
+			w = p.newWordNode(n, AuthorWordFiliusType)
+			w.NormValue = "fil."
+		default:
+			w = p.authorWord(n)
+		}
 		ws = append(ws, w)
-		val = str.JoinStrings(val, w.Value, " ")
+		val = str.JoinStrings(val, w.NormValue, " ")
 		n = n.next
+	}
+	if len(val) < 2 {
+		p.addWarn(AuthShortWarn)
 	}
 	au := authorNode{
 		Value: val,
 		Words: ws,
 	}
 	return &au
+}
+
+func (p *Engine) authorWord(n *node32) *wordNode {
+	w := p.newWordNode(n, AuthorWordType)
+	if n.up != nil && n.up.token32.pegRule == ruleAllCapsAuthorWord {
+		nv := w.NormValue
+		w.NormValue = string(nv[0]) + strings.ToLower(nv[1:len(nv)])
+		p.addWarn(AuthUpperCaseWarn)
+	}
+	return w
 }
 
 type yearNode struct {
@@ -429,7 +592,7 @@ func (p *Engine) newYearNode(nd *node32) *yearNode {
 		w = p.newWordNode(nd, YearType)
 	}
 	if appr {
-		w.Pos.Type = ApproximateYearType
+		w.Pos.Type = YearApproximateType
 	}
 	yr := yearNode{
 		Word:        w,
@@ -464,17 +627,16 @@ type wordNode struct {
 
 func (p *Engine) newWordNode(n *node32, wt WordType) *wordNode {
 	t := n.token32
-	val := string([]rune(p.Buffer)[t.begin:t.end])
+	val := p.nodeValue(n)
 	pos := Pos{Type: wt, Start: int(t.begin), End: int(t.end)}
 	wrd := wordNode{Value: val, NormValue: val, Pos: pos}
-	up := n.up
-	for up != nil {
-		switch up.token32.pegRule {
+	children := n.flatChildren()
+	for _, v := range children {
+		switch v.token32.pegRule {
 		case ruleUpperCharExtended, ruleLowerCharExtended:
-			p.addWarn(BadCharsWarn)
+			p.addWarn(CharBadWarn)
 			wrd.normalize()
 		}
-		up = up.next
 	}
 	return &wrd
 }

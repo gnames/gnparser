@@ -111,12 +111,14 @@ ApproxNameIgnored <- .*
 Approximation <- ('sp.' _? 'nr.' / 'sp.' _? 'aff.' / 'monst.' /
   '?' / (('spp' / 'nr' / 'sp' / 'aff' / 'species') (&(SpaceCharEOI) / '.')))
 
-Authorship <- (Authorship1 / Authorship2) &(SpaceCharEOI / [\\(,:])
+Authorship <- (AuthorshipCombo / OriginalAuthorship) &(SpaceCharEOI / [\\(,:])
 
-Authorship1 <- Authorship2 _? AuthorsGroup
+AuthorshipCombo <- OriginalAuthorship _? CombinationAuthorship
 
-Authorship2 <- (AuthorsGroup / BasionymAuthorship /
-  BasionymAuthorshipYearMisformed)
+OriginalAuthorship <- AuthorsGroup / BasionymAuthorship /
+                      BasionymAuthorshipYearMisformed
+
+CombinationAuthorship <- AuthorsGroup
 
 BasionymAuthorshipYearMisformed <- '(' _? AuthorsGroup _? ')' (_? ',')? _? Year
 
@@ -154,11 +156,14 @@ AuthorWord1 <- 'arg.' / 'et al.{?}' / ('et' / '&') ' al' '.'?
 
 AuthorWord2 <- AuthorWord3 dash AuthorWordSoft
 
-AuthorWord3 <- AuthorPrefixGlued? AuthorUpperChar (AuthorUpperChar /
-  AuthorLowerChar)* '.'?
+AuthorWord3 <- AuthorPrefixGlued? (AllCapsAuthorWord / CapAuthorWord) '.'?
 
 AuthorWordSoft <- ((AuthorUpperChar (AuthorUpperChar+ / AuthorLowerChar+)) /
   AuthorLowerChar+) '.'?
+
+CapAuthorWord <- AuthorUpperChar AuthorLowerChar*
+
+AllCapsAuthorWord <- AuthorUpperChar AuthorUpperChar+
 
 Filius <- 'f.' / 'fil.' / 'filius'
 
@@ -170,7 +175,7 @@ AuthorPrefix2 <- ('v.' (_? 'd.')?) / '\'t'
 
 AuthorPrefix1 <- ('ab' / 'af' / 'bis' / 'da' / 'der' / 'des' / 'den' / 'del' /
   'della' / 'dela' / 'de' / 'di' / 'du' / 'el' / 'la' / 'le' / 'ter' / 'van' /
-  'd\'' / 'in\'t' / 'zur' / ('von' (_ 'd.')?) / ('v' (_'d')?)) &_
+  'd\'' / 'in\'t' / 'zur' / ('von' (_ ('d.'/ 'dem'))?) / ('v' (_'d')?)) &_
 
 AuthorUpperChar <- hASCII /
   [ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝĆČĎİĶĹĺĽľŁłŅŌŐŒŘŚŜŞŠŸŹŻŽƒǾȘȚ]
@@ -206,9 +211,9 @@ NameLowerChar <- LowerChar / LowerCharExtended / MiscodedChar
 
 MiscodedChar <- '�'
 
-LowerCharExtended <- [æœſàâåãäáçčéèíìïňññóòôøõöúùüŕřŗššşž]
+LowerCharExtended <- [æœſàâåãäáçčéèëíìïňññóòôøõöúùüŕřŗššşž]
 
-LowerChar <- [a-zë]
+LowerChar <- lASCII
 
 SpaceCharEOI <- _ / !.
 
@@ -224,4 +229,8 @@ apostr <- '\''
 
 dash <- '-'
 
-_ <- ' '+
+_ <- MultipleSpace / SingleSpace
+
+MultipleSpace <- SingleSpace SingleSpace+
+
+SingleSpace <- ' '

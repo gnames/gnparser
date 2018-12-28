@@ -12,7 +12,7 @@ import (
 
 var _ = Describe("grammar", func() {
 	Describe("Parse", func() {
-		FIt("tokenizes data by parsing rules", func() {
+		It("tokenizes data by parsing rules", func() {
 			tests, err := testData()
 			Expect(len(tests)).To(BeNumerically(">", 0))
 			Expect(err).NotTo(HaveOccurred())
@@ -51,7 +51,10 @@ var _ = Describe("GNparser", func() {
 				json := strings.Replace(string(res), "\\u0026", "&", -1)
 				fmt.Println(json)
 				Expect(json).To(Equal(string(v.Compact)))
-				Expect(strings.Join(gnp.ToSlice(), "|")).To(Equal(v.Simple))
+				err = gnp.Parse(v.NameString)
+				simple := strings.Join(gnp.ToSlice(), "|")
+				fmt.Println(simple)
+				Expect(simple).To(Equal(v.Simple))
 			}
 		})
 	})

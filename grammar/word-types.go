@@ -5,9 +5,8 @@ type WordType int
 
 const (
 	UnknownType WordType = iota
-	AbbrGenusType
-	ApproximateYearType
 	AuthorWordType
+	AuthorWordFiliusType
 	GenusType
 	InfraSpEpithetType
 	RankType
@@ -15,7 +14,7 @@ const (
 	SpEpithetType
 	SubGenusType
 	SuperSpType
-	TwoLetterGenusType
 	UninomialType
+	YearApproximateType
 	YearType
 )

@@ -77,16 +77,6 @@ Pseudocercospora Spegazzini, 1910
 {"quality":1,"parsed":true,"verbatim":"Pseudocercospora Spegazzini, 1910","surrogate":false,"normalized":"Pseudocercospora Spegazzini 1910","canonicalName":{"value":"Pseudocercospora","valueRanked":"Pseudocercospora"},"virus":false,"positions":[["uninomial",0,16],["authorWord",17,27],["year",29,33]],"nameStringId":"6cc2922a-1f1d-5a40-90a7-b155fd16b233","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Pseudocercospora","authorship":{"value":"Spegazzini 1910","basionymAuthorship":{"authors":["Spegazzini"],"years":[{"value":"1910"}]}}}}],"bacteria":false}
 6cc2922a-1f1d-5a40-90a7-b155fd16b233|Pseudocercospora Spegazzini, 1910|Pseudocercospora|Pseudocercospora|Spegazzini 1910|1910|1
 
-Platypus bicaudatulus Schedl (1935h)
-Platypus bicaudatulus Schedl (1935h)
-{"quality":2,"parsed":true,"verbatim":"Platypus bicaudatulus Schedl (1935h)","surrogate":false,"qualityWarnings":[[2,"Year with latin character"],[2,"Year with parentheses"]],"normalized":"Platypus bicaudatulus Schedl (1935)","canonicalName":{"value":"Platypus bicaudatulus","valueRanked":"Platypus bicaudatulus"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,21],["authorWord",22,28],["approximateYear",30,35]],"nameStringId":"5bf2e3f3-46dc-5138-a912-0e0ab2fdb22d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Platypus"},"specificEpithet":{"value":"bicaudatulus","authorship":{"value":"Schedl (1935)","basionymAuthorship":{"authors":["Schedl"],"years":[{"value":"1935","approximate":true}]}}}}],"bacteria":false}
-5bf2e3f3-46dc-5138-a912-0e0ab2fdb22d|Platypus bicaudatulus Schedl (1935h)|Platypus bicaudatulus|Platypus bicaudatulus|Schedl (1935)|(1935)|2
-
-Platypus bicaudatulus Schedl (1935)
-Platypus bicaudatulus Schedl (1935)
-{"quality":2,"parsed":true,"verbatim":"Platypus bicaudatulus Schedl (1935)","surrogate":false,"qualityWarnings":[[2,"Year with parentheses"]],"normalized":"Platypus bicaudatulus Schedl (1935)","canonicalName":{"value":"Platypus bicaudatulus","valueRanked":"Platypus bicaudatulus"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,21],["authorWord",22,28],["approximateYear",30,34]],"nameStringId":"c13ffa95-76e8-5ad1-aec6-311d65dc4dc0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Platypus"},"specificEpithet":{"value":"bicaudatulus","authorship":{"value":"Schedl (1935)","basionymAuthorship":{"authors":["Schedl"],"years":[{"value":"1935","approximate":true}]}}}}],"bacteria":false}
-c13ffa95-76e8-5ad1-aec6-311d65dc4dc0|Platypus bicaudatulus Schedl (1935)|Platypus bicaudatulus|Platypus bicaudatulus|Schedl (1935)|(1935)|2
-
 Tridentella tangeroae Bruce, 198?
 Tridentella tangeroae Bruce, 198?
 {"quality":2,"parsed":true,"verbatim":"Tridentella tangeroae Bruce, 198?","surrogate":false,"qualityWarnings":[[2,"Year with question mark"]],"normalized":"Tridentella tangeroae Bruce (198?)","canonicalName":{"value":"Tridentella tangeroae","valueRanked":"Tridentella tangeroae"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,21],["authorWord",22,27],["approximateYear",29,33]],"nameStringId":"179d63c9-bad4-5e61-bf2e-7261b4aa5066","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Tridentella"},"specificEpithet":{"value":"tangeroae","authorship":{"value":"Bruce (198?)","basionymAuthorship":{"authors":["Bruce"],"years":[{"value":"198?","approximate":true}]}}}}],"bacteria":false}
@@ -302,8 +292,8 @@ Hirsutëlla mâle
 
 Aëtosaurus ferratus
 Aëtosaurus ferratus
-{"quality":1,"parsed":true,"verbatim":"Aëtosaurus ferratus","surrogate":false,"normalized":"Aetosaurus ferratus","canonicalName":{"value":"Aetosaurus ferratus","valueRanked":"Aetosaurus ferratus"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,19]],"nameStringId":"9d95ffa0-0203-541f-854a-77ca7ff187fa","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Aetosaurus"},"specificEpithet":{"value":"ferratus"}}],"bacteria":false}
-9d95ffa0-0203-541f-854a-77ca7ff187fa|Aëtosaurus ferratus|Aetosaurus ferratus|Aetosaurus ferratus|||1
+{"quality":2,"parsed":true,"verbatim":"Aëtosaurus ferratus","surrogate":false,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"normalized":"Aetosaurus ferratus","canonicalName":{"value":"Aetosaurus ferratus","valueRanked":"Aetosaurus ferratus"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,19]],"nameStringId":"9d95ffa0-0203-541f-854a-77ca7ff187fa","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Aetosaurus"},"specificEpithet":{"value":"ferratus"}}],"bacteria":false}
+9d95ffa0-0203-541f-854a-77ca7ff187fa|Aëtosaurus ferratus|Aetosaurus ferratus|Aetosaurus ferratus|||2
 #>
 
 #SECTION: Binomial with authorship<
@@ -417,6 +407,16 @@ Hyalesthes angustula Horvßth, 1909
 {"quality":1,"parsed":true,"verbatim":"Hyalesthes angustula Horvßth, 1909","surrogate":false,"normalized":"Hyalesthes angustula Horvßth 1909","canonicalName":{"value":"Hyalesthes angustula","valueRanked":"Hyalesthes angustula"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,20],["authorWord",21,28],["year",30,34]],"nameStringId":"02058420-6623-5c22-b5ae-bc6a576f72fe","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Hyalesthes"},"specificEpithet":{"value":"angustula","authorship":{"value":"Horvßth 1909","basionymAuthorship":{"authors":["Horvßth"],"years":[{"value":"1909"}]}}}}],"bacteria":false}
 02058420-6623-5c22-b5ae-bc6a576f72fe|Hyalesthes angustula Horvßth, 1909|Hyalesthes angustula|Hyalesthes angustula|Horvßth 1909|1909|1
 
+Platypus bicaudatulus Schedl (1935h)
+Platypus bicaudatulus Schedl (1935h)
+{"quality":2,"parsed":true,"verbatim":"Platypus bicaudatulus Schedl (1935h)","surrogate":false,"qualityWarnings":[[2,"Year with latin character"],[2,"Year with parentheses"]],"normalized":"Platypus bicaudatulus Schedl (1935)","canonicalName":{"value":"Platypus bicaudatulus","valueRanked":"Platypus bicaudatulus"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,21],["authorWord",22,28],["approximateYear",30,35]],"nameStringId":"5bf2e3f3-46dc-5138-a912-0e0ab2fdb22d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Platypus"},"specificEpithet":{"value":"bicaudatulus","authorship":{"value":"Schedl (1935)","basionymAuthorship":{"authors":["Schedl"],"years":[{"value":"1935","approximate":true}]}}}}],"bacteria":false}
+5bf2e3f3-46dc-5138-a912-0e0ab2fdb22d|Platypus bicaudatulus Schedl (1935h)|Platypus bicaudatulus|Platypus bicaudatulus|Schedl (1935)|(1935)|2
+
+Platypus bicaudatulus Schedl (1935)
+Platypus bicaudatulus Schedl (1935)
+{"quality":2,"parsed":true,"verbatim":"Platypus bicaudatulus Schedl (1935)","surrogate":false,"qualityWarnings":[[2,"Year with parentheses"]],"normalized":"Platypus bicaudatulus Schedl (1935)","canonicalName":{"value":"Platypus bicaudatulus","valueRanked":"Platypus bicaudatulus"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,21],["authorWord",22,28],["approximateYear",30,34]],"nameStringId":"c13ffa95-76e8-5ad1-aec6-311d65dc4dc0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Platypus"},"specificEpithet":{"value":"bicaudatulus","authorship":{"value":"Schedl (1935)","basionymAuthorship":{"authors":["Schedl"],"years":[{"value":"1935","approximate":true}]}}}}],"bacteria":false}
+c13ffa95-76e8-5ad1-aec6-311d65dc4dc0|Platypus bicaudatulus Schedl (1935)|Platypus bicaudatulus|Platypus bicaudatulus|Schedl (1935)|(1935)|2
+
 Platypus bicaudatulus Schedl 1935
 Platypus bicaudatulus Schedl 1935
 {"quality":1,"parsed":true,"verbatim":"Platypus bicaudatulus Schedl 1935","surrogate":false,"normalized":"Platypus bicaudatulus Schedl 1935","canonicalName":{"value":"Platypus bicaudatulus","valueRanked":"Platypus bicaudatulus"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,21],["authorWord",22,28],["year",29,33]],"nameStringId":"d192a4f8-424f-5eba-affb-9855b153ff53","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Platypus"},"specificEpithet":{"value":"bicaudatulus","authorship":{"value":"Schedl 1935","basionymAuthorship":{"authors":["Schedl"],"years":[{"value":"1935"}]}}}}],"bacteria":false}
@@ -462,11 +462,6 @@ Strombus vittatus entropi Man in't Veld & Visser, 1993
 {"quality":1,"parsed":true,"verbatim":"Strombus vittatus entropi Man in't Veld & Visser, 1993","surrogate":false,"normalized":"Strombus vittatus entropi Man in't Veld & Visser 1993","canonicalName":{"value":"Strombus vittatus entropi","valueRanked":"Strombus vittatus entropi"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,17],["infraspecificEpithet",18,25],["authorWord",26,29],["authorWord",30,34],["authorWord",35,39],["authorWord",42,48],["year",50,54]],"nameStringId":"c74691e3-0f71-576b-81ea-6173bdae9817","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Strombus"},"specificEpithet":{"value":"vittatus"},"infraspecificEpithets":[{"value":"entropi","authorship":{"value":"Man in't Veld & Visser 1993","basionymAuthorship":{"authors":["Man in't Veld","Visser"],"years":[{"value":"1993"}]}}}]}],"bacteria":false}
 c74691e3-0f71-576b-81ea-6173bdae9817|Strombus vittatus entropi Man in't Veld & Visser, 1993|Strombus vittatus entropi|Strombus vittatus entropi|Man in't Veld & Visser 1993|1993|1
 
-Velutina haliotoides (Linnaeus, 1758), sensu Fabricius, 1780
-Velutina haliotoides (Linnaeus, 1758), sensu Fabricius, 1780
-{"quality":2,"parsed":true,"verbatim":"Velutina haliotoides (Linnaeus, 1758), sensu Fabricius, 1780","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Velutina haliotoides (Linnaeus 1758)","canonicalName":{"value":"Velutina haliotoides","valueRanked":"Velutina haliotoides"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,20],["authorWord",22,30],["year",32,36]],"nameStringId":"5efd63de-f4ec-55f1-bd5b-494988e58f9b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"haliotoides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"years":[{"value":"1758"}]}}}}],"bacteria":false}
-5efd63de-f4ec-55f1-bd5b-494988e58f9b|Velutina haliotoides (Linnaeus, 1758), sensu Fabricius, 1780|Velutina haliotoides|Velutina haliotoides|(Linnaeus 1758)|1758|2
-
 Velutina haliotoides (Linnaeus, 1758),
 Velutina haliotoides (Linnaeus, 1758),
 {"quality":1,"parsed":true,"verbatim":"Velutina haliotoides (Linnaeus, 1758),","surrogate":false,"normalized":"Velutina haliotoides (Linnaeus 1758)","canonicalName":{"value":"Velutina haliotoides","valueRanked":"Velutina haliotoides"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,20],["authorWord",22,30],["year",32,36]],"nameStringId":"59093ba7-64a1-53c4-9795-12de7ff9e718","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"haliotoides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"years":[{"value":"1758"}]}}}}],"bacteria":false}
@@ -509,7 +504,7 @@ Pseudocercospora dendrobii Goh et W.H. Hsieh 1990
 
 Schottera nicaeënsis (J.V. Lamouroux ex Duby) Guiry & Hollenberg
 Schottera nicaeënsis (J.V. Lamouroux ex Duby) Guiry & Hollenberg
-{"quality":2,"parsed":true,"verbatim":"Schottera nicaeënsis (J.V. Lamouroux ex Duby) Guiry & Hollenberg","surrogate":false,"qualityWarnings":[[2,"Ex authors are not required"]],"normalized":"Schottera nicaeensis (J. V. Lamouroux ex Duby) Guiry & Hollenberg","canonicalName":{"value":"Schottera nicaeensis","valueRanked":"Schottera nicaeensis"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,20],["authorWord",22,24],["authorWord",24,26],["authorWord",27,36],["authorWord",40,44],["authorWord",46,51],["authorWord",54,64]],"nameStringId":"ffeb3703-63e5-5ff3-b296-582c0c3a3373","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Schottera"},"specificEpithet":{"value":"nicaeensis","authorship":{"value":"(J. V. Lamouroux ex Duby) Guiry & Hollenberg","basionymAuthorship":{"authors":["J. V. Lamouroux"],"exAuthors":{"authors":["Duby"]}},"combinationAuthorship":{"authors":["Guiry","Hollenberg"]}}}}],"bacteria":false}
+{"quality":2,"parsed":true,"verbatim":"Schottera nicaeënsis (J.V. Lamouroux ex Duby) Guiry & Hollenberg","surrogate":false,"qualityWarnings":[[2,"Ex authors are not required"],[2,"Non-standard characters in canonical"]],"normalized":"Schottera nicaeensis (J. V. Lamouroux ex Duby) Guiry & Hollenberg","canonicalName":{"value":"Schottera nicaeensis","valueRanked":"Schottera nicaeensis"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,20],["authorWord",22,24],["authorWord",24,26],["authorWord",27,36],["authorWord",40,44],["authorWord",46,51],["authorWord",54,64]],"nameStringId":"ffeb3703-63e5-5ff3-b296-582c0c3a3373","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Schottera"},"specificEpithet":{"value":"nicaeensis","authorship":{"value":"(J. V. Lamouroux ex Duby) Guiry & Hollenberg","basionymAuthorship":{"authors":["J. V. Lamouroux"],"exAuthors":{"authors":["Duby"]}},"combinationAuthorship":{"authors":["Guiry","Hollenberg"]}}}}],"bacteria":false}
 ffeb3703-63e5-5ff3-b296-582c0c3a3373|Schottera nicaeënsis (J.V. Lamouroux ex Duby) Guiry & Hollenberg|Schottera nicaeensis|Schottera nicaeensis|(J. V. Lamouroux ex Duby) Guiry & Hollenberg||2
 #>
 
@@ -896,9 +891,6 @@ Asplenium X inexpectatum (E.L. Braun 1940) Morton (1956)
 d37e04e4-90bc-5031-b91c-dbb61113bcfa|Asplenium X inexpectatum (E.L. Braun 1940) Morton (1956)|Asplenium × inexpectatum|Asplenium × inexpectatum|||3
 
 Mentha ×smithiana R. A. Graham 1949
-Mentha ×smithiana R. A. Graham 1949
-{"quality":3,"parsed":true,"verbatim":"Mentha ×smithiana R. A. Graham 1949","surrogate":false,"qualityWarnings":[[3,"Incomplete hybrid formula"]],"normalized":"Mentha × smithiana R. A. Graham 1949","canonicalName":{"value":"Mentha × smithiana","valueRanked":"Mentha × smithiana"},"virus":false,"positions":[["genus",0,6],["hybridChar",7,8],["specificEpithet",8,17],["authorWord",18,20],["authorWord",21,23],["authorWord",24,30],["year",31,35]],"nameStringId":"24188261-3dd9-5173-b94c-f3ad7b145867","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Mentha"}},{"specificEpithet":{"value":"smithiana","authorship":{"value":"R. A. Graham 1949","basionymAuthorship":{"authors":["R. A. Graham"],"years":[{"value":"1949"}]}}}}],"bacteria":false}
-24188261-3dd9-5173-b94c-f3ad7b145867|Mentha ×smithiana R. A. Graham 1949|Mentha × smithiana|Mentha × smithiana|||3
 
 Salix ×capreola Andersson (1867)
 Salix ×capreola Andersson (1867)
@@ -2733,6 +2725,12 @@ Ligusticum sinense
 #>
 
 ### Preprocessed
+
+#SECTION annotations
+Velutina haliotoides (Linnaeus, 1758), sensu Fabricius, 1780
+Velutina haliotoides (Linnaeus, 1758), sensu Fabricius, 1780
+{"quality":2,"parsed":true,"verbatim":"Velutina haliotoides (Linnaeus, 1758), sensu Fabricius, 1780","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Velutina haliotoides (Linnaeus 1758)","canonicalName":{"value":"Velutina haliotoides","valueRanked":"Velutina haliotoides"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,20],["authorWord",22,30],["year",32,36]],"nameStringId":"5efd63de-f4ec-55f1-bd5b-494988e58f9b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"haliotoides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"years":[{"value":"1758"}]}}}}],"bacteria":false}
+5efd63de-f4ec-55f1-bd5b-494988e58f9b|Velutina haliotoides (Linnaeus, 1758), sensu Fabricius, 1780|Velutina haliotoides|Velutina haliotoides|(Linnaeus 1758)|1758|2
 
 #SECTION html entities<
 Torymus bangalorensis (Mani &amp; Kurian, 1953)

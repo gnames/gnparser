@@ -25,8 +25,7 @@ install: version peg
 peg:
 	cd grammar; \
 	peg grammar.peg; \
-	goimports -w grammar.peg.go
-
+	goimports -w grammar.peg.go; \
 
 version:
 	echo "package output\n\nconst Version = \"$(VERSION)\"\nconst Build = \"$(DATE)\"\n" \

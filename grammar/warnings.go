@@ -4,24 +4,36 @@ type Warning int
 
 const (
 	TailWarn Warning = iota
-	AbbrGenusWarn
-	ApproxWarning
 	AuthDoubleParensWarn
 	AuthExWarn
 	AuthMisformedYearWarn
 	AuthQuestionWarn
 	AuthShortWarn
 	AuthUnknownWarn
-	BadCharsWarn
-	BadUTF8ConvWarn
+	AuthUpperCaseWarn
+	CanonicalApostropheWarn
 	CapWordQuestionWarn
-	CompWarning
+	CharBadWarn
 	ExWithDotWarn
-	UncommonRankWarn
-	SuperSpWarn
+	GenusAbbrWarn
+	HybridCharNoSpaceWarn
+	HybridFormulaWarn
+	HybridFormulaIncompleteWarn
+	HybridFormulaProbIncompleteWarn
+	HybridNamedWarn
+	NameApproxWarn
+	NameComparisonWarn
+	RankUncommonWarn
+	SpaceMultipleWarn
+	SpaceNonStandardWarn
+	SpeciesNumericWarn
+	SuperSpeciesWarn
+	UTF8ConvBadWarn
 	UninomialComboWarn
+	WhiteSpaceTrailWarn
 	YearCharWarn
 	YearDotWarn
+	YearOrigMisformedWarn
 	YearPageWarn
 	YearParensWarn
 	YearQuestionWarn

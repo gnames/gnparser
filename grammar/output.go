@@ -19,25 +19,43 @@ type uniDetails struct {
 }
 
 type SpeciesOutput struct {
-	Genus       *genusOutput       `json:"genus"`
-	SpecEpithet *specEpithetOutput `json:"specificEpithet"`
+	Genus        *genusOutput            `json:"genus"`
+	SpecEpithet  *specEpithetOutput      `json:"specificEpithet"`
+	SubGenus     *subGenusOutput         `json:"infragenericEpithet,omitempty"`
+	InfraSpecies []*infraSpEpithetOutput `json:"infraspecificEpithets,omitempty"`
 }
 
 type genusOutput struct {
 	Value string `json:"value"`
 }
 
+type subGenusOutput struct {
+	Value string `json:"value"`
+}
 type specEpithetOutput struct {
 	Value      string            `json:"value"`
-	Authorship *authorshipOutput `json:"authorship"`
+	Authorship *authorshipOutput `json:"authorship,omitempty"`
+}
+
+type infraSpEpithetOutput struct {
+	Value      string            `json:"value"`
+	Rank       string            `json:"rank,omitempty"`
+	Authorship *authorshipOutput `json:"authorship,omitempty"`
 }
 
 type authorshipOutput struct {
-	Value    string          `json:"value"`
-	Original *originalOutput `json:"basionymAuthorship,omitempty"`
+	Value       string           `json:"value"`
+	Original    *authGroupOutput `json:"basionymAuthorship,omitempty"`
+	Combination *authGroupOutput `json:"combinationAuthorship,omitempty"`
 }
 
-type originalOutput struct {
+type authGroupOutput struct {
+	Authors   []string         `json:"authors"`
+	Years     []yearOutput     `json:"years,omitempty"`
+	ExAuthors *exAuthorsOutput `json:"exAuthors,omitempty"`
+}
+
+type exAuthorsOutput struct {
 	Authors []string     `json:"authors"`
 	Years   []yearOutput `json:"years,omitempty"`
 }
@@ -115,40 +133,132 @@ func (sn *ScientificNameNode) LastAuthorship() *authorshipOutput {
 
 func (sp *speciesNode) pos() []Pos {
 	pos := []Pos{sp.Genus.Pos}
+	if sp.SubGenus != nil {
+		pos = append(pos, sp.SubGenus.Pos)
+	}
 	pos = append(pos, sp.Species.Word.Pos)
 	pos = append(pos, sp.Species.Authorship.pos()...)
+	for _, v := range sp.InfraSpecies {
+		pos = append(pos, v.pos()...)
+	}
 	return pos
 }
 
 func (sp *speciesNode) value() string {
-	res := str.JoinStrings(sp.Genus.NormValue, sp.Species.Word.NormValue, " ")
+	gen := sp.Genus.NormValue
+	sgen := ""
+	if sp.SubGenus != nil {
+		sgen = "(" + sp.SubGenus.NormValue + ")"
+	}
+	res := str.JoinStrings(gen, sgen, " ")
+	res = str.JoinStrings(res, sp.Species.Word.NormValue, " ")
 	res = str.JoinStrings(res, sp.Species.Authorship.value(), " ")
+	for _, v := range sp.InfraSpecies {
+		res = str.JoinStrings(res, v.value(), " ")
+	}
 	return res
 }
 
 func (sp *speciesNode) canonical() Canonical {
 	spPart := str.JoinStrings(sp.Genus.NormValue, sp.Species.Word.NormValue, " ")
-	return Canonical{Value: spPart, ValueRanked: spPart}
+	c := Canonical{Value: spPart, ValueRanked: spPart}
+	for _, v := range sp.InfraSpecies {
+		c = appendCanonical(c, v.canonical(), " ")
+	}
+	return c
 }
 
 func (sp *speciesNode) lastAuthorship() *authorshipNode {
-	return sp.Species.Authorship
+	if len(sp.InfraSpecies) == 0 {
+		return sp.Species.Authorship
+	}
+	return sp.InfraSpecies[len(sp.InfraSpecies)-1].Authorship
 }
 
 func (sp *speciesNode) details() interface{} {
 	se := specEpithetOutput{
-		Value: sp.Species.Word.Value,
+		Value: sp.Species.Word.NormValue,
 	}
 	if sp.Species.Authorship != nil {
 		se.Authorship = sp.Species.Authorship.details()
 	}
 
-	g := sp.Genus.Value
-	so := &SpeciesOutput{
+	g := sp.Genus.NormValue
+	so := SpeciesOutput{
 		Genus:       &genusOutput{Value: g},
 		SpecEpithet: &se,
 	}
-	return so
+
+	if sp.SubGenus != nil {
+		sg := sp.SubGenus.NormValue
+		so.SubGenus = &subGenusOutput{Value: sg}
+	}
+	if len(sp.InfraSpecies) == 0 {
+		return &so
+	}
+	infs := make([]*infraSpEpithetOutput, len(sp.InfraSpecies))
+	for i, v := range sp.InfraSpecies {
+		infs[i] = v.details()
+	}
+	so.InfraSpecies = infs
+
+	return &so
+}
+
+func (inf *infraspEpithetNode) pos() []Pos {
+	var pos []Pos
+
+	if inf.Rank != nil && inf.Rank.Word.Pos.Start != 0 {
+		pos = append(pos, inf.Rank.Word.Pos)
+	}
+	pos = append(pos, inf.Word.Pos)
+	if inf.Authorship != nil {
+		pos = append(pos, inf.Authorship.pos()...)
+	}
+	return pos
+}
+
+func (inf *infraspEpithetNode) value() string {
+	val := inf.Word.NormValue
+	rank := ""
+	if inf.Rank != nil {
+		rank = inf.Rank.Word.NormValue
+	}
+	au := inf.Authorship.value()
+	res := str.JoinStrings(rank, val, " ")
+	res = str.JoinStrings(res, au, " ")
+	return res
+}
+
+func (inf *infraspEpithetNode) canonical() Canonical {
+	val := inf.Word.NormValue
+	rank := ""
+	if inf.Rank != nil {
+		rank = inf.Rank.Word.NormValue
+	}
+	rankedVal := str.JoinStrings(rank, val, " ")
+	c := Canonical{
+		Value:       val,
+		ValueRanked: rankedVal,
+	}
+	return c
+}
+
+func (inf *infraspEpithetNode) details() *infraSpEpithetOutput {
+	var info infraSpEpithetOutput
+	if inf == nil {
+		return &info
+	}
+	rank := ""
+	if inf.Rank != nil && inf.Rank.Word != nil {
+		rank = inf.Rank.Word.NormValue
+	}
+	info = infraSpEpithetOutput{
+		Value:      inf.Word.NormValue,
+		Rank:       rank,
+		Authorship: inf.Authorship.details(),
+	}
+	return &info
 }
 
 func (u *uninomialNode) pos() []Pos {
@@ -180,6 +290,7 @@ func (u *uninomialNode) details() interface{} {
 
 func (u *uninomialComboNode) pos() []Pos {
 	pos := []Pos{u.Uninomial1.Word.Pos}
+	pos = append(pos, u.Uninomial1.Authorship.pos()...)
 	if u.Rank.Word.Pos.Start != 0 {
 		pos = append(pos, u.Rank.Word.Pos)
 	}
@@ -228,22 +339,35 @@ func (au *authorshipNode) details() *authorshipOutput {
 		return ao
 	}
 	ao := authorshipOutput{Value: au.value()}
-	auYrs := au.OriginalAuthors.Team1.Years
-	yrs := make([]yearOutput, len(auYrs))
-	for i, v := range auYrs {
-		yrs[i] = yearOutput{Value: v.Word.Value, Approximate: v.Approximate}
+	ao.Original = authGroupDetail(au.OriginalAuthors)
+
+	if au.CombinationAuthors != nil {
+		ao.Combination = authGroupDetail(au.CombinationAuthors)
 	}
-	auAuths := au.OriginalAuthors.Team1.Authors
-	aus := make([]string, len(auAuths))
-	for i, v := range auAuths {
-		aus[i] = v.Value
+	return &ao
+}
+
+func authGroupDetail(ag *authorsGroupNode) *authGroupOutput {
+	var ago authGroupOutput
+	if ag == nil {
+		return &ago
 	}
-	ao.Original = &originalOutput{
+	aus, yrs := ag.Team1.details()
+	ago = authGroupOutput{
 		Authors: aus,
 		Years:   yrs,
 	}
-	// TODO more stuff
-	return &ao
+	if ag.Team2 == nil {
+		return &ago
+	}
+
+	ausEx, yrsEx := ag.Team2.details()
+	eao := exAuthorsOutput{
+		Authors: ausEx,
+		Years:   yrsEx,
+	}
+	ago.ExAuthors = &eao
+	return &ago
 }
 
 func (a *authorshipNode) pos() []Pos {
@@ -267,7 +391,8 @@ func (a *authorshipNode) value() string {
 	if a.CombinationAuthors == nil {
 		return v
 	}
-	// TODO more stuff
+	cav := a.CombinationAuthors.value()
+	v = v + " " + cav
 	return v
 }
 
@@ -276,7 +401,7 @@ func (ag *authorsGroupNode) value() string {
 	if ag.Team2 == nil {
 		return v
 	}
-	// TODO more stuff
+	v = fmt.Sprintf("%s ex %s", v, ag.Team2.value())
 	return v
 }
 
@@ -317,6 +442,23 @@ func (aut *authorsTeamNode) value() string {
 	yrVal := strings.Join(years, ", ")
 	value = str.JoinStrings(value, yrVal, " ")
 	return value
+}
+
+func (at *authorsTeamNode) details() ([]string, []yearOutput) {
+	var yrs []yearOutput
+	var aus []string
+	if at == nil {
+		return aus, yrs
+	}
+	yrs = make([]yearOutput, len(at.Years))
+	for i, v := range at.Years {
+		yrs[i] = yearOutput{Value: v.Word.Value, Approximate: v.Approximate}
+	}
+	aus = make([]string, len(at.Authors))
+	for i, v := range at.Authors {
+		aus[i] = v.Value
+	}
+	return aus, yrs
 }
 
 func (aut *authorsTeamNode) pos() []Pos {
