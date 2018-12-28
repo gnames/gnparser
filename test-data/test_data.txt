@@ -484,12 +484,6 @@ Mo. alpium (Osbeck, 1778)
 Mo. alpium (Osbeck, 1778)
 {"quality":3,"parsed":true,"verbatim":"Mo. alpium (Osbeck, 1778)","surrogate":false,"qualityWarnings":[[3,"Abbreviated uninomial word"]],"normalized":"Mo. alpium (Osbeck 1778)","canonicalName":{"value":"Mo. alpium","valueRanked":"Mo. alpium"},"virus":false,"positions":[["genus",0,3],["specificEpithet",4,10],["authorWord",12,18],["year",20,24]],"nameStringId":"1e9437b7-bf45-5b12-8da0-8966c6ea1c5c","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Mo."},"specificEpithet":{"value":"alpium","authorship":{"value":"(Osbeck 1778)","basionymAuthorship":{"authors":["Osbeck"],"years":[{"value":"1778"}]}}}}],"bacteria":false}
 1e9437b7-bf45-5b12-8da0-8966c6ea1c5c|Mo. alpium (Osbeck, 1778)|Mo. alpium|Mo. alpium|(Osbeck 1778)|1778|3
-
-# not parsed to get better precision/recall ratio
-Mom.alpium (Osbeck, 1778)
-Mom.alpium (Osbeck, 1778)
-{"parsed":false,"verbatim":"Mom.alpium (Osbeck, 1778)","surrogate":false,"virus":false,"nameStringId":"f1452bcf-b779-5d98-bfc8-56455105e3f5","parserVersion":"test_version","bacteria":false}
-f1452bcf-b779-5d98-bfc8-56455105e3f5|Mom.alpium (Osbeck, 1778)|||||1
 #>
 
 #SECTION: Binomial with several authours<
@@ -539,11 +533,6 @@ Pseudocercospora dendrobii U. Braun & Crous 2003
 Pseudocercospora dendrobii U. Braun & Crous 2003
 {"quality":1,"parsed":true,"verbatim":"Pseudocercospora dendrobii U. Braun & Crous 2003","surrogate":false,"normalized":"Pseudocercospora dendrobii U. Braun & Crous 2003","canonicalName":{"value":"Pseudocercospora dendrobii","valueRanked":"Pseudocercospora dendrobii"},"virus":false,"positions":[["genus",0,16],["specificEpithet",17,26],["authorWord",27,29],["authorWord",30,35],["authorWord",38,43],["year",44,48]],"nameStringId":"afd958fc-82a5-5551-951b-a725a49d3df0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Pseudocercospora"},"specificEpithet":{"value":"dendrobii","authorship":{"value":"U. Braun & Crous 2003","basionymAuthorship":{"authors":["U. Braun","Crous"],"years":[{"value":"2003"}]}}}}],"bacteria":false}
 afd958fc-82a5-5551-951b-a725a49d3df0|Pseudocercospora dendrobii U. Braun & Crous 2003|Pseudocercospora dendrobii|Pseudocercospora dendrobii|U. Braun & Crous 2003|2003|1
-
-Torymus bangalorensis (Mani &amp; Kurian, 1953)
-Torymus bangalorensis (Mani &amp; Kurian, 1953)
-{"quality":2,"parsed":true,"verbatim":"Torymus bangalorensis (Mani &amp; Kurian, 1953)","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Torymus bangalorensis (Mani & Kurian 1953)","canonicalName":{"value":"Torymus bangalorensis","valueRanked":"Torymus bangalorensis"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,21],["authorWord",23,27],["authorWord",34,40],["year",42,46]],"nameStringId":"8131ebda-dce6-5aaf-97ae-2370fe8e77d7","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Torymus"},"specificEpithet":{"value":"bangalorensis","authorship":{"value":"(Mani & Kurian 1953)","basionymAuthorship":{"authors":["Mani","Kurian"],"years":[{"value":"1953"}]}}}}],"bacteria":false}
-8131ebda-dce6-5aaf-97ae-2370fe8e77d7|Torymus bangalorensis (Mani &amp; Kurian, 1953)|Torymus bangalorensis|Torymus bangalorensis|(Mani & Kurian 1953)|1953|2
 
 Abaxisotima acuminata (Wang, Yuwen & Xiangwei Liu 1996)
 Abaxisotima acuminata (Wang, Yuwen & Xiangwei Liu 1996)
@@ -660,7 +649,7 @@ Crematogaster impressa st. brazzai Santschi 1937
 
 # badly formed name, we do not deal with it for now
 Cibotium st.-johnii Krajina
-Cibotium st.-johnii Krajina
+Cibotium
 {"quality":3,"parsed":true,"verbatim":"Cibotium st.-johnii Krajina","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Cibotium","canonicalName":{"value":"Cibotium","valueRanked":"Cibotium"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"6b34256d-6c3b-5870-a781-77eeac49b6c4","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Cibotium"}}],"bacteria":false,"unparsedTail":" st.-johnii Krajina"}
 6b34256d-6c3b-5870-a781-77eeac49b6c4|Cibotium st.-johnii Krajina|Cibotium|Cibotium|||3
 
@@ -2743,7 +2732,24 @@ Ligusticum sinense
 73f015c2-6679-5428-b418-6f4487af419d|Ligusticum sinense cv 'chuanxiong' S.H. Qiu & et al.|Ligusticum sinense|Ligusticum sinense|||2
 #>
 
+### Preprocessed
+
+#SECTION html entities<
+Torymus bangalorensis (Mani &amp; Kurian, 1953)
+Torymus bangalorensis (Mani &amp; Kurian, 1953)
+{"quality":2,"parsed":true,"verbatim":"Torymus bangalorensis (Mani &amp; Kurian, 1953)","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Torymus bangalorensis (Mani & Kurian 1953)","canonicalName":{"value":"Torymus bangalorensis","valueRanked":"Torymus bangalorensis"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,21],["authorWord",23,27],["authorWord",34,40],["year",42,46]],"nameStringId":"8131ebda-dce6-5aaf-97ae-2370fe8e77d7","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Torymus"},"specificEpithet":{"value":"bangalorensis","authorship":{"value":"(Mani & Kurian 1953)","basionymAuthorship":{"authors":["Mani","Kurian"],"years":[{"value":"1953"}]}}}}],"bacteria":false}
+8131ebda-dce6-5aaf-97ae-2370fe8e77d7|Torymus bangalorensis (Mani &amp; Kurian, 1953)|Torymus bangalorensis|Torymus bangalorensis|(Mani & Kurian 1953)|1953|2
+#>
+
 ### Unparseable
+
+#SECTION Not parsed OCR errors to get better precision/recall ratio<
+
+Mom.alpium (Osbeck, 1778)
+np
+{"parsed":false,"verbatim":"Mom.alpium (Osbeck, 1778)","surrogate":false,"virus":false,"nameStringId":"f1452bcf-b779-5d98-bfc8-56455105e3f5","parserVersion":"test_version","bacteria":false}
+f1452bcf-b779-5d98-bfc8-56455105e3f5|Mom.alpium (Osbeck, 1778)|||||1
+#>
 
 #SECTION: No parsing -- Genera abbreviated to 3 letters (too rare)<
 Gen. et n. sp. Kaimatira Pumice Sand, Marton N ~1 Ma

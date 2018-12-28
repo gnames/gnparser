@@ -85,7 +85,7 @@ TwoLetterGenus <- ('Ca' / 'Ea' / 'Ge' / 'Ia' / 'Io' / 'Ix' / 'Lo' / 'Oa' /
   'Ra' / 'Ty' / 'Ua' / 'Aa' / 'Ja' / 'Zu' / 'La' / 'Qu' / 'As' / 'Ba')
 
 Word <- !(AuthorPrefix / RankUninomial / Approximation / Word4)
-      (Word3 / Word2StartDigit / Word2 / Word1) &(SpaceCharEOI / "()")
+      (Word3 / Word2StartDigit / Word2 / Word1) &(SpaceCharEOI / '(')
 
 Word1 <- (lASCII dash)? NameLowerChar NameLowerChar+
 
@@ -128,7 +128,7 @@ BasionymAuthorship2 <- '(' _? '(' _? AuthorsGroup _? ')' _? ')'
 
 AuthorsGroup <- AuthorsTeam (_? AuthorEmend? AuthorEx? AuthorsTeam)?
 
-AuthorsTeam <- Author (AuthorSep Author)* (','? _? Year)?
+AuthorsTeam <- Author (AuthorSep Author)* (_? ','? _? Year)?
 
 AuthorSep <- AuthorSep1 / AuthorSep2
 
@@ -142,7 +142,7 @@ AuthorEmend <- 'emend' '.'? _
 
 Author <- (Author1 / Author2 / UnknownAuthor)
 
-Author1 <- Author2 _ Filius
+Author1 <- Author2 _? Filius
 
 Author2 <- AuthorWord (_? AuthorWord)*
 

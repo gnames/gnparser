@@ -12,19 +12,22 @@ import (
 
 var _ = Describe("grammar", func() {
 	Describe("Parse", func() {
-		It("tokenizes data by parsing rules", func() {
+		FIt("tokenizes data by parsing rules", func() {
 			tests, err := testData()
 			Expect(len(tests)).To(BeNumerically(">", 0))
 			Expect(err).NotTo(HaveOccurred())
 			e := grammar.Engine{}
 			e.Init()
-			for _, v := range tests {
+			for i, v := range tests {
 				e.Buffer = v.NameString
 				e.Reset()
+				if i == len(tests)-1 {
+					fmt.Println(v.NameString)
+				}
 				err := e.Parse()
+				Expect(err).NotTo(HaveOccurred())
 				parsedStr := e.ParsedName()
 				e.PrintOutputSyntaxTree(os.Stdout)
-				Expect(err).NotTo(HaveOccurred())
 				Expect(parsedStr).To(Equal(v.Parsed))
 			}
 		})
