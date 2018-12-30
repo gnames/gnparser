@@ -14,7 +14,7 @@ type Output struct {
 	Surrogate     bool          `json:"surrogate"`
 	Warnings      []Warning     `json:"qualityWarnings,omitempty"`
 	Normalized    string        `json:"normalized"`
-	CanonicalName canonical     `json:"canonicalName"`
+	CanonicalName *canonical    `json:"canonicalName,omitempty"`
 	Virus         bool          `json:"virus"`
 	Positions     []pos         `json:"positions,omitempty"`
 	NameStringID  string        `json:"nameStringId"`
@@ -26,14 +26,22 @@ type Output struct {
 }
 
 func NewOutput(sn *grm.ScientificNameNode) *Output {
+	var co *canonical
+	var quality int
+	var ws []Warning
+	var ps []pos
+	var parsed bool
 	det := sn.Details()
 	c := sn.Canonical()
-	co := canonical{Value: c.Value, ValueRanked: c.ValueRanked}
-	ws, quality := qualityAndWarnings(sn.Warnings)
-	ps := convertPos(sn.Pos())
+	if c != nil {
+		co = &canonical{Value: c.Value, ValueRanked: c.ValueRanked}
+		ws, quality = qualityAndWarnings(sn.Warnings)
+		ps = convertPos(sn.Pos())
+		parsed = true
+	}
 
 	o := Output{
-		Parsed:        true,
+		Parsed:        parsed,
 		Quality:       quality,
 		Warnings:      ws,
 		Verbatim:      sn.Verbatim,

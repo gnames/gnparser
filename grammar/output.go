@@ -70,16 +70,11 @@ type Canonical struct {
 	ValueRanked string
 }
 
-func appendCanonical(c1 Canonical, c2 Canonical, sep string) Canonical {
-	return Canonical{
+func appendCanonical(c1 *Canonical, c2 *Canonical, sep string) *Canonical {
+	return &Canonical{
 		Value:       str.JoinStrings(c1.Value, c2.Value, sep),
 		ValueRanked: str.JoinStrings(c1.ValueRanked, c2.ValueRanked, sep),
 	}
-}
-
-func nilCanonical() Canonical {
-	var c Canonical
-	return c
 }
 
 func (sn *ScientificNameNode) Pos() []Pos {
@@ -102,12 +97,12 @@ func (sn *ScientificNameNode) Value() string {
 	return strings.Join(values, " × ")
 }
 
-func (sn *ScientificNameNode) Canonical() Canonical {
+func (sn *ScientificNameNode) Canonical() *Canonical {
+	var cs *Canonical
 	ng := sn.NamesGroup
 	if len(ng) == 1 {
 		return ng[0].canonical()
 	}
-	var cs Canonical
 	for _, v := range ng {
 		cs = appendCanonical(cs, v.canonical(), " × ")
 	}
@@ -123,7 +118,7 @@ func (sn *ScientificNameNode) Details() []interface{} {
 }
 
 func (sn *ScientificNameNode) LastAuthorship() *authorshipOutput {
-	if len(sn.NamesGroup) > 1 {
+	if len(sn.NamesGroup) != 1 {
 		var ao *authorshipOutput
 		return ao
 	}
@@ -159,9 +154,9 @@ func (sp *speciesNode) value() string {
 	return res
 }
 
-func (sp *speciesNode) canonical() Canonical {
+func (sp *speciesNode) canonical() *Canonical {
 	spPart := str.JoinStrings(sp.Genus.NormValue, sp.Species.Word.NormValue, " ")
-	c := Canonical{Value: spPart, ValueRanked: spPart}
+	c := &Canonical{Value: spPart, ValueRanked: spPart}
 	for _, v := range sp.InfraSpecies {
 		c = appendCanonical(c, v.canonical(), " ")
 	}
@@ -230,7 +225,7 @@ func (inf *infraspEpithetNode) value() string {
 	return res
 }
 
-func (inf *infraspEpithetNode) canonical() Canonical {
+func (inf *infraspEpithetNode) canonical() *Canonical {
 	val := inf.Word.NormValue
 	rank := ""
 	if inf.Rank != nil {
@@ -241,7 +236,7 @@ func (inf *infraspEpithetNode) canonical() Canonical {
 		Value:       val,
 		ValueRanked: rankedVal,
 	}
-	return c
+	return &c
 }
 
 func (inf *infraspEpithetNode) details() *infraSpEpithetOutput {
@@ -271,8 +266,9 @@ func (u *uninomialNode) value() string {
 	return str.JoinStrings(u.Word.NormValue, u.Authorship.value(), " ")
 }
 
-func (u *uninomialNode) canonical() Canonical {
-	return Canonical{Value: u.Word.NormValue, ValueRanked: u.Word.NormValue}
+func (u *uninomialNode) canonical() *Canonical {
+	c := Canonical{Value: u.Word.NormValue, ValueRanked: u.Word.NormValue}
+	return &c
 }
 
 func (u *uninomialNode) lastAuthorship() *authorshipNode {
@@ -306,14 +302,15 @@ func (u *uninomialComboNode) value() string {
 	return str.JoinStrings(vl, tail, " ")
 }
 
-func (u *uninomialComboNode) canonical() Canonical {
+func (u *uninomialComboNode) canonical() *Canonical {
 	ranked := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.Value, " ")
 	ranked = str.JoinStrings(ranked, u.Uninomial2.Word.NormValue, " ")
 
-	return Canonical{
+	c := Canonical{
 		Value:       u.Uninomial2.Word.NormValue,
 		ValueRanked: ranked,
 	}
+	return &c
 }
 
 func (u *uninomialComboNode) lastAuthorship() *authorshipNode {

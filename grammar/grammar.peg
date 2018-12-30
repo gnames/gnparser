@@ -8,11 +8,9 @@ SciName <- _? SciName1 Tail !.
 
 Tail <- .*
 
-SciName1 <- SciName2
+SciName1 <- HybridFormula / NamedHybrid / Name
 
-SciName2 <- Name
-
-HybridFormula <- Name (_ (HybridFormula1 / HybridFormula2))
+HybridFormula <- Name (_ (HybridFormula1 / HybridFormula2))+
 
 HybridFormula1 <- HybridChar _? SpeciesEpithet (_ InfraspGroup)?
 
@@ -87,12 +85,13 @@ TwoLetterGenus <- ('Ca' / 'Ea' / 'Ge' / 'Ia' / 'Io' / 'Ix' / 'Lo' / 'Oa' /
 Word <- !(AuthorPrefix / RankUninomial / Approximation / Word4)
       (Word3 / Word2StartDigit / Word2 / Word1) &(SpaceCharEOI / '(')
 
+# TODO probably never used
 Word1 <- (lASCII dash)? NameLowerChar NameLowerChar+
 
 Word2StartDigit <- [123456789] nums? ('.' / dash)? NameLowerChar NameLowerChar
   NameLowerChar NameLowerChar+
 
-Word2 <- NameLowerChar+ dash? NameLowerChar
+Word2 <- NameLowerChar+ dash? NameLowerChar+
 
 Word3 <- NameLowerChar NameLowerChar* apostr Word1
 

@@ -172,13 +172,21 @@ func (p *Engine) NewScientificNameNode() {
 	p.Warnings = warnReset
 
 	sn := ScientificNameNode{
-		Verbatim:   p.Buffer,
-		VerbatimID: uuid5.UUID5(p.Buffer).String(),
 		NamesGroup: ng,
 		Tail:       tail,
 		Warnings:   warns,
 	}
 	p.SN = &sn
+}
+
+func (p *Engine) NewNotParsedScientificNameNode() {
+	sn := &ScientificNameNode{}
+	p.SN = sn
+}
+
+func (sn *ScientificNameNode) AddVerbatim(s string) {
+	sn.Verbatim = s
+	sn.VerbatimID = uuid5.UUID5(s).String()
 }
 
 func (p *Engine) tailValue(n *node32) string {

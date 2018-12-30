@@ -2,9 +2,10 @@ package gnparser
 
 import (
 	"bytes"
-	"log"
 	"runtime"
 	"strings"
+
+	"gitlab.com/gogna/gnparser/preprocess"
 
 	"gitlab.com/gogna/gnparser/grammar"
 	"gitlab.com/gogna/gnparser/output"
@@ -16,7 +17,9 @@ type GNparser struct {
 	workersNum int
 	// format defines the output format of the parser.
 	format
-	// e keeps parsing engine
+	// nameString keeps parsed string
+	nameString string
+	// parser keeps parsing engine
 	parser *grammar.Engine
 }
 
@@ -57,27 +60,27 @@ func (gnp *GNparser) WorkersNum() int {
 
 // Parse function parses input using GNparser's supplied options.
 // The abstract syntax tree formed by the parser is stored in an
-// `sn` private field.
-func (gnp *GNparser) Parse(s string) error {
-	gnp.parser.Buffer = s
+// `gnp.parser.SN` field.
+func (gnp *GNparser) Parse(s string) {
+	gnp.nameString = s
+	sNorm := preprocess.NormalizeHybridChar(gnp.nameString)
+	gnp.parser.Buffer = sNorm
 	gnp.parser.Reset()
 	err := gnp.parser.Parse()
 	if err != nil {
-		log.Println(s)
-		log.Printf("No parse for '%s': %s", s, err)
-		return err
+		gnp.parser.NewNotParsedScientificNameNode()
+	} else {
+		gnp.parser.OutputAST()
+		gnp.parser.NewScientificNameNode()
 	}
-	gnp.parser.OutputAST()
-	return nil
+	gnp.parser.SN.AddVerbatim(gnp.nameString)
 }
 
 // ParseAndFormat function parses input and formats results according
 // to format setting of GNparser.
 func (gnp *GNparser) ParseAndFormat(s string) (string, error) {
-	err := gnp.Parse(s)
-	if err != nil {
-		return "", err
-	}
+	var err error
+	gnp.Parse(s)
 	var bs []byte
 	switch gnp.format {
 	case Compact:
@@ -102,21 +105,18 @@ func (gnp *GNparser) ParseAndFormat(s string) (string, error) {
 
 // ToPrettyJSON function creates pretty JSON output out of parsed results.
 func (gnp *GNparser) ToPrettyJSON() ([]byte, error) {
-	gnp.parser.NewScientificNameNode()
 	o := output.NewOutput(gnp.parser.SN)
 	return o.ToJSON(true)
 }
 
 // ToJSON function creates a 'compact' output out of parsed results.
 func (gnp *GNparser) ToJSON() ([]byte, error) {
-	gnp.parser.NewScientificNameNode()
 	o := output.NewOutput(gnp.parser.SN)
 	return o.ToJSON(false)
 }
 
 // ToSlice function creates a flat simplified output of parsed results.
 func (gnp *GNparser) ToSlice() []string {
-	gnp.parser.NewScientificNameNode()
 	so := output.NewSimpleOutput(gnp.parser.SN)
 	return so.ToSlice()
 }

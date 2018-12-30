@@ -836,12 +836,12 @@ Euastrum divergens var. rhodesiense f. coronulum A.M. Scott & Prescott
 f2bb2ddc-003e-5fc0-83b1-038dca1deb52|×Agropogon P. Fourn. 1934|× Agropogon|× Agropogon|P. Fourn. 1934|1934|3
 
 xAgropogon P. Fourn.
-xAgropogon P. Fourn.
+×Agropogon P. Fourn.
 {"quality":3,"parsed":true,"verbatim":"xAgropogon P. Fourn.","surrogate":false,"qualityWarnings":[[3,"Hybrid char not separated by space"],[2,"Named hybrid"]],"normalized":"× Agropogon P. Fourn.","canonicalName":{"value":"× Agropogon","valueRanked":"× Agropogon"},"virus":false,"positions":[["hybridChar",0,1],["uninomial",1,10],["authorWord",11,13],["authorWord",14,20]],"nameStringId":"b36871e3-e412-5b4f-a859-eb09fcf83a8e","parserVersion":"test_version","hybrid":true,"details":[{"uninomial":{"value":"Agropogon","authorship":{"value":"P. Fourn.","basionymAuthorship":{"authors":["P. Fourn."]}}}}],"bacteria":false}
 b36871e3-e412-5b4f-a859-eb09fcf83a8e|xAgropogon P. Fourn.|× Agropogon|× Agropogon|P. Fourn.||3
 
 XAgropogon P.Fourn.
-XAgropogon P.Fourn.
+×Agropogon P.Fourn.
 {"quality":3,"parsed":true,"verbatim":"XAgropogon P.Fourn.","surrogate":false,"qualityWarnings":[[3,"Hybrid char not separated by space"],[2,"Named hybrid"]],"normalized":"× Agropogon P. Fourn.","canonicalName":{"value":"× Agropogon","valueRanked":"× Agropogon"},"virus":false,"positions":[["hybridChar",0,1],["uninomial",1,10],["authorWord",11,13],["authorWord",13,19]],"nameStringId":"f6257985-ad38-5c29-94e2-bb305cab893a","parserVersion":"test_version","hybrid":true,"details":[{"uninomial":{"value":"Agropogon","authorship":{"value":"P. Fourn.","basionymAuthorship":{"authors":["P. Fourn."]}}}}],"bacteria":false}
 f6257985-ad38-5c29-94e2-bb305cab893a|XAgropogon P.Fourn.|× Agropogon|× Agropogon|P. Fourn.||3
 
@@ -851,17 +851,17 @@ f6257985-ad38-5c29-94e2-bb305cab893a|XAgropogon P.Fourn.|× Agropogon|× Agropog
 b1858609-4fff-5a00-8d2b-0cb354100b10|× Agropogon|× Agropogon|× Agropogon|||2
 
 x Agropogon
-x Agropogon
+× Agropogon
 {"quality":2,"parsed":true,"verbatim":"x Agropogon","surrogate":false,"qualityWarnings":[[2,"Named hybrid"]],"normalized":"× Agropogon","canonicalName":{"value":"× Agropogon","valueRanked":"× Agropogon"},"virus":false,"positions":[["hybridChar",0,1],["uninomial",2,11]],"nameStringId":"79c27436-a61a-59cd-acf0-51425556e26f","parserVersion":"test_version","hybrid":true,"details":[{"uninomial":{"value":"Agropogon"}}],"bacteria":false}
 79c27436-a61a-59cd-acf0-51425556e26f|x Agropogon|× Agropogon|× Agropogon|||2
 
 X Agropogon
-X Agropogon
+× Agropogon
 {"quality":2,"parsed":true,"verbatim":"X Agropogon","surrogate":false,"qualityWarnings":[[2,"Named hybrid"]],"normalized":"× Agropogon","canonicalName":{"value":"× Agropogon","valueRanked":"× Agropogon"},"virus":false,"positions":[["hybridChar",0,1],["uninomial",2,11]],"nameStringId":"37eac7d5-a258-503b-ae3f-206739be74fa","parserVersion":"test_version","hybrid":true,"details":[{"uninomial":{"value":"Agropogon"}}],"bacteria":false}
 37eac7d5-a258-503b-ae3f-206739be74fa|X Agropogon|× Agropogon|× Agropogon|||2
 
 X Cupressocyparis leylandii
-X Cupressocyparis leylandii
+× Cupressocyparis leylandii
 {"quality":2,"parsed":true,"verbatim":"X Cupressocyparis leylandii","surrogate":false,"qualityWarnings":[[2,"Named hybrid"]],"normalized":"× Cupressocyparis leylandii","canonicalName":{"value":"× Cupressocyparis leylandii","valueRanked":"× Cupressocyparis leylandii"},"virus":false,"positions":[["hybridChar",0,1],["genus",2,17],["specificEpithet",18,27]],"nameStringId":"a6ebd2cf-a021-50fe-b158-8be16844079d","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Cupressocyparis"},"specificEpithet":{"value":"leylandii"}}],"bacteria":false}
 a6ebd2cf-a021-50fe-b158-8be16844079d|X Cupressocyparis leylandii|× Cupressocyparis leylandii|× Cupressocyparis leylandii|||2
 
@@ -871,12 +871,12 @@ a6ebd2cf-a021-50fe-b158-8be16844079d|X Cupressocyparis leylandii|× Cupressocypa
 6aab4b31-89fb-5a41-97ee-2024becc9169|×Heucherella tiarelloides|× Heucherella tiarelloides|× Heucherella tiarelloides|||3
 
 xHeucherella tiarelloides
-xHeucherella tiarelloides
+×Heucherella tiarelloides
 {"quality":3,"parsed":true,"verbatim":"xHeucherella tiarelloides","surrogate":false,"qualityWarnings":[[3,"Hybrid char not separated by space"],[2,"Named hybrid"]],"normalized":"× Heucherella tiarelloides","canonicalName":{"value":"× Heucherella tiarelloides","valueRanked":"× Heucherella tiarelloides"},"virus":false,"positions":[["hybridChar",0,1],["genus",1,12],["specificEpithet",13,25]],"nameStringId":"726d4f33-a175-5449-aea2-0e3c26dc7a0b","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Heucherella"},"specificEpithet":{"value":"tiarelloides"}}],"bacteria":false}
 726d4f33-a175-5449-aea2-0e3c26dc7a0b|xHeucherella tiarelloides|× Heucherella tiarelloides|× Heucherella tiarelloides|||3
 
 x Heucherella tiarelloides
-x Heucherella tiarelloides
+× Heucherella tiarelloides
 {"quality":2,"parsed":true,"verbatim":"x Heucherella tiarelloides","surrogate":false,"qualityWarnings":[[2,"Named hybrid"]],"normalized":"× Heucherella tiarelloides","canonicalName":{"value":"× Heucherella tiarelloides","valueRanked":"× Heucherella tiarelloides"},"virus":false,"positions":[["hybridChar",0,1],["genus",2,13],["specificEpithet",14,26]],"nameStringId":"da549587-a768-51b6-af26-1bb3c1977b31","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Heucherella"},"specificEpithet":{"value":"tiarelloides"}}],"bacteria":false}
 da549587-a768-51b6-af26-1bb3c1977b31|x Heucherella tiarelloides|× Heucherella tiarelloides|× Heucherella tiarelloides|||2
 
@@ -886,11 +886,11 @@ da549587-a768-51b6-af26-1bb3c1977b31|x Heucherella tiarelloides|× Heucherella t
 66beda81-d796-5d60-be9f-b3188ef730dc|×Agropogon littoralis (Sm.) C. E. Hubb. 1946|× Agropogon littoralis|× Agropogon littoralis|(Sm.) C. E. Hubb. 1946||3
 
 Asplenium X inexpectatum (E.L. Braun 1940) Morton (1956)
-Asplenium X inexpectatum (E.L. Braun 1940) Morton (1956)
+Asplenium × inexpectatum (E.L. Braun 1940) Morton (1956)
 {"quality":3,"parsed":true,"verbatim":"Asplenium X inexpectatum (E.L. Braun 1940) Morton (1956)","surrogate":false,"qualityWarnings":[[3,"Incomplete hybrid formula"],[2,"Year with parentheses"]],"normalized":"Asplenium × inexpectatum (E. L. Braun 1940) Morton (1956)","canonicalName":{"value":"Asplenium × inexpectatum","valueRanked":"Asplenium × inexpectatum"},"virus":false,"positions":[["genus",0,9],["hybridChar",10,11],["specificEpithet",12,24],["authorWord",26,28],["authorWord",28,30],["authorWord",31,36],["year",37,41],["authorWord",43,49],["approximateYear",51,55]],"nameStringId":"d37e04e4-90bc-5031-b91c-dbb61113bcfa","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Asplenium"}},{"specificEpithet":{"value":"inexpectatum","authorship":{"value":"(E. L. Braun 1940) Morton (1956)","basionymAuthorship":{"authors":["E. L. Braun"],"years":[{"value":"1940"}]},"combinationAuthorship":{"authors":["Morton"],"years":[{"value":"1956","approximate":true}]}}}}],"bacteria":false}
 d37e04e4-90bc-5031-b91c-dbb61113bcfa|Asplenium X inexpectatum (E.L. Braun 1940) Morton (1956)|Asplenium × inexpectatum|Asplenium × inexpectatum|||3
 
-Mentha ×smithiana R. A. Graham 1949
+# Mentha ×smithiana R. A. Graham 1949
 
 Salix ×capreola Andersson (1867)
 Salix ×capreola Andersson (1867)
@@ -898,39 +898,39 @@ Salix ×capreola Andersson (1867)
 9965be0c-0db2-506a-97f7-e709ef950ef7|Salix ×capreola Andersson (1867)|Salix × capreola|Salix × capreola|||3
 
 Salix x capreola Andersson
-Salix x capreola Andersson
+Salix × capreola Andersson
 {"quality":3,"parsed":true,"verbatim":"Salix x capreola Andersson","surrogate":false,"qualityWarnings":[[3,"Incomplete hybrid formula"]],"normalized":"Salix × capreola Andersson","canonicalName":{"value":"Salix × capreola","valueRanked":"Salix × capreola"},"virus":false,"positions":[["genus",0,5],["hybridChar",6,7],["specificEpithet",8,16],["authorWord",17,26]],"nameStringId":"5780473c-18ac-5386-9c3a-f74bbe426624","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Salix"}},{"specificEpithet":{"value":"capreola","authorship":{"value":"Andersson","basionymAuthorship":{"authors":["Andersson"]}}}}],"bacteria":false}
 5780473c-18ac-5386-9c3a-f74bbe426624|Salix x capreola Andersson|Salix × capreola|Salix × capreola|||3
 
 Asplenium rhizophyllum DC. x ruta-muraria E.L. Braun 1939
-Asplenium rhizophyllum DC. x ruta-muraria E.L. Braun 1939
+Asplenium rhizophyllum DC. × ruta-muraria E.L. Braun 1939
 {"quality":3,"parsed":true,"verbatim":"Asplenium rhizophyllum DC. x ruta-muraria E.L. Braun 1939","surrogate":false,"qualityWarnings":[[3,"Incomplete hybrid formula"]],"normalized":"Asplenium rhizophyllum DC. × ruta-muraria E. L. Braun 1939","canonicalName":{"value":"Asplenium rhizophyllum × ruta-muraria","valueRanked":"Asplenium rhizophyllum × ruta-muraria"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["authorWord",23,26],["hybridChar",27,28],["specificEpithet",29,41],["authorWord",42,44],["authorWord",44,46],["authorWord",47,52],["year",53,57]],"nameStringId":"dcb8fb0f-8207-5c67-b02b-81c8e03001b2","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Asplenium"},"specificEpithet":{"value":"rhizophyllum","authorship":{"value":"DC.","basionymAuthorship":{"authors":["DC."]}}}},{"specificEpithet":{"value":"ruta-muraria","authorship":{"value":"E. L. Braun 1939","basionymAuthorship":{"authors":["E. L. Braun"],"years":[{"value":"1939"}]}}}}],"bacteria":false}
 dcb8fb0f-8207-5c67-b02b-81c8e03001b2|Asplenium rhizophyllum DC. x ruta-muraria E.L. Braun 1939|Asplenium rhizophyllum × ruta-muraria|Asplenium rhizophyllum × ruta-muraria|||3
 #>
 
 #SECTION: Hybrid formula<
 Stanhopea tigrina Bateman ex Lindl. x S. ecornuta Lem.
-Stanhopea tigrina Bateman ex Lindl. x S. ecornuta Lem.
+Stanhopea tigrina Bateman ex Lindl. × S. ecornuta Lem.
 {"quality":3,"parsed":true,"verbatim":"Stanhopea tigrina Bateman ex Lindl. x S. ecornuta Lem.","surrogate":false,"qualityWarnings":[[3,"Abbreviated uninomial word"],[2,"Ex authors are not required"],[2,"Hybrid formula"]],"normalized":"Stanhopea tigrina Bateman ex Lindl. × Stanhopea ecornuta Lem.","canonicalName":{"value":"Stanhopea tigrina × Stanhopea ecornuta","valueRanked":"Stanhopea tigrina × Stanhopea ecornuta"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,17],["authorWord",18,25],["authorWord",29,35],["hybridChar",36,37],["genus",38,40],["specificEpithet",41,49],["authorWord",50,54]],"nameStringId":"80c0a17d-3422-515c-88bc-3a927438df88","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Stanhopea"},"specificEpithet":{"value":"tigrina","authorship":{"value":"Bateman ex Lindl.","basionymAuthorship":{"authors":["Bateman"],"exAuthors":{"authors":["Lindl."]}}}}},{"genus":{"value":"Stanhopea"},"specificEpithet":{"value":"ecornuta","authorship":{"value":"Lem.","basionymAuthorship":{"authors":["Lem."]}}}}],"bacteria":false}
 80c0a17d-3422-515c-88bc-3a927438df88|Stanhopea tigrina Bateman ex Lindl. x S. ecornuta Lem.|Stanhopea tigrina × Stanhopea ecornuta|Stanhopea tigrina × Stanhopea ecornuta|||3
 
 Arthopyrenia hyalospora X Hydnellum scrobiculatum
-Arthopyrenia hyalospora X Hydnellum scrobiculatum
+Arthopyrenia hyalospora × Hydnellum scrobiculatum
 {"quality":2,"parsed":true,"verbatim":"Arthopyrenia hyalospora X Hydnellum scrobiculatum","surrogate":false,"qualityWarnings":[[2,"Hybrid formula"]],"normalized":"Arthopyrenia hyalospora × Hydnellum scrobiculatum","canonicalName":{"value":"Arthopyrenia hyalospora × Hydnellum scrobiculatum","valueRanked":"Arthopyrenia hyalospora × Hydnellum scrobiculatum"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,23],["hybridChar",24,25],["genus",26,35],["specificEpithet",36,49]],"nameStringId":"e78d9299-9fd4-55d2-aeb4-b2864f5bff45","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Arthopyrenia"},"specificEpithet":{"value":"hyalospora"}},{"genus":{"value":"Hydnellum"},"specificEpithet":{"value":"scrobiculatum"}}],"bacteria":false}
 e78d9299-9fd4-55d2-aeb4-b2864f5bff45|Arthopyrenia hyalospora X Hydnellum scrobiculatum|Arthopyrenia hyalospora × Hydnellum scrobiculatum|Arthopyrenia hyalospora × Hydnellum scrobiculatum|||2
 
 Arthopyrenia hyalospora (Banker) D. Hall X Hydnellum scrobiculatum D.E. Stuntz
-Arthopyrenia hyalospora (Banker) D. Hall X Hydnellum scrobiculatum D.E. Stuntz
+Arthopyrenia hyalospora (Banker) D. Hall × Hydnellum scrobiculatum D.E. Stuntz
 {"quality":2,"parsed":true,"verbatim":"Arthopyrenia hyalospora (Banker) D. Hall X Hydnellum scrobiculatum D.E. Stuntz","surrogate":false,"qualityWarnings":[[2,"Hybrid formula"]],"normalized":"Arthopyrenia hyalospora (Banker) D. Hall × Hydnellum scrobiculatum D. E. Stuntz","canonicalName":{"value":"Arthopyrenia hyalospora × Hydnellum scrobiculatum","valueRanked":"Arthopyrenia hyalospora × Hydnellum scrobiculatum"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,23],["authorWord",25,31],["authorWord",33,35],["authorWord",36,40],["hybridChar",41,42],["genus",43,52],["specificEpithet",53,66],["authorWord",67,69],["authorWord",69,71],["authorWord",72,78]],"nameStringId":"a13ac2e0-5eec-569c-af9c-dd8163dbbd72","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Arthopyrenia"},"specificEpithet":{"value":"hyalospora","authorship":{"value":"(Banker) D. Hall","basionymAuthorship":{"authors":["Banker"]},"combinationAuthorship":{"authors":["D. Hall"]}}}},{"genus":{"value":"Hydnellum"},"specificEpithet":{"value":"scrobiculatum","authorship":{"value":"D. E. Stuntz","basionymAuthorship":{"authors":["D. E. Stuntz"]}}}}],"bacteria":false}
 a13ac2e0-5eec-569c-af9c-dd8163dbbd72|Arthopyrenia hyalospora (Banker) D. Hall X Hydnellum scrobiculatum D.E. Stuntz|Arthopyrenia hyalospora × Hydnellum scrobiculatum|Arthopyrenia hyalospora × Hydnellum scrobiculatum|||2
 
 Arthopyrenia hyalospora x
-Arthopyrenia hyalospora x
+Arthopyrenia hyalospora ×
 {"quality":2,"parsed":true,"verbatim":"Arthopyrenia hyalospora x","surrogate":false,"qualityWarnings":[[2,"Hybrid formula"],[2,"Probably incomplete hybrid formula"]],"normalized":"Arthopyrenia hyalospora ×","canonicalName":{"value":"Arthopyrenia hyalospora ×","valueRanked":"Arthopyrenia hyalospora ×"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,23],["hybridChar",24,25]],"nameStringId":"c056b89e-789b-5c28-89e7-e820ea0baebf","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Arthopyrenia"},"specificEpithet":{"value":"hyalospora"}}],"bacteria":false}
 c056b89e-789b-5c28-89e7-e820ea0baebf|Arthopyrenia hyalospora x|Arthopyrenia hyalospora ×|Arthopyrenia hyalospora ×|||2
 
 Arthopyrenia hyalospora × ?
-Arthopyrenia hyalospora × ?
+Arthopyrenia hyalospora ×
 {"quality":3,"parsed":true,"verbatim":"Arthopyrenia hyalospora × ?","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"],[2,"Hybrid formula"],[2,"Probably incomplete hybrid formula"]],"normalized":"Arthopyrenia hyalospora ×","canonicalName":{"value":"Arthopyrenia hyalospora ×","valueRanked":"Arthopyrenia hyalospora ×"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,23],["hybridChar",24,25]],"nameStringId":"638cc013-3821-55c2-b9d3-b2ea3de33ecf","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Arthopyrenia"},"specificEpithet":{"value":"hyalospora"}}],"bacteria":false,"unparsedTail":" ?"}
 638cc013-3821-55c2-b9d3-b2ea3de33ecf|Arthopyrenia hyalospora × ?|Arthopyrenia hyalospora ×|Arthopyrenia hyalospora ×|||3
 
@@ -945,7 +945,7 @@ Agrostis stolonifera L. × Polypogon monspeliensis (L.) Desf.
 a2aeb842-18c5-54b4-a4d9-c78bd0445c10|Agrostis stolonifera L. × Polypogon monspeliensis (L.) Desf.|Agrostis stolonifera × Polypogon monspeliensis|Agrostis stolonifera × Polypogon monspeliensis|||2
 
 Coeloglossum viride (L.) Hartman x Dactylorhiza majalis (Rchb. f.) P.F. Hunt & Summerhayes ssp. praetermissa (Druce) D.M. Moore & Soó
-Coeloglossum viride (L.) Hartman x Dactylorhiza majalis (Rchb. f.) P.F. Hunt & Summerhayes ssp. praetermissa (Druce) D.M. Moore & Soó
+Coeloglossum viride (L.) Hartman × Dactylorhiza majalis (Rchb. f.) P.F. Hunt & Summerhayes ssp. praetermissa (Druce) D.M. Moore & Soó
 {"quality":2,"parsed":true,"verbatim":"Coeloglossum viride (L.) Hartman x Dactylorhiza majalis (Rchb. f.) P.F. Hunt & Summerhayes ssp. praetermissa (Druce) D.M. Moore & Soó","surrogate":false,"qualityWarnings":[[2,"Hybrid formula"]],"normalized":"Coeloglossum viride (L.) Hartman × Dactylorhiza majalis (Rchb. fil.) P. F. Hunt & Summerhayes ssp. praetermissa (Druce) D. M. Moore & Soó","canonicalName":{"value":"Coeloglossum viride × Dactylorhiza majalis praetermissa","valueRanked":"Coeloglossum viride × Dactylorhiza majalis ssp. praetermissa"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,19],["authorWord",21,23],["authorWord",25,32],["hybridChar",33,34],["genus",35,47],["specificEpithet",48,55],["authorWord",57,62],["authorWordFilius",63,65],["authorWord",67,69],["authorWord",69,71],["authorWord",72,76],["authorWord",79,90],["rank",91,95],["infraspecificEpithet",96,108],["authorWord",110,115],["authorWord",117,119],["authorWord",119,121],["authorWord",122,127],["authorWord",130,133]],"nameStringId":"76fc857a-442a-590e-98c6-174aeb199e68","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Coeloglossum"},"specificEpithet":{"value":"viride","authorship":{"value":"(L.) Hartman","basionymAuthorship":{"authors":["L."]},"combinationAuthorship":{"authors":["Hartman"]}}}},{"genus":{"value":"Dactylorhiza"},"specificEpithet":{"value":"majalis","authorship":{"value":"(Rchb. fil.) P. F. Hunt & Summerhayes","basionymAuthorship":{"authors":["Rchb. fil."]},"combinationAuthorship":{"authors":["P. F. Hunt","Summerhayes"]}}},"infraspecificEpithets":[{"value":"praetermissa","rank":"ssp.","authorship":{"value":"(Druce) D. M. Moore & Soó","basionymAuthorship":{"authors":["Druce"]},"combinationAuthorship":{"authors":["D. M. Moore","Soó"]}}}]}],"bacteria":false}
 76fc857a-442a-590e-98c6-174aeb199e68|Coeloglossum viride (L.) Hartman x Dactylorhiza majalis (Rchb. f.) P.F. Hunt & Summerhayes ssp. praetermissa (Druce) D.M. Moore & Soó|Coeloglossum viride × Dactylorhiza majalis praetermissa|Coeloglossum viride × Dactylorhiza majalis ssp. praetermissa|||2
 
@@ -955,7 +955,7 @@ Salix aurita L. × S. caprea L.
 a8de3172-b5e8-55c0-b495-b13b7af462d4|Salix aurita L. × S. caprea L.|Salix aurita × Salix caprea|Salix aurita × Salix caprea|||3
 
 Asplenium rhizophyllum X A. ruta-muraria E.L. Braun 1939
-Asplenium rhizophyllum X A. ruta-muraria E.L. Braun 1939
+Asplenium rhizophyllum × A. ruta-muraria E.L. Braun 1939
 {"quality":3,"parsed":true,"verbatim":"Asplenium rhizophyllum X A. ruta-muraria E.L. Braun 1939","surrogate":false,"qualityWarnings":[[3,"Abbreviated uninomial word"],[2,"Hybrid formula"]],"normalized":"Asplenium rhizophyllum × Asplenium ruta-muraria E. L. Braun 1939","canonicalName":{"value":"Asplenium rhizophyllum × Asplenium ruta-muraria","valueRanked":"Asplenium rhizophyllum × Asplenium ruta-muraria"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["hybridChar",23,24],["genus",25,27],["specificEpithet",28,40],["authorWord",41,43],["authorWord",43,45],["authorWord",46,51],["year",52,56]],"nameStringId":"1fa2c609-ce9b-5eea-a1b2-187d36b695cb","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Asplenium"},"specificEpithet":{"value":"rhizophyllum"}},{"genus":{"value":"Asplenium"},"specificEpithet":{"value":"ruta-muraria","authorship":{"value":"E. L. Braun 1939","basionymAuthorship":{"authors":["E. L. Braun"],"years":[{"value":"1939"}]}}}}],"bacteria":false}
 1fa2c609-ce9b-5eea-a1b2-187d36b695cb|Asplenium rhizophyllum X A. ruta-muraria E.L. Braun 1939|Asplenium rhizophyllum × Asplenium ruta-muraria|Asplenium rhizophyllum × Asplenium ruta-muraria|||3
 
@@ -967,7 +967,7 @@ Tilletia caries (Bjerk.) Tul. × T. foetida (Wallr.) Liro.
 65d2072c-86e1-5205-a188-0d554dccd0e7|Tilletia caries (Bjerk.) Tul. × T. foetida (Wallr.) Liro.|Tilletia caries × Tilletia foetida|Tilletia caries × Tilletia foetida|||3
 
 Polypodium  x vulgare nothosubsp. mantoniae (Rothm.) Schidlay
-Polypodium  x vulgare nothosubsp. mantoniae (Rothm.) Schidlay
+Polypodium  × vulgare nothosubsp. mantoniae (Rothm.) Schidlay
 {"quality":3,"parsed":true,"verbatim":"Polypodium  x vulgare nothosubsp. mantoniae (Rothm.) Schidlay","surrogate":false,"qualityWarnings":[[3,"Incomplete hybrid formula"],[2,"Multiple adjacent space characters"]],"normalized":"Polypodium × vulgare nothosubsp. mantoniae (Rothm.) Schidlay","canonicalName":{"value":"Polypodium × vulgare mantoniae","valueRanked":"Polypodium × vulgare nothosubsp. mantoniae"},"virus":false,"positions":[["genus",0,10],["hybridChar",12,13],["specificEpithet",14,21],["rank",22,33],["infraspecificEpithet",34,43],["authorWord",45,51],["authorWord",53,61]],"nameStringId":"8666c370-8843-5324-a7f3-754ca778d618","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Polypodium"}},{"specificEpithet":{"value":"vulgare"},"infraspecificEpithets":[{"value":"mantoniae","rank":"nothosubsp.","authorship":{"value":"(Rothm.) Schidlay","basionymAuthorship":{"authors":["Rothm."]},"combinationAuthorship":{"authors":["Schidlay"]}}}]}],"bacteria":false}
 8666c370-8843-5324-a7f3-754ca778d618|Polypodium  x vulgare nothosubsp. mantoniae (Rothm.) Schidlay|Polypodium × vulgare mantoniae|Polypodium × vulgare nothosubsp. mantoniae|||3
 

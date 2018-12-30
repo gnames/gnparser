@@ -16,10 +16,12 @@ var _ = Describe("Output", func() {
 var _ = Describe("Private Functions", func() {
 	Describe("prepareWarnings", func() {
 		It("sorts incoming data consistently", func() {
-			sl := []int{0, 1, 2, 3, 4}
-			ws := make([]grm.Warning, len(sl))
-			for i, v := range randIntSlice(sl) {
-				ws[i] = grm.Warning(v)
+			ws := []grm.Warning{
+				grm.YearParensWarn,
+				grm.YearCharWarn,
+				grm.CharBadWarn,
+				grm.YearQuestionWarn,
+				grm.TailWarn,
 			}
 			res := prepareWarnings(ws)
 			output := []Warning{

@@ -11,7 +11,7 @@ type Canonizer interface {
 	// canonical function would return something only for nodes that do
 	// contribute to canonical representation. For other nodes the return
 	// value is an empty canonical structure.
-	canonical() Canonical
+	canonical() *Canonical
 }
 
 type Poser interface {
