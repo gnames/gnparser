@@ -10,8 +10,9 @@ type Valuer interface {
 type Canonizer interface {
 	// canonical function would return something only for nodes that do
 	// contribute to canonical representation. For other nodes the return
-	// value is an empty canonical structure.
-	canonical() *Canonical
+	// value is an empty canonical structure. The second value indicates if
+	// the canonical is a hybrid or not.
+	canonical() (*Canonical, bool)
 }
 
 type Poser interface {
@@ -25,7 +26,7 @@ type AuthorFinder interface {
 
 type Outputter interface {
 	// details creates a details structure for JSON-based outputs
-	details() interface{}
+	details() []interface{}
 }
 
 type Name interface {

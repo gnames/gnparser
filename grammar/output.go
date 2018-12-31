@@ -7,17 +7,6 @@ import (
 	"gitlab.com/gogna/gnparser/str"
 )
 
-type UninomialOutput struct {
-	Uninomial *uniDetails `json:"uninomial"`
-}
-
-type uniDetails struct {
-	Value      string            `json:"value"`
-	Rank       string            `json:"rank,omitempty"`
-	Parent     string            `json:"parent,omitempty"`
-	Authorship *authorshipOutput `json:"authorship,omitempty"`
-}
-
 type SpeciesOutput struct {
 	Genus        *genusOutput            `json:"genus"`
 	SpecEpithet  *specEpithetOutput      `json:"specificEpithet"`
@@ -40,6 +29,17 @@ type specEpithetOutput struct {
 type infraSpEpithetOutput struct {
 	Value      string            `json:"value"`
 	Rank       string            `json:"rank,omitempty"`
+	Authorship *authorshipOutput `json:"authorship,omitempty"`
+}
+
+type UninomialOutput struct {
+	Uninomial *uniDetails `json:"uninomial"`
+}
+
+type uniDetails struct {
+	Value      string            `json:"value"`
+	Rank       string            `json:"rank,omitempty"`
+	Parent     string            `json:"parent,omitempty"`
 	Authorship *authorshipOutput `json:"authorship,omitempty"`
 }
 
@@ -78,61 +78,163 @@ func appendCanonical(c1 *Canonical, c2 *Canonical, sep string) *Canonical {
 }
 
 func (sn *ScientificNameNode) Pos() []Pos {
-	var pos []Pos
-	for _, v := range sn.NamesGroup {
-		pos = append(pos, v.pos()...)
+	return sn.Name.pos()
+}
+
+func (sn *ScientificNameNode) Value() string {
+	return sn.Name.value()
+}
+
+func (sn *ScientificNameNode) Canonical() (*Canonical, bool) {
+	return sn.Name.canonical()
+}
+
+func (sn *ScientificNameNode) Details() []interface{} {
+	return sn.Name.details()
+}
+
+func (sn *ScientificNameNode) LastAuthorship() *authorshipOutput {
+	an := sn.Name.lastAuthorship()
+	if an == nil {
+		var ao *authorshipOutput
+		return ao
+	}
+	return an.details()
+}
+
+func (nf *hybridFormulaNode) pos() []Pos {
+	pos := nf.FirstSpecies.pos()
+	for _, v := range nf.HybridElements {
+		pos = append(pos, v.HybridChar.Pos)
+		if v.Species != nil {
+			pos = append(pos, v.Species.pos()...)
+		}
 	}
 	return pos
 }
 
-func (sn *ScientificNameNode) Value() string {
-	ng := sn.NamesGroup
-	if len(ng) == 1 {
-		return ng[0].value()
+func (nf *hybridFormulaNode) value() string {
+	val := nf.FirstSpecies.value()
+	for _, v := range nf.HybridElements {
+		val = str.JoinStrings(val, v.HybridChar.Value, " ")
+		if v.Species != nil {
+			val = str.JoinStrings(val, v.Species.value(), " ")
+		}
 	}
-	values := make([]string, len(ng))
-	for i, v := range ng {
-		values[i] = v.value()
-	}
-	return strings.Join(values, " × ")
+	return val
 }
 
-func (sn *ScientificNameNode) Canonical() *Canonical {
-	var cs *Canonical
-	ng := sn.NamesGroup
-	if len(ng) == 1 {
-		return ng[0].canonical()
+func (nf *hybridFormulaNode) canonical() (*Canonical, bool) {
+	c, _ := nf.FirstSpecies.canonical()
+	for _, v := range nf.HybridElements {
+		hc := &Canonical{
+			Value:       v.HybridChar.NormValue,
+			ValueRanked: v.HybridChar.NormValue,
+		}
+		c = appendCanonical(c, hc, " ")
+		if v.Species != nil {
+			sc, _ := v.Species.canonical()
+			c = appendCanonical(c, sc, " ")
+		}
 	}
-	for _, v := range ng {
-		cs = appendCanonical(cs, v.canonical(), " × ")
-	}
-	return cs
+	return c, true
 }
 
-func (sn *ScientificNameNode) Details() []interface{} {
-	res := make([]interface{}, len(sn.NamesGroup))
-	for i, v := range sn.NamesGroup {
-		res[i] = v.details()
-	}
-	return res
+func (nf *hybridFormulaNode) lastAuthorship() *authorshipNode {
+	var au *authorshipNode
+	return au
 }
 
-func (sn *ScientificNameNode) LastAuthorship() *authorshipOutput {
-	if len(sn.NamesGroup) != 1 {
-		var ao *authorshipOutput
-		return ao
+func (nf *hybridFormulaNode) details() []interface{} {
+	ds := nf.FirstSpecies.details()
+	for _, v := range nf.HybridElements {
+		if v.Species != nil {
+			ds = append(ds, v.Species.details()[0])
+		}
 	}
-	an := sn.NamesGroup[0].lastAuthorship()
-	return an.details()
+	return ds
+}
+
+func (nh *namedGenusHybridNode) pos() []Pos {
+	pos := []Pos{nh.Hybrid.Pos}
+	pos = append(pos, nh.Name.pos()...)
+	return pos
+}
+
+func (nh *namedGenusHybridNode) value() string {
+	v := nh.Name.value()
+	v = "× " + v
+	return v
+}
+
+func (nh *namedGenusHybridNode) canonical() (*Canonical, bool) {
+	c := &Canonical{
+		Value:       "",
+		ValueRanked: "×",
+	}
+
+	c1, _ := nh.Name.canonical()
+	c = appendCanonical(c, c1, " ")
+	return c, true
+}
+
+func (nh *namedGenusHybridNode) details() []interface{} {
+	d := nh.Name.details()
+	return d
+}
+
+func (nh *namedGenusHybridNode) lastAuthorship() *authorshipNode {
+	au := nh.Name.lastAuthorship()
+	return au
+}
+
+func (nh *namedSpeciesHybridNode) pos() []Pos {
+	pos := []Pos{nh.Genus.Pos}
+	pos = append(pos, nh.Hybrid.Pos)
+	pos = append(pos, nh.SpEpithet.pos()...)
+	return pos
+}
+
+func (nh *namedSpeciesHybridNode) value() string {
+	val := nh.Genus.NormValue
+	val = val + " × " + nh.SpEpithet.value()
+	return val
+}
+
+func (nh *namedSpeciesHybridNode) canonical() (*Canonical, bool) {
+	g := nh.Genus.NormValue
+	c := &Canonical{Value: g, ValueRanked: g}
+	hCan := &Canonical{Value: "", ValueRanked: "×"}
+	c = appendCanonical(c, hCan, " ")
+	cSp, _ := nh.SpEpithet.canonical()
+	c = appendCanonical(c, cSp, " ")
+	return c, true
+}
+
+func (nh *namedSpeciesHybridNode) details() []interface{} {
+	g := &genusOutput{Value: nh.Genus.NormValue}
+	sp := nh.SpEpithet.details()
+	so := &SpeciesOutput{
+		Genus:       g,
+		SpecEpithet: sp,
+	}
+	return []interface{}{so}
+}
+
+func (nh *namedSpeciesHybridNode) lastAuthorship() *authorshipNode {
+	au := nh.SpEpithet.Authorship
+	return au
 }
 
 func (sp *speciesNode) pos() []Pos {
-	pos := []Pos{sp.Genus.Pos}
+	var pos []Pos
+	if sp.Genus.Pos.End != 0 {
+		pos = append(pos, sp.Genus.Pos)
+	}
 	if sp.SubGenus != nil {
 		pos = append(pos, sp.SubGenus.Pos)
 	}
-	pos = append(pos, sp.Species.Word.Pos)
-	pos = append(pos, sp.Species.Authorship.pos()...)
+	pos = append(pos, sp.SpEpithet.pos()...)
 	for _, v := range sp.InfraSpecies {
 		pos = append(pos, v.pos()...)
 	}
@@ -146,36 +248,36 @@ func (sp *speciesNode) value() string {
 		sgen = "(" + sp.SubGenus.NormValue + ")"
 	}
 	res := str.JoinStrings(gen, sgen, " ")
-	res = str.JoinStrings(res, sp.Species.Word.NormValue, " ")
-	res = str.JoinStrings(res, sp.Species.Authorship.value(), " ")
+	res = str.JoinStrings(res, sp.SpEpithet.value(), " ")
 	for _, v := range sp.InfraSpecies {
 		res = str.JoinStrings(res, v.value(), " ")
 	}
 	return res
 }
 
-func (sp *speciesNode) canonical() *Canonical {
-	spPart := str.JoinStrings(sp.Genus.NormValue, sp.Species.Word.NormValue, " ")
+func (sp *speciesNode) canonical() (*Canonical, bool) {
+	spPart := str.JoinStrings(sp.Genus.NormValue, sp.SpEpithet.Word.NormValue, " ")
 	c := &Canonical{Value: spPart, ValueRanked: spPart}
 	for _, v := range sp.InfraSpecies {
-		c = appendCanonical(c, v.canonical(), " ")
+		c1, _ := v.canonical()
+		c = appendCanonical(c, c1, " ")
 	}
-	return c
+	return c, false
 }
 
 func (sp *speciesNode) lastAuthorship() *authorshipNode {
 	if len(sp.InfraSpecies) == 0 {
-		return sp.Species.Authorship
+		return sp.SpEpithet.Authorship
 	}
 	return sp.InfraSpecies[len(sp.InfraSpecies)-1].Authorship
 }
 
-func (sp *speciesNode) details() interface{} {
+func (sp *speciesNode) details() []interface{} {
 	se := specEpithetOutput{
-		Value: sp.Species.Word.NormValue,
+		Value: sp.SpEpithet.Word.NormValue,
 	}
-	if sp.Species.Authorship != nil {
-		se.Authorship = sp.Species.Authorship.details()
+	if sp.SpEpithet.Authorship != nil {
+		se.Authorship = sp.SpEpithet.Authorship.details()
 	}
 
 	g := sp.Genus.NormValue
@@ -189,7 +291,7 @@ func (sp *speciesNode) details() interface{} {
 		so.SubGenus = &subGenusOutput{Value: sg}
 	}
 	if len(sp.InfraSpecies) == 0 {
-		return &so
+		return []interface{}{&so}
 	}
 	infs := make([]*infraSpEpithetOutput, len(sp.InfraSpecies))
 	for i, v := range sp.InfraSpecies {
@@ -197,7 +299,34 @@ func (sp *speciesNode) details() interface{} {
 	}
 	so.InfraSpecies = infs
 
-	return &so
+	return []interface{}{&so}
+}
+
+func (sep *spEpithetNode) pos() []Pos {
+	pos := []Pos{sep.Word.Pos}
+	pos = append(pos, sep.Authorship.pos()...)
+	return pos
+}
+
+func (sep *spEpithetNode) value() string {
+	val := sep.Word.NormValue
+	val = str.JoinStrings(val, sep.Authorship.value(), " ")
+	return val
+}
+
+func (sep *spEpithetNode) canonical() (*Canonical, bool) {
+	c := &Canonical{Value: sep.Word.NormValue, ValueRanked: sep.Word.NormValue}
+	return c, false
+}
+
+func (sep *spEpithetNode) details() *specEpithetOutput {
+	val := sep.Word.NormValue
+	au := sep.Authorship.details()
+	seo := specEpithetOutput{
+		Value:      val,
+		Authorship: au,
+	}
+	return &seo
 }
 
 func (inf *infraspEpithetNode) pos() []Pos {
@@ -225,7 +354,7 @@ func (inf *infraspEpithetNode) value() string {
 	return res
 }
 
-func (inf *infraspEpithetNode) canonical() *Canonical {
+func (inf *infraspEpithetNode) canonical() (*Canonical, bool) {
 	val := inf.Word.NormValue
 	rank := ""
 	if inf.Rank != nil {
@@ -236,7 +365,7 @@ func (inf *infraspEpithetNode) canonical() *Canonical {
 		Value:       val,
 		ValueRanked: rankedVal,
 	}
-	return &c
+	return &c, false
 }
 
 func (inf *infraspEpithetNode) details() *infraSpEpithetOutput {
@@ -266,22 +395,22 @@ func (u *uninomialNode) value() string {
 	return str.JoinStrings(u.Word.NormValue, u.Authorship.value(), " ")
 }
 
-func (u *uninomialNode) canonical() *Canonical {
+func (u *uninomialNode) canonical() (*Canonical, bool) {
 	c := Canonical{Value: u.Word.NormValue, ValueRanked: u.Word.NormValue}
-	return &c
+	return &c, false
 }
 
 func (u *uninomialNode) lastAuthorship() *authorshipNode {
 	return u.Authorship
 }
 
-func (u *uninomialNode) details() interface{} {
+func (u *uninomialNode) details() []interface{} {
 	ud := uniDetails{Value: u.Word.NormValue}
 	if u.Authorship != nil {
 		ud.Authorship = u.Authorship.details()
 	}
 	uo := UninomialOutput{Uninomial: &ud}
-	return &uo
+	return []interface{}{&uo}
 }
 
 func (u *uninomialComboNode) pos() []Pos {
@@ -302,7 +431,7 @@ func (u *uninomialComboNode) value() string {
 	return str.JoinStrings(vl, tail, " ")
 }
 
-func (u *uninomialComboNode) canonical() *Canonical {
+func (u *uninomialComboNode) canonical() (*Canonical, bool) {
 	ranked := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.Value, " ")
 	ranked = str.JoinStrings(ranked, u.Uninomial2.Word.NormValue, " ")
 
@@ -310,14 +439,14 @@ func (u *uninomialComboNode) canonical() *Canonical {
 		Value:       u.Uninomial2.Word.NormValue,
 		ValueRanked: ranked,
 	}
-	return &c
+	return &c, false
 }
 
 func (u *uninomialComboNode) lastAuthorship() *authorshipNode {
 	return u.Uninomial2.Authorship
 }
 
-func (u *uninomialComboNode) details() interface{} {
+func (u *uninomialComboNode) details() []interface{} {
 	ud := uniDetails{
 		Value:  u.Uninomial2.Word.NormValue,
 		Rank:   u.Rank.Word.Value,
@@ -327,7 +456,7 @@ func (u *uninomialComboNode) details() interface{} {
 		ud.Authorship = u.Uninomial2.Authorship.details()
 	}
 	uo := UninomialOutput{Uninomial: &ud}
-	return &uo
+	return []interface{}{&uo}
 }
 
 func (au *authorshipNode) details() *authorshipOutput {

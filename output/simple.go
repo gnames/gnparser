@@ -32,12 +32,14 @@ func NewSimpleOutput(sn *grammar.ScientificNameNode) *simple {
 		}
 	}
 
+	c, _ := sn.Canonical()
+
 	_, quality := qualityAndWarnings(sn.Warnings)
 	so := simple{
 		ID:              sn.VerbatimID,
 		Verbatim:        sn.Verbatim,
-		Canonical:       sn.Canonical().Value,
-		CanonicalRanked: sn.Canonical().ValueRanked,
+		Canonical:       c.Value,
+		CanonicalRanked: c.ValueRanked,
 		Authorship:      authorship,
 		Year:            yr,
 		Quality:         quality,

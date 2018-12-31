@@ -9,6 +9,7 @@ const (
 	AuthorWordFiliusType
 	GenusType
 	InfraSpEpithetType
+	HybridCharType
 	RankType
 	RankUniType
 	SpEpithetType

@@ -7,6 +7,7 @@ var wordTypeMap = map[grm.WordType]string{
 	grm.AuthorWordType:       "authorWord",
 	grm.AuthorWordFiliusType: "authorWordFilius",
 	grm.GenusType:            "genus",
+	grm.HybridCharType:       "hybridChar",
 	grm.InfraSpEpithetType:   "infraspecificEpithet",
 	grm.RankType:             "rank",
 	grm.RankUniType:          "rank",

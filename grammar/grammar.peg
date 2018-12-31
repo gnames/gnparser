@@ -4,21 +4,25 @@ type Engine Peg {
   BaseEngine
 }
 
-SciName <- _? SciName1 Tail !.
+SciName <- _? Name Tail !.
 
 Tail <- .*
 
-SciName1 <- HybridFormula / NamedHybrid / Name
+Name <- NamedHybrid / HybridFormula / SingleName
 
-HybridFormula <- Name (_ (HybridFormula1 / HybridFormula2))+
+HybridFormula <- SingleName (_ (HybridFormulaPart / HybridFormulaFull))+
 
-HybridFormula1 <- HybridChar _? SpeciesEpithet (_ InfraspGroup)?
+HybridFormulaFull <- HybridChar (_ SingleName)?
 
-HybridFormula2 <- HybridChar (_ Name)?
+HybridFormulaPart <- HybridChar _ SpeciesEpithet (_ InfraspGroup)?
 
-NamedHybrid <- HybridChar _? Name
+NamedHybrid <- NamedGenusHybrid / NamedSpeciesHybrid
 
-Name <- NameSpecies / NameUninomial
+NamedSpeciesHybrid <- GenusWord _ HybridChar _? SpeciesEpithet
+
+NamedGenusHybrid <- HybridChar _? SingleName
+
+SingleName <- NameSpecies / NameUninomial
 
 NameUninomial <- UninomialCombo / Uninomial
 

@@ -32,7 +32,7 @@ func NewOutput(sn *grm.ScientificNameNode) *Output {
 	var ps []pos
 	var parsed bool
 	det := sn.Details()
-	c := sn.Canonical()
+	c, hybrid := sn.Canonical()
 	if c != nil {
 		co = &canonical{Value: c.Value, ValueRanked: c.ValueRanked}
 		ws, quality = qualityAndWarnings(sn.Warnings)
@@ -47,7 +47,7 @@ func NewOutput(sn *grm.ScientificNameNode) *Output {
 		Verbatim:      sn.Verbatim,
 		NameStringID:  sn.VerbatimID,
 		CanonicalName: co,
-
+		Hybrid:        hybrid,
 		Normalized:    sn.Value(),
 		Positions:     ps,
 		Tail:          sn.Tail,

@@ -80,6 +80,10 @@ func (gnp *GNparser) Parse(s string) {
 // to format setting of GNparser.
 func (gnp *GNparser) ParseAndFormat(s string) (string, error) {
 	var err error
+	if gnp.format == Debug {
+		bs := gnp.Debug(s)
+		return string(bs), nil
+	}
 	gnp.Parse(s)
 	var bs []byte
 	switch gnp.format {
@@ -97,8 +101,6 @@ func (gnp *GNparser) ParseAndFormat(s string) (string, error) {
 		s = string(bs)
 	case Simple:
 		s = strings.Join(gnp.ToSlice(), "|")
-	case Debug:
-		s = string(gnp.Debug())
 	}
 	return s, nil
 }
@@ -122,7 +124,11 @@ func (gnp *GNparser) ToSlice() []string {
 }
 
 // Debug returns byte representation of complete and 'output' syntax trees.
-func (gnp *GNparser) Debug() []byte {
+func (gnp *GNparser) Debug(s string) []byte {
+	gnp.parser.Buffer = preprocess.NormalizeHybridChar(s)
+	gnp.parser.Reset()
+	gnp.parser.Parse()
+	gnp.parser.OutputAST()
 	var b bytes.Buffer
 	b.WriteString("\n*** Complete Syntax Tree ***\n")
 	gnp.parser.AST().PrettyPrint(&b, gnp.parser.Buffer)
