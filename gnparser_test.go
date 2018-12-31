@@ -5,50 +5,63 @@ import (
 	"strings"
 
 	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
 )
 
 var _ = Describe("grammar", func() {
-	Describe("Parse", func() {
-		FIt("tokenizes data by parsing rules", func() {
-			var currentNameString string
-			tests, err := testData()
-			Expect(len(tests)).To(BeNumerically(">", 0))
-			Expect(err).NotTo(HaveOccurred())
-			gnp := NewGNparser()
-			for _, v := range tests {
-				currentNameString = v.NameString
-				gnp.Parse(v.NameString)
-				parsedStr := gnp.parser.ParsedName()
-				Expect(parsedStr).To(Equal(v.Parsed))
-			}
-			fmt.Println(currentNameString)
-		})
-	})
+	DescribeTable("parsing rules execution",
+		func(s string, expected string) {
+			Expect(s).To(Equal(expected))
+		}, astEntries()...,
+	)
 })
 
 var _ = Describe("GNparser", func() {
-	Describe("Parse", func() {
-		It("parses test data", func() {
-			tests, err := testData()
-			Expect(len(tests)).To(BeNumerically(">", 0))
-			Expect(err).NotTo(HaveOccurred())
-			gnp := NewGNparser()
-			for _, v := range tests {
-				fmt.Println(v.NameString)
-				gnp.Parse(v.NameString)
-				Expect(err).NotTo(HaveOccurred())
-				res, err := gnp.ToJSON()
-				Expect(err).NotTo(HaveOccurred())
-				Expect(len(res)).To(BeNumerically(">", 300))
-				json := strings.Replace(string(res), "\\u0026", "&", -1)
-				fmt.Println(json)
-				Expect(json).To(Equal(string(v.Compact)))
-				gnp.Parse(v.NameString)
-				simple := strings.Join(gnp.ToSlice(), "|")
-				fmt.Println(simple)
-				Expect(simple).To(Equal(v.Simple))
-			}
-		})
-	})
+	DescribeTable("predictable outputs",
+		func(compactRes, compact, simpleRes, simple string) {
+			Expect(compactRes).To(Equal(compact))
+			Expect(simpleRes).To(Equal(simple))
+		}, outputEntries()...,
+	)
 })
+
+func outputEntries() []TableEntry {
+	var entries []TableEntry
+	tests, err := testData()
+	if err != nil {
+		panic(err)
+	}
+	gnp := NewGNparser()
+	for _, v := range tests {
+		gnp.Parse(v.NameString)
+		res, err := gnp.ToJSON()
+		if err != nil {
+			fmt.Println(v.NameString)
+			panic(err)
+		}
+		json := strings.Replace(string(res), "\\u0026", "&", -1)
+
+		gnp.Parse(v.NameString)
+		simple := strings.Join(gnp.ToSlice(), "|")
+		te := Entry(v.NameString, json, v.Compact, simple, v.Simple)
+		entries = append(entries, te)
+	}
+	return entries
+}
+
+func astEntries() []TableEntry {
+	var entries []TableEntry
+	tests, err := testData()
+	if err != nil {
+		fmt.Println(err)
+	}
+	gnp := NewGNparser()
+	for _, v := range tests {
+		gnp.Parse(v.NameString)
+		parsedStr := gnp.parser.ParsedName()
+		te := Entry(v.NameString, parsedStr, v.Parsed)
+		entries = append(entries, te)
+	}
+	return entries
+}
