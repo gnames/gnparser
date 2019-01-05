@@ -58,7 +58,7 @@ RankForma <- ('forma' / 'fma' / 'form' / 'fo' / 'f') (&(SpaceCharEOI) / '.')
 
 RankSsp <- ('ssp' / 'subsp') (&(SpaceCharEOI) / '.')
 
-SubGenusOrSuperspecies <- '(' _? Word _? ')'
+SubGenusOrSuperspecies <- '(' _? NameLowerChar+ _? ')'
 
 SubGenus <- '(' _? UninomialWord _? ')'
 
@@ -118,8 +118,7 @@ Authorship <- (AuthorshipCombo / OriginalAuthorship) &(SpaceCharEOI / [\\(,:])
 
 AuthorshipCombo <- OriginalAuthorship _? CombinationAuthorship
 
-OriginalAuthorship <- AuthorsGroup / BasionymAuthorship /
-                      BasionymAuthorshipYearMisformed
+OriginalAuthorship <- BasionymAuthorshipYearMisformed / AuthorsGroup / BasionymAuthorship
 
 CombinationAuthorship <- AuthorsGroup
 

@@ -7,9 +7,10 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
+	"gitlab.com/gogna/gnparser/preprocess"
 )
 
-var _ = Describe("grammar", func() {
+var _ = FDescribe("grammar", func() {
 	DescribeTable("parsing rules execution",
 		func(s string, expected string) {
 			Expect(s).To(Equal(expected))
@@ -58,7 +59,9 @@ func astEntries() []TableEntry {
 	}
 	gnp := NewGNparser()
 	for _, v := range tests {
-		gnp.Parse(v.NameString)
+		gnp.parser.Buffer = preprocess.NormalizeHybridChar(v.NameString)
+		gnp.parser.Reset()
+		gnp.parser.Parse()
 		parsedStr := gnp.parser.ParsedName()
 		te := Entry(v.NameString, parsedStr, v.Parsed)
 		entries = append(entries, te)
