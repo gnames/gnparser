@@ -87,17 +87,17 @@ TwoLetterGenus <- ('Ca' / 'Ea' / 'Ge' / 'Ia' / 'Io' / 'Ix' / 'Lo' / 'Oa' /
   'Ra' / 'Ty' / 'Ua' / 'Aa' / 'Ja' / 'Zu' / 'La' / 'Qu' / 'As' / 'Ba')
 
 Word <- !(AuthorPrefix / RankUninomial / Approximation / Word4)
-      (Word3 / Word2StartDigit / Word2 / Word1) &(SpaceCharEOI / '(')
+      (WordApostr / WordStartsWithDigit / Word2 / Word1) &(SpaceCharEOI / '(')
 
 # TODO probably never used
 Word1 <- (lASCII dash)? NameLowerChar NameLowerChar+
 
-Word2StartDigit <- [123456789] nums? ('.' / dash)? NameLowerChar NameLowerChar
+WordStartsWithDigit <- [123456789] nums? ('.' / dash)? NameLowerChar NameLowerChar
   NameLowerChar NameLowerChar+
 
 Word2 <- NameLowerChar+ dash? NameLowerChar+
 
-Word3 <- NameLowerChar NameLowerChar* apostr Word1
+WordApostr <- NameLowerChar NameLowerChar* apostr Word1
 
 Word4 <- NameLowerChar+ '.' NameLowerChar
 
@@ -213,7 +213,7 @@ NameLowerChar <- LowerChar / LowerCharExtended / MiscodedChar
 
 MiscodedChar <- '�'
 
-LowerCharExtended <- [æœſàâåãäáçčéèëíìïňññóòôøõöúùüŕřŗššşž]
+LowerCharExtended <- [æœàâåãäáçčéèëíìïňññóòôøõöúùüŕřŗſššşž]
 
 LowerChar <- lASCII
 

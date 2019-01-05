@@ -97,17 +97,25 @@ var warningMap = map[grm.Warning]Warning{
 		Quality: 2,
 		Message: "Ex authors are not required",
 	},
-	grm.YearOrigMisformedWarn: Warning{
+	grm.AuthEmendWarn: Warning{
 		Quality: 2,
-		Message: "Misformed basionym year",
+		Message: "Emend authors are not required",
+	},
+	grm.YearOrigMisplacedWarn: Warning{
+		Quality: 2,
+		Message: "Misplaced basionym year",
 	},
 	grm.AuthDoubleParensWarn: Warning{
 		Quality: 3,
 		Message: "Authroship in double parentheses",
 	},
-	grm.ExWithDotWarn: Warning{
+	grm.AuthExWithDotWarn: Warning{
 		Quality: 3,
 		Message: "`ex` ends with dot",
+	},
+	grm.AuthEmendWithoutDotWarn: Warning{
+		Quality: 3,
+		Message: "`emend` without a period",
 	},
 	grm.AuthShortWarn: Warning{
 		Quality: 3,

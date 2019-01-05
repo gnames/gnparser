@@ -6,7 +6,9 @@ const (
 	TailWarn Warning = iota
 	AuthDoubleParensWarn
 	AuthExWarn
-	AuthMisformedYearWarn
+	AuthExWithDotWarn
+	AuthEmendWarn
+	AuthEmendWithoutDotWarn
 	AuthQuestionWarn
 	AuthShortWarn
 	AuthUnknownWarn
@@ -14,7 +16,6 @@ const (
 	CanonicalApostropheWarn
 	CapWordQuestionWarn
 	CharBadWarn
-	ExWithDotWarn
 	GenusAbbrWarn
 	HybridCharNoSpaceWarn
 	HybridFormulaWarn
@@ -33,7 +34,7 @@ const (
 	WhiteSpaceTrailWarn
 	YearCharWarn
 	YearDotWarn
-	YearOrigMisformedWarn
+	YearOrigMisplacedWarn
 	YearPageWarn
 	YearParensWarn
 	YearQuestionWarn

@@ -6,6 +6,8 @@ type WordType int
 const (
 	UnknownType WordType = iota
 	AuthorWordType
+	AuthorWordExType
+	AuthorWordEmendType
 	AuthorWordFiliusType
 	GenusType
 	InfraSpEpithetType

@@ -5,6 +5,8 @@ import grm "gitlab.com/gogna/gnparser/grammar"
 var wordTypeMap = map[grm.WordType]string{
 	grm.UnknownType:          "word",
 	grm.AuthorWordType:       "authorWord",
+	grm.AuthorWordExType:     "authorWord",
+	grm.AuthorWordEmendType:  "authorWord",
 	grm.AuthorWordFiliusType: "authorWordFilius",
 	grm.GenusType:            "genus",
 	grm.HybridCharType:       "hybridChar",

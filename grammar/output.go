@@ -50,12 +50,18 @@ type authorshipOutput struct {
 }
 
 type authGroupOutput struct {
-	Authors   []string         `json:"authors"`
-	Years     []yearOutput     `json:"years,omitempty"`
-	ExAuthors *exAuthorsOutput `json:"exAuthors,omitempty"`
+	Authors      []string            `json:"authors"`
+	Years        []yearOutput        `json:"years,omitempty"`
+	ExAuthors    *exAuthorsOutput    `json:"exAuthors,omitempty"`
+	EmendAuthors *emendAuthorsOutput `json:"emendAuthors,omitempty"`
 }
 
 type exAuthorsOutput struct {
+	Authors []string     `json:"authors"`
+	Years   []yearOutput `json:"years,omitempty"`
+}
+
+type emendAuthorsOutput struct {
 	Authors []string     `json:"authors"`
 	Years   []yearOutput `json:"years,omitempty"`
 }
@@ -486,13 +492,21 @@ func authGroupDetail(ag *authorsGroupNode) *authGroupOutput {
 	if ag.Team2 == nil {
 		return &ago
 	}
-
-	ausEx, yrsEx := ag.Team2.details()
-	eao := exAuthorsOutput{
-		Authors: ausEx,
-		Years:   yrsEx,
+	aus, yrs = ag.Team2.details()
+	switch ag.Team2Type.Pos.Type {
+	case AuthorWordExType:
+		eao := exAuthorsOutput{
+			Authors: aus,
+			Years:   yrs,
+		}
+		ago.ExAuthors = &eao
+	case AuthorWordEmendType:
+		eao := emendAuthorsOutput{
+			Authors: aus,
+			Years:   yrs,
+		}
+		ago.EmendAuthors = &eao
 	}
-	ago.ExAuthors = &eao
 	return &ago
 }
 
@@ -527,7 +541,7 @@ func (ag *authorsGroupNode) value() string {
 	if ag.Team2 == nil {
 		return v
 	}
-	v = fmt.Sprintf("%s ex %s", v, ag.Team2.value())
+	v = fmt.Sprintf("%s %s %s", v, ag.Team2Type.NormValue, ag.Team2.value())
 	return v
 }
 
@@ -548,11 +562,12 @@ func (aut *authorsTeamNode) value() string {
 	if len(values) == 0 {
 		return ""
 	}
-	for i, v := range aut.Authors {
-		values[i] = v.Value
+	value := aut.Authors[0].Value
+	sep := aut.Authors[0].Sep
+	for _, v := range aut.Authors[1:] {
+		value = str.JoinStrings(value, v.Value, sep)
+		sep = v.Sep
 	}
-	value := strings.Join(values[0:len(values)-1], ", ")
-	value = str.JoinStrings(value, values[len(values)-1], " & ")
 	if len(aut.Years) == 0 || aut.Years[0].Word.Value == "" {
 		return value
 	}

@@ -2,6 +2,7 @@ package grammar
 
 import (
 	"io"
+	"regexp"
 	"strings"
 	"unicode"
 
@@ -323,6 +324,8 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		switch n.token32.pegRule {
 		case ruleSubGenus:
 			sg = p.newWordNode(n.up, SubGenusType)
+		case ruleSubGenusOrSuperspecies:
+			p.addWarn(SuperSpeciesWarn)
 		case ruleSpeciesEpithet:
 			sp = p.newSpeciesEpithetNode(n)
 		case ruleInfraspGroup:
@@ -515,20 +518,26 @@ type authorshipNode struct {
 func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 	var oa, ca *authorsGroupNode
 	var parens bool
+	var misplacedYear bool
 	n = n.up
 	for n != nil {
 		switch n.token32.pegRule {
 		case ruleOriginalAuthorship:
 			on := n.up
 			if on.token32.pegRule == ruleBasionymAuthorshipYearMisformed {
-				p.addWarn(AuthMisformedYearWarn)
+				p.addWarn(YearOrigMisplacedWarn)
 				on = on.up
+				misplacedYear = true
 				parens = true
 			} else if on.token32.pegRule == ruleBasionymAuthorship {
 				on = on.up
 				parens = true
 			}
 			oa = p.newAuthorsGroupNode(on)
+			if misplacedYear {
+				yr := p.newYearNode(on.next)
+				oa.Team1.Years = append(oa.Team1.Years, yr)
+			}
 			oa.Parens = parens
 		case ruleCombinationAuthorship:
 			ca = p.newAuthorsGroupNode(n.up)
@@ -561,12 +570,29 @@ func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 		Team2:     t2,
 	}
 	n = n.next
-	if n == nil || n.token32.pegRule != ruleAuthorEx {
+	if n == nil {
 		return &ag
 	}
-	p.addWarn(AuthExWarn)
-	t2t = p.newWordNode(n, AuthorWordType)
-	t2t.NormValue = "ex"
+	switch n.token32.pegRule {
+	case ruleAuthorEx:
+		p.addWarn(AuthExWarn)
+		t2t = p.newWordNode(n, AuthorWordExType)
+		ex := strings.TrimSpace(t2t.Value)
+		if ex[len(ex)-1] == '.' {
+			p.addWarn(AuthExWithDotWarn)
+		}
+		t2t.NormValue = "ex"
+	case ruleAuthorEmend:
+		p.addWarn(AuthEmendWarn)
+		t2t = p.newWordNode(n, AuthorWordEmendType)
+		emend := strings.TrimSpace(t2t.Value)
+		if emend[len(emend)-1] != '.' {
+			p.addWarn(AuthEmendWithoutDotWarn)
+		}
+		t2t.NormValue = "emend."
+	default:
+		return &ag
+	}
 	n = n.next
 	if n == nil || n.token32.pegRule != ruleAuthorsTeam {
 		return &ag
@@ -584,12 +610,15 @@ type authorsTeamNode struct {
 
 func (p *Engine) newAuthorTeam(n *node32) *authorsTeamNode {
 	var anodes []*node32
+	var seps []string
 	var ynodes []*node32
 	n = n.up
 	for n != nil {
 		switch n.token32.pegRule {
 		case ruleAuthor:
 			anodes = append(anodes, n)
+		case ruleAuthorSep:
+			seps = append(seps, p.nodeValue(n))
 		case ruleYear:
 			ynodes = append(ynodes, n)
 		}
@@ -597,9 +626,19 @@ func (p *Engine) newAuthorTeam(n *node32) *authorsTeamNode {
 	}
 	aus := make([]*authorNode, len(anodes))
 	yrs := make([]*yearNode, len(ynodes))
-
 	for i, v := range anodes {
 		aus[i] = p.newAuthorNode(v)
+		if i < len(seps) {
+			switch {
+			case strings.Contains(seps[i], "apud"):
+				seps[i] = " apud "
+			case i < len(seps)-1:
+				seps[i] = ", "
+			case i == len(seps)-1:
+				seps[i] = " & "
+			}
+			aus[i].Sep = seps[i]
+		}
 	}
 	for i, v := range ynodes {
 		yrs[i] = p.newYearNode(v)
@@ -613,6 +652,7 @@ func (p *Engine) newAuthorTeam(n *node32) *authorsTeamNode {
 
 type authorNode struct {
 	Value string
+	Sep   string
 	Words []*wordNode
 }
 
@@ -620,20 +660,29 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 	var w *wordNode
 	var ws []*wordNode
 	val := ""
+	rawVal := ""
 	n = n.up
 	for n != nil {
 		switch n.token32.pegRule {
 		case ruleFilius:
 			w = p.newWordNode(n, AuthorWordFiliusType)
 			w.NormValue = "fil."
+		case ruleUnknownAuthor:
+			p.addWarn(AuthUnknownWarn)
+			w = p.authorWord(n)
+			if w.Value == "?" {
+				p.addWarn(AuthQuestionWarn)
+			}
+			w.NormValue = "anon."
 		default:
 			w = p.authorWord(n)
 		}
 		ws = append(ws, w)
 		val = str.JoinStrings(val, w.NormValue, " ")
+		rawVal = str.JoinStrings(rawVal, w.Value, " ")
 		n = n.next
 	}
-	if len(val) < 2 {
+	if len(rawVal) < 2 {
 		p.addWarn(AuthShortWarn)
 	}
 	au := authorNode{
@@ -737,7 +786,17 @@ func (p *Engine) newWordNode(n *node32, wt WordType) *wordNode {
 		case ruleUpperCharExtended, ruleLowerCharExtended:
 			p.addWarn(CharBadWarn)
 			wrd.normalize()
+		case ruleWordApostr:
+			p.addWarn(CanonicalApostropheWarn)
+			wrd.normalize()
+		case ruleWordStartsWithDigit:
+			p.addWarn(SpeciesNumericWarn)
+			wrd.normalizeNums()
 		}
+	}
+	if (wt == GenusType || wt == UninomialType) && val[len(val)-1] == '?' {
+		p.addWarn(CapWordQuestionWarn)
+		wrd.NormValue = wrd.NormValue[0 : len(wrd.NormValue)-1]
 	}
 	return &wrd
 }
@@ -746,12 +805,22 @@ func (w *wordNode) normalize() error {
 	if w == nil {
 		return nil
 	}
-	nv, err := str.ToASCII(w.Value)
+	nv, err := str.ToASCII([]byte(w.Value))
 	if err != nil {
 		return err
 	}
-	w.NormValue = nv
+	w.NormValue = string(nv)
 	return nil
+}
+
+func (w *wordNode) normalizeNums() {
+	match := numWord.FindAllStringSubmatch(w.Value, 1)
+	if len(match) == 0 {
+		return
+	}
+	num := match[0][1]
+	wrd := match[0][2]
+	w.NormValue = str.NumToStr(num) + wrd
 }
 
 type Pos struct {
@@ -759,6 +828,8 @@ type Pos struct {
 	Start int
 	End   int
 }
+
+var numWord = regexp.MustCompile(`^([0-9]+)[-\.]?(.+)$`)
 
 var nodeRules = map[pegRule]struct{}{
 	ruleSciName:                         struct{}{},
@@ -789,7 +860,8 @@ var nodeRules = map[pegRule]struct{}{
 	ruleUninomialWord:                   struct{}{},
 	ruleAbbrGenus:                       struct{}{},
 	ruleWord:                            struct{}{},
-	ruleWord2StartDigit:                 struct{}{},
+	ruleWordApostr:                      struct{}{},
+	ruleWordStartsWithDigit:             struct{}{},
 	ruleHybridChar:                      struct{}{},
 	ruleApproxName:                      struct{}{},
 	ruleApproxNameIgnored:               struct{}{},

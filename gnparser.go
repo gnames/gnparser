@@ -73,7 +73,7 @@ func (gnp *GNparser) Parse(s string) {
 		gnp.parser.OutputAST()
 		gnp.parser.NewScientificNameNode()
 	}
-	gnp.parser.SN.AddVerbatim(gnp.nameString)
+	gnp.parser.SN.AddVerbatim(s)
 }
 
 // ParseAndFormat function parses input and formats results according

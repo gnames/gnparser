@@ -10,7 +10,7 @@ import (
 	"gitlab.com/gogna/gnparser/preprocess"
 )
 
-var _ = FDescribe("grammar", func() {
+var _ = Describe("grammar", func() {
 	DescribeTable("parsing rules execution",
 		func(s string, expected string) {
 			Expect(s).To(Equal(expected))
@@ -34,7 +34,7 @@ func outputEntries() []TableEntry {
 		panic(err)
 	}
 	gnp := NewGNparser()
-	for _, v := range tests {
+	for i, v := range tests {
 		gnp.Parse(v.NameString)
 		res, err := gnp.ToJSON()
 		if err != nil {
@@ -45,7 +45,8 @@ func outputEntries() []TableEntry {
 
 		gnp.Parse(v.NameString)
 		simple := strings.Join(gnp.ToSlice(), "|")
-		te := Entry(v.NameString, json, v.Compact, simple, v.Simple)
+		testName := fmt.Sprintf("%000d: %s", i+1, v.NameString)
+		te := Entry(testName, json, v.Compact, simple, v.Simple)
 		entries = append(entries, te)
 	}
 	return entries
@@ -58,12 +59,13 @@ func astEntries() []TableEntry {
 		fmt.Println(err)
 	}
 	gnp := NewGNparser()
-	for _, v := range tests {
+	for i, v := range tests {
 		gnp.parser.Buffer = preprocess.NormalizeHybridChar(v.NameString)
 		gnp.parser.Reset()
 		gnp.parser.Parse()
 		parsedStr := gnp.parser.ParsedName()
-		te := Entry(v.NameString, parsedStr, v.Parsed)
+		testName := fmt.Sprintf("%000d: %s", i+1, v.NameString)
+		te := Entry(testName, parsedStr, v.Parsed)
 		entries = append(entries, te)
 	}
 	return entries
