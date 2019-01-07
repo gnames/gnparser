@@ -22,11 +22,11 @@ NamedSpeciesHybrid <- GenusWord _ HybridChar _? SpeciesEpithet
 
 NamedGenusHybrid <- HybridChar _? SingleName
 
-SingleName <- NameSpecies / NameUninomial
+SingleName <- NameComp / NameApprox / NameSpecies / NameUninomial
 
 NameUninomial <- UninomialCombo / Uninomial
 
-NameApprox <- GenusWord _ Approximation (_ SpeciesEpithet)?
+NameApprox <- GenusWord (_ SpeciesEpithet)? _ Approximation ApproxNameIgnored
 
 NameComp <- GenusWord _ Comparison (_ SpeciesEpithet)?
 
@@ -103,11 +103,11 @@ Word4 <- NameLowerChar+ '.' NameLowerChar
 
 HybridChar <- '×'
 
-ApproxName <- Uninomial _ (ApproxName1 / ApproxName2)
+# ApproxName <- Uninomial _ (ApproxName1 / ApproxName2)
 
-ApproxName1 <- Approximation ApproxNameIgnored
+# ApproxName1 <- Approximation ApproxNameIgnored
 
-ApproxName2 <- Word _ Approximation ApproxNameIgnored
+# ApproxName2 <- Word _ Approximation ApproxNameIgnored
 
 ApproxNameIgnored <- .*
 
@@ -219,7 +219,7 @@ LowerChar <- lASCII
 
 SpaceCharEOI <- _ / !.
 
-WordBorderChar <- _ / [;.,;()]
+# WordBorderChar <- _ / [;.,;()]
 
 nums <- [0-9]
 

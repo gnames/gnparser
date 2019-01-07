@@ -11,7 +11,7 @@ import (
 )
 
 var _ = Describe("grammar", func() {
-	DescribeTable("parsing rules execution",
+	DescribeTable("AST formation",
 		func(s string, expected string) {
 			Expect(s).To(Equal(expected))
 		}, astEntries()...,
@@ -19,7 +19,7 @@ var _ = Describe("grammar", func() {
 })
 
 var _ = Describe("GNparser", func() {
-	DescribeTable("predictable outputs",
+	DescribeTable("full stack input to output",
 		func(compactRes, compact, simpleRes, simple string) {
 			Expect(compactRes).To(Equal(compact))
 			Expect(simpleRes).To(Equal(simple))

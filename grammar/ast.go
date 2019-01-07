@@ -863,7 +863,6 @@ var nodeRules = map[pegRule]struct{}{
 	ruleWordApostr:                      struct{}{},
 	ruleWordStartsWithDigit:             struct{}{},
 	ruleHybridChar:                      struct{}{},
-	ruleApproxName:                      struct{}{},
 	ruleApproxNameIgnored:               struct{}{},
 	ruleApproximation:                   struct{}{},
 	ruleAuthorship:                      struct{}{},

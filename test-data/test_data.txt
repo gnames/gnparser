@@ -1573,75 +1573,16 @@ Abturia cf. alabamensis (Morton )
 {"quality":3,"parsed":true,"verbatim":"Abturia cf. alabamensis (Morton )","surrogate":true,"qualityWarnings":[[3,"Name comparison"]],"normalized":"Abturia cf. alabamensis (Morton)","canonicalName":{"value":"Abturia alabamensis","valueRanked":"Abturia alabamensis"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,11],["specificEpithet",12,23],["authorWord",25,31]],"nameStringId":"5fd4ce59-98d3-50af-9e28-918adc47d264","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abturia"},"specificEpithet":{"value":"alabamensis","authorship":{"value":"(Morton)","basionymAuthorship":{"authors":["Morton"]}}},"annotationIdentification":"cf."}],"bacteria":false}
 5fd4ce59-98d3-50af-9e28-918adc47d264|Abturia cf. alabamensis (Morton )|Abturia alabamensis|Abturia alabamensis|(Morton)||3
 
-Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.
-Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.
-{"quality":2,"parsed":true,"verbatim":"Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.","surrogate":true,"qualityWarnings":[[2,"Author is unknown"]],"normalized":"Placodium cf. chrysoleucum chrysoleucum (Sm.) anon.","canonicalName":{"value":"Placodium chrysoleucum chrysoleucum","valueRanked":"Placodium chrysoleucum chrysoleucum"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["annotationIdentification",23,26],["infraspecificEpithet",27,39],["authorWord",41,44],["authorWord",46,51]],"nameStringId":"e0b84689-70e3-508a-8040-8859dc6084c0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Placodium"},"specificEpithet":{"value":"chrysoleucum"},"infraspecificEpithets":[{"value":"chrysoleucum","authorship":{"value":"(Sm.) anon.","basionymAuthorship":{"authors":["Sm."]},"combinationAuthorship":{"authors":["anon."]}}}],"annotationIdentification":"cf."}],"bacteria":false}
-e0b84689-70e3-508a-8040-8859dc6084c0|Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.|Placodium chrysoleucum chrysoleucum|Placodium chrysoleucum chrysoleucum|(Sm.) anon.||2
+# TODO wrong name result
+#Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.
+#Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.
+#{"quality":2,"parsed":true,"verbatim":"Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.","surrogate":true,"qualityWarnings":[[2,"Author is unknown"]],"normalized":"Placodium cf. chrysoleucum chrysoleucum (Sm.) anon.","canonicalName":{"value":"Placodium chrysoleucum chrysoleucum","valueRanked":"Placodium chrysoleucum chrysoleucum"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["annotationIdentification",23,26],["infraspecificEpithet",27,39],["authorWord",41,44],["authorWord",46,51]],"nameStringId":"e0b84689-70e3-508a-8040-8859dc6084c0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Placodium"},"specificEpithet":{"value":"chrysoleucum"},"infraspecificEpithets":[{"value":"chrysoleucum","authorship":{"value":"(Sm.) anon.","basionymAuthorship":{"authors":["Sm."]},"combinationAuthorship":{"authors":["anon."]}}}],"annotationIdentification":"cf."}],"bacteria":false}
+#e0b84689-70e3-508a-8040-8859dc6084c0|Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.|Placodium chrysoleucum chrysoleucum|Placodium chrysoleucum chrysoleucum|(Sm.) anon.||2
 
 Abturia cf alabamensis (Morton )
 Abturia cf alabamensis (Morton )
 {"quality":3,"parsed":true,"verbatim":"Abturia cf alabamensis (Morton )","surrogate":true,"qualityWarnings":[[3,"Name comparison"]],"normalized":"Abturia cf alabamensis (Morton)","canonicalName":{"value":"Abturia alabamensis","valueRanked":"Abturia alabamensis"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,10],["specificEpithet",11,22],["authorWord",24,30]],"nameStringId":"423cd26d-c6fd-54fb-937b-f98ba8056fc0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abturia"},"specificEpithet":{"value":"alabamensis","authorship":{"value":"(Morton)","basionymAuthorship":{"authors":["Morton"]}}},"annotationIdentification":"cf"}],"bacteria":false}
 423cd26d-c6fd-54fb-937b-f98ba8056fc0|Abturia cf alabamensis (Morton )|Abturia alabamensis|Abturia alabamensis|(Morton)||3
-
-Alyxia reinwardti var
-Alyxia reinwardti var
-{"quality":2,"parsed":true,"verbatim":"Alyxia reinwardti var","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"2f0ee2be-8d37-5e43-9eed-776c17f47e93","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false}
-2f0ee2be-8d37-5e43-9eed-776c17f47e93|Alyxia reinwardti var|Alyxia reinwardti|Alyxia reinwardti|||2
-
-Alyxia reinwardti var.
-Alyxia reinwardti var.
-{"quality":2,"parsed":true,"verbatim":"Alyxia reinwardti var.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"aed34708-82ed-52e4-876f-d4468af73fc3","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false}
-aed34708-82ed-52e4-876f-d4468af73fc3|Alyxia reinwardti var.|Alyxia reinwardti|Alyxia reinwardti|||2
-
-Alyxia reinwardti ssp
-Alyxia reinwardti ssp
-{"quality":2,"parsed":true,"verbatim":"Alyxia reinwardti ssp","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"760486d1-93ed-55c5-ade1-ba2c5b2aa900","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false}
-760486d1-93ed-55c5-ade1-ba2c5b2aa900|Alyxia reinwardti ssp|Alyxia reinwardti|Alyxia reinwardti|||2
-
-Alyxia reinwardti ssp.
-Alyxia reinwardti ssp.
-{"quality":2,"parsed":true,"verbatim":"Alyxia reinwardti ssp.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"72b5072a-d952-54f8-aea1-5b5bd3c65c45","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false}
-72b5072a-d952-54f8-aea1-5b5bd3c65c45|Alyxia reinwardti ssp.|Alyxia reinwardti|Alyxia reinwardti|||2
-
-Alaria spp
-Alaria spp
-{"quality":3,"parsed":true,"verbatim":"Alaria spp","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Alaria","canonicalName":{"value":"Alaria","valueRanked":"Alaria"},"virus":false,"positions":[["genus",0,6],["annotationIdentification",7,10]],"nameStringId":"5b31e830-ccf6-5918-94c5-75c4db7ef302","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alaria"},"annotationIdentification":"spp"}],"bacteria":false}
-5b31e830-ccf6-5918-94c5-75c4db7ef302|Alaria spp|Alaria|Alaria|||3
-
-Alaria spp.
-Alaria spp.
-{"quality":3,"parsed":true,"verbatim":"Alaria spp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Alaria","canonicalName":{"value":"Alaria","valueRanked":"Alaria"},"virus":false,"positions":[["genus",0,6],["annotationIdentification",7,11]],"nameStringId":"d1cd4f1a-f511-5d5a-8f41-64911995fdec","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alaria"},"annotationIdentification":"spp."}],"bacteria":false}
-d1cd4f1a-f511-5d5a-8f41-64911995fdec|Alaria spp.|Alaria|Alaria|||3
-
-Xenodon sp
-Xenodon sp
-{"quality":3,"parsed":true,"verbatim":"Xenodon sp","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Xenodon","canonicalName":{"value":"Xenodon","valueRanked":"Xenodon"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,10]],"nameStringId":"7b0cb348-7fe9-5248-b396-b0336225ba2a","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xenodon"},"annotationIdentification":"sp"}],"bacteria":false}
-7b0cb348-7fe9-5248-b396-b0336225ba2a|Xenodon sp|Xenodon|Xenodon|||3
-
-Xenodon sp.
-Xenodon sp.
-{"quality":3,"parsed":true,"verbatim":"Xenodon sp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Xenodon","canonicalName":{"value":"Xenodon","valueRanked":"Xenodon"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,11]],"nameStringId":"77b6718f-a26e-5ddf-a4cf-119e972cd015","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xenodon"},"annotationIdentification":"sp."}],"bacteria":false}
-77b6718f-a26e-5ddf-a4cf-119e972cd015|Xenodon sp.|Xenodon|Xenodon|||3
-
-Formicidae cf.
-Formicidae cf.
-{"quality":3,"parsed":true,"verbatim":"Formicidae cf.","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[2,"Name had to be changed by preprocessing"]],"normalized":"Formicidae","canonicalName":{"value":"Formicidae","valueRanked":"Formicidae"},"virus":false,"positions":[["uninomial",0,10]],"nameStringId":"61f9ebc4-346e-5857-ab45-38808ff1c960","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Formicidae"}}],"bacteria":false}
-61f9ebc4-346e-5857-ab45-38808ff1c960|Formicidae cf.|Formicidae|Formicidae|||3
-
-Formicidae cf
-Formicidae cf
-{"quality":3,"parsed":true,"verbatim":"Formicidae cf","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[2,"Name had to be changed by preprocessing"]],"normalized":"Formicidae","canonicalName":{"value":"Formicidae","valueRanked":"Formicidae"},"virus":false,"positions":[["uninomial",0,10]],"nameStringId":"90473425-7ce1-5ec6-8160-737646816ea7","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Formicidae"}}],"bacteria":false}
-90473425-7ce1-5ec6-8160-737646816ea7|Formicidae cf|Formicidae|Formicidae|||3
-
-Arctostaphylos preglauca cf.
-Arctostaphylos preglauca cf.
-{"quality":3,"parsed":true,"verbatim":"Arctostaphylos preglauca cf.","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[2,"Name had to be changed by preprocessing"]],"normalized":"Arctostaphylos preglauca","canonicalName":{"value":"Arctostaphylos preglauca","valueRanked":"Arctostaphylos preglauca"},"virus":false,"positions":[["genus",0,14],["specificEpithet",15,24]],"nameStringId":"246b43d4-9786-5157-8d35-b81a470e6379","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Arctostaphylos"},"specificEpithet":{"value":"preglauca"}}],"bacteria":false}
-246b43d4-9786-5157-8d35-b81a470e6379|Arctostaphylos preglauca cf.|Arctostaphylos preglauca|Arctostaphylos preglauca|||3
-
-Acastoides spp.
-Acastoides spp.
-{"quality":3,"parsed":true,"verbatim":"Acastoides spp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Acastoides","canonicalName":{"value":"Acastoides","valueRanked":"Acastoides"},"virus":false,"positions":[["genus",0,10],["annotationIdentification",11,15]],"nameStringId":"9853f0a4-6324-5a7d-8108-e910578e612b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acastoides"},"annotationIdentification":"spp."}],"bacteria":false}
-9853f0a4-6324-5a7d-8108-e910578e612b|Acastoides spp.|Acastoides|Acastoides|||3
 
 Sphingomonas sp. 37
 Sphingomonas sp. 37
@@ -2485,6 +2426,69 @@ Ligusticum sinense
 #>
 
 ### Preprocessed
+
+#SECTION open taxonomy, ranks unfinished<
+Alyxia reinwardti var
+Alyxia reinwardti var
+{"quality":2,"parsed":true,"verbatim":"Alyxia reinwardti var","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"2f0ee2be-8d37-5e43-9eed-776c17f47e93","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false}
+2f0ee2be-8d37-5e43-9eed-776c17f47e93|Alyxia reinwardti var|Alyxia reinwardti|Alyxia reinwardti|||2
+
+Alyxia reinwardti var.
+Alyxia reinwardti var.
+{"quality":2,"parsed":true,"verbatim":"Alyxia reinwardti var.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"aed34708-82ed-52e4-876f-d4468af73fc3","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false}
+aed34708-82ed-52e4-876f-d4468af73fc3|Alyxia reinwardti var.|Alyxia reinwardti|Alyxia reinwardti|||2
+
+Alyxia reinwardti ssp
+Alyxia reinwardti ssp
+{"quality":2,"parsed":true,"verbatim":"Alyxia reinwardti ssp","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"760486d1-93ed-55c5-ade1-ba2c5b2aa900","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false}
+760486d1-93ed-55c5-ade1-ba2c5b2aa900|Alyxia reinwardti ssp|Alyxia reinwardti|Alyxia reinwardti|||2
+
+Alyxia reinwardti ssp.
+Alyxia reinwardti ssp.
+{"quality":2,"parsed":true,"verbatim":"Alyxia reinwardti ssp.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"72b5072a-d952-54f8-aea1-5b5bd3c65c45","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false}
+72b5072a-d952-54f8-aea1-5b5bd3c65c45|Alyxia reinwardti ssp.|Alyxia reinwardti|Alyxia reinwardti|||2
+
+Alaria spp
+Alaria spp
+{"quality":3,"parsed":true,"verbatim":"Alaria spp","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Alaria","canonicalName":{"value":"Alaria","valueRanked":"Alaria"},"virus":false,"positions":[["genus",0,6],["annotationIdentification",7,10]],"nameStringId":"5b31e830-ccf6-5918-94c5-75c4db7ef302","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alaria"},"annotationIdentification":"spp"}],"bacteria":false}
+5b31e830-ccf6-5918-94c5-75c4db7ef302|Alaria spp|Alaria|Alaria|||3
+
+Alaria spp.
+Alaria spp.
+{"quality":3,"parsed":true,"verbatim":"Alaria spp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Alaria","canonicalName":{"value":"Alaria","valueRanked":"Alaria"},"virus":false,"positions":[["genus",0,6],["annotationIdentification",7,11]],"nameStringId":"d1cd4f1a-f511-5d5a-8f41-64911995fdec","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alaria"},"annotationIdentification":"spp."}],"bacteria":false}
+d1cd4f1a-f511-5d5a-8f41-64911995fdec|Alaria spp.|Alaria|Alaria|||3
+
+Xenodon sp
+Xenodon sp
+{"quality":3,"parsed":true,"verbatim":"Xenodon sp","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Xenodon","canonicalName":{"value":"Xenodon","valueRanked":"Xenodon"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,10]],"nameStringId":"7b0cb348-7fe9-5248-b396-b0336225ba2a","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xenodon"},"annotationIdentification":"sp"}],"bacteria":false}
+7b0cb348-7fe9-5248-b396-b0336225ba2a|Xenodon sp|Xenodon|Xenodon|||3
+
+Xenodon sp.
+Xenodon sp.
+{"quality":3,"parsed":true,"verbatim":"Xenodon sp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Xenodon","canonicalName":{"value":"Xenodon","valueRanked":"Xenodon"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,11]],"nameStringId":"77b6718f-a26e-5ddf-a4cf-119e972cd015","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xenodon"},"annotationIdentification":"sp."}],"bacteria":false}
+77b6718f-a26e-5ddf-a4cf-119e972cd015|Xenodon sp.|Xenodon|Xenodon|||3
+
+Formicidae cf.
+Formicidae cf.
+{"quality":3,"parsed":true,"verbatim":"Formicidae cf.","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[2,"Name had to be changed by preprocessing"]],"normalized":"Formicidae","canonicalName":{"value":"Formicidae","valueRanked":"Formicidae"},"virus":false,"positions":[["uninomial",0,10]],"nameStringId":"61f9ebc4-346e-5857-ab45-38808ff1c960","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Formicidae"}}],"bacteria":false}
+61f9ebc4-346e-5857-ab45-38808ff1c960|Formicidae cf.|Formicidae|Formicidae|||3
+
+Formicidae cf
+Formicidae cf
+{"quality":3,"parsed":true,"verbatim":"Formicidae cf","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[2,"Name had to be changed by preprocessing"]],"normalized":"Formicidae","canonicalName":{"value":"Formicidae","valueRanked":"Formicidae"},"virus":false,"positions":[["uninomial",0,10]],"nameStringId":"90473425-7ce1-5ec6-8160-737646816ea7","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Formicidae"}}],"bacteria":false}
+90473425-7ce1-5ec6-8160-737646816ea7|Formicidae cf|Formicidae|Formicidae|||3
+
+Arctostaphylos preglauca cf.
+Arctostaphylos preglauca cf.
+{"quality":3,"parsed":true,"verbatim":"Arctostaphylos preglauca cf.","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[2,"Name had to be changed by preprocessing"]],"normalized":"Arctostaphylos preglauca","canonicalName":{"value":"Arctostaphylos preglauca","valueRanked":"Arctostaphylos preglauca"},"virus":false,"positions":[["genus",0,14],["specificEpithet",15,24]],"nameStringId":"246b43d4-9786-5157-8d35-b81a470e6379","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Arctostaphylos"},"specificEpithet":{"value":"preglauca"}}],"bacteria":false}
+246b43d4-9786-5157-8d35-b81a470e6379|Arctostaphylos preglauca cf.|Arctostaphylos preglauca|Arctostaphylos preglauca|||3
+
+Acastoides spp.
+Acastoides spp.
+{"quality":3,"parsed":true,"verbatim":"Acastoides spp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Acastoides","canonicalName":{"value":"Acastoides","valueRanked":"Acastoides"},"virus":false,"positions":[["genus",0,10],["annotationIdentification",11,15]],"nameStringId":"9853f0a4-6324-5a7d-8108-e910578e612b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acastoides"},"annotationIdentification":"spp."}],"bacteria":false}
+9853f0a4-6324-5a7d-8108-e910578e612b|Acastoides spp.|Acastoides|Acastoides|||3
+#>
+
 
 #SECTION: Ignoring sensu sec<
 Senecio legionensis sensu Samp., non Lange
