@@ -39,7 +39,7 @@ ccc7780b-c68b-53c6-9166-6b2d4902923e|Pseudocercospora Speg.|Pseudocercospora|Pse
 
 Döringina Ihering 1929 (synonym)
 Döringina Ihering 1929
-{"quality":3,"parsed":true,"verbatim":"Döringina Ihering 1929 (synonym)","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"],[2,"Non-standard characters in canonical"]],"normalized":"Doeringina Ihering 1929","canonicalName":{"value":"Doeringina","valueRanked":"Doeringina"},"virus":false,"positions":[["uninomial",0,9],["authorWord",10,17],["year",18,22]],"nameStringId":"95eb9081-5fe5-5497-be3d-ef0ce65a472c","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Doeringina","authorship":{"value":"Ihering 1929","basionymAuthorship":{"authors":["Ihering"],"years":[{"value":"1929"}]}}}}],"bacteria":false,"unparsedTail":" (synonym)"}
+{"quality":3,"parsed":true,"verbatim":"Döringina Ihering 1929 (synonym)","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"],[2,"Non-standard characters in canonical"]],"normalized":"Doeringina Ihering 1929","canonicalName":{"value":"Doeringina","valueRanked":"Doeringina"},"virus":false,"positions":[["uninomial",0,9],["authorWord",10,17],["year",18,22]],"nameStringId":"95eb9081-5fe5-5497-be3d-ef0ce65a472c","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Doeringina","authorship":{"value":"Ihering 1929","basionymAuthorship":{"authors":["Ihering"],"years":[{"value":"1929"}]}}}}],"bacteria":false,"unparsedTail":" (synonym)"}
 95eb9081-5fe5-5497-be3d-ef0ce65a472c|Döringina Ihering 1929 (synonym)|Doeringina|Doeringina|Ihering 1929|1929|3
 
 Pseudocercospora Speg., Francis Jack.-Drake.
@@ -645,7 +645,7 @@ Crematogaster impressa st. brazzai Santschi 1937
 # badly formed name, we do not deal with it for now
 Cibotium st.-johnii Krajina
 Cibotium
-{"quality":3,"parsed":true,"verbatim":"Cibotium st.-johnii Krajina","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Cibotium","canonicalName":{"value":"Cibotium","valueRanked":"Cibotium"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"6b34256d-6c3b-5870-a781-77eeac49b6c4","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Cibotium"}}],"bacteria":false,"unparsedTail":" st.-johnii Krajina"}
+{"quality":3,"parsed":true,"verbatim":"Cibotium st.-johnii Krajina","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Cibotium","canonicalName":{"value":"Cibotium","valueRanked":"Cibotium"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"6b34256d-6c3b-5870-a781-77eeac49b6c4","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Cibotium"}}],"bacteria":false,"unparsedTail":" st.-johnii Krajina"}
 6b34256d-6c3b-5870-a781-77eeac49b6c4|Cibotium st.-johnii Krajina|Cibotium|Cibotium|||3
 
 Camponotus conspicuus st. zonatus
@@ -926,7 +926,7 @@ c056b89e-789b-5c28-89e7-e820ea0baebf|Arthopyrenia hyalospora x|Arthopyrenia hyal
 
 Arthopyrenia hyalospora × ?
 Arthopyrenia hyalospora ×
-{"quality":3,"parsed":true,"verbatim":"Arthopyrenia hyalospora × ?","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"],[2,"Hybrid formula"],[2,"Probably incomplete hybrid formula"]],"normalized":"Arthopyrenia hyalospora ×","canonicalName":{"value":"Arthopyrenia hyalospora ×","valueRanked":"Arthopyrenia hyalospora ×"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,23],["hybridChar",24,25]],"nameStringId":"638cc013-3821-55c2-b9d3-b2ea3de33ecf","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Arthopyrenia"},"specificEpithet":{"value":"hyalospora"}}],"bacteria":false,"unparsedTail":" ?"}
+{"quality":3,"parsed":true,"verbatim":"Arthopyrenia hyalospora × ?","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"],[2,"Hybrid formula"],[2,"Probably incomplete hybrid formula"]],"normalized":"Arthopyrenia hyalospora ×","canonicalName":{"value":"Arthopyrenia hyalospora ×","valueRanked":"Arthopyrenia hyalospora ×"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,23],["hybridChar",24,25]],"nameStringId":"638cc013-3821-55c2-b9d3-b2ea3de33ecf","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Arthopyrenia"},"specificEpithet":{"value":"hyalospora"}}],"bacteria":false,"unparsedTail":" ?"}
 638cc013-3821-55c2-b9d3-b2ea3de33ecf|Arthopyrenia hyalospora × ?|Arthopyrenia hyalospora ×|Arthopyrenia hyalospora ×|||3
 
 Agrostis L. × Polypogon Desf.
@@ -1164,7 +1164,7 @@ Mycosphaerella eryngii (Fr. ex. Duby) Johanson ex. Oudem. 1897
 
 Mycosphaerella eryngii (Fr. Duby) ex Oudem. 1897
 Mycosphaerella eryngii (Fr. Duby)
-{"quality":3,"parsed":true,"verbatim":"Mycosphaerella eryngii (Fr. Duby) ex Oudem. 1897","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Mycosphaerella eryngii (Fr. Duby)","canonicalName":{"value":"Mycosphaerella eryngii","valueRanked":"Mycosphaerella eryngii"},"virus":false,"positions":[["genus",0,14],["specificEpithet",15,22],["authorWord",24,27],["authorWord",28,32]],"nameStringId":"e5a49f2e-c7a2-5ebf-9349-8a36a410ec77","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Mycosphaerella"},"specificEpithet":{"value":"eryngii","authorship":{"value":"(Fr. Duby)","basionymAuthorship":{"authors":["Fr. Duby"]}}}}],"bacteria":false,"unparsedTail":" ex Oudem. 1897"}
+{"quality":3,"parsed":true,"verbatim":"Mycosphaerella eryngii (Fr. Duby) ex Oudem. 1897","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Mycosphaerella eryngii (Fr. Duby)","canonicalName":{"value":"Mycosphaerella eryngii","valueRanked":"Mycosphaerella eryngii"},"virus":false,"positions":[["genus",0,14],["specificEpithet",15,22],["authorWord",24,27],["authorWord",28,32]],"nameStringId":"e5a49f2e-c7a2-5ebf-9349-8a36a410ec77","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Mycosphaerella"},"specificEpithet":{"value":"eryngii","authorship":{"value":"(Fr. Duby)","basionymAuthorship":{"authors":["Fr. Duby"]}}}}],"bacteria":false,"unparsedTail":" ex Oudem. 1897"}
 e5a49f2e-c7a2-5ebf-9349-8a36a410ec77|Mycosphaerella eryngii (Fr. Duby) ex Oudem. 1897|Mycosphaerella eryngii|Mycosphaerella eryngii|(Fr. Duby)||3
 #>
 
@@ -1296,12 +1296,12 @@ b345d921-7466-50bb-812c-850b1f368c57|Polypodium pectinatum (L. f.) typica Rosent
 #SECTION emend (rectified by) authorship<
 Chlorobium phaeobacteroides Pfennig, 1968 emend. Imhoff, 2003
 Chlorobium phaeobacteroides Pfennig, 1968 emend. Imhoff, 2003
-{"quality":2,"parsed":true,"verbatim":"Chlorobium phaeobacteroides Pfennig, 1968 emend. Imhoff, 2003","surrogate":false,"qualityWarnings":[[2,"Emend authors are not required"]],"normalized":"Chlorobium phaeobacteroides Pfennig 1968 emend. Imhoff 2003","canonicalName":{"value":"Chlorobium phaeobacteroides","valueRanked":"Chlorobium phaeobacteroides"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,27],["authorWord",28,35],["year",37,41],["authorWord",49,55],["year",57,61]],"nameStringId":"4513701d-e56b-54d6-84a7-941bf4b62e69","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Chlorobium"},"specificEpithet":{"value":"phaeobacteroides","authorship":{"value":"Pfennig 1968 emend. Imhoff 2003","basionymAuthorship":{"authors":["Pfennig"],"years":[{"value":"1968"}],"emendAuthors":{"authors":["Imhoff"],"years":[{"value":"2003"}]}}}}}],"bacteria":false}
+{"quality":2,"parsed":true,"verbatim":"Chlorobium phaeobacteroides Pfennig, 1968 emend. Imhoff, 2003","surrogate":false,"qualityWarnings":[[2,"Emend authors are not required"]],"normalized":"Chlorobium phaeobacteroides Pfennig 1968 emend. Imhoff 2003","canonicalName":{"value":"Chlorobium phaeobacteroides","valueRanked":"Chlorobium phaeobacteroides"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,27],["authorWord",28,35],["year",37,41],["authorWord",49,55],["year",57,61]],"nameStringId":"4513701d-e56b-54d6-84a7-941bf4b62e69","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Chlorobium"},"specificEpithet":{"value":"phaeobacteroides","authorship":{"value":"Pfennig 1968 emend. Imhoff 2003","basionymAuthorship":{"authors":["Pfennig"],"years":[{"value":"1968"}],"emendAuthors":{"authors":["Imhoff"],"years":[{"value":"2003"}]}}}}}],"bacteria":true}
 4513701d-e56b-54d6-84a7-941bf4b62e69|Chlorobium phaeobacteroides Pfennig, 1968 emend. Imhoff, 2003|Chlorobium phaeobacteroides|Chlorobium phaeobacteroides|Pfennig 1968 emend. Imhoff 2003|1968|2
 
 Chlorobium phaeobacteroides Pfennig, 1968 emend Imhoff, 2003
 Chlorobium phaeobacteroides Pfennig, 1968 emend Imhoff, 2003
-{"quality":3,"parsed":true,"verbatim":"Chlorobium phaeobacteroides Pfennig, 1968 emend Imhoff, 2003","surrogate":false,"qualityWarnings":[[3,"`emend` without a period"],[2,"Emend authors are not required"]],"normalized":"Chlorobium phaeobacteroides Pfennig 1968 emend. Imhoff 2003","canonicalName":{"value":"Chlorobium phaeobacteroides","valueRanked":"Chlorobium phaeobacteroides"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,27],["authorWord",28,35],["year",37,41],["authorWord",48,54],["year",56,60]],"nameStringId":"3cbaceda-83c2-5e36-b170-4f13837782dc","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Chlorobium"},"specificEpithet":{"value":"phaeobacteroides","authorship":{"value":"Pfennig 1968 emend. Imhoff 2003","basionymAuthorship":{"authors":["Pfennig"],"years":[{"value":"1968"}],"emendAuthors":{"authors":["Imhoff"],"years":[{"value":"2003"}]}}}}}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Chlorobium phaeobacteroides Pfennig, 1968 emend Imhoff, 2003","surrogate":false,"qualityWarnings":[[3,"`emend` without a period"],[2,"Emend authors are not required"]],"normalized":"Chlorobium phaeobacteroides Pfennig 1968 emend. Imhoff 2003","canonicalName":{"value":"Chlorobium phaeobacteroides","valueRanked":"Chlorobium phaeobacteroides"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,27],["authorWord",28,35],["year",37,41],["authorWord",48,54],["year",56,60]],"nameStringId":"3cbaceda-83c2-5e36-b170-4f13837782dc","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Chlorobium"},"specificEpithet":{"value":"phaeobacteroides","authorship":{"value":"Pfennig 1968 emend. Imhoff 2003","basionymAuthorship":{"authors":["Pfennig"],"years":[{"value":"1968"}],"emendAuthors":{"authors":["Imhoff"],"years":[{"value":"2003"}]}}}}}],"bacteria":true}
 3cbaceda-83c2-5e36-b170-4f13837782dc|Chlorobium phaeobacteroides Pfennig, 1968 emend Imhoff, 2003|Chlorobium phaeobacteroides|Chlorobium phaeobacteroides|Pfennig 1968 emend. Imhoff 2003|1968|3
 #>
 
@@ -1310,34 +1310,34 @@ Chlorobium phaeobacteroides Pfennig, 1968 emend Imhoff, 2003
 #SECTION: Removing tail annotations<
 Dryopteris X separabilis Small (pro sp.)
 Dryopteris × separabilis Small
-{"quality":3,"parsed":true,"verbatim":"Dryopteris X separabilis Small (pro sp.)","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"],[2,"Named hybrid"]],"normalized":"Dryopteris × separabilis Small","canonicalName":{"value":"Dryopteris separabilis","valueRanked":"Dryopteris × separabilis"},"virus":false,"positions":[["genus",0,10],["hybridChar",11,12],["specificEpithet",13,24],["authorWord",25,30]],"nameStringId":"34bf83d8-0466-51c4-b95d-70e583ba1c9f","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Dryopteris"},"specificEpithet":{"value":"separabilis","authorship":{"value":"Small","basionymAuthorship":{"authors":["Small"]}}}}],"bacteria":false,"unparsedTail":" (pro sp.)"}
+{"quality":3,"parsed":true,"verbatim":"Dryopteris X separabilis Small (pro sp.)","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"],[2,"Named hybrid"]],"normalized":"Dryopteris × separabilis Small","canonicalName":{"value":"Dryopteris separabilis","valueRanked":"Dryopteris × separabilis"},"virus":false,"positions":[["genus",0,10],["hybridChar",11,12],["specificEpithet",13,24],["authorWord",25,30]],"nameStringId":"34bf83d8-0466-51c4-b95d-70e583ba1c9f","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Dryopteris"},"specificEpithet":{"value":"separabilis","authorship":{"value":"Small","basionymAuthorship":{"authors":["Small"]}}}}],"bacteria":false,"unparsedTail":" (pro sp.)"}
 34bf83d8-0466-51c4-b95d-70e583ba1c9f|Dryopteris X separabilis Small (pro sp.)|Dryopteris separabilis|Dryopteris × separabilis|Small||3
 #>
 
 #SECTION: Abbreviated words after a name
 Graphis scripta L. a.b pulverulenta
 Graphis scripta L.
-{"quality":3,"parsed":true,"verbatim":"Graphis scripta L. a.b pulverulenta","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Graphis scripta L.","canonicalName":{"value":"Graphis scripta","valueRanked":"Graphis scripta"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,15],["authorWord",16,18]],"nameStringId":"ecb4751f-7d9e-5868-8ef7-c96f6ef07f2d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Graphis"},"specificEpithet":{"value":"scripta","authorship":{"value":"L.","basionymAuthorship":{"authors":["L."]}}}}],"bacteria":false,"unparsedTail":" a.b pulverulenta"}
+{"quality":3,"parsed":true,"verbatim":"Graphis scripta L. a.b pulverulenta","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Graphis scripta L.","canonicalName":{"value":"Graphis scripta","valueRanked":"Graphis scripta"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,15],["authorWord",16,18]],"nameStringId":"ecb4751f-7d9e-5868-8ef7-c96f6ef07f2d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Graphis"},"specificEpithet":{"value":"scripta","authorship":{"value":"L.","basionymAuthorship":{"authors":["L."]}}}}],"bacteria":false,"unparsedTail":" a.b pulverulenta"}
 ecb4751f-7d9e-5868-8ef7-c96f6ef07f2d|Graphis scripta L. a.b pulverulenta|Graphis scripta|Graphis scripta|L.||3
 
 Cetraria iberica a.crespo & barreno
 Cetraria iberica
-{"quality":3,"parsed":true,"verbatim":"Cetraria iberica a.crespo & barreno","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Cetraria iberica","canonicalName":{"value":"Cetraria iberica","valueRanked":"Cetraria iberica"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,16]],"nameStringId":"233626eb-645c-5ca0-bb8b-6f410a078a85","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Cetraria"},"specificEpithet":{"value":"iberica"}}],"bacteria":false,"unparsedTail":" a.crespo & barreno"}
+{"quality":3,"parsed":true,"verbatim":"Cetraria iberica a.crespo & barreno","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Cetraria iberica","canonicalName":{"value":"Cetraria iberica","valueRanked":"Cetraria iberica"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,16]],"nameStringId":"233626eb-645c-5ca0-bb8b-6f410a078a85","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Cetraria"},"specificEpithet":{"value":"iberica"}}],"bacteria":false,"unparsedTail":" a.crespo & barreno"}
 233626eb-645c-5ca0-bb8b-6f410a078a85|Cetraria iberica a.crespo & barreno|Cetraria iberica|Cetraria iberica|||3
 
 Lecanora achariana a.l.sm.
 Lecanora achariana
-{"quality":3,"parsed":true,"verbatim":"Lecanora achariana a.l.sm.","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Lecanora achariana","canonicalName":{"value":"Lecanora achariana","valueRanked":"Lecanora achariana"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,18]],"nameStringId":"4393f813-14e9-5a26-aab0-bf7686463c6a","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Lecanora"},"specificEpithet":{"value":"achariana"}}],"bacteria":false,"unparsedTail":" a.l.sm."}
+{"quality":3,"parsed":true,"verbatim":"Lecanora achariana a.l.sm.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Lecanora achariana","canonicalName":{"value":"Lecanora achariana","valueRanked":"Lecanora achariana"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,18]],"nameStringId":"4393f813-14e9-5a26-aab0-bf7686463c6a","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Lecanora"},"specificEpithet":{"value":"achariana"}}],"bacteria":false,"unparsedTail":" a.l.sm."}
 4393f813-14e9-5a26-aab0-bf7686463c6a|Lecanora achariana a.l.sm.|Lecanora achariana|Lecanora achariana|||3
 
 Arthrosporum populorum a.massal.
 Arthrosporum populorum
-{"quality":3,"parsed":true,"verbatim":"Arthrosporum populorum a.massal.","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Arthrosporum populorum","canonicalName":{"value":"Arthrosporum populorum","valueRanked":"Arthrosporum populorum"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,22]],"nameStringId":"88db792d-7061-512d-9275-b7fe81493665","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Arthrosporum"},"specificEpithet":{"value":"populorum"}}],"bacteria":false,"unparsedTail":" a.massal."}
+{"quality":3,"parsed":true,"verbatim":"Arthrosporum populorum a.massal.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Arthrosporum populorum","canonicalName":{"value":"Arthrosporum populorum","valueRanked":"Arthrosporum populorum"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,22]],"nameStringId":"88db792d-7061-512d-9275-b7fe81493665","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Arthrosporum"},"specificEpithet":{"value":"populorum"}}],"bacteria":false,"unparsedTail":" a.massal."}
 88db792d-7061-512d-9275-b7fe81493665|Arthrosporum populorum a.massal.|Arthrosporum populorum|Arthrosporum populorum|||3
 
 Eletica laeviceps ab.lateapicalis Pic
 Eletica laeviceps
-{"quality":3,"parsed":true,"verbatim":"Eletica laeviceps ab.lateapicalis Pic","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Eletica laeviceps","canonicalName":{"value":"Eletica laeviceps","valueRanked":"Eletica laeviceps"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17]],"nameStringId":"12389c9a-7aaf-56d1-8b8a-dffd4b74c58f","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Eletica"},"specificEpithet":{"value":"laeviceps"}}],"bacteria":false,"unparsedTail":" ab.lateapicalis Pic"}
+{"quality":3,"parsed":true,"verbatim":"Eletica laeviceps ab.lateapicalis Pic","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Eletica laeviceps","canonicalName":{"value":"Eletica laeviceps","valueRanked":"Eletica laeviceps"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17]],"nameStringId":"12389c9a-7aaf-56d1-8b8a-dffd4b74c58f","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Eletica"},"specificEpithet":{"value":"laeviceps"}}],"bacteria":false,"unparsedTail":" ab.lateapicalis Pic"}
 12389c9a-7aaf-56d1-8b8a-dffd4b74c58f|Eletica laeviceps ab.lateapicalis Pic|Eletica laeviceps|Eletica laeviceps|||3
 #>
 
@@ -1368,7 +1368,7 @@ Canuleius 24-spinosus Redtenbacher, 1906
 # numeric prefix cannot be more than 2 digits long
 Canuleius 777-spinosus Redtenbacher, 1906
 Canuleius
-{"quality":3,"parsed":true,"verbatim":"Canuleius 777-spinosus Redtenbacher, 1906","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Canuleius","canonicalName":{"value":"Canuleius","valueRanked":"Canuleius"},"virus":false,"positions":[["uninomial",0,9]],"nameStringId":"40a1b1cd-0437-5ed8-82bf-8bea169cb8b1","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Canuleius"}}],"bacteria":false,"unparsedTail":" 777-spinosus Redtenbacher, 1906"}
+{"quality":3,"parsed":true,"verbatim":"Canuleius 777-spinosus Redtenbacher, 1906","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Canuleius","canonicalName":{"value":"Canuleius","valueRanked":"Canuleius"},"virus":false,"positions":[["uninomial",0,9]],"nameStringId":"40a1b1cd-0437-5ed8-82bf-8bea169cb8b1","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Canuleius"}}],"bacteria":false,"unparsedTail":" 777-spinosus Redtenbacher, 1906"}
 40a1b1cd-0437-5ed8-82bf-8bea169cb8b1|Canuleius 777-spinosus Redtenbacher, 1906|Canuleius|Canuleius|||3
 
 Rhynchophorus 13punctatus Herbst, J.F.W., 1795
@@ -1540,63 +1540,43 @@ d2f6423b-7a8f-5389-a286-c074fb634c5a|Amphisbæna fuliginoſa Linnaeus 1758|Amphi
 #SECTION: Open nomenclature -- cf., aff., sp., etc.<
 Solygia ? distanti
 Solygia ? distanti
-{"quality":3,"parsed":true,"verbatim":"Solygia ? distanti","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Solygia","canonicalName":{"value":"Solygia","valueRanked":"Solygia"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,9]],"nameStringId":"b9e3508f-1c0e-554c-8642-dd1cfd02631c","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Solygia"},"annotationIdentification":"?"}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Solygia ? distanti","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Solygia","canonicalName":{"value":"Solygia","valueRanked":"Solygia"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,9]],"nameStringId":"b9e3508f-1c0e-554c-8642-dd1cfd02631c","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Solygia"},"annotationIdentification":"?","ignored":{"value":" distanti"}}],"bacteria":false}
 b9e3508f-1c0e-554c-8642-dd1cfd02631c|Solygia ? distanti|Solygia|Solygia|||3
 
+# Ambiguity -- can be an unknown author or approx name
 Buteo borealis ? ventralis
 Buteo borealis ? ventralis
-{"quality":3,"parsed":true,"verbatim":"Buteo borealis ? ventralis","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Buteo borealis","canonicalName":{"value":"Buteo borealis","valueRanked":"Buteo borealis"},"virus":false,"positions":[["genus",0,5],["specificEpithet",6,14],["annotationIdentification",15,16]],"nameStringId":"d26a4791-4858-5239-8a57-c88957d40919","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Buteo"},"specificEpithet":{"value":"borealis"},"annotationIdentification":"?","ignored":{"value":"ventralis"}}],"bacteria":false}
-d26a4791-4858-5239-8a57-c88957d40919|Buteo borealis ? ventralis|Buteo borealis|Buteo borealis|||3
-
-Cetraria islandica ? islandica
-Cetraria islandica ? islandica
-{"quality":3,"parsed":true,"verbatim":"Cetraria islandica ? islandica","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Cetraria islandica","canonicalName":{"value":"Cetraria islandica","valueRanked":"Cetraria islandica"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,18],["annotationIdentification",19,20]],"nameStringId":"01af8da5-3a16-5270-82bb-b0123048ec63","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Cetraria"},"specificEpithet":{"value":"islandica"},"annotationIdentification":"?","ignored":{"value":"islandica"}}],"bacteria":false}
-01af8da5-3a16-5270-82bb-b0123048ec63|Cetraria islandica ? islandica|Cetraria islandica|Cetraria islandica|||3
+{"quality":3,"parsed":true,"verbatim":"Buteo borealis ? ventralis","surrogate":false,"qualityWarnings":[[3,"Author as a question mark"],[3,"Author is too short"],[2,"Author is unknown"]],"normalized":"Buteo borealis anon. ventralis","canonicalName":{"value":"Buteo borealis ventralis","valueRanked":"Buteo borealis ventralis"},"virus":false,"positions":[["genus",0,5],["specificEpithet",6,14],["authorWord",15,16],["infraspecificEpithet",17,26]],"nameStringId":"d26a4791-4858-5239-8a57-c88957d40919","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Buteo"},"specificEpithet":{"value":"borealis","authorship":{"value":"anon.","basionymAuthorship":{"authors":["anon."]}}},"infraspecificEpithets":[{"value":"ventralis"}]}],"bacteria":false}
+d26a4791-4858-5239-8a57-c88957d40919|Buteo borealis ? ventralis|Buteo borealis ventralis|Buteo borealis ventralis|||3
 
 Euxoa nr. idahoensis sp. 1clay
 Euxoa nr. idahoensis sp. 1clay
-{"quality":3,"parsed":true,"verbatim":"Euxoa nr. idahoensis sp. 1clay","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Euxoa","canonicalName":{"value":"Euxoa","valueRanked":"Euxoa"},"virus":false,"positions":[["genus",0,5],["annotationIdentification",6,9]],"nameStringId":"02a664be-422a-56cb-b431-99aecf793721","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Euxoa"},"annotationIdentification":"nr.","ignored":{"value":"idahoensis sp. 1clay"}}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Euxoa nr. idahoensis sp. 1clay","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Euxoa","canonicalName":{"value":"Euxoa","valueRanked":"Euxoa"},"virus":false,"positions":[["genus",0,5],["annotationIdentification",6,9]],"nameStringId":"02a664be-422a-56cb-b431-99aecf793721","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Euxoa"},"annotationIdentification":"nr.","ignored":{"value":" idahoensis sp. 1clay"}}],"bacteria":false}
 02a664be-422a-56cb-b431-99aecf793721|Euxoa nr. idahoensis sp. 1clay|Euxoa|Euxoa|||3
 
 Acarinina aff. pentacamerata
 Acarinina aff. pentacamerata
-{"quality":3,"parsed":true,"verbatim":"Acarinina aff. pentacamerata","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Acarinina","canonicalName":{"value":"Acarinina","valueRanked":"Acarinina"},"virus":false,"positions":[["genus",0,9],["annotationIdentification",10,14]],"nameStringId":"c4ab66ee-79a2-5100-8b87-20e60cf2a358","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acarinina"},"annotationIdentification":"aff.","ignored":{"value":"pentacamerata"}}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Acarinina aff. pentacamerata","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Acarinina","canonicalName":{"value":"Acarinina","valueRanked":"Acarinina"},"virus":false,"positions":[["genus",0,9],["annotationIdentification",10,14]],"nameStringId":"c4ab66ee-79a2-5100-8b87-20e60cf2a358","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acarinina"},"annotationIdentification":"aff.","ignored":{"value":" pentacamerata"}}],"bacteria":false}
 c4ab66ee-79a2-5100-8b87-20e60cf2a358|Acarinina aff. pentacamerata|Acarinina|Acarinina|||3
 
 Acarinina aff pentacamerata
 Acarinina aff pentacamerata
-{"quality":3,"parsed":true,"verbatim":"Acarinina aff pentacamerata","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Acarinina","canonicalName":{"value":"Acarinina","valueRanked":"Acarinina"},"virus":false,"positions":[["genus",0,9],["annotationIdentification",10,13]],"nameStringId":"06a32183-0aa7-5a00-9753-46db1141daa4","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acarinina"},"annotationIdentification":"aff","ignored":{"value":"pentacamerata"}}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Acarinina aff pentacamerata","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Acarinina","canonicalName":{"value":"Acarinina","valueRanked":"Acarinina"},"virus":false,"positions":[["genus",0,9],["annotationIdentification",10,13]],"nameStringId":"06a32183-0aa7-5a00-9753-46db1141daa4","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acarinina"},"annotationIdentification":"aff","ignored":{"value":" pentacamerata"}}],"bacteria":false}
 06a32183-0aa7-5a00-9753-46db1141daa4|Acarinina aff pentacamerata|Acarinina|Acarinina|||3
 
-Abturia cf. alabamensis (Morton )
-Abturia cf. alabamensis (Morton )
-{"quality":3,"parsed":true,"verbatim":"Abturia cf. alabamensis (Morton )","surrogate":true,"qualityWarnings":[[3,"Name comparison"]],"normalized":"Abturia cf. alabamensis (Morton)","canonicalName":{"value":"Abturia alabamensis","valueRanked":"Abturia alabamensis"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,11],["specificEpithet",12,23],["authorWord",25,31]],"nameStringId":"5fd4ce59-98d3-50af-9e28-918adc47d264","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abturia"},"specificEpithet":{"value":"alabamensis","authorship":{"value":"(Morton)","basionymAuthorship":{"authors":["Morton"]}}},"annotationIdentification":"cf."}],"bacteria":false}
-5fd4ce59-98d3-50af-9e28-918adc47d264|Abturia cf. alabamensis (Morton )|Abturia alabamensis|Abturia alabamensis|(Morton)||3
-
-# TODO wrong name result
-#Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.
-#Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.
-#{"quality":2,"parsed":true,"verbatim":"Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.","surrogate":true,"qualityWarnings":[[2,"Author is unknown"]],"normalized":"Placodium cf. chrysoleucum chrysoleucum (Sm.) anon.","canonicalName":{"value":"Placodium chrysoleucum chrysoleucum","valueRanked":"Placodium chrysoleucum chrysoleucum"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["annotationIdentification",23,26],["infraspecificEpithet",27,39],["authorWord",41,44],["authorWord",46,51]],"nameStringId":"e0b84689-70e3-508a-8040-8859dc6084c0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Placodium"},"specificEpithet":{"value":"chrysoleucum"},"infraspecificEpithets":[{"value":"chrysoleucum","authorship":{"value":"(Sm.) anon.","basionymAuthorship":{"authors":["Sm."]},"combinationAuthorship":{"authors":["anon."]}}}],"annotationIdentification":"cf."}],"bacteria":false}
-#e0b84689-70e3-508a-8040-8859dc6084c0|Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.|Placodium chrysoleucum chrysoleucum|Placodium chrysoleucum chrysoleucum|(Sm.) anon.||2
-
-Abturia cf alabamensis (Morton )
-Abturia cf alabamensis (Morton )
-{"quality":3,"parsed":true,"verbatim":"Abturia cf alabamensis (Morton )","surrogate":true,"qualityWarnings":[[3,"Name comparison"]],"normalized":"Abturia cf alabamensis (Morton)","canonicalName":{"value":"Abturia alabamensis","valueRanked":"Abturia alabamensis"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,10],["specificEpithet",11,22],["authorWord",24,30]],"nameStringId":"423cd26d-c6fd-54fb-937b-f98ba8056fc0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abturia"},"specificEpithet":{"value":"alabamensis","authorship":{"value":"(Morton)","basionymAuthorship":{"authors":["Morton"]}}},"annotationIdentification":"cf"}],"bacteria":false}
-423cd26d-c6fd-54fb-937b-f98ba8056fc0|Abturia cf alabamensis (Morton )|Abturia alabamensis|Abturia alabamensis|(Morton)||3
-
 Sphingomonas sp. 37
 Sphingomonas sp. 37
-{"quality":3,"parsed":true,"verbatim":"Sphingomonas sp. 37","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Sphingomonas","canonicalName":{"value":"Sphingomonas","valueRanked":"Sphingomonas"},"virus":false,"positions":[["genus",0,12],["annotationIdentification",13,16]],"nameStringId":"1daffd3a-f4de-58d9-91e3-ae4d08a50ce0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Sphingomonas"},"annotationIdentification":"sp.","ignored":{"value":"37"}}],"bacteria":true}
+{"quality":3,"parsed":true,"verbatim":"Sphingomonas sp. 37","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Sphingomonas","canonicalName":{"value":"Sphingomonas","valueRanked":"Sphingomonas"},"virus":false,"positions":[["genus",0,12],["annotationIdentification",13,16]],"nameStringId":"1daffd3a-f4de-58d9-91e3-ae4d08a50ce0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Sphingomonas"},"annotationIdentification":"sp.","ignored":{"value":" 37"}}],"bacteria":true}
 1daffd3a-f4de-58d9-91e3-ae4d08a50ce0|Sphingomonas sp. 37|Sphingomonas|Sphingomonas|||3
 
 Thryothorus leucotis spp. bogotensis
 Thryothorus leucotis spp. bogotensis
-{"quality":3,"parsed":true,"verbatim":"Thryothorus leucotis spp. bogotensis","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Thryothorus leucotis","canonicalName":{"value":"Thryothorus leucotis","valueRanked":"Thryothorus leucotis"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,20],["annotationIdentification",21,25]],"nameStringId":"d2cb7212-ff62-5e31-9ab9-31214a9782d5","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Thryothorus"},"specificEpithet":{"value":"leucotis"},"annotationIdentification":"spp.","ignored":{"value":"bogotensis"}}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Thryothorus leucotis spp. bogotensis","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Thryothorus leucotis","canonicalName":{"value":"Thryothorus leucotis","valueRanked":"Thryothorus leucotis"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,20],["annotationIdentification",21,25]],"nameStringId":"d2cb7212-ff62-5e31-9ab9-31214a9782d5","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Thryothorus"},"specificEpithet":{"value":"leucotis"},"annotationIdentification":"spp.","ignored":{"value":" bogotensis"}}],"bacteria":false}
 d2cb7212-ff62-5e31-9ab9-31214a9782d5|Thryothorus leucotis spp. bogotensis|Thryothorus leucotis|Thryothorus leucotis|||3
 
 Endoxyla sp. GM-, 2003
 Endoxyla sp. GM-, 2003
-{"quality":3,"parsed":true,"verbatim":"Endoxyla sp. GM-, 2003","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Endoxyla","canonicalName":{"value":"Endoxyla","valueRanked":"Endoxyla"},"virus":false,"positions":[["genus",0,8],["annotationIdentification",9,12]],"nameStringId":"8a80bfee-947d-5602-9958-a2338ff46a4d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Endoxyla"},"annotationIdentification":"sp.","ignored":{"value":"GM-, 2003"}}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Endoxyla sp. GM-, 2003","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Endoxyla","canonicalName":{"value":"Endoxyla","valueRanked":"Endoxyla"},"virus":false,"positions":[["genus",0,8],["annotationIdentification",9,12]],"nameStringId":"8a80bfee-947d-5602-9958-a2338ff46a4d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Endoxyla"},"annotationIdentification":"sp.","ignored":{"value":" GM-, 2003"}}],"bacteria":false}
 8a80bfee-947d-5602-9958-a2338ff46a4d|Endoxyla sp. GM-, 2003|Endoxyla|Endoxyla|||3
 
 Liopropoma sp.2 Not applicable
@@ -1604,15 +1584,31 @@ Liopropoma sp.2 Not applicable
 {"quality":3,"parsed":true,"verbatim":"Liopropoma sp.2 Not applicable","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Liopropoma","canonicalName":{"value":"Liopropoma","valueRanked":"Liopropoma"},"virus":false,"positions":[["genus",0,10],["annotationIdentification",11,14]],"nameStringId":"fb3779a4-57a0-5628-8c4e-e341ca4f952d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Liopropoma"},"annotationIdentification":"sp.","ignored":{"value":"2 Not applicable"}}],"bacteria":false}
 fb3779a4-57a0-5628-8c4e-e341ca4f952d|Liopropoma sp.2 Not applicable|Liopropoma|Liopropoma|||3
 
+Lacanobia sp. nr. subjuncta Bold:Aab, 0925
+Lacanobia sp. nr. subjuncta Bold:Aab, 0925
+{"quality":3,"parsed":true,"verbatim":"Lacanobia sp. nr. subjuncta Bold:Aab, 0925","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Lacanobia","canonicalName":{"value":"Lacanobia","valueRanked":"Lacanobia"},"virus":false,"positions":[["genus",0,9],["annotationIdentification",10,17]],"nameStringId":"05b25429-cb9e-54a1-8e1a-bac9a26d5f46","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Lacanobia"},"annotationIdentification":"sp. nr.","ignored":{"value":" subjuncta Bold:Aab, 0925"}}],"bacteria":false}
+05b25429-cb9e-54a1-8e1a-bac9a26d5f46|Lacanobia sp. nr. subjuncta Bold:Aab, 0925|Lacanobia|Lacanobia|||3
+
 Lacanobia nr. subjuncta Bold:Aab, 0925
 Lacanobia nr. subjuncta Bold:Aab, 0925
-{"quality":3,"parsed":true,"verbatim":"Lacanobia nr. subjuncta Bold:Aab, 0925","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Lacanobia","canonicalName":{"value":"Lacanobia","valueRanked":"Lacanobia"},"virus":false,"positions":[["genus",0,9],["annotationIdentification",10,13]],"nameStringId":"31763a26-a69b-5af8-8703-5da372bdf895","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Lacanobia"},"annotationIdentification":"nr.","ignored":{"value":"subjuncta Bold:Aab, 0925"}}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Lacanobia nr. subjuncta Bold:Aab, 0925","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Lacanobia","canonicalName":{"value":"Lacanobia","valueRanked":"Lacanobia"},"virus":false,"positions":[["genus",0,9],["annotationIdentification",10,13]],"nameStringId":"31763a26-a69b-5af8-8703-5da372bdf895","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Lacanobia"},"annotationIdentification":"nr.","ignored":{"value":" subjuncta Bold:Aab, 0925"}}],"bacteria":false}
 31763a26-a69b-5af8-8703-5da372bdf895|Lacanobia nr. subjuncta Bold:Aab, 0925|Lacanobia|Lacanobia|||3
 
-Lacanobia sp. nr. subjuncta Bold:Aab, 0925
-Lacanobia sp. nr. subjuncta Bold:Aab, 0925
-{"quality":3,"parsed":true,"verbatim":"Lacanobia sp. nr. subjuncta Bold:Aab, 0925","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Lacanobia","canonicalName":{"value":"Lacanobia","valueRanked":"Lacanobia"},"virus":false,"positions":[["genus",0,9],["annotationIdentification",10,17]],"nameStringId":"05b25429-cb9e-54a1-8e1a-bac9a26d5f46","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Lacanobia"},"annotationIdentification":"sp. nr.","ignored":{"value":"subjuncta Bold:Aab, 0925"}}],"bacteria":false}
-05b25429-cb9e-54a1-8e1a-bac9a26d5f46|Lacanobia sp. nr. subjuncta Bold:Aab, 0925|Lacanobia|Lacanobia|||3
+# TODO wrong name result
+#Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.
+#Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.
+#{"quality":2,"parsed":true,"verbatim":"Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.","surrogate":true,"qualityWarnings":[[2,"Author is unknown"]],"normalized":"Placodium cf. chrysoleucum chrysoleucum (Sm.) anon.","canonicalName":{"value":"Placodium chrysoleucum chrysoleucum","valueRanked":"Placodium chrysoleucum chrysoleucum"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["annotationIdentification",23,26],["infraspecificEpithet",27,39],["authorWord",41,44],["authorWord",46,51]],"nameStringId":"e0b84689-70e3-508a-8040-8859dc6084c0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Placodium"},"specificEpithet":{"value":"chrysoleucum"},"infraspecificEpithets":[{"value":"chrysoleucum","authorship":{"value":"(Sm.) anon.","basionymAuthorship":{"authors":["Sm."]},"combinationAuthorship":{"authors":["anon."]}}}],"annotationIdentification":"cf."}],"bacteria":false}
+#e0b84689-70e3-508a-8040-8859dc6084c0|Placodium chrysoleucum cf. chrysoleucum (Sm.) anon.|Placodium chrysoleucum chrysoleucum|Placodium chrysoleucum chrysoleucum|(Sm.) anon.||2
+
+Abturia cf. alabamensis (Morton )
+Abturia cf. alabamensis (Morton )
+{"quality":3,"parsed":true,"verbatim":"Abturia cf. alabamensis (Morton )","surrogate":true,"qualityWarnings":[[3,"Name comparison"]],"normalized":"Abturia cf. alabamensis (Morton)","canonicalName":{"value":"Abturia alabamensis","valueRanked":"Abturia alabamensis"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,11],["specificEpithet",12,23],["authorWord",25,31]],"nameStringId":"5fd4ce59-98d3-50af-9e28-918adc47d264","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abturia"},"specificEpithet":{"value":"alabamensis","authorship":{"value":"(Morton)","basionymAuthorship":{"authors":["Morton"]}}},"annotationIdentification":"cf."}],"bacteria":false}
+5fd4ce59-98d3-50af-9e28-918adc47d264|Abturia cf. alabamensis (Morton )|Abturia alabamensis|Abturia alabamensis|(Morton)||3
+
+Abturia cf alabamensis (Morton )
+Abturia cf alabamensis (Morton )
+{"quality":3,"parsed":true,"verbatim":"Abturia cf alabamensis (Morton )","surrogate":true,"qualityWarnings":[[3,"Name comparison"]],"normalized":"Abturia cf alabamensis (Morton)","canonicalName":{"value":"Abturia alabamensis","valueRanked":"Abturia alabamensis"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,10],["specificEpithet",11,22],["authorWord",24,30]],"nameStringId":"423cd26d-c6fd-54fb-937b-f98ba8056fc0","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abturia"},"specificEpithet":{"value":"alabamensis","authorship":{"value":"(Morton)","basionymAuthorship":{"authors":["Morton"]}}},"annotationIdentification":"cf"}],"bacteria":false}
+423cd26d-c6fd-54fb-937b-f98ba8056fc0|Abturia cf alabamensis (Morton )|Abturia alabamensis|Abturia alabamensis|(Morton)||3
 
 #TODO Larus occidentalis cf. wymani|{}
 Calidris cf. cooperi
@@ -1633,7 +1629,7 @@ Coleoptera
 
 Coleoptera Bold:AAV0432
 Coleoptera
-{"quality":3,"parsed":true,"verbatim":"Coleoptera Bold:AAV0432","surrogate":true,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Coleoptera","canonicalName":{"value":"Coleoptera","valueRanked":"Coleoptera"},"virus":false,"positions":[["uninomial",0,10]],"nameStringId":"9b3865ee-dcf6-5861-9910-58d9f3eafbb1","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Coleoptera"}}],"bacteria":false,"unparsedTail":" Bold:AAV0432"}
+{"quality":3,"parsed":true,"verbatim":"Coleoptera Bold:AAV0432","surrogate":true,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Coleoptera","canonicalName":{"value":"Coleoptera","valueRanked":"Coleoptera"},"virus":false,"positions":[["uninomial",0,10]],"nameStringId":"9b3865ee-dcf6-5861-9910-58d9f3eafbb1","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Coleoptera"}}],"bacteria":false,"unparsedTail":" Bold:AAV0432"}
 9b3865ee-dcf6-5861-9910-58d9f3eafbb1|Coleoptera Bold:AAV0432|Coleoptera|Coleoptera|||3
 #>
 
@@ -1908,12 +1904,12 @@ Xanthomonas axonopodis pathovar. phaseoli
 
 Xanthomonas axonopodis pathovar.
 Xanthomonas axonopodis pathovar.
-{"quality":3,"parsed":true,"verbatim":"Xanthomonas axonopodis pathovar.","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Xanthomonas axonopodis","canonicalName":{"value":"Xanthomonas axonopodis","valueRanked":"Xanthomonas axonopodis"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,22]],"nameStringId":"851a86de-df67-5fba-b3f7-73937a5edbce","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xanthomonas"},"specificEpithet":{"value":"axonopodis"}}],"bacteria":true,"unparsedTail":" pathovar."}
+{"quality":3,"parsed":true,"verbatim":"Xanthomonas axonopodis pathovar.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Xanthomonas axonopodis","canonicalName":{"value":"Xanthomonas axonopodis","valueRanked":"Xanthomonas axonopodis"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,22]],"nameStringId":"851a86de-df67-5fba-b3f7-73937a5edbce","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xanthomonas"},"specificEpithet":{"value":"axonopodis"}}],"bacteria":true,"unparsedTail":" pathovar."}
 851a86de-df67-5fba-b3f7-73937a5edbce|Xanthomonas axonopodis pathovar.|Xanthomonas axonopodis|Xanthomonas axonopodis|||3
 
 Xanthomonas axonopodis pv.
 Xanthomonas axonopodis pv.
-{"quality":3,"parsed":true,"verbatim":"Xanthomonas axonopodis pv.","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Xanthomonas axonopodis","canonicalName":{"value":"Xanthomonas axonopodis","valueRanked":"Xanthomonas axonopodis"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,22]],"nameStringId":"0c0ce6dd-e5ea-5c17-8be3-c381ff662f12","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xanthomonas"},"specificEpithet":{"value":"axonopodis"}}],"bacteria":true,"unparsedTail":" pv."}
+{"quality":3,"parsed":true,"verbatim":"Xanthomonas axonopodis pv.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Xanthomonas axonopodis","canonicalName":{"value":"Xanthomonas axonopodis","valueRanked":"Xanthomonas axonopodis"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,22]],"nameStringId":"0c0ce6dd-e5ea-5c17-8be3-c381ff662f12","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xanthomonas"},"specificEpithet":{"value":"axonopodis"}}],"bacteria":true,"unparsedTail":" pv."}
 0c0ce6dd-e5ea-5c17-8be3-c381ff662f12|Xanthomonas axonopodis pv.|Xanthomonas axonopodis|Xanthomonas axonopodis|||3
 #>
 
@@ -1932,7 +1928,7 @@ b8d77a78-2698-5050-9c7a-638f615bd357|Velutina haliotoides (Linnaeus, 1758), <i>s
 
 Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger, 20
 Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger
-{"quality":3,"parsed":true,"verbatim":"Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger, 20","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger","canonicalName":{"value":"Fusinus clavilithoides","valueRanked":"Fusinus clavilithoides"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,22],["authorWord",23,29],["authorWord",31,41],["authorWord",43,53],["authorWord",56,69]],"nameStringId":"76a62c41-361e-532c-852c-ab3dc7ab09cb","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Fusinus"},"specificEpithet":{"value":"clavilithoides","authorship":{"value":"Landau, Harzhauser, Büyükmeriç & Breitenberger","basionymAuthorship":{"authors":["Landau","Harzhauser","Büyükmeriç","Breitenberger"]}}}}],"bacteria":false,"unparsedTail":" 20"}
+{"quality":3,"parsed":true,"verbatim":"Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger, 20","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger","canonicalName":{"value":"Fusinus clavilithoides","valueRanked":"Fusinus clavilithoides"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,22],["authorWord",23,29],["authorWord",31,41],["authorWord",43,53],["authorWord",56,69]],"nameStringId":"76a62c41-361e-532c-852c-ab3dc7ab09cb","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Fusinus"},"specificEpithet":{"value":"clavilithoides","authorship":{"value":"Landau, Harzhauser, Büyükmeriç & Breitenberger","basionymAuthorship":{"authors":["Landau","Harzhauser","Büyükmeriç","Breitenberger"]}}}}],"bacteria":false,"unparsedTail":" 20"}
 76a62c41-361e-532c-852c-ab3dc7ab09cb|Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger, 20|Fusinus clavilithoides|Fusinus clavilithoides|Landau, Harzhauser, Büyükmeriç & Breitenberger||3
 
 <i>Velutina halioides</i> (Linnaeus, 1758)
@@ -1986,13 +1982,13 @@ c4dd80b7-984b-51f8-a4ec-573b4b32358b|Naviculadicta witkowskii LB & Metzeltin nov
 #SECTION stray ex is not parsed as species<
 Pelargonium cucullatum ssp. cucullatum (L.) L'Her. ex [Soland.]
 Pelargonium cucullatum ssp. cucullatum (L.) L'Her.
-{"quality":3,"parsed":true,"verbatim":"Pelargonium cucullatum ssp. cucullatum (L.) L'Her. ex [Soland.]","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Pelargonium cucullatum ssp. cucullatum (L.) L'Her.","canonicalName":{"value":"Pelargonium cucullatum cucullatum","valueRanked":"Pelargonium cucullatum ssp. cucullatum"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,22],["rank",23,27],["infraspecificEpithet",28,38],["authorWord",40,42],["authorWord",44,50]],"nameStringId":"83811b74-a581-5801-aa49-d4eab6775fdb","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Pelargonium"},"specificEpithet":{"value":"cucullatum"},"infraspecificEpithets":[{"value":"cucullatum","rank":"ssp.","authorship":{"value":"(L.) L'Her.","basionymAuthorship":{"authors":["L."]},"combinationAuthorship":{"authors":["L'Her."]}}}]}],"bacteria":false,"unparsedTail":" ex [Soland.]"}
+{"quality":3,"parsed":true,"verbatim":"Pelargonium cucullatum ssp. cucullatum (L.) L'Her. ex [Soland.]","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Pelargonium cucullatum ssp. cucullatum (L.) L'Her.","canonicalName":{"value":"Pelargonium cucullatum cucullatum","valueRanked":"Pelargonium cucullatum ssp. cucullatum"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,22],["rank",23,27],["infraspecificEpithet",28,38],["authorWord",40,42],["authorWord",44,50]],"nameStringId":"83811b74-a581-5801-aa49-d4eab6775fdb","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Pelargonium"},"specificEpithet":{"value":"cucullatum"},"infraspecificEpithets":[{"value":"cucullatum","rank":"ssp.","authorship":{"value":"(L.) L'Her.","basionymAuthorship":{"authors":["L."]},"combinationAuthorship":{"authors":["L'Her."]}}}]}],"bacteria":false,"unparsedTail":" ex [Soland.]"}
 83811b74-a581-5801-aa49-d4eab6775fdb|Pelargonium cucullatum ssp. cucullatum (L.) L'Her. ex [Soland.]|Pelargonium cucullatum cucullatum|Pelargonium cucullatum ssp. cucullatum|(L.) L'Her.||3
 
 # not dealing with ex. gr for now
 Acastella ex gr. rouaulti
 Acastella
-{"quality":3,"parsed":true,"verbatim":"Acastella ex gr. rouaulti","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Acastella","canonicalName":{"value":"Acastella","valueRanked":"Acastella"},"virus":false,"positions":[["uninomial",0,9]],"nameStringId":"c1864b52-848a-5de7-8f2d-a3cfe2025c40","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Acastella"}}],"bacteria":false,"unparsedTail":" ex gr. rouaulti"}
+{"quality":3,"parsed":true,"verbatim":"Acastella ex gr. rouaulti","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Acastella","canonicalName":{"value":"Acastella","valueRanked":"Acastella"},"virus":false,"positions":[["uninomial",0,9]],"nameStringId":"c1864b52-848a-5de7-8f2d-a3cfe2025c40","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Acastella"}}],"bacteria":false,"unparsedTail":" ex gr. rouaulti"}
 c1864b52-848a-5de7-8f2d-a3cfe2025c40|Acastella ex gr. rouaulti|Acastella|Acastella|||3
 # >
 
@@ -2007,7 +2003,7 @@ f2bfaa25-c25f-5a31-90c6-a19bd4dc23f4|Lecanora strobilinoides GIRALT & GÓMEZ-BOL
 #SECTION numbers and letters separated with '-' are not parsed as authors <
 Astatotilapia cf. bloyeti OS-2017
 Astatotilapia cf. bloyeti
-{"quality":3,"parsed":true,"verbatim":"Astatotilapia cf. bloyeti OS-2017","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[3,"Unparseable tail"]],"normalized":"Astatotilapia cf. bloyeti","canonicalName":{"value":"Astatotilapia bloyeti","valueRanked":"Astatotilapia bloyeti"},"virus":false,"positions":[["genus",0,13],["annotationIdentification",14,17],["specificEpithet",18,25]],"nameStringId":"c841aa1d-78ea-5b6a-93fc-e18c54164144","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Astatotilapia"},"specificEpithet":{"value":"bloyeti"},"annotationIdentification":"cf."}],"bacteria":false,"unparsedTail":" OS-2017"}
+{"quality":3,"parsed":true,"verbatim":"Astatotilapia cf. bloyeti OS-2017","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[3,"Unparsed tail"]],"normalized":"Astatotilapia cf. bloyeti","canonicalName":{"value":"Astatotilapia bloyeti","valueRanked":"Astatotilapia bloyeti"},"virus":false,"positions":[["genus",0,13],["annotationIdentification",14,17],["specificEpithet",18,25]],"nameStringId":"c841aa1d-78ea-5b6a-93fc-e18c54164144","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Astatotilapia"},"specificEpithet":{"value":"bloyeti"},"annotationIdentification":"cf."}],"bacteria":false,"unparsedTail":" OS-2017"}
 c841aa1d-78ea-5b6a-93fc-e18c54164144|Astatotilapia cf. bloyeti OS-2017|Astatotilapia bloyeti|Astatotilapia bloyeti|||3
 #>
 
@@ -2043,7 +2039,7 @@ c57de7fd-b94e-54e1-a856-72b0668ab818|Oxalis_barrelieri  |Oxalis barrelieri|Oxali
 #SECTION: numbers at the start/middle of names<
 Nesomyrmex madecassus_01m
 Nesomyrmex madecassus
-{"quality":3,"parsed":true,"verbatim":"Nesomyrmex madecassus_01m","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Nesomyrmex madecassus","canonicalName":{"value":"Nesomyrmex madecassus","valueRanked":"Nesomyrmex madecassus"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,21]],"nameStringId":"30dd0028-1ad4-5f65-ba5e-3df4963825d2","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Nesomyrmex"},"specificEpithet":{"value":"madecassus"}}],"bacteria":false,"unparsedTail":"_01m"}
+{"quality":3,"parsed":true,"verbatim":"Nesomyrmex madecassus_01m","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Nesomyrmex madecassus","canonicalName":{"value":"Nesomyrmex madecassus","valueRanked":"Nesomyrmex madecassus"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,21]],"nameStringId":"30dd0028-1ad4-5f65-ba5e-3df4963825d2","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Nesomyrmex"},"specificEpithet":{"value":"madecassus"}}],"bacteria":false,"unparsedTail":"_01m"}
 30dd0028-1ad4-5f65-ba5e-3df4963825d2|Nesomyrmex madecassus_01m|Nesomyrmex madecassus|Nesomyrmex madecassus|||3
 
 Hypochrys0des
@@ -2058,22 +2054,22 @@ c053bbbf-de6c-5b22-a0f9-0803093b9b2d|Hypochrys0des Leraut 1981|||||1
 
 Phyllodoce mucosa 0ersted, 1843
 Phyllodoce mucosa
-{"quality":3,"parsed":true,"verbatim":"Phyllodoce mucosa 0ersted, 1843","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Phyllodoce mucosa","canonicalName":{"value":"Phyllodoce mucosa","valueRanked":"Phyllodoce mucosa"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,17]],"nameStringId":"52695b7b-ebef-5624-9ccf-f9d07cd8133c","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Phyllodoce"},"specificEpithet":{"value":"mucosa"}}],"bacteria":false,"unparsedTail":" 0ersted, 1843"}
+{"quality":3,"parsed":true,"verbatim":"Phyllodoce mucosa 0ersted, 1843","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Phyllodoce mucosa","canonicalName":{"value":"Phyllodoce mucosa","valueRanked":"Phyllodoce mucosa"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,17]],"nameStringId":"52695b7b-ebef-5624-9ccf-f9d07cd8133c","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Phyllodoce"},"specificEpithet":{"value":"mucosa"}}],"bacteria":false,"unparsedTail":" 0ersted, 1843"}
 52695b7b-ebef-5624-9ccf-f9d07cd8133c|Phyllodoce mucosa 0ersted, 1843|Phyllodoce mucosa|Phyllodoce mucosa|||3
 
 Attelabus 0l.
 Attelabus
-{"quality":3,"parsed":true,"verbatim":"Attelabus 0l.","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Attelabus","canonicalName":{"value":"Attelabus","valueRanked":"Attelabus"},"virus":false,"positions":[["uninomial",0,9]],"nameStringId":"b9edee54-a7ae-525a-a319-ffeed18cf88a","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Attelabus"}}],"bacteria":false,"unparsedTail":" 0l."}
+{"quality":3,"parsed":true,"verbatim":"Attelabus 0l.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Attelabus","canonicalName":{"value":"Attelabus","valueRanked":"Attelabus"},"virus":false,"positions":[["uninomial",0,9]],"nameStringId":"b9edee54-a7ae-525a-a319-ffeed18cf88a","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Attelabus"}}],"bacteria":false,"unparsedTail":" 0l."}
 b9edee54-a7ae-525a-a319-ffeed18cf88a|Attelabus 0l.|Attelabus|Attelabus|||3
 
 Acrobothrium 0lsson 1872
 Acrobothrium
-{"quality":3,"parsed":true,"verbatim":"Acrobothrium 0lsson 1872","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Acrobothrium","canonicalName":{"value":"Acrobothrium","valueRanked":"Acrobothrium"},"virus":false,"positions":[["uninomial",0,12]],"nameStringId":"2edfbcca-af28-5498-a762-663e5d5b9f73","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Acrobothrium"}}],"bacteria":false,"unparsedTail":" 0lsson 1872"}
+{"quality":3,"parsed":true,"verbatim":"Acrobothrium 0lsson 1872","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Acrobothrium","canonicalName":{"value":"Acrobothrium","valueRanked":"Acrobothrium"},"virus":false,"positions":[["uninomial",0,12]],"nameStringId":"2edfbcca-af28-5498-a762-663e5d5b9f73","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Acrobothrium"}}],"bacteria":false,"unparsedTail":" 0lsson 1872"}
 2edfbcca-af28-5498-a762-663e5d5b9f73|Acrobothrium 0lsson 1872|Acrobothrium|Acrobothrium|||3
 
 Staphylinus haemrrhoidalis 0l. nec Gmel
 Staphylinus haemrrhoidalis
-{"quality":3,"parsed":true,"verbatim":"Staphylinus haemrrhoidalis 0l. nec Gmel","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Staphylinus haemrrhoidalis","canonicalName":{"value":"Staphylinus haemrrhoidalis","valueRanked":"Staphylinus haemrrhoidalis"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,26]],"nameStringId":"3ef602da-08a5-5acf-8f8a-9c515373ccda","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Staphylinus"},"specificEpithet":{"value":"haemrrhoidalis"}}],"bacteria":false,"unparsedTail":" 0l. nec Gmel"}
+{"quality":3,"parsed":true,"verbatim":"Staphylinus haemrrhoidalis 0l. nec Gmel","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Staphylinus haemrrhoidalis","canonicalName":{"value":"Staphylinus haemrrhoidalis","valueRanked":"Staphylinus haemrrhoidalis"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,26]],"nameStringId":"3ef602da-08a5-5acf-8f8a-9c515373ccda","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Staphylinus"},"specificEpithet":{"value":"haemrrhoidalis"}}],"bacteria":false,"unparsedTail":" 0l. nec Gmel"}
 3ef602da-08a5-5acf-8f8a-9c515373ccda|Staphylinus haemrrhoidalis 0l. nec Gmel|Staphylinus haemrrhoidalis|Staphylinus haemrrhoidalis|||3
 
 Ea92virus
@@ -2086,12 +2082,12 @@ np
 #TODO: collect year information
 Acarospora cratericola 1929
 Acarospora cratericola
-{"quality":3,"parsed":true,"verbatim":"Acarospora cratericola 1929","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Acarospora cratericola","canonicalName":{"value":"Acarospora cratericola","valueRanked":"Acarospora cratericola"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,22]],"nameStringId":"11335046-cf05-5571-84bb-f9c8a4b2d8de","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acarospora"},"specificEpithet":{"value":"cratericola"}}],"bacteria":false,"unparsedTail":" 1929"}
+{"quality":3,"parsed":true,"verbatim":"Acarospora cratericola 1929","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Acarospora cratericola","canonicalName":{"value":"Acarospora cratericola","valueRanked":"Acarospora cratericola"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,22]],"nameStringId":"11335046-cf05-5571-84bb-f9c8a4b2d8de","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acarospora"},"specificEpithet":{"value":"cratericola"}}],"bacteria":false,"unparsedTail":" 1929"}
 11335046-cf05-5571-84bb-f9c8a4b2d8de|Acarospora cratericola 1929|Acarospora cratericola|Acarospora cratericola|||3
 
 Goggia gemmula 1996
 Goggia gemmula
-{"quality":3,"parsed":true,"verbatim":"Goggia gemmula 1996","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Goggia gemmula","canonicalName":{"value":"Goggia gemmula","valueRanked":"Goggia gemmula"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,14]],"nameStringId":"707ab43c-41bd-56bc-b2aa-96db4913ad35","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Goggia"},"specificEpithet":{"value":"gemmula"}}],"bacteria":false,"unparsedTail":" 1996"}
+{"quality":3,"parsed":true,"verbatim":"Goggia gemmula 1996","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Goggia gemmula","canonicalName":{"value":"Goggia gemmula","valueRanked":"Goggia gemmula"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,14]],"nameStringId":"707ab43c-41bd-56bc-b2aa-96db4913ad35","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Goggia"},"specificEpithet":{"value":"gemmula"}}],"bacteria":false,"unparsedTail":" 1996"}
 707ab43c-41bd-56bc-b2aa-96db4913ad35|Goggia gemmula 1996|Goggia gemmula|Goggia gemmula|||3
 #>
 
@@ -2199,7 +2195,7 @@ Kinosternidae　Agassiz, 1857
 #SECTION: Punctuation in the end<
 Melanius:
 Melanius
-{"quality":3,"parsed":true,"verbatim":"Melanius:","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Melanius","canonicalName":{"value":"Melanius","valueRanked":"Melanius"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"0a761224-66db-55b4-b6f0-85de52534125","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Melanius"}}],"bacteria":false,"unparsedTail":":"}
+{"quality":3,"parsed":true,"verbatim":"Melanius:","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Melanius","canonicalName":{"value":"Melanius","valueRanked":"Melanius"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"0a761224-66db-55b4-b6f0-85de52534125","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Melanius"}}],"bacteria":false,"unparsedTail":":"}
 0a761224-66db-55b4-b6f0-85de52534125|Melanius:|Melanius|Melanius|||3
 
 # NOTE `.` is not the end of the sentence anymore, but a part of the year `1913.`. `Next` is parsed as an author
@@ -2210,27 +2206,27 @@ Melanius
 
 Negalasa fumalis. Next sentence
 Negalasa
-{"quality":3,"parsed":true,"verbatim":"Negalasa fumalis. Next sentence","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Negalasa","canonicalName":{"value":"Negalasa","valueRanked":"Negalasa"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"ce740482-fa87-5d84-b335-1c063fd18de1","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Negalasa"}}],"bacteria":false,"unparsedTail":" fumalis. Next sentence"}
+{"quality":3,"parsed":true,"verbatim":"Negalasa fumalis. Next sentence","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Negalasa","canonicalName":{"value":"Negalasa","valueRanked":"Negalasa"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"ce740482-fa87-5d84-b335-1c063fd18de1","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Negalasa"}}],"bacteria":false,"unparsedTail":" fumalis. Next sentence"}
 ce740482-fa87-5d84-b335-1c063fd18de1|Negalasa fumalis. Next sentence|Negalasa|Negalasa|||3
 
 Negalasa fumalis, continuation of a sentence
 Negalasa
-{"quality":3,"parsed":true,"verbatim":"Negalasa fumalis, continuation of a sentence","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"],[2,"Name had to be changed by preprocessing"]],"normalized":"Negalasa","canonicalName":{"value":"Negalasa","valueRanked":"Negalasa"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"7862a3d9-ba4d-5f53-a106-ea048e558f1a","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Negalasa"}}],"bacteria":false,"unparsedTail":" fumalis, continuation"}
+{"quality":3,"parsed":true,"verbatim":"Negalasa fumalis, continuation of a sentence","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"],[2,"Name had to be changed by preprocessing"]],"normalized":"Negalasa","canonicalName":{"value":"Negalasa","valueRanked":"Negalasa"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"7862a3d9-ba4d-5f53-a106-ea048e558f1a","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Negalasa"}}],"bacteria":false,"unparsedTail":" fumalis, continuation"}
 7862a3d9-ba4d-5f53-a106-ea048e558f1a|Negalasa fumalis, continuation of a sentence|Negalasa|Negalasa|||3
 
 Negalasa fumalis Barnes; something else
 Negalasa fumalis Barnes
-{"quality":3,"parsed":true,"verbatim":"Negalasa fumalis Barnes; something else","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Negalasa fumalis Barnes","canonicalName":{"value":"Negalasa fumalis","valueRanked":"Negalasa fumalis"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,16],["authorWord",17,23]],"nameStringId":"6359dac4-1a88-5b41-86d3-9c01aaee4a2e","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Negalasa"},"specificEpithet":{"value":"fumalis","authorship":{"value":"Barnes","basionymAuthorship":{"authors":["Barnes"]}}}}],"bacteria":false,"unparsedTail":"; something else"}
+{"quality":3,"parsed":true,"verbatim":"Negalasa fumalis Barnes; something else","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Negalasa fumalis Barnes","canonicalName":{"value":"Negalasa fumalis","valueRanked":"Negalasa fumalis"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,16],["authorWord",17,23]],"nameStringId":"6359dac4-1a88-5b41-86d3-9c01aaee4a2e","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Negalasa"},"specificEpithet":{"value":"fumalis","authorship":{"value":"Barnes","basionymAuthorship":{"authors":["Barnes"]}}}}],"bacteria":false,"unparsedTail":"; something else"}
 6359dac4-1a88-5b41-86d3-9c01aaee4a2e|Negalasa fumalis Barnes; something else|Negalasa fumalis|Negalasa fumalis|Barnes||3
 
 Negaprion brevirostris Negaprion brevirostris, the rest of the sentence
 Negaprion brevirostris Negaprion
-{"quality":3,"parsed":true,"verbatim":"Negaprion brevirostris Negaprion brevirostris, the rest of the sentence","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"],[2,"Name had to be changed by preprocessing"]],"normalized":"Negaprion brevirostris Negaprion","canonicalName":{"value":"Negaprion brevirostris","valueRanked":"Negaprion brevirostris"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["authorWord",23,32]],"nameStringId":"619b95fa-017d-5b9b-b800-64ebd5ed433b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Negaprion"},"specificEpithet":{"value":"brevirostris","authorship":{"value":"Negaprion","basionymAuthorship":{"authors":["Negaprion"]}}}}],"bacteria":false,"unparsedTail":" brevirostris, the rest"}
+{"quality":3,"parsed":true,"verbatim":"Negaprion brevirostris Negaprion brevirostris, the rest of the sentence","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"],[2,"Name had to be changed by preprocessing"]],"normalized":"Negaprion brevirostris Negaprion","canonicalName":{"value":"Negaprion brevirostris","valueRanked":"Negaprion brevirostris"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["authorWord",23,32]],"nameStringId":"619b95fa-017d-5b9b-b800-64ebd5ed433b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Negaprion"},"specificEpithet":{"value":"brevirostris","authorship":{"value":"Negaprion","basionymAuthorship":{"authors":["Negaprion"]}}}}],"bacteria":false,"unparsedTail":" brevirostris, the rest"}
 619b95fa-017d-5b9b-b800-64ebd5ed433b|Negaprion brevirostris Negaprion brevirostris, the rest of the sentence|Negaprion brevirostris|Negaprion brevirostris|Negaprion||3
 
 Negaprion fronto (Jordan and Gilbert, 1882):
 Negaprion
-{"quality":3,"parsed":true,"verbatim":"Negaprion fronto (Jordan and Gilbert, 1882):","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Negaprion","canonicalName":{"value":"Negaprion","valueRanked":"Negaprion"},"virus":false,"positions":[["uninomial",0,9]],"nameStringId":"4bb6a543-d757-5fa5-ae8b-a5ac95722e1d","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Negaprion"}}],"bacteria":false,"unparsedTail":" fronto (Jordan and Gilbert, 1882):"}
+{"quality":3,"parsed":true,"verbatim":"Negaprion fronto (Jordan and Gilbert, 1882):","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Negaprion","canonicalName":{"value":"Negaprion","valueRanked":"Negaprion"},"virus":false,"positions":[["uninomial",0,9]],"nameStringId":"4bb6a543-d757-5fa5-ae8b-a5ac95722e1d","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Negaprion"}}],"bacteria":false,"unparsedTail":" fronto (Jordan and Gilbert, 1882):"}
 4bb6a543-d757-5fa5-ae8b-a5ac95722e1d|Negaprion fronto (Jordan and Gilbert, 1882):|Negaprion|Negaprion|||3
 #>
 
@@ -2239,7 +2235,7 @@ Negaprion
 # not dealing with this misspelling...
 Acanthochiton ex quisitus
 Acanthochiton
-{"quality":3,"parsed":true,"verbatim":"Acanthochiton ex quisitus","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Acanthochiton","canonicalName":{"value":"Acanthochiton","valueRanked":"Acanthochiton"},"virus":false,"positions":[["uninomial",0,13]],"nameStringId":"00392ae2-1bd9-5a14-bea9-9d26f1107892","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Acanthochiton"}}],"bacteria":false,"unparsedTail":" ex quisitus"}
+{"quality":3,"parsed":true,"verbatim":"Acanthochiton ex quisitus","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Acanthochiton","canonicalName":{"value":"Acanthochiton","valueRanked":"Acanthochiton"},"virus":false,"positions":[["uninomial",0,13]],"nameStringId":"00392ae2-1bd9-5a14-bea9-9d26f1107892","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Acanthochiton"}}],"bacteria":false,"unparsedTail":" ex quisitus"}
 00392ae2-1bd9-5a14-bea9-9d26f1107892|Acanthochiton ex quisitus|Acanthochiton|Acanthochiton|||3
 #>
 
@@ -2248,7 +2244,7 @@ Acanthochiton
 #SECTION: Names with unparsed_tail at the end<
 Morea (Morea) Burt 2342343242 23424322342 23424234
 Morea (Morea) Burt
-{"quality":3,"parsed":true,"verbatim":"Morea (Morea) Burt 2342343242 23424322342 23424234","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"],[2,"Combination of two uninomials"]],"normalized":"Morea subgen. Morea Burt","canonicalName":{"value":"Morea","valueRanked":"Morea subgen. Morea"},"virus":false,"positions":[["uninomial",0,5],["uninomial",7,12],["authorWord",14,18]],"nameStringId":"ca23679f-f3d8-5194-a406-048f970c4020","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Morea","rank":"subgen.","parent":"Morea","authorship":{"value":"Burt","basionymAuthorship":{"authors":["Burt"]}}}}],"bacteria":false,"unparsedTail":" 2342343242 23424322342 23424234"}
+{"quality":3,"parsed":true,"verbatim":"Morea (Morea) Burt 2342343242 23424322342 23424234","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"],[2,"Combination of two uninomials"]],"normalized":"Morea subgen. Morea Burt","canonicalName":{"value":"Morea","valueRanked":"Morea subgen. Morea"},"virus":false,"positions":[["uninomial",0,5],["uninomial",7,12],["authorWord",14,18]],"nameStringId":"ca23679f-f3d8-5194-a406-048f970c4020","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Morea","rank":"subgen.","parent":"Morea","authorship":{"value":"Burt","basionymAuthorship":{"authors":["Burt"]}}}}],"bacteria":false,"unparsedTail":" 2342343242 23424322342 23424234"}
 ca23679f-f3d8-5194-a406-048f970c4020|Morea (Morea) Burt 2342343242 23424322342 23424234|Morea|Morea subgen. Morea|Burt||3
 
 Nautilus asterizans von
@@ -2260,17 +2256,17 @@ Nautilus asterizans
 #SECTION: Discard apostrophes at the start and end of words<
 Acer 'lanum'
 Acer
-{"quality":3,"parsed":true,"verbatim":"Acer 'lanum'","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Acer","canonicalName":{"value":"Acer","valueRanked":"Acer"},"virus":false,"positions":[["uninomial",0,4]],"nameStringId":"2db01ed9-9983-5b33-bc2c-8e272539b928","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Acer"}}],"bacteria":false,"unparsedTail":" 'lanum'"}
+{"quality":3,"parsed":true,"verbatim":"Acer 'lanum'","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Acer","canonicalName":{"value":"Acer","valueRanked":"Acer"},"virus":false,"positions":[["uninomial",0,4]],"nameStringId":"2db01ed9-9983-5b33-bc2c-8e272539b928","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Acer"}}],"bacteria":false,"unparsedTail":" 'lanum'"}
 2db01ed9-9983-5b33-bc2c-8e272539b928|Acer 'lanum'|Acer|Acer|||3
 
 Labeotropheus trewavasae 'albino
 Labeotropheus trewavasae
-{"quality":3,"parsed":true,"verbatim":"Labeotropheus trewavasae 'albino","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Labeotropheus trewavasae","canonicalName":{"value":"Labeotropheus trewavasae","valueRanked":"Labeotropheus trewavasae"},"virus":false,"positions":[["genus",0,13],["specificEpithet",14,24]],"nameStringId":"0cb9e0ae-1201-5023-8d20-689d60a3e20c","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Labeotropheus"},"specificEpithet":{"value":"trewavasae"}}],"bacteria":false,"unparsedTail":" 'albino"}
+{"quality":3,"parsed":true,"verbatim":"Labeotropheus trewavasae 'albino","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Labeotropheus trewavasae","canonicalName":{"value":"Labeotropheus trewavasae","valueRanked":"Labeotropheus trewavasae"},"virus":false,"positions":[["genus",0,13],["specificEpithet",14,24]],"nameStringId":"0cb9e0ae-1201-5023-8d20-689d60a3e20c","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Labeotropheus"},"specificEpithet":{"value":"trewavasae"}}],"bacteria":false,"unparsedTail":" 'albino"}
 0cb9e0ae-1201-5023-8d20-689d60a3e20c|Labeotropheus trewavasae 'albino|Labeotropheus trewavasae|Labeotropheus trewavasae|||3
 
 Labeotropheus trewavasae albino'
 Labeotropheus trewavasae
-{"quality":3,"parsed":true,"verbatim":"Labeotropheus trewavasae albino'","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Labeotropheus trewavasae","canonicalName":{"value":"Labeotropheus trewavasae","valueRanked":"Labeotropheus trewavasae"},"virus":false,"positions":[["genus",0,13],["specificEpithet",14,24]],"nameStringId":"f190cdee-14f0-5174-947d-476dab6baeff","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Labeotropheus"},"specificEpithet":{"value":"trewavasae"}}],"bacteria":false,"unparsedTail":" albino'"}
+{"quality":3,"parsed":true,"verbatim":"Labeotropheus trewavasae albino'","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Labeotropheus trewavasae","canonicalName":{"value":"Labeotropheus trewavasae","valueRanked":"Labeotropheus trewavasae"},"virus":false,"positions":[["genus",0,13],["specificEpithet",14,24]],"nameStringId":"f190cdee-14f0-5174-947d-476dab6baeff","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Labeotropheus"},"specificEpithet":{"value":"trewavasae"}}],"bacteria":false,"unparsedTail":" albino'"}
 f190cdee-14f0-5174-947d-476dab6baeff|Labeotropheus trewavasae albino'|Labeotropheus trewavasae|Labeotropheus trewavasae|||3
 
 Phedimus takesimensis (Nakai) 't Hart
@@ -2283,7 +2279,7 @@ Phedimus takesimensis (Nakai) 't Hart
 #incorrectly parsed, but we will live with it for now
 Solanum tuberosum wila-k'oy
 Solanum tuberosum
-{"quality":3,"parsed":true,"verbatim":"Solanum tuberosum wila-k'oy","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Solanum tuberosum","canonicalName":{"value":"Solanum tuberosum","valueRanked":"Solanum tuberosum"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17]],"nameStringId":"3d40713c-3b98-5b38-a3e8-555698722078","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Solanum"},"specificEpithet":{"value":"tuberosum"}}],"bacteria":false,"unparsedTail":" wila-k'oy"}
+{"quality":3,"parsed":true,"verbatim":"Solanum tuberosum wila-k'oy","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Solanum tuberosum","canonicalName":{"value":"Solanum tuberosum","valueRanked":"Solanum tuberosum"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17]],"nameStringId":"3d40713c-3b98-5b38-a3e8-555698722078","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Solanum"},"specificEpithet":{"value":"tuberosum"}}],"bacteria":false,"unparsedTail":" wila-k'oy"}
 3d40713c-3b98-5b38-a3e8-555698722078|Solanum tuberosum wila-k'oy|Solanum tuberosum|Solanum tuberosum|||3
 
 # correctly parsed
@@ -2296,36 +2292,36 @@ Solanum × juzepczukii janck'o-ckaisalla
 #SECTION: Possible canonical<
 Morea (Morea) burtius 2342343242 23424322342 23424234
 Morea (Morea) burtius
-{"quality":3,"parsed":true,"verbatim":"Morea (Morea) burtius 2342343242 23424322342 23424234","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Morea (Morea) burtius","canonicalName":{"value":"Morea burtius","valueRanked":"Morea burtius"},"virus":false,"positions":[["genus",0,5],["infragenericEpithet",7,12],["specificEpithet",14,21]],"nameStringId":"03f59808-c30e-55da-bea5-27aa035feb5d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Morea"},"specificEpithet":{"value":"burtius"},"infragenericEpithet":{"value":"Morea"}}],"bacteria":false,"unparsedTail":" 2342343242 23424322342 23424234"}
+{"quality":3,"parsed":true,"verbatim":"Morea (Morea) burtius 2342343242 23424322342 23424234","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Morea (Morea) burtius","canonicalName":{"value":"Morea burtius","valueRanked":"Morea burtius"},"virus":false,"positions":[["genus",0,5],["infragenericEpithet",7,12],["specificEpithet",14,21]],"nameStringId":"03f59808-c30e-55da-bea5-27aa035feb5d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Morea"},"specificEpithet":{"value":"burtius"},"infragenericEpithet":{"value":"Morea"}}],"bacteria":false,"unparsedTail":" 2342343242 23424322342 23424234"}
 03f59808-c30e-55da-bea5-27aa035feb5d|Morea (Morea) burtius 2342343242 23424322342 23424234|Morea burtius|Morea burtius|||3
 
 Verpericola megasoma ""Dall" Pils.
 Verpericola megasoma
-{"quality":3,"parsed":true,"verbatim":"Verpericola megasoma \"\"Dall\" Pils.","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Verpericola megasoma","canonicalName":{"value":"Verpericola megasoma","valueRanked":"Verpericola megasoma"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,20]],"nameStringId":"cebb60d9-fc8e-5fa0-874a-ae21819b242b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Verpericola"},"specificEpithet":{"value":"megasoma"}}],"bacteria":false,"unparsedTail":" \"\"Dall\" Pils."}
+{"quality":3,"parsed":true,"verbatim":"Verpericola megasoma \"\"Dall\" Pils.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Verpericola megasoma","canonicalName":{"value":"Verpericola megasoma","valueRanked":"Verpericola megasoma"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,20]],"nameStringId":"cebb60d9-fc8e-5fa0-874a-ae21819b242b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Verpericola"},"specificEpithet":{"value":"megasoma"}}],"bacteria":false,"unparsedTail":" \"\"Dall\" Pils."}
 cebb60d9-fc8e-5fa0-874a-ae21819b242b|Verpericola megasoma ""Dall" Pils.|Verpericola megasoma|Verpericola megasoma|||3
 
 Verpericola megasoma "Dall" Pils.
 Verpericola megasoma
-{"quality":3,"parsed":true,"verbatim":"Verpericola megasoma \"Dall\" Pils.","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Verpericola megasoma","canonicalName":{"value":"Verpericola megasoma","valueRanked":"Verpericola megasoma"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,20]],"nameStringId":"02011460-ba94-5162-98c9-4064a700c7f8","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Verpericola"},"specificEpithet":{"value":"megasoma"}}],"bacteria":false,"unparsedTail":" \"Dall\" Pils."}
+{"quality":3,"parsed":true,"verbatim":"Verpericola megasoma \"Dall\" Pils.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Verpericola megasoma","canonicalName":{"value":"Verpericola megasoma","valueRanked":"Verpericola megasoma"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,20]],"nameStringId":"02011460-ba94-5162-98c9-4064a700c7f8","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Verpericola"},"specificEpithet":{"value":"megasoma"}}],"bacteria":false,"unparsedTail":" \"Dall\" Pils."}
 02011460-ba94-5162-98c9-4064a700c7f8|Verpericola megasoma "Dall" Pils.|Verpericola megasoma|Verpericola megasoma|||3
 
 Moraea spathulata ( (L. f. Klatt
 Moraea spathulata
-{"quality":3,"parsed":true,"verbatim":"Moraea spathulata ( (L. f. Klatt","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Moraea spathulata","canonicalName":{"value":"Moraea spathulata","valueRanked":"Moraea spathulata"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"21cb8638-ff53-534f-b816-1e15ecbb818b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Moraea"},"specificEpithet":{"value":"spathulata"}}],"bacteria":false,"unparsedTail":" ( (L. f. Klatt"}
+{"quality":3,"parsed":true,"verbatim":"Moraea spathulata ( (L. f. Klatt","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Moraea spathulata","canonicalName":{"value":"Moraea spathulata","valueRanked":"Moraea spathulata"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"21cb8638-ff53-534f-b816-1e15ecbb818b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Moraea"},"specificEpithet":{"value":"spathulata"}}],"bacteria":false,"unparsedTail":" ( (L. f. Klatt"}
 21cb8638-ff53-534f-b816-1e15ecbb818b|Moraea spathulata ( (L. f. Klatt|Moraea spathulata|Moraea spathulata|||3
 
 Stewartia micrantha (Chun) Sealy, Bot. Mag. 176: t. 510. 1967.
-{"quality":3,"parsed":true,"verbatim":"Stewartia micrantha (Chun) Sealy, Bot. Mag. 176: t. 510. 1967.","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Stewartia micrantha (Chun) Sealy & Bot. Mag.","canonicalName":{"value":"Stewartia micrantha","valueRanked":"Stewartia micrantha"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,19],["authorWord",21,25],["authorWord",27,32],["authorWord",34,38],["authorWord",39,43]],"nameStringId":"7a4ffc19-61a9-551b-bea2-ebb0f5fe9c5a","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Stewartia"},"specificEpithet":{"value":"micrantha","authorship":{"value":"(Chun) Sealy & Bot. Mag.","basionymAuthorship":{"authors":["Chun"]},"combinationAuthorship":{"authors":["Sealy","Bot. Mag."]}}}}],"bacteria":false,"unparsedTail":" 176: t. 510. 1967."}
+{"quality":3,"parsed":true,"verbatim":"Stewartia micrantha (Chun) Sealy, Bot. Mag. 176: t. 510. 1967.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Stewartia micrantha (Chun) Sealy & Bot. Mag.","canonicalName":{"value":"Stewartia micrantha","valueRanked":"Stewartia micrantha"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,19],["authorWord",21,25],["authorWord",27,32],["authorWord",34,38],["authorWord",39,43]],"nameStringId":"7a4ffc19-61a9-551b-bea2-ebb0f5fe9c5a","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Stewartia"},"specificEpithet":{"value":"micrantha","authorship":{"value":"(Chun) Sealy & Bot. Mag.","basionymAuthorship":{"authors":["Chun"]},"combinationAuthorship":{"authors":["Sealy","Bot. Mag."]}}}}],"bacteria":false,"unparsedTail":" 176: t. 510. 1967."}
 7a4ffc19-61a9-551b-bea2-ebb0f5fe9c5a|Stewartia micrantha (Chun) Sealy, Bot. Mag. 176: t. 510. 1967.|Stewartia micrantha|Stewartia micrantha|(Chun) Sealy & Bot. Mag.||3
 
 Pyrobaculum neutrophilum V24Sta
 Pyrobaculum neutrophilum
-{"quality":3,"parsed":true,"verbatim":"Pyrobaculum neutrophilum V24Sta","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Pyrobaculum neutrophilum","canonicalName":{"value":"Pyrobaculum neutrophilum","valueRanked":"Pyrobaculum neutrophilum"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,24]],"nameStringId":"6d0be585-ec54-5662-9d30-1d369ecf2a64","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Pyrobaculum"},"specificEpithet":{"value":"neutrophilum"}}],"bacteria":false,"unparsedTail":" V24Sta"}
+{"quality":3,"parsed":true,"verbatim":"Pyrobaculum neutrophilum V24Sta","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Pyrobaculum neutrophilum","canonicalName":{"value":"Pyrobaculum neutrophilum","valueRanked":"Pyrobaculum neutrophilum"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,24]],"nameStringId":"6d0be585-ec54-5662-9d30-1d369ecf2a64","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Pyrobaculum"},"specificEpithet":{"value":"neutrophilum"}}],"bacteria":false,"unparsedTail":" V24Sta"}
 6d0be585-ec54-5662-9d30-1d369ecf2a64|Pyrobaculum neutrophilum V24Sta|Pyrobaculum neutrophilum|Pyrobaculum neutrophilum|||3
 
 Rana aurora Baird and Girard, 1852; H.B. Shaffer et al., 2004
 Rana aurora Baird and Girard, 1852
-{"quality":3,"parsed":true,"verbatim":"Rana aurora Baird and Girard, 1852; H.B. Shaffer et al., 2004","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Rana aurora Baird & Girard 1852","canonicalName":{"value":"Rana aurora","valueRanked":"Rana aurora"},"virus":false,"positions":[["genus",0,4],["specificEpithet",5,11],["authorWord",12,17],["authorWord",22,28],["year",30,34]],"nameStringId":"f0fa6cd1-8018-5fec-92ad-1bda9ac929ca","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Rana"},"specificEpithet":{"value":"aurora","authorship":{"value":"Baird & Girard 1852","basionymAuthorship":{"authors":["Baird","Girard"],"years":[{"value":"1852"}]}}}}],"bacteria":false,"unparsedTail":"; H.B. Shaffer et al., 2004"}
+{"quality":3,"parsed":true,"verbatim":"Rana aurora Baird and Girard, 1852; H.B. Shaffer et al., 2004","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Rana aurora Baird & Girard 1852","canonicalName":{"value":"Rana aurora","valueRanked":"Rana aurora"},"virus":false,"positions":[["genus",0,4],["specificEpithet",5,11],["authorWord",12,17],["authorWord",22,28],["year",30,34]],"nameStringId":"f0fa6cd1-8018-5fec-92ad-1bda9ac929ca","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Rana"},"specificEpithet":{"value":"aurora","authorship":{"value":"Baird & Girard 1852","basionymAuthorship":{"authors":["Baird","Girard"],"years":[{"value":"1852"}]}}}}],"bacteria":false,"unparsedTail":"; H.B. Shaffer et al., 2004"}
 f0fa6cd1-8018-5fec-92ad-1bda9ac929ca|Rana aurora Baird and Girard, 1852; H.B. Shaffer et al., 2004|Rana aurora|Rana aurora|Baird & Girard 1852|1852|3
 
 Agropyron pectiniforme var. karabaljikji ined.?
@@ -2335,7 +2331,7 @@ e951b7d4-0009-54df-9de6-efbb392dc8d6|Agropyron pectiniforme var. karabaljikji in
 
 Staphylococcus hyicus chromogenes Devriese et al. 1978 (Approved Lists 1980).
 Staphylococcus hyicus chromogenes Devriese et al. 1978
-{"quality":3,"parsed":true,"verbatim":"Staphylococcus hyicus chromogenes Devriese et al. 1978 (Approved Lists 1980).","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Staphylococcus hyicus chromogenes Devriese et al. 1978","canonicalName":{"value":"Staphylococcus hyicus chromogenes","valueRanked":"Staphylococcus hyicus chromogenes"},"virus":false,"positions":[["genus",0,14],["specificEpithet",15,21],["infraspecificEpithet",22,33],["authorWord",34,42],["authorWord",43,49],["year",50,54]],"nameStringId":"ec17eb44-742c-5325-aca6-e33a0888ef0d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Staphylococcus"},"specificEpithet":{"value":"hyicus"},"infraspecificEpithets":[{"value":"chromogenes","authorship":{"value":"Devriese et al. 1978","basionymAuthorship":{"authors":["Devriese et al."],"years":[{"value":"1978"}]}}}]}],"bacteria":true,"unparsedTail":" (Approved Lists 1980)."}
+{"quality":3,"parsed":true,"verbatim":"Staphylococcus hyicus chromogenes Devriese et al. 1978 (Approved Lists 1980).","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Staphylococcus hyicus chromogenes Devriese et al. 1978","canonicalName":{"value":"Staphylococcus hyicus chromogenes","valueRanked":"Staphylococcus hyicus chromogenes"},"virus":false,"positions":[["genus",0,14],["specificEpithet",15,21],["infraspecificEpithet",22,33],["authorWord",34,42],["authorWord",43,49],["year",50,54]],"nameStringId":"ec17eb44-742c-5325-aca6-e33a0888ef0d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Staphylococcus"},"specificEpithet":{"value":"hyicus"},"infraspecificEpithets":[{"value":"chromogenes","authorship":{"value":"Devriese et al. 1978","basionymAuthorship":{"authors":["Devriese et al."],"years":[{"value":"1978"}]}}}]}],"bacteria":true,"unparsedTail":" (Approved Lists 1980)."}
 ec17eb44-742c-5325-aca6-e33a0888ef0d|Staphylococcus hyicus chromogenes Devriese et al. 1978 (Approved Lists 1980).|Staphylococcus hyicus chromogenes|Staphylococcus hyicus chromogenes|Devriese et al. 1978|1978|3
 #>
 
@@ -2364,19 +2360,19 @@ eb7aee15-e462-5189-8335-a3a323be6907|Adonis cyllenea Boiss. & al var. paryadrica
 #SECTION: Authors do not start with apostrophe<
 Nereidavus kulkovi 'Kulkov
 Nereidavus kulkovi
-{"quality":3,"parsed":true,"verbatim":"Nereidavus kulkovi 'Kulkov","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Nereidavus kulkovi","canonicalName":{"value":"Nereidavus kulkovi","valueRanked":"Nereidavus kulkovi"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,18]],"nameStringId":"6a4999cd-95cc-509d-8e0a-26a0dfcef67d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Nereidavus"},"specificEpithet":{"value":"kulkovi"}}],"bacteria":false,"unparsedTail":" 'Kulkov"}
+{"quality":3,"parsed":true,"verbatim":"Nereidavus kulkovi 'Kulkov","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Nereidavus kulkovi","canonicalName":{"value":"Nereidavus kulkovi","valueRanked":"Nereidavus kulkovi"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,18]],"nameStringId":"6a4999cd-95cc-509d-8e0a-26a0dfcef67d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Nereidavus"},"specificEpithet":{"value":"kulkovi"}}],"bacteria":false,"unparsedTail":" 'Kulkov"}
 6a4999cd-95cc-509d-8e0a-26a0dfcef67d|Nereidavus kulkovi 'Kulkov|Nereidavus kulkovi|Nereidavus kulkovi|||3
 #>
 
 #SECTION: Epithets do not start or end with a dash<
 Abryna -petri Paiva, 1860
 Abryna
-{"quality":3,"parsed":true,"verbatim":"Abryna -petri Paiva, 1860","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Abryna","canonicalName":{"value":"Abryna","valueRanked":"Abryna"},"virus":false,"positions":[["uninomial",0,6]],"nameStringId":"6ccc6217-9084-5b31-81f7-6b4cd7963f65","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Abryna"}}],"bacteria":false,"unparsedTail":" -petri Paiva, 1860"}
+{"quality":3,"parsed":true,"verbatim":"Abryna -petri Paiva, 1860","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Abryna","canonicalName":{"value":"Abryna","valueRanked":"Abryna"},"virus":false,"positions":[["uninomial",0,6]],"nameStringId":"6ccc6217-9084-5b31-81f7-6b4cd7963f65","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Abryna"}}],"bacteria":false,"unparsedTail":" -petri Paiva, 1860"}
 6ccc6217-9084-5b31-81f7-6b4cd7963f65|Abryna -petri Paiva, 1860|Abryna|Abryna|||3
 
 Abryna petri- Paiva, 1860
 Abryna
-{"quality":3,"parsed":true,"verbatim":"Abryna petri- Paiva, 1860","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Abryna","canonicalName":{"value":"Abryna","valueRanked":"Abryna"},"virus":false,"positions":[["uninomial",0,6]],"nameStringId":"b1e37ace-3ca8-5274-bd93-7333aa3e5223","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Abryna"}}],"bacteria":false,"unparsedTail":" petri- Paiva, 1860"}
+{"quality":3,"parsed":true,"verbatim":"Abryna petri- Paiva, 1860","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Abryna","canonicalName":{"value":"Abryna","valueRanked":"Abryna"},"virus":false,"positions":[["uninomial",0,6]],"nameStringId":"b1e37ace-3ca8-5274-bd93-7333aa3e5223","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Abryna"}}],"bacteria":false,"unparsedTail":" petri- Paiva, 1860"}
 b1e37ace-3ca8-5274-bd93-7333aa3e5223|Abryna petri- Paiva, 1860|Abryna|Abryna|||3
 #>
 
@@ -2602,7 +2598,7 @@ Abarema clypearia (Jack) Kosterm.
 
 Indigofera phyllogramme var. aphylla R.Vig., p.p.B
 Indigofera phyllogramme var. aphylla R.Vig.
-{"quality":3,"parsed":true,"verbatim":"Indigofera phyllogramme var. aphylla R.Vig., p.p.B","surrogate":false,"qualityWarnings":[[3,"Unparseable tail"]],"normalized":"Indigofera phyllogramme var. aphylla R. Vig.","canonicalName":{"value":"Indigofera phyllogramme aphylla","valueRanked":"Indigofera phyllogramme var. aphylla"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,23],["rank",24,28],["infraspecificEpithet",29,36],["authorWord",37,39],["authorWord",39,43]],"nameStringId":"04bb878e-4442-5b7c-86d7-a41f2f6aefd3","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Indigofera"},"specificEpithet":{"value":"phyllogramme"},"infraspecificEpithets":[{"value":"aphylla","rank":"var.","authorship":{"value":"R. Vig.","basionymAuthorship":{"authors":["R. Vig."]}}}]}],"bacteria":false,"unparsedTail":", p.p.B"}
+{"quality":3,"parsed":true,"verbatim":"Indigofera phyllogramme var. aphylla R.Vig., p.p.B","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Indigofera phyllogramme var. aphylla R. Vig.","canonicalName":{"value":"Indigofera phyllogramme aphylla","valueRanked":"Indigofera phyllogramme var. aphylla"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,23],["rank",24,28],["infraspecificEpithet",29,36],["authorWord",37,39],["authorWord",39,43]],"nameStringId":"04bb878e-4442-5b7c-86d7-a41f2f6aefd3","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Indigofera"},"specificEpithet":{"value":"phyllogramme"},"infraspecificEpithets":[{"value":"aphylla","rank":"var.","authorship":{"value":"R. Vig.","basionymAuthorship":{"authors":["R. Vig."]}}}]}],"bacteria":false,"unparsedTail":", p.p.B"}
 04bb878e-4442-5b7c-86d7-a41f2f6aefd3|Indigofera phyllogramme var. aphylla R.Vig., p.p.B|Indigofera phyllogramme aphylla|Indigofera phyllogramme var. aphylla|R. Vig.||3
 #>
 

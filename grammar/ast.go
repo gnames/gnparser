@@ -1,87 +1,25 @@
 package grammar
 
 import (
-	"io"
 	"regexp"
 	"strings"
 	"unicode"
+
+	"gitlab.com/gogna/gnparser/preprocess"
 
 	"github.com/gnames/uuid5"
 	"gitlab.com/gogna/gnparser/str"
 )
 
-type BaseEngine struct {
-	SN       *ScientificNameNode
-	root     *node32
-	Warnings map[Warning]struct{}
-}
-
-func (p *Engine) addWarn(w Warning) {
-	if p.Warnings == nil {
-		p.Warnings = make(map[Warning]struct{})
-	}
-	if _, ok := p.Warnings[w]; !ok {
-		p.Warnings[w] = struct{}{}
-	}
-}
-
-func (p *Engine) OutputAST() {
-	type element struct {
-		node *node32
-		down *element
-	}
-	var node *node32
-	var skip bool
-	var stack *element
-	for _, token := range p.Tokens() {
-		if node, skip = p.newNode(token); skip {
-			continue
-		}
-		for stack != nil && stackNodeIsWithin(stack.node, token) {
-			stack.node.next = node.up
-			node.up = stack.node
-			stack = stack.down
-		}
-		stack = &element{node: node, down: stack}
-	}
-	if stack != nil {
-		p.root = stack.node
-	}
-}
-
-func stackNodeIsWithin(n *node32, t token32) bool {
-	return n.token32.begin >= t.begin && n.token32.end <= t.end
-}
-
-func (p *Engine) PrintOutputSyntaxTree(w io.Writer) {
-	p.root.print(w, true, p.Buffer)
-}
-
-func (p *Engine) newNode(t token32) (*node32, bool) {
-	var node *node32
-	if _, ok := nodeRules[t.pegRule]; ok {
-		node := &node32{token32: t}
-		return node, false
-	}
-	switch t.pegRule {
-	case ruleMultipleSpace:
-		p.addWarn(SpaceMultipleWarn)
-	}
-	return node, true
-}
-
-func (p *Engine) nodeValue(n *node32) string {
-	t := n.token32
-	v := string([]rune(p.Buffer)[t.begin:t.end])
-	return v
-}
-
 type ScientificNameNode struct {
 	Verbatim   string
 	VerbatimID string
 	Name
-	Tail     string
-	Warnings []Warning
+	Virus     bool
+	Bacteria  bool
+	Surrogate bool
+	Tail      string
+	Warnings  []Warning
 }
 
 func (p *Engine) NewScientificNameNode() {
@@ -105,19 +43,20 @@ func (p *Engine) NewScientificNameNode() {
 		warns[i] = k
 		i++
 	}
-	var warnReset map[Warning]struct{}
-	p.Warnings = warnReset
-
 	sn := ScientificNameNode{
-		Name:     name,
-		Tail:     tail,
-		Warnings: warns,
+		Name:      name,
+		Surrogate: p.Surrogate,
+		Bacteria:  p.Bacteria,
+		Tail:      tail,
+		Warnings:  warns,
 	}
+
+	p.resetFields()
 	p.SN = &sn
 }
 
-func (p *Engine) NewNotParsedScientificNameNode() {
-	sn := &ScientificNameNode{}
+func (p *Engine) NewNotParsedScientificNameNode(pp *preprocess.Preprocessor) {
+	sn := &ScientificNameNode{Virus: pp.Virus}
 	p.SN = sn
 }
 
@@ -131,7 +70,7 @@ func (p *Engine) tailValue(n *node32) string {
 	if t.begin == t.end {
 		return ""
 	}
-	p.addWarn(TailWarn)
+	p.AddWarn(TailWarn)
 	return string([]rune(p.Buffer)[t.begin:t.end])
 }
 
@@ -163,7 +102,7 @@ type hybridElement struct {
 
 func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 	var hf *hybridFormulaNode
-	p.addWarn(HybridFormulaWarn)
+	p.AddWarn(HybridFormulaWarn)
 	n = n.up
 	firstName := p.newSingleName(n)
 	n = n.next
@@ -179,7 +118,7 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 			he.Species = p.newSingleName(n)
 			hes = append(hes, he)
 		case ruleSpeciesEpithet:
-			p.addWarn(HybridFormulaIncompleteWarn)
+			p.AddWarn(HybridFormulaIncompleteWarn)
 			var g *wordNode
 			switch firstName.(type) {
 			case *speciesNode:
@@ -198,7 +137,7 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 		n = n.next
 	}
 	if he.Species == nil {
-		p.addWarn(HybridFormulaProbIncompleteWarn)
+		p.AddWarn(HybridFormulaProbIncompleteWarn)
 		hes = append(hes, he)
 	}
 	hf = &hybridFormulaNode{
@@ -244,9 +183,9 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 	hybr := p.newWordNode(n, HybridCharType)
 	n = n.next
 	n = n.up
-	p.addWarn(HybridNamedWarn)
+	p.AddWarn(HybridNamedWarn)
 	if n.token32.begin == 1 {
-		p.addWarn(HybridCharNoSpaceWarn)
+		p.AddWarn(HybridCharNoSpaceWarn)
 	}
 	switch n.token32.pegRule {
 	case ruleUninomial:
@@ -276,9 +215,9 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 	hybrid := p.newWordNode(hybridCharNode, HybridCharType)
 	sp := p.newSpeciesEpithetNode(spNode)
 
-	p.addWarn(HybridNamedWarn)
+	p.AddWarn(HybridNamedWarn)
 	if hybrid.Pos.End == sp.Word.Pos.Start {
-		p.addWarn(HybridCharNoSpaceWarn)
+		p.AddWarn(HybridCharNoSpaceWarn)
 	}
 	nhl = &namedSpeciesHybridNode{
 		Genus:     gen,
@@ -294,13 +233,93 @@ func (p *Engine) newSingleName(n *node32) Name {
 	switch n.token32.pegRule {
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
+	case ruleNameApprox:
+		p.AddWarn(NameApproxWarn)
+		p.Surrogate = true
+		name = p.newApproxNode(n)
+	case ruleNameComp:
+		p.AddWarn(NameComparisonWarn)
+		p.Surrogate = true
+		name = p.newComparisonNode(n)
 	case ruleUninomial:
 		name = p.newUninomialNode(n)
 	case ruleUninomialCombo:
-		p.addWarn(UninomialComboWarn)
+		p.AddWarn(UninomialComboWarn)
 		name = p.newUninomialComboNode(n)
 	}
 	return name
+}
+
+type approxNode struct {
+	Genus        *wordNode
+	SpEpithet    *spEpithetNode
+	AnnotationID *wordNode
+	Ignored      string
+}
+
+func (p *Engine) newApproxNode(n *node32) *approxNode {
+	var an *approxNode
+	if n.token32.pegRule != ruleNameApprox {
+		return an
+	}
+	var gen *wordNode
+	var spEp *spEpithetNode
+	var annot *wordNode
+	var ign string
+	n = n.up
+	for n != nil {
+		switch n.token32.pegRule {
+		case ruleGenusWord:
+			gen = p.newWordNode(n, GenusType)
+		case ruleSpeciesEpithet:
+			spEp = p.newSpeciesEpithetNode(n)
+		case ruleApproximation:
+			annot = p.newWordNode(n, AnnotIDType)
+		case ruleApproxNameIgnored:
+			ign = p.nodeValue(n)
+		}
+		n = n.next
+	}
+	an = &approxNode{
+		Genus:        gen,
+		SpEpithet:    spEp,
+		AnnotationID: annot,
+		Ignored:      ign,
+	}
+	return an
+}
+
+type comparisonNode struct {
+	Genus        *wordNode
+	SpEpithet    *spEpithetNode
+	AnnotationID *wordNode
+}
+
+func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
+	var cn *comparisonNode
+	if n.pegRule != ruleNameComp {
+		return cn
+	}
+	n = n.up
+	var gen, comp *wordNode
+	var spEp *spEpithetNode
+	for n != nil {
+		switch n.pegRule {
+		case ruleGenusWord:
+			gen = p.newWordNode(n, GenusType)
+		case ruleComparison:
+			comp = p.newWordNode(n, AnnotIDType)
+		case ruleSpeciesEpithet:
+			spEp = p.newSpeciesEpithetNode(n)
+		}
+		n = n.next
+	}
+	cn = &comparisonNode{
+		Genus:        gen,
+		AnnotationID: comp,
+		SpEpithet:    spEp,
+	}
+	return cn
 }
 
 type speciesNode struct {
@@ -317,7 +336,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 	n = n.up
 	gen := p.newWordNode(n, GenusType)
 	if n.up.token32.pegRule == ruleAbbrGenus {
-		p.addWarn(GenusAbbrWarn)
+		p.AddWarn(GenusAbbrWarn)
 	}
 	n = n.next
 	for n != nil {
@@ -325,7 +344,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		case ruleSubGenus:
 			sg = p.newWordNode(n.up, SubGenusType)
 		case ruleSubGenusOrSuperspecies:
-			p.addWarn(SuperSpeciesWarn)
+			p.AddWarn(SuperSpeciesWarn)
 		case ruleSpeciesEpithet:
 			sp = p.newSpeciesEpithetNode(n)
 		case ruleInfraspGroup:
@@ -435,7 +454,7 @@ func (p *Engine) newRankNode(n *node32) *rankNode {
 	case ruleRankSsp:
 		w.NormValue = "ssp."
 	case ruleRankOtherUncommon:
-		p.addWarn(RankUncommonWarn)
+		p.AddWarn(RankUncommonWarn)
 	}
 	r := rankNode{Word: w}
 	return &r
@@ -525,7 +544,7 @@ func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 		case ruleOriginalAuthorship:
 			on := n.up
 			if on.token32.pegRule == ruleBasionymAuthorshipYearMisformed {
-				p.addWarn(YearOrigMisplacedWarn)
+				p.AddWarn(YearOrigMisplacedWarn)
 				on = on.up
 				misplacedYear = true
 				parens = true
@@ -575,19 +594,19 @@ func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 	}
 	switch n.token32.pegRule {
 	case ruleAuthorEx:
-		p.addWarn(AuthExWarn)
+		p.AddWarn(AuthExWarn)
 		t2t = p.newWordNode(n, AuthorWordExType)
 		ex := strings.TrimSpace(t2t.Value)
 		if ex[len(ex)-1] == '.' {
-			p.addWarn(AuthExWithDotWarn)
+			p.AddWarn(AuthExWithDotWarn)
 		}
 		t2t.NormValue = "ex"
 	case ruleAuthorEmend:
-		p.addWarn(AuthEmendWarn)
+		p.AddWarn(AuthEmendWarn)
 		t2t = p.newWordNode(n, AuthorWordEmendType)
 		emend := strings.TrimSpace(t2t.Value)
 		if emend[len(emend)-1] != '.' {
-			p.addWarn(AuthEmendWithoutDotWarn)
+			p.AddWarn(AuthEmendWithoutDotWarn)
 		}
 		t2t.NormValue = "emend."
 	default:
@@ -668,10 +687,10 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 			w = p.newWordNode(n, AuthorWordFiliusType)
 			w.NormValue = "fil."
 		case ruleUnknownAuthor:
-			p.addWarn(AuthUnknownWarn)
+			p.AddWarn(AuthUnknownWarn)
 			w = p.authorWord(n)
 			if w.Value == "?" {
-				p.addWarn(AuthQuestionWarn)
+				p.AddWarn(AuthQuestionWarn)
 			}
 			w.NormValue = "anon."
 		default:
@@ -683,7 +702,7 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 		n = n.next
 	}
 	if len(rawVal) < 2 {
-		p.addWarn(AuthShortWarn)
+		p.AddWarn(AuthShortWarn)
 	}
 	au := authorNode{
 		Value: val,
@@ -704,7 +723,7 @@ func (p *Engine) authorWord(n *node32) *wordNode {
 		if count > 2 {
 			nv := w.NormValue
 			w.NormValue = string(nv[0]) + strings.ToLower(nv[1:])
-			p.addWarn(AuthUpperCaseWarn)
+			p.AddWarn(AuthUpperCaseWarn)
 		}
 	}
 	return w
@@ -722,10 +741,10 @@ func (p *Engine) newYearNode(nd *node32) *yearNode {
 	for _, v := range nodes {
 		switch v.token32.pegRule {
 		case ruleYearWithParens:
-			p.addWarn(YearParensWarn)
+			p.AddWarn(YearParensWarn)
 			appr = true
 		case ruleYearWithChar:
-			p.addWarn(YearCharWarn)
+			p.AddWarn(YearCharWarn)
 			w = p.newWordNode(v, YearType)
 			w.Value = w.Value[0 : len(w.Value)-1]
 		case ruleYearNum:
@@ -733,7 +752,7 @@ func (p *Engine) newYearNode(nd *node32) *yearNode {
 				w = p.newWordNode(v, YearType)
 			}
 			if w.Value[len(w.Value)-1] == '?' {
-				p.addWarn(YearQuestionWarn)
+				p.AddWarn(YearQuestionWarn)
 				appr = true
 			}
 		}
@@ -784,19 +803,22 @@ func (p *Engine) newWordNode(n *node32, wt WordType) *wordNode {
 	for _, v := range children {
 		switch v.token32.pegRule {
 		case ruleUpperCharExtended, ruleLowerCharExtended:
-			p.addWarn(CharBadWarn)
+			p.AddWarn(CharBadWarn)
 			wrd.normalize()
 		case ruleWordApostr:
-			p.addWarn(CanonicalApostropheWarn)
+			p.AddWarn(CanonicalApostropheWarn)
 			wrd.normalize()
 		case ruleWordStartsWithDigit:
-			p.addWarn(SpeciesNumericWarn)
+			p.AddWarn(SpeciesNumericWarn)
 			wrd.normalizeNums()
 		}
 	}
-	if (wt == GenusType || wt == UninomialType) && val[len(val)-1] == '?' {
-		p.addWarn(CapWordQuestionWarn)
-		wrd.NormValue = wrd.NormValue[0 : len(wrd.NormValue)-1]
+	if wt == GenusType || wt == UninomialType {
+		if val[len(val)-1] == '?' {
+			p.AddWarn(CapWordQuestionWarn)
+			wrd.NormValue = wrd.NormValue[0 : len(wrd.NormValue)-1]
+		}
+		p.IsBacteria(wrd.NormValue)
 	}
 	return &wrd
 }
@@ -830,66 +852,3 @@ type Pos struct {
 }
 
 var numWord = regexp.MustCompile(`^([0-9]+)[-\.]?(.+)$`)
-
-var nodeRules = map[pegRule]struct{}{
-	ruleSciName:                         struct{}{},
-	ruleName:                            struct{}{},
-	ruleTail:                            struct{}{},
-	ruleHybridFormula:                   struct{}{},
-	ruleNamedSpeciesHybrid:              struct{}{},
-	ruleNamedGenusHybrid:                struct{}{},
-	ruleSingleName:                      struct{}{},
-	ruleNameApprox:                      struct{}{},
-	ruleNameComp:                        struct{}{},
-	ruleNameSpecies:                     struct{}{},
-	ruleGenusWord:                       struct{}{},
-	ruleInfraspGroup:                    struct{}{},
-	ruleInfraspEpithet:                  struct{}{},
-	ruleSpeciesEpithet:                  struct{}{},
-	ruleComparison:                      struct{}{},
-	ruleRank:                            struct{}{},
-	ruleRankOtherUncommon:               struct{}{},
-	ruleRankVar:                         struct{}{},
-	ruleRankForma:                       struct{}{},
-	ruleRankSsp:                         struct{}{},
-	ruleSubGenusOrSuperspecies:          struct{}{},
-	ruleSubGenus:                        struct{}{},
-	ruleUninomialCombo:                  struct{}{},
-	ruleRankUninomial:                   struct{}{},
-	ruleUninomial:                       struct{}{},
-	ruleUninomialWord:                   struct{}{},
-	ruleAbbrGenus:                       struct{}{},
-	ruleWord:                            struct{}{},
-	ruleWordApostr:                      struct{}{},
-	ruleWordStartsWithDigit:             struct{}{},
-	ruleHybridChar:                      struct{}{},
-	ruleApproxNameIgnored:               struct{}{},
-	ruleApproximation:                   struct{}{},
-	ruleAuthorship:                      struct{}{},
-	ruleOriginalAuthorship:              struct{}{},
-	ruleCombinationAuthorship:           struct{}{},
-	ruleBasionymAuthorshipYearMisformed: struct{}{},
-	ruleBasionymAuthorship:              struct{}{},
-	ruleAuthorsGroup:                    struct{}{},
-	ruleAuthorsTeam:                     struct{}{},
-	ruleAuthorSep:                       struct{}{},
-	ruleAuthorEx:                        struct{}{},
-	ruleAuthorEmend:                     struct{}{},
-	ruleAuthor:                          struct{}{},
-	ruleUnknownAuthor:                   struct{}{},
-	ruleAuthorWord:                      struct{}{},
-	ruleAllCapsAuthorWord:               struct{}{},
-	ruleFilius:                          struct{}{},
-	ruleAuthorPrefix:                    struct{}{},
-	ruleYear:                            struct{}{},
-	ruleYearRange:                       struct{}{},
-	ruleYearWithDot:                     struct{}{},
-	ruleYearApprox:                      struct{}{},
-	ruleYearWithPage:                    struct{}{},
-	ruleYearWithParens:                  struct{}{},
-	ruleYearWithChar:                    struct{}{},
-	ruleYearNum:                         struct{}{},
-	ruleUpperCharExtended:               struct{}{},
-	ruleMiscodedChar:                    struct{}{},
-	ruleLowerCharExtended:               struct{}{},
-}

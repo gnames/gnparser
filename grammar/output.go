@@ -7,6 +7,23 @@ import (
 	"gitlab.com/gogna/gnparser/str"
 )
 
+type ApproxOutput struct {
+	Genus        *genusOutput       `json:"genus"`
+	SpecEpithet  *specEpithetOutput `json:"specificEpithet,omitempty"`
+	AnnotationID string             `json:"annotationIdentification"`
+	Ignored      *ignoredOutput     `json:"ignored,omitempty"`
+}
+
+type ignoredOutput struct {
+	Value string `json:"value"`
+}
+
+type ComparisonOutput struct {
+	Genus        *genusOutput       `json:"genus"`
+	SpecEpithet  *specEpithetOutput `json:"specificEpithet"`
+	AnnotationID string             `json:"annotationIdentification"`
+}
+
 type SpeciesOutput struct {
 	Genus        *genusOutput            `json:"genus"`
 	SpecEpithet  *specEpithetOutput      `json:"specificEpithet"`
@@ -230,6 +247,134 @@ func (nh *namedSpeciesHybridNode) details() []interface{} {
 func (nh *namedSpeciesHybridNode) lastAuthorship() *authorshipNode {
 	au := nh.SpEpithet.Authorship
 	return au
+}
+
+func (apr *approxNode) pos() []Pos {
+	var pos []Pos
+	if apr == nil {
+		return pos
+	}
+	pos = append(pos, apr.Genus.Pos)
+	if apr.SpEpithet != nil {
+		pos = append(pos, apr.SpEpithet.pos()...)
+	}
+	if apr.AnnotationID != nil {
+		pos = append(pos, apr.AnnotationID.Pos)
+	}
+	return pos
+}
+
+func (apr *approxNode) value() string {
+	if apr == nil {
+		return ""
+	}
+	val := apr.Genus.NormValue
+	if apr.SpEpithet != nil {
+		val = str.JoinStrings(val, apr.SpEpithet.value(), " ")
+	}
+	return val
+}
+
+func (apr *approxNode) canonical() (*Canonical, bool) {
+	var c *Canonical
+	if apr == nil {
+		return c, false
+	}
+	c = &Canonical{Value: apr.Genus.NormValue, ValueRanked: apr.Genus.NormValue}
+	if apr.SpEpithet != nil {
+		spCan, _ := apr.SpEpithet.canonical()
+		c = appendCanonical(c, spCan, " ")
+	}
+	return c, false
+}
+
+func (apr *approxNode) lastAuthorship() *authorshipNode {
+	var au *authorshipNode
+	if apr == nil || apr.SpEpithet == nil {
+		return au
+	}
+	return apr.SpEpithet.Authorship
+}
+
+func (apr *approxNode) details() []interface{} {
+	if apr == nil {
+		return []interface{}{}
+	}
+	g := apr.Genus.NormValue
+	ao := &ApproxOutput{
+		Genus:        &genusOutput{Value: g},
+		AnnotationID: apr.AnnotationID.NormValue,
+		Ignored:      &ignoredOutput{Value: apr.Ignored},
+	}
+	if apr.SpEpithet == nil {
+		return []interface{}{ao}
+	}
+	se := &specEpithetOutput{
+		Value: apr.SpEpithet.Word.NormValue,
+	}
+	if apr.SpEpithet.Authorship != nil {
+		se.Authorship = apr.SpEpithet.Authorship.details()
+	}
+	ao.SpecEpithet = se
+	return []interface{}{ao}
+}
+
+func (comp *comparisonNode) pos() []Pos {
+	var pos []Pos
+	if comp == nil {
+		return pos
+	}
+	pos = []Pos{comp.Genus.Pos}
+	pos = append(pos, comp.AnnotationID.Pos)
+	if comp.SpEpithet != nil {
+		pos = append(pos, comp.SpEpithet.pos()...)
+	}
+	return pos
+}
+
+func (comp *comparisonNode) value() string {
+	if comp == nil {
+		return ""
+	}
+	val := comp.Genus.NormValue
+	val = str.JoinStrings(val, comp.AnnotationID.NormValue, " ")
+	if comp.SpEpithet != nil {
+		val = str.JoinStrings(val, comp.SpEpithet.value(), " ")
+	}
+	return val
+}
+
+func (comp *comparisonNode) canonical() (*Canonical, bool) {
+	if comp == nil {
+		return &Canonical{}, false
+	}
+	gen := comp.Genus.NormValue
+	c := &Canonical{Value: gen, ValueRanked: gen}
+	if comp.SpEpithet != nil {
+		sCan, _ := comp.SpEpithet.canonical()
+		c = appendCanonical(c, sCan, " ")
+	}
+	return c, false
+}
+
+func (comp *comparisonNode) lastAuthorship() *authorshipNode {
+	var au *authorshipNode
+	if comp == nil || comp.SpEpithet == nil {
+		return au
+	}
+	return comp.SpEpithet.Authorship
+}
+
+func (comp *comparisonNode) details() []interface{} {
+	if comp == nil {
+		return []interface{}{}
+	}
+	co := &ComparisonOutput{
+		Genus:        &genusOutput{Value: comp.Genus.NormValue},
+		AnnotationID: comp.AnnotationID.NormValue,
+		SpecEpithet:  comp.SpEpithet.details(),
+	}
+	return []interface{}{co}
 }
 
 func (sp *speciesNode) pos() []Pos {

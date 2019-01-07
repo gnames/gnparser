@@ -13,6 +13,7 @@ const (
 	AuthShortWarn
 	AuthUnknownWarn
 	AuthUpperCaseWarn
+	BacteriaMaybeWarn
 	CanonicalApostropheWarn
 	CapWordQuestionWarn
 	CharBadWarn

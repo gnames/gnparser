@@ -60,7 +60,7 @@ func astEntries() []TableEntry {
 	}
 	gnp := NewGNparser()
 	for i, v := range tests {
-		gnp.parser.Buffer = preprocess.NormalizeHybridChar(v.NameString)
+		gnp.parser.Buffer = string(preprocess.NormalizeHybridChar([]byte(v.NameString)))
 		gnp.parser.Reset()
 		gnp.parser.Parse()
 		parsedStr := gnp.parser.ParsedName()

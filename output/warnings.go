@@ -31,7 +31,7 @@ var warningMap = map[grm.Warning]Warning{
 	},
 	grm.TailWarn: Warning{
 		Quality: 3,
-		Message: "Unparseable tail",
+		Message: "Unparsed tail",
 	},
 	grm.HybridFormulaWarn: Warning{
 		Quality: 2,
@@ -160,6 +160,10 @@ var warningMap = map[grm.Warning]Warning{
 	grm.YearQuestionWarn: Warning{
 		Quality: 2,
 		Message: "Year with question mark",
+	},
+	grm.BacteriaMaybeWarn: Warning{
+		Quality: 1,
+		Message: "The genus is a homonym of a bacterial genus",
 	},
 }
 

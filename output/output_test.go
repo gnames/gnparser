@@ -27,7 +27,7 @@ var _ = Describe("Private Functions", func() {
 			output := []Warning{
 				{
 					Quality: 3,
-					Message: "Unparseable tail",
+					Message: "Unparsed tail",
 				},
 				{
 					Quality: 2,

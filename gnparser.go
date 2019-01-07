@@ -63,15 +63,30 @@ func (gnp *GNparser) WorkersNum() int {
 // `gnp.parser.SN` field.
 func (gnp *GNparser) Parse(s string) {
 	gnp.nameString = s
-	sNorm := preprocess.NormalizeHybridChar(gnp.nameString)
-	gnp.parser.Buffer = sNorm
+	preproc := preprocess.Preprocess([]byte(s))
+	if preproc.NoParse {
+		gnp.parser.NewNotParsedScientificNameNode(preproc)
+	}
+	gnp.parser.Buffer = string(preproc.Body)
 	gnp.parser.Reset()
+	if len(preproc.Tail) > 0 {
+		gnp.parser.AddWarn(grammar.TailWarn)
+	}
+	// if preproc.Approximate {
+	// 	gnp.parser.AddWarn(grammar.NameApproxWarn)
+	// }
 	err := gnp.parser.Parse()
 	if err != nil {
-		gnp.parser.NewNotParsedScientificNameNode()
+		gnp.parser.NewNotParsedScientificNameNode(preproc)
 	} else {
 		gnp.parser.OutputAST()
 		gnp.parser.NewScientificNameNode()
+		if len(preproc.Tail) > 0 {
+			gnp.parser.SN.Tail += string(preproc.Tail)
+		}
+		// if preproc.Approximate {
+		// 	gnp.parser.SN.Surrogate = true
+		// }
 	}
 	gnp.parser.SN.AddVerbatim(s)
 }
@@ -125,7 +140,7 @@ func (gnp *GNparser) ToSlice() []string {
 
 // Debug returns byte representation of complete and 'output' syntax trees.
 func (gnp *GNparser) Debug(s string) []byte {
-	gnp.parser.Buffer = preprocess.NormalizeHybridChar(s)
+	gnp.parser.Buffer = string(preprocess.NormalizeHybridChar([]byte(s)))
 	gnp.parser.Reset()
 	gnp.parser.Parse()
 	gnp.parser.OutputAST()

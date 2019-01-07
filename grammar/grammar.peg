@@ -199,7 +199,7 @@ YearWithPage <- (YearWithChar / YearNum)  _? ":" _? nums+
 
 YearWithParens <- '(' (YearWithChar / YearNum) ')'
 
-YearWithChar <- YearNum lASCII { p.addWarn(YearCharWarn) }
+YearWithChar <- YearNum lASCII { p.AddWarn(YearCharWarn) }
 
 YearNum <- [12] [0789] nums (nums / '?') '?'*
 

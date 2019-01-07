@@ -445,7 +445,7 @@ func (p *Engine) Execute() {
 		switch token.pegRule {
 
 		case ruleAction0:
-			p.addWarn(YearCharWarn)
+			p.AddWarn(YearCharWarn)
 
 		}
 	}
@@ -7697,7 +7697,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position892, tokenIndex892
 			return false
 		},
-		/* 105 Action0 <- <{ p.addWarn(YearCharWarn) }> */
+		/* 105 Action0 <- <{ p.AddWarn(YearCharWarn) }> */
 		func() bool {
 			{
 				add(ruleAction0, position)
