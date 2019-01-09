@@ -43,6 +43,9 @@ func (p *Engine) NewScientificNameNode() {
 		warns[i] = k
 		i++
 	}
+	if str.IsBoldSurrogate(tail) {
+		p.Surrogate = true
+	}
 	sn := ScientificNameNode{
 		Name:      name,
 		Surrogate: p.Surrogate,
@@ -50,7 +53,6 @@ func (p *Engine) NewScientificNameNode() {
 		Tail:      tail,
 		Warnings:  warns,
 	}
-
 	p.resetFields()
 	p.SN = &sn
 }

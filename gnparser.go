@@ -72,9 +72,6 @@ func (gnp *GNparser) Parse(s string) {
 	if len(preproc.Tail) > 0 {
 		gnp.parser.AddWarn(grammar.TailWarn)
 	}
-	// if preproc.Approximate {
-	// 	gnp.parser.AddWarn(grammar.NameApproxWarn)
-	// }
 	err := gnp.parser.Parse()
 	if err != nil {
 		gnp.parser.NewNotParsedScientificNameNode(preproc)
@@ -84,9 +81,6 @@ func (gnp *GNparser) Parse(s string) {
 		if len(preproc.Tail) > 0 {
 			gnp.parser.SN.Tail += string(preproc.Tail)
 		}
-		// if preproc.Approximate {
-		// 	gnp.parser.SN.Surrogate = true
-		// }
 	}
 	gnp.parser.SN.AddVerbatim(s)
 }

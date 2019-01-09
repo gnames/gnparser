@@ -9,7 +9,13 @@ var hybridCharRe2 = regexp.MustCompile(`(\s|^)[Xx](\s|$)`)
 
 // var approxRe = regexp.MustCompile(`\s(monst\.|\?|((spp|nr|sp|aff|species)(\.\s?[a-z]|\s+[a-z]|$)))`)
 var virusRe = regexp.MustCompile(
-	`(?i)(\b|\d)(ictv|[a-z]*virus(es)?|particles?|vectors?|(bacterio|viro)?phages?|viroids?|prions?|[a-z]*npv|(alpha|beta)?satellites?)\b`)
+	`(?i)(\b|\d)` +
+		`(ictv|[a-z]*virus(es)?|` +
+		`particles?|vectors?|` +
+		`(bacterio|viro)?phages?|` +
+		`viroids?|prions?|[a-z]*npv|` +
+		`(alpha|beta)?satellites?)\b`,
+)
 var noParseRe = regexp.MustCompile(
 	`(^(Not|None|Unidentified)[\W_].*|.*[Ii]ncertae\s+[Ss]edis.*|[Ii]nc\.\s*[Ss]ed\.|phytoplasma\b|plasmids?\b|[^A-Z]RNA[^A-Z]*)`)
 var notesRe = regexp.MustCompile(`(?i)\s+(species\s+group|species\s+complex|group|author)\b.*$`)

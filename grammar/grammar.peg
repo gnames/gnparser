@@ -6,7 +6,7 @@ type Engine Peg {
 
 SciName <- _? Name Tail !.
 
-Tail <- .*
+Tail <- ((_ / ',') .*)?
 
 Name <- NamedHybrid / HybridFormula / SingleName
 
@@ -103,18 +103,12 @@ Word4 <- NameLowerChar+ '.' NameLowerChar
 
 HybridChar <- '×'
 
-# ApproxName <- Uninomial _ (ApproxName1 / ApproxName2)
-
-# ApproxName1 <- Approximation ApproxNameIgnored
-
-# ApproxName2 <- Word _ Approximation ApproxNameIgnored
-
 ApproxNameIgnored <- .*
 
 Approximation <- ('sp.' _? 'nr.' / 'sp.' _? 'aff.' / 'monst.' /
   '?' / (('spp' / 'nr' / 'sp' / 'aff' / 'species') (&(SpaceCharEOI) / '.')))
 
-Authorship <- (AuthorshipCombo / OriginalAuthorship) &(SpaceCharEOI / [\\(,:])
+Authorship <- (AuthorshipCombo / OriginalAuthorship) &(SpaceCharEOI / ',')
 
 AuthorshipCombo <- OriginalAuthorship _? CombinationAuthorship
 
@@ -152,7 +146,7 @@ Author2 <- AuthorWord (_? AuthorWord)*
 
 UnknownAuthor <- '?' / (('auct' / 'anon') (&(SpaceCharEOI) / '.'))
 
-AuthorWord <- AuthorWord1 /AuthorWord2 / AuthorWord3 / AuthorPrefix
+AuthorWord <- !('Bold:') (AuthorWord1 /AuthorWord2 / AuthorWord3 / AuthorPrefix)
 
 AuthorWord1 <- 'arg.' / 'et al.{?}' / ('et' / '&') ' al' '.'?
 
@@ -219,7 +213,7 @@ LowerChar <- lASCII
 
 SpaceCharEOI <- _ / !.
 
-# WordBorderChar <- _ / [;.,;()]
+WordBorderChar <- _ / ';' / '.' / ',' / ':' / '(' / ')' / ']'
 
 nums <- [0-9]
 

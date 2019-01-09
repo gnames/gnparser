@@ -1616,15 +1616,18 @@ Calidris cf. cooperi
 {"quality":3,"parsed":true,"verbatim":"Calidris cf. cooperi","surrogate":true,"qualityWarnings":[[3,"Name comparison"]],"normalized":"Calidris cf. cooperi","canonicalName":{"value":"Calidris cooperi","valueRanked":"Calidris cooperi"},"virus":false,"positions":[["genus",0,8],["annotationIdentification",9,12],["specificEpithet",13,20]],"nameStringId":"bb19b56e-462f-5daf-a1aa-d4ead082f321","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Calidris"},"specificEpithet":{"value":"cooperi"},"annotationIdentification":"cf."}],"bacteria":false}
 bb19b56e-462f-5daf-a1aa-d4ead082f321|Calidris cf. cooperi|Calidris cooperi|Calidris cooperi|||3
 
-#TODO:Gemmula cf. cosmoi NP-2008 -- generates wrong authorship
+Gemmula cf. cosmoi NP-2008
+Gemmula cf. cosmoi
+{"quality":3,"parsed":true,"verbatim":"Gemmula cf. cosmoi NP-2008","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[3,"Unparsed tail"]],"normalized":"Gemmula cf. cosmoi","canonicalName":{"value":"Gemmula cosmoi","valueRanked":"Gemmula cosmoi"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,11],["specificEpithet",12,18]],"nameStringId":"87a593b3-2383-5f1b-8772-85e0a4a31b79","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Gemmula"},"specificEpithet":{"value":"cosmoi"},"annotationIdentification":"cf."}],"bacteria":false,"unparsedTail":" NP-2008"}
+87a593b3-2383-5f1b-8772-85e0a4a31b79|Gemmula cf. cosmoi NP-2008|Gemmula cosmoi|Gemmula cosmoi|||3
 #>
 
 ### Surrogate Name-Strings
 
 #SECTION: Surrogate name-strings<
 Coleoptera sp. BOLD:AAV0432
-Coleoptera
-{"quality":3,"parsed":true,"verbatim":"Coleoptera sp. BOLD:AAV0432","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Coleoptera","canonicalName":{"value":"Coleoptera","valueRanked":"Coleoptera"},"virus":false,"positions":[["genus",0,10],["annotationIdentification",11,14]],"nameStringId":"65b09adc-12a0-5fbb-a885-75200eacb98a","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Coleoptera"},"annotationIdentification":"sp.","ignored":{"value":"BOLD:AAV0432"}}],"bacteria":false}
+Coleoptera sp. BOLD:AAV0432
+{"quality":3,"parsed":true,"verbatim":"Coleoptera sp. BOLD:AAV0432","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Coleoptera","canonicalName":{"value":"Coleoptera","valueRanked":"Coleoptera"},"virus":false,"positions":[["genus",0,10],["annotationIdentification",11,14]],"nameStringId":"65b09adc-12a0-5fbb-a885-75200eacb98a","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Coleoptera"},"annotationIdentification":"sp.","ignored":{"value":" BOLD:AAV0432"}}],"bacteria":false}
 65b09adc-12a0-5fbb-a885-75200eacb98a|Coleoptera sp. BOLD:AAV0432|Coleoptera|Coleoptera|||3
 
 Coleoptera Bold:AAV0432

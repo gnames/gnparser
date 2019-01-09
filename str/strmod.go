@@ -3,6 +3,7 @@ package str
 import (
 	"bytes"
 	"fmt"
+	"strings"
 	"unicode/utf8"
 )
 
@@ -19,6 +20,14 @@ func ToASCII(b []byte) ([]byte, error) {
 		w = width
 	}
 	return tlBuf.Bytes(), nil
+}
+
+func IsBoldSurrogate(s string) bool {
+	if len(s) < 5 {
+		return false
+	}
+	s = strings.ToLower(s)
+	return strings.Contains(s, "bold:")
 }
 
 // JoinStrings contatenates two strings with a separator. If either of the
