@@ -13,14 +13,14 @@ type Output struct {
 	Verbatim      string        `json:"verbatim"`
 	Surrogate     bool          `json:"surrogate"`
 	Warnings      []Warning     `json:"qualityWarnings,omitempty"`
-	Normalized    string        `json:"normalized"`
+	Normalized    string        `json:"normalized,omitempty"`
 	CanonicalName *canonical    `json:"canonicalName,omitempty"`
 	Virus         bool          `json:"virus"`
 	Positions     []pos         `json:"positions,omitempty"`
 	NameStringID  string        `json:"nameStringId"`
 	ParserVersion string        `json:"parserVersion"`
 	Hybrid        bool          `json:"hybrid"`
-	Details       []interface{} `json:"details"`
+	Details       []interface{} `json:"details,omitempty"`
 	Bacteria      bool          `json:"bacteria"`
 	Tail          string        `json:"unparsedTail,omitempty"`
 }
@@ -48,6 +48,7 @@ func NewOutput(sn *grm.ScientificNameNode) *Output {
 		NameStringID:  sn.VerbatimID,
 		Surrogate:     sn.Surrogate,
 		CanonicalName: co,
+		Virus:         sn.Virus,
 		Hybrid:        hybrid,
 		Normalized:    sn.Value(),
 		Positions:     ps,

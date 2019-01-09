@@ -69,6 +69,9 @@ func stackNodeIsWithin(n *node32, t token32) bool {
 }
 
 func (p *Engine) PrintOutputSyntaxTree(w io.Writer) {
+	if p.root == nil || p.root.pegRule != ruleSciName {
+		return
+	}
 	p.root.print(w, true, p.Buffer)
 }
 

@@ -3,6 +3,11 @@ GOBUILD=$(GOCMD) build
 GOINSTALL=$(GOCMD) install
 GOCLEAN=$(GOCMD) clean
 GOGET=$(GOCMD) get -u
+FLAG_MODULE=GO111MODULE=on
+FLAGS_SHARED=${FLAG_MODULE} CGO_ENABLED=0 GOARCH=amd64
+FLAGS_LINUX=${FLAGS_SHARED} GOOS=linux
+FLAGS_MAC=${FLAGS_SHARED} GOOS=darwin
+FLAGS_WIN=${FLAGS_SHARED} GOOS=windows
 
 VERSION=`git describe --tags`
 VER=`git describe --tags --abbrev=0`
@@ -10,9 +15,12 @@ DATE=`date -u '+%Y-%m-%d_%H:%M:%S%Z'`
 
 all: install
 
+test:
+	${FLAG_MODULE} go test ./...
+
 init:
-	GO111MODULE=on $(GOGET) github.com/pointlander/peg@fa48cc2; \
-	GO111MODULE=on $(GOGET) github.com/shurcooL/vfsgen@6a9ea43
+	${FLAG_MODULE} $(GOGET) github.com/pointlander/peg@fa48cc2; \
+	${FLAG_MODULE} $(GOGET) github.com/shurcooL/vfsgen@6a9ea43
 
 version:
 	echo "package output\n\nconst Version = \"$(VERSION)\"\nconst Build = \"$(DATE)\"\n" \
@@ -30,23 +38,23 @@ asset:
 build: version peg
 	cd gnparser; \
 	$(GOCLEAN); \
-	GO111MODULE=on GOOS=linux GOARCH=amd64 CGO_ENABLED=0 $(GOBUILD)
+	${FLAGS_LINUX} $(GOBUILD)
 
 install: version peg
 	cd gnparser; \
 	$(GOCLEAN); \
-	GO111MODULE=on GOOS=linux GOARCH=amd64 CGO_ENABLED=0 $(GOINSTALL)
+	${FLAGS_LINUX} $(GOINSTALL)
 
 release: version peg asset
 	cd gnparser; \
 	$(GOCLEAN); \
-	GGO111MODULE=on OOS=linux GOARCH=amd64 $(GOBUILD) ${LDFLAGS}; \
+	${FLAGS_LINUX} $(GOBUILD) ${LDFLAGS}; \
 	tar zcvf /tmp/parser-${VER}-linux.tar.gz gnparser; \
 	$(GOCLEAN); \
-	GGO111MODULE=on OOS=darwin GOARCH=amd64 $(GOBUILD) ${LDFLAGS}; \
+	${FLAGS_WIN} $(GOBUILD) ${LDFLAGS}; \
 	tar zcvf /tmp/gnparser-${VER}-mac.tar.gz gnparser; \
 	$(GOCLEAN); \
-	GGO111MODULE=on OOS=windows GOARCH=amd64 $(GOBUILD) ${LDFLAGS}; \
+	${FLAGS_WIN} $(GOBUILD) ${LDFLAGS}; \
 	zip -9 /tmp/gnparser-${VER}-win-64.zip gnparser; \
 	$(GOCLEAN);
 

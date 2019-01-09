@@ -105,21 +105,34 @@ func (sn *ScientificNameNode) Pos() []Pos {
 }
 
 func (sn *ScientificNameNode) Value() string {
+	if sn.Name == nil {
+		return ""
+	}
 	return sn.Name.value()
 }
 
 func (sn *ScientificNameNode) Canonical() (*Canonical, bool) {
+	if sn.Name == nil {
+		var c *Canonical
+		return c, false
+	}
 	return sn.Name.canonical()
 }
 
 func (sn *ScientificNameNode) Details() []interface{} {
+	if sn.Name == nil {
+		return []interface{}{}
+	}
 	return sn.Name.details()
 }
 
 func (sn *ScientificNameNode) LastAuthorship() *authorshipOutput {
+	var ao *authorshipOutput
+	if sn.Name == nil {
+		return ao
+	}
 	an := sn.Name.lastAuthorship()
 	if an == nil {
-		var ao *authorshipOutput
 		return ao
 	}
 	return an.details()

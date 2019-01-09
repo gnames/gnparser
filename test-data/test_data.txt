@@ -1641,214 +1641,214 @@ Coleoptera
 #SECTION: No parsing -- viruses, plasmids, prions etc.<
 Arv1virus
 np
-{"parsed":false,"verbatim":"Arv1virus","surrogate":false,"virus":true,"nameStringId":"25c7c012-6600-5073-8e8f-81fbcf841a66","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Arv1virus","surrogate":false,"virus":true,"nameStringId":"25c7c012-6600-5073-8e8f-81fbcf841a66","parserVersion":"test_version","hybrid":false,"bacteria":false}
 25c7c012-6600-5073-8e8f-81fbcf841a66|Arv1virus|||||1
 
 Turtle herpesviruses
 np
-{"parsed":false,"verbatim":"Turtle herpesviruses","surrogate":false,"virus":true,"nameStringId":"44dc4404-0bb8-5eaa-b401-1609d98d3b30","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Turtle herpesviruses","surrogate":false,"virus":true,"nameStringId":"44dc4404-0bb8-5eaa-b401-1609d98d3b30","parserVersion":"test_version","hybrid":false,"bacteria":false}
 44dc4404-0bb8-5eaa-b401-1609d98d3b30|Turtle herpesviruses|||||1
 
 Cre expression vector
 np
-{"parsed":false,"verbatim":"Cre expression vector","surrogate":false,"virus":true,"nameStringId":"9a282683-c49b-52dc-817f-0281d5b4b831","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Cre expression vector","surrogate":false,"virus":true,"nameStringId":"9a282683-c49b-52dc-817f-0281d5b4b831","parserVersion":"test_version","hybrid":false,"bacteria":false}
 9a282683-c49b-52dc-817f-0281d5b4b831|Cre expression vector|||||1
 
 Drosophila sturtevanti rhabdovirus
 np
-{"parsed":false,"verbatim":"Drosophila sturtevanti rhabdovirus","surrogate":false,"virus":true,"nameStringId":"d3510f21-1d57-50e6-98bd-2252259b7052","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Drosophila sturtevanti rhabdovirus","surrogate":false,"virus":true,"nameStringId":"d3510f21-1d57-50e6-98bd-2252259b7052","parserVersion":"test_version","hybrid":false,"bacteria":false}
 d3510f21-1d57-50e6-98bd-2252259b7052|Drosophila sturtevanti rhabdovirus|||||1
 
 Hydra expression vector
 np
-{"parsed":false,"verbatim":"Hydra expression vector","surrogate":false,"virus":true,"nameStringId":"b22ca1ca-3186-5bc6-9f1a-57ef8c117f25","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Hydra expression vector","surrogate":false,"virus":true,"nameStringId":"b22ca1ca-3186-5bc6-9f1a-57ef8c117f25","parserVersion":"test_version","hybrid":false,"bacteria":false}
 b22ca1ca-3186-5bc6-9f1a-57ef8c117f25|Hydra expression vector|||||1
 
 Gateway destination plasmid
 np
-{"parsed":false,"verbatim":"Gateway destination plasmid","surrogate":false,"virus":false,"nameStringId":"21946de0-1c80-543f-ab96-97b81f8d1516","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Gateway destination plasmid","surrogate":false,"virus":false,"nameStringId":"21946de0-1c80-543f-ab96-97b81f8d1516","parserVersion":"test_version","hybrid":false,"bacteria":false}
 21946de0-1c80-543f-ab96-97b81f8d1516|Gateway destination plasmid|||||1
 
 Abutilon mosaic virus [X15983] [X15984] Abutilon mosaic virus ICTV
 np
-{"parsed":false,"verbatim":"Abutilon mosaic virus [X15983] [X15984] Abutilon mosaic virus ICTV","surrogate":false,"virus":true,"nameStringId":"879da2ea-836c-5ad2-b837-81594a1a208d","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Abutilon mosaic virus [X15983] [X15984] Abutilon mosaic virus ICTV","surrogate":false,"virus":true,"nameStringId":"879da2ea-836c-5ad2-b837-81594a1a208d","parserVersion":"test_version","hybrid":false,"bacteria":false}
 879da2ea-836c-5ad2-b837-81594a1a208d|Abutilon mosaic virus [X15983] [X15984] Abutilon mosaic virus ICTV|||||1
 
 Acute bee paralysis virus [AF150629] Acute bee paralysis virus
 np
-{"parsed":false,"verbatim":"Acute bee paralysis virus [AF150629] Acute bee paralysis virus","surrogate":false,"virus":true,"nameStringId":"584822dc-f68f-5abf-aeef-0265172195bf","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Acute bee paralysis virus [AF150629] Acute bee paralysis virus","surrogate":false,"virus":true,"nameStringId":"584822dc-f68f-5abf-aeef-0265172195bf","parserVersion":"test_version","hybrid":false,"bacteria":false}
 584822dc-f68f-5abf-aeef-0265172195bf|Acute bee paralysis virus [AF150629] Acute bee paralysis virus|||||1
 
 Adeno-associated virus - 3
 np
-{"parsed":false,"verbatim":"Adeno-associated virus - 3","surrogate":false,"virus":true,"nameStringId":"5b16c811-0518-5073-a0be-b59f5faa09fb","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Adeno-associated virus - 3","surrogate":false,"virus":true,"nameStringId":"5b16c811-0518-5073-a0be-b59f5faa09fb","parserVersion":"test_version","hybrid":false,"bacteria":false}
 5b16c811-0518-5073-a0be-b59f5faa09fb|Adeno-associated virus - 3|||||1
 
 ?M1-like Viruses Methanobrevibacter phage PG
 np
-{"parsed":false,"verbatim":"?M1-like Viruses Methanobrevibacter phage PG","surrogate":false,"virus":true,"nameStringId":"b33d05e9-f2a6-5d1b-97e5-3ae061dcd036","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"?M1-like Viruses Methanobrevibacter phage PG","surrogate":false,"virus":true,"nameStringId":"b33d05e9-f2a6-5d1b-97e5-3ae061dcd036","parserVersion":"test_version","hybrid":false,"bacteria":false}
 b33d05e9-f2a6-5d1b-97e5-3ae061dcd036|?M1-like Viruses Methanobrevibacter phage PG|||||1
 
 Aeromonas phage 65
 np
-{"parsed":false,"verbatim":"Aeromonas phage 65","surrogate":false,"virus":true,"nameStringId":"2aef2420-ba68-5887-821f-0ec6eca86660","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Aeromonas phage 65","surrogate":false,"virus":true,"nameStringId":"2aef2420-ba68-5887-821f-0ec6eca86660","parserVersion":"test_version","hybrid":false,"bacteria":false}
 2aef2420-ba68-5887-821f-0ec6eca86660|Aeromonas phage 65|||||1
 
 Bacillus phage SPß [AF020713] Bacillus phage SPb ICTV
 np
-{"parsed":false,"verbatim":"Bacillus phage SPß [AF020713] Bacillus phage SPb ICTV","surrogate":false,"virus":true,"nameStringId":"ad2b6943-6a54-576d-85e9-e1f8f6aa95db","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Bacillus phage SPß [AF020713] Bacillus phage SPb ICTV","surrogate":false,"virus":true,"nameStringId":"ad2b6943-6a54-576d-85e9-e1f8f6aa95db","parserVersion":"test_version","hybrid":false,"bacteria":false}
 ad2b6943-6a54-576d-85e9-e1f8f6aa95db|Bacillus phage SPß [AF020713] Bacillus phage SPb ICTV|||||1
 
 Apple scar skin viroid
 np
-{"parsed":false,"verbatim":"Apple scar skin viroid","surrogate":false,"virus":true,"nameStringId":"7ade78b4-f576-5103-b4a8-4fb9e68845cd","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Apple scar skin viroid","surrogate":false,"virus":true,"nameStringId":"7ade78b4-f576-5103-b4a8-4fb9e68845cd","parserVersion":"test_version","hybrid":false,"bacteria":false}
 7ade78b4-f576-5103-b4a8-4fb9e68845cd|Apple scar skin viroid|||||1
 
 Australian grapevine viroid [X17101] Australian grapevine viroid ICTV
 np
-{"parsed":false,"verbatim":"Australian grapevine viroid [X17101] Australian grapevine viroid ICTV","surrogate":false,"virus":true,"nameStringId":"381b6868-5d9e-54ec-bae8-84fcc9a3e80c","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Australian grapevine viroid [X17101] Australian grapevine viroid ICTV","surrogate":false,"virus":true,"nameStringId":"381b6868-5d9e-54ec-bae8-84fcc9a3e80c","parserVersion":"test_version","hybrid":false,"bacteria":false}
 381b6868-5d9e-54ec-bae8-84fcc9a3e80c|Australian grapevine viroid [X17101] Australian grapevine viroid ICTV|||||1
 
 Agents of Spongiform Encephalopathies CWD prion Chronic wasting disease
 np
-{"parsed":false,"verbatim":"Agents of Spongiform Encephalopathies CWD prion Chronic wasting disease","surrogate":false,"virus":true,"nameStringId":"06193aa6-f2ec-5134-8117-89102448a13e","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Agents of Spongiform Encephalopathies CWD prion Chronic wasting disease","surrogate":false,"virus":true,"nameStringId":"06193aa6-f2ec-5134-8117-89102448a13e","parserVersion":"test_version","hybrid":false,"bacteria":false}
 06193aa6-f2ec-5134-8117-89102448a13e|Agents of Spongiform Encephalopathies CWD prion Chronic wasting disease|||||1
 
 Phi h-like viruses
 np
-{"parsed":false,"verbatim":"Phi h-like viruses","surrogate":false,"virus":true,"nameStringId":"474acd56-6be4-56fc-9045-48a3d570ac97","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Phi h-like viruses","surrogate":false,"virus":true,"nameStringId":"474acd56-6be4-56fc-9045-48a3d570ac97","parserVersion":"test_version","hybrid":false,"bacteria":false}
 474acd56-6be4-56fc-9045-48a3d570ac97|Phi h-like viruses|||||1
 
 Viroids
 np
-{"parsed":false,"verbatim":"Viroids","surrogate":false,"virus":true,"nameStringId":"641d47bf-c7c4-5218-8e2e-8756ad808653","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Viroids","surrogate":false,"virus":true,"nameStringId":"641d47bf-c7c4-5218-8e2e-8756ad808653","parserVersion":"test_version","hybrid":false,"bacteria":false}
 641d47bf-c7c4-5218-8e2e-8756ad808653|Viroids|||||1
 
 Fungal prions
 np
-{"parsed":false,"verbatim":"Fungal prions","surrogate":false,"virus":true,"nameStringId":"ec273e2d-cdde-5fcb-84dc-a6adf2e309ce","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Fungal prions","surrogate":false,"virus":true,"nameStringId":"ec273e2d-cdde-5fcb-84dc-a6adf2e309ce","parserVersion":"test_version","hybrid":false,"bacteria":false}
 ec273e2d-cdde-5fcb-84dc-a6adf2e309ce|Fungal prions|||||1
 
 Human rhinovirus A11
 np
-{"parsed":false,"verbatim":"Human rhinovirus A11","surrogate":false,"virus":true,"nameStringId":"ba205a7c-1c63-51c7-8f4d-d47665f56c33","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Human rhinovirus A11","surrogate":false,"virus":true,"nameStringId":"ba205a7c-1c63-51c7-8f4d-d47665f56c33","parserVersion":"test_version","hybrid":false,"bacteria":false}
 ba205a7c-1c63-51c7-8f4d-d47665f56c33|Human rhinovirus A11|||||1
 
 Kobuvirus korean black goat/South Korea/2010
 np
-{"parsed":false,"verbatim":"Kobuvirus korean black goat/South Korea/2010","surrogate":false,"virus":true,"nameStringId":"4871667d-e362-5f76-a218-6c1bcc090ba9","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Kobuvirus korean black goat/South Korea/2010","surrogate":false,"virus":true,"nameStringId":"4871667d-e362-5f76-a218-6c1bcc090ba9","parserVersion":"test_version","hybrid":false,"bacteria":false}
 4871667d-e362-5f76-a218-6c1bcc090ba9|Kobuvirus korean black goat/South Korea/2010|||||1
 
 Australian bat lyssavirus human/AUS/1998
 np
-{"parsed":false,"verbatim":"Australian bat lyssavirus human/AUS/1998","surrogate":false,"virus":true,"nameStringId":"5e4fdc2a-3fb3-5776-b94d-04b9f0c6fcbb","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Australian bat lyssavirus human/AUS/1998","surrogate":false,"virus":true,"nameStringId":"5e4fdc2a-3fb3-5776-b94d-04b9f0c6fcbb","parserVersion":"test_version","hybrid":false,"bacteria":false}
 5e4fdc2a-3fb3-5776-b94d-04b9f0c6fcbb|Australian bat lyssavirus human/AUS/1998|||||1
 
 Gossypium mustilinum symptomless alphasatellite
 np
-{"parsed":false,"verbatim":"Gossypium mustilinum symptomless alphasatellite","surrogate":false,"virus":true,"nameStringId":"d8b1e803-34ba-537b-874b-48521afb92a5","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Gossypium mustilinum symptomless alphasatellite","surrogate":false,"virus":true,"nameStringId":"d8b1e803-34ba-537b-874b-48521afb92a5","parserVersion":"test_version","hybrid":false,"bacteria":false}
 d8b1e803-34ba-537b-874b-48521afb92a5|Gossypium mustilinum symptomless alphasatellite|||||1
 
 Okra leaf curl Mali alphasatellites-Cameroon
 np
-{"parsed":false,"verbatim":"Okra leaf curl Mali alphasatellites-Cameroon","surrogate":false,"virus":true,"nameStringId":"034731b5-3de7-5d48-bf3b-f89272699a45","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Okra leaf curl Mali alphasatellites-Cameroon","surrogate":false,"virus":true,"nameStringId":"034731b5-3de7-5d48-bf3b-f89272699a45","parserVersion":"test_version","hybrid":false,"bacteria":false}
 034731b5-3de7-5d48-bf3b-f89272699a45|Okra leaf curl Mali alphasatellites-Cameroon|||||1
 
 Bemisia betasatellite LW-2014
 np
-{"parsed":false,"verbatim":"Bemisia betasatellite LW-2014","surrogate":false,"virus":true,"nameStringId":"21d06e45-a312-5844-88f7-3eb0b73d1efc","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Bemisia betasatellite LW-2014","surrogate":false,"virus":true,"nameStringId":"21d06e45-a312-5844-88f7-3eb0b73d1efc","parserVersion":"test_version","hybrid":false,"bacteria":false}
 21d06e45-a312-5844-88f7-3eb0b73d1efc|Bemisia betasatellite LW-2014|||||1
 
 Tomato leaf curl Bangladesh betasatellites [India/Patna/Chilli/2008]
 np
-{"parsed":false,"verbatim":"Tomato leaf curl Bangladesh betasatellites [India/Patna/Chilli/2008]","surrogate":false,"virus":true,"nameStringId":"c5def37b-c5d9-57e4-822a-0436629f5d99","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Tomato leaf curl Bangladesh betasatellites [India/Patna/Chilli/2008]","surrogate":false,"virus":true,"nameStringId":"c5def37b-c5d9-57e4-822a-0436629f5d99","parserVersion":"test_version","hybrid":false,"bacteria":false}
 c5def37b-c5d9-57e4-822a-0436629f5d99|Tomato leaf curl Bangladesh betasatellites [India/Patna/Chilli/2008]|||||1
 
 Intracisternal A-particles
 np
-{"parsed":false,"verbatim":"Intracisternal A-particles","surrogate":false,"virus":true,"nameStringId":"4f16a692-534b-5ec5-87f4-58fe76a0ed9d","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Intracisternal A-particles","surrogate":false,"virus":true,"nameStringId":"4f16a692-534b-5ec5-87f4-58fe76a0ed9d","parserVersion":"test_version","hybrid":false,"bacteria":false}
 4f16a692-534b-5ec5-87f4-58fe76a0ed9d|Intracisternal A-particles|||||1
 
 Saccharomyces cerevisiae killer particle M1
 np
-{"parsed":false,"verbatim":"Saccharomyces cerevisiae killer particle M1","surrogate":false,"virus":true,"nameStringId":"879050a7-5085-5679-85e4-fe47308843dd","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Saccharomyces cerevisiae killer particle M1","surrogate":false,"virus":true,"nameStringId":"879050a7-5085-5679-85e4-fe47308843dd","parserVersion":"test_version","hybrid":false,"bacteria":false}
 879050a7-5085-5679-85e4-fe47308843dd|Saccharomyces cerevisiae killer particle M1|||||1
 
 Uranotaenia sapphirina NPV
 np
-{"parsed":false,"verbatim":"Uranotaenia sapphirina NPV","surrogate":false,"virus":true,"nameStringId":"83886b77-a81a-52ba-9b0e-5743b4242b97","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Uranotaenia sapphirina NPV","surrogate":false,"virus":true,"nameStringId":"83886b77-a81a-52ba-9b0e-5743b4242b97","parserVersion":"test_version","hybrid":false,"bacteria":false}
 83886b77-a81a-52ba-9b0e-5743b4242b97|Uranotaenia sapphirina NPV|||||1
 
 Spodoptera exigua nuclear polyhedrosis virus SeMNPV
 np
-{"parsed":false,"verbatim":"Spodoptera exigua nuclear polyhedrosis virus SeMNPV","surrogate":false,"virus":true,"nameStringId":"a0356512-17eb-51ab-92b3-21d92393b84c","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Spodoptera exigua nuclear polyhedrosis virus SeMNPV","surrogate":false,"virus":true,"nameStringId":"a0356512-17eb-51ab-92b3-21d92393b84c","parserVersion":"test_version","hybrid":false,"bacteria":false}
 a0356512-17eb-51ab-92b3-21d92393b84c|Spodoptera exigua nuclear polyhedrosis virus SeMNPV|||||1
 
 Spodoptera frugiperda MNPV
 np
-{"parsed":false,"verbatim":"Spodoptera frugiperda MNPV","surrogate":false,"virus":true,"nameStringId":"5a694933-6187-54bb-ae35-77ed3384b69d","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Spodoptera frugiperda MNPV","surrogate":false,"virus":true,"nameStringId":"5a694933-6187-54bb-ae35-77ed3384b69d","parserVersion":"test_version","hybrid":false,"bacteria":false}
 5a694933-6187-54bb-ae35-77ed3384b69d|Spodoptera frugiperda MNPV|||||1
 
 Rachiplusia ou MNPV (strain R1)
 np
-{"parsed":false,"verbatim":"Rachiplusia ou MNPV (strain R1)","surrogate":false,"virus":true,"nameStringId":"ca77e2a5-fa26-5c7f-bf68-a449c32ea95e","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Rachiplusia ou MNPV (strain R1)","surrogate":false,"virus":true,"nameStringId":"ca77e2a5-fa26-5c7f-bf68-a449c32ea95e","parserVersion":"test_version","hybrid":false,"bacteria":false}
 ca77e2a5-fa26-5c7f-bf68-a449c32ea95e|Rachiplusia ou MNPV (strain R1)|||||1
 
 Orgyia pseudotsugata nuclear polyhedrosis virus OpMNPV
 np
-{"parsed":false,"verbatim":"Orgyia pseudotsugata nuclear polyhedrosis virus OpMNPV","surrogate":false,"virus":true,"nameStringId":"f3b4269c-a97f-5ff7-bb4a-56d982b3707c","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Orgyia pseudotsugata nuclear polyhedrosis virus OpMNPV","surrogate":false,"virus":true,"nameStringId":"f3b4269c-a97f-5ff7-bb4a-56d982b3707c","parserVersion":"test_version","hybrid":false,"bacteria":false}
 f3b4269c-a97f-5ff7-bb4a-56d982b3707c|Orgyia pseudotsugata nuclear polyhedrosis virus OpMNPV|||||1
 
 Mamestra configurata NPV-A
 np
-{"parsed":false,"verbatim":"Mamestra configurata NPV-A","surrogate":false,"virus":true,"nameStringId":"59160819-f61d-5360-85c5-78b6140a05ca","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Mamestra configurata NPV-A","surrogate":false,"virus":true,"nameStringId":"59160819-f61d-5360-85c5-78b6140a05ca","parserVersion":"test_version","hybrid":false,"bacteria":false}
 59160819-f61d-5360-85c5-78b6140a05ca|Mamestra configurata NPV-A|||||1
 
 Helicoverpa armigera SNPV NNg1
 np
-{"parsed":false,"verbatim":"Helicoverpa armigera SNPV NNg1","surrogate":false,"virus":true,"nameStringId":"933f0a27-1fd8-5066-90ee-df1ed8148c9c","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Helicoverpa armigera SNPV NNg1","surrogate":false,"virus":true,"nameStringId":"933f0a27-1fd8-5066-90ee-df1ed8148c9c","parserVersion":"test_version","hybrid":false,"bacteria":false}
 933f0a27-1fd8-5066-90ee-df1ed8148c9c|Helicoverpa armigera SNPV NNg1|||||1
 
 Zamilon virophage
 np
-{"parsed":false,"verbatim":"Zamilon virophage","surrogate":false,"virus":true,"nameStringId":"661132c0-7012-5405-bfc7-31e9a4b3946c","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Zamilon virophage","surrogate":false,"virus":true,"nameStringId":"661132c0-7012-5405-bfc7-31e9a4b3946c","parserVersion":"test_version","hybrid":false,"bacteria":false}
 661132c0-7012-5405-bfc7-31e9a4b3946c|Zamilon virophage|||||1
 
 Sputnik virophage 3
 np
-{"parsed":false,"verbatim":"Sputnik virophage 3","surrogate":false,"virus":true,"nameStringId":"b206bb35-01bf-59a7-8dad-bc8f99ca0a2a","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Sputnik virophage 3","surrogate":false,"virus":true,"nameStringId":"b206bb35-01bf-59a7-8dad-bc8f99ca0a2a","parserVersion":"test_version","hybrid":false,"bacteria":false}
 b206bb35-01bf-59a7-8dad-bc8f99ca0a2a|Sputnik virophage 3|||||1
 
 Bacteriophage PH75
 np
-{"parsed":false,"verbatim":"Bacteriophage PH75","surrogate":false,"virus":true,"nameStringId":"605f428e-a4a3-57a2-9dfa-a6a3d99b801d","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Bacteriophage PH75","surrogate":false,"virus":true,"nameStringId":"605f428e-a4a3-57a2-9dfa-a6a3d99b801d","parserVersion":"test_version","hybrid":false,"bacteria":false}
 605f428e-a4a3-57a2-9dfa-a6a3d99b801d|Bacteriophage PH75|||||1
 
 Escherichia coli bacteriophage
 np
-{"parsed":false,"verbatim":"Escherichia coli bacteriophage","surrogate":false,"virus":true,"nameStringId":"c01315c2-e1cc-58c2-b113-2d756985d64b","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Escherichia coli bacteriophage","surrogate":false,"virus":true,"nameStringId":"c01315c2-e1cc-58c2-b113-2d756985d64b","parserVersion":"test_version","hybrid":false,"bacteria":false}
 c01315c2-e1cc-58c2-b113-2d756985d64b|Escherichia coli bacteriophage|||||1
 #>
 
 #SECTION: No parsing -- name-strings with RNA word<
 ssRNA
 np
-{"parsed":false,"verbatim":"ssRNA","surrogate":false,"virus":false,"nameStringId":"10d5f30c-e51b-54ed-be43-c0ac1656a88a","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"ssRNA","surrogate":false,"virus":false,"nameStringId":"10d5f30c-e51b-54ed-be43-c0ac1656a88a","parserVersion":"test_version","hybrid":false,"bacteria":false}
 10d5f30c-e51b-54ed-be43-c0ac1656a88a|ssRNA|||||1
 
 Alpha proteobacterium RNA12
 np
-{"parsed":false,"verbatim":"Alpha proteobacterium RNA12","surrogate":false,"virus":false,"nameStringId":"c2826f30-f6f3-543f-80cf-646adf374a59","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Alpha proteobacterium RNA12","surrogate":false,"virus":false,"nameStringId":"c2826f30-f6f3-543f-80cf-646adf374a59","parserVersion":"test_version","hybrid":false,"bacteria":false}
 c2826f30-f6f3-543f-80cf-646adf374a59|Alpha proteobacterium RNA12|||||1
 
 Ustilaginoidea virens RNA virus
 np
-{"parsed":false,"verbatim":"Ustilaginoidea virens RNA virus","surrogate":false,"virus":true,"nameStringId":"61fff10f-7f16-5f42-b642-ba0195abccb8","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Ustilaginoidea virens RNA virus","surrogate":false,"virus":true,"nameStringId":"61fff10f-7f16-5f42-b642-ba0195abccb8","parserVersion":"test_version","hybrid":false,"bacteria":false}
 61fff10f-7f16-5f42-b642-ba0195abccb8|Ustilaginoidea virens RNA virus|||||1
 
 Candida albicans RNA_CTR0-3
 np
-{"parsed":false,"verbatim":"Candida albicans RNA_CTR0-3","surrogate":false,"virus":false,"nameStringId":"0182d44b-5d8b-501d-8f5c-4ef44dff8db4","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Candida albicans RNA_CTR0-3","surrogate":false,"virus":false,"nameStringId":"0182d44b-5d8b-501d-8f5c-4ef44dff8db4","parserVersion":"test_version","hybrid":false,"bacteria":false}
 0182d44b-5d8b-501d-8f5c-4ef44dff8db4|Candida albicans RNA_CTR0-3|||||1
 
 Carabus satyrus satyrus KURNAKOV, 1962

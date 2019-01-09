@@ -48,11 +48,6 @@ func Preprocess(bs []byte) *Preprocessor {
 		pr.Annotation = true
 		i = j
 	}
-	// j = Approximation(bs[0:i])
-	// if j < i {
-	// 	pr.Approximate = true
-	// 	i = j
-	// }
 	pr.Virus = IsVirus(bs[0:i])
 	if pr.Virus {
 		pr.NoParse = true
@@ -75,16 +70,6 @@ func NormalizeHybridChar(bs []byte) []byte {
 	res = hybridCharRe2.ReplaceAll(res, hybridChar)
 	return res
 }
-
-// Approximation returns an index where an approximation tail starts.
-// func Approximation(bs []byte) int {
-// 	i := len(bs)
-// 	loc := approxRe.FindIndex(bs)
-// 	if len(loc) > 0 {
-// 		i = loc[0]
-// 	}
-// 	return i
-// }
 
 // IsVirus returns if a string is a virus name.
 func IsVirus(bs []byte) bool {

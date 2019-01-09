@@ -45,7 +45,7 @@ func outputEntries() []TableEntry {
 
 		gnp.Parse(v.NameString)
 		simple := strings.Join(gnp.ToSlice(), "|")
-		testName := fmt.Sprintf("%000d: %s", i+1, v.NameString)
+		testName := fmt.Sprintf("%000d: |%s|", i+1, v.NameString)
 		te := Entry(testName, json, v.Compact, simple, v.Simple)
 		entries = append(entries, te)
 	}
@@ -60,11 +60,21 @@ func astEntries() []TableEntry {
 	}
 	gnp := NewGNparser()
 	for i, v := range tests {
-		gnp.parser.Buffer = string(preprocess.NormalizeHybridChar([]byte(v.NameString)))
+		testName := fmt.Sprintf("AST-%03d: |%s|", i+1, v.NameString)
+		ppr := preprocess.Preprocess([]byte(v.NameString))
+		if ppr.NoParse {
+			parsedStr := "np"
+			te := Entry(testName, parsedStr, v.Parsed)
+			entries = append(entries, te)
+			continue
+		}
+		gnp.parser.Buffer = string(ppr.Body)
 		gnp.parser.Reset()
-		gnp.parser.Parse()
-		parsedStr := gnp.parser.ParsedName()
-		testName := fmt.Sprintf("%000d: %s", i+1, v.NameString)
+		err := gnp.parser.Parse()
+		parsedStr := "np"
+		if err == nil {
+			parsedStr = gnp.parser.ParsedName()
+		}
 		te := Entry(testName, parsedStr, v.Parsed)
 		entries = append(entries, te)
 	}

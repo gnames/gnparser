@@ -2,6 +2,7 @@ package gnparser
 
 import (
 	"bytes"
+	"fmt"
 	"runtime"
 	"strings"
 
@@ -134,11 +135,17 @@ func (gnp *GNparser) ToSlice() []string {
 
 // Debug returns byte representation of complete and 'output' syntax trees.
 func (gnp *GNparser) Debug(s string) []byte {
-	gnp.parser.Buffer = string(preprocess.NormalizeHybridChar([]byte(s)))
+	ppr := preprocess.Preprocess([]byte(s))
+	var b bytes.Buffer
+	if ppr.NoParse || ppr.Virus {
+		b.WriteString("\n*** Preprocessing: NO PARSE ***\n")
+		b.WriteString(fmt.Sprintf("\n%s\n", s))
+		return b.Bytes()
+	}
+	gnp.parser.Buffer = string(ppr.Body)
 	gnp.parser.Reset()
 	gnp.parser.Parse()
 	gnp.parser.OutputAST()
-	var b bytes.Buffer
 	b.WriteString("\n*** Complete Syntax Tree ***\n")
 	gnp.parser.AST().PrettyPrint(&b, gnp.parser.Buffer)
 	b.WriteString("\n*** Output Syntax Tree ***\n")

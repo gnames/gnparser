@@ -33,6 +33,9 @@ func NewSimpleOutput(sn *grammar.ScientificNameNode) *simple {
 	}
 
 	c, _ := sn.Canonical()
+	if c == nil {
+		c = &grammar.Canonical{}
+	}
 
 	_, quality := qualityAndWarnings(sn.Warnings)
 	so := simple{
