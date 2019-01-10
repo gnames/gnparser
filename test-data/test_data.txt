@@ -2032,6 +2032,7 @@ Recilia truncatus Dash & Viraktamath, 1998: 29
 47a39cf1-7be1-5937-b8fa-03a1696c1de6|Recilia truncatus Dash & Viraktamath, 1998: 29|Recilia truncatus|Recilia truncatus|Dash & Viraktamath 1998|1998|3
 
 Recilia truncatus Dash & Viraktamath, 1998a:29
+Recilia truncatus Dash & Viraktamath, 1998a:29
 {"quality":3,"parsed":true,"verbatim":"Recilia truncatus Dash & Viraktamath, 1998a:29","surrogate":false,"qualityWarnings":[[3,"Year with page info"],[2,"Year with latin character"]],"normalized":"Recilia truncatus Dash & Viraktamath 1998","canonicalName":{"value":"Recilia truncatus","valueRanked":"Recilia truncatus"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17],["authorWord",18,22],["authorWord",25,36],["year",38,43]],"nameStringId":"68b51644-5fef-5d5f-819d-f5bf8c9e6051","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Recilia"},"specificEpithet":{"value":"truncatus","authorship":{"value":"Dash & Viraktamath 1998","basionymAuthorship":{"authors":["Dash","Viraktamath"],"years":[{"value":"1998"}]}}}}],"bacteria":false}
 68b51644-5fef-5d5f-819d-f5bf8c9e6051|Recilia truncatus Dash & Viraktamath, 1998a:29|Recilia truncatus|Recilia truncatus|Dash & Viraktamath 1998|1998|3
 
@@ -2068,8 +2069,8 @@ Anthoscopus Cabanis [1851?]
 6b12b541-b58b-5f11-ba66-bb314b53813f|Anthoscopus Cabanis [1851?]|Anthoscopus|Anthoscopus|Cabanis (1851?)|(1851?)|3
 
 Trismegistia monodii Ando, 1973 [1974]
-Trismegistia monodii Ando, 1973 [1974]
-{"quality":3,"parsed":true,"verbatim":"Trismegistia monodii Ando, 1973 [1974]","surrogate":false,"qualityWarnings":[[3,"Year with square brakets"]],"normalized":"Trismegistia monodii Ando 1973","canonicalName":{"value":"Trismegistia monodii","valueRanked":"Trismegistia monodii"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,20],["authorWord",21,25],["year",27,31]],"nameStringId":"f396d2d0-b14e-537f-ae8f-c383310f813e","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Trismegistia"},"specificEpithet":{"value":"monodii","authorship":{"value":"Ando 1973","basionymAuthorship":{"authors":["Ando"],"years":[{"value":"1973"},{"value":"1974","approximate":true}]}}}}],"bacteria":false}
+Trismegistia monodii Ando, 1973
+{"quality":3,"parsed":true,"verbatim":"Trismegistia monodii Ando, 1973 [1974]","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Trismegistia monodii Ando 1973","canonicalName":{"value":"Trismegistia monodii","valueRanked":"Trismegistia monodii"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,20],["authorWord",21,25],["year",27,31]],"nameStringId":"f396d2d0-b14e-537f-ae8f-c383310f813e","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Trismegistia"},"specificEpithet":{"value":"monodii","authorship":{"value":"Ando 1973","basionymAuthorship":{"authors":["Ando"],"years":[{"value":"1973"}]}}}}],"bacteria":false,"unparsedTail":" [1974]"}
 f396d2d0-b14e-537f-ae8f-c383310f813e|Trismegistia monodii Ando, 1973 [1974]|Trismegistia monodii|Trismegistia monodii|Ando 1973|1973|3
 
 Zygaena witti Wiegel [1973]
@@ -2078,8 +2079,8 @@ Zygaena witti Wiegel [1973]
 76eef612-f125-54f9-b241-6b3a9be0a6c6|Zygaena witti Wiegel [1973]|Zygaena witti|Zygaena witti|Wiegel (1973)|(1973)|3
 
 Deyeuxia coarctata Kunth, 1815 [1816]
-Deyeuxia coarctata Kunth, 1815 [1816]
-{"quality":3,"parsed":true,"verbatim":"Deyeuxia coarctata Kunth, 1815 [1816]","surrogate":false,"qualityWarnings":[[3,"Year with square brakets"]],"normalized":"Deyeuxia coarctata Kunth 1815","canonicalName":{"value":"Deyeuxia coarctata","valueRanked":"Deyeuxia coarctata"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,18],["authorWord",19,24],["year",26,30]],"nameStringId":"2f479365-40be-5181-b194-8a24fc743f73","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Deyeuxia"},"specificEpithet":{"value":"coarctata","authorship":{"value":"Kunth 1815","basionymAuthorship":{"authors":["Kunth"],"years":[{"value":"1815"},{"value":"1816","approximate":true}]}}}}],"bacteria":false}
+Deyeuxia coarctata Kunth, 1815
+{"quality":3,"parsed":true,"verbatim":"Deyeuxia coarctata Kunth, 1815 [1816]","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Deyeuxia coarctata Kunth 1815","canonicalName":{"value":"Deyeuxia coarctata","valueRanked":"Deyeuxia coarctata"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,18],["authorWord",19,24],["year",26,30]],"nameStringId":"2f479365-40be-5181-b194-8a24fc743f73","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Deyeuxia"},"specificEpithet":{"value":"coarctata","authorship":{"value":"Kunth 1815","basionymAuthorship":{"authors":["Kunth"],"years":[{"value":"1815"}]}}}}],"bacteria":false,"unparsedTail":" [1816]"}
 2f479365-40be-5181-b194-8a24fc743f73|Deyeuxia coarctata Kunth, 1815 [1816]|Deyeuxia coarctata|Deyeuxia coarctata|Kunth 1815|1815|3
 #>
 

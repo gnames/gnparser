@@ -741,8 +741,16 @@ func (p *Engine) newYearNode(nd *node32) *yearNode {
 	nodes := nd.flatChildren()
 	for _, v := range nodes {
 		switch v.token32.pegRule {
+		case ruleYearWithPage:
+			p.AddWarn(YearPageWarn)
+		case ruleYearRange:
+			p.AddWarn(YearRangeWarn)
+			appr = true
 		case ruleYearWithParens:
 			p.AddWarn(YearParensWarn)
+			appr = true
+		case ruleYearApprox:
+			p.AddWarn(YearSqBraketsWarn)
 			appr = true
 		case ruleYearWithChar:
 			p.AddWarn(YearCharWarn)
