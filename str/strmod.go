@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"strings"
+	"unicode"
 	"unicode/utf8"
 )
 
@@ -41,6 +42,22 @@ func JoinStrings(s1 string, s2 string, sep string) string {
 		return s1
 	}
 	return fmt.Sprintf("%s%s%s", s1, sep, s2)
+}
+
+func FixAllCaps(s string) string {
+	rs := []rune(s)
+	res := make([]rune, len(rs))
+	var prev rune
+	for i, v := range rs {
+		if i == 0 || prev == '-' {
+			res[i] = v
+			prev = v
+			continue
+		}
+		res[i] = unicode.ToLower(v)
+		prev = v
+	}
+	return string(res)
 }
 
 func NumToStr(num string) string {

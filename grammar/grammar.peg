@@ -118,11 +118,11 @@ CombinationAuthorship <- AuthorsGroup
 
 BasionymAuthorshipYearMisformed <- '(' _? AuthorsGroup _? ')' (_? ',')? _? Year
 
-BasionymAuthorship <- BasionymAuthorship1 / BasionymAuthorship2
+BasionymAuthorship <- BasionymAuthorship1 / BasionymAuthorship2Parens
 
 BasionymAuthorship1 <- '(' _? AuthorsGroup _? ')'
 
-BasionymAuthorship2 <- '(' _? '(' _? AuthorsGroup _? ')' _? ')'
+BasionymAuthorship2Parens <- '(' _? '(' _? AuthorsGroup _? ')' _? ')'
 
 AuthorsGroup <- AuthorsTeam (_? AuthorEmend? AuthorEx? AuthorsTeam)?
 
@@ -146,7 +146,7 @@ Author2 <- AuthorWord (_? AuthorWord)*
 
 UnknownAuthor <- '?' / (('auct' / 'anon') (&(SpaceCharEOI) / '.'))
 
-AuthorWord <- !('Bold:') (AuthorWord1 /AuthorWord2 / AuthorWord3 / AuthorPrefix)
+AuthorWord <- !("bold:") (AuthorWord1 /AuthorWord2 / AuthorWord3 / AuthorPrefix)
 
 AuthorWord1 <- 'arg.' / 'et al.{?}' / ('et' / '&') ' al' '.'?
 
@@ -163,7 +163,7 @@ AllCapsAuthorWord <- AuthorUpperChar AuthorUpperChar+
 
 Filius <- 'f.' / 'fil.' / 'filius'
 
-AuthorPrefixGlued <- 'd\'' / 'O\''
+AuthorPrefixGlued <- 'd\'' / 'O\'' / 'L\''
 
 AuthorPrefix <- AuthorPrefix1 / AuthorPrefix2
 
@@ -213,7 +213,7 @@ LowerChar <- lASCII
 
 SpaceCharEOI <- _ / !.
 
-WordBorderChar <- _ / ';' / '.' / ',' / ':' / '(' / ')' / ']'
+# WordBorderChar <- _ / ';' / '.' / ',' / ':' / '(' / ')' / ']'
 
 nums <- [0-9]
 

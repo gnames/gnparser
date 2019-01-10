@@ -1918,70 +1918,6 @@ Xanthomonas axonopodis
 
 ### Miscellaneous Inconsistencies
 
-# Section HTML tags and entities<
-Velutina haliotoides (Linnaeus, 1758) <i>sensu</i> Fabricius, 1780
-Velutina haliotoides (Linnaeus, 1758) <i>sensu</i> Fabricius, 1780
-{"quality":2,"parsed":true,"verbatim":"Velutina haliotoides (Linnaeus, 1758) <i>sensu</i> Fabricius, 1780","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Velutina haliotoides (Linnaeus 1758)","canonicalName":{"value":"Velutina haliotoides","valueRanked":"Velutina haliotoides"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,20],["authorWord",22,30],["year",32,36]],"nameStringId":"189c94f6-96aa-52bb-b019-103a2103ce21","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"haliotoides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"years":[{"value":"1758"}]}}}}],"bacteria":false}
-189c94f6-96aa-52bb-b019-103a2103ce21|Velutina haliotoides (Linnaeus, 1758) <i>sensu</i> Fabricius, 1780|Velutina haliotoides|Velutina haliotoides|(Linnaeus 1758)|1758|2
-
-Velutina haliotoides (Linnaeus, 1758), <i>sensu</i> Fabricius, 1780
-Velutina haliotoides (Linnaeus, 1758)
-{"quality":2,"parsed":true,"verbatim":"Velutina haliotoides (Linnaeus, 1758), <i>sensu</i> Fabricius, 1780","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Velutina haliotoides (Linnaeus 1758)","canonicalName":{"value":"Velutina haliotoides","valueRanked":"Velutina haliotoides"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,20],["authorWord",22,30],["year",32,36]],"nameStringId":"b8d77a78-2698-5050-9c7a-638f615bd357","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"haliotoides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"years":[{"value":"1758"}]}}}}],"bacteria":false}
-b8d77a78-2698-5050-9c7a-638f615bd357|Velutina haliotoides (Linnaeus, 1758), <i>sensu</i> Fabricius, 1780|Velutina haliotoides|Velutina haliotoides|(Linnaeus 1758)|1758|2
-
-Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger, 20
-Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger
-{"quality":3,"parsed":true,"verbatim":"Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger, 20","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger","canonicalName":{"value":"Fusinus clavilithoides","valueRanked":"Fusinus clavilithoides"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,22],["authorWord",23,29],["authorWord",31,41],["authorWord",43,53],["authorWord",56,69]],"nameStringId":"76a62c41-361e-532c-852c-ab3dc7ab09cb","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Fusinus"},"specificEpithet":{"value":"clavilithoides","authorship":{"value":"Landau, Harzhauser, Büyükmeriç & Breitenberger","basionymAuthorship":{"authors":["Landau","Harzhauser","Büyükmeriç","Breitenberger"]}}}}],"bacteria":false,"unparsedTail":" 20"}
-76a62c41-361e-532c-852c-ab3dc7ab09cb|Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger, 20|Fusinus clavilithoides|Fusinus clavilithoides|Landau, Harzhauser, Büyükmeriç & Breitenberger||3
-
-<i>Velutina halioides</i> (Linnaeus, 1758)
-Velutina halioides (Linnaeus, 1758)
-{"quality":2,"parsed":true,"verbatim":"<i>Velutina halioides</i> (Linnaeus, 1758)","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Velutina halioides (Linnaeus 1758)","canonicalName":{"value":"Velutina halioides","valueRanked":"Velutina halioides"},"virus":false,"positions":[["genus",3,11],["specificEpithet",12,25],["authorWord",27,35],["year",37,41]],"nameStringId":"653bbe42-aef4-5847-add4-8c7f8a4d1f9b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"halioides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"years":[{"value":"1758"}]}}}}],"bacteria":false}
-653bbe42-aef4-5847-add4-8c7f8a4d1f9b|<i>Velutina halioides</i> (Linnaeus, 1758)|Velutina halioides|Velutina halioides|(Linnaeus 1758)|1758|2
-
-Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo
-Quadrella steyermarkii (Standl.) Iltis & Cornejo
-{"quality":2,"parsed":true,"verbatim":"Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Quadrella steyermarkii (Standl.) Iltis & Cornejo","canonicalName":{"value":"Quadrella steyermarkii","valueRanked":"Quadrella steyermarkii"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["authorWord",24,31],["authorWord",33,38],["authorWord",45,52]],"nameStringId":"fbd1b4fe-f8ed-5390-9cb1-e0f798691b1e","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Quadrella"},"specificEpithet":{"value":"steyermarkii","authorship":{"value":"(Standl.) Iltis & Cornejo","basionymAuthorship":{"authors":["Standl."]},"combinationAuthorship":{"authors":["Iltis","Cornejo"]}}}}],"bacteria":false}
-fbd1b4fe-f8ed-5390-9cb1-e0f798691b1e|Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo|Quadrella steyermarkii|Quadrella steyermarkii|(Standl.) Iltis & Cornejo||2
-#>
-
-#SECTION: Names with spec., nov spec<
-Lampona spec Platnick, 2000
-Lampona spec Platnick, 2000
-{"quality":1,"parsed":true,"verbatim":"Lampona spec Platnick, 2000","surrogate":false,"normalized":"Lampona spec Platnick 2000","canonicalName":{"value":"Lampona spec","valueRanked":"Lampona spec"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,12],["authorWord",13,21],["year",23,27]],"nameStringId":"d05d7916-4868-57f6-a97b-c46886f29cd8","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Lampona"},"specificEpithet":{"value":"spec","authorship":{"value":"Platnick 2000","basionymAuthorship":{"authors":["Platnick"],"years":[{"value":"2000"}]}}}}],"bacteria":false}
-d05d7916-4868-57f6-a97b-c46886f29cd8|Lampona spec Platnick, 2000|Lampona spec|Lampona spec|Platnick 2000|2000|1
-
-Gobiosoma spec (Ginsburg, 1939)
-Gobiosoma spec (Ginsburg, 1939)
-{"quality":1,"parsed":true,"verbatim":"Gobiosoma spec (Ginsburg, 1939)","surrogate":false,"normalized":"Gobiosoma spec (Ginsburg 1939)","canonicalName":{"value":"Gobiosoma spec","valueRanked":"Gobiosoma spec"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,14],["authorWord",16,24],["year",26,30]],"nameStringId":"eb47c188-86fd-54c4-a058-48a980f9419f","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Gobiosoma"},"specificEpithet":{"value":"spec","authorship":{"value":"(Ginsburg 1939)","basionymAuthorship":{"authors":["Ginsburg"],"years":[{"value":"1939"}]}}}}],"bacteria":false}
-eb47c188-86fd-54c4-a058-48a980f9419f|Gobiosoma spec (Ginsburg, 1939)|Gobiosoma spec|Gobiosoma spec|(Ginsburg 1939)|1939|1
-
-Globigerina spec
-Globigerina spec
-{"quality":1,"parsed":true,"verbatim":"Globigerina spec","surrogate":false,"normalized":"Globigerina spec","canonicalName":{"value":"Globigerina spec","valueRanked":"Globigerina spec"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,16]],"nameStringId":"4f8f7189-42a0-59e2-8d6f-67c3889673d9","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Globigerina"},"specificEpithet":{"value":"spec"}}],"bacteria":false}
-4f8f7189-42a0-59e2-8d6f-67c3889673d9|Globigerina spec|Globigerina spec|Globigerina spec|||1
-
-Eunotia genuflexa Norpel-Schempp nov spec
-Eunotia genuflexa Norpel-Schempp
-{"quality":2,"parsed":true,"verbatim":"Eunotia genuflexa Norpel-Schempp nov spec","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Eunotia genuflexa Norpel-Schempp","canonicalName":{"value":"Eunotia genuflexa","valueRanked":"Eunotia genuflexa"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17],["authorWord",18,32]],"nameStringId":"4cc2a699-d38d-5337-8a44-ecc0f79ef138","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Eunotia"},"specificEpithet":{"value":"genuflexa","authorship":{"value":"Norpel-Schempp","basionymAuthorship":{"authors":["Norpel-Schempp"]}}}}],"bacteria":false}
-4cc2a699-d38d-5337-8a44-ecc0f79ef138|Eunotia genuflexa Norpel-Schempp nov spec|Eunotia genuflexa|Eunotia genuflexa|Norpel-Schempp||2
-
-Ctenotus spec.
-Ctenotus
-{"quality":2,"parsed":true,"verbatim":"Ctenotus spec.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Ctenotus","canonicalName":{"value":"Ctenotus","valueRanked":"Ctenotus"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"991b9ee5-2f56-56e7-a29b-86c47a4901bb","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Ctenotus"}}],"bacteria":false}
-991b9ee5-2f56-56e7-a29b-86c47a4901bb|Ctenotus spec.|Ctenotus|Ctenotus|||2
-
-Byrsophlebidae spec. 2
-Byrsophlebidae
-{"quality":2,"parsed":true,"verbatim":"Byrsophlebidae spec. 2","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Byrsophlebidae","canonicalName":{"value":"Byrsophlebidae","valueRanked":"Byrsophlebidae"},"virus":false,"positions":[["uninomial",0,14]],"nameStringId":"3b07753b-71e2-5602-9a6e-bf91e672d834","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Byrsophlebidae"}}],"bacteria":false}
-3b07753b-71e2-5602-9a6e-bf91e672d834|Byrsophlebidae spec. 2|Byrsophlebidae|Byrsophlebidae|||2
-
-Naviculadicta witkowskii LB & Metzeltin nov spec
-Naviculadicta witkowskii LB & Metzeltin
-{"quality":2,"parsed":true,"verbatim":"Naviculadicta witkowskii LB & Metzeltin nov spec","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Naviculadicta witkowskii LB & Metzeltin","canonicalName":{"value":"Naviculadicta witkowskii","valueRanked":"Naviculadicta witkowskii"},"virus":false,"positions":[["genus",0,13],["specificEpithet",14,24],["authorWord",25,27],["authorWord",30,39]],"nameStringId":"c4dd80b7-984b-51f8-a4ec-573b4b32358b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Naviculadicta"},"specificEpithet":{"value":"witkowskii","authorship":{"value":"LB & Metzeltin","basionymAuthorship":{"authors":["LB","Metzeltin"]}}}}],"bacteria":false}
-c4dd80b7-984b-51f8-a4ec-573b4b32358b|Naviculadicta witkowskii LB & Metzeltin nov spec|Naviculadicta witkowskii|Naviculadicta witkowskii|LB & Metzeltin||2
-#>
-
 #SECTION stray ex is not parsed as species<
 Pelargonium cucullatum ssp. cucullatum (L.) L'Her. ex [Soland.]
 Pelargonium cucullatum ssp. cucullatum (L.) L'Her.
@@ -2017,42 +1953,20 @@ Eichornia crassipes ( (Martius) ) Solms-Laub.
 95b90189-29d1-51ca-a1fa-0fb1c19a1fa1|Eichornia crassipes ( (Martius) ) Solms-Laub.|Eichornia crassipes|Eichornia crassipes|(Martius) Solms-Laub.||3
 #>
 
-#SECTION: Underscores intead of spaces<
-Oxalis_barrelieri
-Oxalis_barrelieri
-{"quality":3,"parsed":true,"verbatim":"Oxalis_barrelieri","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"]],"normalized":"Oxalis barrelieri","canonicalName":{"value":"Oxalis barrelieri","valueRanked":"Oxalis barrelieri"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"ad546700-9cae-50d3-9eaf-6adcbbb67bae","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Oxalis"},"specificEpithet":{"value":"barrelieri"}}],"bacteria":false}
-ad546700-9cae-50d3-9eaf-6adcbbb67bae|Oxalis_barrelieri|Oxalis barrelieri|Oxalis barrelieri|||3
-
-Pseudocercospora__dendrobii
-Pseudocercospora__dendrobii
-{"quality":3,"parsed":true,"verbatim":"Pseudocercospora__dendrobii","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"],[2,"Multiple adjacent space characters"]],"normalized":"Pseudocercospora dendrobii","canonicalName":{"value":"Pseudocercospora dendrobii","valueRanked":"Pseudocercospora dendrobii"},"virus":false,"positions":[["genus",0,16],["specificEpithet",18,27]],"nameStringId":"ae8a4688-2b2a-5974-81bf-1962838a9cbe","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Pseudocercospora"},"specificEpithet":{"value":"dendrobii"}}],"bacteria":false}
-ae8a4688-2b2a-5974-81bf-1962838a9cbe|Pseudocercospora__dendrobii|Pseudocercospora dendrobii|Pseudocercospora dendrobii|||3
-
-  Oxalis_barrelieri
-Oxalis_barrelieri
-{"quality":3,"parsed":true,"verbatim":"  Oxalis_barrelieri","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"],[2,"Multiple adjacent space characters"]],"normalized":"Oxalis barrelieri","canonicalName":{"value":"Oxalis barrelieri","valueRanked":"Oxalis barrelieri"},"virus":false,"positions":[["genus",2,8],["specificEpithet",9,19]],"nameStringId":"1c4bb48b-d134-54c8-bac1-6771d1f4c9c6","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Oxalis"},"specificEpithet":{"value":"barrelieri"}}],"bacteria":false}
-1c4bb48b-d134-54c8-bac1-6771d1f4c9c6|  Oxalis_barrelieri|Oxalis barrelieri|Oxalis barrelieri|||3
-
-Oxalis_barrelieri
-Oxalis_barrelieri
-{"quality":3,"parsed":true,"verbatim":"Oxalis_barrelieri  ","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"],[2,"Trailing whitespace"]],"normalized":"Oxalis barrelieri","canonicalName":{"value":"Oxalis barrelieri","valueRanked":"Oxalis barrelieri"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"c57de7fd-b94e-54e1-a856-72b0668ab818","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Oxalis"},"specificEpithet":{"value":"barrelieri"}}],"bacteria":false,"unparsedTail":"  "}
-c57de7fd-b94e-54e1-a856-72b0668ab818|Oxalis_barrelieri  |Oxalis barrelieri|Oxalis barrelieri|||3
-#>
-
 #SECTION: numbers at the start/middle of names<
 Nesomyrmex madecassus_01m
-Nesomyrmex madecassus
-{"quality":3,"parsed":true,"verbatim":"Nesomyrmex madecassus_01m","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Nesomyrmex madecassus","canonicalName":{"value":"Nesomyrmex madecassus","valueRanked":"Nesomyrmex madecassus"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,21]],"nameStringId":"30dd0028-1ad4-5f65-ba5e-3df4963825d2","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Nesomyrmex"},"specificEpithet":{"value":"madecassus"}}],"bacteria":false,"unparsedTail":"_01m"}
-30dd0028-1ad4-5f65-ba5e-3df4963825d2|Nesomyrmex madecassus_01m|Nesomyrmex madecassus|Nesomyrmex madecassus|||3
+Nesomyrmex
+{"quality":3,"parsed":true,"verbatim":"Nesomyrmex madecassus_01m","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Nesomyrmex","canonicalName":{"value":"Nesomyrmex","valueRanked":"Nesomyrmex"},"virus":false,"positions":[["uninomial",0,10]],"nameStringId":"30dd0028-1ad4-5f65-ba5e-3df4963825d2","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Nesomyrmex"}}],"bacteria":false,"unparsedTail":" madecassus_01m"}
+30dd0028-1ad4-5f65-ba5e-3df4963825d2|Nesomyrmex madecassus_01m|Nesomyrmex|Nesomyrmex|||3
 
 Hypochrys0des
 np
-{"parsed":false,"verbatim":"Hypochrys0des","surrogate":false,"virus":false,"nameStringId":"859c6279-20ea-5e60-9b7d-0c5283e06377","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Hypochrys0des","surrogate":false,"virus":false,"nameStringId":"859c6279-20ea-5e60-9b7d-0c5283e06377","parserVersion":"test_version","hybrid":false,"bacteria":false}
 859c6279-20ea-5e60-9b7d-0c5283e06377|Hypochrys0des|||||1
 
 Hypochrys0des Leraut 1981
 np
-{"parsed":false,"verbatim":"Hypochrys0des Leraut 1981","surrogate":false,"virus":false,"nameStringId":"c053bbbf-de6c-5b22-a0f9-0803093b9b2d","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Hypochrys0des Leraut 1981","surrogate":false,"virus":false,"nameStringId":"c053bbbf-de6c-5b22-a0f9-0803093b9b2d","parserVersion":"test_version","hybrid":false,"bacteria":false}
 c053bbbf-de6c-5b22-a0f9-0803093b9b2d|Hypochrys0des Leraut 1981|||||1
 
 Phyllodoce mucosa 0ersted, 1843
@@ -2077,7 +1991,7 @@ Staphylinus haemrrhoidalis
 
 Ea92virus
 np
-{"parsed":false,"verbatim":"Ea92virus","surrogate":false,"virus":true,"nameStringId":"2465682c-cd5c-5408-859b-8bcc5489125f","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Ea92virus","surrogate":false,"virus":true,"nameStringId":"2465682c-cd5c-5408-859b-8bcc5489125f","parserVersion":"test_version","hybrid":false,"bacteria":false}
 2465682c-cd5c-5408-859b-8bcc5489125f|Ea92virus|||||1
 #>
 
@@ -2911,5 +2825,92 @@ np
 {"parsed":false,"verbatim":"Alstroemeria sp. phytoplasma","surrogate":false,"virus":false,"nameStringId":"5348845f-c94a-5c7e-bba1-307e4c07a42d","parserVersion":"test_version","bacteria":false}
 5348845f-c94a-5c7e-bba1-307e4c07a42d|Alstroemeria sp. phytoplasma|||||1
 #>
+
+#SECTION: Names with spec., nov spec<
+Lampona spec Platnick, 2000
+Lampona spec Platnick, 2000
+{"quality":1,"parsed":true,"verbatim":"Lampona spec Platnick, 2000","surrogate":false,"normalized":"Lampona spec Platnick 2000","canonicalName":{"value":"Lampona spec","valueRanked":"Lampona spec"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,12],["authorWord",13,21],["year",23,27]],"nameStringId":"d05d7916-4868-57f6-a97b-c46886f29cd8","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Lampona"},"specificEpithet":{"value":"spec","authorship":{"value":"Platnick 2000","basionymAuthorship":{"authors":["Platnick"],"years":[{"value":"2000"}]}}}}],"bacteria":false}
+d05d7916-4868-57f6-a97b-c46886f29cd8|Lampona spec Platnick, 2000|Lampona spec|Lampona spec|Platnick 2000|2000|1
+
+Gobiosoma spec (Ginsburg, 1939)
+Gobiosoma spec (Ginsburg, 1939)
+{"quality":1,"parsed":true,"verbatim":"Gobiosoma spec (Ginsburg, 1939)","surrogate":false,"normalized":"Gobiosoma spec (Ginsburg 1939)","canonicalName":{"value":"Gobiosoma spec","valueRanked":"Gobiosoma spec"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,14],["authorWord",16,24],["year",26,30]],"nameStringId":"eb47c188-86fd-54c4-a058-48a980f9419f","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Gobiosoma"},"specificEpithet":{"value":"spec","authorship":{"value":"(Ginsburg 1939)","basionymAuthorship":{"authors":["Ginsburg"],"years":[{"value":"1939"}]}}}}],"bacteria":false}
+eb47c188-86fd-54c4-a058-48a980f9419f|Gobiosoma spec (Ginsburg, 1939)|Gobiosoma spec|Gobiosoma spec|(Ginsburg 1939)|1939|1
+
+Globigerina spec
+Globigerina spec
+{"quality":1,"parsed":true,"verbatim":"Globigerina spec","surrogate":false,"normalized":"Globigerina spec","canonicalName":{"value":"Globigerina spec","valueRanked":"Globigerina spec"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,16]],"nameStringId":"4f8f7189-42a0-59e2-8d6f-67c3889673d9","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Globigerina"},"specificEpithet":{"value":"spec"}}],"bacteria":false}
+4f8f7189-42a0-59e2-8d6f-67c3889673d9|Globigerina spec|Globigerina spec|Globigerina spec|||1
+
+Eunotia genuflexa Norpel-Schempp nov spec
+Eunotia genuflexa Norpel-Schempp
+{"quality":2,"parsed":true,"verbatim":"Eunotia genuflexa Norpel-Schempp nov spec","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Eunotia genuflexa Norpel-Schempp","canonicalName":{"value":"Eunotia genuflexa","valueRanked":"Eunotia genuflexa"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17],["authorWord",18,32]],"nameStringId":"4cc2a699-d38d-5337-8a44-ecc0f79ef138","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Eunotia"},"specificEpithet":{"value":"genuflexa","authorship":{"value":"Norpel-Schempp","basionymAuthorship":{"authors":["Norpel-Schempp"]}}}}],"bacteria":false}
+4cc2a699-d38d-5337-8a44-ecc0f79ef138|Eunotia genuflexa Norpel-Schempp nov spec|Eunotia genuflexa|Eunotia genuflexa|Norpel-Schempp||2
+
+Ctenotus spec.
+Ctenotus
+{"quality":2,"parsed":true,"verbatim":"Ctenotus spec.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Ctenotus","canonicalName":{"value":"Ctenotus","valueRanked":"Ctenotus"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"991b9ee5-2f56-56e7-a29b-86c47a4901bb","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Ctenotus"}}],"bacteria":false}
+991b9ee5-2f56-56e7-a29b-86c47a4901bb|Ctenotus spec.|Ctenotus|Ctenotus|||2
+
+Byrsophlebidae spec. 2
+Byrsophlebidae
+{"quality":2,"parsed":true,"verbatim":"Byrsophlebidae spec. 2","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Byrsophlebidae","canonicalName":{"value":"Byrsophlebidae","valueRanked":"Byrsophlebidae"},"virus":false,"positions":[["uninomial",0,14]],"nameStringId":"3b07753b-71e2-5602-9a6e-bf91e672d834","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Byrsophlebidae"}}],"bacteria":false}
+3b07753b-71e2-5602-9a6e-bf91e672d834|Byrsophlebidae spec. 2|Byrsophlebidae|Byrsophlebidae|||2
+
+Naviculadicta witkowskii LB & Metzeltin nov spec
+Naviculadicta witkowskii LB & Metzeltin
+{"quality":2,"parsed":true,"verbatim":"Naviculadicta witkowskii LB & Metzeltin nov spec","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Naviculadicta witkowskii LB & Metzeltin","canonicalName":{"value":"Naviculadicta witkowskii","valueRanked":"Naviculadicta witkowskii"},"virus":false,"positions":[["genus",0,13],["specificEpithet",14,24],["authorWord",25,27],["authorWord",30,39]],"nameStringId":"c4dd80b7-984b-51f8-a4ec-573b4b32358b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Naviculadicta"},"specificEpithet":{"value":"witkowskii","authorship":{"value":"LB & Metzeltin","basionymAuthorship":{"authors":["LB","Metzeltin"]}}}}],"bacteria":false}
+c4dd80b7-984b-51f8-a4ec-573b4b32358b|Naviculadicta witkowskii LB & Metzeltin nov spec|Naviculadicta witkowskii|Naviculadicta witkowskii|LB & Metzeltin||2
+#>
+
+# Section HTML tags and entities<
+Velutina haliotoides (Linnaeus, 1758) <i>sensu</i> Fabricius, 1780
+Velutina haliotoides (Linnaeus, 1758) <i>sensu</i> Fabricius, 1780
+{"quality":2,"parsed":true,"verbatim":"Velutina haliotoides (Linnaeus, 1758) <i>sensu</i> Fabricius, 1780","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Velutina haliotoides (Linnaeus 1758)","canonicalName":{"value":"Velutina haliotoides","valueRanked":"Velutina haliotoides"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,20],["authorWord",22,30],["year",32,36]],"nameStringId":"189c94f6-96aa-52bb-b019-103a2103ce21","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"haliotoides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"years":[{"value":"1758"}]}}}}],"bacteria":false}
+189c94f6-96aa-52bb-b019-103a2103ce21|Velutina haliotoides (Linnaeus, 1758) <i>sensu</i> Fabricius, 1780|Velutina haliotoides|Velutina haliotoides|(Linnaeus 1758)|1758|2
+
+Velutina haliotoides (Linnaeus, 1758), <i>sensu</i> Fabricius, 1780
+Velutina haliotoides (Linnaeus, 1758)
+{"quality":2,"parsed":true,"verbatim":"Velutina haliotoides (Linnaeus, 1758), <i>sensu</i> Fabricius, 1780","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Velutina haliotoides (Linnaeus 1758)","canonicalName":{"value":"Velutina haliotoides","valueRanked":"Velutina haliotoides"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,20],["authorWord",22,30],["year",32,36]],"nameStringId":"b8d77a78-2698-5050-9c7a-638f615bd357","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"haliotoides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"years":[{"value":"1758"}]}}}}],"bacteria":false}
+b8d77a78-2698-5050-9c7a-638f615bd357|Velutina haliotoides (Linnaeus, 1758), <i>sensu</i> Fabricius, 1780|Velutina haliotoides|Velutina haliotoides|(Linnaeus 1758)|1758|2
+
+Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger, 20
+Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger
+{"quality":3,"parsed":true,"verbatim":"Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger, 20","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger","canonicalName":{"value":"Fusinus clavilithoides","valueRanked":"Fusinus clavilithoides"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,22],["authorWord",23,29],["authorWord",31,41],["authorWord",43,53],["authorWord",56,69]],"nameStringId":"76a62c41-361e-532c-852c-ab3dc7ab09cb","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Fusinus"},"specificEpithet":{"value":"clavilithoides","authorship":{"value":"Landau, Harzhauser, Büyükmeriç & Breitenberger","basionymAuthorship":{"authors":["Landau","Harzhauser","Büyükmeriç","Breitenberger"]}}}}],"bacteria":false,"unparsedTail":" 20"}
+76a62c41-361e-532c-852c-ab3dc7ab09cb|Fusinus clavilithoides Landau, Harzhauser, Büyükmeriç & Breitenberger, 20|Fusinus clavilithoides|Fusinus clavilithoides|Landau, Harzhauser, Büyükmeriç & Breitenberger||3
+
+<i>Velutina halioides</i> (Linnaeus, 1758)
+Velutina halioides (Linnaeus, 1758)
+{"quality":2,"parsed":true,"verbatim":"<i>Velutina halioides</i> (Linnaeus, 1758)","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Velutina halioides (Linnaeus 1758)","canonicalName":{"value":"Velutina halioides","valueRanked":"Velutina halioides"},"virus":false,"positions":[["genus",3,11],["specificEpithet",12,25],["authorWord",27,35],["year",37,41]],"nameStringId":"653bbe42-aef4-5847-add4-8c7f8a4d1f9b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"halioides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"years":[{"value":"1758"}]}}}}],"bacteria":false}
+653bbe42-aef4-5847-add4-8c7f8a4d1f9b|<i>Velutina halioides</i> (Linnaeus, 1758)|Velutina halioides|Velutina halioides|(Linnaeus 1758)|1758|2
+
+Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo
+Quadrella steyermarkii (Standl.) Iltis & Cornejo
+{"quality":2,"parsed":true,"verbatim":"Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Quadrella steyermarkii (Standl.) Iltis & Cornejo","canonicalName":{"value":"Quadrella steyermarkii","valueRanked":"Quadrella steyermarkii"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["authorWord",24,31],["authorWord",33,38],["authorWord",45,52]],"nameStringId":"fbd1b4fe-f8ed-5390-9cb1-e0f798691b1e","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Quadrella"},"specificEpithet":{"value":"steyermarkii","authorship":{"value":"(Standl.) Iltis & Cornejo","basionymAuthorship":{"authors":["Standl."]},"combinationAuthorship":{"authors":["Iltis","Cornejo"]}}}}],"bacteria":false}
+fbd1b4fe-f8ed-5390-9cb1-e0f798691b1e|Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo|Quadrella steyermarkii|Quadrella steyermarkii|(Standl.) Iltis & Cornejo||2
+#>
+
+#SECTION: Should be removed? Underscores intead of spaces<
+Oxalis_barrelieri
+Oxalis_barrelieri
+{"quality":3,"parsed":true,"verbatim":"Oxalis_barrelieri","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"]],"normalized":"Oxalis barrelieri","canonicalName":{"value":"Oxalis barrelieri","valueRanked":"Oxalis barrelieri"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"ad546700-9cae-50d3-9eaf-6adcbbb67bae","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Oxalis"},"specificEpithet":{"value":"barrelieri"}}],"bacteria":false}
+ad546700-9cae-50d3-9eaf-6adcbbb67bae|Oxalis_barrelieri|Oxalis barrelieri|Oxalis barrelieri|||3
+
+Pseudocercospora__dendrobii
+Pseudocercospora__dendrobii
+{"quality":3,"parsed":true,"verbatim":"Pseudocercospora__dendrobii","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"],[2,"Multiple adjacent space characters"]],"normalized":"Pseudocercospora dendrobii","canonicalName":{"value":"Pseudocercospora dendrobii","valueRanked":"Pseudocercospora dendrobii"},"virus":false,"positions":[["genus",0,16],["specificEpithet",18,27]],"nameStringId":"ae8a4688-2b2a-5974-81bf-1962838a9cbe","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Pseudocercospora"},"specificEpithet":{"value":"dendrobii"}}],"bacteria":false}
+ae8a4688-2b2a-5974-81bf-1962838a9cbe|Pseudocercospora__dendrobii|Pseudocercospora dendrobii|Pseudocercospora dendrobii|||3
+
+  Oxalis_barrelieri
+Oxalis_barrelieri
+{"quality":3,"parsed":true,"verbatim":"  Oxalis_barrelieri","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"],[2,"Multiple adjacent space characters"]],"normalized":"Oxalis barrelieri","canonicalName":{"value":"Oxalis barrelieri","valueRanked":"Oxalis barrelieri"},"virus":false,"positions":[["genus",2,8],["specificEpithet",9,19]],"nameStringId":"1c4bb48b-d134-54c8-bac1-6771d1f4c9c6","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Oxalis"},"specificEpithet":{"value":"barrelieri"}}],"bacteria":false}
+1c4bb48b-d134-54c8-bac1-6771d1f4c9c6|  Oxalis_barrelieri|Oxalis barrelieri|Oxalis barrelieri|||3
+
+Oxalis_barrelieri
+Oxalis_barrelieri
+{"quality":3,"parsed":true,"verbatim":"Oxalis_barrelieri  ","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"],[2,"Trailing whitespace"]],"normalized":"Oxalis barrelieri","canonicalName":{"value":"Oxalis barrelieri","valueRanked":"Oxalis barrelieri"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"c57de7fd-b94e-54e1-a856-72b0668ab818","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Oxalis"},"specificEpithet":{"value":"barrelieri"}}],"bacteria":false,"unparsedTail":"  "}
+c57de7fd-b94e-54e1-a856-72b0668ab818|Oxalis_barrelieri  |Oxalis barrelieri|Oxalis barrelieri|||3
+#>
+
 
 # vim: set foldmarker=<,> foldlevel=0 foldmethod=marker

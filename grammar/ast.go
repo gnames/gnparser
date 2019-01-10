@@ -723,8 +723,7 @@ func (p *Engine) authorWord(n *node32) *wordNode {
 			}
 		}
 		if count > 2 {
-			nv := w.NormValue
-			w.NormValue = string(nv[0]) + strings.ToLower(nv[1:])
+			w.NormValue = str.FixAllCaps(w.NormValue)
 			p.AddWarn(AuthUpperCaseWarn)
 		}
 	}

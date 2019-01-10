@@ -7,7 +7,6 @@ import (
 var hybridCharRe1 = regexp.MustCompile(`(^)[Xx](\p{Lu})`)
 var hybridCharRe2 = regexp.MustCompile(`(\s|^)[Xx](\s|$)`)
 
-// var approxRe = regexp.MustCompile(`\s(monst\.|\?|((spp|nr|sp|aff|species)(\.\s?[a-z]|\s+[a-z]|$)))`)
 var virusRe = regexp.MustCompile(
 	`(?i)(\b|\d)` +
 		`(ictv|[a-z]*virus(es)?|` +

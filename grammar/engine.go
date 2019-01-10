@@ -84,6 +84,8 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 	switch t.pegRule {
 	case ruleMultipleSpace:
 		p.AddWarn(SpaceMultipleWarn)
+	case ruleBasionymAuthorship2Parens:
+		p.AddWarn(AuthDoubleParensWarn)
 	}
 	return node, true
 }
