@@ -1852,12 +1852,12 @@ np
 0182d44b-5d8b-501d-8f5c-4ef44dff8db4|Candida albicans RNA_CTR0-3|||||1
 
 Carabus satyrus satyrus KURNAKOV, 1962
-np
+Carabus satyrus satyrus KURNAKOV, 1962
 {"quality":2,"parsed":true,"verbatim":"Carabus satyrus satyrus KURNAKOV, 1962","surrogate":false,"qualityWarnings":[[2,"Author in upper case"]],"normalized":"Carabus satyrus satyrus Kurnakov 1962","canonicalName":{"value":"Carabus satyrus satyrus","valueRanked":"Carabus satyrus satyrus"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,15],["infraspecificEpithet",16,23],["authorWord",24,32],["year",34,38]],"nameStringId":"81654954-0f47-5715-acb1-1cd8d2c49e9a","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Carabus"},"specificEpithet":{"value":"satyrus"},"infraspecificEpithets":[{"value":"satyrus","authorship":{"value":"Kurnakov 1962","basionymAuthorship":{"authors":["Kurnakov"],"years":[{"value":"1962"}]}}}]}],"bacteria":false}
 81654954-0f47-5715-acb1-1cd8d2c49e9a|Carabus satyrus satyrus KURNAKOV, 1962|Carabus satyrus satyrus|Carabus satyrus satyrus|Kurnakov 1962|1962|2
 
 Calathus (Lindrothius) KURNAKOV 1961
-np
+Calathus (Lindrothius) KURNAKOV 1961
 {"quality":2,"parsed":true,"verbatim":"Calathus (Lindrothius) KURNAKOV 1961","surrogate":false,"qualityWarnings":[[2,"Author in upper case"],[2,"Combination of two uninomials"]],"normalized":"Calathus subgen. Lindrothius Kurnakov 1961","canonicalName":{"value":"Lindrothius","valueRanked":"Calathus subgen. Lindrothius"},"virus":false,"positions":[["uninomial",0,8],["uninomial",10,21],["authorWord",23,31],["year",32,36]],"nameStringId":"aa113505-61a1-58fe-92f3-8fd511dcfd61","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Lindrothius","rank":"subgen.","parent":"Calathus","authorship":{"value":"Kurnakov 1961","basionymAuthorship":{"authors":["Kurnakov"],"years":[{"value":"1961"}]}}}}],"bacteria":false}
 aa113505-61a1-58fe-92f3-8fd511dcfd61|Calathus (Lindrothius) KURNAKOV 1961|Lindrothius|Calathus subgen. Lindrothius|Kurnakov 1961|1961|2
 #>
@@ -1906,12 +1906,12 @@ Xanthomonas axonopodis pathovar. phaseoli
 816ce2bc-4cdc-59ab-8900-e4414e8d2125|Xanthomonas axonopodis pathovar. phaseoli|Xanthomonas axonopodis phaseoli|Xanthomonas axonopodis pathovar. phaseoli|||1
 
 Xanthomonas axonopodis pathovar.
-Xanthomonas axonopodis pathovar.
+Xanthomonas axonopodis
 {"quality":3,"parsed":true,"verbatim":"Xanthomonas axonopodis pathovar.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Xanthomonas axonopodis","canonicalName":{"value":"Xanthomonas axonopodis","valueRanked":"Xanthomonas axonopodis"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,22]],"nameStringId":"851a86de-df67-5fba-b3f7-73937a5edbce","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xanthomonas"},"specificEpithet":{"value":"axonopodis"}}],"bacteria":true,"unparsedTail":" pathovar."}
 851a86de-df67-5fba-b3f7-73937a5edbce|Xanthomonas axonopodis pathovar.|Xanthomonas axonopodis|Xanthomonas axonopodis|||3
 
 Xanthomonas axonopodis pv.
-Xanthomonas axonopodis pv.
+Xanthomonas axonopodis
 {"quality":3,"parsed":true,"verbatim":"Xanthomonas axonopodis pv.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Xanthomonas axonopodis","canonicalName":{"value":"Xanthomonas axonopodis","valueRanked":"Xanthomonas axonopodis"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,22]],"nameStringId":"0c0ce6dd-e5ea-5c17-8be3-c381ff662f12","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xanthomonas"},"specificEpithet":{"value":"axonopodis"}}],"bacteria":true,"unparsedTail":" pv."}
 0c0ce6dd-e5ea-5c17-8be3-c381ff662f12|Xanthomonas axonopodis pv.|Xanthomonas axonopodis|Xanthomonas axonopodis|||3
 #>
