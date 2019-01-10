@@ -678,7 +678,7 @@ func (a *authorshipNode) pos() []Pos {
 }
 
 func (a *authorshipNode) value() string {
-	if a == nil {
+	if a == nil || a.OriginalAuthors == nil {
 		return ""
 	}
 
@@ -695,6 +695,9 @@ func (a *authorshipNode) value() string {
 }
 
 func (ag *authorsGroupNode) value() string {
+	if ag == nil || ag.Team1 == nil {
+		return ""
+	}
 	v := ag.Team1.value()
 	if ag.Team2 == nil {
 		return v

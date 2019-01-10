@@ -16,13 +16,33 @@ var virusRe = regexp.MustCompile(
 		`(alpha|beta)?satellites?)\b`,
 )
 var noParseRe = regexp.MustCompile(
-	`(^(Not|None|Unidentified)[\W_].*|.*[Ii]ncertae\s+[Ss]edis.*|[Ii]nc\.\s*[Ss]ed\.|phytoplasma\b|plasmids?\b|[^A-Z]RNA[^A-Z]*)`)
-var notesRe = regexp.MustCompile(`(?i)\s+(species\s+group|species\s+complex|group|author)\b.*$`)
-var taxonConceptsRe1 = regexp.MustCompile(`(?i)\s+(sensu|auct|sec|near|str)\.?\b.*$`)
-var taxonConceptsRe2 = regexp.MustCompile(`(,\s*|\s+)(\(?s\.\s?s\.|\(?s\.\s?l\.|\(?s\.\s?str\.|\(?s\.\s?lat\.).*$`)
-var taxonConceptsRe3 = regexp.MustCompile(`(?i)(,\s*|\s+)(pro parte|p\.\s?p\.)\s*$`)
-var nomenConceptsRe = regexp.MustCompile(`(?i)(,\s*|\s+)(\(?(nomen|nom\.|comb\.)(\s.*)?)$`)
-var lastWordJunkRe = regexp.MustCompile(`(?i)(,\s*|\s+)(var\.?|von|van|ined\.?|sensu|new|non|nec|nudum|ssp\.?|subsp|subgen|hybrid)\??\s*$`)
+	`(^(Not|None|Unidentified)[\W_].*|.*[Ii]ncertae\s+[Ss]edis.*` +
+		`|[Ii]nc\.\s*[Ss]ed\.|phytoplasma\b|plasmids?\b|[^A-Z]RNA[^A-Z]*)`,
+)
+var notesRe = regexp.MustCompile(
+	`(?i)\s+(species\s+group|species\s+complex|group|author)\b.*$`,
+)
+var taxonConceptsRe1 = regexp.MustCompile(
+	`(?i)\s+(sensu|auct|sec|near|str)\.?\b.*$`,
+)
+var taxonConceptsRe2 = regexp.MustCompile(
+	`(,\s*|\s+)(\(?s\.\s?s\.|\(?s\.\s?l\.|\(?s\.\s?str\.|\(?s\.\s?lat\.).*$`,
+)
+var taxonConceptsRe3 = regexp.MustCompile(
+	`(?i)(,\s*|\s+)(pro parte|p\.\s?p\.)\s*$`,
+)
+var nomenConceptsRe = regexp.MustCompile(
+	`(?i)(,\s*|\s+)(\(?(nomen|nom\.|comb\.)(\s.*)?)$`,
+)
+var lastWordJunkRe = regexp.MustCompile(
+	`(?i)(,\s*|\s+)` +
+		`(var\.?|von|van|ined\.?` +
+		`|sensu|new|non|nec|nudum|ssp\.?` +
+		`|subsp|subgen|hybrid)\??\s*$`,
+)
+var stopWordsRe = regexp.MustCompile(
+	`\s+(of[\W_]|\(?ht\.?\W|\(?hort\.?\W|spec\.|nov\s+spec|cv).*$`,
+)
 
 type Preprocessor struct {
 	Virus       bool
@@ -42,11 +62,6 @@ func Preprocess(bs []byte) *Preprocessor {
 		return pr
 	}
 	i := len(bs)
-	j := Annotation(bs[0:i])
-	if j < i {
-		pr.Annotation = true
-		i = j
-	}
 	pr.Virus = IsVirus(bs[0:i])
 	if pr.Virus {
 		pr.NoParse = true
@@ -55,6 +70,11 @@ func Preprocess(bs []byte) *Preprocessor {
 	pr.NoParse = NoParse(bs[0:i])
 	if pr.NoParse {
 		return pr
+	}
+	j := Annotation(bs[0:i])
+	if j < i {
+		pr.Annotation = true
+		i = j
 	}
 	pr.Body = NormalizeHybridChar(bs[0:i])
 	pr.Tail = bs[i:]
@@ -87,7 +107,7 @@ func Annotation(bs []byte) int {
 	i := len(bs)
 	regexps := []*regexp.Regexp{
 		notesRe, taxonConceptsRe1, taxonConceptsRe2, taxonConceptsRe3,
-		nomenConceptsRe, lastWordJunkRe,
+		nomenConceptsRe, lastWordJunkRe, stopWordsRe,
 	}
 	for _, r := range regexps {
 		loc := r.FindIndex(bs[0:i])

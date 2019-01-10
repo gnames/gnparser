@@ -6,7 +6,7 @@ type Engine Peg {
 
 SciName <- _? Name Tail !.
 
-Tail <- ((_ / ',') .*)?
+Tail <- ((_ / ';' / ',') .*)?
 
 Name <- NamedHybrid / HybridFormula / SingleName
 
@@ -39,7 +39,7 @@ InfraspGroup <- InfraspEpithet (_ InfraspEpithet)?  (_ InfraspEpithet)?
 
 InfraspEpithet <- (Rank _?)? !(AuthorEx) Word  (_ Authorship)?
 
-SpeciesEpithet <- !(AuthorEx) Word (_? Authorship)? ','? &(SpaceCharEOI / '(')
+SpeciesEpithet <- !(AuthorEx) Word (_? Authorship)?
 
 Comparison <- ('cf' '.'?)
 
@@ -108,11 +108,13 @@ ApproxNameIgnored <- .*
 Approximation <- ('sp.' _? 'nr.' / 'sp.' _? 'aff.' / 'monst.' /
   '?' / (('spp' / 'nr' / 'sp' / 'aff' / 'species') (&(SpaceCharEOI) / '.')))
 
-Authorship <- (AuthorshipCombo / OriginalAuthorship) &(SpaceCharEOI / ',')
+Authorship <- (AuthorshipCombo / OriginalAuthorship) &(SpaceCharEOI / ';' / ',')
 
-AuthorshipCombo <- OriginalAuthorship _? CombinationAuthorship
+AuthorshipCombo <- OriginalAuthorshipComb (_? CombinationAuthorship)?
 
-OriginalAuthorship <- BasionymAuthorshipYearMisformed / AuthorsGroup / BasionymAuthorship
+OriginalAuthorship <- AuthorsGroup
+
+OriginalAuthorshipComb <- BasionymAuthorshipYearMisformed / BasionymAuthorship
 
 CombinationAuthorship <- AuthorsGroup
 
@@ -124,7 +126,7 @@ BasionymAuthorship1 <- '(' _? AuthorsGroup _? ')'
 
 BasionymAuthorship2Parens <- '(' _? '(' _? AuthorsGroup _? ')' _? ')'
 
-AuthorsGroup <- AuthorsTeam (_? AuthorEmend? AuthorEx? AuthorsTeam)?
+AuthorsGroup <- AuthorsTeam (_ (AuthorEmend / AuthorEx) AuthorsTeam)?
 
 AuthorsTeam <- Author (AuthorSep Author)* (_? ','? _? Year)?
 
@@ -173,11 +175,11 @@ AuthorPrefix1 <- ('ab' / 'af' / 'bis' / 'da' / 'der' / 'des' / 'den' / 'del' /
   'della' / 'dela' / 'de' / 'di' / 'du' / 'el' / 'la' / 'le' / 'ter' / 'van' /
   'd\'' / 'in\'t' / 'zur' / ('von' (_ ('d.'/ 'dem'))?) / ('v' (_'d')?)) &_
 
-AuthorUpperChar <- hASCII /
+AuthorUpperChar <- hASCII / MiscodedChar /
   [ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝĆČĎİĶĹĺĽľŁłŅŌŐŒŘŚŜŞŠŸŹŻŽƒǾȘȚ]
 
 
-AuthorLowerChar <- lASCII /
+AuthorLowerChar <- lASCII / MiscodedChar /
   [àáâãäåæçèéêëìíîïðñòóóôõöøùúûüýÿāăąćĉčďđ'ēĕėęěğīĭİıĺľłńņňŏőœŕřśşšţťũūŭůűźżžſǎǔǧșțȳß]
 
 Year <- YearRange / YearApprox / YearWithParens / YearWithPage / YearWithDot /
@@ -229,4 +231,6 @@ _ <- MultipleSpace / SingleSpace
 
 MultipleSpace <- SingleSpace SingleSpace+
 
-SingleSpace <- ' '
+SingleSpace <- ' ' / OtherSpace
+
+OtherSpace <- [　 \t\r\n\f\v]

@@ -538,28 +538,27 @@ type authorshipNode struct {
 
 func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 	var oa, ca *authorsGroupNode
-	var parens bool
 	var misplacedYear bool
 	n = n.up
 	for n != nil {
 		switch n.token32.pegRule {
 		case ruleOriginalAuthorship:
+			oa = p.newAuthorsGroupNode(n.up)
+		case ruleOriginalAuthorshipComb:
 			on := n.up
 			if on.token32.pegRule == ruleBasionymAuthorshipYearMisformed {
 				p.AddWarn(YearOrigMisplacedWarn)
 				on = on.up
 				misplacedYear = true
-				parens = true
 			} else if on.token32.pegRule == ruleBasionymAuthorship {
 				on = on.up
-				parens = true
 			}
 			oa = p.newAuthorsGroupNode(on)
+			oa.Parens = true
 			if misplacedYear {
 				yr := p.newYearNode(on.next)
 				oa.Team1.Years = append(oa.Team1.Years, yr)
 			}
-			oa.Parens = parens
 		case ruleCombinationAuthorship:
 			ca = p.newAuthorsGroupNode(n.up)
 		}

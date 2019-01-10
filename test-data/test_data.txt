@@ -463,10 +463,9 @@ Strombus vittatus entropi Man in't Veld & Visser, 1993
 c74691e3-0f71-576b-81ea-6173bdae9817|Strombus vittatus entropi Man in't Veld & Visser, 1993|Strombus vittatus entropi|Strombus vittatus entropi|Man in't Veld & Visser 1993|1993|1
 
 Velutina haliotoides (Linnaeus, 1758),
-Velutina haliotoides (Linnaeus, 1758),
-{"quality":1,"parsed":true,"verbatim":"Velutina haliotoides (Linnaeus, 1758),","surrogate":false,"normalized":"Velutina haliotoides (Linnaeus 1758)","canonicalName":{"value":"Velutina haliotoides","valueRanked":"Velutina haliotoides"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,20],["authorWord",22,30],["year",32,36]],"nameStringId":"59093ba7-64a1-53c4-9795-12de7ff9e718","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"haliotoides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"years":[{"value":"1758"}]}}}}],"bacteria":false}
-59093ba7-64a1-53c4-9795-12de7ff9e718|Velutina haliotoides (Linnaeus, 1758),|Velutina haliotoides|Velutina haliotoides|(Linnaeus 1758)|1758|1
-
+Velutina haliotoides (Linnaeus, 1758)
+{"quality":3,"parsed":true,"verbatim":"Velutina haliotoides (Linnaeus, 1758),","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Velutina haliotoides (Linnaeus 1758)","canonicalName":{"value":"Velutina haliotoides","valueRanked":"Velutina haliotoides"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,20],["authorWord",22,30],["year",32,36]],"nameStringId":"59093ba7-64a1-53c4-9795-12de7ff9e718","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"haliotoides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"years":[{"value":"1758"}]}}}}],"bacteria":false,"unparsedTail":","}
+59093ba7-64a1-53c4-9795-12de7ff9e718|Velutina haliotoides (Linnaeus, 1758),|Velutina haliotoides|Velutina haliotoides|(Linnaeus 1758)|1758|3
 #>
 
 #SECTION: Binomial with an abbreviated genus<
@@ -2112,15 +2111,14 @@ Kinosternidae　Agassiz, 1857
 
 #SECTION: Punctuation in the end<
 Melanius:
-Melanius
-{"quality":3,"parsed":true,"verbatim":"Melanius:","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Melanius","canonicalName":{"value":"Melanius","valueRanked":"Melanius"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"0a761224-66db-55b4-b6f0-85de52534125","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Melanius"}}],"bacteria":false,"unparsedTail":":"}
-0a761224-66db-55b4-b6f0-85de52534125|Melanius:|Melanius|Melanius|||3
+np
+{"parsed":false,"verbatim":"Melanius:","surrogate":false,"virus":false,"nameStringId":"0a761224-66db-55b4-b6f0-85de52534125","parserVersion":"test_version","hybrid":false,"bacteria":false}
+0a761224-66db-55b4-b6f0-85de52534125|Melanius:|||||1
 
-# NOTE `.` is not the end of the sentence anymore, but a part of the year `1913.`. `Next` is parsed as an author
-#Negalasa fumalis Barnes & McDunnough 1913. Next sentence
-#Negalasa fumalis Barnes & McDunnough 1913.
-#{"name_string_id":"45b7343f-d42a-52d5-b0a4-25956d46427b","parsed":true,"quality":2,"quality_warnings":[[2,"Year with period"]],"parser_version":"test_version","verbatim":"Negalasa fumalis Barnes & McDunnough 1913. Next sentence","normalized":"Negalasa fumalis Barnes & McDunnough 1913 sentence","canonical_name":{"value":"Negalasa fumalis sentence","value_ranked":"Negalasa fumalis sentence"},"hybrid":false,"surrogate":false,"virus":false,"bacteria":false,"details":[{"genus":{"value":"Negalasa"},"specific_epithet":{"value":"fumalis","authorship":{"value":"Barnes & McDunnough 1913","basionym_authorship":{"authors":["Barnes","McDunnough"],"year":{"value":"1913"}}}},"infraspecific_epithets":[{"value":"sentence"}]}],"positions":[["genus",0,8],["specific_epithet",9,16],["author_word",17,23],["author_word",26,36],["year",37,41],["infraspecific_epithet",48,56]]}
-#45b7343f-d42a-52d5-b0a4-25956d46427b|Negalasa fumalis Barnes & McDunnough 1913. Next sentence|Negalasa fumalis sentence|Negalasa fumalis sentence||1913|2
+Negalasa fumalis Barnes & McDunnough 1913. Next sentence
+Negalasa fumalis Barnes & McDunnough 1913.
+{"quality":3,"parsed":true,"verbatim":"Negalasa fumalis Barnes & McDunnough 1913. Next sentence","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Negalasa fumalis Barnes & Mc Dunnough 1913","canonicalName":{"value":"Negalasa fumalis","valueRanked":"Negalasa fumalis"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,16],["authorWord",17,23],["authorWord",26,28],["authorWord",28,36],["year",37,41]],"nameStringId":"45b7343f-d42a-52d5-b0a4-25956d46427b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Negalasa"},"specificEpithet":{"value":"fumalis","authorship":{"value":"Barnes & Mc Dunnough 1913","basionymAuthorship":{"authors":["Barnes","Mc Dunnough"],"years":[{"value":"1913"}]}}}}],"bacteria":false,"unparsedTail":" Next sentence"}
+45b7343f-d42a-52d5-b0a4-25956d46427b|Negalasa fumalis Barnes & McDunnough 1913. Next sentence|Negalasa fumalis|Negalasa fumalis|Barnes & Mc Dunnough 1913|1913|3
 
 Negalasa fumalis. Next sentence
 Negalasa
@@ -2129,7 +2127,7 @@ ce740482-fa87-5d84-b335-1c063fd18de1|Negalasa fumalis. Next sentence|Negalasa|Ne
 
 Negalasa fumalis, continuation of a sentence
 Negalasa
-{"quality":3,"parsed":true,"verbatim":"Negalasa fumalis, continuation of a sentence","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"],[2,"Name had to be changed by preprocessing"]],"normalized":"Negalasa","canonicalName":{"value":"Negalasa","valueRanked":"Negalasa"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"7862a3d9-ba4d-5f53-a106-ea048e558f1a","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Negalasa"}}],"bacteria":false,"unparsedTail":" fumalis, continuation"}
+{"quality":3,"parsed":true,"verbatim":"Negalasa fumalis, continuation of a sentence","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Negalasa","canonicalName":{"value":"Negalasa","valueRanked":"Negalasa"},"virus":false,"positions":[["uninomial",0,8]],"nameStringId":"7862a3d9-ba4d-5f53-a106-ea048e558f1a","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Negalasa"}}],"bacteria":false,"unparsedTail":" fumalis, continuation of a sentence"}
 7862a3d9-ba4d-5f53-a106-ea048e558f1a|Negalasa fumalis, continuation of a sentence|Negalasa|Negalasa|||3
 
 Negalasa fumalis Barnes; something else
@@ -2139,13 +2137,13 @@ Negalasa fumalis Barnes
 
 Negaprion brevirostris Negaprion brevirostris, the rest of the sentence
 Negaprion brevirostris Negaprion
-{"quality":3,"parsed":true,"verbatim":"Negaprion brevirostris Negaprion brevirostris, the rest of the sentence","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"],[2,"Name had to be changed by preprocessing"]],"normalized":"Negaprion brevirostris Negaprion","canonicalName":{"value":"Negaprion brevirostris","valueRanked":"Negaprion brevirostris"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["authorWord",23,32]],"nameStringId":"619b95fa-017d-5b9b-b800-64ebd5ed433b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Negaprion"},"specificEpithet":{"value":"brevirostris","authorship":{"value":"Negaprion","basionymAuthorship":{"authors":["Negaprion"]}}}}],"bacteria":false,"unparsedTail":" brevirostris, the rest"}
+{"quality":3,"parsed":true,"verbatim":"Negaprion brevirostris Negaprion brevirostris, the rest of the sentence","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Negaprion brevirostris Negaprion","canonicalName":{"value":"Negaprion brevirostris","valueRanked":"Negaprion brevirostris"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["authorWord",23,32]],"nameStringId":"619b95fa-017d-5b9b-b800-64ebd5ed433b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Negaprion"},"specificEpithet":{"value":"brevirostris","authorship":{"value":"Negaprion","basionymAuthorship":{"authors":["Negaprion"]}}}}],"bacteria":false,"unparsedTail":" brevirostris, the rest of the sentence"}
 619b95fa-017d-5b9b-b800-64ebd5ed433b|Negaprion brevirostris Negaprion brevirostris, the rest of the sentence|Negaprion brevirostris|Negaprion brevirostris|Negaprion||3
 
 Negaprion fronto (Jordan and Gilbert, 1882):
-Negaprion
-{"quality":3,"parsed":true,"verbatim":"Negaprion fronto (Jordan and Gilbert, 1882):","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Negaprion","canonicalName":{"value":"Negaprion","valueRanked":"Negaprion"},"virus":false,"positions":[["uninomial",0,9]],"nameStringId":"4bb6a543-d757-5fa5-ae8b-a5ac95722e1d","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Negaprion"}}],"bacteria":false,"unparsedTail":" fronto (Jordan and Gilbert, 1882):"}
-4bb6a543-d757-5fa5-ae8b-a5ac95722e1d|Negaprion fronto (Jordan and Gilbert, 1882):|Negaprion|Negaprion|||3
+Negaprion fronto
+{"quality":3,"parsed":true,"verbatim":"Negaprion fronto (Jordan and Gilbert, 1882):","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Negaprion fronto","canonicalName":{"value":"Negaprion fronto","valueRanked":"Negaprion fronto"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,16]],"nameStringId":"4bb6a543-d757-5fa5-ae8b-a5ac95722e1d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Negaprion"},"specificEpithet":{"value":"fronto"}}],"bacteria":false,"unparsedTail":" (Jordan and Gilbert, 1882):"}
+4bb6a543-d757-5fa5-ae8b-a5ac95722e1d|Negaprion fronto (Jordan and Gilbert, 1882):|Negaprion fronto|Negaprion fronto|||3
 #>
 
 #SECTION names with 'ex' as sp. epithet<

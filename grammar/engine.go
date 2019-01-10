@@ -82,8 +82,12 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 		return node, false
 	}
 	switch t.pegRule {
+	case ruleOtherSpace:
+		p.AddWarn(SpaceNonStandardWarn)
 	case ruleMultipleSpace:
 		p.AddWarn(SpaceMultipleWarn)
+	case ruleMiscodedChar:
+		p.AddWarn(UTF8ConvBadWarn)
 	case ruleBasionymAuthorship2Parens:
 		p.AddWarn(AuthDoubleParensWarn)
 	}
@@ -145,6 +149,7 @@ var nodeRules = map[pegRule]struct{}{
 	ruleApproximation:                   struct{}{},
 	ruleAuthorship:                      struct{}{},
 	ruleOriginalAuthorship:              struct{}{},
+	ruleOriginalAuthorshipComb:          struct{}{},
 	ruleCombinationAuthorship:           struct{}{},
 	ruleBasionymAuthorshipYearMisformed: struct{}{},
 	ruleBasionymAuthorship:              struct{}{},
@@ -168,6 +173,5 @@ var nodeRules = map[pegRule]struct{}{
 	ruleYearWithChar:                    struct{}{},
 	ruleYearNum:                         struct{}{},
 	ruleUpperCharExtended:               struct{}{},
-	ruleMiscodedChar:                    struct{}{},
 	ruleLowerCharExtended:               struct{}{},
 }
