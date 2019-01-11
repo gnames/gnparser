@@ -86,7 +86,7 @@ const (
 	ruleAuthor2
 	ruleUnknownAuthor
 	ruleAuthorWord
-	ruleAuthorWord1
+	ruleAuthorEtAl
 	ruleAuthorWord2
 	ruleAuthorWord3
 	ruleAuthorWordSoft
@@ -197,7 +197,7 @@ var rul3s = [...]string{
 	"Author2",
 	"UnknownAuthor",
 	"AuthorWord",
-	"AuthorWord1",
+	"AuthorEtAl",
 	"AuthorWord2",
 	"AuthorWord3",
 	"AuthorWordSoft",
@@ -4610,7 +4610,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position473, tokenIndex473
 			return false
 		},
-		/* 67 AuthorWord <- <(!(('b' / 'B') ('o' / 'O') ('l' / 'L') ('d' / 'D') ':') (AuthorWord1 / AuthorWord2 / AuthorWord3 / AuthorPrefix))> */
+		/* 67 AuthorWord <- <(!(('b' / 'B') ('o' / 'O') ('l' / 'L') ('d' / 'D') ':') (AuthorEtAl / AuthorWord2 / AuthorWord3 / AuthorPrefix))> */
 		func() bool {
 			position482, tokenIndex482 := position, tokenIndex
 			{
@@ -4687,7 +4687,7 @@ func (p *Engine) Init() {
 				}
 				{
 					position493, tokenIndex493 := position, tokenIndex
-					if !_rules[ruleAuthorWord1]() {
+					if !_rules[ruleAuthorEtAl]() {
 						goto l494
 					}
 					goto l493
@@ -4717,7 +4717,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position482, tokenIndex482
 			return false
 		},
-		/* 68 AuthorWord1 <- <(('a' 'r' 'g' '.') / ('e' 't' ' ' 'a' 'l' '.' '{' '?' '}') / ((('e' 't') / '&') (' ' 'a' 'l') '.'?))> */
+		/* 68 AuthorEtAl <- <(('a' 'r' 'g' '.') / ('e' 't' ' ' 'a' 'l' '.' '{' '?' '}') / ((('e' 't') / '&') (' ' 'a' 'l') '.'?))> */
 		func() bool {
 			position497, tokenIndex497 := position, tokenIndex
 			{
@@ -4826,7 +4826,7 @@ func (p *Engine) Init() {
 				l505:
 				}
 			l499:
-				add(ruleAuthorWord1, position498)
+				add(ruleAuthorEtAl, position498)
 			}
 			return true
 		l497:

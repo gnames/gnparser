@@ -161,6 +161,7 @@ var nodeRules = map[pegRule]struct{}{
 	ruleAuthor:                          struct{}{},
 	ruleUnknownAuthor:                   struct{}{},
 	ruleAuthorWord:                      struct{}{},
+	ruleAuthorEtAl:                      struct{}{},
 	ruleAllCapsAuthorWord:               struct{}{},
 	ruleFilius:                          struct{}{},
 	ruleAuthorPrefix:                    struct{}{},

@@ -810,6 +810,10 @@ func (p *Engine) newWordNode(n *node32, wt WordType) *wordNode {
 	children := n.flatChildren()
 	for _, v := range children {
 		switch v.token32.pegRule {
+		case ruleAuthorEtAl:
+			if strings.Contains(wrd.NormValue, "&") {
+				wrd.NormValue = "et al."
+			}
 		case ruleUpperCharExtended, ruleLowerCharExtended:
 			p.AddWarn(CharBadWarn)
 			wrd.normalize()

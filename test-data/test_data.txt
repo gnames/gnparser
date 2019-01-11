@@ -2260,8 +2260,8 @@ a7c2cb28-2ec2-55b5-88a2-6cfd633cbd00|Adonis cyllenea Boiss. & al.|Adonis cyllene
 
 Adonis cyllenea Boiss. & al
 Adonis cyllenea Boiss. & al
-{"quality":1,"parsed":true,"verbatim":"Adonis cyllenea Boiss. & al","surrogate":false,"normalized":"Adonis cyllenea Boiss. et al","canonicalName":{"value":"Adonis cyllenea","valueRanked":"Adonis cyllenea"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,15],["authorWord",16,22],["authorWord",23,27]],"nameStringId":"85e122ea-f581-5d4b-a29f-b87c48d0a716","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Adonis"},"specificEpithet":{"value":"cyllenea","authorship":{"value":"Boiss. et al","basionymAuthorship":{"authors":["Boiss. et al"]}}}}],"bacteria":false}
-85e122ea-f581-5d4b-a29f-b87c48d0a716|Adonis cyllenea Boiss. & al|Adonis cyllenea|Adonis cyllenea|Boiss. et al||1
+{"quality":1,"parsed":true,"verbatim":"Adonis cyllenea Boiss. & al","surrogate":false,"normalized":"Adonis cyllenea Boiss. et al.","canonicalName":{"value":"Adonis cyllenea","valueRanked":"Adonis cyllenea"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,15],["authorWord",16,22],["authorWord",23,27]],"nameStringId":"85e122ea-f581-5d4b-a29f-b87c48d0a716","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Adonis"},"specificEpithet":{"value":"cyllenea","authorship":{"value":"Boiss. et al.","basionymAuthorship":{"authors":["Boiss. et al."]}}}}],"bacteria":false}
+85e122ea-f581-5d4b-a29f-b87c48d0a716|Adonis cyllenea Boiss. & al|Adonis cyllenea|Adonis cyllenea|Boiss. et al.||1
 
 Adonis cyllenea Boiss. & al. var. paryadrica Boiss.
 Adonis cyllenea Boiss. & al. var. paryadrica Boiss.
@@ -2270,7 +2270,7 @@ Adonis cyllenea Boiss. & al. var. paryadrica Boiss.
 
 Adonis cyllenea Boiss. & al var. paryadrica Boiss.
 Adonis cyllenea Boiss. & al var. paryadrica Boiss.
-{"quality":1,"parsed":true,"verbatim":"Adonis cyllenea Boiss. & al var. paryadrica Boiss.","surrogate":false,"normalized":"Adonis cyllenea Boiss. et al var. paryadrica Boiss.","canonicalName":{"value":"Adonis cyllenea paryadrica","valueRanked":"Adonis cyllenea var. paryadrica"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,15],["authorWord",16,22],["authorWord",23,27],["rank",28,32],["infraspecificEpithet",33,43],["authorWord",44,50]],"nameStringId":"eb7aee15-e462-5189-8335-a3a323be6907","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Adonis"},"specificEpithet":{"value":"cyllenea","authorship":{"value":"Boiss. et al","basionymAuthorship":{"authors":["Boiss. et al"]}}},"infraspecificEpithets":[{"value":"paryadrica","rank":"var.","authorship":{"value":"Boiss.","basionymAuthorship":{"authors":["Boiss."]}}}]}],"bacteria":false}
+{"quality":1,"parsed":true,"verbatim":"Adonis cyllenea Boiss. & al var. paryadrica Boiss.","surrogate":false,"normalized":"Adonis cyllenea Boiss. et al. var. paryadrica Boiss.","canonicalName":{"value":"Adonis cyllenea paryadrica","valueRanked":"Adonis cyllenea var. paryadrica"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,15],["authorWord",16,22],["authorWord",23,27],["rank",28,32],["infraspecificEpithet",33,43],["authorWord",44,50]],"nameStringId":"eb7aee15-e462-5189-8335-a3a323be6907","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Adonis"},"specificEpithet":{"value":"cyllenea","authorship":{"value":"Boiss. et al.","basionymAuthorship":{"authors":["Boiss. et al."]}}},"infraspecificEpithets":[{"value":"paryadrica","rank":"var.","authorship":{"value":"Boiss.","basionymAuthorship":{"authors":["Boiss."]}}}]}],"bacteria":false}
 eb7aee15-e462-5189-8335-a3a323be6907|Adonis cyllenea Boiss. & al var. paryadrica Boiss.|Adonis cyllenea paryadrica|Adonis cyllenea var. paryadrica|Boiss.||1
 #>
 

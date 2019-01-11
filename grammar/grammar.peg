@@ -148,9 +148,9 @@ Author2 <- AuthorWord (_? AuthorWord)*
 
 UnknownAuthor <- '?' / (('auct' / 'anon') (&(SpaceCharEOI) / '.'))
 
-AuthorWord <- !("bold:") (AuthorWord1 /AuthorWord2 / AuthorWord3 / AuthorPrefix)
+AuthorWord <- !("bold:") (AuthorEtAl /AuthorWord2 / AuthorWord3 / AuthorPrefix)
 
-AuthorWord1 <- 'arg.' / 'et al.{?}' / ('et' / '&') ' al' '.'?
+AuthorEtAl <- 'arg.' / 'et al.{?}' / ('et' / '&') ' al' '.'?
 
 AuthorWord2 <- AuthorWord3 dash AuthorWordSoft
 
