@@ -2736,7 +2736,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position228, tokenIndex228
 			return false
 		},
-		/* 33 AbbrGenus <- <(UpperChar LowerChar* '.')> */
+		/* 33 AbbrGenus <- <(UpperChar LowerChar? '.')> */
 		func() bool {
 			position232, tokenIndex232 := position, tokenIndex
 			{
@@ -2744,16 +2744,16 @@ func (p *Engine) Init() {
 				if !_rules[ruleUpperChar]() {
 					goto l232
 				}
-			l234:
 				{
-					position235, tokenIndex235 := position, tokenIndex
+					position234, tokenIndex234 := position, tokenIndex
 					if !_rules[ruleLowerChar]() {
-						goto l235
+						goto l234
 					}
-					goto l234
-				l235:
-					position, tokenIndex = position235, tokenIndex235
+					goto l235
+				l234:
+					position, tokenIndex = position234, tokenIndex234
 				}
+			l235:
 				if buffer[position] != rune('.') {
 					goto l232
 				}

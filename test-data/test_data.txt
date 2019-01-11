@@ -2660,51 +2660,51 @@ Puya acris
 
 Mom.alpium (Osbeck, 1778)
 np
-{"parsed":false,"verbatim":"Mom.alpium (Osbeck, 1778)","surrogate":false,"virus":false,"nameStringId":"f1452bcf-b779-5d98-bfc8-56455105e3f5","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Mom.alpium (Osbeck, 1778)","surrogate":false,"virus":false,"nameStringId":"f1452bcf-b779-5d98-bfc8-56455105e3f5","parserVersion":"test_version","hybrid":false,"bacteria":false}
 f1452bcf-b779-5d98-bfc8-56455105e3f5|Mom.alpium (Osbeck, 1778)|||||1
 #>
 
 #SECTION: No parsing -- Genera abbreviated to 3 letters (too rare)<
 Gen. et n. sp. Kaimatira Pumice Sand, Marton N ~1 Ma
 np
-{"parsed":false,"verbatim":"Gen. et n. sp. Kaimatira Pumice Sand, Marton N ~1 Ma","surrogate":false,"virus":false,"nameStringId":"54d27b31-2fbd-56e1-85e1-1438970f8953","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Gen. et n. sp. Kaimatira Pumice Sand, Marton N ~1 Ma","surrogate":false,"virus":false,"nameStringId":"54d27b31-2fbd-56e1-85e1-1438970f8953","parserVersion":"test_version","hybrid":false,"bacteria":false}
 54d27b31-2fbd-56e1-85e1-1438970f8953|Gen. et n. sp. Kaimatira Pumice Sand, Marton N ~1 Ma|||||1
 
 Genn. et n. sp. Kaimatira Pumice Sand, Marton N ~1 Ma
 np
-{"parsed":false,"verbatim":"Genn. et n. sp. Kaimatira Pumice Sand, Marton N ~1 Ma","surrogate":false,"virus":false,"nameStringId":"8edd1515-a4a1-52c5-ad1b-df7f112e68a9","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Genn. et n. sp. Kaimatira Pumice Sand, Marton N ~1 Ma","surrogate":false,"virus":false,"nameStringId":"8edd1515-a4a1-52c5-ad1b-df7f112e68a9","parserVersion":"test_version","hybrid":false,"bacteria":false}
 8edd1515-a4a1-52c5-ad1b-df7f112e68a9|Genn. et n. sp. Kaimatira Pumice Sand, Marton N ~1 Ma|||||1
 #>
 
 #SECTION: No parsing -- incertae sedis<
 Incertae sedis
 np
-{"parsed":false,"verbatim":"Incertae sedis","surrogate":false,"virus":false,"nameStringId":"74d54496-7f1c-52f8-81a9-9a9fb3a25ecb","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Incertae sedis","surrogate":false,"virus":false,"nameStringId":"74d54496-7f1c-52f8-81a9-9a9fb3a25ecb","parserVersion":"test_version","hybrid":false,"bacteria":false}
 74d54496-7f1c-52f8-81a9-9a9fb3a25ecb|Incertae sedis|||||1
 
-</i>Hipponicidae<i>_incertae_sedis</i>
+</i>Hipponicidae<i> incertae sedis</i>
 np
-{"quality":3,"parsed":true,"verbatim":"</i>Hipponicidae<i>_incertae_sedis</i>","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"],[2,"Name had to be changed by preprocessing"]],"normalized":"Hipponicidae incertae sedis","canonicalName":{"value":"Hipponicidae incertae sedis","valueRanked":"Hipponicidae incertae sedis"},"virus":false,"positions":[["genus",4,19],["specificEpithet",20,28],["infraspecificEpithet",29,34]],"nameStringId":"be79ec79-fad8-5dfe-af5e-d3a47ccaf788","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Hipponicidae"},"specificEpithet":{"value":"incertae"},"infraspecificEpithets":[{"value":"sedis"}]}],"bacteria":false}
-be79ec79-fad8-5dfe-af5e-d3a47ccaf788|</i>Hipponicidae<i>_incertae_sedis</i>|Hipponicidae incertae sedis|Hipponicidae incertae sedis|||3
+{"parsed":false,"verbatim":"\u003c/i\u003eHipponicidae\u003ci\u003e incertae sedis\u003c/i\u003e","surrogate":false,"virus":false,"nameStringId":"5967f6bf-f4c7-5ea3-a7f3-fe16a7ee88e0","parserVersion":"test_version","hybrid":false,"bacteria":false}
+5967f6bf-f4c7-5ea3-a7f3-fe16a7ee88e0|</i>Hipponicidae<i> incertae sedis</i>|||||1
 
 incertae sedis
 np
-{"parsed":false,"verbatim":"incertae sedis","surrogate":false,"virus":false,"nameStringId":"14f6de42-21d9-5e67-89cd-a05ebd974a1b","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"incertae sedis","surrogate":false,"virus":false,"nameStringId":"14f6de42-21d9-5e67-89cd-a05ebd974a1b","parserVersion":"test_version","hybrid":false,"bacteria":false}
 14f6de42-21d9-5e67-89cd-a05ebd974a1b|incertae sedis|||||1
 
 Inc.   sed.
 np
-{"parsed":false,"verbatim":"Inc.   sed.","surrogate":false,"virus":false,"nameStringId":"2e1319c9-a44b-531c-8964-67025bbf3b40","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Inc.   sed.","surrogate":false,"virus":false,"nameStringId":"2e1319c9-a44b-531c-8964-67025bbf3b40","parserVersion":"test_version","hybrid":false,"bacteria":false}
 2e1319c9-a44b-531c-8964-67025bbf3b40|Inc.   sed.|||||1
 
 inc.sed.
 np
-{"parsed":false,"verbatim":"inc.sed.","surrogate":false,"virus":false,"nameStringId":"dbb95e14-cebc-56a9-a1d2-a70d4b759e8d","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"inc.sed.","surrogate":false,"virus":false,"nameStringId":"dbb95e14-cebc-56a9-a1d2-a70d4b759e8d","parserVersion":"test_version","hybrid":false,"bacteria":false}
 dbb95e14-cebc-56a9-a1d2-a70d4b759e8d|inc.sed.|||||1
 
 inc.   sed.
 np
-{"parsed":false,"verbatim":"inc.   sed.","surrogate":false,"virus":false,"nameStringId":"f5245bf6-a459-5602-9979-02ba9428cf17","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"inc.   sed.","surrogate":false,"virus":false,"nameStringId":"f5245bf6-a459-5602-9979-02ba9428cf17","parserVersion":"test_version","hybrid":false,"bacteria":false}
 f5245bf6-a459-5602-9979-02ba9428cf17|inc.   sed.|||||1
 #>
 
@@ -2712,53 +2712,53 @@ f5245bf6-a459-5602-9979-02ba9428cf17|inc.   sed.|||||1
 
 None recorded
 np
-{"parsed":false,"verbatim":"None recorded","surrogate":false,"virus":false,"nameStringId":"54d66439-b10d-50dc-a659-c9bce413ed5d","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"None recorded","surrogate":false,"virus":false,"nameStringId":"54d66439-b10d-50dc-a659-c9bce413ed5d","parserVersion":"test_version","hybrid":false,"bacteria":false}
 54d66439-b10d-50dc-a659-c9bce413ed5d|None recorded|||||1
 
 NONE recorded
 np
-{"parsed":false,"verbatim":"NONE recorded","surrogate":false,"virus":false,"nameStringId":"cedc6de2-aed6-58dc-904f-a14348588f8a","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"NONE recorded","surrogate":false,"virus":false,"nameStringId":"cedc6de2-aed6-58dc-904f-a14348588f8a","parserVersion":"test_version","hybrid":false,"bacteria":false}
 cedc6de2-aed6-58dc-904f-a14348588f8a|NONE recorded|||||1
 
 NoNe recorded
 np
-{"parsed":false,"verbatim":"NoNe recorded","surrogate":false,"virus":false,"nameStringId":"39682f61-d0d0-5dc0-bf57-b73ffb97b3ef","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"NoNe recorded","surrogate":false,"virus":false,"nameStringId":"39682f61-d0d0-5dc0-bf57-b73ffb97b3ef","parserVersion":"test_version","hybrid":false,"bacteria":false}
 39682f61-d0d0-5dc0-bf57-b73ffb97b3ef|NoNe recorded|||||1
 
 unidentified recorded
 np
-{"parsed":false,"verbatim":"unidentified recorded","surrogate":false,"virus":false,"nameStringId":"4c391bc1-d3f6-5e33-80df-262cbfb09dfe","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"unidentified recorded","surrogate":false,"virus":false,"nameStringId":"4c391bc1-d3f6-5e33-80df-262cbfb09dfe","parserVersion":"test_version","hybrid":false,"bacteria":false}
 4c391bc1-d3f6-5e33-80df-262cbfb09dfe|unidentified recorded|||||1
 
 UniDentiFied recorded
 np
-{"parsed":false,"verbatim":"UniDentiFied recorded","surrogate":false,"virus":false,"nameStringId":"57b55b46-c874-59ae-b3d8-2888d8a3bc1c","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"UniDentiFied recorded","surrogate":false,"virus":false,"nameStringId":"57b55b46-c874-59ae-b3d8-2888d8a3bc1c","parserVersion":"test_version","hybrid":false,"bacteria":false}
 57b55b46-c874-59ae-b3d8-2888d8a3bc1c|UniDentiFied recorded|||||1
 
 not recorded
 np
-{"parsed":false,"verbatim":"not recorded","surrogate":false,"virus":false,"nameStringId":"830df5b1-ef3b-5240-8ecf-4fd74c2fff72","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"not recorded","surrogate":false,"virus":false,"nameStringId":"830df5b1-ef3b-5240-8ecf-4fd74c2fff72","parserVersion":"test_version","hybrid":false,"bacteria":false}
 830df5b1-ef3b-5240-8ecf-4fd74c2fff72|not recorded|||||1
 
 NOT recorded
 np
-{"parsed":false,"verbatim":"NOT recorded","surrogate":false,"virus":false,"nameStringId":"52b51d9e-29db-561c-84ac-cd1592c762c1","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"NOT recorded","surrogate":false,"virus":false,"nameStringId":"52b51d9e-29db-561c-84ac-cd1592c762c1","parserVersion":"test_version","hybrid":false,"bacteria":false}
 52b51d9e-29db-561c-84ac-cd1592c762c1|NOT recorded|||||1
 
 Not recorded
 np
-{"parsed":false,"verbatim":"Not recorded","surrogate":false,"virus":false,"nameStringId":"025b92f4-2b2c-5593-a02b-66f121b0a42b","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Not recorded","surrogate":false,"virus":false,"nameStringId":"025b92f4-2b2c-5593-a02b-66f121b0a42b","parserVersion":"test_version","hybrid":false,"bacteria":false}
 025b92f4-2b2c-5593-a02b-66f121b0a42b|Not recorded|||||1
 
 Not assigned
 np
-{"parsed":false,"verbatim":"Not assigned","surrogate":false,"virus":false,"nameStringId":"19bffdbe-f1c7-5d39-b7b6-3dc96a317c4b","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Not assigned","surrogate":false,"virus":false,"nameStringId":"19bffdbe-f1c7-5d39-b7b6-3dc96a317c4b","parserVersion":"test_version","hybrid":false,"bacteria":false}
 19bffdbe-f1c7-5d39-b7b6-3dc96a317c4b|Not assigned|||||1
 
-Not_assigned_1234
-np
-{"parsed":false,"verbatim":"Not_assigned_1234","surrogate":false,"virus":false,"nameStringId":"7d1f8f17-026b-5a8c-b7a5-835bf1f696aa","parserVersion":"test_version","bacteria":false}
-7d1f8f17-026b-5a8c-b7a5-835bf1f696aa|Not_assigned_1234|||||1
+Notassigned
+Notassigned
+{"quality":1,"parsed":true,"verbatim":"Notassigned","surrogate":false,"normalized":"Notassigned","canonicalName":{"value":"Notassigned","valueRanked":"Notassigned"},"virus":false,"positions":[["uninomial",0,11]],"nameStringId":"8c07b58a-be4e-5c31-871b-cffe36b9860a","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Notassigned"}}],"bacteria":false}
+8c07b58a-be4e-5c31-871b-cffe36b9860a|Notassigned|Notassigned|Notassigned|||1
 #>
 
 #SECTION: No parsing -- genus with apostrophe<

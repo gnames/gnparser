@@ -75,7 +75,7 @@ Uninomial <- UninomialWord (_ Authorship)?
 
 UninomialWord <- CapWord / TwoLetterGenus
 
-AbbrGenus <- UpperChar LowerChar* '.'
+AbbrGenus <- UpperChar LowerChar? '.'
 
 CapWord <- CapWord2 / CapWord1
 
