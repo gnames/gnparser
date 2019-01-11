@@ -2296,46 +2296,46 @@ b1e37ace-3ca8-5274-bd93-7333aa3e5223|Abryna petri- Paiva, 1860|Abryna|Abryna|||3
 #SECTION: names that contain "of"<
 Musca capraria Trustees of the British Museum (Natural History), 1939
 Musca capraria Trustees
-{"quality":2,"parsed":true,"verbatim":"Musca capraria Trustees of the British Museum (Natural History), 1939","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Musca capraria Trustees","canonicalName":{"value":"Musca capraria","valueRanked":"Musca capraria"},"virus":false,"positions":[["genus",0,5],["specificEpithet",6,14],["authorWord",15,23]],"nameStringId":"aa70cf4b-14bb-57a3-9fe1-0a9a544a16da","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Musca"},"specificEpithet":{"value":"capraria","authorship":{"value":"Trustees","basionymAuthorship":{"authors":["Trustees"]}}}}],"bacteria":false}
-aa70cf4b-14bb-57a3-9fe1-0a9a544a16da|Musca capraria Trustees of the British Museum (Natural History), 1939|Musca capraria|Musca capraria|Trustees||2
+{"quality":3,"parsed":true,"verbatim":"Musca capraria Trustees of the British Museum (Natural History), 1939","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Musca capraria Trustees","canonicalName":{"value":"Musca capraria","valueRanked":"Musca capraria"},"virus":false,"positions":[["genus",0,5],["specificEpithet",6,14],["authorWord",15,23]],"nameStringId":"aa70cf4b-14bb-57a3-9fe1-0a9a544a16da","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Musca"},"specificEpithet":{"value":"capraria","authorship":{"value":"Trustees","basionymAuthorship":{"authors":["Trustees"]}}}}],"bacteria":false,"unparsedTail":" of the British Museum (Natural History), 1939"}
+aa70cf4b-14bb-57a3-9fe1-0a9a544a16da|Musca capraria Trustees of the British Museum (Natural History), 1939|Musca capraria|Musca capraria|Trustees||3
 
 Nassellarid genera of uncertain affinities
 Nassellarid genera
-{"quality":2,"parsed":true,"verbatim":"Nassellarid genera of uncertain affinities","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Nassellarid genera","canonicalName":{"value":"Nassellarid genera","valueRanked":"Nassellarid genera"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,18]],"nameStringId":"ca46eccc-6b42-5faf-be0f-aad069d3e3dd","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Nassellarid"},"specificEpithet":{"value":"genera"}}],"bacteria":false}
-ca46eccc-6b42-5faf-be0f-aad069d3e3dd|Nassellarid genera of uncertain affinities|Nassellarid genera|Nassellarid genera|||2
+{"quality":3,"parsed":true,"verbatim":"Nassellarid genera of uncertain affinities","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Nassellarid genera","canonicalName":{"value":"Nassellarid genera","valueRanked":"Nassellarid genera"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,18]],"nameStringId":"ca46eccc-6b42-5faf-be0f-aad069d3e3dd","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Nassellarid"},"specificEpithet":{"value":"genera"}}],"bacteria":false,"unparsedTail":" of uncertain affinities"}
+ca46eccc-6b42-5faf-be0f-aad069d3e3dd|Nassellarid genera of uncertain affinities|Nassellarid genera|Nassellarid genera|||3
 
 Natica of nidus
 Natica
-{"quality":2,"parsed":true,"verbatim":"Natica of nidus","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Natica","canonicalName":{"value":"Natica","valueRanked":"Natica"},"virus":false,"positions":[["uninomial",0,6]],"nameStringId":"6a049500-f407-56e7-80b4-41ab91f64b8c","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Natica"}}],"bacteria":false}
-6a049500-f407-56e7-80b4-41ab91f64b8c|Natica of nidus|Natica|Natica|||2
+{"quality":3,"parsed":true,"verbatim":"Natica of nidus","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Natica","canonicalName":{"value":"Natica","valueRanked":"Natica"},"virus":false,"positions":[["uninomial",0,6]],"nameStringId":"6a049500-f407-56e7-80b4-41ab91f64b8c","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Natica"}}],"bacteria":false,"unparsedTail":" of nidus"}
+6a049500-f407-56e7-80b4-41ab91f64b8c|Natica of nidus|Natica|Natica|||3
 
 Neritina chemmoi Reeve var of cornea Linn
 Neritina chemmoi Reeve
-{"quality":2,"parsed":true,"verbatim":"Neritina chemmoi Reeve var of cornea Linn","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Neritina chemmoi Reeve","canonicalName":{"value":"Neritina chemmoi","valueRanked":"Neritina chemmoi"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,16],["authorWord",17,22]],"nameStringId":"d6cbded0-dc9b-5da2-8fb9-8d8b124cc5b4","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Neritina"},"specificEpithet":{"value":"chemmoi","authorship":{"value":"Reeve","basionymAuthorship":{"authors":["Reeve"]}}}}],"bacteria":false}
-d6cbded0-dc9b-5da2-8fb9-8d8b124cc5b4|Neritina chemmoi Reeve var of cornea Linn|Neritina chemmoi|Neritina chemmoi|Reeve||2
+{"quality":3,"parsed":true,"verbatim":"Neritina chemmoi Reeve var of cornea Linn","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Neritina chemmoi Reeve","canonicalName":{"value":"Neritina chemmoi","valueRanked":"Neritina chemmoi"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,16],["authorWord",17,22]],"nameStringId":"d6cbded0-dc9b-5da2-8fb9-8d8b124cc5b4","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Neritina"},"specificEpithet":{"value":"chemmoi","authorship":{"value":"Reeve","basionymAuthorship":{"authors":["Reeve"]}}}}],"bacteria":false,"unparsedTail":" var of cornea Linn"}
+d6cbded0-dc9b-5da2-8fb9-8d8b124cc5b4|Neritina chemmoi Reeve var of cornea Linn|Neritina chemmoi|Neritina chemmoi|Reeve||3
 
 Wolbachia endosymbiont of Leptogenys gracilis
 Wolbachia endosymbiont
-{"quality":2,"parsed":true,"verbatim":"Wolbachia endosymbiont of Leptogenys gracilis","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Wolbachia endosymbiont","canonicalName":{"value":"Wolbachia endosymbiont","valueRanked":"Wolbachia endosymbiont"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22]],"nameStringId":"ed4bbf5e-068a-518a-8eb3-42ead52b941b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Wolbachia"},"specificEpithet":{"value":"endosymbiont"}}],"bacteria":true}
-ed4bbf5e-068a-518a-8eb3-42ead52b941b|Wolbachia endosymbiont of Leptogenys gracilis|Wolbachia endosymbiont|Wolbachia endosymbiont|||2
+{"quality":3,"parsed":true,"verbatim":"Wolbachia endosymbiont of Leptogenys gracilis","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Wolbachia endosymbiont","canonicalName":{"value":"Wolbachia endosymbiont","valueRanked":"Wolbachia endosymbiont"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22]],"nameStringId":"ed4bbf5e-068a-518a-8eb3-42ead52b941b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Wolbachia"},"specificEpithet":{"value":"endosymbiont"}}],"bacteria":true,"unparsedTail":" of Leptogenys gracilis"}
+ed4bbf5e-068a-518a-8eb3-42ead52b941b|Wolbachia endosymbiont of Leptogenys gracilis|Wolbachia endosymbiont|Wolbachia endosymbiont|||3
 #>
 
 #SECTION: names that contain "cv" (cultivar)<
 
 Phyllostachys vivax cv aureocaulis
 Phyllostachys vivax
-{"quality":2,"parsed":true,"verbatim":"Phyllostachys vivax cv aureocaulis","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Phyllostachys vivax","canonicalName":{"value":"Phyllostachys vivax","valueRanked":"Phyllostachys vivax"},"virus":false,"positions":[["genus",0,13],["specificEpithet",14,19]],"nameStringId":"56f7057d-9c5c-5ac7-bc7a-f631fb58f5d6","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Phyllostachys"},"specificEpithet":{"value":"vivax"}}],"bacteria":false}
-56f7057d-9c5c-5ac7-bc7a-f631fb58f5d6|Phyllostachys vivax cv aureocaulis|Phyllostachys vivax|Phyllostachys vivax|||2
+{"quality":3,"parsed":true,"verbatim":"Phyllostachys vivax cv aureocaulis","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Phyllostachys vivax","canonicalName":{"value":"Phyllostachys vivax","valueRanked":"Phyllostachys vivax"},"virus":false,"positions":[["genus",0,13],["specificEpithet",14,19]],"nameStringId":"56f7057d-9c5c-5ac7-bc7a-f631fb58f5d6","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Phyllostachys"},"specificEpithet":{"value":"vivax"}}],"bacteria":false,"unparsedTail":" cv aureocaulis"}
+56f7057d-9c5c-5ac7-bc7a-f631fb58f5d6|Phyllostachys vivax cv aureocaulis|Phyllostachys vivax|Phyllostachys vivax|||3
 
 Rhododendron cv Cilpinense
 Rhododendron
-{"quality":2,"parsed":true,"verbatim":"Rhododendron cv Cilpinense","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Rhododendron","canonicalName":{"value":"Rhododendron","valueRanked":"Rhododendron"},"virus":false,"positions":[["uninomial",0,12]],"nameStringId":"abd299df-e4b2-533c-86eb-a4a5e273b934","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Rhododendron"}}],"bacteria":false}
-abd299df-e4b2-533c-86eb-a4a5e273b934|Rhododendron cv Cilpinense|Rhododendron|Rhododendron|||2
+{"quality":3,"parsed":true,"verbatim":"Rhododendron cv Cilpinense","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Rhododendron","canonicalName":{"value":"Rhododendron","valueRanked":"Rhododendron"},"virus":false,"positions":[["uninomial",0,12]],"nameStringId":"abd299df-e4b2-533c-86eb-a4a5e273b934","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Rhododendron"}}],"bacteria":false,"unparsedTail":" cv Cilpinense"}
+abd299df-e4b2-533c-86eb-a4a5e273b934|Rhododendron cv Cilpinense|Rhododendron|Rhododendron|||3
 
 Ligusticum sinense cv 'chuanxiong' S.H. Qiu & et al.
 Ligusticum sinense
-{"quality":2,"parsed":true,"verbatim":"Ligusticum sinense cv 'chuanxiong' S.H. Qiu & et al.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Ligusticum sinense","canonicalName":{"value":"Ligusticum sinense","valueRanked":"Ligusticum sinense"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,18]],"nameStringId":"73f015c2-6679-5428-b418-6f4487af419d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Ligusticum"},"specificEpithet":{"value":"sinense"}}],"bacteria":false}
-73f015c2-6679-5428-b418-6f4487af419d|Ligusticum sinense cv 'chuanxiong' S.H. Qiu & et al.|Ligusticum sinense|Ligusticum sinense|||2
+{"quality":3,"parsed":true,"verbatim":"Ligusticum sinense cv 'chuanxiong' S.H. Qiu & et al.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Ligusticum sinense","canonicalName":{"value":"Ligusticum sinense","valueRanked":"Ligusticum sinense"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,18]],"nameStringId":"73f015c2-6679-5428-b418-6f4487af419d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Ligusticum"},"specificEpithet":{"value":"sinense"}}],"bacteria":false,"unparsedTail":" cv 'chuanxiong' S.H. Qiu & et al."}
+73f015c2-6679-5428-b418-6f4487af419d|Ligusticum sinense cv 'chuanxiong' S.H. Qiu & et al.|Ligusticum sinense|Ligusticum sinense|||3
 #>
 
 ### Preprocessed
