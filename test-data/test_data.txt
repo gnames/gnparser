@@ -2764,60 +2764,60 @@ Notassigned
 #SECTION: No parsing -- genus with apostrophe<
 Abbott's moray eel
 np
-{"parsed":false,"verbatim":"Abbott's moray eel","surrogate":false,"virus":false,"nameStringId":"6a870e4b-5cc5-5226-ac5d-b769521b640f","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Abbott's moray eel","surrogate":false,"virus":false,"nameStringId":"6a870e4b-5cc5-5226-ac5d-b769521b640f","parserVersion":"test_version","hybrid":false,"bacteria":false}
 6a870e4b-5cc5-5226-ac5d-b769521b640f|Abbott's moray eel|||||1
 
 Chambers' twinpod
 np
-{"parsed":false,"verbatim":"Chambers' twinpod","surrogate":false,"virus":false,"nameStringId":"f109486d-9809-5196-b135-75f4cf9d7ef6","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Chambers' twinpod","surrogate":false,"virus":false,"nameStringId":"f109486d-9809-5196-b135-75f4cf9d7ef6","parserVersion":"test_version","hybrid":false,"bacteria":false}
 f109486d-9809-5196-b135-75f4cf9d7ef6|Chambers' twinpod|||||1
 
 Columnea × Alladin's
 np
-{"parsed":false,"verbatim":"Columnea × Alladin's","surrogate":false,"virus":false,"nameStringId":"bc01a624-d49e-588d-b49d-253ac7e12939","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Columnea × Alladin's","surrogate":false,"virus":false,"nameStringId":"bc01a624-d49e-588d-b49d-253ac7e12939","parserVersion":"test_version","hybrid":false,"bacteria":false}
 bc01a624-d49e-588d-b49d-253ac7e12939|Columnea × Alladin's|||||1
 
 Hawai'i silversword
 np
-{"parsed":false,"verbatim":"Hawai'i silversword","surrogate":false,"virus":false,"nameStringId":"f4ba0445-a5f2-525c-97ce-9316fe16e3cd","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Hawai'i silversword","surrogate":false,"virus":false,"nameStringId":"f4ba0445-a5f2-525c-97ce-9316fe16e3cd","parserVersion":"test_version","hybrid":false,"bacteria":false}
 f4ba0445-a5f2-525c-97ce-9316fe16e3cd|Hawai'i silversword|||||1
 #>
 
 #SECTION: No parsing -- CamelCase 'genus' word<
 PomaTomus
 np
-{"parsed":false,"verbatim":"PomaTomus","surrogate":false,"virus":false,"nameStringId":"106ff909-e787-52b2-9139-25d0eb7d161e","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"PomaTomus","surrogate":false,"virus":false,"nameStringId":"106ff909-e787-52b2-9139-25d0eb7d161e","parserVersion":"test_version","hybrid":false,"bacteria":false}
 106ff909-e787-52b2-9139-25d0eb7d161e|PomaTomus|||||1
 
 DizygopUwa stosei
 np
-{"parsed":false,"verbatim":"DizygopUwa stosei","surrogate":false,"virus":false,"nameStringId":"46511ef9-02d8-5f24-8364-b72df3e1494d","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"DizygopUwa stosei","surrogate":false,"virus":false,"nameStringId":"46511ef9-02d8-5f24-8364-b72df3e1494d","parserVersion":"test_version","hybrid":false,"bacteria":false}
 46511ef9-02d8-5f24-8364-b72df3e1494d|DizygopUwa stosei|||||1
 
 Oxytox[idae] Lindermann
 np
-{"parsed":false,"verbatim":"Oxytox[idae] Lindermann","surrogate":false,"virus":false,"nameStringId":"39a37760-d9f9-54d6-b49b-f6830e59f34e","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Oxytox[idae] Lindermann","surrogate":false,"virus":false,"nameStringId":"39a37760-d9f9-54d6-b49b-f6830e59f34e","parserVersion":"test_version","hybrid":false,"bacteria":false}
 39a37760-d9f9-54d6-b49b-f6830e59f34e|Oxytox[idae] Lindermann|||||1
 
 ScarabaeinGCsp.
 np
-{"parsed":false,"verbatim":"ScarabaeinGCsp.","surrogate":false,"virus":false,"nameStringId":"c84b775e-cc80-588f-b7bb-0094bab2c6a2","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"ScarabaeinGCsp.","surrogate":false,"virus":false,"nameStringId":"c84b775e-cc80-588f-b7bb-0094bab2c6a2","parserVersion":"test_version","hybrid":false,"bacteria":false}
 c84b775e-cc80-588f-b7bb-0094bab2c6a2|ScarabaeinGCsp.|||||1
 
 #SECTION: No parsing -- phytoplasma<
 Alfalfa witches'-broom phytoplasma
 np
-{"parsed":false,"verbatim":"Alfalfa witches'-broom phytoplasma","surrogate":false,"virus":false,"nameStringId":"b31676ed-c1ed-522c-8380-19a27af11e0d","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Alfalfa witches'-broom phytoplasma","surrogate":false,"virus":false,"nameStringId":"b31676ed-c1ed-522c-8380-19a27af11e0d","parserVersion":"test_version","hybrid":false,"bacteria":false}
 b31676ed-c1ed-522c-8380-19a27af11e0d|Alfalfa witches'-broom phytoplasma|||||1
 
 Allium ampeloprasumphytoplasma
 np
-{"parsed":false,"verbatim":"Allium ampeloprasumphytoplasma","surrogate":false,"virus":false,"nameStringId":"f84e58c5-8e49-5b2d-a4d0-4f1e538c8c7c","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Allium ampeloprasumphytoplasma","surrogate":false,"virus":false,"nameStringId":"f84e58c5-8e49-5b2d-a4d0-4f1e538c8c7c","parserVersion":"test_version","hybrid":false,"bacteria":false}
 f84e58c5-8e49-5b2d-a4d0-4f1e538c8c7c|Allium ampeloprasumphytoplasma|||||1
 
 Alstroemeria sp. phytoplasma
 np
-{"parsed":false,"verbatim":"Alstroemeria sp. phytoplasma","surrogate":false,"virus":false,"nameStringId":"5348845f-c94a-5c7e-bba1-307e4c07a42d","parserVersion":"test_version","bacteria":false}
+{"parsed":false,"verbatim":"Alstroemeria sp. phytoplasma","surrogate":false,"virus":false,"nameStringId":"5348845f-c94a-5c7e-bba1-307e4c07a42d","parserVersion":"test_version","hybrid":false,"bacteria":false}
 5348845f-c94a-5c7e-bba1-307e4c07a42d|Alstroemeria sp. phytoplasma|||||1
 #>
 
