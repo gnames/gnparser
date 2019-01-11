@@ -4,7 +4,8 @@ import grm "gitlab.com/gogna/gnparser/grammar"
 
 var wordTypeMap = map[grm.WordType]string{
 	grm.UnknownType:          "word",
-	grm.AnnotIDType:          "annotationIdentification",
+	grm.ComparisonType:       "annotationIdentification",
+	grm.ApproxType:           "annotationIdentification",
 	grm.AuthorWordType:       "authorWord",
 	grm.AuthorWordExType:     "authorWord",
 	grm.AuthorWordEmendType:  "authorWord",

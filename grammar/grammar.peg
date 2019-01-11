@@ -18,7 +18,7 @@ HybridFormulaPart <- HybridChar _ SpeciesEpithet (_ InfraspGroup)?
 
 NamedHybrid <- NamedGenusHybrid / NamedSpeciesHybrid
 
-NamedSpeciesHybrid <- GenusWord _ HybridChar _? SpeciesEpithet
+NamedSpeciesHybrid <- GenusWord (_ SubGenus)? (_ Comparison)? _ HybridChar _? SpeciesEpithet
 
 NamedGenusHybrid <- HybridChar _? SingleName
 

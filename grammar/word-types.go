@@ -5,7 +5,8 @@ type WordType int
 
 const (
 	UnknownType WordType = iota
-	AnnotIDType
+	ComparisonType
+	ApproxType
 	AuthorWordType
 	AuthorWordExType
 	AuthorWordEmendType

@@ -41,7 +41,7 @@ var lastWordJunkRe = regexp.MustCompile(
 		`|subsp|subgen|hybrid)\??\s*$`,
 )
 var stopWordsRe = regexp.MustCompile(
-	`\s+(of[\W_]|\(?ht\.?\W|\(?[Hh]ort\.?\W|spec\.|nov\s+spec|cv).*$`,
+	`\s+(of[\W_]|\(?ht\.?\W|\(?hort\.?\W|spec\.|nov\s+spec|cv).*$`,
 )
 
 type Preprocessor struct {

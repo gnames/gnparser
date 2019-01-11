@@ -111,7 +111,7 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 	var hes []*hybridElement
 	var he *hybridElement
 	for n != nil {
-		switch n.token32.pegRule {
+		switch n.pegRule {
 		case ruleHybridChar:
 			he = &hybridElement{
 				HybridChar: p.newWordNode(n, HybridCharType),
@@ -129,13 +129,15 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 			case *uninomialNode:
 				u := firstName.(*uninomialNode)
 				g = u.Word
+			case *comparisonNode:
+				cn := firstName.(*comparisonNode)
+				g = cn.Genus
 			}
 			spe := p.newSpeciesEpithetNode(n)
 			g = &wordNode{Value: g.Value, NormValue: g.NormValue}
 			he.Species = &speciesNode{Genus: g, SpEpithet: spe}
 			hes = append(hes, he)
 		}
-
 		n = n.next
 	}
 	if he.Species == nil {
@@ -192,8 +194,15 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 	switch n.token32.pegRule {
 	case ruleUninomial:
 		name = p.newUninomialNode(n)
+	case ruleUninomialCombo:
+		p.AddWarn(UninomialComboWarn)
+		name = p.newUninomialComboNode(n)
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
+	case ruleNameApprox:
+		p.Surrogate = true
+		p.AddWarn(NameApproxWarn)
+		name = p.newApproxNode(n)
 	}
 	nhn = &namedGenusHybridNode{
 		Hybrid: hybr,
@@ -203,28 +212,42 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 }
 
 type namedSpeciesHybridNode struct {
-	Genus     *wordNode
-	Hybrid    *wordNode
-	SpEpithet *spEpithetNode
+	Genus      *wordNode
+	Comparison *wordNode
+	Hybrid     *wordNode
+	SpEpithet  *spEpithetNode
 }
 
 func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 	var nhl *namedSpeciesHybridNode
-	genNode := n.up
-	hybridCharNode := genNode.next
-	spNode := hybridCharNode.next
-	gen := p.newWordNode(genNode, GenusType)
-	hybrid := p.newWordNode(hybridCharNode, HybridCharType)
-	sp := p.newSpeciesEpithetNode(spNode)
+	n = n.up
+	var gen, hybrid, cf *wordNode
+	var sp *spEpithetNode
+	for n != nil {
+		switch n.pegRule {
+		case ruleGenusWord:
+			gen = p.newWordNode(n, GenusType)
+		case ruleComparison:
+			cf = p.newWordNode(n, ComparisonType)
+			p.Surrogate = true
+			p.AddWarn(NameComparisonWarn)
+		case ruleHybridChar:
+			hybrid = p.newWordNode(n, HybridCharType)
+		case ruleSpeciesEpithet:
+			sp = p.newSpeciesEpithetNode(n)
+		}
+		n = n.next
+	}
 
 	p.AddWarn(HybridNamedWarn)
 	if hybrid.Pos.End == sp.Word.Pos.Start {
 		p.AddWarn(HybridCharNoSpaceWarn)
 	}
 	nhl = &namedSpeciesHybridNode{
-		Genus:     gen,
-		Hybrid:    hybrid,
-		SpEpithet: sp,
+		Genus:      gen,
+		Comparison: cf,
+		Hybrid:     hybrid,
+		SpEpithet:  sp,
 	}
 	return nhl
 }
@@ -253,10 +276,10 @@ func (p *Engine) newSingleName(n *node32) Name {
 }
 
 type approxNode struct {
-	Genus        *wordNode
-	SpEpithet    *spEpithetNode
-	AnnotationID *wordNode
-	Ignored      string
+	Genus     *wordNode
+	SpEpithet *spEpithetNode
+	Approx    *wordNode
+	Ignored   string
 }
 
 func (p *Engine) newApproxNode(n *node32) *approxNode {
@@ -276,25 +299,25 @@ func (p *Engine) newApproxNode(n *node32) *approxNode {
 		case ruleSpeciesEpithet:
 			spEp = p.newSpeciesEpithetNode(n)
 		case ruleApproximation:
-			annot = p.newWordNode(n, AnnotIDType)
+			annot = p.newWordNode(n, ApproxType)
 		case ruleApproxNameIgnored:
 			ign = p.nodeValue(n)
 		}
 		n = n.next
 	}
 	an = &approxNode{
-		Genus:        gen,
-		SpEpithet:    spEp,
-		AnnotationID: annot,
-		Ignored:      ign,
+		Genus:     gen,
+		SpEpithet: spEp,
+		Approx:    annot,
+		Ignored:   ign,
 	}
 	return an
 }
 
 type comparisonNode struct {
-	Genus        *wordNode
-	SpEpithet    *spEpithetNode
-	AnnotationID *wordNode
+	Genus      *wordNode
+	SpEpithet  *spEpithetNode
+	Comparison *wordNode
 }
 
 func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
@@ -310,16 +333,16 @@ func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
 		case ruleGenusWord:
 			gen = p.newWordNode(n, GenusType)
 		case ruleComparison:
-			comp = p.newWordNode(n, AnnotIDType)
+			comp = p.newWordNode(n, ComparisonType)
 		case ruleSpeciesEpithet:
 			spEp = p.newSpeciesEpithetNode(n)
 		}
 		n = n.next
 	}
 	cn = &comparisonNode{
-		Genus:        gen,
-		AnnotationID: comp,
-		SpEpithet:    spEp,
+		Genus:      gen,
+		Comparison: comp,
+		SpEpithet:  spEp,
 	}
 	return cn
 }
@@ -537,6 +560,10 @@ type authorshipNode struct {
 }
 
 func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
+	var a *authorshipNode
+	if n == nil {
+		return a
+	}
 	var oa, ca *authorsGroupNode
 	var misplacedYear bool
 	n = n.up
@@ -565,11 +592,11 @@ func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 		n = n.next
 	}
 
-	a := authorshipNode{
+	a = &authorshipNode{
 		OriginalAuthors:    oa,
 		CombinationAuthors: ca,
 	}
-	return &a
+	return a
 }
 
 type authorsGroupNode struct {

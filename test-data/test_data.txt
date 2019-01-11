@@ -260,6 +260,11 @@ Eucalyptus subser. Regulares Brooker
 Eucalyptus subser. Regulares Brooker
 {"quality":2,"parsed":true,"verbatim":"Eucalyptus subser. Regulares Brooker","surrogate":false,"qualityWarnings":[[2,"Combination of two uninomials"]],"normalized":"Eucalyptus subser. Regulares Brooker","canonicalName":{"value":"Regulares","valueRanked":"Eucalyptus subser. Regulares"},"virus":false,"positions":[["uninomial",0,10],["rank",11,18],["uninomial",19,28],["authorWord",29,36]],"nameStringId":"783aa15c-f54f-5233-b792-16774a21a34d","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Regulares","rank":"subser.","parent":"Eucalyptus","authorship":{"value":"Brooker","basionymAuthorship":{"authors":["Brooker"]}}}}],"bacteria":false}
 783aa15c-f54f-5233-b792-16774a21a34d|Eucalyptus subser. Regulares Brooker|Regulares|Eucalyptus subser. Regulares|Brooker||2
+
+Aaleniella (Danocythere)
+Aaleniella (Danocythere)
+{"quality":2,"parsed":true,"verbatim":"Aaleniella (Danocythere)","surrogate":false,"qualityWarnings":[[2,"Combination of two uninomials"]],"normalized":"Aaleniella subgen. Danocythere","canonicalName":{"value":"Danocythere","valueRanked":"Aaleniella subgen. Danocythere"},"virus":false,"positions":[["uninomial",0,10],["uninomial",12,23]],"nameStringId":"8b7eddb1-b9a4-5cca-8fa8-25527e25d8df","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Danocythere","rank":"subgen.","parent":"Aaleniella"}}],"bacteria":false}
+8b7eddb1-b9a4-5cca-8fa8-25527e25d8df|Aaleniella (Danocythere)|Danocythere|Aaleniella subgen. Danocythere|||2
 #>
 
 ### Binomials
@@ -879,6 +884,11 @@ x Heucherella tiarelloides
 {"quality":2,"parsed":true,"verbatim":"x Heucherella tiarelloides","surrogate":false,"qualityWarnings":[[2,"Named hybrid"]],"normalized":"× Heucherella tiarelloides","canonicalName":{"value":"Heucherella tiarelloides","valueRanked":"× Heucherella tiarelloides"},"virus":false,"positions":[["hybridChar",0,1],["genus",2,13],["specificEpithet",14,26]],"nameStringId":"da549587-a768-51b6-af26-1bb3c1977b31","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Heucherella"},"specificEpithet":{"value":"tiarelloides"}}],"bacteria":false}
 da549587-a768-51b6-af26-1bb3c1977b31|x Heucherella tiarelloides|Heucherella tiarelloides|× Heucherella tiarelloides|||2
 
+XAgroelymus Lapage sect. Agroelinelymus
+×Agroelymus Lapage sect. Agroelinelymus
+{"quality":3,"parsed":true,"verbatim":"XAgroelymus Lapage sect. Agroelinelymus","surrogate":false,"qualityWarnings":[[3,"Hybrid char not separated by space"],[2,"Combination of two uninomials"],[2,"Named hybrid"]],"normalized":"× Agroelymus sect. Agroelinelymus","canonicalName":{"value":"Agroelinelymus","valueRanked":"× Agroelymus sect. Agroelinelymus"},"virus":false,"positions":[["hybridChar",0,1],["uninomial",1,11],["authorWord",12,18],["rank",19,24],["uninomial",25,39]],"nameStringId":"419d1a5d-64b9-5e0d-87f4-624b19ddab0f","parserVersion":"test_version","hybrid":true,"details":[{"uninomial":{"value":"Agroelinelymus","rank":"sect.","parent":"Agroelymus"}}],"bacteria":false}
+419d1a5d-64b9-5e0d-87f4-624b19ddab0f|XAgroelymus Lapage sect. Agroelinelymus|Agroelinelymus|× Agroelymus sect. Agroelinelymus|||3
+
 ×Agropogon littoralis (Sm.) C. E. Hubb. 1946
 ×Agropogon littoralis (Sm.) C. E. Hubb. 1946
 {"quality":3,"parsed":true,"verbatim":"×Agropogon littoralis (Sm.) C. E. Hubb. 1946","surrogate":false,"qualityWarnings":[[3,"Hybrid char not separated by space"],[2,"Named hybrid"]],"normalized":"× Agropogon littoralis (Sm.) C. E. Hubb. 1946","canonicalName":{"value":"Agropogon littoralis","valueRanked":"× Agropogon littoralis"},"virus":false,"positions":[["hybridChar",0,1],["genus",1,10],["specificEpithet",11,21],["authorWord",23,26],["authorWord",28,30],["authorWord",31,33],["authorWord",34,39],["year",40,44]],"nameStringId":"66beda81-d796-5d60-be9f-b3188ef730dc","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Agropogon"},"specificEpithet":{"value":"littoralis","authorship":{"value":"(Sm.) C. E. Hubb. 1946","basionymAuthorship":{"authors":["Sm."]},"combinationAuthorship":{"authors":["C. E. Hubb."],"years":[{"value":"1946"}]}}}}],"bacteria":false}
@@ -888,8 +898,6 @@ Asplenium X inexpectatum (E.L. Braun 1940) Morton (1956)
 Asplenium × inexpectatum (E.L. Braun 1940) Morton (1956)
 {"quality":2,"parsed":true,"verbatim":"Asplenium X inexpectatum (E.L. Braun 1940) Morton (1956)","surrogate":false,"qualityWarnings":[[2,"Named hybrid"],[2,"Year with parentheses"]],"normalized":"Asplenium × inexpectatum (E. L. Braun 1940) Morton (1956)","canonicalName":{"value":"Asplenium inexpectatum","valueRanked":"Asplenium × inexpectatum"},"virus":false,"positions":[["genus",0,9],["hybridChar",10,11],["specificEpithet",12,24],["authorWord",26,28],["authorWord",28,30],["authorWord",31,36],["year",37,41],["authorWord",43,49],["approximateYear",51,55]],"nameStringId":"d37e04e4-90bc-5031-b91c-dbb61113bcfa","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Asplenium"},"specificEpithet":{"value":"inexpectatum","authorship":{"value":"(E. L. Braun 1940) Morton (1956)","basionymAuthorship":{"authors":["E. L. Braun"],"years":[{"value":"1940"}]},"combinationAuthorship":{"authors":["Morton"],"years":[{"value":"1956","approximate":true}]}}}}],"bacteria":false}
 d37e04e4-90bc-5031-b91c-dbb61113bcfa|Asplenium X inexpectatum (E.L. Braun 1940) Morton (1956)|Asplenium inexpectatum|Asplenium × inexpectatum|(E. L. Braun 1940) Morton (1956)|1940|2
-
-# Mentha ×smithiana R. A. Graham 1949
 
 Salix ×capreola Andersson (1867)
 Salix ×capreola Andersson (1867)
@@ -1578,6 +1586,11 @@ Endoxyla sp. GM-, 2003
 {"quality":3,"parsed":true,"verbatim":"Endoxyla sp. GM-, 2003","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Endoxyla","canonicalName":{"value":"Endoxyla","valueRanked":"Endoxyla"},"virus":false,"positions":[["genus",0,8],["annotationIdentification",9,12]],"nameStringId":"8a80bfee-947d-5602-9958-a2338ff46a4d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Endoxyla"},"annotationIdentification":"sp.","ignored":{"value":" GM-, 2003"}}],"bacteria":false}
 8a80bfee-947d-5602-9958-a2338ff46a4d|Endoxyla sp. GM-, 2003|Endoxyla|Endoxyla|||3
 
+X Aegilotrichum sp.
+× Aegilotrichum sp.
+{"quality":3,"parsed":true,"verbatim":"X Aegilotrichum sp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"],[2,"Named hybrid"]],"normalized":"× Aegilotrichum","canonicalName":{"value":"Aegilotrichum","valueRanked":"× Aegilotrichum"},"virus":false,"positions":[["hybridChar",0,1],["genus",2,15],["annotationIdentification",16,19]],"nameStringId":"308357ff-7f86-53b9-955b-88a52ef7623a","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Aegilotrichum"},"annotationIdentification":"sp.","ignored":{"value":""}}],"bacteria":false}
+308357ff-7f86-53b9-955b-88a52ef7623a|X Aegilotrichum sp.|Aegilotrichum|× Aegilotrichum|||3
+
 Liopropoma sp.2 Not applicable
 Liopropoma sp.2 Not applicable
 {"quality":3,"parsed":true,"verbatim":"Liopropoma sp.2 Not applicable","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Liopropoma","canonicalName":{"value":"Liopropoma","valueRanked":"Liopropoma"},"virus":false,"positions":[["genus",0,10],["annotationIdentification",11,14]],"nameStringId":"fb3779a4-57a0-5628-8c4e-e341ca4f952d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Liopropoma"},"annotationIdentification":"sp.","ignored":{"value":"2 Not applicable"}}],"bacteria":false}
@@ -1614,6 +1627,24 @@ Calidris cf. cooperi
 Calidris cf. cooperi
 {"quality":3,"parsed":true,"verbatim":"Calidris cf. cooperi","surrogate":true,"qualityWarnings":[[3,"Name comparison"]],"normalized":"Calidris cf. cooperi","canonicalName":{"value":"Calidris cooperi","valueRanked":"Calidris cooperi"},"virus":false,"positions":[["genus",0,8],["annotationIdentification",9,12],["specificEpithet",13,20]],"nameStringId":"bb19b56e-462f-5daf-a1aa-d4ead082f321","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Calidris"},"specificEpithet":{"value":"cooperi"},"annotationIdentification":"cf."}],"bacteria":false}
 bb19b56e-462f-5daf-a1aa-d4ead082f321|Calidris cf. cooperi|Calidris cooperi|Calidris cooperi|||3
+
+#TODO merge comparison with species, infraspecies nodes instead of its own node
+Aesculus cf. × hybrida
+Aesculus cf. × hybrida
+{"quality":3,"parsed":true,"verbatim":"Aesculus cf. × hybrida","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[2,"Named hybrid"]],"normalized":"Aesculus × hybrida","canonicalName":{"value":"Aesculus hybrida","valueRanked":"Aesculus × hybrida"},"virus":false,"positions":[["genus",0,8],["annotationIdentification",9,12],["hybridChar",13,14],["specificEpithet",15,22]],"nameStringId":"6e255814-1c53-54f0-8536-fee957312e9a","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Aesculus"},"specificEpithet":{"value":"hybrida"}}],"bacteria":false}
+6e255814-1c53-54f0-8536-fee957312e9a|Aesculus cf. × hybrida|Aesculus hybrida|Aesculus × hybrida|||3
+
+#TODO missing subgenus info
+Daphnia (Daphnia) x krausi Flossner 1993
+Daphnia (Daphnia) × krausi Flossner 1993
+{"quality":2,"parsed":true,"verbatim":"Daphnia (Daphnia) x krausi Flossner 1993","surrogate":false,"qualityWarnings":[[2,"Named hybrid"]],"normalized":"Daphnia × krausi Flossner 1993","canonicalName":{"value":"Daphnia krausi","valueRanked":"Daphnia × krausi"},"virus":false,"positions":[["genus",0,7],["hybridChar",18,19],["specificEpithet",20,26],["authorWord",27,35],["year",36,40]],"nameStringId":"b509d1f1-ce1d-56a1-a15e-2aa9430dce0e","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Daphnia"},"specificEpithet":{"value":"krausi","authorship":{"value":"Flossner 1993","basionymAuthorship":{"authors":["Flossner"],"years":[{"value":"1993"}]}}}}],"bacteria":false}
+b509d1f1-ce1d-56a1-a15e-2aa9430dce0e|Daphnia (Daphnia) x krausi Flossner 1993|Daphnia krausi|Daphnia × krausi|Flossner 1993|1993|2
+
+#TODO incorrect interpretation
+Barbus cf macrotaenia × toppini
+Barbus cf macrotaenia × toppini
+{"quality":3,"parsed":true,"verbatim":"Barbus cf macrotaenia × toppini","surrogate":true,"qualityWarnings":[[3,"Incomplete hybrid formula"],[3,"Name comparison"],[2,"Hybrid formula"]],"normalized":"Barbus cf macrotaenia × Barbus toppini","canonicalName":{"value":"Barbus macrotaenia × Barbus toppini","valueRanked":"Barbus macrotaenia × Barbus toppini"},"virus":false,"positions":[["genus",0,6],["annotationIdentification",7,9],["specificEpithet",10,21],["hybridChar",22,23],["specificEpithet",24,31]],"nameStringId":"37b0b404-d5d9-5699-bbb2-8c3d9bf543a3","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Barbus"},"specificEpithet":{"value":"macrotaenia"},"annotationIdentification":"cf"},{"genus":{"value":"Barbus"},"specificEpithet":{"value":"toppini"}}],"bacteria":false}
+37b0b404-d5d9-5699-bbb2-8c3d9bf543a3|Barbus cf macrotaenia × toppini|Barbus macrotaenia × Barbus toppini|Barbus macrotaenia × Barbus toppini|||3
 
 Gemmula cf. cosmoi NP-2008
 Gemmula cf. cosmoi
@@ -2599,10 +2630,15 @@ Aconitum napellus var. formosum (Rchb.) W. D. J. Koch
 {"quality":3,"parsed":true,"verbatim":"Aconitum napellus var. formosum (Rchb.) W. D. J. Koch (nom. ambig.)","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Aconitum napellus var. formosum (Rchb.) W. D. J. Koch","canonicalName":{"value":"Aconitum napellus formosum","valueRanked":"Aconitum napellus var. formosum"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,17],["rank",18,22],["infraspecificEpithet",23,31],["authorWord",33,38],["authorWord",40,42],["authorWord",43,45],["authorWord",46,48],["authorWord",49,53]],"nameStringId":"9f79b2b3-cfd1-541a-9898-b60829134b11","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Aconitum"},"specificEpithet":{"value":"napellus"},"infraspecificEpithets":[{"value":"formosum","rank":"var.","authorship":{"value":"(Rchb.) W. D. J. Koch","basionymAuthorship":{"authors":["Rchb."]},"combinationAuthorship":{"authors":["W. D. J. Koch"]}}}]}],"bacteria":false,"unparsedTail":" (nom. ambig.)"}
 9f79b2b3-cfd1-541a-9898-b60829134b11|Aconitum napellus var. formosum (Rchb.) W. D. J. Koch (nom. ambig.)|Aconitum napellus formosum|Aconitum napellus var. formosum|(Rchb.) W. D. J. Koch||3
 
-× Dialaeliopsis Hort.
+Aesculus canadensis Hort. ex Lavallée
+Aesculus canadensis Hort. ex Lavallée
+{"quality":2,"parsed":true,"verbatim":"Aesculus canadensis Hort. ex Lavallée","surrogate":false,"qualityWarnings":[[2,"Ex authors are not required"]],"normalized":"Aesculus canadensis Hort. ex Lavallée","canonicalName":{"value":"Aesculus canadensis","valueRanked":"Aesculus canadensis"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,19],["authorWord",20,25],["authorWord",29,37]],"nameStringId":"a1c7935f-26c2-5388-a1e2-b5a9508d70ef","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Aesculus"},"specificEpithet":{"value":"canadensis","authorship":{"value":"Hort. ex Lavallée","basionymAuthorship":{"authors":["Hort."],"exAuthors":{"authors":["Lavallée"]}}}}}],"bacteria":false}
+a1c7935f-26c2-5388-a1e2-b5a9508d70ef|Aesculus canadensis Hort. ex Lavallée|Aesculus canadensis|Aesculus canadensis|Hort. ex Lavallée||2
+
+× Dialaeliopsis hort.
 × Dialaeliopsis
-{"quality":3,"parsed":true,"verbatim":"× Dialaeliopsis Hort.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"],[2,"Named hybrid"]],"normalized":"× Dialaeliopsis","canonicalName":{"value":"Dialaeliopsis","valueRanked":"× Dialaeliopsis"},"virus":false,"positions":[["hybridChar",0,1],["uninomial",2,15]],"nameStringId":"70953b19-19cd-52a3-a766-551e74437d55","parserVersion":"test_version","hybrid":true,"details":[{"uninomial":{"value":"Dialaeliopsis"}}],"bacteria":false,"unparsedTail":" Hort."}
-70953b19-19cd-52a3-a766-551e74437d55|× Dialaeliopsis Hort.|Dialaeliopsis|× Dialaeliopsis|||3
+{"quality":3,"parsed":true,"verbatim":"× Dialaeliopsis hort.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"],[2,"Named hybrid"]],"normalized":"× Dialaeliopsis","canonicalName":{"value":"Dialaeliopsis","valueRanked":"× Dialaeliopsis"},"virus":false,"positions":[["hybridChar",0,1],["uninomial",2,15]],"nameStringId":"5e0197df-26c1-55bc-a5c0-64376c599fa5","parserVersion":"test_version","hybrid":true,"details":[{"uninomial":{"value":"Dialaeliopsis"}}],"bacteria":false,"unparsedTail":" hort."}
+5e0197df-26c1-55bc-a5c0-64376c599fa5|× Dialaeliopsis hort.|Dialaeliopsis|× Dialaeliopsis|||3
 #>
 
 #SECTION misc annotations<

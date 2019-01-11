@@ -8,10 +8,10 @@ import (
 )
 
 type ApproxOutput struct {
-	Genus        *genusOutput       `json:"genus"`
-	SpecEpithet  *specEpithetOutput `json:"specificEpithet,omitempty"`
-	AnnotationID string             `json:"annotationIdentification"`
-	Ignored      *ignoredOutput     `json:"ignored,omitempty"`
+	Genus       *genusOutput       `json:"genus"`
+	SpecEpithet *specEpithetOutput `json:"specificEpithet,omitempty"`
+	Approx      string             `json:"annotationIdentification"`
+	Ignored     *ignoredOutput     `json:"ignored,omitempty"`
 }
 
 type ignoredOutput struct {
@@ -19,9 +19,9 @@ type ignoredOutput struct {
 }
 
 type ComparisonOutput struct {
-	Genus        *genusOutput       `json:"genus"`
-	SpecEpithet  *specEpithetOutput `json:"specificEpithet"`
-	AnnotationID string             `json:"annotationIdentification"`
+	Genus       *genusOutput       `json:"genus"`
+	SpecEpithet *specEpithetOutput `json:"specificEpithet"`
+	Comparison  string             `json:"annotationIdentification"`
 }
 
 type SpeciesOutput struct {
@@ -226,6 +226,9 @@ func (nh *namedGenusHybridNode) lastAuthorship() *authorshipNode {
 
 func (nh *namedSpeciesHybridNode) pos() []Pos {
 	pos := []Pos{nh.Genus.Pos}
+	if nh.Comparison != nil {
+		pos = append(pos, nh.Comparison.Pos)
+	}
 	pos = append(pos, nh.Hybrid.Pos)
 	pos = append(pos, nh.SpEpithet.pos()...)
 	return pos
@@ -271,8 +274,8 @@ func (apr *approxNode) pos() []Pos {
 	if apr.SpEpithet != nil {
 		pos = append(pos, apr.SpEpithet.pos()...)
 	}
-	if apr.AnnotationID != nil {
-		pos = append(pos, apr.AnnotationID.Pos)
+	if apr.Approx != nil {
+		pos = append(pos, apr.Approx.Pos)
 	}
 	return pos
 }
@@ -315,9 +318,9 @@ func (apr *approxNode) details() []interface{} {
 	}
 	g := apr.Genus.NormValue
 	ao := &ApproxOutput{
-		Genus:        &genusOutput{Value: g},
-		AnnotationID: apr.AnnotationID.NormValue,
-		Ignored:      &ignoredOutput{Value: apr.Ignored},
+		Genus:   &genusOutput{Value: g},
+		Approx:  apr.Approx.NormValue,
+		Ignored: &ignoredOutput{Value: apr.Ignored},
 	}
 	if apr.SpEpithet == nil {
 		return []interface{}{ao}
@@ -338,7 +341,7 @@ func (comp *comparisonNode) pos() []Pos {
 		return pos
 	}
 	pos = []Pos{comp.Genus.Pos}
-	pos = append(pos, comp.AnnotationID.Pos)
+	pos = append(pos, comp.Comparison.Pos)
 	if comp.SpEpithet != nil {
 		pos = append(pos, comp.SpEpithet.pos()...)
 	}
@@ -350,7 +353,7 @@ func (comp *comparisonNode) value() string {
 		return ""
 	}
 	val := comp.Genus.NormValue
-	val = str.JoinStrings(val, comp.AnnotationID.NormValue, " ")
+	val = str.JoinStrings(val, comp.Comparison.NormValue, " ")
 	if comp.SpEpithet != nil {
 		val = str.JoinStrings(val, comp.SpEpithet.value(), " ")
 	}
@@ -388,9 +391,9 @@ func (comp *comparisonNode) details() []interface{} {
 	}
 
 	co := &ComparisonOutput{
-		Genus:        &genusOutput{Value: comp.Genus.NormValue},
-		AnnotationID: comp.AnnotationID.NormValue,
-		SpecEpithet:  se,
+		Genus:       &genusOutput{Value: comp.Genus.NormValue},
+		Comparison:  comp.Comparison.NormValue,
+		SpecEpithet: se,
 	}
 	return []interface{}{co}
 }
