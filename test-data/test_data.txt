@@ -2165,8 +2165,8 @@ ca23679f-f3d8-5194-a406-048f970c4020|Morea (Morea) Burt 2342343242 23424322342 2
 
 Nautilus asterizans von
 Nautilus asterizans
-{"quality":2,"parsed":true,"verbatim":"Nautilus asterizans von","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Nautilus asterizans","canonicalName":{"value":"Nautilus asterizans","valueRanked":"Nautilus asterizans"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,19]],"nameStringId":"0716f658-c952-5415-b2ad-79a39c2b7b0d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Nautilus"},"specificEpithet":{"value":"asterizans"}}],"bacteria":false}
-0716f658-c952-5415-b2ad-79a39c2b7b0d|Nautilus asterizans von|Nautilus asterizans|Nautilus asterizans|||2
+{"quality":3,"parsed":true,"verbatim":"Nautilus asterizans von","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Nautilus asterizans","canonicalName":{"value":"Nautilus asterizans","valueRanked":"Nautilus asterizans"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,19]],"nameStringId":"0716f658-c952-5415-b2ad-79a39c2b7b0d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Nautilus"},"specificEpithet":{"value":"asterizans"}}],"bacteria":false,"unparsedTail":" von"}
+0716f658-c952-5415-b2ad-79a39c2b7b0d|Nautilus asterizans von|Nautilus asterizans|Nautilus asterizans|||3
 #>
 
 #SECTION: Discard apostrophes at the start and end of words<
@@ -2199,10 +2199,10 @@ Solanum tuberosum
 3d40713c-3b98-5b38-a3e8-555698722078|Solanum tuberosum wila-k'oy|Solanum tuberosum|Solanum tuberosum|||3
 
 # correctly parsed
-Solanum × juzepczukii janck'o-ckaisalla
-Solanum × juzepczukii janck'o-ckaisalla
-{"quality":3,"parsed":true,"verbatim":"Solanum × juzepczukii janck'o-ckaisalla","surrogate":false,"qualityWarnings":[[3,"Apostrophe is not allowed in canonical"],[3,"Incomplete hybrid formula"]],"normalized":"Solanum × juzepczukii jancko-ckaisalla","canonicalName":{"value":"Solanum × juzepczukii jancko-ckaisalla","valueRanked":"Solanum × juzepczukii jancko-ckaisalla"},"virus":false,"positions":[["genus",0,7],["hybridChar",8,9],["specificEpithet",10,21],["infraspecificEpithet",22,39]],"nameStringId":"0a9a6259-9e05-5665-9961-5e25478a68c0","parserVersion":"test_version","hybrid":true,"details":[{"genus":{"value":"Solanum"}},{"specificEpithet":{"value":"juzepczukii"},"infraspecificEpithets":[{"value":"jancko-ckaisalla"}]}],"bacteria":false}
-0a9a6259-9e05-5665-9961-5e25478a68c0|Solanum × juzepczukii janck'o-ckaisalla|Solanum × juzepczukii jancko-ckaisalla|Solanum × juzepczukii jancko-ckaisalla|||3
+Solanum juzepczukii janck'o-ckaisalla
+Solanum juzepczukii janck'o-ckaisalla
+{"quality":3,"parsed":true,"verbatim":"Solanum juzepczukii janck'o-ckaisalla","surrogate":false,"qualityWarnings":[[3,"Apostrophe is not allowed in canonical"]],"normalized":"Solanum juzepczukii jancko-ckaisalla","canonicalName":{"value":"Solanum juzepczukii jancko-ckaisalla","valueRanked":"Solanum juzepczukii jancko-ckaisalla"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,19],["infraspecificEpithet",20,37]],"nameStringId":"9ec56934-e986-5392-a531-55d97e5e9dd1","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Solanum"},"specificEpithet":{"value":"juzepczukii"},"infraspecificEpithets":[{"value":"jancko-ckaisalla"}]}],"bacteria":false}
+9ec56934-e986-5392-a531-55d97e5e9dd1|Solanum juzepczukii janck'o-ckaisalla|Solanum juzepczukii jancko-ckaisalla|Solanum juzepczukii jancko-ckaisalla|||3
 #>
 
 #SECTION: Possible canonical<
@@ -2227,6 +2227,7 @@ Moraea spathulata
 21cb8638-ff53-534f-b816-1e15ecbb818b|Moraea spathulata ( (L. f. Klatt|Moraea spathulata|Moraea spathulata|||3
 
 Stewartia micrantha (Chun) Sealy, Bot. Mag. 176: t. 510. 1967.
+Stewartia micrantha (Chun) Sealy, Bot. Mag.
 {"quality":3,"parsed":true,"verbatim":"Stewartia micrantha (Chun) Sealy, Bot. Mag. 176: t. 510. 1967.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Stewartia micrantha (Chun) Sealy & Bot. Mag.","canonicalName":{"value":"Stewartia micrantha","valueRanked":"Stewartia micrantha"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,19],["authorWord",21,25],["authorWord",27,32],["authorWord",34,38],["authorWord",39,43]],"nameStringId":"7a4ffc19-61a9-551b-bea2-ebb0f5fe9c5a","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Stewartia"},"specificEpithet":{"value":"micrantha","authorship":{"value":"(Chun) Sealy & Bot. Mag.","basionymAuthorship":{"authors":["Chun"]},"combinationAuthorship":{"authors":["Sealy","Bot. Mag."]}}}}],"bacteria":false,"unparsedTail":" 176: t. 510. 1967."}
 7a4ffc19-61a9-551b-bea2-ebb0f5fe9c5a|Stewartia micrantha (Chun) Sealy, Bot. Mag. 176: t. 510. 1967.|Stewartia micrantha|Stewartia micrantha|(Chun) Sealy & Bot. Mag.||3
 
@@ -2242,8 +2243,8 @@ f0fa6cd1-8018-5fec-92ad-1bda9ac929ca|Rana aurora Baird and Girard, 1852; H.B. Sh
 
 Agropyron pectiniforme var. karabaljikji ined.?
 Agropyron pectiniforme var. karabaljikji
-{"quality":2,"parsed":true,"verbatim":"Agropyron pectiniforme var. karabaljikji ined.?","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Agropyron pectiniforme var. karabaljikji","canonicalName":{"value":"Agropyron pectiniforme karabaljikji","valueRanked":"Agropyron pectiniforme var. karabaljikji"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["rank",23,27],["infraspecificEpithet",28,40]],"nameStringId":"e951b7d4-0009-54df-9de6-efbb392dc8d6","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Agropyron"},"specificEpithet":{"value":"pectiniforme"},"infraspecificEpithets":[{"value":"karabaljikji","rank":"var."}]}],"bacteria":false}
-e951b7d4-0009-54df-9de6-efbb392dc8d6|Agropyron pectiniforme var. karabaljikji ined.?|Agropyron pectiniforme karabaljikji|Agropyron pectiniforme var. karabaljikji|||2
+{"quality":3,"parsed":true,"verbatim":"Agropyron pectiniforme var. karabaljikji ined.?","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Agropyron pectiniforme var. karabaljikji","canonicalName":{"value":"Agropyron pectiniforme karabaljikji","valueRanked":"Agropyron pectiniforme var. karabaljikji"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["rank",23,27],["infraspecificEpithet",28,40]],"nameStringId":"e951b7d4-0009-54df-9de6-efbb392dc8d6","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Agropyron"},"specificEpithet":{"value":"pectiniforme"},"infraspecificEpithets":[{"value":"karabaljikji","rank":"var."}]}],"bacteria":false,"unparsedTail":" ined.?"}
+e951b7d4-0009-54df-9de6-efbb392dc8d6|Agropyron pectiniforme var. karabaljikji ined.?|Agropyron pectiniforme karabaljikji|Agropyron pectiniforme var. karabaljikji|||3
 
 Staphylococcus hyicus chromogenes Devriese et al. 1978 (Approved Lists 1980).
 Staphylococcus hyicus chromogenes Devriese et al. 1978

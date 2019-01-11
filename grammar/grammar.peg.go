@@ -2330,7 +2330,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position196, tokenIndex196
 			return false
 		},
-		/* 28 UninomialCombo1 <- <(UninomialWord _? SubGenus _? Authorship .?)> */
+		/* 28 UninomialCombo1 <- <(UninomialWord _? SubGenus (_? Authorship)?)> */
 		func() bool {
 			position200, tokenIndex200 := position, tokenIndex
 			{
@@ -2353,7 +2353,17 @@ func (p *Engine) Init() {
 				}
 				{
 					position204, tokenIndex204 := position, tokenIndex
-					if !_rules[rule_]() {
+					{
+						position206, tokenIndex206 := position, tokenIndex
+						if !_rules[rule_]() {
+							goto l206
+						}
+						goto l207
+					l206:
+						position, tokenIndex = position206, tokenIndex206
+					}
+				l207:
+					if !_rules[ruleAuthorship]() {
 						goto l204
 					}
 					goto l205
@@ -2361,19 +2371,6 @@ func (p *Engine) Init() {
 					position, tokenIndex = position204, tokenIndex204
 				}
 			l205:
-				if !_rules[ruleAuthorship]() {
-					goto l200
-				}
-				{
-					position206, tokenIndex206 := position, tokenIndex
-					if !matchDot() {
-						goto l206
-					}
-					goto l207
-				l206:
-					position, tokenIndex = position206, tokenIndex206
-				}
-			l207:
 				add(ruleUninomialCombo1, position201)
 			}
 			return true
