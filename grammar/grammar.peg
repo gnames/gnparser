@@ -66,9 +66,9 @@ UninomialCombo <- UninomialCombo1 / UninomialCombo2
 
 UninomialCombo1 <- UninomialWord _? SubGenus (_? Authorship)?
 
-UninomialCombo2 <- Uninomial _? RankUninomial _? Uninomial
+UninomialCombo2 <- Uninomial _ RankUninomial _ Uninomial
 
-RankUninomial <- ('sect' / 'subsect' / 'trib' / 'subtrib' / 'subser' / 'ser' /
+RankUninomial <- ('sect' / 'subsect' / 'trib' / 'subtrib' / 'subser' / 'ser.' /
   'subgen' / 'fam' / 'subfam' / 'supertrib') '.'?
 
 Uninomial <- UninomialWord (_ Authorship)?
@@ -86,7 +86,7 @@ CapWord2 <- CapWord1 dash (CapWord1 / Word1)
 TwoLetterGenus <- ('Ca' / 'Ea' / 'Ge' / 'Ia' / 'Io' / 'Ix' / 'Lo' / 'Oa' /
   'Ra' / 'Ty' / 'Ua' / 'Aa' / 'Ja' / 'Zu' / 'La' / 'Qu' / 'As' / 'Ba')
 
-Word <- !(AuthorPrefix / RankUninomial / Approximation / Word4)
+Word <- !((AuthorPrefix / RankUninomial / Approximation / Word4) SpaceCharEOI)
       (WordApostr / WordStartsWithDigit / Word2 / Word1) &(SpaceCharEOI / '(')
 
 # TODO probably never used

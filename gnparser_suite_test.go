@@ -12,7 +12,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var testsNum = 423
+var testsNum = 458
 
 // TestGnparser is part of ``ginkgo`` package and is exposed because we want to
 // test some private libraries.

@@ -382,10 +382,15 @@ func (comp *comparisonNode) details() []interface{} {
 	if comp == nil {
 		return []interface{}{}
 	}
+	var se *specEpithetOutput
+	if comp.SpEpithet != nil {
+		se = comp.SpEpithet.details()
+	}
+
 	co := &ComparisonOutput{
 		Genus:        &genusOutput{Value: comp.Genus.NormValue},
 		AnnotationID: comp.AnnotationID.NormValue,
-		SpecEpithet:  comp.SpEpithet.details(),
+		SpecEpithet:  se,
 	}
 	return []interface{}{co}
 }

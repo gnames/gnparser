@@ -2342,63 +2342,64 @@ Ligusticum sinense
 
 #SECTION open taxonomy, ranks unfinished<
 Alyxia reinwardti var
-Alyxia reinwardti var
-{"quality":2,"parsed":true,"verbatim":"Alyxia reinwardti var","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"2f0ee2be-8d37-5e43-9eed-776c17f47e93","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false}
-2f0ee2be-8d37-5e43-9eed-776c17f47e93|Alyxia reinwardti var|Alyxia reinwardti|Alyxia reinwardti|||2
+Alyxia reinwardti
+{"quality":3,"parsed":true,"verbatim":"Alyxia reinwardti var","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"2f0ee2be-8d37-5e43-9eed-776c17f47e93","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false,"unparsedTail":" var"}
+2f0ee2be-8d37-5e43-9eed-776c17f47e93|Alyxia reinwardti var|Alyxia reinwardti|Alyxia reinwardti|||3
 
 Alyxia reinwardti var.
-Alyxia reinwardti var.
-{"quality":2,"parsed":true,"verbatim":"Alyxia reinwardti var.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"aed34708-82ed-52e4-876f-d4468af73fc3","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false}
-aed34708-82ed-52e4-876f-d4468af73fc3|Alyxia reinwardti var.|Alyxia reinwardti|Alyxia reinwardti|||2
+Alyxia reinwardti
+{"quality":3,"parsed":true,"verbatim":"Alyxia reinwardti var.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"aed34708-82ed-52e4-876f-d4468af73fc3","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false,"unparsedTail":" var."}
+aed34708-82ed-52e4-876f-d4468af73fc3|Alyxia reinwardti var.|Alyxia reinwardti|Alyxia reinwardti|||3
 
 Alyxia reinwardti ssp
-Alyxia reinwardti ssp
-{"quality":2,"parsed":true,"verbatim":"Alyxia reinwardti ssp","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"760486d1-93ed-55c5-ade1-ba2c5b2aa900","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false}
-760486d1-93ed-55c5-ade1-ba2c5b2aa900|Alyxia reinwardti ssp|Alyxia reinwardti|Alyxia reinwardti|||2
+Alyxia reinwardti
+{"quality":3,"parsed":true,"verbatim":"Alyxia reinwardti ssp","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"760486d1-93ed-55c5-ade1-ba2c5b2aa900","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false,"unparsedTail":" ssp"}
+760486d1-93ed-55c5-ade1-ba2c5b2aa900|Alyxia reinwardti ssp|Alyxia reinwardti|Alyxia reinwardti|||3
 
 Alyxia reinwardti ssp.
-Alyxia reinwardti ssp.
-{"quality":2,"parsed":true,"verbatim":"Alyxia reinwardti ssp.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"72b5072a-d952-54f8-aea1-5b5bd3c65c45","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false}
-72b5072a-d952-54f8-aea1-5b5bd3c65c45|Alyxia reinwardti ssp.|Alyxia reinwardti|Alyxia reinwardti|||2
+Alyxia reinwardti
+{"quality":3,"parsed":true,"verbatim":"Alyxia reinwardti ssp.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Alyxia reinwardti","canonicalName":{"value":"Alyxia reinwardti","valueRanked":"Alyxia reinwardti"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"72b5072a-d952-54f8-aea1-5b5bd3c65c45","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alyxia"},"specificEpithet":{"value":"reinwardti"}}],"bacteria":false,"unparsedTail":" ssp."}
+72b5072a-d952-54f8-aea1-5b5bd3c65c45|Alyxia reinwardti ssp.|Alyxia reinwardti|Alyxia reinwardti|||3
 
 Alaria spp
 Alaria spp
-{"quality":3,"parsed":true,"verbatim":"Alaria spp","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Alaria","canonicalName":{"value":"Alaria","valueRanked":"Alaria"},"virus":false,"positions":[["genus",0,6],["annotationIdentification",7,10]],"nameStringId":"5b31e830-ccf6-5918-94c5-75c4db7ef302","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alaria"},"annotationIdentification":"spp"}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Alaria spp","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Alaria","canonicalName":{"value":"Alaria","valueRanked":"Alaria"},"virus":false,"positions":[["genus",0,6],["annotationIdentification",7,10]],"nameStringId":"5b31e830-ccf6-5918-94c5-75c4db7ef302","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alaria"},"annotationIdentification":"spp","ignored":{"value":""}}],"bacteria":false}
 5b31e830-ccf6-5918-94c5-75c4db7ef302|Alaria spp|Alaria|Alaria|||3
 
 Alaria spp.
 Alaria spp.
-{"quality":3,"parsed":true,"verbatim":"Alaria spp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Alaria","canonicalName":{"value":"Alaria","valueRanked":"Alaria"},"virus":false,"positions":[["genus",0,6],["annotationIdentification",7,11]],"nameStringId":"d1cd4f1a-f511-5d5a-8f41-64911995fdec","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alaria"},"annotationIdentification":"spp."}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Alaria spp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Alaria","canonicalName":{"value":"Alaria","valueRanked":"Alaria"},"virus":false,"positions":[["genus",0,6],["annotationIdentification",7,11]],"nameStringId":"d1cd4f1a-f511-5d5a-8f41-64911995fdec","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Alaria"},"annotationIdentification":"spp.","ignored":{"value":""}}],"bacteria":false}
 d1cd4f1a-f511-5d5a-8f41-64911995fdec|Alaria spp.|Alaria|Alaria|||3
 
 Xenodon sp
 Xenodon sp
-{"quality":3,"parsed":true,"verbatim":"Xenodon sp","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Xenodon","canonicalName":{"value":"Xenodon","valueRanked":"Xenodon"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,10]],"nameStringId":"7b0cb348-7fe9-5248-b396-b0336225ba2a","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xenodon"},"annotationIdentification":"sp"}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Xenodon sp","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Xenodon","canonicalName":{"value":"Xenodon","valueRanked":"Xenodon"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,10]],"nameStringId":"7b0cb348-7fe9-5248-b396-b0336225ba2a","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xenodon"},"annotationIdentification":"sp","ignored":{"value":""}}],"bacteria":false}
 7b0cb348-7fe9-5248-b396-b0336225ba2a|Xenodon sp|Xenodon|Xenodon|||3
 
 Xenodon sp.
 Xenodon sp.
-{"quality":3,"parsed":true,"verbatim":"Xenodon sp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Xenodon","canonicalName":{"value":"Xenodon","valueRanked":"Xenodon"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,11]],"nameStringId":"77b6718f-a26e-5ddf-a4cf-119e972cd015","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xenodon"},"annotationIdentification":"sp."}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Xenodon sp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Xenodon","canonicalName":{"value":"Xenodon","valueRanked":"Xenodon"},"virus":false,"positions":[["genus",0,7],["annotationIdentification",8,11]],"nameStringId":"77b6718f-a26e-5ddf-a4cf-119e972cd015","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Xenodon"},"annotationIdentification":"sp.","ignored":{"value":""}}],"bacteria":false}
 77b6718f-a26e-5ddf-a4cf-119e972cd015|Xenodon sp.|Xenodon|Xenodon|||3
 
 Formicidae cf.
 Formicidae cf.
-{"quality":3,"parsed":true,"verbatim":"Formicidae cf.","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[2,"Name had to be changed by preprocessing"]],"normalized":"Formicidae","canonicalName":{"value":"Formicidae","valueRanked":"Formicidae"},"virus":false,"positions":[["uninomial",0,10]],"nameStringId":"61f9ebc4-346e-5857-ab45-38808ff1c960","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Formicidae"}}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Formicidae cf.","surrogate":true,"qualityWarnings":[[3,"Name comparison"]],"normalized":"Formicidae cf.","canonicalName":{"value":"Formicidae","valueRanked":"Formicidae"},"virus":false,"positions":[["genus",0,10],["annotationIdentification",11,14]],"nameStringId":"61f9ebc4-346e-5857-ab45-38808ff1c960","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Formicidae"},"specificEpithet":null,"annotationIdentification":"cf."}],"bacteria":false}
 61f9ebc4-346e-5857-ab45-38808ff1c960|Formicidae cf.|Formicidae|Formicidae|||3
 
 Formicidae cf
 Formicidae cf
-{"quality":3,"parsed":true,"verbatim":"Formicidae cf","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[2,"Name had to be changed by preprocessing"]],"normalized":"Formicidae","canonicalName":{"value":"Formicidae","valueRanked":"Formicidae"},"virus":false,"positions":[["uninomial",0,10]],"nameStringId":"90473425-7ce1-5ec6-8160-737646816ea7","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Formicidae"}}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Formicidae cf","surrogate":true,"qualityWarnings":[[3,"Name comparison"]],"normalized":"Formicidae cf","canonicalName":{"value":"Formicidae","valueRanked":"Formicidae"},"virus":false,"positions":[["genus",0,10],["annotationIdentification",11,13]],"nameStringId":"90473425-7ce1-5ec6-8160-737646816ea7","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Formicidae"},"specificEpithet":null,"annotationIdentification":"cf"}],"bacteria":false}
 90473425-7ce1-5ec6-8160-737646816ea7|Formicidae cf|Formicidae|Formicidae|||3
 
+# We do not cover infraspecific comparisons yet
 Arctostaphylos preglauca cf.
-Arctostaphylos preglauca cf.
-{"quality":3,"parsed":true,"verbatim":"Arctostaphylos preglauca cf.","surrogate":true,"qualityWarnings":[[3,"Name comparison"],[2,"Name had to be changed by preprocessing"]],"normalized":"Arctostaphylos preglauca","canonicalName":{"value":"Arctostaphylos preglauca","valueRanked":"Arctostaphylos preglauca"},"virus":false,"positions":[["genus",0,14],["specificEpithet",15,24]],"nameStringId":"246b43d4-9786-5157-8d35-b81a470e6379","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Arctostaphylos"},"specificEpithet":{"value":"preglauca"}}],"bacteria":false}
+Arctostaphylos preglauca
+{"quality":3,"parsed":true,"verbatim":"Arctostaphylos preglauca cf.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Arctostaphylos preglauca","canonicalName":{"value":"Arctostaphylos preglauca","valueRanked":"Arctostaphylos preglauca"},"virus":false,"positions":[["genus",0,14],["specificEpithet",15,24]],"nameStringId":"246b43d4-9786-5157-8d35-b81a470e6379","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Arctostaphylos"},"specificEpithet":{"value":"preglauca"}}],"bacteria":false,"unparsedTail":" cf."}
 246b43d4-9786-5157-8d35-b81a470e6379|Arctostaphylos preglauca cf.|Arctostaphylos preglauca|Arctostaphylos preglauca|||3
 
 Acastoides spp.
 Acastoides spp.
-{"quality":3,"parsed":true,"verbatim":"Acastoides spp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Acastoides","canonicalName":{"value":"Acastoides","valueRanked":"Acastoides"},"virus":false,"positions":[["genus",0,10],["annotationIdentification",11,15]],"nameStringId":"9853f0a4-6324-5a7d-8108-e910578e612b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acastoides"},"annotationIdentification":"spp."}],"bacteria":false}
+{"quality":3,"parsed":true,"verbatim":"Acastoides spp.","surrogate":true,"qualityWarnings":[[3,"Name is approximate"]],"normalized":"Acastoides","canonicalName":{"value":"Acastoides","valueRanked":"Acastoides"},"virus":false,"positions":[["genus",0,10],["annotationIdentification",11,15]],"nameStringId":"9853f0a4-6324-5a7d-8108-e910578e612b","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acastoides"},"annotationIdentification":"spp.","ignored":{"value":""}}],"bacteria":false}
 9853f0a4-6324-5a7d-8108-e910578e612b|Acastoides spp.|Acastoides|Acastoides|||3
 #>
 
@@ -2406,52 +2407,53 @@ Acastoides spp.
 #SECTION: Ignoring sensu sec<
 Senecio legionensis sensu Samp., non Lange
 Senecio legionensis
-{"quality":2,"parsed":true,"verbatim":"Senecio legionensis sensu Samp., non Lange","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Senecio legionensis","canonicalName":{"value":"Senecio legionensis","valueRanked":"Senecio legionensis"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,19]],"nameStringId":"948d73b7-499b-5060-ace4-dd061f2f4373","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Senecio"},"specificEpithet":{"value":"legionensis"}}],"bacteria":false}
-948d73b7-499b-5060-ace4-dd061f2f4373|Senecio legionensis sensu Samp., non Lange|Senecio legionensis|Senecio legionensis|||2
+{"quality":3,"parsed":true,"verbatim":"Senecio legionensis sensu Samp., non Lange","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Senecio legionensis","canonicalName":{"value":"Senecio legionensis","valueRanked":"Senecio legionensis"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,19]],"nameStringId":"948d73b7-499b-5060-ace4-dd061f2f4373","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Senecio"},"specificEpithet":{"value":"legionensis"}}],"bacteria":false,"unparsedTail":" sensu Samp., non Lange"}
+948d73b7-499b-5060-ace4-dd061f2f4373|Senecio legionensis sensu Samp., non Lange|Senecio legionensis|Senecio legionensis|||3
 
 Pseudomonas methanica (Söhngen 1906) sensu. Dworkin and Foster 1956
 Pseudomonas methanica (Söhngen 1906)
-{"quality":2,"parsed":true,"verbatim":"Pseudomonas methanica (Söhngen 1906) sensu. Dworkin and Foster 1956","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Pseudomonas methanica (Söhngen 1906)","canonicalName":{"value":"Pseudomonas methanica","valueRanked":"Pseudomonas methanica"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,21],["authorWord",23,30],["year",31,35]],"nameStringId":"f4261966-4f80-52c1-a3ff-8eaece507964","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Pseudomonas"},"specificEpithet":{"value":"methanica","authorship":{"value":"(Söhngen 1906)","basionymAuthorship":{"authors":["Söhngen"],"years":[{"value":"1906"}]}}}}],"bacteria":true}
-f4261966-4f80-52c1-a3ff-8eaece507964|Pseudomonas methanica (Söhngen 1906) sensu. Dworkin and Foster 1956|Pseudomonas methanica|Pseudomonas methanica|(Söhngen 1906)|1906|2
+{"quality":3,"parsed":true,"verbatim":"Pseudomonas methanica (Söhngen 1906) sensu. Dworkin and Foster 1956","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Pseudomonas methanica (Söhngen 1906)","canonicalName":{"value":"Pseudomonas methanica","valueRanked":"Pseudomonas methanica"},"virus":false,"positions":[["genus",0,11],["specificEpithet",12,21],["authorWord",23,30],["year",31,35]],"nameStringId":"f4261966-4f80-52c1-a3ff-8eaece507964","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Pseudomonas"},"specificEpithet":{"value":"methanica","authorship":{"value":"(Söhngen 1906)","basionymAuthorship":{"authors":["Söhngen"],"years":[{"value":"1906"}]}}}}],"bacteria":true,"unparsedTail":" sensu. Dworkin and Foster 1956"}
+f4261966-4f80-52c1-a3ff-8eaece507964|Pseudomonas methanica (Söhngen 1906) sensu. Dworkin and Foster 1956|Pseudomonas methanica|Pseudomonas methanica|(Söhngen 1906)|1906|3
 
 Abarema scutifera sensu auct., non (Blanco)Kosterm.
-Abarema scutifera sensu
-{"quality":2,"parsed":true,"verbatim":"Abarema scutifera sensu auct., non (Blanco)Kosterm.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Abarema scutifera","canonicalName":{"value":"Abarema scutifera","valueRanked":"Abarema scutifera"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17]],"nameStringId":"59f4b32d-3f8c-569f-bc81-3fe49d708c88","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abarema"},"specificEpithet":{"value":"scutifera"}}],"bacteria":false}
-59f4b32d-3f8c-569f-bc81-3fe49d708c88|Abarema scutifera sensu auct., non (Blanco)Kosterm.|Abarema scutifera|Abarema scutifera|||2
+Abarema scutifera
+{"quality":3,"parsed":true,"verbatim":"Abarema scutifera sensu auct., non (Blanco)Kosterm.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Abarema scutifera","canonicalName":{"value":"Abarema scutifera","valueRanked":"Abarema scutifera"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17]],"nameStringId":"59f4b32d-3f8c-569f-bc81-3fe49d708c88","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abarema"},"specificEpithet":{"value":"scutifera"}}],"bacteria":false,"unparsedTail":" sensu auct., non (Blanco)Kosterm."}
+59f4b32d-3f8c-569f-bc81-3fe49d708c88|Abarema scutifera sensu auct., non (Blanco)Kosterm.|Abarema scutifera|Abarema scutifera|||3
 
 Puya acris Auct.
 Puya acris
-{"quality":2,"parsed":true,"verbatim":"Puya acris Auct.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Puya acris","canonicalName":{"value":"Puya acris","valueRanked":"Puya acris"},"virus":false,"positions":[["genus",0,4],["specificEpithet",5,10]],"nameStringId":"926ec12b-a597-5842-92f2-4b0ae4989df1","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Puya"},"specificEpithet":{"value":"acris"}}],"bacteria":false}
-926ec12b-a597-5842-92f2-4b0ae4989df1|Puya acris Auct.|Puya acris|Puya acris|||2
+{"quality":3,"parsed":true,"verbatim":"Puya acris Auct.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Puya acris","canonicalName":{"value":"Puya acris","valueRanked":"Puya acris"},"virus":false,"positions":[["genus",0,4],["specificEpithet",5,10]],"nameStringId":"926ec12b-a597-5842-92f2-4b0ae4989df1","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Puya"},"specificEpithet":{"value":"acris"}}],"bacteria":false,"unparsedTail":" Auct."}
+926ec12b-a597-5842-92f2-4b0ae4989df1|Puya acris Auct.|Puya acris|Puya acris|||3
 
 Puya acris Auct non L.
 Puya acris
-{"quality":2,"parsed":true,"verbatim":"Puya acris Auct non L.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Puya acris","canonicalName":{"value":"Puya acris","valueRanked":"Puya acris"},"virus":false,"positions":[["genus",0,4],["specificEpithet",5,10]],"nameStringId":"6c11df68-9e9d-5e97-b0f0-3609e4f18121","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Puya"},"specificEpithet":{"value":"acris"}}],"bacteria":false}
-6c11df68-9e9d-5e97-b0f0-3609e4f18121|Puya acris Auct non L.|Puya acris|Puya acris|||2
+{"quality":3,"parsed":true,"verbatim":"Puya acris Auct non L.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Puya acris","canonicalName":{"value":"Puya acris","valueRanked":"Puya acris"},"virus":false,"positions":[["genus",0,4],["specificEpithet",5,10]],"nameStringId":"6c11df68-9e9d-5e97-b0f0-3609e4f18121","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Puya"},"specificEpithet":{"value":"acris"}}],"bacteria":false,"unparsedTail":" Auct non L."}
+6c11df68-9e9d-5e97-b0f0-3609e4f18121|Puya acris Auct non L.|Puya acris|Puya acris|||3
 
 Galium tricorne Stokes, pro parte
-{"quality":2,"parsed":true,"verbatim":"Galium tricorne Stokes, pro parte","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Galium tricorne Stokes","canonicalName":{"value":"Galium tricorne","valueRanked":"Galium tricorne"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,15],["authorWord",16,22]],"nameStringId":"c4d3da85-86b7-5ca9-925b-6e09ffad3a30","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Galium"},"specificEpithet":{"value":"tricorne","authorship":{"value":"Stokes","basionymAuthorship":{"authors":["Stokes"]}}}}],"bacteria":false}
-c4d3da85-86b7-5ca9-925b-6e09ffad3a30|Galium tricorne Stokes, pro parte|Galium tricorne|Galium tricorne|Stokes||2
+Galium tricorne Stokes
+{"quality":3,"parsed":true,"verbatim":"Galium tricorne Stokes, pro parte","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Galium tricorne Stokes","canonicalName":{"value":"Galium tricorne","valueRanked":"Galium tricorne"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,15],["authorWord",16,22]],"nameStringId":"c4d3da85-86b7-5ca9-925b-6e09ffad3a30","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Galium"},"specificEpithet":{"value":"tricorne","authorship":{"value":"Stokes","basionymAuthorship":{"authors":["Stokes"]}}}}],"bacteria":false,"unparsedTail":", pro parte"}
+c4d3da85-86b7-5ca9-925b-6e09ffad3a30|Galium tricorne Stokes, pro parte|Galium tricorne|Galium tricorne|Stokes||3
 
 Galium tricorne Stokes,pro parte
 Galium tricorne Stokes
-{"quality":2,"parsed":true,"verbatim":"Galium tricorne Stokes,pro parte","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Galium tricorne Stokes","canonicalName":{"value":"Galium tricorne","valueRanked":"Galium tricorne"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,15],["authorWord",16,22]],"nameStringId":"7166cbd9-2b0f-5537-9ac9-98157b60a395","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Galium"},"specificEpithet":{"value":"tricorne","authorship":{"value":"Stokes","basionymAuthorship":{"authors":["Stokes"]}}}}],"bacteria":false}
-7166cbd9-2b0f-5537-9ac9-98157b60a395|Galium tricorne Stokes,pro parte|Galium tricorne|Galium tricorne|Stokes||2
+{"quality":3,"parsed":true,"verbatim":"Galium tricorne Stokes,pro parte","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Galium tricorne Stokes","canonicalName":{"value":"Galium tricorne","valueRanked":"Galium tricorne"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,15],["authorWord",16,22]],"nameStringId":"7166cbd9-2b0f-5537-9ac9-98157b60a395","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Galium"},"specificEpithet":{"value":"tricorne","authorship":{"value":"Stokes","basionymAuthorship":{"authors":["Stokes"]}}}}],"bacteria":false,"unparsedTail":",pro parte"}
+7166cbd9-2b0f-5537-9ac9-98157b60a395|Galium tricorne Stokes,pro parte|Galium tricorne|Galium tricorne|Stokes||3
 
 Senecio jacquinianus sec. Rchb.
 Senecio jacquinianus
-{"quality":2,"parsed":true,"verbatim":"Senecio jacquinianus sec. Rchb.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Senecio jacquinianus","canonicalName":{"value":"Senecio jacquinianus","valueRanked":"Senecio jacquinianus"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,20]],"nameStringId":"e8ad283f-afa8-5fd2-ae8f-bbedf2fb0bb7","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Senecio"},"specificEpithet":{"value":"jacquinianus"}}],"bacteria":false}
-e8ad283f-afa8-5fd2-ae8f-bbedf2fb0bb7|Senecio jacquinianus sec. Rchb.|Senecio jacquinianus|Senecio jacquinianus|||2
+{"quality":3,"parsed":true,"verbatim":"Senecio jacquinianus sec. Rchb.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Senecio jacquinianus","canonicalName":{"value":"Senecio jacquinianus","valueRanked":"Senecio jacquinianus"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,20]],"nameStringId":"e8ad283f-afa8-5fd2-ae8f-bbedf2fb0bb7","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Senecio"},"specificEpithet":{"value":"jacquinianus"}}],"bacteria":false,"unparsedTail":" sec. Rchb."}
+e8ad283f-afa8-5fd2-ae8f-bbedf2fb0bb7|Senecio jacquinianus sec. Rchb.|Senecio jacquinianus|Senecio jacquinianus|||3
 
 Acantholimon ulicinum s.l. (Schultes) Boiss.
 Acantholimon ulicinum
-{"quality":2,"parsed":true,"verbatim":"Acantholimon ulicinum s.l. (Schultes) Boiss.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Acantholimon ulicinum","canonicalName":{"value":"Acantholimon ulicinum","valueRanked":"Acantholimon ulicinum"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,21]],"nameStringId":"cf4b7aa4-b78f-5b79-86c3-9416de24c918","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acantholimon"},"specificEpithet":{"value":"ulicinum"}}],"bacteria":false}
-cf4b7aa4-b78f-5b79-86c3-9416de24c918|Acantholimon ulicinum s.l. (Schultes) Boiss.|Acantholimon ulicinum|Acantholimon ulicinum|||2
+{"quality":3,"parsed":true,"verbatim":"Acantholimon ulicinum s.l. (Schultes) Boiss.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Acantholimon ulicinum","canonicalName":{"value":"Acantholimon ulicinum","valueRanked":"Acantholimon ulicinum"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,21]],"nameStringId":"cf4b7aa4-b78f-5b79-86c3-9416de24c918","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acantholimon"},"specificEpithet":{"value":"ulicinum"}}],"bacteria":false,"unparsedTail":" s.l. (Schultes) Boiss."}
+cf4b7aa4-b78f-5b79-86c3-9416de24c918|Acantholimon ulicinum s.l. (Schultes) Boiss.|Acantholimon ulicinum|Acantholimon ulicinum|||3
 
 Acantholimon ulicinum s. l. (Schultes) Boiss.
 Acantholimon ulicinum
-{"quality":2,"parsed":true,"verbatim":"Acantholimon ulicinum s. l. (Schultes) Boiss.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Acantholimon ulicinum","canonicalName":{"value":"Acantholimon ulicinum","valueRanked":"Acantholimon ulicinum"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,21]],"nameStringId":"3a0b0412-f076-5714-8537-62761718ca7c","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acantholimon"},"specificEpithet":{"value":"ulicinum"}}],"bacteria":false}
-3a0b0412-f076-5714-8537-62761718ca7c|Acantholimon ulicinum s. l. (Schultes) Boiss.|Acantholimon ulicinum|Acantholimon ulicinum|||2
+{"quality":3,"parsed":true,"verbatim":"Acantholimon ulicinum s. l. (Schultes) Boiss.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Acantholimon ulicinum","canonicalName":{"value":"Acantholimon ulicinum","valueRanked":"Acantholimon ulicinum"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,21]],"nameStringId":"3a0b0412-f076-5714-8537-62761718ca7c","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Acantholimon"},"specificEpithet":{"value":"ulicinum"}}],"bacteria":false,"unparsedTail":" s. l. (Schultes) Boiss."}
+3a0b0412-f076-5714-8537-62761718ca7c|Acantholimon ulicinum s. l. (Schultes) Boiss.|Acantholimon ulicinum|Acantholimon ulicinum|||3
 
 Acantholimon ulicinum S. L. Schultes
 Acantholimon ulicinum S. L. Schultes
@@ -2465,53 +2467,53 @@ fcd831ea-57b6-5151-81e4-86e1c42f4695|Amitostigma formosana (S.S.Ying) S.S.Ying|A
 
 Amaurorhinus bewichianus (Wollaston,1860) (s.str.)
 Amaurorhinus bewichianus (Wollaston,1860)
-{"quality":2,"parsed":true,"verbatim":"Amaurorhinus bewichianus (Wollaston,1860) (s.str.)","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Amaurorhinus bewichianus (Wollaston 1860)","canonicalName":{"value":"Amaurorhinus bewichianus","valueRanked":"Amaurorhinus bewichianus"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,24],["authorWord",26,35],["year",36,40]],"nameStringId":"b76e9160-d301-5696-bb87-499328996a7d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Amaurorhinus"},"specificEpithet":{"value":"bewichianus","authorship":{"value":"(Wollaston 1860)","basionymAuthorship":{"authors":["Wollaston"],"years":[{"value":"1860"}]}}}}],"bacteria":false}
-b76e9160-d301-5696-bb87-499328996a7d|Amaurorhinus bewichianus (Wollaston,1860) (s.str.)|Amaurorhinus bewichianus|Amaurorhinus bewichianus|(Wollaston 1860)|1860|2
+{"quality":3,"parsed":true,"verbatim":"Amaurorhinus bewichianus (Wollaston,1860) (s.str.)","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Amaurorhinus bewichianus (Wollaston 1860)","canonicalName":{"value":"Amaurorhinus bewichianus","valueRanked":"Amaurorhinus bewichianus"},"virus":false,"positions":[["genus",0,12],["specificEpithet",13,24],["authorWord",26,35],["year",36,40]],"nameStringId":"b76e9160-d301-5696-bb87-499328996a7d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Amaurorhinus"},"specificEpithet":{"value":"bewichianus","authorship":{"value":"(Wollaston 1860)","basionymAuthorship":{"authors":["Wollaston"],"years":[{"value":"1860"}]}}}}],"bacteria":false,"unparsedTail":" (s.str.)"}
+b76e9160-d301-5696-bb87-499328996a7d|Amaurorhinus bewichianus (Wollaston,1860) (s.str.)|Amaurorhinus bewichianus|Amaurorhinus bewichianus|(Wollaston 1860)|1860|3
 
 Ammodramus caudacutus (s.s.) diversus
 Ammodramus caudacutus
-{"quality":2,"parsed":true,"verbatim":"Ammodramus caudacutus (s.s.) diversus","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Ammodramus caudacutus","canonicalName":{"value":"Ammodramus caudacutus","valueRanked":"Ammodramus caudacutus"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,21]],"nameStringId":"2fb79b29-1579-5604-97bd-530c90c245cd","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Ammodramus"},"specificEpithet":{"value":"caudacutus"}}],"bacteria":false}
-2fb79b29-1579-5604-97bd-530c90c245cd|Ammodramus caudacutus (s.s.) diversus|Ammodramus caudacutus|Ammodramus caudacutus|||2
+{"quality":3,"parsed":true,"verbatim":"Ammodramus caudacutus (s.s.) diversus","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Ammodramus caudacutus","canonicalName":{"value":"Ammodramus caudacutus","valueRanked":"Ammodramus caudacutus"},"virus":false,"positions":[["genus",0,10],["specificEpithet",11,21]],"nameStringId":"2fb79b29-1579-5604-97bd-530c90c245cd","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Ammodramus"},"specificEpithet":{"value":"caudacutus"}}],"bacteria":false,"unparsedTail":" (s.s.) diversus"}
+2fb79b29-1579-5604-97bd-530c90c245cd|Ammodramus caudacutus (s.s.) diversus|Ammodramus caudacutus|Ammodramus caudacutus|||3
 
 Arenaria serpyllifolia L. s.str.
 Arenaria serpyllifolia L.
-{"quality":2,"parsed":true,"verbatim":"Arenaria serpyllifolia L. s.str.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Arenaria serpyllifolia L.","canonicalName":{"value":"Arenaria serpyllifolia","valueRanked":"Arenaria serpyllifolia"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,22],["authorWord",23,25]],"nameStringId":"8a350298-0dfc-5ad0-9a10-60902587f335","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Arenaria"},"specificEpithet":{"value":"serpyllifolia","authorship":{"value":"L.","basionymAuthorship":{"authors":["L."]}}}}],"bacteria":false}
-8a350298-0dfc-5ad0-9a10-60902587f335|Arenaria serpyllifolia L. s.str.|Arenaria serpyllifolia|Arenaria serpyllifolia|L.||2
+{"quality":3,"parsed":true,"verbatim":"Arenaria serpyllifolia L. s.str.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Arenaria serpyllifolia L.","canonicalName":{"value":"Arenaria serpyllifolia","valueRanked":"Arenaria serpyllifolia"},"virus":false,"positions":[["genus",0,8],["specificEpithet",9,22],["authorWord",23,25]],"nameStringId":"8a350298-0dfc-5ad0-9a10-60902587f335","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Arenaria"},"specificEpithet":{"value":"serpyllifolia","authorship":{"value":"L.","basionymAuthorship":{"authors":["L."]}}}}],"bacteria":false,"unparsedTail":" s.str."}
+8a350298-0dfc-5ad0-9a10-60902587f335|Arenaria serpyllifolia L. s.str.|Arenaria serpyllifolia|Arenaria serpyllifolia|L.||3
 
 Asplenium trichomanes L. s.lat. - Asplen trich
 Asplenium trichomanes L.
-{"quality":2,"parsed":true,"verbatim":"Asplenium trichomanes L. s.lat. - Asplen trich","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Asplenium trichomanes L.","canonicalName":{"value":"Asplenium trichomanes","valueRanked":"Asplenium trichomanes"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,21],["authorWord",22,24]],"nameStringId":"1687d870-6bea-5573-80ef-4e55eca3199f","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Asplenium"},"specificEpithet":{"value":"trichomanes","authorship":{"value":"L.","basionymAuthorship":{"authors":["L."]}}}}],"bacteria":false}
-1687d870-6bea-5573-80ef-4e55eca3199f|Asplenium trichomanes L. s.lat. - Asplen trich|Asplenium trichomanes|Asplenium trichomanes|L.||2
+{"quality":3,"parsed":true,"verbatim":"Asplenium trichomanes L. s.lat. - Asplen trich","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Asplenium trichomanes L.","canonicalName":{"value":"Asplenium trichomanes","valueRanked":"Asplenium trichomanes"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,21],["authorWord",22,24]],"nameStringId":"1687d870-6bea-5573-80ef-4e55eca3199f","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Asplenium"},"specificEpithet":{"value":"trichomanes","authorship":{"value":"L.","basionymAuthorship":{"authors":["L."]}}}}],"bacteria":false,"unparsedTail":" s.lat. - Asplen trich"}
+1687d870-6bea-5573-80ef-4e55eca3199f|Asplenium trichomanes L. s.lat. - Asplen trich|Asplenium trichomanes|Asplenium trichomanes|L.||3
 
 Asplenium anisophyllum Kunze, s.l.
 Asplenium anisophyllum Kunze
-{"quality":2,"parsed":true,"verbatim":"Asplenium anisophyllum Kunze, s.l.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Asplenium anisophyllum Kunze","canonicalName":{"value":"Asplenium anisophyllum","valueRanked":"Asplenium anisophyllum"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["authorWord",23,28]],"nameStringId":"a0d7a55a-ffad-5243-905e-048177b440df","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Asplenium"},"specificEpithet":{"value":"anisophyllum","authorship":{"value":"Kunze","basionymAuthorship":{"authors":["Kunze"]}}}}],"bacteria":false}
-a0d7a55a-ffad-5243-905e-048177b440df|Asplenium anisophyllum Kunze, s.l.|Asplenium anisophyllum|Asplenium anisophyllum|Kunze||2
+{"quality":3,"parsed":true,"verbatim":"Asplenium anisophyllum Kunze, s.l.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Asplenium anisophyllum Kunze","canonicalName":{"value":"Asplenium anisophyllum","valueRanked":"Asplenium anisophyllum"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["authorWord",23,28]],"nameStringId":"a0d7a55a-ffad-5243-905e-048177b440df","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Asplenium"},"specificEpithet":{"value":"anisophyllum","authorship":{"value":"Kunze","basionymAuthorship":{"authors":["Kunze"]}}}}],"bacteria":false,"unparsedTail":", s.l."}
+a0d7a55a-ffad-5243-905e-048177b440df|Asplenium anisophyllum Kunze, s.l.|Asplenium anisophyllum|Asplenium anisophyllum|Kunze||3
 
 Abramis Cuvier 1816 sec. Dybowski 1862
 Abramis Cuvier 1816
-{"quality":2,"parsed":true,"verbatim":"Abramis Cuvier 1816 sec. Dybowski 1862","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Abramis Cuvier 1816","canonicalName":{"value":"Abramis","valueRanked":"Abramis"},"virus":false,"positions":[["uninomial",0,7],["authorWord",8,14],["year",15,19]],"nameStringId":"1fddff95-f470-5c36-8bc5-4436fe727bda","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Abramis","authorship":{"value":"Cuvier 1816","basionymAuthorship":{"authors":["Cuvier"],"years":[{"value":"1816"}]}}}}],"bacteria":false}
-1fddff95-f470-5c36-8bc5-4436fe727bda|Abramis Cuvier 1816 sec. Dybowski 1862|Abramis|Abramis|Cuvier 1816|1816|2
+{"quality":3,"parsed":true,"verbatim":"Abramis Cuvier 1816 sec. Dybowski 1862","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Abramis Cuvier 1816","canonicalName":{"value":"Abramis","valueRanked":"Abramis"},"virus":false,"positions":[["uninomial",0,7],["authorWord",8,14],["year",15,19]],"nameStringId":"1fddff95-f470-5c36-8bc5-4436fe727bda","parserVersion":"test_version","hybrid":false,"details":[{"uninomial":{"value":"Abramis","authorship":{"value":"Cuvier 1816","basionymAuthorship":{"authors":["Cuvier"],"years":[{"value":"1816"}]}}}}],"bacteria":false,"unparsedTail":" sec. Dybowski 1862"}
+1fddff95-f470-5c36-8bc5-4436fe727bda|Abramis Cuvier 1816 sec. Dybowski 1862|Abramis|Abramis|Cuvier 1816|1816|3
 
 Abramis brama subsp. bergi Grib & Vernidub 1935 sec Eschmeyer 2004
 Abramis brama subsp. bergi Grib & Vernidub 1935
-{"quality":2,"parsed":true,"verbatim":"Abramis brama subsp. bergi Grib & Vernidub 1935 sec Eschmeyer 2004","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Abramis brama ssp. bergi Grib & Vernidub 1935","canonicalName":{"value":"Abramis brama bergi","valueRanked":"Abramis brama ssp. bergi"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,13],["rank",14,20],["infraspecificEpithet",21,26],["authorWord",27,31],["authorWord",34,42],["year",43,47]],"nameStringId":"5ac5f7fd-0a42-5133-961e-df94a54fb75f","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abramis"},"specificEpithet":{"value":"brama"},"infraspecificEpithets":[{"value":"bergi","rank":"ssp.","authorship":{"value":"Grib & Vernidub 1935","basionymAuthorship":{"authors":["Grib","Vernidub"],"years":[{"value":"1935"}]}}}]}],"bacteria":false}
-5ac5f7fd-0a42-5133-961e-df94a54fb75f|Abramis brama subsp. bergi Grib & Vernidub 1935 sec Eschmeyer 2004|Abramis brama bergi|Abramis brama ssp. bergi|Grib & Vernidub 1935|1935|2
+{"quality":3,"parsed":true,"verbatim":"Abramis brama subsp. bergi Grib & Vernidub 1935 sec Eschmeyer 2004","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Abramis brama ssp. bergi Grib & Vernidub 1935","canonicalName":{"value":"Abramis brama bergi","valueRanked":"Abramis brama ssp. bergi"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,13],["rank",14,20],["infraspecificEpithet",21,26],["authorWord",27,31],["authorWord",34,42],["year",43,47]],"nameStringId":"5ac5f7fd-0a42-5133-961e-df94a54fb75f","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abramis"},"specificEpithet":{"value":"brama"},"infraspecificEpithets":[{"value":"bergi","rank":"ssp.","authorship":{"value":"Grib & Vernidub 1935","basionymAuthorship":{"authors":["Grib","Vernidub"],"years":[{"value":"1935"}]}}}]}],"bacteria":false,"unparsedTail":" sec Eschmeyer 2004"}
+5ac5f7fd-0a42-5133-961e-df94a54fb75f|Abramis brama subsp. bergi Grib & Vernidub 1935 sec Eschmeyer 2004|Abramis brama bergi|Abramis brama ssp. bergi|Grib & Vernidub 1935|1935|3
 
 Abarema clypearia (Jack) Kosterm., P. P.
 Abarema clypearia (Jack) Kosterm.
-{"quality":2,"parsed":true,"verbatim":"Abarema clypearia (Jack) Kosterm., P. P.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Abarema clypearia (Jack) Kosterm.","canonicalName":{"value":"Abarema clypearia","valueRanked":"Abarema clypearia"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17],["authorWord",19,23],["authorWord",25,33]],"nameStringId":"2e18b789-865b-55dc-831b-f1fdd6bf740d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abarema"},"specificEpithet":{"value":"clypearia","authorship":{"value":"(Jack) Kosterm.","basionymAuthorship":{"authors":["Jack"]},"combinationAuthorship":{"authors":["Kosterm."]}}}}],"bacteria":false}
-2e18b789-865b-55dc-831b-f1fdd6bf740d|Abarema clypearia (Jack) Kosterm., P. P.|Abarema clypearia|Abarema clypearia|(Jack) Kosterm.||2
+{"quality":3,"parsed":true,"verbatim":"Abarema clypearia (Jack) Kosterm., P. P.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Abarema clypearia (Jack) Kosterm.","canonicalName":{"value":"Abarema clypearia","valueRanked":"Abarema clypearia"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17],["authorWord",19,23],["authorWord",25,33]],"nameStringId":"2e18b789-865b-55dc-831b-f1fdd6bf740d","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abarema"},"specificEpithet":{"value":"clypearia","authorship":{"value":"(Jack) Kosterm.","basionymAuthorship":{"authors":["Jack"]},"combinationAuthorship":{"authors":["Kosterm."]}}}}],"bacteria":false,"unparsedTail":", P. P."}
+2e18b789-865b-55dc-831b-f1fdd6bf740d|Abarema clypearia (Jack) Kosterm., P. P.|Abarema clypearia|Abarema clypearia|(Jack) Kosterm.||3
 
 Abarema clypearia (Jack) Kosterm., p.p.
 Abarema clypearia (Jack) Kosterm.
-{"quality":2,"parsed":true,"verbatim":"Abarema clypearia (Jack) Kosterm., p.p.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Abarema clypearia (Jack) Kosterm.","canonicalName":{"value":"Abarema clypearia","valueRanked":"Abarema clypearia"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17],["authorWord",19,23],["authorWord",25,33]],"nameStringId":"bc9b0feb-8a33-5f35-97a9-8ee93220fff8","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abarema"},"specificEpithet":{"value":"clypearia","authorship":{"value":"(Jack) Kosterm.","basionymAuthorship":{"authors":["Jack"]},"combinationAuthorship":{"authors":["Kosterm."]}}}}],"bacteria":false}
-bc9b0feb-8a33-5f35-97a9-8ee93220fff8|Abarema clypearia (Jack) Kosterm., p.p.|Abarema clypearia|Abarema clypearia|(Jack) Kosterm.||2
+{"quality":3,"parsed":true,"verbatim":"Abarema clypearia (Jack) Kosterm., p.p.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Abarema clypearia (Jack) Kosterm.","canonicalName":{"value":"Abarema clypearia","valueRanked":"Abarema clypearia"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17],["authorWord",19,23],["authorWord",25,33]],"nameStringId":"bc9b0feb-8a33-5f35-97a9-8ee93220fff8","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abarema"},"specificEpithet":{"value":"clypearia","authorship":{"value":"(Jack) Kosterm.","basionymAuthorship":{"authors":["Jack"]},"combinationAuthorship":{"authors":["Kosterm."]}}}}],"bacteria":false,"unparsedTail":", p.p."}
+bc9b0feb-8a33-5f35-97a9-8ee93220fff8|Abarema clypearia (Jack) Kosterm., p.p.|Abarema clypearia|Abarema clypearia|(Jack) Kosterm.||3
 
 Abarema clypearia (Jack) Kosterm., p. p.
 Abarema clypearia (Jack) Kosterm.
-{"quality":2,"parsed":true,"verbatim":"Abarema clypearia (Jack) Kosterm., p. p.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Abarema clypearia (Jack) Kosterm.","canonicalName":{"value":"Abarema clypearia","valueRanked":"Abarema clypearia"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17],["authorWord",19,23],["authorWord",25,33]],"nameStringId":"1fae34cb-12f4-5600-9589-672199934719","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abarema"},"specificEpithet":{"value":"clypearia","authorship":{"value":"(Jack) Kosterm.","basionymAuthorship":{"authors":["Jack"]},"combinationAuthorship":{"authors":["Kosterm."]}}}}],"bacteria":false}
-1fae34cb-12f4-5600-9589-672199934719|Abarema clypearia (Jack) Kosterm., p. p.|Abarema clypearia|Abarema clypearia|(Jack) Kosterm.||2
+{"quality":3,"parsed":true,"verbatim":"Abarema clypearia (Jack) Kosterm., p. p.","surrogate":false,"qualityWarnings":[[3,"Unparsed tail"]],"normalized":"Abarema clypearia (Jack) Kosterm.","canonicalName":{"value":"Abarema clypearia","valueRanked":"Abarema clypearia"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,17],["authorWord",19,23],["authorWord",25,33]],"nameStringId":"1fae34cb-12f4-5600-9589-672199934719","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Abarema"},"specificEpithet":{"value":"clypearia","authorship":{"value":"(Jack) Kosterm.","basionymAuthorship":{"authors":["Jack"]},"combinationAuthorship":{"authors":["Kosterm."]}}}}],"bacteria":false,"unparsedTail":", p. p."}
+1fae34cb-12f4-5600-9589-672199934719|Abarema clypearia (Jack) Kosterm., p. p.|Abarema clypearia|Abarema clypearia|(Jack) Kosterm.||3
 
 Indigofera phyllogramme var. aphylla R.Vig., p.p.B
 Indigofera phyllogramme var. aphylla R.Vig.
@@ -2650,13 +2652,6 @@ Puya acris hort.
 Puya acris hort.
 {"quality":2,"parsed":true,"verbatim":"Puya acris hort.","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Puya acris","canonicalName":{"value":"Puya acris","valueRanked":"Puya acris"},"virus":false,"positions":[["genus",0,4],["specificEpithet",5,10]],"nameStringId":"78228a5e-dcd3-58f9-bf21-b452c378f6ee","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Puya"},"specificEpithet":{"value":"acris"}}],"bacteria":false}
 78228a5e-dcd3-58f9-bf21-b452c378f6ee|Puya acris hort.|Puya acris|Puya acris|||2
-#>
-
-#SECTION html entities<
-Torymus bangalorensis (Mani &amp; Kurian, 1953)
-Torymus bangalorensis (Mani &amp; Kurian, 1953)
-{"quality":2,"parsed":true,"verbatim":"Torymus bangalorensis (Mani &amp; Kurian, 1953)","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Torymus bangalorensis (Mani & Kurian 1953)","canonicalName":{"value":"Torymus bangalorensis","valueRanked":"Torymus bangalorensis"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,21],["authorWord",23,27],["authorWord",34,40],["year",42,46]],"nameStringId":"8131ebda-dce6-5aaf-97ae-2370fe8e77d7","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Torymus"},"specificEpithet":{"value":"bangalorensis","authorship":{"value":"(Mani & Kurian 1953)","basionymAuthorship":{"authors":["Mani","Kurian"],"years":[{"value":"1953"}]}}}}],"bacteria":false}
-8131ebda-dce6-5aaf-97ae-2370fe8e77d7|Torymus bangalorensis (Mani &amp; Kurian, 1953)|Torymus bangalorensis|Torymus bangalorensis|(Mani & Kurian 1953)|1953|2
 #>
 
 ### Unparseable
@@ -2888,6 +2883,11 @@ Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo
 Quadrella steyermarkii (Standl.) Iltis & Cornejo
 {"quality":2,"parsed":true,"verbatim":"Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Quadrella steyermarkii (Standl.) Iltis & Cornejo","canonicalName":{"value":"Quadrella steyermarkii","valueRanked":"Quadrella steyermarkii"},"virus":false,"positions":[["genus",0,9],["specificEpithet",10,22],["authorWord",24,31],["authorWord",33,38],["authorWord",45,52]],"nameStringId":"fbd1b4fe-f8ed-5390-9cb1-e0f798691b1e","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Quadrella"},"specificEpithet":{"value":"steyermarkii","authorship":{"value":"(Standl.) Iltis & Cornejo","basionymAuthorship":{"authors":["Standl."]},"combinationAuthorship":{"authors":["Iltis","Cornejo"]}}}}],"bacteria":false}
 fbd1b4fe-f8ed-5390-9cb1-e0f798691b1e|Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo|Quadrella steyermarkii|Quadrella steyermarkii|(Standl.) Iltis & Cornejo||2
+
+Torymus bangalorensis (Mani &amp; Kurian, 1953)
+Torymus bangalorensis (Mani &amp; Kurian, 1953)
+{"quality":2,"parsed":true,"verbatim":"Torymus bangalorensis (Mani &amp; Kurian, 1953)","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Torymus bangalorensis (Mani & Kurian 1953)","canonicalName":{"value":"Torymus bangalorensis","valueRanked":"Torymus bangalorensis"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,21],["authorWord",23,27],["authorWord",34,40],["year",42,46]],"nameStringId":"8131ebda-dce6-5aaf-97ae-2370fe8e77d7","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Torymus"},"specificEpithet":{"value":"bangalorensis","authorship":{"value":"(Mani & Kurian 1953)","basionymAuthorship":{"authors":["Mani","Kurian"],"years":[{"value":"1953"}]}}}}],"bacteria":false}
+8131ebda-dce6-5aaf-97ae-2370fe8e77d7|Torymus bangalorensis (Mani &amp; Kurian, 1953)|Torymus bangalorensis|Torymus bangalorensis|(Mani & Kurian 1953)|1953|2
 #>
 
 #SECTION: Should be removed? Underscores intead of spaces<
