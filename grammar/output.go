@@ -2,7 +2,6 @@ package grammar
 
 import (
 	"fmt"
-	"strings"
 
 	"gitlab.com/gogna/gnparser/str"
 )
@@ -68,19 +67,19 @@ type authorshipOutput struct {
 
 type authGroupOutput struct {
 	Authors      []string            `json:"authors"`
-	Years        []yearOutput        `json:"years,omitempty"`
+	Year         *yearOutput         `json:"year,omitempty"`
 	ExAuthors    *exAuthorsOutput    `json:"exAuthors,omitempty"`
 	EmendAuthors *emendAuthorsOutput `json:"emendAuthors,omitempty"`
 }
 
 type exAuthorsOutput struct {
-	Authors []string     `json:"authors"`
-	Years   []yearOutput `json:"years,omitempty"`
+	Authors []string    `json:"authors"`
+	Year    *yearOutput `json:"year,omitempty"`
 }
 
 type emendAuthorsOutput struct {
-	Authors []string     `json:"authors"`
-	Years   []yearOutput `json:"years,omitempty"`
+	Authors []string    `json:"authors"`
+	Year    *yearOutput `json:"year,omitempty"`
 }
 
 type yearOutput struct {
@@ -650,26 +649,26 @@ func authGroupDetail(ag *authorsGroupNode) *authGroupOutput {
 	if ag == nil {
 		return &ago
 	}
-	aus, yrs := ag.Team1.details()
+	aus, yr := ag.Team1.details()
 	ago = authGroupOutput{
 		Authors: aus,
-		Years:   yrs,
+		Year:    yr,
 	}
 	if ag.Team2 == nil {
 		return &ago
 	}
-	aus, yrs = ag.Team2.details()
+	aus, yr = ag.Team2.details()
 	switch ag.Team2Type.Pos.Type {
 	case AuthorWordExType:
 		eao := exAuthorsOutput{
 			Authors: aus,
-			Years:   yrs,
+			Year:    yr,
 		}
 		ago.ExAuthors = &eao
 	case AuthorWordEmendType:
 		eao := emendAuthorsOutput{
 			Authors: aus,
-			Years:   yrs,
+			Year:    yr,
 		}
 		ago.EmendAuthors = &eao
 	}
@@ -737,38 +736,36 @@ func (aut *authorsTeamNode) value() string {
 		value = str.JoinStrings(value, v.Value, sep)
 		sep = v.Sep
 	}
-	if len(aut.Years) == 0 || aut.Years[0].Word.Value == "" {
+	if aut.Year == nil {
 		return value
 	}
 
-	years := make([]string, len(aut.Years))
-	for i, v := range aut.Years {
-		yr := v.Word.Value
-		if v.Approximate {
-			yr = fmt.Sprintf("(%s)", yr)
-		}
-		years[i] = yr
+	yr := aut.Year.Word.Value
+	if aut.Year.Approximate {
+		yr = fmt.Sprintf("(%s)", yr)
 	}
-	yrVal := strings.Join(years, ", ")
-	value = str.JoinStrings(value, yrVal, " ")
+	value = str.JoinStrings(value, yr, " ")
 	return value
 }
 
-func (at *authorsTeamNode) details() ([]string, []yearOutput) {
-	var yrs []yearOutput
+func (at *authorsTeamNode) details() ([]string, *yearOutput) {
+	var yr *yearOutput
 	var aus []string
 	if at == nil {
-		return aus, yrs
-	}
-	yrs = make([]yearOutput, len(at.Years))
-	for i, v := range at.Years {
-		yrs[i] = yearOutput{Value: v.Word.Value, Approximate: v.Approximate}
+		return aus, yr
 	}
 	aus = make([]string, len(at.Authors))
 	for i, v := range at.Authors {
 		aus[i] = v.Value
 	}
-	return aus, yrs
+	if at.Year == nil {
+		return aus, yr
+	}
+	yr = &yearOutput{
+		Value:       at.Year.Word.Value,
+		Approximate: at.Year.Approximate,
+	}
+	return aus, yr
 }
 
 func (aut *authorsTeamNode) pos() []Pos {
@@ -779,8 +776,8 @@ func (aut *authorsTeamNode) pos() []Pos {
 	for _, v := range aut.Authors {
 		res = append(res, v.pos()...)
 	}
-	for _, v := range aut.Years {
-		res = append(res, v.Word.Pos)
+	if aut.Year != nil {
+		res = append(res, aut.Year.Word.Pos)
 	}
 	return res
 }

@@ -583,7 +583,7 @@ func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 			oa.Parens = true
 			if misplacedYear {
 				yr := p.newYearNode(on.next)
-				oa.Team1.Years = append(oa.Team1.Years, yr)
+				oa.Team1.Year = yr
 			}
 		case ruleCombinationAuthorship:
 			ca = p.newAuthorsGroupNode(n.up)
@@ -651,13 +651,13 @@ func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 
 type authorsTeamNode struct {
 	Authors []*authorNode
-	Years   []*yearNode
+	Year    *yearNode
 }
 
 func (p *Engine) newAuthorTeam(n *node32) *authorsTeamNode {
 	var anodes []*node32
 	var seps []string
-	var ynodes []*node32
+	var yr *yearNode
 	n = n.up
 	for n != nil {
 		switch n.token32.pegRule {
@@ -666,12 +666,11 @@ func (p *Engine) newAuthorTeam(n *node32) *authorsTeamNode {
 		case ruleAuthorSep:
 			seps = append(seps, p.nodeValue(n))
 		case ruleYear:
-			ynodes = append(ynodes, n)
+			yr = p.newYearNode(n)
 		}
 		n = n.next
 	}
 	aus := make([]*authorNode, len(anodes))
-	yrs := make([]*yearNode, len(ynodes))
 	for i, v := range anodes {
 		aus[i] = p.newAuthorNode(v)
 		if i < len(seps) {
@@ -686,12 +685,9 @@ func (p *Engine) newAuthorTeam(n *node32) *authorsTeamNode {
 			aus[i].Sep = seps[i]
 		}
 	}
-	for i, v := range ynodes {
-		yrs[i] = p.newYearNode(v)
-	}
 	atn := authorsTeamNode{
 		Authors: aus,
-		Years:   yrs,
+		Year:    yr,
 	}
 	return &atn
 }

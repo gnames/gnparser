@@ -24,10 +24,9 @@ func NewSimpleOutput(sn *grammar.ScientificNameNode) *simple {
 		authorship = ao.Value
 	}
 	yr := ""
-	if ao != nil && len(ao.Original.Years) > 0 {
-		yrs := ao.Original.Years
-		yr = yrs[0].Value
-		if yrs[0].Approximate {
+	if ao != nil && ao.Original.Year != nil {
+		yr = ao.Original.Year.Value
+		if ao.Original.Year.Approximate {
 			yr = fmt.Sprintf("(%s)", yr)
 		}
 	}
