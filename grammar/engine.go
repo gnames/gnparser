@@ -9,16 +9,19 @@ import (
 type BaseEngine struct {
 	SN        *ScientificNameNode
 	root      *node32
+	Error     error
 	Surrogate bool
 	Bacteria  bool
 	Warnings  map[Warning]struct{}
 }
 
-func (p *Engine) resetFields() {
+func (p *Engine) FullReset() {
 	var warnReset map[Warning]struct{}
 	p.Warnings = warnReset
 	p.Surrogate = false
 	p.Bacteria = false
+	p.Error = nil
+	p.Reset()
 }
 
 func (p *Engine) AddWarn(w Warning) {
@@ -101,8 +104,8 @@ func (p *Engine) nodeValue(n *node32) string {
 }
 
 func (p *Engine) ParsedName() string {
-	if p.tokens32.tree == nil {
-		return ""
+	if p.Error != nil {
+		return "noparse"
 	}
 	for i := len(p.tokens32.tree) - 1; i >= 0; i-- {
 		t := p.tokens32.tree[i]
@@ -110,7 +113,7 @@ func (p *Engine) ParsedName() string {
 			return string(p.buffer[t.begin:t.end])
 		}
 	}
-	return ""
+	return "noparse"
 }
 
 var nodeRules = map[pegRule]struct{}{

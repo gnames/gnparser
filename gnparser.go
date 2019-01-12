@@ -69,12 +69,13 @@ func (gnp *GNparser) Parse(s string) {
 		gnp.parser.NewNotParsedScientificNameNode(preproc)
 	}
 	gnp.parser.Buffer = string(preproc.Body)
-	gnp.parser.Reset()
+	gnp.parser.FullReset()
 	if len(preproc.Tail) > 0 {
 		gnp.parser.AddWarn(grammar.TailWarn)
 	}
 	err := gnp.parser.Parse()
 	if err != nil {
+		gnp.parser.Error = err
 		gnp.parser.NewNotParsedScientificNameNode(preproc)
 	} else {
 		gnp.parser.OutputAST()
@@ -143,7 +144,7 @@ func (gnp *GNparser) Debug(s string) []byte {
 		return b.Bytes()
 	}
 	gnp.parser.Buffer = string(ppr.Body)
-	gnp.parser.Reset()
+	gnp.parser.FullReset()
 	gnp.parser.Parse()
 	gnp.parser.OutputAST()
 	b.WriteString("\n*** Complete Syntax Tree ***\n")
@@ -151,6 +152,11 @@ func (gnp *GNparser) Debug(s string) []byte {
 	b.WriteString("\n*** Output Syntax Tree ***\n")
 	gnp.parser.PrintOutputSyntaxTree(&b)
 	return b.Bytes()
+}
+
+// ParsedName returns the string of parsed result without a tail.
+func (gnp *GNparser) ParsedName() string {
+	return gnp.parser.ParsedName()
 }
 
 // Version function returns version number of `gnparser`.

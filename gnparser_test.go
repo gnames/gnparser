@@ -41,7 +41,7 @@ func outputEntries() []TableEntry {
 			fmt.Println(v.NameString)
 			panic(err)
 		}
-		json := strings.Replace(string(res), "\\u0026", "&", -1)
+		json := string(res)
 
 		gnp.Parse(v.NameString)
 		simple := strings.Join(gnp.ToSlice(), "|")
@@ -63,18 +63,15 @@ func astEntries() []TableEntry {
 		testName := fmt.Sprintf("AST-%03d: |%s|", i+1, v.NameString)
 		ppr := preprocess.Preprocess([]byte(v.NameString))
 		if ppr.NoParse {
-			parsedStr := "np"
+			parsedStr := "noparse"
 			te := Entry(testName, parsedStr, v.Parsed)
 			entries = append(entries, te)
 			continue
 		}
 		gnp.parser.Buffer = string(ppr.Body)
-		gnp.parser.Reset()
-		err := gnp.parser.Parse()
-		parsedStr := "np"
-		if err == nil {
-			parsedStr = gnp.parser.ParsedName()
-		}
+		gnp.parser.FullReset()
+		gnp.parser.Error = gnp.parser.Parse()
+		parsedStr := gnp.parser.ParsedName()
 		te := Entry(testName, parsedStr, v.Parsed)
 		entries = append(entries, te)
 	}

@@ -53,7 +53,6 @@ func (p *Engine) NewScientificNameNode() {
 		Tail:      tail,
 		Warnings:  warns,
 	}
-	p.resetFields()
 	p.SN = &sn
 }
 
