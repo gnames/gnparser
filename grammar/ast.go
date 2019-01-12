@@ -12,14 +12,15 @@ import (
 )
 
 type ScientificNameNode struct {
-	Verbatim   string
-	VerbatimID string
 	Name
-	Virus     bool
-	Bacteria  bool
-	Surrogate bool
-	Tail      string
-	Warnings  []Warning
+	Verbatim      string
+	VerbatimID    string
+	Virus         bool
+	Bacteria      bool
+	Surrogate     bool
+	Tail          string
+	ParserVersion string
+	Warnings      []Warning
 }
 
 func (p *Engine) NewScientificNameNode() {

@@ -96,8 +96,9 @@ func versionFlag(cmd *cobra.Command) {
 		os.Exit(1)
 	}
 	if version {
+		var gnp *gnparser.GNparser
 		fmt.Printf("\nversion: %s\n\nbuild:   %s\n\n",
-			gnparser.Version(), gnparser.Build())
+			gnp.Version(), gnp.Build())
 		os.Exit(0)
 	}
 }

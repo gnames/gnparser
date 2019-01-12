@@ -33,7 +33,7 @@ func outputEntries() []TableEntry {
 	if err != nil {
 		panic(err)
 	}
-	gnp := NewGNparser()
+	gnp := NewGNparser(IsTest())
 	for i, v := range tests {
 		gnp.Parse(v.NameString)
 		res, err := gnp.ToJSON()

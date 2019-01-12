@@ -31,12 +31,14 @@ func NewSimpleOutput(sn *grammar.ScientificNameNode) *simple {
 		}
 	}
 
+	quality := 0
 	c, _ := sn.Canonical()
 	if c == nil {
 		c = &grammar.Canonical{}
+	} else {
+		_, quality = qualityAndWarnings(sn.Warnings)
 	}
 
-	_, quality := qualityAndWarnings(sn.Warnings)
 	so := simple{
 		ID:              sn.VerbatimID,
 		Verbatim:        sn.Verbatim,
@@ -56,9 +58,6 @@ func (so *simple) ToSlice() []string {
 	}
 
 	qual := strconv.Itoa(so.Quality)
-	if qual == "0" {
-		qual = ""
-	}
 	res := []string{
 		so.ID,
 		so.Verbatim,

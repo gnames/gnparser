@@ -20,6 +20,9 @@ type GNparser struct {
 	format
 	// nameString keeps parsed string
 	nameString string
+	// isTest indicates that parsing is done for test purposes, so instead of
+	// real version of the paraser output will contain "test_version" phrase.
+	isTest bool
 	// parser keeps parsing engine
 	parser *grammar.Engine
 }
@@ -39,6 +42,12 @@ func Format(f string) Option {
 	return func(gnp *GNparser) {
 		fo := newFormat(f)
 		gnp.format = fo
+	}
+}
+
+func IsTest() Option {
+	return func(gnp *GNparser) {
+		gnp.isTest = true
 	}
 }
 
@@ -85,6 +94,7 @@ func (gnp *GNparser) Parse(s string) {
 		}
 	}
 	gnp.parser.SN.AddVerbatim(s)
+	gnp.parser.SN.ParserVersion = gnp.Version()
 }
 
 // ParseAndFormat function parses input and formats results according
@@ -160,11 +170,14 @@ func (gnp *GNparser) ParsedName() string {
 }
 
 // Version function returns version number of `gnparser`.
-func Version() string {
+func (gnp *GNparser) Version() string {
+	if gnp != nil && gnp.isTest {
+		return "test_version"
+	}
 	return output.Version
 }
 
 // Build returns date and time when gnparser was built
-func Build() string {
+func (gnp *GNparser) Build() string {
 	return output.Build
 }

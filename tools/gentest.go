@@ -32,7 +32,7 @@ func genTestData() error {
 	defer w.Close()
 
 	sc := bufio.NewScanner(f)
-	gnp1 := gnparser.NewGNparser()
+	gnp := gnparser.NewGNparser(gnparser.IsTest())
 	count := 0
 	for sc.Scan() {
 		line := sc.Text()
@@ -45,16 +45,16 @@ func genTestData() error {
 		case 1:
 			nameString = line
 			w.Write([]byte(nameString + "\n"))
-			gnp1.Parse(nameString)
-			res := gnp1.ParsedName()
+			gnp.Parse(nameString)
+			res := gnp.ParsedName()
 			w.Write([]byte(res + "\n"))
-			bs, err := gnp1.ToJSON()
+			bs, err := gnp.ToJSON()
 			if err != nil {
 				return err
 			}
 			w.Write(bs)
 			w.Write([]byte("\n"))
-			sl := gnp1.ToSlice()
+			sl := gnp.ToSlice()
 			res = strings.Join(sl, "|") + "\n"
 			w.Write([]byte(res))
 		case 4:

@@ -8,21 +8,21 @@ import (
 )
 
 type Output struct {
-	Quality       int           `json:"quality,omitempty"`
 	Parsed        bool          `json:"parsed"`
-	Verbatim      string        `json:"verbatim"`
-	Surrogate     bool          `json:"surrogate"`
+	Quality       int           `json:"quality"`
 	Warnings      []Warning     `json:"qualityWarnings,omitempty"`
+	Verbatim      string        `json:"verbatim"`
 	Normalized    string        `json:"normalized,omitempty"`
 	CanonicalName *canonical    `json:"canonicalName,omitempty"`
-	Virus         bool          `json:"virus"`
-	Positions     []pos         `json:"positions,omitempty"`
-	NameStringID  string        `json:"nameStringId"`
-	ParserVersion string        `json:"parserVersion"`
-	Hybrid        bool          `json:"hybrid"`
 	Details       []interface{} `json:"details,omitempty"`
+	Positions     []pos         `json:"positions,omitempty"`
+	Surrogate     bool          `json:"surrogate"`
+	Virus         bool          `json:"virus"`
+	Hybrid        bool          `json:"hybrid"`
 	Bacteria      bool          `json:"bacteria"`
 	Tail          string        `json:"unparsedTail,omitempty"`
+	NameStringID  string        `json:"nameStringId"`
+	ParserVersion string        `json:"parserVersion"`
 }
 
 func NewOutput(sn *grm.ScientificNameNode) *Output {
@@ -34,7 +34,7 @@ func NewOutput(sn *grm.ScientificNameNode) *Output {
 	det := sn.Details()
 	c, hybrid := sn.Canonical()
 	if c != nil {
-		co = &canonical{Value: c.Value, ValueRanked: c.ValueRanked}
+		co = &canonical{Simple: c.Value, Full: c.ValueRanked}
 		ws, quality = qualityAndWarnings(sn.Warnings)
 		ps = convertPos(sn.Pos())
 		parsed = true
@@ -55,7 +55,7 @@ func NewOutput(sn *grm.ScientificNameNode) *Output {
 		Bacteria:      sn.Bacteria,
 		Tail:          sn.Tail,
 		Details:       det,
-		ParserVersion: "test_version",
+		ParserVersion: sn.ParserVersion,
 	}
 	return &o
 }
@@ -86,8 +86,8 @@ func FromJSON(data []byte) (Output, error) {
 }
 
 type canonical struct {
-	Value       string `json:"value"`
-	ValueRanked string `json:"valueRanked"`
+	Simple string `json:"simple"`
+	Full   string `json:"full"`
 }
 
 type pos struct {
