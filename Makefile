@@ -20,7 +20,10 @@ test:
 
 init:
 	${FLAG_MODULE} $(GOGET) github.com/pointlander/peg@fa48cc2; \
-	${FLAG_MODULE} $(GOGET) github.com/shurcooL/vfsgen@6a9ea43
+	${FLAG_MODULE} $(GOGET) github.com/shurcooL/vfsgen@6a9ea43; \
+	${FLAG_MODULE} $(GOGET) github.com/spf13/cobra/cobra@7547e83; \
+	${FLAG_MODULE} $(GOGET) github.com/onsi/ginkgo/ginkgo@505cc35; \
+	${FLAG_MODULE} $(GOGET) github.com/onsi/gomega@ce690c5
 
 version:
 	echo "package output\n\nconst Version = \"$(VERSION)\"\nconst Build = \"$(DATE)\"\n" \
