@@ -9,11 +9,11 @@ import (
 )
 
 // ToASCII converts a UTF-8 diacritics to corresponding ASCII chars.
-func ToASCII(b []byte) ([]byte, error) {
+func ToASCII(b []byte, m map[rune]string) ([]byte, error) {
 	tlBuf := bytes.NewBuffer(make([]byte, 0, len(b)*125/100))
 	for i, w := 0, 0; i < len(b); i += w {
 		r, width := utf8.DecodeRune(b[i:])
-		if s, ok := transliterations[r]; ok {
+		if s, ok := m[r]; ok {
 			tlBuf.WriteString(s)
 		} else {
 			tlBuf.WriteRune(r)
@@ -67,7 +67,7 @@ func NumToStr(num string) string {
 	return num
 }
 
-var transliterations = map[rune]string{
+var Transliterations = map[rune]string{
 	'À': "A", 'Â': "A", 'Å': "A", 'Ã': "A", 'Ä': "A", 'Á': "A", 'Ç': "C",
 	'Č': "C", 'Ë': "E", 'É': "E", 'È': "E", 'Í': "I", 'Ì': "I", 'Ï': "I",
 	'Ň': "N", 'Ñ': "N", 'Ó': "O", 'Ò': "O", 'Ô': "O", 'Õ': "O", 'Ú': "U",
@@ -79,7 +79,11 @@ var transliterations = map[rune]string{
 	'š': "s", 'ş': "s", 'ž': "z",
 	'Æ': "Ae", 'Ð': "D", 'Ł': "L", 'Ø': "Oe", 'Ö': "Oe", 'Þ': "Th",
 	'ß': "ss", 'æ': "ae", 'ð': "d", 'ł': "l", 'ø': "oe", 'ö': "oe",
-	'þ': "th", 'Œ': "Oe", 'œ': "oe", '\'': "",
+	'þ': "th", 'Œ': "Oe", 'œ': "oe", '\'': "", '‘': "", '’': "",
+}
+
+var GlobalTransliterations = map[rune]string{
+	'‘': "'", '’': "'",
 }
 
 var nameNums = map[string]string{

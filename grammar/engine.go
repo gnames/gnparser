@@ -80,10 +80,6 @@ func (p *Engine) PrintOutputSyntaxTree(w io.Writer) {
 
 func (p *Engine) newNode(t token32) (*node32, bool) {
 	var node *node32
-	if _, ok := nodeRules[t.pegRule]; ok {
-		node := &node32{token32: t}
-		return node, false
-	}
 	switch t.pegRule {
 	case ruleOtherSpace:
 		p.AddWarn(SpaceNonStandardWarn)
@@ -93,7 +89,14 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 		p.AddWarn(UTF8ConvBadWarn)
 	case ruleBasionymAuthorship2Parens:
 		p.AddWarn(AuthDoubleParensWarn)
+	case ruleDumbApostr:
+		p.AddWarn(ApostDumbWarn)
 	}
+	if _, ok := nodeRules[t.pegRule]; ok {
+		node := &node32{token32: t}
+		return node, false
+	}
+
 	return node, true
 }
 
@@ -178,4 +181,5 @@ var nodeRules = map[pegRule]struct{}{
 	ruleYearNum:                         struct{}{},
 	ruleUpperCharExtended:               struct{}{},
 	ruleLowerCharExtended:               struct{}{},
+	ruleDumbApostr:                      struct{}{},
 }

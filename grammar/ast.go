@@ -846,6 +846,10 @@ func (p *Engine) newWordNode(n *node32, wt WordType) *wordNode {
 		case ruleWordStartsWithDigit:
 			p.AddWarn(SpeciesNumericWarn)
 			wrd.normalizeNums()
+		case ruleDumbApostr:
+			p.AddWarn(ApostDumbWarn)
+			nv, _ := str.ToASCII([]byte(wrd.Value), str.GlobalTransliterations)
+			wrd.NormValue = string(nv)
 		}
 	}
 	if wt == GenusType || wt == UninomialType {
@@ -862,7 +866,7 @@ func (w *wordNode) normalize() error {
 	if w == nil {
 		return nil
 	}
-	nv, err := str.ToASCII([]byte(w.Value))
+	nv, err := str.ToASCII([]byte(w.Value), str.Transliterations)
 	if err != nil {
 		return err
 	}

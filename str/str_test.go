@@ -10,14 +10,18 @@ import (
 
 var _ = Describe("string tools", func() {
 	DescribeTable("ToASCII",
-		func(s string, expected string) {
-			res, _ := ToASCII([]byte(s))
+		func(s string, expected string, m map[rune]string) {
+			res, _ := ToASCII([]byte(s), m)
 			Expect(string(res)).To(Equal(expected))
 		},
-		Entry("Döringina", "Döringina", "Doeringina"),
-		Entry("Aëtosaurus", "Aëtosaurus", "Aetosaurus"),
-		Entry("thomæ", "thomæ", "thomae"),
-		Entry("many ö", "ööö", "oeoeoe"),
+		Entry("Döringina", "Döringina", "Doeringina", Transliterations),
+		Entry("Aëtosaurus", "Aëtosaurus", "Aetosaurus", Transliterations),
+		Entry("thomæ", "thomæ", "thomae", Transliterations),
+		Entry("many ö", "ööö", "oeoeoe", Transliterations),
+		Entry("’", "’", "'", GlobalTransliterations),
+		Entry("‘", "‘", "'", GlobalTransliterations),
+		Entry("’", "’", "", Transliterations),
+		Entry("‘", "‘", "", Transliterations),
 	)
 
 	DescribeTable("NumToStr",

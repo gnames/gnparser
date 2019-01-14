@@ -43,7 +43,7 @@ SpeciesEpithet <- !(AuthorEx) Word (_? Authorship)?
 
 Comparison <- ('cf' '.'?)
 
-Rank <- RankForma / RankVar / RankSsp / RankOther / RankOtherUncommon
+Rank <- RankForma / RankVar / RankSsp / RankOther / RankOtherUncommon / RankAgamo
 
 RankOtherUncommon <- ('*' / 'nat' / 'f.sp' / 'mut.') &(SpaceCharEOI)
 
@@ -57,6 +57,8 @@ RankVar <- 'variety' / '[var.]' / 'nvar.' / ('var' (&(SpaceCharEOI) / '.'))
 RankForma <- ('forma' / 'fma' / 'form' / 'fo' / 'f') (&(SpaceCharEOI) / '.')
 
 RankSsp <- ('ssp' / 'subsp') (&(SpaceCharEOI) / '.')
+
+RankAgamo <- ('agamosp' / 'agamossp' / 'agamovar') '.'?
 
 SubGenusOrSuperspecies <- '(' _? NameLowerChar+ _? ')'
 
@@ -97,7 +99,7 @@ WordStartsWithDigit <- [123456789] nums? ('.' / dash)? NameLowerChar NameLowerCh
 
 Word2 <- NameLowerChar+ dash? NameLowerChar+
 
-WordApostr <- NameLowerChar NameLowerChar* apostr Word1
+WordApostr <- NameLowerChar NameLowerChar* Apostrophe Word1
 
 Word4 <- NameLowerChar+ '.' NameLowerChar
 
@@ -165,15 +167,15 @@ AllCapsAuthorWord <- AuthorUpperChar AuthorUpperChar+
 
 Filius <- 'f.' / 'fil.' / 'filius'
 
-AuthorPrefixGlued <- 'd\'' / 'O\'' / 'L\''
+AuthorPrefixGlued <- ('d' / 'O' / 'L') Apostrophe
 
 AuthorPrefix <- AuthorPrefix1 / AuthorPrefix2
 
-AuthorPrefix2 <- ('v.' (_? 'd.')?) / '\'t'
+AuthorPrefix2 <- ('v.' (_? 'd.')?) / Apostrophe 't'
 
 AuthorPrefix1 <- ('ab' / 'af' / 'bis' / 'da' / 'der' / 'des' / 'den' / 'del' /
   'della' / 'dela' / 'de' / 'di' / 'du' / 'el' / 'la' / 'le' / 'ter' / 'van' /
-  'd\'' / 'in\'t' / 'zur' / ('von' (_ ('d.'/ 'dem'))?) / ('v' (_'d')?)) &_
+  'd' Apostrophe / 'in' Apostrophe 't' / 'zur' / ('von' (_ ('d.'/ 'dem'))?) / ('v' (_'d')?)) &_
 
 AuthorUpperChar <- hASCII / MiscodedChar /
   [ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝĆČĎİĶĹĺĽľŁłŅŌŐŒŘŚŜŞŠŸŹŻŽƒǾȘȚ]
@@ -223,7 +225,11 @@ lASCII <- [a-z]
 
 hASCII <- [A-Z]
 
-apostr <- '\''
+Apostrophe <- DumbApostr / Apostr
+
+DumbApostr <- '‘' / '’'
+
+Apostr <- '\''
 
 dash <- '-'
 
