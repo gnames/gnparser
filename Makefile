@@ -42,12 +42,12 @@ asset:
 build: version peg
 	cd gnparser; \
 	$(GOCLEAN); \
-	${FLAGS_LINUX} $(GOBUILD)
+	${FLAGS_SHARED} $(GOBUILD)
 
 install: version peg
 	cd gnparser; \
 	$(GOCLEAN); \
-	${FLAGS_LINUX} $(GOINSTALL)
+	${FLAGS_SHARED} $(GOINSTALL)
 
 release: version peg asset
 	cd gnparser; \
