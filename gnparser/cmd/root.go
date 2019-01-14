@@ -31,6 +31,7 @@ import (
 
 	"github.com/spf13/cobra"
 	"gitlab.com/gogna/gnparser"
+	"gitlab.com/gogna/gnparser/grpc"
 )
 
 // rootCmd represents the base command when called without any subcommands
@@ -48,20 +49,32 @@ gnparser "Homo sapiens Linnaeus 1753" [flags]
 
 To parse many names from a file (one name per line):
 gnparser names.txt [flags] > parsed_names.txt
+
+To start gRPC parsing service on port 3355 with 10 concurrent jobs:
+gnparser -j 10 -g 3355
  `,
 
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
 		versionFlag(cmd)
-		f := formatFlag(cmd)
 		wn := workersNumFlag(cmd)
-		opts := []gnparser.Option{
-			gnparser.WorkersNum(wn),
-			gnparser.Format(f),
+		grpcPort := grpcFlag(cmd)
+		if grpcPort != 0 {
+			fmt.Println("Running gnparser as gRPC service:")
+			fmt.Printf("port: %d\n", grpcPort)
+			fmt.Printf("jobs: %d\n\n", wn)
+			grpc.Run(grpcPort, wn)
+			os.Exit(0)
+		} else {
+			f := formatFlag(cmd)
+			opts := []gnparser.Option{
+				gnparser.WorkersNum(wn),
+				gnparser.Format(f),
+			}
+			data := getInput(cmd, args)
+			parse(data, opts)
 		}
-		data := getInput(cmd, args)
-		parse(data, opts)
 	},
 }
 
@@ -77,7 +90,7 @@ func Execute() {
 
 func init() {
 	gnp := gnparser.NewGNparser()
-	rootCmd.PersistentFlags().BoolP("version", "v", false, "Show build version and date")
+	rootCmd.PersistentFlags().BoolP("version", "v", false, "Show build version and date, ignores other flags.")
 
 	df := gnp.OutputFormat()
 	formats := strings.Join(gnparser.AvailableFormats(), ", ")
@@ -87,6 +100,8 @@ func init() {
 	dj := gnp.WorkersNum()
 	rootCmd.Flags().IntP("jobs", "j", dj,
 		"Nubmer of threads to run. CPU's threads number is the default.")
+
+	rootCmd.Flags().IntP("grpc_port", "g", 0, "starts grpc server on the port, ignores other flags.")
 }
 
 func versionFlag(cmd *cobra.Command) {
@@ -101,6 +116,15 @@ func versionFlag(cmd *cobra.Command) {
 			gnp.Version(), gnp.Build())
 		os.Exit(0)
 	}
+}
+
+func grpcFlag(cmd *cobra.Command) int {
+	grpcPort, err := cmd.Flags().GetInt("grpc_port")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	return grpcPort
 }
 
 func formatFlag(cmd *cobra.Command) string {

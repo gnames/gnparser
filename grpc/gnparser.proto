@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package grpc;
+message Version {
+    string value = 1;
+    string build_time = 2;
+}
+
+message Void {}
+
+message Input {
+  oneof content {
+    Format format = 1;
+    string name = 2;
+  }
+}
+
+enum Format {
+  Compact = 0;
+  Pretty = 1;
+  Simple = 2;
+  Debug = 3;
+}
+
+message Name {
+  bool parsed = 1;
+  int32 quality = 2;
+  string verbatim = 3;
+  string normalized = 4;
+  string canonical_simple = 5;
+  string canonical_full = 6;
+   Entry genus = 7;
+   Entry subgenus = 8;
+   Entry species = 9;
+   Entry subspicies = 10;
+   Entry variety = 11;
+   Entry form = 12;
+}
+
+message Entry {
+  string value = 1;
+  string norm_value = 2;
+  Pos    position = 3;
+  string authors = 4;
+  string year = 5;
+  string score = 6;
+}
+
+message Pos {
+  int32 start = 1;
+  int32 end = 2;
+}
+message Output {
+    string value = 1;
+    string error = 2;
+}
+
+service GNparser {
+    rpc Ver(Void) returns(Version) {}
+    rpc Parse(stream Input) returns(stream Output) {}
+}

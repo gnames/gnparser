@@ -2,6 +2,7 @@ module gitlab.com/gogna/gnparser
 
 require (
 	github.com/gnames/uuid5 v0.1.1
+	github.com/golang/protobuf v1.2.0
 	github.com/json-iterator/go v1.1.5
 	github.com/mitchellh/go-homedir v1.0.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
@@ -16,10 +17,11 @@ require (
 	github.com/shurcool/vfsgen v0.0.0-20181202132449-6a9ea43bcacd // indirect
 	github.com/spf13/cobra v0.0.4-0.20190109003409-7547e83b2d85
 	github.com/spf13/viper v1.3.1 // indirect
-	golang.org/x/net v0.0.0-20190110200230-915654e7eabc // indirect
+	golang.org/x/net v0.0.0-20190110200230-915654e7eabc
 	golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4 // indirect
 	golang.org/x/sys v0.0.0-20190114130336-2be517255631 // indirect
 	golang.org/x/text v0.3.0
-	golang.org/x/tools v0.0.0-20190114164648-36f37f8f5c81 // indirect
+	golang.org/x/tools v0.0.0-20190114222345-bf090417da8b // indirect
+	google.golang.org/grpc v1.17.0
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 )

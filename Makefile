@@ -39,17 +39,17 @@ asset:
 	cd dict; \
 	go run -tags=dev assets_gen.go
 
-build: version peg
+build: version peg grpc
 	cd gnparser; \
 	$(GOCLEAN); \
 	${FLAGS_SHARED} $(GOBUILD)
 
-install: version peg
+install: version peg grpc
 	cd gnparser; \
 	$(GOCLEAN); \
 	${FLAGS_SHARED} $(GOINSTALL)
 
-release: version peg asset
+release: version peg grpc asset
 	cd gnparser; \
 	$(GOCLEAN); \
 	${FLAGS_LINUX} $(GOBUILD) ${LDFLAGS}; \
@@ -62,3 +62,8 @@ release: version peg asset
 	zip -9 /tmp/gnparser-${VER}-win-64.zip gnparser; \
 	$(GOCLEAN);
 
+grpc:
+	cd grpc; \
+	protoc -I . ./gnparser.proto --go_out=plugins=grpc:.;
+
+.PHONY: grpc

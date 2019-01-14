@@ -12,8 +12,6 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var testsNum = 1000
-
 // TestGnparser is part of ``ginkgo`` package and is exposed because we want to
 // test some private libraries.
 func TestGNparser(t *testing.T) {
@@ -43,13 +41,6 @@ func testData() ([]testRecord, error) {
 	sc := bufio.NewScanner(f)
 	count := 0
 	for sc.Scan() {
-		if len(tests) >= testsNum {
-			err := makeBigFile(tests)
-			if err != nil {
-				return tests, nil
-			}
-			return tests, nil
-		}
 		line := sc.Text()
 		if empty.MatchString(line) || comment.MatchString(line) {
 			continue
@@ -72,6 +63,7 @@ func testData() ([]testRecord, error) {
 		return nil, err
 	}
 
+	makeBigFile(tests)
 	return tests, nil
 }
 
