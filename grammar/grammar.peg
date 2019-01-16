@@ -83,7 +83,7 @@ CapWord <- CapWord2 / CapWord1
 
 CapWord1 <- NameUpperChar NameLowerChar NameLowerChar+ '?'?
 
-CapWord2 <- CapWord1 dash (CapWord1 / Word1)
+CapWord2 <- CapWord1 Dash (CapWord1 / Word1)
 
 TwoLetterGenus <- ('Ca' / 'Ea' / 'Ge' / 'Ia' / 'Io' / 'Ix' / 'Lo' / 'Oa' /
   'Ra' / 'Ty' / 'Ua' / 'Aa' / 'Ja' / 'Zu' / 'La' / 'Qu' / 'As' / 'Ba')
@@ -92,12 +92,12 @@ Word <- !((AuthorPrefix / RankUninomial / Approximation / Word4) SpaceCharEOI)
       (WordApostr / WordStartsWithDigit / Word2 / Word1) &(SpaceCharEOI / '(')
 
 # TODO probably never used
-Word1 <- (lASCII dash)? NameLowerChar NameLowerChar+
+Word1 <- (LowerASCII Dash)? NameLowerChar NameLowerChar+
 
-WordStartsWithDigit <- [123456789] nums? ('.' / dash)? NameLowerChar NameLowerChar
+WordStartsWithDigit <- [123456789] Nums? ('.' / Dash)? NameLowerChar NameLowerChar
   NameLowerChar NameLowerChar+
 
-Word2 <- NameLowerChar+ dash? NameLowerChar+
+Word2 <- NameLowerChar+ Dash? NameLowerChar+
 
 WordApostr <- NameLowerChar NameLowerChar* Apostrophe Word1
 
@@ -154,7 +154,7 @@ AuthorWord <- !("bold:") (AuthorEtAl /AuthorWord2 / AuthorWord3 / AuthorPrefix)
 
 AuthorEtAl <- 'arg.' / 'et al.{?}' / ('et' / '&') ' al' '.'?
 
-AuthorWord2 <- AuthorWord3 dash AuthorWordSoft
+AuthorWord2 <- AuthorWord3 Dash AuthorWordSoft
 
 AuthorWord3 <- AuthorPrefixGlued? (AllCapsAuthorWord / CapAuthorWord) '.'?
 
@@ -177,35 +177,34 @@ AuthorPrefix1 <- ('ab' / 'af' / 'bis' / 'da' / 'der' / 'des' / 'den' / 'del' /
   'della' / 'dela' / 'de' / 'di' / 'du' / 'el' / 'la' / 'le' / 'ter' / 'van' /
   'd' Apostrophe / 'in' Apostrophe 't' / 'zur' / ('von' (_ ('d.'/ 'dem'))?) / ('v' (_'d')?)) &_
 
-AuthorUpperChar <- hASCII / MiscodedChar /
+AuthorUpperChar <- UpperASCII / MiscodedChar /
   [ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝĆČĎİĶĹĺĽľŁłŅŌŐŒŘŚŜŞŠŸŹŻŽƒǾȘȚ]
 
-
-AuthorLowerChar <- lASCII / MiscodedChar /
+AuthorLowerChar <- LowerASCII / MiscodedChar /
   [àáâãäåæçèéêëìíîïðñòóóôõöøùúûüýÿāăąćĉčďđ'ēĕėęěğīĭİıĺľłńņňŏőœŕřśşšţťũūŭůűźżžſǎǔǧșțȳß]
 
 Year <- YearRange / YearApprox / YearWithParens / YearWithPage / YearWithDot /
   YearWithChar / YearNum
 
-YearRange <- YearNum dash (nums+ [abcdefghijklmnopqrstuvwxyz?]*)
+YearRange <- YearNum Dash (Nums+ [abcdefghijklmnopqrstuvwxyz?]*)
 
 YearWithDot <-  YearNum '.'
 
 YearApprox  <- '[' _? YearNum _? ']'
 
-YearWithPage <- (YearWithChar / YearNum)  _? ":" _? nums+
+YearWithPage <- (YearWithChar / YearNum)  _? ":" _? Nums+
 
 YearWithParens <- '(' (YearWithChar / YearNum) ')'
 
-YearWithChar <- YearNum lASCII { p.AddWarn(YearCharWarn) }
+YearWithChar <- YearNum LowerASCII { p.AddWarn(YearCharWarn) }
 
-YearNum <- [12] [0789] nums (nums / '?') '?'*
+YearNum <- [12] [0789] Nums (Nums / '?') '?'*
 
 NameUpperChar <- UpperChar / UpperCharExtended
 
 UpperCharExtended <- [ÆŒÖ]
 
-UpperChar <- hASCII
+UpperChar <- UpperASCII
 
 NameLowerChar <- LowerChar / LowerCharExtended / MiscodedChar
 
@@ -213,25 +212,23 @@ MiscodedChar <- '�'
 
 LowerCharExtended <- [æœàâåãäáçčéèëíìïňññóòôøõöúùüŕřŗſššşž]
 
-LowerChar <- lASCII
+LowerChar <- LowerASCII
 
 SpaceCharEOI <- _ / !.
 
-# WordBorderChar <- _ / ';' / '.' / ',' / ':' / '(' / ')' / ']'
+Nums <- [0-9]
 
-nums <- [0-9]
+LowerASCII <- [a-z]
 
-lASCII <- [a-z]
+UpperASCII <- [A-Z]
 
-hASCII <- [A-Z]
+Apostrophe <- ApostrOther / ApostrASCII
 
-Apostrophe <- DumbApostr / Apostr
+ApostrASCII <- '\''
 
-DumbApostr <- '‘' / '’'
+ApostrOther <- '‘' / '’'
 
-Apostr <- '\''
-
-dash <- '-'
+Dash <- '-'
 
 _ <- MultipleSpace / SingleSpace
 

@@ -165,7 +165,7 @@ var warningMap = map[grm.Warning]Warning{
 		Quality: 1,
 		Message: "The genus is a homonym of a bacterial genus",
 	},
-	grm.ApostDumbWarn: Warning{
+	grm.ApostrOtherWarn: Warning{
 		Quality: 3,
 		Message: "Not an ASCII apostrophe",
 	},

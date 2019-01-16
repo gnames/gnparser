@@ -846,8 +846,8 @@ func (p *Engine) newWordNode(n *node32, wt WordType) *wordNode {
 		case ruleWordStartsWithDigit:
 			p.AddWarn(SpeciesNumericWarn)
 			wrd.normalizeNums()
-		case ruleDumbApostr:
-			p.AddWarn(ApostDumbWarn)
+		case ruleApostrOther:
+			p.AddWarn(ApostrOtherWarn)
 			nv, _ := str.ToASCII([]byte(wrd.Value), str.GlobalTransliterations)
 			wrd.NormValue = string(nv)
 		}

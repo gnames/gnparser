@@ -116,13 +116,13 @@ const (
 	ruleLowerCharExtended
 	ruleLowerChar
 	ruleSpaceCharEOI
-	rulenums
-	rulelASCII
-	rulehASCII
+	ruleNums
+	ruleLowerASCII
+	ruleUpperASCII
 	ruleApostrophe
-	ruleDumbApostr
-	ruleApostr
-	ruledash
+	ruleApostrASCII
+	ruleApostrOther
+	ruleDash
 	rule_
 	ruleMultipleSpace
 	ruleSingleSpace
@@ -230,13 +230,13 @@ var rul3s = [...]string{
 	"LowerCharExtended",
 	"LowerChar",
 	"SpaceCharEOI",
-	"nums",
-	"lASCII",
-	"hASCII",
+	"Nums",
+	"LowerASCII",
+	"UpperASCII",
 	"Apostrophe",
-	"DumbApostr",
-	"Apostr",
-	"dash",
+	"ApostrASCII",
+	"ApostrOther",
+	"Dash",
 	"_",
 	"MultipleSpace",
 	"SingleSpace",
@@ -2995,7 +2995,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position252, tokenIndex252
 			return false
 		},
-		/* 37 CapWord2 <- <(CapWord1 dash (CapWord1 / Word1))> */
+		/* 37 CapWord2 <- <(CapWord1 Dash (CapWord1 / Word1))> */
 		func() bool {
 			position258, tokenIndex258 := position, tokenIndex
 			{
@@ -3003,7 +3003,7 @@ func (p *Engine) Init() {
 				if !_rules[ruleCapWord1]() {
 					goto l258
 				}
-				if !_rules[ruledash]() {
+				if !_rules[ruleDash]() {
 					goto l258
 				}
 				{
@@ -3326,17 +3326,17 @@ func (p *Engine) Init() {
 			position, tokenIndex = position282, tokenIndex282
 			return false
 		},
-		/* 40 Word1 <- <((lASCII dash)? NameLowerChar NameLowerChar+)> */
+		/* 40 Word1 <- <((LowerASCII Dash)? NameLowerChar NameLowerChar+)> */
 		func() bool {
 			position296, tokenIndex296 := position, tokenIndex
 			{
 				position297 := position
 				{
 					position298, tokenIndex298 := position, tokenIndex
-					if !_rules[rulelASCII]() {
+					if !_rules[ruleLowerASCII]() {
 						goto l298
 					}
-					if !_rules[ruledash]() {
+					if !_rules[ruleDash]() {
 						goto l298
 					}
 					goto l299
@@ -3367,7 +3367,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position296, tokenIndex296
 			return false
 		},
-		/* 41 WordStartsWithDigit <- <(('1' / '2' / '3' / '4' / '5' / '6' / '7' / '8' / '9') nums? ('.' / dash)? NameLowerChar NameLowerChar NameLowerChar NameLowerChar+)> */
+		/* 41 WordStartsWithDigit <- <(('1' / '2' / '3' / '4' / '5' / '6' / '7' / '8' / '9') Nums? ('.' / Dash)? NameLowerChar NameLowerChar NameLowerChar NameLowerChar+)> */
 		func() bool {
 			position302, tokenIndex302 := position, tokenIndex
 			{
@@ -3438,7 +3438,7 @@ func (p *Engine) Init() {
 			l304:
 				{
 					position313, tokenIndex313 := position, tokenIndex
-					if !_rules[rulenums]() {
+					if !_rules[ruleNums]() {
 						goto l313
 					}
 					goto l314
@@ -3457,7 +3457,7 @@ func (p *Engine) Init() {
 						goto l317
 					l318:
 						position, tokenIndex = position317, tokenIndex317
-						if !_rules[ruledash]() {
+						if !_rules[ruleDash]() {
 							goto l315
 						}
 					}
@@ -3496,7 +3496,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position302, tokenIndex302
 			return false
 		},
-		/* 42 Word2 <- <(NameLowerChar+ dash? NameLowerChar+)> */
+		/* 42 Word2 <- <(NameLowerChar+ Dash? NameLowerChar+)> */
 		func() bool {
 			position321, tokenIndex321 := position, tokenIndex
 			{
@@ -3516,7 +3516,7 @@ func (p *Engine) Init() {
 				}
 				{
 					position325, tokenIndex325 := position, tokenIndex
-					if !_rules[ruledash]() {
+					if !_rules[ruleDash]() {
 						goto l325
 					}
 					goto l326
@@ -4989,7 +4989,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position505, tokenIndex505
 			return false
 		},
-		/* 70 AuthorWord2 <- <(AuthorWord3 dash AuthorWordSoft)> */
+		/* 70 AuthorWord2 <- <(AuthorWord3 Dash AuthorWordSoft)> */
 		func() bool {
 			position514, tokenIndex514 := position, tokenIndex
 			{
@@ -4997,7 +4997,7 @@ func (p *Engine) Init() {
 				if !_rules[ruleAuthorWord3]() {
 					goto l514
 				}
-				if !_rules[ruledash]() {
+				if !_rules[ruleDash]() {
 					goto l514
 				}
 				if !_rules[ruleAuthorWordSoft]() {
@@ -5761,14 +5761,14 @@ func (p *Engine) Init() {
 			position, tokenIndex = position568, tokenIndex568
 			return false
 		},
-		/* 80 AuthorUpperChar <- <(hASCII / MiscodedChar / ('À' / 'Á' / 'Â' / 'Ã' / 'Ä' / 'Å' / 'Æ' / 'Ç' / 'È' / 'É' / 'Ê' / 'Ë' / 'Ì' / 'Í' / 'Î' / 'Ï' / 'Ð' / 'Ñ' / 'Ò' / 'Ó' / 'Ô' / 'Õ' / 'Ö' / 'Ø' / 'Ù' / 'Ú' / 'Û' / 'Ü' / 'Ý' / 'Ć' / 'Č' / 'Ď' / 'İ' / 'Ķ' / 'Ĺ' / 'ĺ' / 'Ľ' / 'ľ' / 'Ł' / 'ł' / 'Ņ' / 'Ō' / 'Ő' / 'Œ' / 'Ř' / 'Ś' / 'Ŝ' / 'Ş' / 'Š' / 'Ÿ' / 'Ź' / 'Ż' / 'Ž' / 'ƒ' / 'Ǿ' / 'Ș' / 'Ț'))> */
+		/* 80 AuthorUpperChar <- <(UpperASCII / MiscodedChar / ('À' / 'Á' / 'Â' / 'Ã' / 'Ä' / 'Å' / 'Æ' / 'Ç' / 'È' / 'É' / 'Ê' / 'Ë' / 'Ì' / 'Í' / 'Î' / 'Ï' / 'Ð' / 'Ñ' / 'Ò' / 'Ó' / 'Ô' / 'Õ' / 'Ö' / 'Ø' / 'Ù' / 'Ú' / 'Û' / 'Ü' / 'Ý' / 'Ć' / 'Č' / 'Ď' / 'İ' / 'Ķ' / 'Ĺ' / 'ĺ' / 'Ľ' / 'ľ' / 'Ł' / 'ł' / 'Ņ' / 'Ō' / 'Ő' / 'Œ' / 'Ř' / 'Ś' / 'Ŝ' / 'Ş' / 'Š' / 'Ÿ' / 'Ź' / 'Ż' / 'Ž' / 'ƒ' / 'Ǿ' / 'Ș' / 'Ț'))> */
 		func() bool {
 			position600, tokenIndex600 := position, tokenIndex
 			{
 				position601 := position
 				{
 					position602, tokenIndex602 := position, tokenIndex
-					if !_rules[rulehASCII]() {
+					if !_rules[ruleUpperASCII]() {
 						goto l603
 					}
 					goto l602
@@ -6189,14 +6189,14 @@ func (p *Engine) Init() {
 			position, tokenIndex = position600, tokenIndex600
 			return false
 		},
-		/* 81 AuthorLowerChar <- <(lASCII / MiscodedChar / ('à' / 'á' / 'â' / 'ã' / 'ä' / 'å' / 'æ' / 'ç' / 'è' / 'é' / 'ê' / 'ë' / 'ì' / 'í' / 'î' / 'ï' / 'ð' / 'ñ' / 'ò' / 'ó' / 'ó' / 'ô' / 'õ' / 'ö' / 'ø' / 'ù' / 'ú' / 'û' / 'ü' / 'ý' / 'ÿ' / 'ā' / 'ă' / 'ą' / 'ć' / 'ĉ' / 'č' / 'ď' / 'đ' / '\'' / 'ē' / 'ĕ' / 'ė' / 'ę' / 'ě' / 'ğ' / 'ī' / 'ĭ' / 'İ' / 'ı' / 'ĺ' / 'ľ' / 'ł' / 'ń' / 'ņ' / 'ň' / 'ŏ' / 'ő' / 'œ' / 'ŕ' / 'ř' / 'ś' / 'ş' / 'š' / 'ţ' / 'ť' / 'ũ' / 'ū' / 'ŭ' / 'ů' / 'ű' / 'ź' / 'ż' / 'ž' / 'ſ' / 'ǎ' / 'ǔ' / 'ǧ' / 'ș' / 'ț' / 'ȳ' / 'ß'))> */
+		/* 81 AuthorLowerChar <- <(LowerASCII / MiscodedChar / ('à' / 'á' / 'â' / 'ã' / 'ä' / 'å' / 'æ' / 'ç' / 'è' / 'é' / 'ê' / 'ë' / 'ì' / 'í' / 'î' / 'ï' / 'ð' / 'ñ' / 'ò' / 'ó' / 'ó' / 'ô' / 'õ' / 'ö' / 'ø' / 'ù' / 'ú' / 'û' / 'ü' / 'ý' / 'ÿ' / 'ā' / 'ă' / 'ą' / 'ć' / 'ĉ' / 'č' / 'ď' / 'đ' / '\'' / 'ē' / 'ĕ' / 'ė' / 'ę' / 'ě' / 'ğ' / 'ī' / 'ĭ' / 'İ' / 'ı' / 'ĺ' / 'ľ' / 'ł' / 'ń' / 'ņ' / 'ň' / 'ŏ' / 'ő' / 'œ' / 'ŕ' / 'ř' / 'ś' / 'ş' / 'š' / 'ţ' / 'ť' / 'ũ' / 'ū' / 'ŭ' / 'ů' / 'ű' / 'ź' / 'ż' / 'ž' / 'ſ' / 'ǎ' / 'ǔ' / 'ǧ' / 'ș' / 'ț' / 'ȳ' / 'ß'))> */
 		func() bool {
 			position662, tokenIndex662 := position, tokenIndex
 			{
 				position663 := position
 				{
 					position664, tokenIndex664 := position, tokenIndex
-					if !_rules[rulelASCII]() {
+					if !_rules[ruleLowerASCII]() {
 						goto l665
 					}
 					goto l664
@@ -6847,7 +6847,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position749, tokenIndex749
 			return false
 		},
-		/* 83 YearRange <- <(YearNum dash (nums+ ('a' / 'b' / 'c' / 'd' / 'e' / 'f' / 'g' / 'h' / 'i' / 'j' / 'k' / 'l' / 'm' / 'n' / 'o' / 'p' / 'q' / 'r' / 's' / 't' / 'u' / 'v' / 'w' / 'x' / 'y' / 'z' / '?')*))> */
+		/* 83 YearRange <- <(YearNum Dash (Nums+ ('a' / 'b' / 'c' / 'd' / 'e' / 'f' / 'g' / 'h' / 'i' / 'j' / 'k' / 'l' / 'm' / 'n' / 'o' / 'p' / 'q' / 'r' / 's' / 't' / 'u' / 'v' / 'w' / 'x' / 'y' / 'z' / '?')*))> */
 		func() bool {
 			position758, tokenIndex758 := position, tokenIndex
 			{
@@ -6855,16 +6855,16 @@ func (p *Engine) Init() {
 				if !_rules[ruleYearNum]() {
 					goto l758
 				}
-				if !_rules[ruledash]() {
+				if !_rules[ruleDash]() {
 					goto l758
 				}
-				if !_rules[rulenums]() {
+				if !_rules[ruleNums]() {
 					goto l758
 				}
 			l760:
 				{
 					position761, tokenIndex761 := position, tokenIndex
-					if !_rules[rulenums]() {
+					if !_rules[ruleNums]() {
 						goto l761
 					}
 					goto l760
@@ -7137,7 +7137,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position793, tokenIndex793
 			return false
 		},
-		/* 86 YearWithPage <- <((YearWithChar / YearNum) _? ':' _? nums+)> */
+		/* 86 YearWithPage <- <((YearWithChar / YearNum) _? ':' _? Nums+)> */
 		func() bool {
 			position799, tokenIndex799 := position, tokenIndex
 			{
@@ -7179,13 +7179,13 @@ func (p *Engine) Init() {
 					position, tokenIndex = position805, tokenIndex805
 				}
 			l806:
-				if !_rules[rulenums]() {
+				if !_rules[ruleNums]() {
 					goto l799
 				}
 			l807:
 				{
 					position808, tokenIndex808 := position, tokenIndex
-					if !_rules[rulenums]() {
+					if !_rules[ruleNums]() {
 						goto l808
 					}
 					goto l807
@@ -7232,7 +7232,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position809, tokenIndex809
 			return false
 		},
-		/* 88 YearWithChar <- <(YearNum lASCII Action0)> */
+		/* 88 YearWithChar <- <(YearNum LowerASCII Action0)> */
 		func() bool {
 			position813, tokenIndex813 := position, tokenIndex
 			{
@@ -7240,7 +7240,7 @@ func (p *Engine) Init() {
 				if !_rules[ruleYearNum]() {
 					goto l813
 				}
-				if !_rules[rulelASCII]() {
+				if !_rules[ruleLowerASCII]() {
 					goto l813
 				}
 				if !_rules[ruleAction0]() {
@@ -7253,7 +7253,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position813, tokenIndex813
 			return false
 		},
-		/* 89 YearNum <- <(('1' / '2') ('0' / '7' / '8' / '9') nums (nums / '?') '?'*)> */
+		/* 89 YearNum <- <(('1' / '2') ('0' / '7' / '8' / '9') Nums (Nums / '?') '?'*)> */
 		func() bool {
 			position815, tokenIndex815 := position, tokenIndex
 			{
@@ -7302,12 +7302,12 @@ func (p *Engine) Init() {
 					position++
 				}
 			l819:
-				if !_rules[rulenums]() {
+				if !_rules[ruleNums]() {
 					goto l815
 				}
 				{
 					position823, tokenIndex823 := position, tokenIndex
-					if !_rules[rulenums]() {
+					if !_rules[ruleNums]() {
 						goto l824
 					}
 					goto l823
@@ -7396,12 +7396,12 @@ func (p *Engine) Init() {
 			position, tokenIndex = position831, tokenIndex831
 			return false
 		},
-		/* 92 UpperChar <- <hASCII> */
+		/* 92 UpperChar <- <UpperASCII> */
 		func() bool {
 			position836, tokenIndex836 := position, tokenIndex
 			{
 				position837 := position
-				if !_rules[rulehASCII]() {
+				if !_rules[ruleUpperASCII]() {
 					goto l836
 				}
 				add(ruleUpperChar, position837)
@@ -7723,12 +7723,12 @@ func (p *Engine) Init() {
 			position, tokenIndex = position845, tokenIndex845
 			return false
 		},
-		/* 96 LowerChar <- <lASCII> */
+		/* 96 LowerChar <- <LowerASCII> */
 		func() bool {
 			position883, tokenIndex883 := position, tokenIndex
 			{
 				position884 := position
-				if !_rules[rulelASCII]() {
+				if !_rules[ruleLowerASCII]() {
 					goto l883
 				}
 				add(ruleLowerChar, position884)
@@ -7769,7 +7769,7 @@ func (p *Engine) Init() {
 			position, tokenIndex = position885, tokenIndex885
 			return false
 		},
-		/* 98 nums <- <[0-9]> */
+		/* 98 Nums <- <[0-9]> */
 		func() bool {
 			position890, tokenIndex890 := position, tokenIndex
 			{
@@ -7778,14 +7778,14 @@ func (p *Engine) Init() {
 					goto l890
 				}
 				position++
-				add(rulenums, position891)
+				add(ruleNums, position891)
 			}
 			return true
 		l890:
 			position, tokenIndex = position890, tokenIndex890
 			return false
 		},
-		/* 99 lASCII <- <[a-z]> */
+		/* 99 LowerASCII <- <[a-z]> */
 		func() bool {
 			position892, tokenIndex892 := position, tokenIndex
 			{
@@ -7794,14 +7794,14 @@ func (p *Engine) Init() {
 					goto l892
 				}
 				position++
-				add(rulelASCII, position893)
+				add(ruleLowerASCII, position893)
 			}
 			return true
 		l892:
 			position, tokenIndex = position892, tokenIndex892
 			return false
 		},
-		/* 100 hASCII <- <[A-Z]> */
+		/* 100 UpperASCII <- <[A-Z]> */
 		func() bool {
 			position894, tokenIndex894 := position, tokenIndex
 			{
@@ -7810,27 +7810,27 @@ func (p *Engine) Init() {
 					goto l894
 				}
 				position++
-				add(rulehASCII, position895)
+				add(ruleUpperASCII, position895)
 			}
 			return true
 		l894:
 			position, tokenIndex = position894, tokenIndex894
 			return false
 		},
-		/* 101 Apostrophe <- <(DumbApostr / Apostr)> */
+		/* 101 Apostrophe <- <(ApostrOther / ApostrASCII)> */
 		func() bool {
 			position896, tokenIndex896 := position, tokenIndex
 			{
 				position897 := position
 				{
 					position898, tokenIndex898 := position, tokenIndex
-					if !_rules[ruleDumbApostr]() {
+					if !_rules[ruleApostrOther]() {
 						goto l899
 					}
 					goto l898
 				l899:
 					position, tokenIndex = position898, tokenIndex898
-					if !_rules[ruleApostr]() {
+					if !_rules[ruleApostrASCII]() {
 						goto l896
 					}
 				}
@@ -7842,50 +7842,50 @@ func (p *Engine) Init() {
 			position, tokenIndex = position896, tokenIndex896
 			return false
 		},
-		/* 102 DumbApostr <- <('‘' / '’')> */
+		/* 102 ApostrASCII <- <'\''> */
 		func() bool {
 			position900, tokenIndex900 := position, tokenIndex
 			{
 				position901 := position
-				{
-					position902, tokenIndex902 := position, tokenIndex
-					if buffer[position] != rune('‘') {
-						goto l903
-					}
-					position++
-					goto l902
-				l903:
-					position, tokenIndex = position902, tokenIndex902
-					if buffer[position] != rune('’') {
-						goto l900
-					}
-					position++
+				if buffer[position] != rune('\'') {
+					goto l900
 				}
-			l902:
-				add(ruleDumbApostr, position901)
+				position++
+				add(ruleApostrASCII, position901)
 			}
 			return true
 		l900:
 			position, tokenIndex = position900, tokenIndex900
 			return false
 		},
-		/* 103 Apostr <- <'\''> */
+		/* 103 ApostrOther <- <('‘' / '’')> */
 		func() bool {
-			position904, tokenIndex904 := position, tokenIndex
+			position902, tokenIndex902 := position, tokenIndex
 			{
-				position905 := position
-				if buffer[position] != rune('\'') {
+				position903 := position
+				{
+					position904, tokenIndex904 := position, tokenIndex
+					if buffer[position] != rune('‘') {
+						goto l905
+					}
+					position++
 					goto l904
+				l905:
+					position, tokenIndex = position904, tokenIndex904
+					if buffer[position] != rune('’') {
+						goto l902
+					}
+					position++
 				}
-				position++
-				add(ruleApostr, position905)
+			l904:
+				add(ruleApostrOther, position903)
 			}
 			return true
-		l904:
-			position, tokenIndex = position904, tokenIndex904
+		l902:
+			position, tokenIndex = position902, tokenIndex902
 			return false
 		},
-		/* 104 dash <- <'-'> */
+		/* 104 Dash <- <'-'> */
 		func() bool {
 			position906, tokenIndex906 := position, tokenIndex
 			{
@@ -7894,7 +7894,7 @@ func (p *Engine) Init() {
 					goto l906
 				}
 				position++
-				add(ruledash, position907)
+				add(ruleDash, position907)
 			}
 			return true
 		l906:

@@ -179,5 +179,5 @@ var nodeRules = map[pegRule]struct{}{
 	ruleYearNum:                         struct{}{},
 	ruleUpperCharExtended:               struct{}{},
 	ruleLowerCharExtended:               struct{}{},
-	ruleDumbApostr:                      struct{}{},
+	ruleApostrOther:                     struct{}{},
 }
