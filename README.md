@@ -1,4 +1,4 @@
-# Global Names Parser: gnparser
+# Global Names Parser: gnparser written in Go
 
 ``gnparser`` splits scientific names into their component elements with
 associated meta information.  For example, ``"Homo sapiens Linnaeus"`` is
@@ -44,8 +44,8 @@ the recursive nature of data embedded in names. By contrast, ``gnparser``
 is able to deal with the most complex scientific name-strings.
 
 ``gnparser`` takes a name-string like ``Drosophila (Sophophora) melanogaster
-Meigen, 1830`` and returns parsed components in `JSON` format. This behavior is definded
-in its tests and the [test file] is a good source of information about
+Meigen, 1830`` and returns parsed components in `JSON` format. This behavior is
+defined in its tests and the [test file] is a good source of information about
 parser's capabilities, its input and output.
 
 ## Speed
@@ -89,7 +89,7 @@ Canonical forms of a scientific name are the latinized components without
 annotations, authors or dates. They are great for matching names despite
 alternative spellings. Use the ``canonical -> simple`` or ``canonical -> full``
 fields from parsing results for this use case. ``Full`` version of canonical
-form includes infraspecific ranks and hybrid character for named hybrids.
+form includes infra-specific ranks and hybrid character for named hybrids.
 You can use ``--format simple`` flag to simplify output.
 
 ### Normalizing name-strings
@@ -154,11 +154,11 @@ at 6th character and ends *before* 11th character of the string.
 Compiled programs in Go are self-sufficient and small (``gnparser`` is only a
 few megabytes). As a result the binary file of ``gnparser`` is all you need to
 make it work. You can install it either by downloading the [latest version of
-the binary][releases] for your operating sytem, and placing it in you ``PATH``.
+the binary][releases] for your operating system, and placing it in you ``PATH``.
 
 ### Linux or OS X
 
-Move ``gnparser`` executabe somewhere in your PATH
+Move ``gnparser`` executable somewhere in your PATH
 (for example ``/usr/local/bin``)
 
 ```bash
@@ -182,7 +182,7 @@ copy path_to\gnparser.exe C:\bin
 
 ## Using Go tools
 
-If you hve Go installed on your computer use
+If you have Go installed on your computer use
 
 ```bash
 go get -u gitlab.com/gogna/gnparser
@@ -224,9 +224,9 @@ echo "Parus major Linnaeus, 1788" | gnparser
 
 To parse a file:
 
-There is no flag for parsing a file. If parser finds filepath on your computer
+There is no flag for parsing a file. If parser finds file path on your computer
 it will parse the content of the file, assuming every line is a new scientific
-name.  If the filepath is not found, ``gnparser`` will try to parse the "path"
+name.  If the file path is not found, ``gnparser`` will try to parse the "path"
 as a scientific name.
 
 Parsed results will stream to STDOUT, while progress of the parsing
@@ -252,7 +252,7 @@ Relevant flags:
 : help information about flags
 
 ``--grpc -g``
-: sets a port to run grpc server, and starts gnparser in gRPC mode.
+: sets a port to run gRPC server, and starts gnparser in gRPC mode.
 
 ``--jobs -j``
 : number or workers allocated per gRPC request. Default corresponds to the
