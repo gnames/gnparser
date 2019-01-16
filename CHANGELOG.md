@@ -2,7 +2,9 @@
 
 ## Unreleased
 
+
 - Add [#30]: write inline and README documentation.
+- Add [#29]: docker and dockerhub support.
 - Add [#26]: get all parser rules to CamelCase format.
 
 ## [v0.5.1]

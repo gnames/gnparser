@@ -49,7 +49,7 @@ install: version peg grpc asset
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) $(GOINSTALL)
 
-release: version peg grpc asset
+release: version peg grpc asset dockerhub
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_LINUX) $(GOBUILD); \
@@ -66,3 +66,12 @@ release: version peg grpc asset
 grpc:
 	cd grpc; \
 	protoc -I . ./gnparser.proto --go_out=plugins=grpc:.;
+
+docker: build
+	docker build -t gnames/gognparser:latest -t gnames/gognparser:$(VERSION) .; \
+	cd gnparser; \
+	$(GOCLEAN);
+
+dockerhub: docker
+	docker push gnames/gognparser; \
+	docker push gnames/gognparser:$(VERSION)
