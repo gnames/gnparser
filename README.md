@@ -69,17 +69,17 @@ more efficient JSON conversion.
 
 ## Features
 
--  Fastest parser ever, rock solid and elegant
+-  Fastest parser ever.
 -  Very easy to install, just placing executable somewhere in PATH is sufficient.
--  Extracts all elements from a name, not only canonical forms
--  Works with very complex scientific names, including hybrids
+-  Extracts all elements from a name, not only canonical forms.
+-  Works with very complex scientific names, including hybrids.
 -  Includes gRPC server that can be used as if a native method call from C++,
    C#, Java, Python, Ruby, PHP, JavaScript, Objective C, Dart.
 -  Use as a native library from Go projects.
--  Can run as a command line application
+-  Can run as a command line application.
 -  Can be scaled to many CPUs and computers (if 300 millions names an
    hour is not enough).
--  Calculates a stable UUID version 5 ID from the content of a string
+-  Calculates a stable UUID version 5 ID from the content of a string.
 
 ## Use Cases
 
