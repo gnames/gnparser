@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- Add [#26]: get all parser rules to camelCase format.
+- Add [#30]: write inline and README documentation.
+- Add [#26]: get all parser rules to CamelCase format.
 
 ## [v0.5.1]
 
@@ -26,6 +27,8 @@ This document follows [changelog guidelines]
 
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.0
 
+[#30]: https://gitlab.com/gogna/gnparser/issues/30
+[#29]: https://gitlab.com/gogna/gnparser/issues/29
 [#28]: https://gitlab.com/gogna/gnparser/issues/28
 [#27]: https://gitlab.com/gogna/gnparser/issues/27
 [#26]: https://gitlab.com/gogna/gnparser/issues/26
