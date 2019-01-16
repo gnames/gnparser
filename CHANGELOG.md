@@ -2,11 +2,13 @@
 
 ## Unreleased
 
-## [v0.5.0]
+- Add [#26]: get all parser rules to camelCase format.
 
+## [v0.5.1]
+
+- Add: fix Makefile
 - Add [#28]: non-ASCII apostrophe support.
 - Add [#27]: agamosp. agamossp. agamovar. ranks.
-- Add [#26]: get all parser rules to camelCase format.
 - Add [#25]: reorganize output to be more readable and logical.
 - Add [#24]: gRPC server for receiving name-strings and streaming back the
              parsed results.
@@ -22,7 +24,7 @@
 
 This document follows [changelog guidelines]
 
-[v0.5.0]: https://gitlab.com/gogna/gnparser/tree/v0.0.0
+[v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.0
 
 [#28]: https://gitlab.com/gogna/gnparser/issues/28
 [#27]: https://gitlab.com/gogna/gnparser/issues/27
