@@ -2,7 +2,9 @@
 
 ## Unreleased
 
+## [v0.6.0]
 
+- Add [#35]: gRPC method to preserve order in output according to input
 - Add [#30]: write inline and README documentation.
 - Add [#29]: docker and dockerhub support.
 - Add [#26]: get all parser rules to CamelCase format.
@@ -27,7 +29,9 @@
 
 This document follows [changelog guidelines]
 
-[v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.0
+[v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
+
+[v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
 [#30]: https://gitlab.com/gogna/gnparser/issues/30
 [#29]: https://gitlab.com/gogna/gnparser/issues/29

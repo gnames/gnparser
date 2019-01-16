@@ -12,10 +12,10 @@ parsed into human readable information as follows:
 
 This parser, written in Go, is the 3rd iteration of the project. The first,
 [biodiversity] had been written in Ruby, the second, [also
-gnparser][gnparser-scala], had been written in Go. This project is learned from
-previous ones, and, when it matures, is going to be the substitution of other
-two, and will be the only one that is maintained further.
-All three projects were developed as a part of [Global Names
+gnparser][gnparser-scala], had been written in Go. This project is learned
+from previous ones, and, when it matures, it is going to be the a
+substitution of other two, and will be the only one that is maintained
+further. All three projects were developed as a part of [Global Names
 Architecture Project][gna].
 
 Try as a command tool under Windows, Mac or Linux by downloading the [latest
@@ -33,8 +33,8 @@ gnparser -h
 ## Introduction
 
 Global Names Parser or ``gnparser`` is a program written in Go for breaking up
-scientific names into their different elements.  It is uses [peg] -- a Parsing
-Expression Grammar (PEG) library.
+scientific names into their different elements.  It uses [peg] -- a Parsing
+Expression Grammar (PEG) tool.
 
 Many other parsing algorithms for scientific names use regular expressions.
 This approach works well for extracting canonical forms in simple cases.
@@ -69,18 +69,18 @@ more efficient JSON conversion.
 
 ## Features
 
--  Fastest parser ever.
--  Very easy to install, just placing executable somewhere in the PATH is
-   sufficient.
--  Extracts all elements from a name, not only canonical forms.
--  Works with very complex scientific names, including hybrids.
--  Includes gRPC server that can be used as if a native method call from C++,
-   C#, Java, Python, Ruby, PHP, JavaScript, Objective C, Dart.
--  Use as a native library from Go projects.
--  Can run as a command line application.
--  Can be scaled to many CPUs and computers (if 300 millions names an
+- Fastest parser ever.
+- Very easy to install, just placing executable somewhere in the PATH is
+  sufficient.
+- Extracts all elements from a name, not only canonical forms.
+- Works with very complex scientific names, including hybrids.
+- Includes gRPC server that can be used as if a native method call from C++,
+  C#, Java, Python, Ruby, PHP, JavaScript, Objective C, Dart.
+- Use as a native library from Go projects.
+- Can run as a command line application.
+- Can be scaled to many CPUs and computers (if 300 millions names an
    hour is not enough).
--  Calculates a stable UUID version 5 ID from the content of a string.
+- Calculates a stable UUID version 5 ID from the content of a string.
 
 ## Use Cases
 
@@ -115,13 +115,13 @@ If there are problems with parsing a name, parser generates ``qualityWarnings``
 messages and lowers parsing ``quality`` of the name.  Quality values mean the
 following:
 
--  ``"quality": 1`` - No problems were detected
--  ``"quality": 2`` - There were small problems, normalized result
-   should still be good
--  ``"quality": 3`` - There were serious problems with the name, and the
-   final result is rather doubtful
--  ``"quality": 0`` - A string could not be recognized as a scientific
-   name and parsing fails
+- ``"quality": 1`` - No problems were detected
+- ``"quality": 2`` - There were small problems, normalized result
+  should still be good
+- ``"quality": 3`` - There were serious problems with the name, and the
+  final result is rather doubtful
+- ``"quality": 0`` - A string could not be recognized as a scientific
+  name and parsing fails
 
 ### Creating stable GUIDs for name-strings
 
@@ -236,6 +236,13 @@ will be directed to STDERR.
 ```bash
 gnparser -j 200 names.txt > names_parsed.txt
 ```
+
+To parse a file returning results in the same order as they are given (slower):
+
+```bash
+gnparser -j 1 names.txt > names_parsed.txt
+```
+
 Potentially the input file might contain millions of names, therefore creating
 one properly formatted JSON output might be prohibitively expensive. Therefore
 the parser creates one JSON line per name (when ``compact`` format is used)
@@ -293,8 +300,8 @@ func main() {
 
 ## Contributors
 
-* [Dmitry Mozzherin]
-* [Geoff Ower]
+- [Dmitry Mozzherin]
+- [Geoff Ower]
 
 ## License
 

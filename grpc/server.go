@@ -65,6 +65,43 @@ func (gnps gnparserServer) Parse(stream GNparser_ParseServer) error {
 	}
 }
 
+func (gnps gnparserServer) ParseInOrder(stream GNparser_ParseInOrderServer) error {
+	gnp := gnparser.NewGNparser()
+	firstRecord := true
+
+	for {
+		in, err := stream.Recv()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+		switch c := in.Content.(type) {
+		case *Input_Name:
+			if firstRecord {
+				firstRecord = false
+			}
+			res, err := gnp.ParseAndFormat(c.Name)
+			strError := ""
+			if err != nil {
+				strError = err.Error()
+			}
+			out := &Output{Value: res, Error: strError}
+			err = stream.Send(out)
+			if err != nil {
+				return err
+			}
+		case *Input_Format:
+			if firstRecord {
+				firstRecord = false
+				f := c.Format
+				gnp = gnparser.NewGNparser(gnparser.Format(strFormat(f)))
+			}
+		}
+	}
+}
+
 func strFormat(f Format) string {
 	switch f {
 	case Format_Compact:
