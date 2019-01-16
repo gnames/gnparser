@@ -45,6 +45,8 @@ func Format(f string) Option {
 	}
 }
 
+// IsTest Option to substitute real version of the parser with 'test_version'
+// string.
 func IsTest() Option {
 	return func(gnp *GNparser) {
 		gnp.isTest = true
@@ -64,6 +66,7 @@ func NewGNparser(opts ...Option) GNparser {
 	return gnp
 }
 
+// WorkersNum returns the number of workers for concurrent parsing.
 func (gnp *GNparser) WorkersNum() int {
 	return gnp.workersNum
 }

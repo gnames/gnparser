@@ -8,9 +8,13 @@ import (
 type format int
 
 const (
+	// Compact is a JSON format without new lines and spaces.
 	Compact format = iota
+	// Pretty is a JSON nested easy to read format.
 	Pretty
+	// Simple is a flat format with only few most 'popular' fields.
 	Simple
+	// Debug is a format that shows complete and truncated AST for debugging.
 	Debug
 )
 
@@ -27,13 +31,13 @@ func newFormat(f string) format {
 			return format(i)
 		}
 	}
-	err := fmt.Errorf("Unknown format '%s', using default '%s' format.",
+	err := fmt.Errorf("unknown format '%s', using default '%s' format",
 		f, gnp.format.String())
 	log.Println(err)
 	return gnp.format
 }
 
-// OutputForat returns string representation of the current output format
+// OutputFormat returns string representation of the current output format
 // for GNparser
 func (gnp *GNparser) OutputFormat() string {
 	return gnp.format.String()
@@ -43,10 +47,4 @@ func (gnp *GNparser) OutputFormat() string {
 // output formats.
 func AvailableFormats() []string {
 	return formats
-}
-
-// StrToFormat function creates an internal type of a supported format
-// out of string.
-func StrToFormat(s string) format {
-	return newFormat(s)
 }
