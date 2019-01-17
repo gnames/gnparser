@@ -20,11 +20,11 @@ Architecture Project][gna].
 
 Try as a command tool under Windows, Mac or Linux by downloading the [latest
 release][releases], uncompressing it, and copying `gnparser` binary somewhere
-in you PATH.
+in your PATH.
 
 ```bash
 wget https://www.dropbox.com/s/blvmejmp4378cao/gnparser-v0.5.1-linux.tar.gz
-tar xvf gnparser-v0.5.1-linux-tar.gz
+tar xvf gnparser-v0.5.1-linux.tar.gz
 sudo cp gnparser /usr/local/bin
 gnparser -f pretty "Homo sapiens Linnaeus"
 gnparser -h
@@ -70,7 +70,8 @@ more efficient JSON conversion.
 ## Features
 
 -  Fastest parser ever.
--  Very easy to install, just placing executable somewhere in PATH is sufficient.
+-  Very easy to install, just placing executable somewhere in the PATH is
+   sufficient.
 -  Extracts all elements from a name, not only canonical forms.
 -  Works with very complex scientific names, including hybrids.
 -  Includes gRPC server that can be used as if a native method call from C++,
@@ -153,8 +154,8 @@ at 6th character and ends *before* 11th character of the string.
 
 Compiled programs in Go are self-sufficient and small (``gnparser`` is only a
 few megabytes). As a result the binary file of ``gnparser`` is all you need to
-make it work. You can install it either by downloading the [latest version of
-the binary][releases] for your operating system, and placing it in you ``PATH``.
+make it work. You can install it by downloading the [latest version of the
+binary][releases] for your operating system, and placing it in your ``PATH``.
 
 ### Linux or OS X
 
@@ -162,13 +163,13 @@ Move ``gnparser`` executable somewhere in your PATH
 (for example ``/usr/local/bin``)
 
 ```bash
-sudo mv path_to/gnfinder /usr/local/bin
+sudo mv path_to/gnparser /usr/local/bin
 ```
 
 ### Windows
 
 One possible way would be to create a default folder for executables and place
-``gnfinder`` there.
+``gnparser`` there.
 
 Use ``Windows+R`` keys
 combination and type "``cmd``". In the appeared terminal window type:
@@ -242,7 +243,7 @@ the parser creates one JSON line per name (when ``compact`` format is used)
 You can use up to 20 times more "threads" than the number of your CPU cores to
 reach maximum speed of parsing (``--jobs 200`` flag). It is practical because
 additional threads are very cheap in Go and they try to fill out every idle
-gap for CPU usage.
+gap in the CPU usage.
 
 ### gRPC server
 
@@ -262,7 +263,7 @@ Relevant flags:
 gnparser -g 8989 -j 20
 ```
 
-For en example how to use gRPC server check ``gnparser`` [Ruby gem][gnparser
+For an example how to use gRPC server check ``gnparser`` [Ruby gem][gnparser
 ruby] as well as [gRPC documentation].
 
 ## Use as a library in Go
