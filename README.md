@@ -297,10 +297,12 @@ func main() {
 	fmt.Println(res)
 }
 ```
+## Authors
+
+- [Dmitry Mozzherin]
 
 ## Contributors
 
-- [Dmitry Mozzherin]
 - [Geoff Ower]
 
 ## License
