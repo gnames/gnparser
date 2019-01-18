@@ -26,7 +26,10 @@ in your PATH.
 wget https://www.dropbox.com/s/blvmejmp4378cao/gnparser-v0.5.1-linux.tar.gz
 tar xvf gnparser-v0.5.1-linux.tar.gz
 sudo cp gnparser /usr/local/bin
+# for JSON output
 gnparser -f pretty "Homo sapiens Linnaeus"
+# for very simple text output
+gnparser -f simple "Homo sapiens Linnaeus"
 gnparser -h
 ```
 
@@ -53,14 +56,14 @@ parser's capabilities, its input and output.
 Millions of names parsed per hour on a i7-8750H CPU
 (6 cores, 12 threads, at 2.20 GHz), parser v0.5.1
 
-| Threads  | Millions/hr
-| -------- | -----------
-| 1        | 48
-| 2        | 63
-| 4        | 128
-| 8        | 202
-| 16       | 248
-| 100      | 293
+| Threads  | names/hr
+| -------- | ------------
+| 1        |  48,000,000
+| 2        |  63,000,000
+| 4        | 128,000,000
+| 8        | 202,000,000
+| 16       | 248,000,000
+| 100      | 293,000,000
 
 For simplest output Go ``gnparser`` is roughly 2 times faster than Scala
 ``gnparser`` and about 100 times faster than Ruby ``biodiversity`` parser. For
