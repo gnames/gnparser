@@ -6,14 +6,14 @@ import (
 	"log"
 
 	"github.com/shurcool/vfsgen"
-	"gitlab.com/gogna/gnparser/dict"
+	"gitlab.com/gogna/gnparser/fs"
 )
 
 func main() {
-	err := vfsgen.Generate(dict.Assets, vfsgen.Options{
-		PackageName:  "dict",
+	err := vfsgen.Generate(fs.Assets, vfsgen.Options{
+		PackageName:  "fs",
 		BuildTags:    "!dev",
-		VariableName: "assets",
+		VariableName: "Files",
 	})
 	if err != nil {
 		log.Fatalln(err)

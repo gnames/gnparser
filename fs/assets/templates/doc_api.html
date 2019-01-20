@@ -1,0 +1,32 @@
+{{ define "content" }}
+<section class="parser api">
+    <div class="grid">
+      <div class="unit whole">
+        <h2 id="api">Application Programming Interface (API)</h2>
+
+        <p>Web-based parser service includes a RESTful interface to parsing
+        functionalilty.  Both GET and POST methods are supported.</p>
+
+        <h3 id="get">GET</h3>
+
+        <p>
+          Append a vertical line separated array of strings to your domain url.
+          Make sure that '&amp;' in the names are escaped as '%26',
+          and spaces are escaped as '+'.
+        </p>
+
+        <p>
+          <code>/api?q=Aus+bus|Aus+bus+D.+%26+M.,+1870</code>
+        </p>
+
+        <h3 id="post">POST</h3>
+
+        <p><code>/api</code></p>
+
+        <p>
+          with request body of JSON array of strings
+        </p>
+      </div>
+    </div>
+  </section>
+  {{ end }}

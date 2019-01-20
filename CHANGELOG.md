@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#33]: Web-based user interface and REST API
+
 ## [v0.6.0]
 
 - Add [#35]: gRPC method to preserve order in output according to input

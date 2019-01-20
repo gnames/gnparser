@@ -1,0 +1,26 @@
+{{ define "content" }}
+<section class='parser'>
+  <div class='grid'>
+    <div class='unit whole'>
+      <form action='/' method='get'>
+        <textarea autofocus id='names' name='q' placeholder='Add names, one per line'>{{.Input}}</textarea>
+        <input type='submit' value='Parse'>
+      </form>
+    </div>
+  </div>
+</section>
+{{ if .Parsed }}
+<section class="parser results">
+  <div class="grid">
+    <div class="unit whole">
+      <h4>Results:</h4>
+      {{ range .Parsed }}
+      <p>
+        <code>{{ . }}</code>
+      </p>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}

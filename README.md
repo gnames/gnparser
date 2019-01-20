@@ -276,6 +276,39 @@ gnparser -g 8989 -j 20
 For an example how to use gRPC server check ``gnparser`` [Ruby gem][gnparser
 ruby] as well as [gRPC documentation].
 
+## Usage as a REST API Interface
+
+Use web-server REST API as a slower, but more wide-spread alternative to
+gRPC server. Web-based user interface and API are invoked by ``--web-port`` or
+``-w`` flag. To start web server on ``http://0.0.0.0:9000``
+
+```bash
+    gnparser -w 9000
+```
+
+Opening a browser with this address will now show an interactive interface
+to parser. API calls would be accessibe on ``http://0.0.0.0:9000/api``.
+
+Make sure to CGI-escape name-strings for GET requests. An '&' character
+needs to be converted to '%26'
+
+- ``GET /api?q=Aus+bus|Aus+bus+D.+%26+M.,+1870``
+- ``POST /api`` with request body of JSON array of strings
+
+```ruby
+require 'json'
+require 'net/http'
+
+uri = URI('https://parser.globalnames.org/api')
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json',
+                                   'accept' => 'json')
+request.body = ['Solanum mariae Särkinen & S.Knapp',
+                'Ahmadiago Vánky 2004'].to_json
+response = http.request(request)
+```
+
 ## Use as a library in Go
 
 ```go

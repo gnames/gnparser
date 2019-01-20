@@ -1,10 +1,10 @@
-// +build !dev
-
 package dict
 
 import (
 	"bufio"
 	"log"
+
+	"gitlab.com/gogna/gnparser/fs"
 )
 
 // Dict contains loaded dictionaries
@@ -34,7 +34,7 @@ func readBacterialData() map[string]bool {
 }
 
 func scanFile(path string, isHomonym bool, m map[string]bool) {
-	f, err := assets.Open(path)
+	f, err := fs.Files.Open(path)
 	if err != nil {
 		log.Fatal(err)
 	}

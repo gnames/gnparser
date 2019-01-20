@@ -32,6 +32,7 @@ import (
 	"github.com/spf13/cobra"
 	"gitlab.com/gogna/gnparser"
 	"gitlab.com/gogna/gnparser/grpc"
+	"gitlab.com/gogna/gnparser/web"
 )
 
 // rootCmd represents the base command when called without any subcommands
@@ -59,6 +60,7 @@ gnparser -j 10 -g 3355
 	Run: func(cmd *cobra.Command, args []string) {
 		versionFlag(cmd)
 		wn := workersNumFlag(cmd)
+
 		grpcPort := grpcFlag(cmd)
 		if grpcPort != 0 {
 			fmt.Println("Running gnparser as gRPC service:")
@@ -66,15 +68,23 @@ gnparser -j 10 -g 3355
 			fmt.Printf("jobs: %d\n\n", wn)
 			grpc.Run(grpcPort, wn)
 			os.Exit(0)
-		} else {
-			f := formatFlag(cmd)
-			opts := []gnparser.Option{
-				gnparser.WorkersNum(wn),
-				gnparser.Format(f),
-			}
-			data := getInput(cmd, args)
-			parse(data, opts)
 		}
+
+		webPort := webFlag(cmd)
+		if webPort != 0 {
+			fmt.Println("Running gnparser as a website and REST server:")
+			fmt.Printf("port: %d\n", webPort)
+			fmt.Printf("jobs: %d\n\n", wn)
+			web.Run(webPort, wn)
+			os.Exit(0)
+		}
+		f := formatFlag(cmd)
+		opts := []gnparser.Option{
+			gnparser.WorkersNum(wn),
+			gnparser.Format(f),
+		}
+		data := getInput(cmd, args)
+		parse(data, opts)
 	},
 }
 
@@ -101,7 +111,10 @@ func init() {
 	rootCmd.Flags().IntP("jobs", "j", dj,
 		"Nubmer of threads to run. CPU's threads number is the default.")
 
-	rootCmd.Flags().IntP("grpc_port", "g", 0, "starts grpc server on the port, ignores other flags.")
+	rootCmd.Flags().IntP("grpc_port", "g", 0, "starts gRPC server on the port.")
+
+	rootCmd.Flags().IntP("web_port", "w", 0,
+		"starts web site and REST server on the port.")
 }
 
 func versionFlag(cmd *cobra.Command) {
@@ -125,6 +138,15 @@ func grpcFlag(cmd *cobra.Command) int {
 		os.Exit(1)
 	}
 	return grpcPort
+}
+
+func webFlag(cmd *cobra.Command) int {
+	webPort, err := cmd.Flags().GetInt("web_port")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	return webPort
 }
 
 func formatFlag(cmd *cobra.Command) string {

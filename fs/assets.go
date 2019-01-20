@@ -1,6 +1,6 @@
 // +build dev
 
-package dict
+package fs
 
 import (
 	"net/http"

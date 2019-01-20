@@ -3,6 +3,7 @@ module gitlab.com/gogna/gnparser
 require (
 	github.com/gnames/uuid5 v0.1.1
 	github.com/golang/protobuf v1.2.0
+	github.com/gorilla/mux v1.6.2
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.5
 	github.com/mitchellh/go-homedir v1.0.0 // indirect
@@ -13,7 +14,7 @@ require (
 	github.com/pointlander/compress v1.1.0 // indirect
 	github.com/pointlander/jetset v1.0.0 // indirect
 	github.com/pointlander/peg v1.0.1-0.20181228211923-fa48cc294fa1 // indirect
-	github.com/shurcooL/httpfs v0.0.0-20181222201310-74dc9339e414 // indirect
+	github.com/shurcooL/httpfs v0.0.0-20181222201310-74dc9339e414
 	github.com/shurcooL/vfsgen v0.0.0-20181202132449-6a9ea43bcacd // indirect
 	github.com/shurcool/vfsgen v0.0.0-20181202132449-6a9ea43bcacd // indirect
 	github.com/spf13/cobra v0.0.4-0.20190109003409-7547e83b2d85

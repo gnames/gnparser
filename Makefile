@@ -36,7 +36,7 @@ peg:
 	goimports -w grammar.peg.go; \
 
 asset:
-	cd dict; \
+	cd fs; \
 	$(FLAGS_SHARED) go run -tags=dev assets_gen.go
 
 build: version peg grpc asset
