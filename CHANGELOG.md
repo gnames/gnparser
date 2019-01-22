@@ -2,7 +2,9 @@
 
 ## Unreleased
 
-- Add [#33]: Web-based user interface and REST API
+- Add [#36]: substitute underscores to spaces for Newick format.
+- Add [#34]: escape HTML entities, remove common tags.
+- Add [#33]: Web-based user interface and REST API.
 
 ## [v0.6.0]
 

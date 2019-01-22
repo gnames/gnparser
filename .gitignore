@@ -6,5 +6,6 @@ version.go
 200k-lines.txt
 test_data.new.txt
 .idea
-assets_vfsdata.go
+files_vfsdata.go
 gnparser.pb.go
+

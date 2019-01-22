@@ -8,6 +8,36 @@ import (
 	. "gitlab.com/gogna/gnparser/preprocess"
 )
 
+var _ = Describe("Cleanup", func() {
+	DescribeTable("UnderscoreToSpace",
+		func(s string, expected string) {
+			bs := []byte(s)
+			Expect(UnderscoreToSpace(bs)).To(Equal([]byte(expected)))
+		},
+		Entry("no nothing", "Hello", "Hello"),
+		Entry("has spaces", "Hello_you !", "Hello_you !"),
+		Entry("has spaces", "Hello_you\t!", "Hello_you\t!"),
+		Entry("has only underscores", "Hello_you_!_", "Hello you ! "),
+	)
+
+	DescribeTable("StripTags",
+		func(s string, expected string) {
+			Expect(StripTags([]byte(s))).To(Equal(expected))
+		},
+		Entry("no html", "Hello", "Hello"),
+		Entry("html tags", "<i>Hello</i>", "Hello"),
+		Entry("html tags", "<I>Hello</I>", "Hello"),
+		Entry("keep other tags",
+			"<code>Hello</code> & you",
+			"<code>Hello</code> & you"),
+		Entry("preserve case for other tags",
+			"<CODE>Hello & you</CODE>",
+			"<CODE>Hello & you</CODE>"),
+		Entry("unknown tags", "<NA>Hello</NA> & you", "<NA>Hello</NA> & you"),
+		Entry("entities", "Hello &amp; you", "Hello & you"),
+	)
+})
+
 var _ = Describe("Preprocess", func() {
 	DescribeTable("NormalizeHybridChar",
 		func(s string, expected string) {
