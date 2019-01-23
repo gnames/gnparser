@@ -4,6 +4,7 @@
 
 ## [v0.7.0]
 
+- Add [#38]: docker image can do gRPC, REST, CLI
 - Add [#37]: flag for cleanup HTML entities and tags,
              underscores are part of parsing.
 - Add [#39]: documentation for contributors.
@@ -43,6 +44,15 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#39]: https://gitlab.com/gogna/gnparser/issues/39
+[#38]: https://gitlab.com/gogna/gnparser/issues/38
+[#37]: https://gitlab.com/gogna/gnparser/issues/37
+[#36]: https://gitlab.com/gogna/gnparser/issues/36
+[#35]: https://gitlab.com/gogna/gnparser/issues/35
+[#34]: https://gitlab.com/gogna/gnparser/issues/34
+[#33]: https://gitlab.com/gogna/gnparser/issues/33
+[#32]: https://gitlab.com/gogna/gnparser/issues/32
+[#31]: https://gitlab.com/gogna/gnparser/issues/31
 [#30]: https://gitlab.com/gogna/gnparser/issues/30
 [#29]: https://gitlab.com/gogna/gnparser/issues/29
 [#28]: https://gitlab.com/gogna/gnparser/issues/28
