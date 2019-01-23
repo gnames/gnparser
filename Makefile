@@ -15,8 +15,10 @@ DATE = $(shell date -u '+%Y-%m-%d_%H:%M:%S%Z')
 
 all: install
 
-test:
+test: deps version peg grpc asset
 	$(FLAG_MODULE) go test ./...
+
+test-build: deps build
 
 deps:
 	$(FLAG_MODULE) $(GOGET) github.com/pointlander/peg@fa48cc2; \
@@ -24,6 +26,7 @@ deps:
 	$(FLAG_MODULE) $(GOGET) github.com/spf13/cobra/cobra@7547e83; \
 	$(FLAG_MODULE) $(GOGET) github.com/onsi/ginkgo/ginkgo@505cc35; \
 	$(FLAG_MODULE) $(GOGET) github.com/onsi/gomega@ce690c5; \
+	$(FLAG_MODULE) $(GOGET) github.com/golang/protobuf/protoc-gen-go@347cf4a; \
   $(FLAG_MODULE) $(GOGET) golang.org/x/tools/cmd/goimports
 
 version:

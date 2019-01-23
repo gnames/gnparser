@@ -8,4 +8,5 @@ test_data.new.txt
 .idea
 files_vfsdata.go
 gnparser.pb.go
+gnparser/gnparser
 

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v0.7.0]
+
+- Add [#31]: continuous integration
 - Add [#36]: substitute underscores to spaces for Newick format.
 - Add [#34]: escape HTML entities, remove common tags.
 - Add [#33]: Web-based user interface and REST API.
@@ -33,8 +36,8 @@
 
 This document follows [changelog guidelines]
 
+[v0.7.0]: https://gitlab.com/gogna/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
-
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
 [#30]: https://gitlab.com/gogna/gnparser/issues/30
