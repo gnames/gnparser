@@ -309,6 +309,27 @@ request.body = ['Solanum mariae Särkinen & S.Knapp',
 response = http.request(request)
 ```
 
+## Use as a Docker image
+
+You need to have [docker runtime installed](https://docs.docker.com/install/)
+on your computer for these examples to work.
+
+```bash
+# run as a gRPC server on port 7777
+docker run -p 0.0.0.0:7777:7777 gnames/gognparser -g 7777
+# run grpc on 'default' 8778 port
+docker run -p 0.0.0.0:8778:8778 gnames/gognparser
+# to run as a daemon with 50 workers
+docker run -d gnames/gognparser -g 7777 -j 50
+
+# run as a website and a RESTful service
+docker run -p 0.0.0.0:80:8080 gnames/gognparser -w 8080
+
+# just parse something
+docker run gnames/gognparser "Amaurorhinus bewichianus (Wollaston,1860) (s.str.)"
+docker run gnames/gognparser -f simple -j 300 names.txt > parsed.txt
+```
+
 ## Use as a library in Go
 
 ```go
