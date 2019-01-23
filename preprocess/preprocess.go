@@ -1,7 +1,10 @@
 package preprocess
 
 import (
+	"bytes"
+	"io"
 	"regexp"
+	"unicode"
 )
 
 var hybridCharRe1 = regexp.MustCompile(`(^)[Xx](\p{Lu})`)
@@ -46,6 +49,7 @@ var stopWordsRe = regexp.MustCompile(
 
 type Preprocessor struct {
 	Virus       bool
+	Underscore  bool
 	NoParse     bool
 	Approximate bool
 	Annotation  bool
@@ -76,6 +80,13 @@ func Preprocess(bs []byte) *Preprocessor {
 		pr.Annotation = true
 		i = j
 	}
+
+	// ignoring error, as it should never happen
+	changed, _ := UnderscoreToSpace(bs[0:i])
+	if changed {
+		pr.Underscore = true
+	}
+
 	pr.Body = NormalizeHybridChar(bs[0:i])
 	pr.Tail = bs[i:]
 	return pr
@@ -116,4 +127,37 @@ func Annotation(bs []byte) int {
 		}
 	}
 	return i
+}
+
+// UnderscoreToSpace takes a slice of bytes. If it finds that the string
+// contains underscores, but not spaces, it substitutes underscores to spaces
+// in the slice. In case if any spaces are present, the slice is returned
+// unmodified.
+func UnderscoreToSpace(bs []byte) (bool, error) {
+	reader := bytes.NewReader(bs)
+	var hasUnderscore bool
+	for {
+		r, _, err := reader.ReadRune()
+		if err == io.EOF {
+			break
+		} else if err != nil {
+			return false, err
+		}
+		if unicode.IsSpace(r) {
+			return false, nil
+		}
+		if r == '_' {
+			hasUnderscore = true
+		}
+	}
+	if !hasUnderscore {
+		return false, nil
+	}
+
+	for i, v := range bs {
+		if v == '_' {
+			bs[i] = ' '
+		}
+	}
+	return true, nil
 }

@@ -85,6 +85,9 @@ func (gnp *GNparser) Parse(s string) {
 	if len(preproc.Tail) > 0 {
 		gnp.parser.AddWarn(grammar.TailWarn)
 	}
+	if preproc.Underscore {
+		gnp.parser.AddWarn(grammar.SpaceNonStandardWarn)
+	}
 	err := gnp.parser.Parse()
 	if err != nil {
 		gnp.parser.Error = err

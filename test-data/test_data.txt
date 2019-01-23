@@ -2950,28 +2950,28 @@ c4dd80b7-984b-51f8-a4ec-573b4b32358b|Naviculadicta witkowskii LB & Metzeltin nov
 # {"quality":2,"parsed":true,"verbatim":"Torymus bangalorensis (Mani &amp; Kurian, 1953)","surrogate":false,"qualityWarnings":[[2,"Name had to be changed by preprocessing"]],"normalized":"Torymus bangalorensis (Mani & Kurian 1953)","canonicalName":{"value":"Torymus bangalorensis","valueRanked":"Torymus bangalorensis"},"virus":false,"positions":[["genus",0,7],["specificEpithet",8,21],["authorWord",23,27],["authorWord",34,40],["year",42,46]],"nameStringId":"8131ebda-dce6-5aaf-97ae-2370fe8e77d7","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Torymus"},"specificEpithet":{"value":"bangalorensis","authorship":{"value":"(Mani & Kurian 1953)","basionymAuthorship":{"authors":["Mani","Kurian"],"years":[{"value":"1953"}]}}}}],"bacteria":false}
 # 8131ebda-dce6-5aaf-97ae-2370fe8e77d7|Torymus bangalorensis (Mani &amp; Kurian, 1953)|Torymus bangalorensis|Torymus bangalorensis|(Mani & Kurian 1953)|1953|2
 # #>
-# 
-# #SECTION: Should be removed? Underscores intead of spaces<
-# Oxalis_barrelieri
-# Oxalis_barrelieri
-# {"quality":3,"parsed":true,"verbatim":"Oxalis_barrelieri","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"]],"normalized":"Oxalis barrelieri","canonicalName":{"value":"Oxalis barrelieri","valueRanked":"Oxalis barrelieri"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"ad546700-9cae-50d3-9eaf-6adcbbb67bae","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Oxalis"},"specificEpithet":{"value":"barrelieri"}}],"bacteria":false}
-# ad546700-9cae-50d3-9eaf-6adcbbb67bae|Oxalis_barrelieri|Oxalis barrelieri|Oxalis barrelieri|||3
-# 
-# Pseudocercospora__dendrobii
-# Pseudocercospora__dendrobii
-# {"quality":3,"parsed":true,"verbatim":"Pseudocercospora__dendrobii","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"],[2,"Multiple adjacent space characters"]],"normalized":"Pseudocercospora dendrobii","canonicalName":{"value":"Pseudocercospora dendrobii","valueRanked":"Pseudocercospora dendrobii"},"virus":false,"positions":[["genus",0,16],["specificEpithet",18,27]],"nameStringId":"ae8a4688-2b2a-5974-81bf-1962838a9cbe","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Pseudocercospora"},"specificEpithet":{"value":"dendrobii"}}],"bacteria":false}
-# ae8a4688-2b2a-5974-81bf-1962838a9cbe|Pseudocercospora__dendrobii|Pseudocercospora dendrobii|Pseudocercospora dendrobii|||3
-# 
-#   Oxalis_barrelieri
-# Oxalis_barrelieri
-# {"quality":3,"parsed":true,"verbatim":"  Oxalis_barrelieri","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"],[2,"Multiple adjacent space characters"]],"normalized":"Oxalis barrelieri","canonicalName":{"value":"Oxalis barrelieri","valueRanked":"Oxalis barrelieri"},"virus":false,"positions":[["genus",2,8],["specificEpithet",9,19]],"nameStringId":"1c4bb48b-d134-54c8-bac1-6771d1f4c9c6","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Oxalis"},"specificEpithet":{"value":"barrelieri"}}],"bacteria":false}
-# 1c4bb48b-d134-54c8-bac1-6771d1f4c9c6|  Oxalis_barrelieri|Oxalis barrelieri|Oxalis barrelieri|||3
-# 
-# Oxalis_barrelieri
-# Oxalis_barrelieri
-# {"quality":3,"parsed":true,"verbatim":"Oxalis_barrelieri  ","surrogate":false,"qualityWarnings":[[3,"Non-standard space characters"],[2,"Trailing whitespace"]],"normalized":"Oxalis barrelieri","canonicalName":{"value":"Oxalis barrelieri","valueRanked":"Oxalis barrelieri"},"virus":false,"positions":[["genus",0,6],["specificEpithet",7,17]],"nameStringId":"c57de7fd-b94e-54e1-a856-72b0668ab818","parserVersion":"test_version","hybrid":false,"details":[{"genus":{"value":"Oxalis"},"specificEpithet":{"value":"barrelieri"}}],"bacteria":false,"unparsedTail":"  "}
-# c57de7fd-b94e-54e1-a856-72b0668ab818|Oxalis_barrelieri  |Oxalis barrelieri|Oxalis barrelieri|||3
-# #>
+
+#SECTION: Underscores intead of spaces<
+Oxalis_barrelieri
+Oxalis barrelieri
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Non-standard space characters"]],"verbatim":"Oxalis_barrelieri","normalized":"Oxalis barrelieri","canonicalName":{"simple":"Oxalis barrelieri","full":"Oxalis barrelieri"},"details":[{"genus":{"value":"Oxalis"},"specificEpithet":{"value":"barrelieri"}}],"positions":[["genus",0,6],["specificEpithet",7,17]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"ad546700-9cae-50d3-9eaf-6adcbbb67bae","parserVersion":"test_version"}
+ad546700-9cae-50d3-9eaf-6adcbbb67bae|Oxalis_barrelieri|Oxalis barrelieri|Oxalis barrelieri|||3
+
+Pseudocercospora__dendrobii
+Pseudocercospora  dendrobii
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Non-standard space characters"],[2,"Multiple adjacent space characters"]],"verbatim":"Pseudocercospora__dendrobii","normalized":"Pseudocercospora dendrobii","canonicalName":{"simple":"Pseudocercospora dendrobii","full":"Pseudocercospora dendrobii"},"details":[{"genus":{"value":"Pseudocercospora"},"specificEpithet":{"value":"dendrobii"}}],"positions":[["genus",0,16],["specificEpithet",18,27]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"ae8a4688-2b2a-5974-81bf-1962838a9cbe","parserVersion":"test_version"}
+ae8a4688-2b2a-5974-81bf-1962838a9cbe|Pseudocercospora__dendrobii|Pseudocercospora dendrobii|Pseudocercospora dendrobii|||3
+
+  Oxalis_barrelieri
+noparse
+{"parsed":false,"quality":0,"verbatim":"  Oxalis_barrelieri","surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"1c4bb48b-d134-54c8-bac1-6771d1f4c9c6","parserVersion":"test_version"}
+1c4bb48b-d134-54c8-bac1-6771d1f4c9c6|  Oxalis_barrelieri|||||0
+
+Oxalis barrelieri XXZ_21243
+Oxalis barrelieri
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Unparsed tail"]],"verbatim":"Oxalis barrelieri XXZ_21243","normalized":"Oxalis barrelieri","canonicalName":{"simple":"Oxalis barrelieri","full":"Oxalis barrelieri"},"details":[{"genus":{"value":"Oxalis"},"specificEpithet":{"value":"barrelieri"}}],"positions":[["genus",0,6],["specificEpithet",7,17]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"unparsedTail":" XXZ_21243","nameStringId":"8a722b76-cf2f-51d1-b60e-7f9236ddd189","parserVersion":"test_version"}
+8a722b76-cf2f-51d1-b60e-7f9236ddd189|Oxalis barrelieri XXZ_21243|Oxalis barrelieri|Oxalis barrelieri|||3
+#>
 
 
 # vim: set foldmarker=<,> foldlevel=0 foldmethod=marker

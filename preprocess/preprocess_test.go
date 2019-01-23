@@ -9,20 +9,9 @@ import (
 )
 
 var _ = Describe("Cleanup", func() {
-	DescribeTable("UnderscoreToSpace",
-		func(s string, expected string) {
-			bs := []byte(s)
-			Expect(UnderscoreToSpace(bs)).To(Equal([]byte(expected)))
-		},
-		Entry("no nothing", "Hello", "Hello"),
-		Entry("has spaces", "Hello_you !", "Hello_you !"),
-		Entry("has spaces", "Hello_you\t!", "Hello_you\t!"),
-		Entry("has only underscores", "Hello_you_!_", "Hello you ! "),
-	)
-
 	DescribeTable("StripTags",
 		func(s string, expected string) {
-			Expect(StripTags([]byte(s))).To(Equal(expected))
+			Expect(StripTags(s)).To(Equal(expected))
 		},
 		Entry("no html", "Hello", "Hello"),
 		Entry("html tags", "<i>Hello</i>", "Hello"),
@@ -171,6 +160,19 @@ var _ = Describe("Preprocess", func() {
 		Entry("No tail", "Homo sapiens s. s.", "Homo sapiens", " s. s."),
 		Entry("No tail", "Homo sapiens sensu Linn.", "Homo sapiens", " sensu Linn."),
 		Entry("No tail", "Homo sapiens nomen nudum", "Homo sapiens", " nomen nudum"),
+	)
+
+	DescribeTable("UnderscoreToSpace",
+		func(s string, expected string, changed bool) {
+			bs := []byte(s)
+			changed2, _ := UnderscoreToSpace(bs)
+			Expect(string(bs)).To(Equal(expected))
+			Expect(changed).To(Equal(changed2))
+		},
+		Entry("no nothing", "Hello", "Hello", false),
+		Entry("has spaces", "Hello_you !", "Hello_you !", false),
+		Entry("has spaces", "Hello_you\t!", "Hello_you\t!", false),
+		Entry("has only underscores", "Hello_you_!_", "Hello you ! ", true),
 	)
 
 	Describe("Preprocess", func() {

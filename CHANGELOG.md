@@ -4,6 +4,8 @@
 
 ## [v0.7.0]
 
+- Add [#37]: flag for cleanup HTML entities and tags,
+             underscores are part of parsing.
 - Add [#39]: documentation for contributors.
 - Add [#31]: continuous integration.
 - Add [#36]: substitute underscores to spaces for Newick format.

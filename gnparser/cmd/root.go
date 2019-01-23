@@ -32,6 +32,7 @@ import (
 	"github.com/spf13/cobra"
 	"gitlab.com/gogna/gnparser"
 	"gitlab.com/gogna/gnparser/grpc"
+	"gitlab.com/gogna/gnparser/preprocess"
 	"gitlab.com/gogna/gnparser/web"
 )
 
@@ -61,6 +62,8 @@ gnparser -j 10 -g 3355
 		versionFlag(cmd)
 		wn := workersNumFlag(cmd)
 
+		cleanup := cleanupFlag(cmd)
+
 		grpcPort := grpcFlag(cmd)
 		if grpcPort != 0 {
 			fmt.Println("Running gnparser as gRPC service:")
@@ -84,6 +87,10 @@ gnparser -j 10 -g 3355
 			gnparser.Format(f),
 		}
 		data := getInput(cmd, args)
+		if cleanup {
+			cleanupData(data, wn)
+			os.Exit(0)
+		}
 		parse(data, opts)
 	},
 }
@@ -111,6 +118,8 @@ func init() {
 	rootCmd.Flags().IntP("jobs", "j", dj,
 		"Nubmer of threads to run. CPU's threads number is the default.")
 
+	rootCmd.Flags().BoolP("cleanup", "c", false, "removes HTML entities, tags etc instead of parsing.")
+
 	rootCmd.Flags().IntP("grpc_port", "g", 0, "starts gRPC server on the port.")
 
 	rootCmd.Flags().IntP("web_port", "w", 0,
@@ -129,6 +138,15 @@ func versionFlag(cmd *cobra.Command) {
 			gnp.Version(), gnp.Build())
 		os.Exit(0)
 	}
+}
+
+func cleanupFlag(cmd *cobra.Command) bool {
+	cleanup, err := cmd.Flags().GetBool("cleanup")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	return cleanup
 }
 
 func grpcFlag(cmd *cobra.Command) int {
@@ -268,4 +286,50 @@ func parseString(gnp gnparser.GNparser, data string) {
 		os.Exit(1)
 	}
 	fmt.Println(res)
+}
+
+func cleanupData(data string, wc int) {
+	path := string(data)
+	if fileExists(path) {
+		cleanupFile(path, wc)
+	} else {
+		res := preprocess.StripTags(data)
+		fmt.Println(data + "|" + res)
+	}
+}
+
+func cleanupFile(path string, wn int) {
+	in := make(chan string)
+	out := make(chan string)
+	var wg sync.WaitGroup
+	wg.Add(1)
+
+	f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+	defer f.Close()
+
+	go preprocess.CleanupStream(in, out, wn)
+	go processCleanup(out, &wg)
+	sc := bufio.NewScanner(f)
+	count := 0
+	for sc.Scan() {
+		count++
+		if count%1000000 == 0 {
+			log.Printf("Cleaning %d-th line\n", count)
+		}
+		name := sc.Text()
+		in <- name
+	}
+	close(in)
+	wg.Wait()
+}
+
+func processCleanup(out <-chan string, wg *sync.WaitGroup) {
+	defer wg.Done()
+	for r := range out {
+		fmt.Println(r)
+	}
 }

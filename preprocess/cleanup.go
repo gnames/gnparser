@@ -3,7 +3,7 @@ package preprocess
 import (
 	"bytes"
 	"io"
-	"unicode"
+	"sync"
 
 	"golang.org/x/net/html"
 )
@@ -16,38 +16,33 @@ var tags = map[string]struct{}{
 	"b":     struct{}{},
 }
 
-// UnderscoreToSpace takes a slice of bytes. If it finds that the string
-// contains underscores, but not spaces, it substitutes underscores to spaces
-// in the slice. In case if any spaces are present, the slice is returned
-// unmodified.
-func UnderscoreToSpace(bs []byte) ([]byte, error) {
-	reader := bytes.NewReader(bs)
-	for {
-		r, _, err := reader.ReadRune()
-		if err == io.EOF {
-			break
-		} else if err != nil {
-			return bs, err
-		}
-		if unicode.IsSpace(r) {
-			return bs, nil
-		}
+// CleanupStream takes input and output string channels, and feeds output with
+// pipe delimited strings with original name on the left and cleaned up name
+// on the right from the pipe.
+func CleanupStream(in <-chan string, out chan<- string, wn int) {
+	var wg sync.WaitGroup
+	wg.Add(wn)
+	for i := 0; i < wn; i++ {
+		go cleanupWorker(in, out, &wg)
 	}
+	wg.Wait()
+	close(out)
+}
 
-	for i, v := range bs {
-		if v == '_' {
-			bs[i] = ' '
-		}
+func cleanupWorker(in <-chan string, out chan<- string, wg *sync.WaitGroup) {
+	defer wg.Done()
+	for s := range in {
+		res := StripTags(s)
+		out <- s + "|" + res
 	}
-	return bs, nil
 }
 
 // StripTags takes a slice of bytes and returns a string with common
 // tags removed and html entities escaped. It does keep all uncommon tags
 // intact to let parser deal with them.
-func StripTags(bs []byte) string {
+func StripTags(s string) string {
 	var buff bytes.Buffer
-	r := bytes.NewReader(bs)
+	r := bytes.NewReader([]byte(s))
 
 	tokenizer := html.NewTokenizer(r)
 	for {

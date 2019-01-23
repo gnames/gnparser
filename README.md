@@ -210,6 +210,9 @@ Default is ``compact``.
 ``--jobs -j``
 : number of jobs running concurrently.
 
+``--cleanup -c``
+: cleans up input from HTML entities and tags instead of parsing
+
 To parse one name:
 
 ```bash
@@ -254,6 +257,21 @@ You can use up to 20 times more "threads" than the number of your CPU cores to
 reach maximum speed of parsing (``--jobs 200`` flag). It is practical because
 additional threads are very cheap in Go and they try to fill out every idle
 gap in the CPU usage.
+
+To cleanup a name
+
+```bash
+gnparser -c "<i>Abacopteris glandulosa</i> (Bl.) F&eacute;e &amp; Chin"
+```
+
+To cleanup a file of names
+
+```bash
+gnparser -j 200 -c names.txt > no_html_names.txt
+```
+
+If you have data that has names with tags or HTML entities, the ``--cleanup
+-c`` flag will help to normalize such names for parsing or other purposes.
 
 ### gRPC server
 
