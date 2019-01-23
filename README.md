@@ -12,9 +12,9 @@ parsed into human readable information as follows:
 
 This parser, written in Go, is the 3rd iteration of the project. The first,
 [biodiversity] had been written in Ruby, the second, [also
-gnparser][gnparser-scala], had been written in Go. This project is learned
+gnparser][gnparser-scala], had been written in Scala. This project learned
 from previous ones, and, when it matures, it is going to be the a
-substitution of other two, and will be the only one that is maintained
+substitution for other two, and will be the only one that is maintained
 further. All three projects were developed as a part of [Global Names
 Architecture Project][gna].
 
@@ -340,6 +340,9 @@ func main() {
 ## Contributors
 
 - [Geoff Ower]
+
+If you want to submit a bug or add a feature read
+[CONTRIBUTING](https://gitlab.com/gogna/gnparser/blob/master/CONTRIBUTING.md) file.
 
 ## License
 

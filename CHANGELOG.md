@@ -4,7 +4,8 @@
 
 ## [v0.7.0]
 
-- Add [#31]: continuous integration
+- Add [#39]: documentation for contributors.
+- Add [#31]: continuous integration.
 - Add [#36]: substitute underscores to spaces for Newick format.
 - Add [#34]: escape HTML entities, remove common tags.
 - Add [#33]: Web-based user interface and REST API.
