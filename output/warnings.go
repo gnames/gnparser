@@ -107,7 +107,7 @@ var warningMap = map[grm.Warning]Warning{
 	},
 	grm.AuthDoubleParensWarn: Warning{
 		Quality: 3,
-		Message: "Authroship in double parentheses",
+		Message: "Authorship in double parentheses",
 	},
 	grm.AuthMissingOneParensWarn: Warning{
 		Quality: 3,
