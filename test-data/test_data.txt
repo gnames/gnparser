@@ -1104,6 +1104,28 @@ Rhipidia gracilirama lassula
 0b40c395-7466-5879-9b16-9a31d38d21a0|Rhipidia gracilirama lassula|Rhipidia gracilirama lassula|Rhipidia gracilirama lassula|||1
 #>
 
+#SECTION: Authorship missing one parenthesis<
+Ocydromus dalmatinus dalmatinus Dejean, 1831)
+Ocydromus dalmatinus dalmatinus Dejean, 1831)
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Authorship is missing one parenthesis"]],"verbatim":"Ocydromus dalmatinus dalmatinus Dejean, 1831)","normalized":"Ocydromus dalmatinus dalmatinus (Dejean 1831)","canonicalName":{"simple":"Ocydromus dalmatinus dalmatinus","full":"Ocydromus dalmatinus dalmatinus"},"details":[{"genus":{"value":"Ocydromus"},"specificEpithet":{"value":"dalmatinus"},"infraspecificEpithets":[{"value":"dalmatinus","authorship":{"value":"(Dejean 1831)","basionymAuthorship":{"authors":["Dejean"],"year":{"value":"1831"}}}}]}],"positions":[["genus",0,9],["specificEpithet",10,20],["infraspecificEpithet",21,31],["authorWord",32,38],["year",40,44]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"5de70fe3-959a-5555-afdb-3ab85b91f1d7","parserVersion":"test_version"}
+5de70fe3-959a-5555-afdb-3ab85b91f1d7|Ocydromus dalmatinus dalmatinus Dejean, 1831)|Ocydromus dalmatinus dalmatinus|Ocydromus dalmatinus dalmatinus|(Dejean 1831)|1831|3
+
+Ocydromus dalmatinus dalmatinus Dejean, 1831 )
+Ocydromus dalmatinus dalmatinus Dejean, 1831 )
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Authorship is missing one parenthesis"]],"verbatim":"Ocydromus dalmatinus dalmatinus Dejean, 1831 )","normalized":"Ocydromus dalmatinus dalmatinus (Dejean 1831)","canonicalName":{"simple":"Ocydromus dalmatinus dalmatinus","full":"Ocydromus dalmatinus dalmatinus"},"details":[{"genus":{"value":"Ocydromus"},"specificEpithet":{"value":"dalmatinus"},"infraspecificEpithets":[{"value":"dalmatinus","authorship":{"value":"(Dejean 1831)","basionymAuthorship":{"authors":["Dejean"],"year":{"value":"1831"}}}}]}],"positions":[["genus",0,9],["specificEpithet",10,20],["infraspecificEpithet",21,31],["authorWord",32,38],["year",40,44]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"88dcc885-3360-5234-9620-371c2ebb636c","parserVersion":"test_version"}
+88dcc885-3360-5234-9620-371c2ebb636c|Ocydromus dalmatinus dalmatinus Dejean, 1831 )|Ocydromus dalmatinus dalmatinus|Ocydromus dalmatinus dalmatinus|(Dejean 1831)|1831|3
+
+Ocydromus dalmatinus dalmatinus ( Dejean, 1831 Mill.
+Ocydromus dalmatinus dalmatinus ( Dejean, 1831 Mill.
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Authorship is missing one parenthesis"]],"verbatim":"Ocydromus dalmatinus dalmatinus ( Dejean, 1831 Mill.","normalized":"Ocydromus dalmatinus dalmatinus (Dejean 1831) Mill.","canonicalName":{"simple":"Ocydromus dalmatinus dalmatinus","full":"Ocydromus dalmatinus dalmatinus"},"details":[{"genus":{"value":"Ocydromus"},"specificEpithet":{"value":"dalmatinus"},"infraspecificEpithets":[{"value":"dalmatinus","authorship":{"value":"(Dejean 1831) Mill.","basionymAuthorship":{"authors":["Dejean"],"year":{"value":"1831"}},"combinationAuthorship":{"authors":["Mill."]}}}]}],"positions":[["genus",0,9],["specificEpithet",10,20],["infraspecificEpithet",21,31],["authorWord",34,40],["year",42,46],["authorWord",47,52]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"0e8758a1-2567-543b-bafd-c8f9c81e2f08","parserVersion":"test_version"}
+0e8758a1-2567-543b-bafd-c8f9c81e2f08|Ocydromus dalmatinus dalmatinus ( Dejean, 1831 Mill.|Ocydromus dalmatinus dalmatinus|Ocydromus dalmatinus dalmatinus|(Dejean 1831) Mill.|1831|3
+
+Ocydromus dalmatinus dalmatinus (Dejean, 1831 Mill.
+Ocydromus dalmatinus dalmatinus (Dejean, 1831 Mill.
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Authorship is missing one parenthesis"]],"verbatim":"Ocydromus dalmatinus dalmatinus (Dejean, 1831 Mill.","normalized":"Ocydromus dalmatinus dalmatinus (Dejean 1831) Mill.","canonicalName":{"simple":"Ocydromus dalmatinus dalmatinus","full":"Ocydromus dalmatinus dalmatinus"},"details":[{"genus":{"value":"Ocydromus"},"specificEpithet":{"value":"dalmatinus"},"infraspecificEpithets":[{"value":"dalmatinus","authorship":{"value":"(Dejean 1831) Mill.","basionymAuthorship":{"authors":["Dejean"],"year":{"value":"1831"}},"combinationAuthorship":{"authors":["Mill."]}}}]}],"positions":[["genus",0,9],["specificEpithet",10,20],["infraspecificEpithet",21,31],["authorWord",33,39],["year",41,45],["authorWord",46,51]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"b3c856b3-16a7-5dfc-abfd-3bba539b634f","parserVersion":"test_version"}
+b3c856b3-16a7-5dfc-abfd-3bba539b634f|Ocydromus dalmatinus dalmatinus (Dejean, 1831 Mill.|Ocydromus dalmatinus dalmatinus|Ocydromus dalmatinus dalmatinus|(Dejean 1831) Mill.|1831|3
+#>
+
 #SECTION: Unknown authorship<
 Saccharomyces drosophilae anon.
 Saccharomyces drosophilae anon.

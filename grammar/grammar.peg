@@ -116,9 +116,17 @@ AuthorshipCombo <- OriginalAuthorshipComb (_? CombinationAuthorship)?
 
 OriginalAuthorship <- AuthorsGroup
 
-OriginalAuthorshipComb <- BasionymAuthorshipYearMisformed / BasionymAuthorship
+OriginalAuthorshipComb <- BasionymAuthorshipYearMisformed /
+                          BasionymAuthorship /
+                          BasionymAuthorshipMissingParens
 
 CombinationAuthorship <- AuthorsGroup
+
+BasionymAuthorshipMissingParens <- MissingParensStart / MissingParensEnd
+
+MissingParensStart <- '(' _? AuthorsGroup
+
+MissingParensEnd <- AuthorsGroup _? ')'
 
 BasionymAuthorshipYearMisformed <- '(' _? AuthorsGroup _? ')' (_? ',')? _? Year
 

@@ -577,7 +577,7 @@ func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 				p.AddWarn(YearOrigMisplacedWarn)
 				on = on.up
 				misplacedYear = true
-			} else if on.token32.pegRule == ruleBasionymAuthorship {
+			} else {
 				on = on.up
 			}
 			oa = p.newAuthorsGroupNode(on)

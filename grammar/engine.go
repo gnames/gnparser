@@ -89,6 +89,8 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 		p.AddWarn(UTF8ConvBadWarn)
 	case ruleBasionymAuthorship2Parens:
 		p.AddWarn(AuthDoubleParensWarn)
+	case ruleBasionymAuthorshipMissingParens:
+		p.AddWarn(AuthMissingOneParensWarn)
 	}
 	if _, ok := nodeRules[t.pegRule]; ok {
 		node := &node32{token32: t}
@@ -156,6 +158,7 @@ var nodeRules = map[pegRule]struct{}{
 	ruleOriginalAuthorshipComb:          struct{}{},
 	ruleCombinationAuthorship:           struct{}{},
 	ruleBasionymAuthorshipYearMisformed: struct{}{},
+	ruleBasionymAuthorshipMissingParens: struct{}{},
 	ruleBasionymAuthorship:              struct{}{},
 	ruleAuthorsGroup:                    struct{}{},
 	ruleAuthorsTeam:                     struct{}{},

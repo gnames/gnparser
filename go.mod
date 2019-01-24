@@ -3,7 +3,7 @@ module gitlab.com/gogna/gnparser
 require (
 	cloud.google.com/go v0.35.1 // indirect
 	dmitri.shuralyov.com/app/changes v0.0.0-20181114035150-5af16e21babb // indirect
-	dmitri.shuralyov.com/service/change v0.0.0-20190119025054-42f2f11cf6af // indirect
+	dmitri.shuralyov.com/service/change v0.0.0-20190124041518-7c09d163af9b // indirect
 	git.apache.org/thrift.git v0.12.0 // indirect
 	github.com/Shopify/sarama v1.20.1 // indirect
 	github.com/coreos/go-systemd v0.0.0-20181031085051-9002847aa142 // indirect
@@ -17,7 +17,7 @@ require (
 	github.com/gopherjs/gopherjs v0.0.0-20181103185306-d547d1d9531e // indirect
 	github.com/gorilla/mux v1.6.2
 	github.com/gregjones/httpcache v0.0.0-20181110185634-c63ab54fda8f // indirect
-	github.com/grpc-ecosystem/grpc-gateway v1.6.4 // indirect
+	github.com/grpc-ecosystem/grpc-gateway v1.7.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.5
 	github.com/microcosm-cc/bluemonday v1.0.2 // indirect
@@ -57,16 +57,16 @@ require (
 	github.com/stretchr/testify v1.3.0 // indirect
 	go.opencensus.io v0.19.0 // indirect
 	go4.org v0.0.0-20181109185143-00e24f1b2599 // indirect
-	golang.org/x/build v0.0.0-20190118222844-a865ae32defd // indirect
+	golang.org/x/build v0.0.0-20190124033707-36bd60da6b75 // indirect
 	golang.org/x/crypto v0.0.0-20190123085648-057139ce5d2b // indirect
 	golang.org/x/exp v0.0.0-20190123073158-f1c91bc264ca // indirect
 	golang.org/x/net v0.0.0-20190119204137-ed066c81e75e
 	golang.org/x/oauth2 v0.0.0-20190115181402-5dab4167f31c // indirect
-	golang.org/x/sys v0.0.0-20190123074212-c6b37f3e9285 // indirect
+	golang.org/x/sys v0.0.0-20190124100055-b90733256f2e // indirect
 	golang.org/x/text v0.3.1-0.20180807135948-17ff2d5776d2
-	golang.org/x/tools v0.0.0-20190123021125-9279ec27fd88 // indirect
+	golang.org/x/tools v0.0.0-20190124004107-78ee07aa9465 // indirect
 	google.golang.org/genproto v0.0.0-20190123001331-8819c946db44 // indirect
 	google.golang.org/grpc v1.18.0
-	honnef.co/go/tools v0.0.0-20190123122826-072eb0b8b7d5 // indirect
+	honnef.co/go/tools v0.0.0-20190123181848-3f36ca0168d8 // indirect
 	sourcegraph.com/sqs/pbtypes v1.0.0 // indirect
 )

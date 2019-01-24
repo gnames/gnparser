@@ -10,6 +10,7 @@ const (
 	AuthExWithDotWarn
 	AuthEmendWarn
 	AuthEmendWithoutDotWarn
+	AuthMissingOneParensWarn
 	AuthQuestionWarn
 	AuthShortWarn
 	AuthUnknownWarn
