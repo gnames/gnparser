@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v0.7.1]
+
+- Add [#40]: add names with missing parenthesis for combination authors
+- Fix: remove typo for Scala parser URL on the parser webpage.
+
 ## [v0.7.0]
 
 - Add [#38]: docker image can do gRPC, REST, CLI
@@ -40,6 +45,7 @@
 
 This document follows [changelog guidelines]
 
+[v0.7.1]: https://gitlab.com/gogna/gnparser/compare/v0.7.0...v0.7.1
 [v0.7.0]: https://gitlab.com/gogna/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
