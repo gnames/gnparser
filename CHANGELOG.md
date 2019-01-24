@@ -50,6 +50,7 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#40]: https://gitlab.com/gogna/gnparser/issues/40
 [#39]: https://gitlab.com/gogna/gnparser/issues/39
 [#38]: https://gitlab.com/gogna/gnparser/issues/38
 [#37]: https://gitlab.com/gogna/gnparser/issues/37
