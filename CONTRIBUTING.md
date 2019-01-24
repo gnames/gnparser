@@ -11,6 +11,15 @@
   and a **code sample** or an **executable test case** demonstrating the
   expected behavior that is not occurring.
 
+## **Do you intend to add a new feature or change an existing one?**
+
+* Suggest your change in the [GlobalNames gitter
+  group](https://gitter.im/GlobalNamesArchitecture/GlobalNames), or [create an
+  issue](https://gitlab.com/gogna/gnparser/issues/new) that describes your
+  suggestion in detail.
+* Make sure you **do not put more than one feature or change** in the new issue.
+
+
 ## **Did you write a patch that fixes a bug?**
 
 * Open a new GitHub pull request with the patch.
@@ -26,13 +35,6 @@
 
 Let us know about your client on [GlobalNames gitter
 group](https://gitter.im/GlobalNamesArchitecture/GlobalNames).
-
-## **Do you intend to add a new feature or change an existing one?**
-
-* Suggest your change in the [GlobalNames gitter
-  group](https://gitter.im/GlobalNamesArchitecture/GlobalNames), or [create an
-  issue](https://gitlab.com/gogna/gnparser/issues/new) that describes your
-  suggestion in detail.
 
 ## **Do you have questions about the source code?**
 
