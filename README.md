@@ -1,5 +1,7 @@
 # Global Names Parser: gnparser written in Go
 
+Try in [online][parser-web].
+
 ``gnparser`` splits scientific names into their component elements with
 associated meta information.  For example, ``"Homo sapiens Linnaeus"`` is
 parsed into human readable information as follows:
@@ -400,3 +402,4 @@ Released under [MIT license]
 [Dmitry Mozzherin]: https://gitlab.com/dimus
 [Geoff Ower]: https://gitlab.com/gdower
 [MIT license]: https://gitlab.com/gogna/gnparser/raw/master/LICENSE
+[parser-web]: https://parser.globalnames.org
