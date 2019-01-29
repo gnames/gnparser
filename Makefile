@@ -30,8 +30,10 @@ deps:
   $(FLAG_MODULE) $(GOGET) golang.org/x/tools/cmd/goimports
 
 version:
-	echo "package output\n\nconst Version = \"$(VERSION)\"\nconst Build = \"$(DATE)\"\n" \
-	> output/version.go
+	echo "package output" > output/version.go
+	echo "" >> output/version.go
+	echo "const Version = \"$(VERSION)"\" >> output/version.go
+	echo "const Build = \"$(DATE)\"" >> output/version.go
 
 peg:
 	cd grammar; \
