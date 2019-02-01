@@ -2,9 +2,12 @@
 
 ## Unreleased
 
+## [v0.7.2]
+- Add [#41]: parse/clean multiple names from standard input.
+
 ## [v0.7.1]
 
-- Add [#40]: add names with missing parenthesis for combination authors
+- Add [#40]: add names with missing parenthesis for combination authors.
 - Fix: remove typo for Scala parser URL on the parser webpage.
 
 ## [v0.7.0]
@@ -45,11 +48,13 @@
 
 This document follows [changelog guidelines]
 
+[v0.7.2]: https://gitlab.com/gogna/gnparser/compare/v0.7.1...v0.7.2
 [v0.7.1]: https://gitlab.com/gogna/gnparser/compare/v0.7.0...v0.7.1
 [v0.7.0]: https://gitlab.com/gogna/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#41]: https://gitlab.com/gogna/gnparser/issues/41
 [#40]: https://gitlab.com/gogna/gnparser/issues/40
 [#39]: https://gitlab.com/gogna/gnparser/issues/39
 [#38]: https://gitlab.com/gogna/gnparser/issues/38

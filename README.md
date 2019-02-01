@@ -227,7 +227,7 @@ gnparser -f pretty "Parus major Linnaeus, 1788"
 # simple pipe-delimited flat format
 gnparser -f simple "Parus major Linnaeus, 1788"
 
-# to parse name from standard input
+# to parse a name from standard input
 echo "Parus major Linnaeus, 1788" | gnparser
 ```
 
@@ -243,6 +243,12 @@ will be directed to STDERR.
 
 ```bash
 gnparser -j 200 names.txt > names_parsed.txt
+
+# to parse files using pipes
+cat names.txt | gnparser -f simple -j 200 > names_parsed.txt
+
+# to clean names from html tags and entities first, then parse
+cat names.txt | gnparser -c | sed "s/.*|//" | gnparser > names_parsed.txt
 ```
 
 To parse a file returning results in the same order as they are given (slower):
@@ -270,6 +276,9 @@ To cleanup a file of names
 
 ```bash
 gnparser -j 200 -c names.txt > no_html_names.txt
+
+# using pipes
+cat names.txt | gnparser -c -j 200 > no_html_names.txt
 ```
 
 If you have data that has names with tags or HTML entities, the ``--cleanup

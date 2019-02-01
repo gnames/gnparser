@@ -3,7 +3,7 @@ module gitlab.com/gogna/gnparser
 require (
 	cloud.google.com/go v0.35.1 // indirect
 	dmitri.shuralyov.com/app/changes v0.0.0-20181114035150-5af16e21babb // indirect
-	dmitri.shuralyov.com/service/change v0.0.0-20190127173012-184eb3bb42b2 // indirect
+	dmitri.shuralyov.com/service/change v0.0.0-20190130035545-6cc139383561 // indirect
 	git.apache.org/thrift.git v0.12.0 // indirect
 	github.com/Shopify/sarama v1.20.1 // indirect
 	github.com/coreos/go-systemd v0.0.0-20181031085051-9002847aa142 // indirect
@@ -31,9 +31,9 @@ require (
 	github.com/pointlander/compress v1.1.0 // indirect
 	github.com/pointlander/jetset v1.0.0 // indirect
 	github.com/pointlander/peg v1.0.1-0.20181228211923-fa48cc294fa1 // indirect
-	github.com/prometheus/client_model v0.0.0-20190115171406-56726106282f // indirect
+	github.com/prometheus/client_model v0.0.0-20190129233127-fd36f4220a90 // indirect
 	github.com/prometheus/common v0.2.0 // indirect
-	github.com/prometheus/procfs v0.0.0-20190117184657-bf6a532e95b1 // indirect
+	github.com/prometheus/procfs v0.0.0-20190129233650-316cf8ccfec5 // indirect
 	github.com/russross/blackfriday v2.0.0+incompatible // indirect
 	github.com/shurcooL/go v0.0.0-20190121191506-3fef8c783dec // indirect
 	github.com/shurcooL/gofontwoff v0.0.0-20181114050219-180f79e6909d // indirect
@@ -57,16 +57,16 @@ require (
 	github.com/stretchr/testify v1.3.0 // indirect
 	go.opencensus.io v0.19.0 // indirect
 	go4.org v0.0.0-20181109185143-00e24f1b2599 // indirect
-	golang.org/x/build v0.0.0-20190128191652-269e03abe74b // indirect
-	golang.org/x/crypto v0.0.0-20190128193316-c7b33c32a30b // indirect
+	golang.org/x/build v0.0.0-20190201181641-63986c177d1f // indirect
+	golang.org/x/crypto v0.0.0-20190131182504-b8fe1690c613 // indirect
 	golang.org/x/exp v0.0.0-20190125153040-c74c464bbbf2 // indirect
 	golang.org/x/net v0.0.0-20190125091013-d26f9f9a57f3
-	golang.org/x/oauth2 v0.0.0-20190115181402-5dab4167f31c // indirect
+	golang.org/x/oauth2 v0.0.0-20190130055435-99b60b757ec1 // indirect
 	golang.org/x/perf v0.0.0-20190124201629-844a5f5b46f4 // indirect
-	golang.org/x/sys v0.0.0-20190129075346-302c3dd5f1cc // indirect
+	golang.org/x/sys v0.0.0-20190201152629-afcc84fd7533 // indirect
 	golang.org/x/text v0.3.1-0.20180807135948-17ff2d5776d2
-	golang.org/x/tools v0.0.0-20190128232029-0a99049195af // indirect
-	google.golang.org/genproto v0.0.0-20190128161407-8ac453e89fca // indirect
+	golang.org/x/tools v0.0.0-20190201185910-0e05534988fe // indirect
+	google.golang.org/genproto v0.0.0-20190201180003-4b09977fb922 // indirect
 	google.golang.org/grpc v1.18.0
 	honnef.co/go/tools v0.0.0-20190128043916-71123fcbb8fe // indirect
 	sourcegraph.com/sqs/pbtypes v1.0.0 // indirect

@@ -23,7 +23,7 @@ package cmd
 import (
 	"bufio"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"os"
 	"strings"
@@ -52,8 +52,14 @@ gnparser "Homo sapiens Linnaeus 1753" [flags]
 To parse many names from a file (one name per line):
 gnparser names.txt [flags] > parsed_names.txt
 
+To clean names from html tags and entities
+gnparser names.txt -c > cleanded_names.txt
+
 To start gRPC parsing service on port 3355 with 10 concurrent jobs:
 gnparser -j 10 -g 3355
+
+To start web service on port 8080 with 5 concurrent jobs:
+gnparser -j 5 -g 8080
  `,
 
 	// Uncomment the following line if your bare application
@@ -86,6 +92,10 @@ gnparser -j 10 -g 3355
 			gnparser.WorkersNum(wn),
 			gnparser.Format(f),
 		}
+		if len(args) == 0 {
+			processStdin(cmd, cleanup, wn, opts)
+			os.Exit(0)
+		}
 		data := getInput(cmd, args)
 		if cleanup {
 			cleanupData(data, wn)
@@ -107,18 +117,18 @@ func Execute() {
 
 func init() {
 	gnp := gnparser.NewGNparser()
-	rootCmd.PersistentFlags().BoolP("version", "v", false, "Show build version and date, ignores other flags.")
+	rootCmd.PersistentFlags().BoolP("version", "v", false, "shows build version and date, ignores other flags.")
 
 	df := gnp.OutputFormat()
 	formats := strings.Join(gnparser.AvailableFormats(), ", ")
-	formatHelp := fmt.Sprintf("Output format. Can be one of:\n %s", formats)
+	formatHelp := fmt.Sprintf("sets output format. Can be one of:\n %s.", formats)
 	rootCmd.Flags().StringP("format", "f", df, formatHelp)
 
 	dj := gnp.WorkersNum()
 	rootCmd.Flags().IntP("jobs", "j", dj,
-		"Nubmer of threads to run. CPU's threads number is the default.")
+		"nubmer of threads to run. CPU's threads number is the default.")
 
-	rootCmd.Flags().BoolP("cleanup", "c", false, "removes HTML entities, tags etc instead of parsing.")
+	rootCmd.Flags().BoolP("cleanup", "c", false, "removes HTML entities and tags instead of parsing.")
 
 	rootCmd.Flags().IntP("grpc_port", "g", 0, "starts gRPC server on the port.")
 
@@ -186,6 +196,19 @@ func workersNumFlag(cmd *cobra.Command) int {
 	return i
 }
 
+func processStdin(cmd *cobra.Command, cleanup bool, wn int,
+	opts []gnparser.Option) {
+	if !checkStdin() {
+		cmd.Help()
+		return
+	}
+	if cleanup {
+		cleanupFile(os.Stdin, wn)
+		return
+	}
+	parseFile(os.Stdin, opts)
+}
+
 func checkStdin() bool {
 	stdInFile := os.Stdin
 	stat, err := stdInFile.Stat()
@@ -198,20 +221,8 @@ func checkStdin() bool {
 func getInput(cmd *cobra.Command, args []string) string {
 	var data string
 	switch len(args) {
-	case 0:
-		if !checkStdin() {
-			cmd.Help()
-			os.Exit(0)
-		}
-		bs, err := ioutil.ReadAll(os.Stdin)
-		if err != nil {
-			log.Println(err)
-		}
-		data = string(bs)
 	case 1:
 		data = args[0]
-	case 2:
-		data = args[1]
 	default:
 		cmd.Help()
 		os.Exit(0)
@@ -224,7 +235,13 @@ func parse(data string, opts []gnparser.Option) {
 
 	path := string(data)
 	if fileExists(path) {
-		parseFile(path, opts)
+		f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
+		if err != nil {
+			log.Fatal(err)
+			os.Exit(1)
+		}
+		parseFile(f, opts)
+		f.Close()
 	} else {
 		parseString(gnp, data)
 	}
@@ -239,19 +256,12 @@ func fileExists(path string) bool {
 	return false
 }
 
-func parseFile(path string, opts []gnparser.Option) {
+func parseFile(f io.Reader, opts []gnparser.Option) {
 	in := make(chan string)
 	out := make(chan *gnparser.ParseResult)
 	gnp := gnparser.NewGNparser(opts...)
 	var wg sync.WaitGroup
 	wg.Add(1)
-
-	f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
-	if err != nil {
-		log.Fatal(err)
-		os.Exit(1)
-	}
-	defer f.Close()
 
 	go gnp.ParseStream(in, out, opts...)
 	go processResults(out, &wg)
@@ -291,25 +301,24 @@ func parseString(gnp gnparser.GNparser, data string) {
 func cleanupData(data string, wc int) {
 	path := string(data)
 	if fileExists(path) {
-		cleanupFile(path, wc)
+		f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
+		if err != nil {
+			log.Fatal(err)
+			os.Exit(1)
+		}
+		cleanupFile(f, wc)
+		f.Close()
 	} else {
 		res := preprocess.StripTags(data)
 		fmt.Println(data + "|" + res)
 	}
 }
 
-func cleanupFile(path string, wn int) {
+func cleanupFile(f io.Reader, wn int) {
 	in := make(chan string)
 	out := make(chan string)
 	var wg sync.WaitGroup
 	wg.Add(1)
-
-	f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
-	if err != nil {
-		log.Fatal(err)
-		os.Exit(1)
-	}
-	defer f.Close()
 
 	go preprocess.CleanupStream(in, out, wn)
 	go processCleanup(out, &wg)
