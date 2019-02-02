@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#44]: documentation for canonicalName fields
+
 ## [v0.7.2]
 - Add [#41]: parse/clean multiple names from standard input.
 

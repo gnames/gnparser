@@ -93,10 +93,20 @@ more efficient JSON conversion.
 
 Canonical forms of a scientific name are the latinized components without
 annotations, authors or dates. They are great for matching names despite
-alternative spellings. Use the ``canonical -> simple`` or ``canonical -> full``
-fields from parsing results for this use case. ``Full`` version of canonical
-form includes infra-specific ranks and hybrid character for named hybrids.
-You can use ``--format simple`` flag to simplify output.
+alternative spellings. Use the ``canonicalName -> simple`` or ``canonicalName
+-> full`` fields from parsing results for this use case. ``Full`` version of
+canonical form includes infra-specific ranks and hybrid character for named
+hybrids.
+
+The ``canonicalName -> simple`` field is good for matching names from different
+sources, because sometimes dataset curators omit hybrid sign in named hybrids,
+or remove ranks for infraspecific epithets.
+
+The ``canonicalName -> full`` is good for presentation, as it keeps more
+details.
+
+If you only care about canonical form of a name you can use ``--format simple``
+flag with command line tool or gRPC service.
 
 ### Normalizing name-strings
 

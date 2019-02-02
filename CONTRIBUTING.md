@@ -8,8 +8,10 @@
 * If you're unable to find an open issue addressing the problem, [open a new
   one](https://gitlab.com/gogna/gnparser/issues/new). Be sure to include a
   **title and clear description**, as much relevant information as possible,
-  and a **code sample** or an **executable test case** demonstrating the
-  expected behavior that is not occurring.
+  and a **code sample** or an **executable test case** via
+  [https:parser.globalnames.org](https://parser.globalnames.org) demonstrating
+  the expected behavior that is not occurring.
+* Make sure you **do not put more than one bug report** in the new issue.
 
 ## **Do you intend to add a new feature or change an existing one?**
 
