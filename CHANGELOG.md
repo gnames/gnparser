@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Add [#44]: documentation for canonicalName fields
+- Add [#42]: tests for command line app
 
 ## [v0.7.2]
 - Add [#41]: parse/clean multiple names from standard input.
@@ -56,6 +57,9 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#44]: https://gitlab.com/gogna/gnparser/issues/44
+[#43]: https://gitlab.com/gogna/gnparser/issues/43
+[#42]: https://gitlab.com/gogna/gnparser/issues/42
 [#41]: https://gitlab.com/gogna/gnparser/issues/41
 [#40]: https://gitlab.com/gogna/gnparser/issues/40
 [#39]: https://gitlab.com/gogna/gnparser/issues/39

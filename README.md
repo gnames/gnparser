@@ -257,7 +257,8 @@ gnparser -j 200 names.txt > names_parsed.txt
 # to parse files using pipes
 cat names.txt | gnparser -f simple -j 200 > names_parsed.txt
 
-# to clean names from html tags and entities first, then parse
+# to clean names from html tags and entities first (no parsing
+# or other changes), then parse
 cat names.txt | gnparser -c | sed "s/.*|//" | gnparser > names_parsed.txt
 ```
 
@@ -276,7 +277,11 @@ reach maximum speed of parsing (``--jobs 200`` flag). It is practical because
 additional threads are very cheap in Go and they try to fill out every idle
 gap in the CPU usage.
 
-To cleanup a name
+To cleanup a name (no parsing here, it just removes HTML tags and entities,
+and makes no other modifications):
+
+The output contains the original name-string, and "HTML-normalized" one
+separated by a pipe ("|") character.
 
 ```bash
 gnparser -c "<i>Abacopteris glandulosa</i> (Bl.) F&eacute;e &amp; Chin"
