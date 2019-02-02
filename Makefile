@@ -15,7 +15,7 @@ DATE = $(shell date -u '+%Y-%m-%d_%H:%M:%S%Z')
 
 all: install
 
-test: deps version peg grpc asset
+test: deps install
 	$(FLAG_MODULE) go test ./...
 
 test-build: deps build
