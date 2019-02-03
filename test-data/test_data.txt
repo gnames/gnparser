@@ -650,6 +650,13 @@ Caulerpa fastigiata confervoides P. L. Crouan & H. M. Crouan ex Weber-van Bosse
 8934dbda-1fd2-52c4-af76-8f80e5f02791|Caulerpa fastigiata confervoides P. L. Crouan & H. M. Crouan ex Weber-van Bosse|Caulerpa fastigiata confervoides|Caulerpa fastigiata confervoides|P. L. Crouan & H. M. Crouan ex Weber-van Bosse||2
 #>
 
+# Legacy ICZN names with rank<
+Acipenser gueldenstaedti colchicus natio danubicus Movchan, 1967
+Acipenser gueldenstaedti colchicus natio danubicus Movchan, 1967
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Uncommon rank"]],"verbatim":"Acipenser gueldenstaedti colchicus natio danubicus Movchan, 1967","normalized":"Acipenser gueldenstaedti colchicus natio danubicus Movchan 1967","canonicalName":{"simple":"Acipenser gueldenstaedti colchicus danubicus","full":"Acipenser gueldenstaedti colchicus natio danubicus"},"details":[{"genus":{"value":"Acipenser"},"specificEpithet":{"value":"gueldenstaedti"},"infraspecificEpithets":[{"value":"colchicus"},{"value":"danubicus","rank":"natio","authorship":{"value":"Movchan 1967","basionymAuthorship":{"authors":["Movchan"],"year":{"value":"1967"}}}}]}],"positions":[["genus",0,9],["specificEpithet",10,24],["infraspecificEpithet",25,34],["rank",35,40],["infraspecificEpithet",41,50],["authorWord",51,58],["year",60,64]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"d572e7a6-bcbd-59ef-bc60-1e5d659fd51c","parserVersion":"test_version"}
+d572e7a6-bcbd-59ef-bc60-1e5d659fd51c|Acipenser gueldenstaedti colchicus natio danubicus Movchan, 1967|Acipenser gueldenstaedti colchicus danubicus|Acipenser gueldenstaedti colchicus natio danubicus|Movchan 1967|1967|3
+#>
+
 #SECTION: Infraspecies with rank (ICN)<
 Crematogaster impressa st. brazzai Santschi 1937
 Crematogaster impressa st. brazzai Santschi 1937
@@ -1368,7 +1375,7 @@ Dryopteris × separabilis Small
 34bf83d8-0466-51c4-b95d-70e583ba1c9f|Dryopteris X separabilis Small (pro sp.)|Dryopteris separabilis|Dryopteris × separabilis|Small||3
 #>
 
-#SECTION: Abbreviated words after a name
+#SECTION: Abbreviated words after a name<
 Graphis scripta L. a.b pulverulenta
 Graphis scripta L.
 {"parsed":true,"quality":3,"qualityWarnings":[[3,"Unparsed tail"]],"verbatim":"Graphis scripta L. a.b pulverulenta","normalized":"Graphis scripta L.","canonicalName":{"simple":"Graphis scripta","full":"Graphis scripta"},"details":[{"genus":{"value":"Graphis"},"specificEpithet":{"value":"scripta","authorship":{"value":"L.","basionymAuthorship":{"authors":["L."]}}}}],"positions":[["genus",0,7],["specificEpithet",8,15],["authorWord",16,18]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"unparsedTail":" a.b pulverulenta","nameStringId":"ecb4751f-7d9e-5868-8ef7-c96f6ef07f2d","parserVersion":"test_version"}
@@ -2330,7 +2337,7 @@ Staphylococcus hyicus chromogenes Devriese et al. 1978
 ec17eb44-742c-5325-aca6-e33a0888ef0d|Staphylococcus hyicus chromogenes Devriese et al. 1978 (Approved Lists 1980).|Staphylococcus hyicus chromogenes|Staphylococcus hyicus chromogenes|Devriese et al. 1978|1978|3
 #>
 
-#SECTION: Treating `& al` as `et al`
+#SECTION: Treating `& al` as `et al`<
 Adonis cyllenea Boiss. & al.
 Adonis cyllenea Boiss. & al.
 {"parsed":true,"quality":1,"verbatim":"Adonis cyllenea Boiss. \u0026 al.","normalized":"Adonis cyllenea Boiss. et al.","canonicalName":{"simple":"Adonis cyllenea","full":"Adonis cyllenea"},"details":[{"genus":{"value":"Adonis"},"specificEpithet":{"value":"cyllenea","authorship":{"value":"Boiss. et al.","basionymAuthorship":{"authors":["Boiss. et al."]}}}}],"positions":[["genus",0,6],["specificEpithet",7,15],["authorWord",16,22],["authorWord",23,28]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"a7c2cb28-2ec2-55b5-88a2-6cfd633cbd00","parserVersion":"test_version"}
@@ -2715,7 +2722,7 @@ Parus caeruleus
 f3752c09-242f-501c-8c8c-0feaf86c4693|Parus caeruleus species complex|Parus caeruleus|Parus caeruleus|||3
 #>
 
-#SECTION horticultural annotation
+#SECTION horticultural annotation<
 Lachenalia tricolor var. nelsonii (ht.) Baker
 Lachenalia tricolor var. nelsonii
 {"parsed":true,"quality":3,"qualityWarnings":[[3,"Unparsed tail"]],"verbatim":"Lachenalia tricolor var. nelsonii (ht.) Baker","normalized":"Lachenalia tricolor var. nelsonii","canonicalName":{"simple":"Lachenalia tricolor nelsonii","full":"Lachenalia tricolor var. nelsonii"},"details":[{"genus":{"value":"Lachenalia"},"specificEpithet":{"value":"tricolor"},"infraspecificEpithets":[{"value":"nelsonii","rank":"var."}]}],"positions":[["genus",0,10],["specificEpithet",11,19],["rank",20,24],["infraspecificEpithet",25,33]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"unparsedTail":" (ht.) Baker","nameStringId":"0f7ce439-6b8d-53db-9ea3-82628f25b9bd","parserVersion":"test_version"}

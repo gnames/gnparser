@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add [#45]: add ``natio`` rank (deprecated ICZN rank)
 - Add [#44]: documentation for canonicalName fields
 - Add [#42]: tests for command line app
 
@@ -57,6 +58,7 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#45]: https://gitlab.com/gogna/gnparser/issues/45
 [#44]: https://gitlab.com/gogna/gnparser/issues/44
 [#43]: https://gitlab.com/gogna/gnparser/issues/43
 [#42]: https://gitlab.com/gogna/gnparser/issues/42

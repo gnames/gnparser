@@ -45,7 +45,7 @@ Comparison <- ('cf' '.'?)
 
 Rank <- RankForma / RankVar / RankSsp / RankOther / RankOtherUncommon / RankAgamo
 
-RankOtherUncommon <- ('*' / 'nat' / 'f.sp' / 'mut.') &(SpaceCharEOI)
+RankOtherUncommon <- ('*' / 'natio' / 'nat.' / 'nat' / 'f.sp' / 'mut.') &(SpaceCharEOI)
 
 RankOther <- ('morph.' / 'nothosubsp.' / 'convar.' / 'pseudovar.' / 'sect.' /
   'ser.' / 'subvar.' / 'subf.' / 'race' / 'α' / 'ββ' / 'β' / 'γ' / 'δ' / 'ε' /
