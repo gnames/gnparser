@@ -27,8 +27,15 @@ enum Format {
   Debug = 3;
 }
 
+message Cleaned {
+  string input = 1;
+  string output = 2;
+}
+
 service GNparser {
   rpc Ver(Void) returns(Version) {}
   rpc Parse(stream Input) returns(stream Output) {}
   rpc ParseInOrder(stream Input) returns(stream Output) {}
+  rpc Clean(stream Input) returns(stream Cleaned) {}
+  rpc CleanInOrder(stream Input) returns(stream Cleaned) {}
 }

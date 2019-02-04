@@ -2,12 +2,16 @@
 
 ## Unreleased
 
+## [v0.7.3]
+
+- Add [#54]: add cleaning functions to gRPC
 - Add [#46]: add ``supg.`` rank
 - Add [#45]: add ``natio`` rank (deprecated ICZN rank)
 - Add [#44]: documentation for canonicalName fields
 - Add [#42]: tests for command line app
 
 ## [v0.7.2]
+
 - Add [#41]: parse/clean multiple names from standard input.
 
 ## [v0.7.1]
@@ -53,12 +57,14 @@
 
 This document follows [changelog guidelines]
 
+[v0.7.3]: https://gitlab.com/gogna/gnparser/compare/v0.7.3...v0.7.2
 [v0.7.2]: https://gitlab.com/gogna/gnparser/compare/v0.7.1...v0.7.2
 [v0.7.1]: https://gitlab.com/gogna/gnparser/compare/v0.7.0...v0.7.1
 [v0.7.0]: https://gitlab.com/gogna/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#54]: https://gitlab.com/gogna/gnparser/issues/54
 [#46]: https://gitlab.com/gogna/gnparser/issues/46
 [#45]: https://gitlab.com/gogna/gnparser/issues/45
 [#44]: https://gitlab.com/gogna/gnparser/issues/44
