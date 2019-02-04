@@ -57,7 +57,7 @@
 
 This document follows [changelog guidelines]
 
-[v0.7.3]: https://gitlab.com/gogna/gnparser/compare/v0.7.3...v0.7.2
+[v0.7.3]: https://gitlab.com/gogna/gnparser/compare/v0.7.2...v0.7.3
 [v0.7.2]: https://gitlab.com/gogna/gnparser/compare/v0.7.1...v0.7.2
 [v0.7.1]: https://gitlab.com/gogna/gnparser/compare/v0.7.0...v0.7.1
 [v0.7.0]: https://gitlab.com/gogna/gnparser/compare/v0.6.0...v0.7.0
