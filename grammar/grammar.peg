@@ -70,8 +70,8 @@ UninomialCombo1 <- UninomialWord _? SubGenus (_? Authorship)?
 
 UninomialCombo2 <- Uninomial _ RankUninomial _ Uninomial
 
-RankUninomial <- ('sect' / 'subsect' / 'trib' / 'subtrib' / 'subser' / 'ser.' /
-  'subgen' / 'fam' / 'subfam' / 'supertrib') '.'?
+RankUninomial <- ('sect' / 'subsect' / 'trib' / 'subtrib' / 'subser' / 'ser' /
+  'subgen' / 'subg' / 'fam' / 'subfam' / 'supertrib') '.'?
 
 Uninomial <- UninomialWord (_ Authorship)?
 

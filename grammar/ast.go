@@ -529,7 +529,8 @@ func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
 		u2w := p.newWordNode(n.up, UninomialType)
 		n := n.next
 		au2 := p.newAuthorshipNode(n)
-		rw := &wordNode{Value: "subgen.", Pos: Pos{Type: RankUniType}}
+		rw := &wordNode{Value: "subgen.", NormValue: "subgen.",
+			Pos: Pos{Type: RankUniType}}
 		r = &rankUninomialNode{Word: rw}
 		u2 = &uninomialNode{
 			Word:       u2w,
@@ -551,6 +552,12 @@ type rankUninomialNode struct {
 func (p *Engine) newRankUninomialNode(n *node32) *rankUninomialNode {
 	r := p.newWordNode(n, RankUniType)
 	run := rankUninomialNode{Word: r}
+	switch {
+	case strings.HasPrefix(run.Word.Value, "subg"):
+		run.Word.NormValue = "subgen."
+	case strings.HasPrefix(run.Word.Value, "fam"):
+		run.Word.NormValue = "fam."
+	}
 	return &run
 }
 
@@ -777,7 +784,7 @@ func (p *Engine) newYearNode(nd *node32) *yearNode {
 		case ruleYearWithChar:
 			p.AddWarn(YearCharWarn)
 			w = p.newWordNode(v, YearType)
-			w.Value = w.Value[0 : len(w.Value)-1]
+			w.NormValue = w.Value[0 : len(w.Value)-1]
 		case ruleYearNum:
 			if w == nil {
 				w = p.newWordNode(v, YearType)

@@ -596,14 +596,14 @@ func (u *uninomialComboNode) pos() []Pos {
 }
 
 func (u *uninomialComboNode) value() string {
-	vl := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.Value, " ")
+	vl := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.NormValue, " ")
 	tail := str.JoinStrings(u.Uninomial2.Word.NormValue,
 		u.Uninomial2.Authorship.value(), " ")
 	return str.JoinStrings(vl, tail, " ")
 }
 
 func (u *uninomialComboNode) canonical() (*Canonical, bool) {
-	ranked := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.Value, " ")
+	ranked := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.NormValue, " ")
 	ranked = str.JoinStrings(ranked, u.Uninomial2.Word.NormValue, " ")
 
 	c := Canonical{
@@ -620,7 +620,7 @@ func (u *uninomialComboNode) lastAuthorship() *authorshipNode {
 func (u *uninomialComboNode) details() []interface{} {
 	ud := uniDetails{
 		Value:  u.Uninomial2.Word.NormValue,
-		Rank:   u.Rank.Word.Value,
+		Rank:   u.Rank.Word.NormValue,
 		Parent: u.Uninomial1.Word.NormValue,
 	}
 	if u.Uninomial2.Authorship != nil {
@@ -740,7 +740,7 @@ func (aut *authorsTeamNode) value() string {
 		return value
 	}
 
-	yr := aut.Year.Word.Value
+	yr := aut.Year.Word.NormValue
 	if aut.Year.Approximate {
 		yr = fmt.Sprintf("(%s)", yr)
 	}
@@ -762,7 +762,7 @@ func (at *authorsTeamNode) details() ([]string, *yearOutput) {
 		return aus, yr
 	}
 	yr = &yearOutput{
-		Value:       at.Year.Word.Value,
+		Value:       at.Year.Word.NormValue,
 		Approximate: at.Year.Approximate,
 	}
 	return aus, yr
