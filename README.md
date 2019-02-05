@@ -80,7 +80,7 @@ parser's capabilities, its input and output.
 
 ## Speed
 
-Millions of names parsed per hour on a i7-8750H CPU
+Number of names parsed per hour on a i7-8750H CPU
 (6 cores, 12 threads, at 2.20 GHz), parser v0.5.1
 
 | Threads  | names/hr
