@@ -53,9 +53,9 @@ gnparser -h
 	- [Usage](#usage)
 		- [Command Line](#command-line)
 		- [gRPC server](#grpc-server)
-	- [Usage as a REST API Interface](#usage-as-a-rest-api-interface)
-	- [Use as a Docker image](#use-as-a-docker-image)
-	- [Use as a library in Go](#use-as-a-library-in-go)
+		- [Usage as a REST API Interface](#usage-as-a-rest-api-interface)
+		- [Use as a Docker image](#use-as-a-docker-image)
+		- [Use as a library in Go](#use-as-a-library-in-go)
 	- [Authors](#authors)
 	- [Contributors](#contributors)
 	- [License](#license)
@@ -345,7 +345,7 @@ gnparser -g 8989 -j 20
 For an example how to use gRPC server check ``gnparser`` [Ruby gem][gnparser
 ruby] as well as [gRPC documentation].
 
-## Usage as a REST API Interface
+### Usage as a REST API Interface
 
 Use web-server REST API as a slower, but more wide-spread alternative to
 gRPC server. Web-based user interface and API are invoked by ``--web-port`` or
@@ -378,7 +378,7 @@ request.body = ['Solanum mariae Särkinen & S.Knapp',
 response = http.request(request)
 ```
 
-## Use as a Docker image
+### Use as a Docker image
 
 You need to have [docker runtime installed](https://docs.docker.com/install/)
 on your computer for these examples to work.
@@ -399,7 +399,7 @@ docker run gnames/gognparser "Amaurorhinus bewichianus (Wollaston,1860) (s.str.)
 docker run gnames/gognparser -f simple -j 300 names.txt > parsed.txt
 ```
 
-## Use as a library in Go
+### Use as a library in Go
 
 ```go
 package main
