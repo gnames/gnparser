@@ -89,7 +89,8 @@ TwoLetterGenus <- ('Ca' / 'Ea' / 'Ge' / 'Ia' / 'Io' / 'Ix' / 'Lo' / 'Oa' /
   'Ra' / 'Ty' / 'Ua' / 'Aa' / 'Ja' / 'Zu' / 'La' / 'Qu' / 'As' / 'Ba')
 
 Word <- !((AuthorPrefix / RankUninomial / Approximation / Word4) SpaceCharEOI)
-      (WordApostr / WordStartsWithDigit / Word2 / Word1) &(SpaceCharEOI / '(')
+      (WordApostr / WordStartsWithDigit / MultiDashedWord /
+       Word2 / Word1) &(SpaceCharEOI / '(')
 
 # TODO probably never used
 Word1 <- (LowerASCII Dash)? NameLowerChar NameLowerChar+
@@ -102,6 +103,8 @@ Word2 <- NameLowerChar+ Dash? NameLowerChar+
 WordApostr <- NameLowerChar NameLowerChar* Apostrophe Word1
 
 Word4 <- NameLowerChar+ '.' NameLowerChar
+
+MultiDashedWord <- NameLowerChar+ Dash NameLowerChar+ Dash NameLowerChar+ (Dash NameLowerChar+)?
 
 HybridChar <- '×'
 

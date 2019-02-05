@@ -1086,6 +1086,19 @@ Acanthoderes (acanthoderes) satanas Aurivillius, 1923
 f1082b19-d13f-54a2-95a9-6e342f2a9e6b|Acanthoderes (acanthoderes) satanas Aurivillius, 1923|Acanthoderes satanas|Acanthoderes satanas|Aurivillius 1923|1923|2
 #>
 
+#SECTION: Names with multiple dashes in specific epithet<
+# there are less than 100 of names like this, and only one in CoL with 3 dashes
+Athyrium boreo-occidentali-indobharaticola-birianum Fraser-Jenk.
+Athyrium boreo-occidentali-indobharaticola-birianum Fraser-Jenk.
+{"parsed":true,"quality":1,"verbatim":"Athyrium boreo-occidentali-indobharaticola-birianum Fraser-Jenk.","normalized":"Athyrium boreo-occidentali-indobharaticola-birianum Fraser-Jenk.","canonicalName":{"simple":"Athyrium boreo-occidentali-indobharaticola-birianum","full":"Athyrium boreo-occidentali-indobharaticola-birianum"},"details":[{"genus":{"value":"Athyrium"},"specificEpithet":{"value":"boreo-occidentali-indobharaticola-birianum","authorship":{"value":"Fraser-Jenk.","basionymAuthorship":{"authors":["Fraser-Jenk."]}}}}],"positions":[["genus",0,8],["specificEpithet",9,51],["authorWord",52,64]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"6b979652-191f-5d93-ae23-614768ee0be4","parserVersion":"test_version"}
+6b979652-191f-5d93-ae23-614768ee0be4|Athyrium boreo-occidentali-indobharaticola-birianum Fraser-Jenk.|Athyrium boreo-occidentali-indobharaticola-birianum|Athyrium boreo-occidentali-indobharaticola-birianum|Fraser-Jenk.||1
+
+Puccinia band-i-amirii Durrieu, 1975
+Puccinia band-i-amirii Durrieu, 1975
+{"parsed":true,"quality":1,"verbatim":"Puccinia band-i-amirii Durrieu, 1975","normalized":"Puccinia band-i-amirii Durrieu 1975","canonicalName":{"simple":"Puccinia band-i-amirii","full":"Puccinia band-i-amirii"},"details":[{"genus":{"value":"Puccinia"},"specificEpithet":{"value":"band-i-amirii","authorship":{"value":"Durrieu 1975","basionymAuthorship":{"authors":["Durrieu"],"year":{"value":"1975"}}}}}],"positions":[["genus",0,8],["specificEpithet",9,22],["authorWord",23,30],["year",32,36]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"9733e3df-0b03-5e1e-93f9-5931a4e85f12","parserVersion":"test_version"}
+9733e3df-0b03-5e1e-93f9-5931a4e85f12|Puccinia band-i-amirii Durrieu, 1975|Puccinia band-i-amirii|Puccinia band-i-amirii|Durrieu 1975|1975|1
+#>
+
 #SECTION: Genus with question mark<
 Ferganoconcha? oblonga
 Ferganoconcha? oblonga
