@@ -227,6 +227,8 @@ If you have Go installed on your computer use
 
 ```bash
 go get -u gitlab.com/gogna/gnparser
+cd $GOPATH/srs/gitlab.com/gogna/gnparser
+make install
 ```
 
 You do need your ``PATH`` to include ``$HOME/go/bin``

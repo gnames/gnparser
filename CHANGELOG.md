@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#49]: multiple dashes in specific epithet
+
 ## [v0.7.3]
 
 - Add [#54]: add cleaning functions to gRPC
@@ -65,6 +67,7 @@ This document follows [changelog guidelines]
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
 [#54]: https://gitlab.com/gogna/gnparser/issues/54
+[#49]: https://gitlab.com/gogna/gnparser/issues/49
 [#46]: https://gitlab.com/gogna/gnparser/issues/46
 [#45]: https://gitlab.com/gogna/gnparser/issues/45
 [#44]: https://gitlab.com/gogna/gnparser/issues/44
