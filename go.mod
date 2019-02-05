@@ -58,7 +58,7 @@ require (
 	github.com/stretchr/testify v1.3.0 // indirect
 	go.opencensus.io v0.19.0 // indirect
 	go4.org v0.0.0-20181109185143-00e24f1b2599 // indirect
-	golang.org/x/build v0.0.0-20190205044948-0fbf6af331f6 // indirect
+	golang.org/x/build v0.0.0-20190205194203-d0914bad8ebc // indirect
 	golang.org/x/crypto v0.0.0-20190131182504-b8fe1690c613 // indirect
 	golang.org/x/exp v0.0.0-20190125153040-c74c464bbbf2 // indirect
 	golang.org/x/net v0.0.0-20190125091013-d26f9f9a57f3
@@ -66,7 +66,7 @@ require (
 	golang.org/x/perf v0.0.0-20190124201629-844a5f5b46f4 // indirect
 	golang.org/x/sys v0.0.0-20190204203706-41f3e6584952 // indirect
 	golang.org/x/text v0.3.1-0.20180807135948-17ff2d5776d2
-	golang.org/x/tools v0.0.0-20190205050122-7f7074d5bcfd // indirect
+	golang.org/x/tools v0.0.0-20190205201329-379209517ffe // indirect
 	google.golang.org/genproto v0.0.0-20190201180003-4b09977fb922 // indirect
 	google.golang.org/grpc v1.18.0
 	honnef.co/go/tools v0.0.0-20190128043916-71123fcbb8fe // indirect

@@ -102,11 +102,6 @@ Ataladoris Iredale & O'Donoghue 1923
 {"parsed":true,"quality":1,"verbatim":"Ataladoris Iredale \u0026 O'Donoghue 1923","normalized":"Ataladoris Iredale \u0026 O'Donoghue 1923","canonicalName":{"simple":"Ataladoris","full":"Ataladoris"},"details":[{"uninomial":{"value":"Ataladoris","authorship":{"value":"Iredale \u0026 O'Donoghue 1923","basionymAuthorship":{"authors":["Iredale","O'Donoghue"],"year":{"value":"1923"}}}}}],"positions":[["uninomial",0,10],["authorWord",11,18],["authorWord",21,31],["year",32,36]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"dbb90380-0552-5237-82ef-8a8b07e42049","parserVersion":"test_version"}
 dbb90380-0552-5237-82ef-8a8b07e42049|Ataladoris Iredale & O'Donoghue 1923|Ataladoris|Ataladoris|Iredale & O'Donoghue 1923|1923|1
 
-Saxo-Fridericia R. H. Schomb.
-Saxo-Fridericia R. H. Schomb.
-{"parsed":true,"quality":1,"verbatim":"Saxo-Fridericia R. H. Schomb.","normalized":"Saxo-Fridericia R. H. Schomb.","canonicalName":{"simple":"Saxo-Fridericia","full":"Saxo-Fridericia"},"details":[{"uninomial":{"value":"Saxo-Fridericia","authorship":{"value":"R. H. Schomb.","basionymAuthorship":{"authors":["R. H. Schomb."]}}}}],"positions":[["uninomial",0,15],["authorWord",16,18],["authorWord",19,21],["authorWord",22,29]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"f11d6164-5f08-5bb3-8432-5f07d1ee3bd4","parserVersion":"test_version"}
-f11d6164-5f08-5bb3-8432-5f07d1ee3bd4|Saxo-Fridericia R. H. Schomb.|Saxo-Fridericia|Saxo-Fridericia|R. H. Schomb.||1
-
 Anteplana le Renard 1995
 Anteplana le Renard 1995
 {"parsed":true,"quality":1,"verbatim":"Anteplana le Renard 1995","normalized":"Anteplana le Renard 1995","canonicalName":{"simple":"Anteplana","full":"Anteplana"},"details":[{"uninomial":{"value":"Anteplana","authorship":{"value":"le Renard 1995","basionymAuthorship":{"authors":["le Renard"],"year":{"value":"1995"}}}}}],"positions":[["uninomial",0,9],["authorWord",10,12],["authorWord",13,19],["year",20,24]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"6920744c-27e9-546f-96d9-c8859544ef78","parserVersion":"test_version"}
@@ -1031,6 +1026,28 @@ Pseudocercospora broussonetiae (Chupp & Linder) X.J. Liu & Y.L. Guo 1989
 #>
 
 ### Special Cases
+
+#SECTION: Genus with hyphen (allowed by ICN)<
+Saxo-Fridericia R. H. Schomb.
+Saxo-Fridericia R. H. Schomb.
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Apparent genus with capital character after hyphen"]],"verbatim":"Saxo-Fridericia R. H. Schomb.","normalized":"Saxo-fridericia R. H. Schomb.","canonicalName":{"simple":"Saxo-fridericia","full":"Saxo-fridericia"},"details":[{"uninomial":{"value":"Saxo-fridericia","authorship":{"value":"R. H. Schomb.","basionymAuthorship":{"authors":["R. H. Schomb."]}}}}],"positions":[["uninomial",0,15],["authorWord",16,18],["authorWord",19,21],["authorWord",22,29]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"f11d6164-5f08-5bb3-8432-5f07d1ee3bd4","parserVersion":"test_version"}
+f11d6164-5f08-5bb3-8432-5f07d1ee3bd4|Saxo-Fridericia R. H. Schomb.|Saxo-fridericia|Saxo-fridericia|R. H. Schomb.||2
+
+Saxo-fridericia R. H. Schomb.
+Saxo-fridericia R. H. Schomb.
+{"parsed":true,"quality":1,"verbatim":"Saxo-fridericia R. H. Schomb.","normalized":"Saxo-fridericia R. H. Schomb.","canonicalName":{"simple":"Saxo-fridericia","full":"Saxo-fridericia"},"details":[{"uninomial":{"value":"Saxo-fridericia","authorship":{"value":"R. H. Schomb.","basionymAuthorship":{"authors":["R. H. Schomb."]}}}}],"positions":[["uninomial",0,15],["authorWord",16,18],["authorWord",19,21],["authorWord",22,29]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"9eac48bf-fbb1-57a3-b171-0b3bfda9757f","parserVersion":"test_version"}
+9eac48bf-fbb1-57a3-b171-0b3bfda9757f|Saxo-fridericia R. H. Schomb.|Saxo-fridericia|Saxo-fridericia|R. H. Schomb.||1
+
+Uva-ursi cinerea (Howell) A. Heller
+Uva-ursi cinerea (Howell) A. Heller
+{"parsed":true,"quality":1,"verbatim":"Uva-ursi cinerea (Howell) A. Heller","normalized":"Uva-ursi cinerea (Howell) A. Heller","canonicalName":{"simple":"Uva-ursi cinerea","full":"Uva-ursi cinerea"},"details":[{"genus":{"value":"Uva-ursi"},"specificEpithet":{"value":"cinerea","authorship":{"value":"(Howell) A. Heller","basionymAuthorship":{"authors":["Howell"]},"combinationAuthorship":{"authors":["A. Heller"]}}}}],"positions":[["genus",0,8],["specificEpithet",9,16],["authorWord",18,24],["authorWord",26,28],["authorWord",29,35]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"1f0bc087-ceec-5326-9fa1-2ce3b369bd7d","parserVersion":"test_version"}
+1f0bc087-ceec-5326-9fa1-2ce3b369bd7d|Uva-ursi cinerea (Howell) A. Heller|Uva-ursi cinerea|Uva-ursi cinerea|(Howell) A. Heller||1
+
+Uva-Ursi cinerea (Howell) A. Heller
+Uva-Ursi cinerea (Howell) A. Heller
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Apparent genus with capital character after hyphen"]],"verbatim":"Uva-Ursi cinerea (Howell) A. Heller","normalized":"Uva-ursi cinerea (Howell) A. Heller","canonicalName":{"simple":"Uva-ursi cinerea","full":"Uva-ursi cinerea"},"details":[{"genus":{"value":"Uva-ursi"},"specificEpithet":{"value":"cinerea","authorship":{"value":"(Howell) A. Heller","basionymAuthorship":{"authors":["Howell"]},"combinationAuthorship":{"authors":["A. Heller"]}}}}],"positions":[["genus",0,8],["specificEpithet",9,16],["authorWord",18,24],["authorWord",26,28],["authorWord",29,35]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"c89977a6-b948-5d3f-b4f2-d25b4d0b6ea0","parserVersion":"test_version"}
+c89977a6-b948-5d3f-b4f2-d25b4d0b6ea0|Uva-Ursi cinerea (Howell) A. Heller|Uva-ursi cinerea|Uva-ursi cinerea|(Howell) A. Heller||2
+#>
 
 #SECTION: A 'basionym' author in parenthesis (basionym is an ICN term)<
 Zophosis persis (Chatanay, 1914)

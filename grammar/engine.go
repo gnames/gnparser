@@ -91,6 +91,8 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 		p.AddWarn(AuthDoubleParensWarn)
 	case ruleBasionymAuthorshipMissingParens:
 		p.AddWarn(AuthMissingOneParensWarn)
+	case ruleUpperAfterDash:
+		p.AddWarn(GenusUpperCharAfterDash)
 	}
 	if _, ok := nodeRules[t.pegRule]; ok {
 		node := &node32{token32: t}

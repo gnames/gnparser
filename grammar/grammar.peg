@@ -79,11 +79,17 @@ UninomialWord <- CapWord / TwoLetterGenus
 
 AbbrGenus <- UpperChar LowerChar? '.'
 
-CapWord <- CapWord2 / CapWord1
+CapWord <- CapWordWithDash / CapWord1
 
 CapWord1 <- NameUpperChar NameLowerChar NameLowerChar+ '?'?
 
-CapWord2 <- CapWord1 Dash (CapWord1 / Word1)
+CapWordWithDash <- CapWord1 Dash (UpperAfterDash / LowerAfterDash)
+
+UpperAfterDash <- CapWord1
+
+LowerAfterDash <- Word1
+
+
 
 TwoLetterGenus <- ('Ca' / 'Ea' / 'Ge' / 'Ia' / 'Io' / 'Ix' / 'Lo' / 'Oa' /
   'Ra' / 'Ty' / 'Ua' / 'Aa' / 'Ja' / 'Zu' / 'La' / 'Qu' / 'As' / 'Ba')

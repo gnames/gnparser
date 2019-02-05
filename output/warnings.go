@@ -77,6 +77,10 @@ var warningMap = map[grm.Warning]Warning{
 		Quality: 3,
 		Message: "Abbreviated uninomial word",
 	},
+	grm.GenusUpperCharAfterDash: Warning{
+		Quality: 2,
+		Message: "Apparent genus with capital character after hyphen",
+	},
 	grm.CharBadWarn: Warning{
 		Quality: 2,
 		Message: "Non-standard characters in canonical",

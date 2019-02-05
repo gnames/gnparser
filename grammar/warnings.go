@@ -20,6 +20,7 @@ const (
 	CapWordQuestionWarn
 	CharBadWarn
 	GenusAbbrWarn
+	GenusUpperCharAfterDash
 	HybridCharNoSpaceWarn
 	HybridFormulaWarn
 	HybridFormulaIncompleteWarn

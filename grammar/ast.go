@@ -864,6 +864,21 @@ func (p *Engine) newWordNode(n *node32, wt WordType) *wordNode {
 			p.AddWarn(CapWordQuestionWarn)
 			wrd.NormValue = wrd.NormValue[0 : len(wrd.NormValue)-1]
 		}
+		if _, ok := p.Warnings[GenusUpperCharAfterDash]; ok {
+			nv := make([]rune, len([]rune(wrd.Value)))
+			var afterDash bool
+			for i, v := range wrd.Value {
+				switch {
+				case v == '-':
+					afterDash = true
+				case afterDash == true:
+					v = unicode.ToLower(v)
+					afterDash = false
+				}
+				nv[i] = v
+			}
+			wrd.NormValue = string(nv)
+		}
 		p.IsBacteria(wrd.NormValue)
 	}
 	return &wrd
