@@ -398,7 +398,6 @@ docker run -p 0.0.0.0:80:8080 gnames/gognparser -w 8080
 
 # just parse something
 docker run gnames/gognparser "Amaurorhinus bewichianus (Wollaston,1860) (s.str.)"
-docker run gnames/gognparser -f simple -j 300 names.txt > parsed.txt
 ```
 
 ### Use as a library in Go
