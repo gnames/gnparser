@@ -436,30 +436,6 @@ If you want to submit a bug or add a feature read
 [CONTRIBUTING](https://gitlab.com/gogna/gnparser/blob/master/CONTRIBUTING.md) file.
 
 ## License
-- [Global Names Parser: gnparser written in Go](#global-names-parser-gnparser-written-in-go)
-	- [Introduction](#introduction)
-	- [Speed](#speed)
-	- [Features](#features)
-	- [Use Cases](#use-cases)
-		- [Getting the simplest possible canonical form](#getting-the-simplest-possible-canonical-form)
-		- [Normalizing name-strings](#normalizing-name-strings)
-		- [Removing authorships in the middle of the name](#removing-authorships-in-the-middle-of-the-name)
-		- [Figuring out if names are well-formed](#figuring-out-if-names-are-well-formed)
-		- [Creating stable GUIDs for name-strings](#creating-stable-guids-for-name-strings)
-		- [Assembling canonical forms etc. from original spelling](#assembling-canonical-forms-etc-from-original-spelling)
-	- [Installation](#installation)
-		- [Linux or OS X](#linux-or-os-x)
-		- [Windows](#windows)
-		- [Install with Go](#install-with-go)
-	- [Usage](#usage)
-		- [Command Line](#command-line)
-		- [gRPC server](#grpc-server)
-		- [Usage as a REST API Interface](#usage-as-a-rest-api-interface)
-		- [Use as a Docker image](#use-as-a-docker-image)
-		- [Use as a library in Go](#use-as-a-library-in-go)
-	- [Authors](#authors)
-	- [Contributors](#contributors)
-	- [License](#license)
 Released under [MIT license]
 
 [releases]: https://gitlab.com/gogna/gnparser/releases
