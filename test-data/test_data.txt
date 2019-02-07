@@ -606,8 +606,8 @@ d05be4e3-a0e3-5af4-9104-7922df1bcb47|Cypraeovula (Luponia) amphithales perdentat
 
 Triticum repens vulgäre
 Triticum repens vulgäre
-{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Triticum repens vulgäre","normalized":"Triticum repens vulgare","canonicalName":{"simple":"Triticum repens vulgare","full":"Triticum repens vulgare"},"details":[{"genus":{"value":"Triticum"},"specificEpithet":{"value":"repens"},"infraspecificEpithets":[{"value":"vulgare"}]}],"positions":[["genus",0,8],["specificEpithet",9,15],["infraspecificEpithet",16,23]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"5fb6ae9c-d7be-5d81-88b8-3c96d4c48a74","parserVersion":"test_version"}
-5fb6ae9c-d7be-5d81-88b8-3c96d4c48a74|Triticum repens vulgäre|Triticum repens vulgare|Triticum repens vulgare|||2
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Triticum repens vulgäre","normalized":"Triticum repens vulgaere","canonicalName":{"simple":"Triticum repens vulgaere","full":"Triticum repens vulgaere"},"details":[{"genus":{"value":"Triticum"},"specificEpithet":{"value":"repens"},"infraspecificEpithets":[{"value":"vulgaere"}]}],"positions":[["genus",0,8],["specificEpithet",9,15],["infraspecificEpithet",16,23]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"5fb6ae9c-d7be-5d81-88b8-3c96d4c48a74","parserVersion":"test_version"}
+5fb6ae9c-d7be-5d81-88b8-3c96d4c48a74|Triticum repens vulgäre|Triticum repens vulgaere|Triticum repens vulgaere|||2
 
 Hydnellum scrobiculatum zonatum (Batsch) K. A. Harrison 1961
 Hydnellum scrobiculatum zonatum (Batsch) K. A. Harrison 1961
@@ -636,8 +636,8 @@ Mus musculus hortulanus
 
 Ortygospiza atricollis mülleri
 Ortygospiza atricollis mülleri
-{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Ortygospiza atricollis mülleri","normalized":"Ortygospiza atricollis mulleri","canonicalName":{"simple":"Ortygospiza atricollis mulleri","full":"Ortygospiza atricollis mulleri"},"details":[{"genus":{"value":"Ortygospiza"},"specificEpithet":{"value":"atricollis"},"infraspecificEpithets":[{"value":"mulleri"}]}],"positions":[["genus",0,11],["specificEpithet",12,22],["infraspecificEpithet",23,30]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"1ee6bf1d-90d8-5c4b-98c1-2646c301d07c","parserVersion":"test_version"}
-1ee6bf1d-90d8-5c4b-98c1-2646c301d07c|Ortygospiza atricollis mülleri|Ortygospiza atricollis mulleri|Ortygospiza atricollis mulleri|||2
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Ortygospiza atricollis mülleri","normalized":"Ortygospiza atricollis muelleri","canonicalName":{"simple":"Ortygospiza atricollis muelleri","full":"Ortygospiza atricollis muelleri"},"details":[{"genus":{"value":"Ortygospiza"},"specificEpithet":{"value":"atricollis"},"infraspecificEpithets":[{"value":"muelleri"}]}],"positions":[["genus",0,11],["specificEpithet",12,22],["infraspecificEpithet",23,30]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"1ee6bf1d-90d8-5c4b-98c1-2646c301d07c","parserVersion":"test_version"}
+1ee6bf1d-90d8-5c4b-98c1-2646c301d07c|Ortygospiza atricollis mülleri|Ortygospiza atricollis muelleri|Ortygospiza atricollis muelleri|||2
 
 Cortinarius angulatus B gracilescens Fr. 1838
 Cortinarius angulatus B gracilescens Fr. 1838
@@ -696,8 +696,8 @@ e7888abd-4365-5d74-8d5f-a69c8196328e|Potamogeton iilinoensis var. ventanicola (H
 
 Triticum repens var. vulgäre
 Triticum repens var. vulgäre
-{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Triticum repens var. vulgäre","normalized":"Triticum repens var. vulgare","canonicalName":{"simple":"Triticum repens vulgare","full":"Triticum repens var. vulgare"},"details":[{"genus":{"value":"Triticum"},"specificEpithet":{"value":"repens"},"infraspecificEpithets":[{"value":"vulgare","rank":"var."}]}],"positions":[["genus",0,8],["specificEpithet",9,15],["rank",16,20],["infraspecificEpithet",21,28]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"3421b13b-aaa9-5234-bc1d-9d3fe7a6b19e","parserVersion":"test_version"}
-3421b13b-aaa9-5234-bc1d-9d3fe7a6b19e|Triticum repens var. vulgäre|Triticum repens vulgare|Triticum repens var. vulgare|||2
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Triticum repens var. vulgäre","normalized":"Triticum repens var. vulgaere","canonicalName":{"simple":"Triticum repens vulgaere","full":"Triticum repens var. vulgaere"},"details":[{"genus":{"value":"Triticum"},"specificEpithet":{"value":"repens"},"infraspecificEpithets":[{"value":"vulgaere","rank":"var."}]}],"positions":[["genus",0,8],["specificEpithet",9,15],["rank",16,20],["infraspecificEpithet",21,28]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"3421b13b-aaa9-5234-bc1d-9d3fe7a6b19e","parserVersion":"test_version"}
+3421b13b-aaa9-5234-bc1d-9d3fe7a6b19e|Triticum repens var. vulgäre|Triticum repens vulgaere|Triticum repens var. vulgaere|||2
 
 Aus bus Linn. var. bus
 Aus bus Linn. var. bus
@@ -1534,11 +1534,6 @@ Pleurotus ëous (Berk.) Sacc. 1887
 {"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Pleurotus ëous (Berk.) Sacc. 1887","normalized":"Pleurotus eous (Berk.) Sacc. 1887","canonicalName":{"simple":"Pleurotus eous","full":"Pleurotus eous"},"details":[{"genus":{"value":"Pleurotus"},"specificEpithet":{"value":"eous","authorship":{"value":"(Berk.) Sacc. 1887","basionymAuthorship":{"authors":["Berk."]},"combinationAuthorship":{"authors":["Sacc."],"year":{"value":"1887"}}}}}],"positions":[["genus",0,9],["specificEpithet",10,14],["authorWord",16,21],["authorWord",23,28],["year",29,33]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"fe8c9a43-3480-5598-891d-e2a864781d13","parserVersion":"test_version"}
 fe8c9a43-3480-5598-891d-e2a864781d13|Pleurotus ëous (Berk.) Sacc. 1887|Pleurotus eous|Pleurotus eous|(Berk.) Sacc. 1887||2
 
-Rühlella
-Rühlella
-{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Rühlella","normalized":"Ruhlella","canonicalName":{"simple":"Ruhlella","full":"Ruhlella"},"details":[{"uninomial":{"value":"Ruhlella"}}],"positions":[["uninomial",0,8]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"228b2714-3726-5ae8-b802-59bdbc8d20a6","parserVersion":"test_version"}
-228b2714-3726-5ae8-b802-59bdbc8d20a6|Rühlella|Ruhlella|Ruhlella|||2
-
 Sténométope laevissimus Bibron 1855
 Sténométope laevissimus Bibron 1855
 {"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Sténométope laevissimus Bibron 1855","normalized":"Stenometope laevissimus Bibron 1855","canonicalName":{"simple":"Stenometope laevissimus","full":"Stenometope laevissimus"},"details":[{"genus":{"value":"Stenometope"},"specificEpithet":{"value":"laevissimus","authorship":{"value":"Bibron 1855","basionymAuthorship":{"authors":["Bibron"],"year":{"value":"1855"}}}}}],"positions":[["genus",0,11],["specificEpithet",12,23],["authorWord",24,30],["year",31,35]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"363ea9fc-ac47-50e5-ae4b-1bfb104a8e34","parserVersion":"test_version"}
@@ -1546,8 +1541,8 @@ Sténométope laevissimus Bibron 1855
 
 Choriozopella trägårdhi Lawrence, 1947
 Choriozopella trägårdhi Lawrence, 1947
-{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Choriozopella trägårdhi Lawrence, 1947","normalized":"Choriozopella tragardhi Lawrence 1947","canonicalName":{"simple":"Choriozopella tragardhi","full":"Choriozopella tragardhi"},"details":[{"genus":{"value":"Choriozopella"},"specificEpithet":{"value":"tragardhi","authorship":{"value":"Lawrence 1947","basionymAuthorship":{"authors":["Lawrence"],"year":{"value":"1947"}}}}}],"positions":[["genus",0,13],["specificEpithet",14,23],["authorWord",24,32],["year",34,38]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"3d02292a-3526-5364-96c9-f73738b9d2fa","parserVersion":"test_version"}
-3d02292a-3526-5364-96c9-f73738b9d2fa|Choriozopella trägårdhi Lawrence, 1947|Choriozopella tragardhi|Choriozopella tragardhi|Lawrence 1947|1947|2
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Choriozopella trägårdhi Lawrence, 1947","normalized":"Choriozopella traegaordhi Lawrence 1947","canonicalName":{"simple":"Choriozopella traegaordhi","full":"Choriozopella traegaordhi"},"details":[{"genus":{"value":"Choriozopella"},"specificEpithet":{"value":"traegaordhi","authorship":{"value":"Lawrence 1947","basionymAuthorship":{"authors":["Lawrence"],"year":{"value":"1947"}}}}}],"positions":[["genus",0,13],["specificEpithet",14,23],["authorWord",24,32],["year",34,38]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"3d02292a-3526-5364-96c9-f73738b9d2fa","parserVersion":"test_version"}
+3d02292a-3526-5364-96c9-f73738b9d2fa|Choriozopella trägårdhi Lawrence, 1947|Choriozopella traegaordhi|Choriozopella traegaordhi|Lawrence 1947|1947|2
 
 Isoëtes asplundii H. P. Fuchs
 Isoëtes asplundii H. P. Fuchs
@@ -1561,8 +1556,8 @@ f9689237-693f-5d6e-b62e-b1622214863e|Cerambyx thomæ GMELIN J. F., 1790|Cerambyx
 
 Campethera cailliautii fülleborni
 Campethera cailliautii fülleborni
-{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Campethera cailliautii fülleborni","normalized":"Campethera cailliautii fulleborni","canonicalName":{"simple":"Campethera cailliautii fulleborni","full":"Campethera cailliautii fulleborni"},"details":[{"genus":{"value":"Campethera"},"specificEpithet":{"value":"cailliautii"},"infraspecificEpithets":[{"value":"fulleborni"}]}],"positions":[["genus",0,10],["specificEpithet",11,22],["infraspecificEpithet",23,33]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"6a47e9c0-908f-5141-be93-76490af08606","parserVersion":"test_version"}
-6a47e9c0-908f-5141-be93-76490af08606|Campethera cailliautii fülleborni|Campethera cailliautii fulleborni|Campethera cailliautii fulleborni|||2
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Campethera cailliautii fülleborni","normalized":"Campethera cailliautii fuelleborni","canonicalName":{"simple":"Campethera cailliautii fuelleborni","full":"Campethera cailliautii fuelleborni"},"details":[{"genus":{"value":"Campethera"},"specificEpithet":{"value":"cailliautii"},"infraspecificEpithets":[{"value":"fuelleborni"}]}],"positions":[["genus",0,10],["specificEpithet",11,22],["infraspecificEpithet",23,33]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"6a47e9c0-908f-5141-be93-76490af08606","parserVersion":"test_version"}
+6a47e9c0-908f-5141-be93-76490af08606|Campethera cailliautii fülleborni|Campethera cailliautii fuelleborni|Campethera cailliautii fuelleborni|||2
 
 Östrupia Heiden ex Hustedt, 1935
 Östrupia Heiden ex Hustedt, 1935
@@ -1679,6 +1674,33 @@ Amphisbæna fuliginoſa Linnaeus 1758
 Amphisbæna fuliginoſa Linnaeus 1758
 {"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Amphisbæna fuliginoſa Linnaeus 1758","normalized":"Amphisbaena fuliginosa Linnaeus 1758","canonicalName":{"simple":"Amphisbaena fuliginosa","full":"Amphisbaena fuliginosa"},"details":[{"genus":{"value":"Amphisbaena"},"specificEpithet":{"value":"fuliginosa","authorship":{"value":"Linnaeus 1758","basionymAuthorship":{"authors":["Linnaeus"],"year":{"value":"1758"}}}}}],"positions":[["genus",0,10],["specificEpithet",11,21],["authorWord",22,30],["year",31,35]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"d2f6423b-7a8f-5389-a286-c074fb634c5a","parserVersion":"test_version"}
 d2f6423b-7a8f-5389-a286-c074fb634c5a|Amphisbæna fuliginoſa Linnaeus 1758|Amphisbaena fuliginosa|Amphisbaena fuliginosa|Linnaeus 1758|1758|2
+#>
+
+#SECTION other diacritics, best we can do for now<
+Pärdosa
+Pärdosa
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Pärdosa","normalized":"Paerdosa","canonicalName":{"simple":"Paerdosa","full":"Paerdosa"},"details":[{"uninomial":{"value":"Paerdosa"}}],"positions":[["uninomial",0,7]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"3f493cea-a62c-5bfc-a9a8-e3305e6936db","parserVersion":"test_version"}
+3f493cea-a62c-5bfc-a9a8-e3305e6936db|Pärdosa|Paerdosa|Paerdosa|||2
+
+Pårdosa
+Pårdosa
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Pårdosa","normalized":"Paordosa","canonicalName":{"simple":"Paordosa","full":"Paordosa"},"details":[{"uninomial":{"value":"Paordosa"}}],"positions":[["uninomial",0,7]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"eead0d2e-5f37-503c-add2-e344c341be20","parserVersion":"test_version"}
+eead0d2e-5f37-503c-add2-e344c341be20|Pårdosa|Paordosa|Paordosa|||2
+
+Pardøsa
+Pardøsa
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Pardøsa","normalized":"Pardoesa","canonicalName":{"simple":"Pardoesa","full":"Pardoesa"},"details":[{"uninomial":{"value":"Pardoesa"}}],"positions":[["uninomial",0,7]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"6922fdef-226d-59fc-9cc6-7b446d7ce37b","parserVersion":"test_version"}
+6922fdef-226d-59fc-9cc6-7b446d7ce37b|Pardøsa|Pardoesa|Pardoesa|||2
+
+Pardösa
+Pardösa
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Pardösa","normalized":"Pardoesa","canonicalName":{"simple":"Pardoesa","full":"Pardoesa"},"details":[{"uninomial":{"value":"Pardoesa"}}],"positions":[["uninomial",0,7]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"7873dfb8-fc08-50e8-bd23-e94deb9317bc","parserVersion":"test_version"}
+7873dfb8-fc08-50e8-bd23-e94deb9317bc|Pardösa|Pardoesa|Pardoesa|||2
+
+Rühlella
+Rühlella
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Rühlella","normalized":"Ruehlella","canonicalName":{"simple":"Ruehlella","full":"Ruehlella"},"details":[{"uninomial":{"value":"Ruehlella"}}],"positions":[["uninomial",0,8]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"228b2714-3726-5ae8-b802-59bdbc8d20a6","parserVersion":"test_version"}
+228b2714-3726-5ae8-b802-59bdbc8d20a6|Rühlella|Ruehlella|Ruehlella|||2
 #>
 
 ### Open Nomenclature ('approximate' names)
@@ -2099,7 +2121,6 @@ Acastella
 {"parsed":true,"quality":3,"qualityWarnings":[[3,"Unparsed tail"]],"verbatim":"Acastella ex gr. rouaulti","normalized":"Acastella","canonicalName":{"simple":"Acastella","full":"Acastella"},"details":[{"uninomial":{"value":"Acastella"}}],"positions":[["uninomial",0,9]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"unparsedTail":" ex gr. rouaulti","nameStringId":"c1864b52-848a-5de7-8f2d-a3cfe2025c40","parserVersion":"test_version"}
 c1864b52-848a-5de7-8f2d-a3cfe2025c40|Acastella ex gr. rouaulti|Acastella|Acastella|||3
 # >
-
 
 #SECTION: Authoship in upper case<
 Lecanora strobilinoides GIRALT & GÓMEZ-BOLEA
@@ -2572,7 +2593,6 @@ Acastoides spp.
 {"parsed":true,"quality":3,"qualityWarnings":[[3,"Name is approximate"]],"verbatim":"Acastoides spp.","normalized":"Acastoides","canonicalName":{"simple":"Acastoides","full":"Acastoides"},"details":[{"genus":{"value":"Acastoides"},"annotationIdentification":"spp.","ignored":{"value":""}}],"positions":[["genus",0,10],["annotationIdentification",11,15]],"surrogate":true,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"9853f0a4-6324-5a7d-8108-e910578e612b","parserVersion":"test_version"}
 9853f0a4-6324-5a7d-8108-e910578e612b|Acastoides spp.|Acastoides|Acastoides|||3
 #>
-
 
 #SECTION: Ignoring sensu sec<
 Senecio legionensis sensu Samp., non Lange
