@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v0.7.4]
+
+- Add [#48]: transliteration of diacriticals
 - Add [#43]: notho- (hybrids) rank supported
 - Add [#52]: genera with hyphens with lower or upper char after hyphen
 - Add [#49]: multiple hyphens in specific epithet
@@ -61,6 +64,7 @@
 
 This document follows [changelog guidelines]
 
+[v0.7.4]: https://gitlab.com/gogna/gnparser/compare/v0.7.3...v0.7.4
 [v0.7.3]: https://gitlab.com/gogna/gnparser/compare/v0.7.2...v0.7.3
 [v0.7.2]: https://gitlab.com/gogna/gnparser/compare/v0.7.1...v0.7.2
 [v0.7.1]: https://gitlab.com/gogna/gnparser/compare/v0.7.0...v0.7.1
@@ -71,6 +75,7 @@ This document follows [changelog guidelines]
 [#54]: https://gitlab.com/gogna/gnparser/issues/54
 [#52]: https://gitlab.com/gogna/gnparser/issues/52
 [#49]: https://gitlab.com/gogna/gnparser/issues/49
+[#48]: https://gitlab.com/gogna/gnparser/issues/48
 [#46]: https://gitlab.com/gogna/gnparser/issues/46
 [#45]: https://gitlab.com/gogna/gnparser/issues/45
 [#44]: https://gitlab.com/gogna/gnparser/issues/44
