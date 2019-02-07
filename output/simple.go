@@ -32,7 +32,7 @@ func NewSimpleOutput(sn *grammar.ScientificNameNode) *simple {
 	}
 
 	quality := 0
-	c, _ := sn.Canonical()
+	c := sn.Canonical()
 	if c == nil {
 		c = &grammar.Canonical{}
 	} else {

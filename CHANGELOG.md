@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add [#43]: notho- (hybrids) rank supported
 - Add [#52]: genera with hyphens with lower or upper char after hyphen
 - Add [#49]: multiple hyphens in specific epithet
 

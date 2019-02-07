@@ -729,11 +729,6 @@ Sphaerotheca    fuliginea    f.     dahliae    Movss.     1967
 {"parsed":true,"quality":2,"qualityWarnings":[[2,"Multiple adjacent space characters"]],"verbatim":"Sphaerotheca    fuliginea    f.     dahliae    Movss.     1967","normalized":"Sphaerotheca fuliginea fm. dahliae Movss. 1967","canonicalName":{"simple":"Sphaerotheca fuliginea dahliae","full":"Sphaerotheca fuliginea fm. dahliae"},"details":[{"genus":{"value":"Sphaerotheca"},"specificEpithet":{"value":"fuliginea"},"infraspecificEpithets":[{"value":"dahliae","rank":"fm.","authorship":{"value":"Movss. 1967","basionymAuthorship":{"authors":["Movss."],"year":{"value":"1967"}}}}]}],"positions":[["genus",0,12],["specificEpithet",16,25],["rank",29,31],["infraspecificEpithet",36,43],["authorWord",47,53],["year",58,62]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"bbd48fd4-ceee-5c66-ae42-f7fa43a8ea97","parserVersion":"test_version"}
 bbd48fd4-ceee-5c66-ae42-f7fa43a8ea97|Sphaerotheca    fuliginea    f.     dahliae    Movss.     1967|Sphaerotheca fuliginea dahliae|Sphaerotheca fuliginea fm. dahliae|Movss. 1967|1967|2
 
-Polypodium vulgare nothosubsp. mantoniae (Rothm.) Schidlay
-Polypodium vulgare nothosubsp. mantoniae (Rothm.) Schidlay
-{"parsed":true,"quality":1,"verbatim":"Polypodium vulgare nothosubsp. mantoniae (Rothm.) Schidlay","normalized":"Polypodium vulgare nothosubsp. mantoniae (Rothm.) Schidlay","canonicalName":{"simple":"Polypodium vulgare mantoniae","full":"Polypodium vulgare nothosubsp. mantoniae"},"details":[{"genus":{"value":"Polypodium"},"specificEpithet":{"value":"vulgare"},"infraspecificEpithets":[{"value":"mantoniae","rank":"nothosubsp.","authorship":{"value":"(Rothm.) Schidlay","basionymAuthorship":{"authors":["Rothm."]},"combinationAuthorship":{"authors":["Schidlay"]}}}]}],"positions":[["genus",0,10],["specificEpithet",11,18],["rank",19,30],["infraspecificEpithet",31,40],["authorWord",42,48],["authorWord",50,58]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"11b8b286-6989-59b7-a377-4f855f10962e","parserVersion":"test_version"}
-11b8b286-6989-59b7-a377-4f855f10962e|Polypodium vulgare nothosubsp. mantoniae (Rothm.) Schidlay|Polypodium vulgare mantoniae|Polypodium vulgare nothosubsp. mantoniae|(Rothm.) Schidlay||1
-
 Allophylus amazonicus var amazonicus
 Allophylus amazonicus var amazonicus
 {"parsed":true,"quality":1,"verbatim":"Allophylus amazonicus var amazonicus","normalized":"Allophylus amazonicus var. amazonicus","canonicalName":{"simple":"Allophylus amazonicus amazonicus","full":"Allophylus amazonicus var. amazonicus"},"details":[{"genus":{"value":"Allophylus"},"specificEpithet":{"value":"amazonicus"},"infraspecificEpithets":[{"value":"amazonicus","rank":"var."}]}],"positions":[["genus",0,10],["specificEpithet",11,21],["rank",22,25],["infraspecificEpithet",26,36]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"4e5c108c-b089-5198-9088-dd58d74d951f","parserVersion":"test_version"}
@@ -748,11 +743,6 @@ Prunus armeniaca convar. budae (Pénzes) Soó
 Prunus armeniaca convar. budae (Pénzes) Soó
 {"parsed":true,"quality":1,"verbatim":"Prunus armeniaca convar. budae (Pénzes) Soó","normalized":"Prunus armeniaca convar. budae (Pénzes) Soó","canonicalName":{"simple":"Prunus armeniaca budae","full":"Prunus armeniaca convar. budae"},"details":[{"genus":{"value":"Prunus"},"specificEpithet":{"value":"armeniaca"},"infraspecificEpithets":[{"value":"budae","rank":"convar.","authorship":{"value":"(Pénzes) Soó","basionymAuthorship":{"authors":["Pénzes"]},"combinationAuthorship":{"authors":["Soó"]}}}]}],"positions":[["genus",0,6],["specificEpithet",7,16],["rank",17,24],["infraspecificEpithet",25,30],["authorWord",32,38],["authorWord",40,43]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"c2133c2d-0486-54cb-a8cb-d355d458e19f","parserVersion":"test_version"}
 c2133c2d-0486-54cb-a8cb-d355d458e19f|Prunus armeniaca convar. budae (Pénzes) Soó|Prunus armeniaca budae|Prunus armeniaca convar. budae|(Pénzes) Soó||1
-
-Crataegus curvisepala nvar. naviculiformis T. Petauer
-Crataegus curvisepala nvar. naviculiformis T. Petauer
-{"parsed":true,"quality":1,"verbatim":"Crataegus curvisepala nvar. naviculiformis T. Petauer","normalized":"Crataegus curvisepala nvar. naviculiformis T. Petauer","canonicalName":{"simple":"Crataegus curvisepala naviculiformis","full":"Crataegus curvisepala nvar. naviculiformis"},"details":[{"genus":{"value":"Crataegus"},"specificEpithet":{"value":"curvisepala"},"infraspecificEpithets":[{"value":"naviculiformis","rank":"nvar.","authorship":{"value":"T. Petauer","basionymAuthorship":{"authors":["T. Petauer"]}}}]}],"positions":[["genus",0,9],["specificEpithet",10,21],["rank",22,27],["infraspecificEpithet",28,42],["authorWord",43,45],["authorWord",46,53]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"f3e2ccac-4844-57a7-8903-4e3b6a0d0851","parserVersion":"test_version"}
-f3e2ccac-4844-57a7-8903-4e3b6a0d0851|Crataegus curvisepala nvar. naviculiformis T. Petauer|Crataegus curvisepala naviculiformis|Crataegus curvisepala nvar. naviculiformis|T. Petauer||1
 
 Polypodium pectinatum (L.) f. typica Rosenst.
 Polypodium pectinatum (L.) f. typica Rosenst.
@@ -864,6 +854,66 @@ Euastrum divergens var. rhodesiense f. coronulum A.M. Scott & Prescott
 #>
 
 ### Hybrids
+
+#SECTION: notho- ranks<
+Crataegus curvisepala nvar. naviculiformis T. Petauer
+Crataegus curvisepala nvar. naviculiformis T. Petauer
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Named hybrid"]],"verbatim":"Crataegus curvisepala nvar. naviculiformis T. Petauer","normalized":"Crataegus curvisepala nvar. naviculiformis T. Petauer","canonicalName":{"simple":"Crataegus curvisepala naviculiformis","full":"Crataegus curvisepala nvar. naviculiformis"},"details":[{"genus":{"value":"Crataegus"},"specificEpithet":{"value":"curvisepala"},"infraspecificEpithets":[{"value":"naviculiformis","rank":"nvar.","authorship":{"value":"T. Petauer","basionymAuthorship":{"authors":["T. Petauer"]}}}]}],"positions":[["genus",0,9],["specificEpithet",10,21],["rank",22,27],["infraspecificEpithet",28,42],["authorWord",43,45],["authorWord",46,53]],"surrogate":false,"virus":false,"hybrid":true,"bacteria":false,"nameStringId":"f3e2ccac-4844-57a7-8903-4e3b6a0d0851","parserVersion":"test_version"}
+f3e2ccac-4844-57a7-8903-4e3b6a0d0851|Crataegus curvisepala nvar. naviculiformis T. Petauer|Crataegus curvisepala naviculiformis|Crataegus curvisepala nvar. naviculiformis|T. Petauer||2
+
+Aconitum W. Mucher nothosect. Acopellus
+Aconitum W. Mucher nothosect. Acopellus
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Combination of two uninomials"],[2,"Named hybrid"]],"verbatim":"Aconitum W. Mucher nothosect. Acopellus","normalized":"Aconitum nothosect. Acopellus","canonicalName":{"simple":"Acopellus","full":"Aconitum nothosect. Acopellus"},"details":[{"uninomial":{"value":"Acopellus","rank":"nothosect.","parent":"Aconitum"}}],"positions":[["uninomial",0,8],["authorWord",9,11],["authorWord",12,18],["rank",19,29],["uninomial",30,39]],"surrogate":false,"virus":false,"hybrid":true,"bacteria":false,"nameStringId":"815f38e4-2425-551d-b054-4949a457d6a6","parserVersion":"test_version"}
+815f38e4-2425-551d-b054-4949a457d6a6|Aconitum W. Mucher nothosect. Acopellus|Acopellus|Aconitum nothosect. Acopellus|||2
+
+Aconitum W. Mucher nothoser. Acotoxicum
+Aconitum W. Mucher nothoser. Acotoxicum
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Combination of two uninomials"],[2,"Named hybrid"]],"verbatim":"Aconitum W. Mucher nothoser. Acotoxicum","normalized":"Aconitum nothoser. Acotoxicum","canonicalName":{"simple":"Acotoxicum","full":"Aconitum nothoser. Acotoxicum"},"details":[{"uninomial":{"value":"Acotoxicum","rank":"nothoser.","parent":"Aconitum"}}],"positions":[["uninomial",0,8],["authorWord",9,11],["authorWord",12,18],["rank",19,28],["uninomial",29,39]],"surrogate":false,"virus":false,"hybrid":true,"bacteria":false,"nameStringId":"6fd8d3d4-bdb6-5fc6-a94d-966af669c7e9","parserVersion":"test_version"}
+6fd8d3d4-bdb6-5fc6-a94d-966af669c7e9|Aconitum W. Mucher nothoser. Acotoxicum|Acotoxicum|Aconitum nothoser. Acotoxicum|||2
+
+Abies masjoannis nothof. mesoides
+Abies masjoannis nothof. mesoides
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Named hybrid"]],"verbatim":"Abies masjoannis nothof. mesoides","normalized":"Abies masjoannis nothof. mesoides","canonicalName":{"simple":"Abies masjoannis mesoides","full":"Abies masjoannis nothof. mesoides"},"details":[{"genus":{"value":"Abies"},"specificEpithet":{"value":"masjoannis"},"infraspecificEpithets":[{"value":"mesoides","rank":"nothof."}]}],"positions":[["genus",0,5],["specificEpithet",6,16],["rank",17,24],["infraspecificEpithet",25,33]],"surrogate":false,"virus":false,"hybrid":true,"bacteria":false,"nameStringId":"5be2cd2f-c81f-5d81-8eaf-54bd231f5230","parserVersion":"test_version"}
+5be2cd2f-c81f-5d81-8eaf-54bd231f5230|Abies masjoannis nothof. mesoides|Abies masjoannis mesoides|Abies masjoannis nothof. mesoides|||2
+
+Aconitum berdaui nothosubsp. walasii (Mitka) Mitka
+Aconitum berdaui nothosubsp. walasii (Mitka) Mitka
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Named hybrid"]],"verbatim":"Aconitum berdaui nothosubsp. walasii (Mitka) Mitka","normalized":"Aconitum berdaui nothosubsp. walasii (Mitka) Mitka","canonicalName":{"simple":"Aconitum berdaui walasii","full":"Aconitum berdaui nothosubsp. walasii"},"details":[{"genus":{"value":"Aconitum"},"specificEpithet":{"value":"berdaui"},"infraspecificEpithets":[{"value":"walasii","rank":"nothosubsp.","authorship":{"value":"(Mitka) Mitka","basionymAuthorship":{"authors":["Mitka"]},"combinationAuthorship":{"authors":["Mitka"]}}}]}],"positions":[["genus",0,8],["specificEpithet",9,16],["rank",17,28],["infraspecificEpithet",29,36],["authorWord",38,43],["authorWord",45,50]],"surrogate":false,"virus":false,"hybrid":true,"bacteria":false,"nameStringId":"ba2f82ac-9312-5595-928a-2ba07aebb04f","parserVersion":"test_version"}
+ba2f82ac-9312-5595-928a-2ba07aebb04f|Aconitum berdaui nothosubsp. walasii (Mitka) Mitka|Aconitum berdaui walasii|Aconitum berdaui nothosubsp. walasii|(Mitka) Mitka||2
+
+Aconitum tauricum nothossp. hayekianum (Gáyer) Grintescu
+Aconitum tauricum nothossp. hayekianum (Gáyer) Grintescu
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Named hybrid"]],"verbatim":"Aconitum tauricum nothossp. hayekianum (Gáyer) Grintescu","normalized":"Aconitum tauricum nothossp. hayekianum (Gáyer) Grintescu","canonicalName":{"simple":"Aconitum tauricum hayekianum","full":"Aconitum tauricum nothossp. hayekianum"},"details":[{"genus":{"value":"Aconitum"},"specificEpithet":{"value":"tauricum"},"infraspecificEpithets":[{"value":"hayekianum","rank":"nothossp.","authorship":{"value":"(Gáyer) Grintescu","basionymAuthorship":{"authors":["Gáyer"]},"combinationAuthorship":{"authors":["Grintescu"]}}}]}],"positions":[["genus",0,8],["specificEpithet",9,17],["rank",18,27],["infraspecificEpithet",28,38],["authorWord",40,45],["authorWord",47,56]],"surrogate":false,"virus":false,"hybrid":true,"bacteria":false,"nameStringId":"c02c80bf-11b1-59f9-9fed-6627fb954dd8","parserVersion":"test_version"}
+c02c80bf-11b1-59f9-9fed-6627fb954dd8|Aconitum tauricum nothossp. hayekianum (Gáyer) Grintescu|Aconitum tauricum hayekianum|Aconitum tauricum nothossp. hayekianum|(Gáyer) Grintescu||2
+
+Aeonium holospathulatum nothovar. sanchezii (Bañares) Bañares
+Aeonium holospathulatum nothovar. sanchezii (Bañares) Bañares
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Named hybrid"]],"verbatim":"Aeonium holospathulatum nothovar. sanchezii (Bañares) Bañares","normalized":"Aeonium holospathulatum nothovar. sanchezii (Bañares) Bañares","canonicalName":{"simple":"Aeonium holospathulatum sanchezii","full":"Aeonium holospathulatum nothovar. sanchezii"},"details":[{"genus":{"value":"Aeonium"},"specificEpithet":{"value":"holospathulatum"},"infraspecificEpithets":[{"value":"sanchezii","rank":"nothovar.","authorship":{"value":"(Bañares) Bañares","basionymAuthorship":{"authors":["Bañares"]},"combinationAuthorship":{"authors":["Bañares"]}}}]}],"positions":[["genus",0,7],["specificEpithet",8,23],["rank",24,33],["infraspecificEpithet",34,43],["authorWord",45,52],["authorWord",54,61]],"surrogate":false,"virus":false,"hybrid":true,"bacteria":false,"nameStringId":"fc173db1-3977-5cad-a96b-472165bb0bbd","parserVersion":"test_version"}
+fc173db1-3977-5cad-a96b-472165bb0bbd|Aeonium holospathulatum nothovar. sanchezii (Bañares) Bañares|Aeonium holospathulatum sanchezii|Aeonium holospathulatum nothovar. sanchezii|(Bañares) Bañares||2
+
+Amaranthus ×ozanonii (Contré) Lambinon nothosubsp. ralletii
+Amaranthus ×ozanonii (Contré) Lambinon nothosubsp. ralletii
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Hybrid char not separated by space"],[2,"Named hybrid"]],"verbatim":"Amaranthus ×ozanonii (Contré) Lambinon nothosubsp. ralletii","normalized":"Amaranthus × ozanonii (Contré) Lambinon nothosubsp. ralletii","canonicalName":{"simple":"Amaranthus ozanonii ralletii","full":"Amaranthus × ozanonii nothosubsp. ralletii"},"details":[{"genus":{"value":"Amaranthus"},"specificEpithet":{"value":"ozanonii","authorship":{"value":"(Contré) Lambinon","basionymAuthorship":{"authors":["Contré"]},"combinationAuthorship":{"authors":["Lambinon"]}}},"infraspecificEpithets":[{"value":"ralletii","rank":"nothosubsp."}]}],"positions":[["genus",0,10],["hybridChar",11,12],["specificEpithet",12,20],["authorWord",22,28],["authorWord",30,38],["rank",39,50],["infraspecificEpithet",51,59]],"surrogate":false,"virus":false,"hybrid":true,"bacteria":false,"nameStringId":"678535c6-c679-5716-a874-1cf92bca3ce9","parserVersion":"test_version"}
+678535c6-c679-5716-a874-1cf92bca3ce9|Amaranthus ×ozanonii (Contré) Lambinon nothosubsp. ralletii|Amaranthus ozanonii ralletii|Amaranthus × ozanonii nothosubsp. ralletii|||3
+
+Aconitum ×teppneri Mucher ex Starm. nothosubsp. goetzii
+Aconitum ×teppneri Mucher ex Starm. nothosubsp. goetzii
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Hybrid char not separated by space"],[2,"Ex authors are not required"],[2,"Named hybrid"]],"verbatim":"Aconitum ×teppneri Mucher ex Starm. nothosubsp. goetzii","normalized":"Aconitum × teppneri Mucher ex Starm. nothosubsp. goetzii","canonicalName":{"simple":"Aconitum teppneri goetzii","full":"Aconitum × teppneri nothosubsp. goetzii"},"details":[{"genus":{"value":"Aconitum"},"specificEpithet":{"value":"teppneri","authorship":{"value":"Mucher ex Starm.","basionymAuthorship":{"authors":["Mucher"],"exAuthors":{"authors":["Starm."]}}}},"infraspecificEpithets":[{"value":"goetzii","rank":"nothosubsp."}]}],"positions":[["genus",0,8],["hybridChar",9,10],["specificEpithet",10,18],["authorWord",19,25],["authorWord",29,35],["rank",36,47],["infraspecificEpithet",48,55]],"surrogate":false,"virus":false,"hybrid":true,"bacteria":false,"nameStringId":"2387941b-9e4f-5fb5-a440-74934cc66c4f","parserVersion":"test_version"}
+2387941b-9e4f-5fb5-a440-74934cc66c4f|Aconitum ×teppneri Mucher ex Starm. nothosubsp. goetzii|Aconitum teppneri goetzii|Aconitum × teppneri nothosubsp. goetzii|||3
+
+Aeonium × proliferum Bañares nothovar. glabrifolium Bañares
+Aeonium × proliferum Bañares nothovar. glabrifolium Bañares
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Named hybrid"]],"verbatim":"Aeonium × proliferum Bañares nothovar. glabrifolium Bañares","normalized":"Aeonium × proliferum Bañares nothovar. glabrifolium Bañares","canonicalName":{"simple":"Aeonium proliferum glabrifolium","full":"Aeonium × proliferum nothovar. glabrifolium"},"details":[{"genus":{"value":"Aeonium"},"specificEpithet":{"value":"proliferum","authorship":{"value":"Bañares","basionymAuthorship":{"authors":["Bañares"]}}},"infraspecificEpithets":[{"value":"glabrifolium","rank":"nothovar.","authorship":{"value":"Bañares","basionymAuthorship":{"authors":["Bañares"]}}}]}],"positions":[["genus",0,7],["hybridChar",8,9],["specificEpithet",10,20],["authorWord",21,28],["rank",29,38],["infraspecificEpithet",39,51],["authorWord",52,59]],"surrogate":false,"virus":false,"hybrid":true,"bacteria":false,"nameStringId":"dc38d07a-f949-5c72-9463-d36a4ae96bea","parserVersion":"test_version"}
+dc38d07a-f949-5c72-9463-d36a4ae96bea|Aeonium × proliferum Bañares nothovar. glabrifolium Bañares|Aeonium proliferum glabrifolium|Aeonium × proliferum nothovar. glabrifolium|Bañares||2
+
+# Very rare people make this mistake. We do not cover it yet.
+# Agropyron x pseudorepens notho morph. vulpinum (Rydb.) Bowden, 1965
+
+Biscogniauxia nothofagi Whalley, Læssøe & Kile 1990
+Biscogniauxia nothofagi Whalley, Læssøe & Kile 1990
+{"parsed":true,"quality":1,"verbatim":"Biscogniauxia nothofagi Whalley, Læssøe \u0026 Kile 1990","normalized":"Biscogniauxia nothofagi Whalley, Læssøe \u0026 Kile 1990","canonicalName":{"simple":"Biscogniauxia nothofagi","full":"Biscogniauxia nothofagi"},"details":[{"genus":{"value":"Biscogniauxia"},"specificEpithet":{"value":"nothofagi","authorship":{"value":"Whalley, Læssøe \u0026 Kile 1990","basionymAuthorship":{"authors":["Whalley","Læssøe","Kile"],"year":{"value":"1990"}}}}}],"positions":[["genus",0,13],["specificEpithet",14,23],["authorWord",24,31],["authorWord",33,39],["authorWord",42,46],["year",47,51]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"1f8935ad-5ae2-507e-96aa-f0bb1d22245e","parserVersion":"test_version"}
+1f8935ad-5ae2-507e-96aa-f0bb1d22245e|Biscogniauxia nothofagi Whalley, Læssøe & Kile 1990|Biscogniauxia nothofagi|Biscogniauxia nothofagi|Whalley, Læssøe & Kile 1990|1990|1
+#>
 
 #SECTION: Named hybrids<
 ×Agropogon P. Fourn. 1934

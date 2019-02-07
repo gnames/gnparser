@@ -30,13 +30,15 @@ func NewOutput(sn *grm.ScientificNameNode) *Output {
 	var quality int
 	var ws []Warning
 	var ps []pos
+	var hybrid bool
 	var parsed bool
 	det := sn.Details()
-	c, hybrid := sn.Canonical()
+	c := sn.Canonical()
 	if c != nil {
 		co = &canonical{Simple: c.Value, Full: c.ValueRanked}
 		ws, quality = qualityAndWarnings(sn.Warnings)
 		ps = convertPos(sn.Pos())
+		hybrid = sn.Hybrid
 		parsed = true
 	}
 

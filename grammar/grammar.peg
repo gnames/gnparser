@@ -18,7 +18,8 @@ HybridFormulaPart <- HybridChar _ SpeciesEpithet (_ InfraspGroup)?
 
 NamedHybrid <- NamedGenusHybrid / NamedSpeciesHybrid
 
-NamedSpeciesHybrid <- GenusWord (_ SubGenus)? (_ Comparison)? _ HybridChar _? SpeciesEpithet
+NamedSpeciesHybrid <- GenusWord (_ SubGenus)? (_ Comparison)? _ HybridChar _?
+  SpeciesEpithet (_ InfraspGroup)?
 
 NamedGenusHybrid <- HybridChar _? SingleName
 
@@ -41,24 +42,30 @@ InfraspEpithet <- (Rank _?)? !(AuthorEx) Word  (_ Authorship)?
 
 SpeciesEpithet <- !(AuthorEx) Word (_? Authorship)?
 
-Comparison <- ('cf' '.'?)
+Comparison <- 'cf' '.'?
 
-Rank <- RankForma / RankVar / RankSsp / RankOther / RankOtherUncommon / RankAgamo
+Rank <- RankForma / RankVar / RankSsp / RankOther / RankOtherUncommon /
+  RankAgamo / RankNotho
 
-RankOtherUncommon <- ('*' / 'natio' / 'nat.' / 'nat' / 'f.sp' / 'mut.') &(SpaceCharEOI)
+RankNotho <- (('notho' ('var' / 'fo' / 'f' / 'subsp' / 'ssp' / 'sp' /
+  'morth' / 'supsp' / 'su' )) / 'nvar') ('.' / &(SpaceCharEOI))
 
-RankOther <- ('morph.' / 'nothosubsp.' / 'convar.' / 'pseudovar.' / 'sect.' /
-  'ser.' / 'subvar.' / 'subf.' / 'race' / 'α' / 'ββ' / 'β' / 'γ' / 'δ' / 'ε' /
-  'φ' / 'θ' / 'μ' / 'a.' / 'b.' / 'c.' / 'd.' / 'e.' / 'g.' / 'k.' / 'pv.' /
-  'pathovar.' / ('ab.' (_? 'n.')?) / 'st.') &(SpaceCharEOI)
+RankOtherUncommon <- ('*' / 'natio' / 'nat.' / 'nat' / 'f.sp' /
+   'α' / 'ββ' / 'β' / 'γ' / 'δ' / 'ε' / 'φ' / 'θ' / 'μ' / 'a.' / 'b.' /
+    'c.' / 'd.' / 'e.' / 'g.' / 'k.' /
+  'mut.') &(SpaceCharEOI)
 
-RankVar <- 'variety' / '[var.]' / 'nvar.' / ('var' (&(SpaceCharEOI) / '.'))
+RankOther <- ('morph' / 'convar' / 'pseudovar' / 'sect' /
+  'ser' / 'subvar' / 'subf' / 'race' / 'pv' / 'pathovar' /
+   ('ab.' (_? 'n.')?) / 'st') ('.' / &(SpaceCharEOI))
 
-RankForma <- ('forma' / 'fma' / 'form' / 'fo' / 'f') (&(SpaceCharEOI) / '.')
+RankVar <- ('variety' / '[var.]' / 'var') ('.' / &(SpaceCharEOI))
 
-RankSsp <- ('ssp' / 'subsp') (&(SpaceCharEOI) / '.')
+RankForma <- ('forma' / 'fma' / 'form' / 'fo' / 'f') ('.' / &(SpaceCharEOI))
 
-RankAgamo <- ('agamosp' / 'agamossp' / 'agamovar') '.'?
+RankSsp <- ('ssp' / 'subsp') ('.' / &(SpaceCharEOI))
+
+RankAgamo <- ('agamosp' / 'agamossp' / 'agamovar') ('.' / &(SpaceCharEOI))
 
 SubGenusOrSuperspecies <- '(' _? NameLowerChar+ _? ')'
 
@@ -70,8 +77,15 @@ UninomialCombo1 <- UninomialWord _? SubGenus (_? Authorship)?
 
 UninomialCombo2 <- Uninomial _ RankUninomial _ Uninomial
 
-RankUninomial <- ('sect' / 'subsect' / 'trib' / 'subtrib' / 'subser' / 'ser' /
-  'subgen' / 'subg' / 'fam' / 'subfam' / 'supertrib') '.'?
+RankUninomial <- RankUninomialPlain / RankUninomialNotho
+
+RankUninomialPlain <- ('sect' / 'subsect' / 'trib' / 'subtrib' / 'subser' /
+  'ser' / 'subgen' / 'subg' / 'fam' / 'subfam' /
+  'supertrib') ('.' / &(SpaceCharEOI))
+
+RankUninomialNotho <- ('notho' _? ('sect' / 'gen' / 'ser' / 'subgeen' /
+  'subgen' / 'subg' / 'subsect' / 'subtrib')) ('.' / &(SpaceCharEOI))
+
 
 Uninomial <- UninomialWord (_ Authorship)?
 

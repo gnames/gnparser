@@ -15,6 +15,7 @@ type ScientificNameNode struct {
 	Name
 	Verbatim      string
 	VerbatimID    string
+	Hybrid        bool
 	Virus         bool
 	Bacteria      bool
 	Surrogate     bool
@@ -37,7 +38,6 @@ func (p *Engine) NewScientificNameNode() {
 		}
 		n = n.next
 	}
-
 	warns := make([]Warning, len(p.Warnings))
 	i := 0
 	for k := range p.Warnings {
@@ -49,6 +49,7 @@ func (p *Engine) NewScientificNameNode() {
 	}
 	sn := ScientificNameNode{
 		Name:      name,
+		Hybrid:    p.Hybrid,
 		Surrogate: p.Surrogate,
 		Bacteria:  p.Bacteria,
 		Tail:      tail,
@@ -212,10 +213,11 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 }
 
 type namedSpeciesHybridNode struct {
-	Genus      *wordNode
-	Comparison *wordNode
-	Hybrid     *wordNode
-	SpEpithet  *spEpithetNode
+	Genus        *wordNode
+	Comparison   *wordNode
+	Hybrid       *wordNode
+	SpEpithet    *spEpithetNode
+	InfraSpecies []*infraspEpithetNode
 }
 
 func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
@@ -223,6 +225,7 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 	n = n.up
 	var gen, hybrid, cf *wordNode
 	var sp *spEpithetNode
+	var infs []*infraspEpithetNode
 	for n != nil {
 		switch n.pegRule {
 		case ruleGenusWord:
@@ -235,6 +238,8 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 			hybrid = p.newWordNode(n, HybridCharType)
 		case ruleSpeciesEpithet:
 			sp = p.newSpeciesEpithetNode(n)
+		case ruleInfraspGroup:
+			infs = p.newInfraspeciesGroup(n)
 		}
 		n = n.next
 	}
@@ -244,10 +249,11 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 		p.AddWarn(HybridCharNoSpaceWarn)
 	}
 	nhl = &namedSpeciesHybridNode{
-		Genus:      gen,
-		Comparison: cf,
-		Hybrid:     hybrid,
-		SpEpithet:  sp,
+		Genus:        gen,
+		Comparison:   cf,
+		Hybrid:       hybrid,
+		SpEpithet:    sp,
+		InfraSpecies: infs,
 	}
 	return nhl
 }
@@ -471,11 +477,7 @@ func (p *Engine) newRankNode(n *node32) *rankNode {
 	case ruleRankForma:
 		w.NormValue = "fm."
 	case ruleRankVar:
-		if w.Value[0] == 'n' {
-			w.NormValue = "nvar."
-		} else {
-			w.NormValue = "var."
-		}
+		w.NormValue = "var."
 	case ruleRankSsp:
 		w.NormValue = "ssp."
 	case ruleRankOtherUncommon:

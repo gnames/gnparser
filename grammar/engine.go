@@ -10,6 +10,7 @@ type BaseEngine struct {
 	SN        *ScientificNameNode
 	root      *node32
 	Error     error
+	Hybrid    bool
 	Surrogate bool
 	Bacteria  bool
 	Warnings  map[Warning]struct{}
@@ -18,6 +19,7 @@ type BaseEngine struct {
 func (p *Engine) FullReset() {
 	var warnReset map[Warning]struct{}
 	p.Warnings = warnReset
+	p.Hybrid = false
 	p.Surrogate = false
 	p.Bacteria = false
 	p.Error = nil
@@ -81,6 +83,11 @@ func (p *Engine) PrintOutputSyntaxTree(w io.Writer) {
 func (p *Engine) newNode(t token32) (*node32, bool) {
 	var node *node32
 	switch t.pegRule {
+	case ruleHybridChar:
+		p.Hybrid = true
+	case ruleRankNotho, ruleRankUninomialNotho:
+		p.Hybrid = true
+		p.AddWarn(HybridNamedWarn)
 	case ruleOtherSpace:
 		p.AddWarn(SpaceNonStandardWarn)
 	case ruleMultipleSpace:
