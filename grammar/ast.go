@@ -867,9 +867,10 @@ func (p *Engine) newWordNode(n *node32, wt WordType) *wordNode {
 			wrd.NormValue = wrd.NormValue[0 : len(wrd.NormValue)-1]
 		}
 		if _, ok := p.Warnings[GenusUpperCharAfterDash]; ok {
-			nv := make([]rune, len([]rune(wrd.Value)))
+			runes := []rune(wrd.Value)
+			nv := make([]rune, len(runes))
 			var afterDash bool
-			for i, v := range wrd.Value {
+			for i, v := range runes {
 				switch {
 				case v == '-':
 					afterDash = true

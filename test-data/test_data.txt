@@ -1097,6 +1097,12 @@ Uva-Ursi cinerea (Howell) A. Heller
 Uva-Ursi cinerea (Howell) A. Heller
 {"parsed":true,"quality":2,"qualityWarnings":[[2,"Apparent genus with capital character after hyphen"]],"verbatim":"Uva-Ursi cinerea (Howell) A. Heller","normalized":"Uva-ursi cinerea (Howell) A. Heller","canonicalName":{"simple":"Uva-ursi cinerea","full":"Uva-ursi cinerea"},"details":[{"genus":{"value":"Uva-ursi"},"specificEpithet":{"value":"cinerea","authorship":{"value":"(Howell) A. Heller","basionymAuthorship":{"authors":["Howell"]},"combinationAuthorship":{"authors":["A. Heller"]}}}}],"positions":[["genus",0,8],["specificEpithet",9,16],["authorWord",18,24],["authorWord",26,28],["authorWord",29,35]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"c89977a6-b948-5d3f-b4f2-d25b4d0b6ea0","parserVersion":"test_version"}
 c89977a6-b948-5d3f-b4f2-d25b4d0b6ea0|Uva-Ursi cinerea (Howell) A. Heller|Uva-ursi cinerea|Uva-ursi cinerea|(Howell) A. Heller||2
+
+#Misspeled name
+Ambrysus-Stål, 1862
+Ambrysus-Stål
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Unparsed tail"],[2,"Apparent genus with capital character after hyphen"],[2,"Non-standard characters in canonical"]],"verbatim":"Ambrysus-Stål, 1862","normalized":"Ambrysus-stål","canonicalName":{"simple":"Ambrysus-stål","full":"Ambrysus-stål"},"details":[{"uninomial":{"value":"Ambrysus-stål"}}],"positions":[["uninomial",0,13]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"unparsedTail":", 1862","nameStringId":"ab9e69c4-9418-5f86-ad51-3bfc87f76016","parserVersion":"test_version"}
+ab9e69c4-9418-5f86-ad51-3bfc87f76016|Ambrysus-Stål, 1862|Ambrysus-stål|Ambrysus-stål|||3
 #>
 
 #SECTION: A 'basionym' author in parenthesis (basionym is an ICN term)<
