@@ -5,6 +5,7 @@ type Warning int
 const (
 	TailWarn Warning = iota
 	ApostrOtherWarn
+	AuthAmbiguousFiliusWarn
 	AuthDoubleParensWarn
 	AuthExWarn
 	AuthExWithDotWarn

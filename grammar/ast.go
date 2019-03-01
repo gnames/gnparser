@@ -389,6 +389,10 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		SpEpithet:    sp,
 		InfraSpecies: infs,
 	}
+	if len(infs) > 0 && infs[0].Rank == nil && sp.Authorship != nil &&
+		sp.Authorship.TerminalFilius {
+		p.AddWarn(AuthAmbiguousFiliusWarn)
+	}
 	return &sn
 }
 
@@ -426,6 +430,12 @@ func (p *Engine) newInfraspeciesGroup(n *node32) []*infraspEpithetNode {
 	}
 	for n != nil {
 		inf := p.newInfraspEpithetNode(n)
+		if len(infs) > 0 && inf.Rank == nil {
+			infPrev := infs[len(infs)-1]
+			if infPrev.Authorship != nil && infPrev.Authorship.TerminalFilius {
+				p.AddWarn(AuthAmbiguousFiliusWarn)
+			}
+		}
 		infs = append(infs, inf)
 		n = n.next
 	}
@@ -566,6 +576,7 @@ func (p *Engine) newRankUninomialNode(n *node32) *rankUninomialNode {
 type authorshipNode struct {
 	OriginalAuthors    *authorsGroupNode
 	CombinationAuthors *authorsGroupNode
+	TerminalFilius     bool
 }
 
 func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
@@ -575,6 +586,7 @@ func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 	}
 	var oa, ca *authorsGroupNode
 	var misplacedYear bool
+	var fil bool
 	n = n.up
 	for n != nil {
 		switch n.token32.pegRule {
@@ -600,19 +612,25 @@ func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 		}
 		n = n.next
 	}
+	fil = oa.TerminalFilius && !oa.Parens
+	if ca != nil {
+		fil = ca.TerminalFilius
+	}
 
 	a = &authorshipNode{
 		OriginalAuthors:    oa,
 		CombinationAuthors: ca,
+		TerminalFilius:     fil,
 	}
 	return a
 }
 
 type authorsGroupNode struct {
-	Team1     *authorsTeamNode
-	Team2Type *wordNode
-	Team2     *authorsTeamNode
-	Parens    bool
+	Team1          *authorsTeamNode
+	Team2Type      *wordNode
+	Team2          *authorsTeamNode
+	Parens         bool
+	TerminalFilius bool
 }
 
 func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
@@ -620,10 +638,12 @@ func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 	var t2t *wordNode
 	n = n.up
 	t1 = p.newAuthorTeam(n)
+	fil := t1.TerminalFilius
 	ag := authorsGroupNode{
-		Team1:     t1,
-		Team2Type: t2t,
-		Team2:     t2,
+		Team1:          t1,
+		Team2Type:      t2t,
+		Team2:          t2,
+		TerminalFilius: fil,
 	}
 	n = n.next
 	if n == nil {
@@ -656,12 +676,14 @@ func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 	t2 = p.newAuthorTeam(n)
 	ag.Team2Type = t2t
 	ag.Team2 = t2
+	ag.TerminalFilius = ag.Team2.TerminalFilius
 	return &ag
 }
 
 type authorsTeamNode struct {
-	Authors []*authorNode
-	Year    *yearNode
+	Authors        []*authorNode
+	TerminalFilius bool
+	Year           *yearNode
 }
 
 func (p *Engine) newAuthorTeam(n *node32) *authorsTeamNode {
@@ -696,20 +718,23 @@ func (p *Engine) newAuthorTeam(n *node32) *authorsTeamNode {
 		}
 	}
 	atn := authorsTeamNode{
-		Authors: aus,
-		Year:    yr,
+		Authors:        aus,
+		TerminalFilius: aus[len(aus)-1].Filius,
+		Year:           yr,
 	}
 	return &atn
 }
 
 type authorNode struct {
-	Value string
-	Sep   string
-	Words []*wordNode
+	Value  string
+	Sep    string
+	Words  []*wordNode
+	Filius bool
 }
 
 func (p *Engine) newAuthorNode(n *node32) *authorNode {
 	var w *wordNode
+	var fil bool
 	var ws []*wordNode
 	val := ""
 	rawVal := ""
@@ -719,6 +744,7 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 		case ruleFilius:
 			w = p.newWordNode(n, AuthorWordFiliusType)
 			w.NormValue = "fil."
+			fil = true
 		case ruleUnknownAuthor:
 			p.AddWarn(AuthUnknownWarn)
 			w = p.authorWord(n)
@@ -738,8 +764,9 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 		p.AddWarn(AuthShortWarn)
 	}
 	au := authorNode{
-		Value: val,
-		Words: ws,
+		Value:  val,
+		Words:  ws,
+		Filius: fil,
 	}
 	return &au
 }

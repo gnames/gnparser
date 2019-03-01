@@ -17,12 +17,12 @@ type BaseEngine struct {
 }
 
 func (p *Engine) FullReset() {
-	var warnReset map[Warning]struct{}
-	p.Warnings = warnReset
+	p.Error = nil
 	p.Hybrid = false
 	p.Surrogate = false
 	p.Bacteria = false
-	p.Error = nil
+	var warnReset map[Warning]struct{}
+	p.Warnings = warnReset
 	p.Reset()
 }
 

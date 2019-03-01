@@ -13,25 +13,85 @@ type Warning struct {
 }
 
 var warningMap = map[grm.Warning]Warning{
-	grm.SpaceMultipleWarn: Warning{
-		Quality: 2,
-		Message: "Multiple adjacent space characters",
-	},
-	grm.SpaceNonStandardWarn: Warning{
-		Quality: 3,
-		Message: "Non-standard space characters",
-	},
-	grm.UTF8ConvBadWarn: Warning{
-		Quality: 3,
-		Message: "Incorrect conversion to UTF-8",
-	},
-	grm.WhiteSpaceTrailWarn: Warning{
-		Quality: 2,
-		Message: "Trailing whitespace",
-	},
 	grm.TailWarn: Warning{
 		Quality: 3,
 		Message: "Unparsed tail",
+	},
+	grm.ApostrOtherWarn: Warning{
+		Quality: 3,
+		Message: "Not an ASCII apostrophe",
+	},
+	grm.AuthAmbiguousFiliusWarn: Warning{
+		Quality: 2,
+		Message: "Ambiguous f. (filius or forma)",
+	},
+	grm.AuthDoubleParensWarn: Warning{
+		Quality: 3,
+		Message: "Authorship in double parentheses",
+	},
+	grm.AuthExWarn: Warning{
+		Quality: 2,
+		Message: "Ex authors are not required",
+	},
+	grm.AuthExWithDotWarn: Warning{
+		Quality: 3,
+		Message: "`ex` ends with dot",
+	},
+	grm.AuthEmendWarn: Warning{
+		Quality: 2,
+		Message: "Emend authors are not required",
+	},
+	grm.AuthEmendWithoutDotWarn: Warning{
+		Quality: 3,
+		Message: "`emend` without a period",
+	},
+	grm.AuthMissingOneParensWarn: Warning{
+		Quality: 3,
+		Message: "Authorship is missing one parenthesis",
+	},
+	grm.AuthQuestionWarn: Warning{
+		Quality: 3,
+		Message: "Author as a question mark",
+	},
+	grm.AuthShortWarn: Warning{
+		Quality: 3,
+		Message: "Author is too short",
+	},
+	grm.AuthUnknownWarn: Warning{
+		Quality: 2,
+		Message: "Author is unknown",
+	},
+	grm.AuthUpperCaseWarn: Warning{
+		Quality: 2,
+		Message: "Author in upper case",
+	},
+	grm.BacteriaMaybeWarn: Warning{
+		Quality: 1,
+		Message: "The genus is a homonym of a bacterial genus",
+	},
+	grm.CanonicalApostropheWarn: Warning{
+		Quality: 3,
+		Message: "Apostrophe is not allowed in canonical",
+	},
+	grm.CapWordQuestionWarn: Warning{
+		Quality: 3,
+		Message: "Uninomial word with question mark",
+	},
+	grm.CharBadWarn: Warning{
+		Quality: 2,
+		Message: "Non-standard characters in canonical",
+	},
+	grm.GenusAbbrWarn: Warning{
+		Quality: 3,
+		Message: "Abbreviated uninomial word",
+	},
+	grm.GenusUpperCharAfterDash: Warning{
+		Quality: 2,
+		Message: "Apparent genus with capital character after hyphen",
+	},
+	grm.HybridCharNoSpaceWarn: Warning{
+		Quality: 3,
+		Message: "Hybrid char not separated by space",
 	},
 	grm.HybridFormulaWarn: Warning{
 		Quality: 2,
@@ -44,10 +104,6 @@ var warningMap = map[grm.Warning]Warning{
 	grm.HybridFormulaProbIncompleteWarn: Warning{
 		Quality: 2,
 		Message: "Probably incomplete hybrid formula",
-	},
-	grm.HybridCharNoSpaceWarn: Warning{
-		Quality: 3,
-		Message: "Hybrid char not separated by space",
 	},
 	grm.HybridNamedWarn: Warning{
 		Quality: 2,
@@ -65,93 +121,45 @@ var warningMap = map[grm.Warning]Warning{
 		Quality: 3,
 		Message: "Uncommon rank",
 	},
-	grm.SuperSpeciesWarn: Warning{
+	grm.SpaceMultipleWarn: Warning{
 		Quality: 2,
-		Message: "Ambiguity: subgenus or superspecies found",
+		Message: "Multiple adjacent space characters",
 	},
-	grm.UninomialComboWarn: Warning{
-		Quality: 2,
-		Message: "Combination of two uninomials",
-	},
-	grm.GenusAbbrWarn: Warning{
+	grm.SpaceNonStandardWarn: Warning{
 		Quality: 3,
-		Message: "Abbreviated uninomial word",
-	},
-	grm.GenusUpperCharAfterDash: Warning{
-		Quality: 2,
-		Message: "Apparent genus with capital character after hyphen",
-	},
-	grm.CharBadWarn: Warning{
-		Quality: 2,
-		Message: "Non-standard characters in canonical",
-	},
-	grm.CapWordQuestionWarn: Warning{
-		Quality: 3,
-		Message: "Uninomial word with question mark",
-	},
-	grm.CanonicalApostropheWarn: Warning{
-		Quality: 3,
-		Message: "Apostrophe is not allowed in canonical",
+		Message: "Non-standard space characters",
 	},
 	grm.SpeciesNumericWarn: Warning{
 		Quality: 3,
 		Message: "Numeric prefix",
 	},
-	grm.AuthExWarn: Warning{
+	grm.SuperSpeciesWarn: Warning{
 		Quality: 2,
-		Message: "Ex authors are not required",
+		Message: "Ambiguity: subgenus or superspecies found",
 	},
-	grm.AuthEmendWarn: Warning{
+	grm.UTF8ConvBadWarn: Warning{
+		Quality: 3,
+		Message: "Incorrect conversion to UTF-8",
+	},
+	grm.UninomialComboWarn: Warning{
 		Quality: 2,
-		Message: "Emend authors are not required",
+		Message: "Combination of two uninomials",
 	},
-	grm.YearOrigMisplacedWarn: Warning{
+	grm.WhiteSpaceTrailWarn: Warning{
 		Quality: 2,
-		Message: "Misplaced basionym year",
+		Message: "Trailing whitespace",
 	},
-	grm.AuthDoubleParensWarn: Warning{
-		Quality: 3,
-		Message: "Authorship in double parentheses",
-	},
-	grm.AuthMissingOneParensWarn: Warning{
-		Quality: 3,
-		Message: "Authorship is missing one parenthesis",
-	},
-	grm.AuthExWithDotWarn: Warning{
-		Quality: 3,
-		Message: "`ex` ends with dot",
-	},
-	grm.AuthEmendWithoutDotWarn: Warning{
-		Quality: 3,
-		Message: "`emend` without a period",
-	},
-	grm.AuthShortWarn: Warning{
-		Quality: 3,
-		Message: "Author is too short",
-	},
-	grm.AuthUnknownWarn: Warning{
+	grm.YearCharWarn: Warning{
 		Quality: 2,
-		Message: "Author is unknown",
-	},
-	grm.AuthQuestionWarn: Warning{
-		Quality: 3,
-		Message: "Author as a question mark",
-	},
-	grm.AuthUpperCaseWarn: Warning{
-		Quality: 2,
-		Message: "Author in upper case",
-	},
-	grm.YearRangeWarn: Warning{
-		Quality: 3,
-		Message: "Years range",
+		Message: "Year with latin character",
 	},
 	grm.YearDotWarn: Warning{
 		Quality: 2,
 		Message: "Year with period",
 	},
-	grm.YearSqBraketsWarn: Warning{
-		Quality: 3,
-		Message: "Year with square brakets",
+	grm.YearOrigMisplacedWarn: Warning{
+		Quality: 2,
+		Message: "Misplaced basionym year",
 	},
 	grm.YearPageWarn: Warning{
 		Quality: 3,
@@ -161,21 +169,17 @@ var warningMap = map[grm.Warning]Warning{
 		Quality: 2,
 		Message: "Year with parentheses",
 	},
-	grm.YearCharWarn: Warning{
-		Quality: 2,
-		Message: "Year with latin character",
-	},
 	grm.YearQuestionWarn: Warning{
 		Quality: 2,
 		Message: "Year with question mark",
 	},
-	grm.BacteriaMaybeWarn: Warning{
-		Quality: 1,
-		Message: "The genus is a homonym of a bacterial genus",
-	},
-	grm.ApostrOtherWarn: Warning{
+	grm.YearRangeWarn: Warning{
 		Quality: 3,
-		Message: "Not an ASCII apostrophe",
+		Message: "Years range",
+	},
+	grm.YearSqBraketsWarn: Warning{
+		Quality: 3,
+		Message: "Year with square brakets",
 	},
 }
 
