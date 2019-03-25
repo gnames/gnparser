@@ -261,10 +261,12 @@ Aconitum ser. Tangutica W.T. Wang
 {"parsed":true,"quality":2,"qualityWarnings":[[2,"Combination of two uninomials"]],"verbatim":"Aconitum ser. Tangutica W.T. Wang","normalized":"Aconitum ser. Tangutica W. T. Wang","canonicalName":{"simple":"Tangutica","full":"Aconitum ser. Tangutica"},"details":[{"uninomial":{"value":"Tangutica","rank":"ser.","parent":"Aconitum","authorship":{"value":"W. T. Wang","basionymAuthorship":{"authors":["W. T. Wang"]}}}}],"positions":[["uninomial",0,8],["rank",9,13],["uninomial",14,23],["authorWord",24,26],["authorWord",26,28],["authorWord",29,33]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"8f5d7bd0-90a1-556d-a8ef-1a440b157c34","parserVersion":"test_version"}
 8f5d7bd0-90a1-556d-a8ef-1a440b157c34|Aconitum ser. Tangutica W.T. Wang|Tangutica|Aconitum ser. Tangutica|W. T. Wang||2
 
+# This is not correct, but allows not to generate fake subgenera
+# from botanical names
 Calathus (Lindrothius) KURNAKOV 1961
 Calathus (Lindrothius) KURNAKOV 1961
-{"parsed":true,"quality":2,"qualityWarnings":[[2,"Author in upper case"],[2,"Combination of two uninomials"]],"verbatim":"Calathus (Lindrothius) KURNAKOV 1961","normalized":"Calathus subgen. Lindrothius Kurnakov 1961","canonicalName":{"simple":"Lindrothius","full":"Calathus subgen. Lindrothius"},"details":[{"uninomial":{"value":"Lindrothius","rank":"subgen.","parent":"Calathus","authorship":{"value":"Kurnakov 1961","basionymAuthorship":{"authors":["Kurnakov"],"year":{"value":"1961"}}}}}],"positions":[["uninomial",0,8],["uninomial",10,21],["authorWord",23,31],["year",32,36]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"aa113505-61a1-58fe-92f3-8fd511dcfd61","parserVersion":"test_version"}
-aa113505-61a1-58fe-92f3-8fd511dcfd61|Calathus (Lindrothius) KURNAKOV 1961|Lindrothius|Calathus subgen. Lindrothius|Kurnakov 1961|1961|2
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Author in upper case"]],"verbatim":"Calathus (Lindrothius) KURNAKOV 1961","normalized":"Calathus (Lindrothius) Kurnakov 1961","canonicalName":{"simple":"Calathus","full":"Calathus"},"details":[{"uninomial":{"value":"Calathus","authorship":{"value":"(Lindrothius) Kurnakov 1961","basionymAuthorship":{"authors":["Lindrothius"]},"combinationAuthorship":{"authors":["Kurnakov"],"year":{"value":"1961"}}}}}],"positions":[["uninomial",0,8],["authorWord",10,21],["authorWord",23,31],["year",32,36]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"aa113505-61a1-58fe-92f3-8fd511dcfd61","parserVersion":"test_version"}
+aa113505-61a1-58fe-92f3-8fd511dcfd61|Calathus (Lindrothius) KURNAKOV 1961|Calathus|Calathus|(Lindrothius) Kurnakov 1961||2
 
 Eucalyptus subser. Regulares Brooker
 Eucalyptus subser. Regulares Brooker
@@ -273,8 +275,8 @@ Eucalyptus subser. Regulares Brooker
 
 Aaleniella (Danocythere)
 Aaleniella (Danocythere)
-{"parsed":true,"quality":2,"qualityWarnings":[[2,"Combination of two uninomials"]],"verbatim":"Aaleniella (Danocythere)","normalized":"Aaleniella subgen. Danocythere","canonicalName":{"simple":"Danocythere","full":"Aaleniella subgen. Danocythere"},"details":[{"uninomial":{"value":"Danocythere","rank":"subgen.","parent":"Aaleniella"}}],"positions":[["uninomial",0,10],["uninomial",12,23]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"8b7eddb1-b9a4-5cca-8fa8-25527e25d8df","parserVersion":"test_version"}
-8b7eddb1-b9a4-5cca-8fa8-25527e25d8df|Aaleniella (Danocythere)|Danocythere|Aaleniella subgen. Danocythere|||2
+{"parsed":true,"quality":1,"verbatim":"Aaleniella (Danocythere)","normalized":"Aaleniella (Danocythere)","canonicalName":{"simple":"Aaleniella","full":"Aaleniella"},"details":[{"uninomial":{"value":"Aaleniella","authorship":{"value":"(Danocythere)","basionymAuthorship":{"authors":["Danocythere"]}}}}],"positions":[["uninomial",0,10],["authorWord",12,23]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"8b7eddb1-b9a4-5cca-8fa8-25527e25d8df","parserVersion":"test_version"}
+8b7eddb1-b9a4-5cca-8fa8-25527e25d8df|Aaleniella (Danocythere)|Aaleniella|Aaleniella|(Danocythere)||1
 #>
 
 ### Binomials
@@ -2062,11 +2064,6 @@ Carabus satyrus satyrus KURNAKOV, 1962
 Carabus satyrus satyrus KURNAKOV, 1962
 {"parsed":true,"quality":2,"qualityWarnings":[[2,"Author in upper case"]],"verbatim":"Carabus satyrus satyrus KURNAKOV, 1962","normalized":"Carabus satyrus satyrus Kurnakov 1962","canonicalName":{"simple":"Carabus satyrus satyrus","full":"Carabus satyrus satyrus"},"details":[{"genus":{"value":"Carabus"},"specificEpithet":{"value":"satyrus"},"infraspecificEpithets":[{"value":"satyrus","authorship":{"value":"Kurnakov 1962","basionymAuthorship":{"authors":["Kurnakov"],"year":{"value":"1962"}}}}]}],"positions":[["genus",0,7],["specificEpithet",8,15],["infraspecificEpithet",16,23],["authorWord",24,32],["year",34,38]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"81654954-0f47-5715-acb1-1cd8d2c49e9a","parserVersion":"test_version"}
 81654954-0f47-5715-acb1-1cd8d2c49e9a|Carabus satyrus satyrus KURNAKOV, 1962|Carabus satyrus satyrus|Carabus satyrus satyrus|Kurnakov 1962|1962|2
-
-Calathus (Lindrothius) KURNAKOV 1961
-Calathus (Lindrothius) KURNAKOV 1961
-{"parsed":true,"quality":2,"qualityWarnings":[[2,"Author in upper case"],[2,"Combination of two uninomials"]],"verbatim":"Calathus (Lindrothius) KURNAKOV 1961","normalized":"Calathus subgen. Lindrothius Kurnakov 1961","canonicalName":{"simple":"Lindrothius","full":"Calathus subgen. Lindrothius"},"details":[{"uninomial":{"value":"Lindrothius","rank":"subgen.","parent":"Calathus","authorship":{"value":"Kurnakov 1961","basionymAuthorship":{"authors":["Kurnakov"],"year":{"value":"1961"}}}}}],"positions":[["uninomial",0,8],["uninomial",10,21],["authorWord",23,31],["year",32,36]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"aa113505-61a1-58fe-92f3-8fd511dcfd61","parserVersion":"test_version"}
-aa113505-61a1-58fe-92f3-8fd511dcfd61|Calathus (Lindrothius) KURNAKOV 1961|Lindrothius|Calathus subgen. Lindrothius|Kurnakov 1961|1961|2
 #>
 
 ### Real Names Similar to Viruses etc.
@@ -2367,8 +2364,8 @@ Acanthochiton
 #SECTION: Names with unparsed_tail at the end<
 Morea (Morea) Burt 2342343242 23424322342 23424234
 Morea (Morea) Burt
-{"parsed":true,"quality":3,"qualityWarnings":[[3,"Unparsed tail"],[2,"Combination of two uninomials"]],"verbatim":"Morea (Morea) Burt 2342343242 23424322342 23424234","normalized":"Morea subgen. Morea Burt","canonicalName":{"simple":"Morea","full":"Morea subgen. Morea"},"details":[{"uninomial":{"value":"Morea","rank":"subgen.","parent":"Morea","authorship":{"value":"Burt","basionymAuthorship":{"authors":["Burt"]}}}}],"positions":[["uninomial",0,5],["uninomial",7,12],["authorWord",14,18]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"unparsedTail":" 2342343242 23424322342 23424234","nameStringId":"ca23679f-f3d8-5194-a406-048f970c4020","parserVersion":"test_version"}
-ca23679f-f3d8-5194-a406-048f970c4020|Morea (Morea) Burt 2342343242 23424322342 23424234|Morea|Morea subgen. Morea|Burt||3
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Unparsed tail"]],"verbatim":"Morea (Morea) Burt 2342343242 23424322342 23424234","normalized":"Morea (Morea) Burt","canonicalName":{"simple":"Morea","full":"Morea"},"details":[{"uninomial":{"value":"Morea","authorship":{"value":"(Morea) Burt","basionymAuthorship":{"authors":["Morea"]},"combinationAuthorship":{"authors":["Burt"]}}}}],"positions":[["uninomial",0,5],["authorWord",7,12],["authorWord",14,18]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"unparsedTail":" 2342343242 23424322342 23424234","nameStringId":"ca23679f-f3d8-5194-a406-048f970c4020","parserVersion":"test_version"}
+ca23679f-f3d8-5194-a406-048f970c4020|Morea (Morea) Burt 2342343242 23424322342 23424234|Morea|Morea|(Morea) Burt||3
 
 Nautilus asterizans von
 Nautilus asterizans
