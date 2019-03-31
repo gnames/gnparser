@@ -7,6 +7,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
+	"gitlab.com/gogna/gnparser/grammar"
 	"gitlab.com/gogna/gnparser/preprocess"
 )
 
@@ -25,6 +26,21 @@ var _ = Describe("GNparser", func() {
 			Expect(simpleRes).To(Equal(simple))
 		}, outputEntries()...,
 	)
+
+	Describe("ParseToObject", func() {
+		It("returns output", func() {
+			gnp := NewGNparser()
+			o := gnp.ParseToObject("Homo sapiens")
+			Expect(o.Parsed).To(Equal(true))
+			Expect(o.CanonicalName.Simple).To(Equal("Homo sapiens"))
+			switch d := o.Details[0].(type) {
+			case *grammar.SpeciesOutput:
+				Expect(d.Genus.Value).To(Equal("Homo"))
+			default:
+				Expect(2).To(Equal(1))
+			}
+		})
+	})
 })
 
 func outputEntries() []TableEntry {

@@ -132,6 +132,13 @@ func (gnp *GNparser) ParseAndFormat(s string) (string, error) {
 	return s, nil
 }
 
+// ParseToObject function parses input and
+// returns result as output.
+func (gnp *GNparser) ParseToObject(s string) *output.Output {
+	gnp.Parse(s)
+	return output.NewOutput(gnp.parser.SN)
+}
+
 // ToPrettyJSON function creates pretty JSON output out of parsed results.
 func (gnp *GNparser) ToPrettyJSON() ([]byte, error) {
 	o := output.NewOutput(gnp.parser.SN)

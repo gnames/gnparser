@@ -2,12 +2,20 @@
 
 ## Unreleased
 
+## [v0.7.5]
+
+- Add [#59]: method `ParseToObject` to avoid json in Go programs.
+- Add [#58]: parse `Aus (Bus)` as `Uninomial (Author)` to prevent botanical
+             authors appear as subgenera. We need a better solution for this.
+- Add [#57]: warning in cases of an ambiguous `filius`.
+- Fix [#56]: bug `Ambrysus-Stål, 1862` breaks parser.
+
 ## [v0.7.4]
 
-- Add [#48]: transliteration of diacriticals
-- Add [#43]: notho- (hybrids) rank supported
-- Add [#52]: genera with hyphens with lower or upper char after hyphen
-- Add [#49]: multiple hyphens in specific epithet
+- Add [#48]: transliteration of diacriticals.
+- Add [#43]: notho- (hybrids) rank supported.
+- Add [#52]: genera with hyphens with lower or upper char after hyphen.
+- Add [#49]: multiple hyphens in specific epithet.
 
 ## [v0.7.3]
 
