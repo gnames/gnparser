@@ -72,6 +72,7 @@
 
 This document follows [changelog guidelines]
 
+[v0.7.5]: https://gitlab.com/gogna/gnparser/compare/v0.7.4...v0.7.5
 [v0.7.4]: https://gitlab.com/gogna/gnparser/compare/v0.7.3...v0.7.4
 [v0.7.3]: https://gitlab.com/gogna/gnparser/compare/v0.7.2...v0.7.3
 [v0.7.2]: https://gitlab.com/gogna/gnparser/compare/v0.7.1...v0.7.2
@@ -80,6 +81,11 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#59]: https://gitlab.com/gogna/gnparser/issues/59
+[#58]: https://gitlab.com/gogna/gnparser/issues/58
+[#57]: https://gitlab.com/gogna/gnparser/issues/57
+[#56]: https://gitlab.com/gogna/gnparser/issues/56
+[#55]: https://gitlab.com/gogna/gnparser/issues/55
 [#54]: https://gitlab.com/gogna/gnparser/issues/54
 [#52]: https://gitlab.com/gogna/gnparser/issues/52
 [#49]: https://gitlab.com/gogna/gnparser/issues/49
