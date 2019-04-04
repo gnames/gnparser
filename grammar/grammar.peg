@@ -71,13 +71,9 @@ SubGenusOrSuperspecies <- '(' _? NameLowerChar+ _? ')'
 
 SubGenus <- '(' _? UninomialWord _? ')'
 
-UninomialCombo <- Uninomial _ RankUninomial _ Uninomial
-
-# TODO: To find how to use botanica author dictionary to treat Zoological
-# names of this sort correctly
-# UninomialCombo <- UninomialCombo1 / UninomialCombo2
-# UninomialCombo1 <- UninomialWord _? SubGenus (_? Authorship)?
-# UninomialCombo2 <- Uninomial _ RankUninomial _ Uninomial
+UninomialCombo <- UninomialCombo1 / UninomialCombo2
+UninomialCombo1 <- UninomialWord _? SubGenus (_? Authorship)?
+UninomialCombo2 <- Uninomial _ RankUninomial _ Uninomial
 
 RankUninomial <- RankUninomialPlain / RankUninomialNotho
 

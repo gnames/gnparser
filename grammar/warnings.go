@@ -17,6 +17,7 @@ const (
 	AuthUnknownWarn
 	AuthUpperCaseWarn
 	BacteriaMaybeWarn
+	BotanyAuthorNotSubgenWarn
 	CanonicalApostropheWarn
 	CapWordQuestionWarn
 	CharBadWarn

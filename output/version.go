@@ -1,4 +1,4 @@
 package output
 
-const Version = "v0.7.5-1-g41acd42"
-const Build = "2019-04-01_01:04:26UTC"
+const Version = "v0.8.0"
+const Build = "2019-04-09_19:48:26UTC"

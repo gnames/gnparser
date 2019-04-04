@@ -69,6 +69,10 @@ var warningMap = map[grm.Warning]Warning{
 		Quality: 1,
 		Message: "The genus is a homonym of a bacterial genus",
 	},
+	grm.BotanyAuthorNotSubgenWarn: Warning{
+		Quality: 2,
+		Message: "Possible ICN author instead of subgenus",
+	},
 	grm.CanonicalApostropheWarn: Warning{
 		Quality: 3,
 		Message: "Apostrophe is not allowed in canonical",

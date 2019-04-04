@@ -28,5 +28,13 @@ var _ = Describe("Dict", func() {
 			Expect(ok).To(Equal(false))
 			Expect(hom).To(Equal(false))
 		})
+		It("does not find not ICN author", func() {
+			_, ok := d.AuthorICN["Arizona"]
+			Expect(ok).To(Equal(false))
+		})
+		It("finds ICN author", func() {
+			_, ok := d.AuthorICN["Abramov"]
+			Expect(ok).To(Equal(true))
+		})
 	})
 })

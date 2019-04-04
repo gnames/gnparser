@@ -8,6 +8,7 @@ import (
 	"gitlab.com/gogna/gnparser/preprocess"
 
 	"github.com/gnames/uuid5"
+	"gitlab.com/gogna/gnparser/dict"
 	"gitlab.com/gogna/gnparser/str"
 )
 
@@ -123,16 +124,13 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 		case ruleSpeciesEpithet:
 			p.AddWarn(HybridFormulaIncompleteWarn)
 			var g *wordNode
-			switch firstName.(type) {
+			switch node := firstName.(type) {
 			case *speciesNode:
-				sp := firstName.(*speciesNode)
-				g = sp.Genus
+				g = node.Genus
 			case *uninomialNode:
-				u := firstName.(*uninomialNode)
-				g = u.Word
+				g = node.Word
 			case *comparisonNode:
-				cn := firstName.(*comparisonNode)
-				g = cn.Genus
+				g = node.Genus
 			}
 			spe := p.newSpeciesEpithetNode(n)
 			g = &wordNode{Value: g.Value, NormValue: g.NormValue}
@@ -258,6 +256,44 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 	return nhl
 }
 
+func (p *Engine) botanicalUninomial(n *node32) bool {
+	n = n.up
+	if n.token32.pegRule == ruleUninomial {
+		return false
+	}
+	n = n.next
+	n = n.up
+	if n.token32.pegRule != ruleUninomialWord {
+		return false
+	}
+	w := p.newWordNode(n, UnknownType)
+
+	if _, ok := dict.Dict.AuthorICN[w.NormValue]; ok {
+		return true
+	}
+	return false
+}
+
+func (p *Engine) newBotanicalUninomialNode(n *node32) *uninomialNode {
+	var at2 *authorsGroupNode
+	n = n.up
+	w := p.newWordNode(n, UninomialType)
+	n = n.next // fake Subgenus
+	au := p.newWordNode(n.up, AuthorWordType)
+	an := &authorNode{Value: au.NormValue, Words: []*wordNode{au}}
+	at := &authorsTeamNode{Authors: []*authorNode{an}}
+	ag := &authorsGroupNode{Team1: at, Parens: true}
+	n = n.next
+	if n != nil {
+		n = n.up // fake OriginalAuthorship
+		at2 = p.newAuthorsGroupNode(n.up)
+	}
+	authorship := &authorshipNode{OriginalAuthors: ag, CombinationAuthors: at2}
+	u := &uninomialNode{Word: w, Authorship: authorship}
+	p.AddWarn(BotanyAuthorNotSubgenWarn)
+	return u
+}
+
 func (p *Engine) newSingleName(n *node32) Name {
 	var name Name
 	n = n.up
@@ -275,6 +311,9 @@ func (p *Engine) newSingleName(n *node32) Name {
 	case ruleUninomial:
 		name = p.newUninomialNode(n)
 	case ruleUninomialCombo:
+		if p.botanicalUninomial(n) {
+			return p.newBotanicalUninomialNode(n)
+		}
 		p.AddWarn(UninomialComboWarn)
 		name = p.newUninomialComboNode(n)
 	}
@@ -373,7 +412,12 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 	for n != nil {
 		switch n.token32.pegRule {
 		case ruleSubGenus:
-			sg = p.newWordNode(n.up, SubGenusType)
+			w := p.newWordNode(n.up, SubGenusType)
+			if _, ok := dict.Dict.AuthorICN[w.NormValue]; ok {
+				p.AddWarn(BotanyAuthorNotSubgenWarn)
+			} else {
+				sg = w
+			}
 		case ruleSubGenusOrSuperspecies:
 			p.AddWarn(SuperSpeciesWarn)
 		case ruleSpeciesEpithet:
@@ -901,7 +945,7 @@ func (p *Engine) newWordNode(n *node32, wt WordType) *wordNode {
 				switch {
 				case v == '-':
 					afterDash = true
-				case afterDash == true:
+				case afterDash:
 					v = unicode.ToLower(v)
 					afterDash = false
 				}

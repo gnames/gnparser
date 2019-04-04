@@ -261,12 +261,10 @@ Aconitum ser. Tangutica W.T. Wang
 {"parsed":true,"quality":2,"qualityWarnings":[[2,"Combination of two uninomials"]],"verbatim":"Aconitum ser. Tangutica W.T. Wang","normalized":"Aconitum ser. Tangutica W. T. Wang","canonicalName":{"simple":"Tangutica","full":"Aconitum ser. Tangutica"},"details":[{"uninomial":{"value":"Tangutica","rank":"ser.","parent":"Aconitum","authorship":{"value":"W. T. Wang","basionymAuthorship":{"authors":["W. T. Wang"]}}}}],"positions":[["uninomial",0,8],["rank",9,13],["uninomial",14,23],["authorWord",24,26],["authorWord",26,28],["authorWord",29,33]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"8f5d7bd0-90a1-556d-a8ef-1a440b157c34","parserVersion":"test_version"}
 8f5d7bd0-90a1-556d-a8ef-1a440b157c34|Aconitum ser. Tangutica W.T. Wang|Tangutica|Aconitum ser. Tangutica|W. T. Wang||2
 
-# This is not correct, but allows not to generate fake subgenera
-# from botanical names
 Calathus (Lindrothius) KURNAKOV 1961
 Calathus (Lindrothius) KURNAKOV 1961
-{"parsed":true,"quality":2,"qualityWarnings":[[2,"Author in upper case"]],"verbatim":"Calathus (Lindrothius) KURNAKOV 1961","normalized":"Calathus (Lindrothius) Kurnakov 1961","canonicalName":{"simple":"Calathus","full":"Calathus"},"details":[{"uninomial":{"value":"Calathus","authorship":{"value":"(Lindrothius) Kurnakov 1961","basionymAuthorship":{"authors":["Lindrothius"]},"combinationAuthorship":{"authors":["Kurnakov"],"year":{"value":"1961"}}}}}],"positions":[["uninomial",0,8],["authorWord",10,21],["authorWord",23,31],["year",32,36]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"aa113505-61a1-58fe-92f3-8fd511dcfd61","parserVersion":"test_version"}
-aa113505-61a1-58fe-92f3-8fd511dcfd61|Calathus (Lindrothius) KURNAKOV 1961|Calathus|Calathus|(Lindrothius) Kurnakov 1961||2
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Author in upper case"],[2,"Combination of two uninomials"]],"verbatim":"Calathus (Lindrothius) KURNAKOV 1961","normalized":"Calathus subgen. Lindrothius Kurnakov 1961","canonicalName":{"simple":"Lindrothius","full":"Calathus subgen. Lindrothius"},"details":[{"uninomial":{"value":"Lindrothius","rank":"subgen.","parent":"Calathus","authorship":{"value":"Kurnakov 1961","basionymAuthorship":{"authors":["Kurnakov"],"year":{"value":"1961"}}}}}],"positions":[["uninomial",0,8],["uninomial",10,21],["authorWord",23,31],["year",32,36]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"aa113505-61a1-58fe-92f3-8fd511dcfd61","parserVersion":"test_version"}
+aa113505-61a1-58fe-92f3-8fd511dcfd61|Calathus (Lindrothius) KURNAKOV 1961|Lindrothius|Calathus subgen. Lindrothius|Kurnakov 1961|1961|2
 
 Eucalyptus subser. Regulares Brooker
 Eucalyptus subser. Regulares Brooker
@@ -275,8 +273,31 @@ Eucalyptus subser. Regulares Brooker
 
 Aaleniella (Danocythere)
 Aaleniella (Danocythere)
-{"parsed":true,"quality":1,"verbatim":"Aaleniella (Danocythere)","normalized":"Aaleniella (Danocythere)","canonicalName":{"simple":"Aaleniella","full":"Aaleniella"},"details":[{"uninomial":{"value":"Aaleniella","authorship":{"value":"(Danocythere)","basionymAuthorship":{"authors":["Danocythere"]}}}}],"positions":[["uninomial",0,10],["authorWord",12,23]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"8b7eddb1-b9a4-5cca-8fa8-25527e25d8df","parserVersion":"test_version"}
-8b7eddb1-b9a4-5cca-8fa8-25527e25d8df|Aaleniella (Danocythere)|Aaleniella|Aaleniella|(Danocythere)||1
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Combination of two uninomials"]],"verbatim":"Aaleniella (Danocythere)","normalized":"Aaleniella subgen. Danocythere","canonicalName":{"simple":"Danocythere","full":"Aaleniella subgen. Danocythere"},"details":[{"uninomial":{"value":"Danocythere","rank":"subgen.","parent":"Aaleniella"}}],"positions":[["uninomial",0,10],["uninomial",12,23]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"8b7eddb1-b9a4-5cca-8fa8-25527e25d8df","parserVersion":"test_version"}
+8b7eddb1-b9a4-5cca-8fa8-25527e25d8df|Aaleniella (Danocythere)|Danocythere|Aaleniella subgen. Danocythere|||2
+#>
+
+#SECTION: ICN names that look like combined uninomials for ICZN
+Clathrotropis (Bentham) Harms in Dalla Torre & Harms, 1901
+Clathrotropis (Bentham) Harms in Dalla Torre & Harms, 1901
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Ex authors are not required"],[2,"Possible ICN author instead of subgenus"]],"verbatim":"Clathrotropis (Bentham) Harms in Dalla Torre \u0026 Harms, 1901","normalized":"Clathrotropis (Bentham) Harms ex Dalla Torre \u0026 Harms 1901","canonicalName":{"simple":"Clathrotropis","full":"Clathrotropis"},"details":[{"uninomial":{"value":"Clathrotropis","authorship":{"value":"(Bentham) Harms ex Dalla Torre \u0026 Harms 1901","basionymAuthorship":{"authors":["Bentham"]},"combinationAuthorship":{"authors":["Harms"],"exAuthors":{"authors":["Dalla Torre","Harms"],"year":{"value":"1901"}}}}}}],"positions":[["uninomial",0,13],["authorWord",15,22],["authorWord",24,29],["authorWord",33,38],["authorWord",39,44],["authorWord",47,52],["year",54,58]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"6b730cea-e81b-53ba-a511-caaa233b9b84","parserVersion":"test_version"}
+6b730cea-e81b-53ba-a511-caaa233b9b84|Clathrotropis (Bentham) Harms in Dalla Torre & Harms, 1901|Clathrotropis|Clathrotropis|(Bentham) Harms ex Dalla Torre & Harms 1901||2
+
+Humiriastrum (Urban) Cuatrecasas, 1961
+Humiriastrum (Urban) Cuatrecasas, 1961
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Possible ICN author instead of subgenus"]],"verbatim":"Humiriastrum (Urban) Cuatrecasas, 1961","normalized":"Humiriastrum (Urban) Cuatrecasas 1961","canonicalName":{"simple":"Humiriastrum","full":"Humiriastrum"},"details":[{"uninomial":{"value":"Humiriastrum","authorship":{"value":"(Urban) Cuatrecasas 1961","basionymAuthorship":{"authors":["Urban"]},"combinationAuthorship":{"authors":["Cuatrecasas"],"year":{"value":"1961"}}}}}],"positions":[["uninomial",0,12],["authorWord",14,19],["authorWord",21,32],["year",34,38]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"98f8aa31-1cc3-59c2-a4f2-ebf18e0929ab","parserVersion":"test_version"}
+98f8aa31-1cc3-59c2-a4f2-ebf18e0929ab|Humiriastrum (Urban) Cuatrecasas, 1961|Humiriastrum|Humiriastrum|(Urban) Cuatrecasas 1961||2
+
+Pampocactus (Doweld) Doweld
+Pampocactus (Doweld) Doweld
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Possible ICN author instead of subgenus"]],"verbatim":"Pampocactus (Doweld) Doweld","normalized":"Pampocactus (Doweld) Doweld","canonicalName":{"simple":"Pampocactus","full":"Pampocactus"},"details":[{"uninomial":{"value":"Pampocactus","authorship":{"value":"(Doweld) Doweld","basionymAuthorship":{"authors":["Doweld"]},"combinationAuthorship":{"authors":["Doweld"]}}}}],"positions":[["uninomial",0,11],["authorWord",13,19],["authorWord",21,27]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"82494c70-6400-51a3-b786-2a8a747f8305","parserVersion":"test_version"}
+82494c70-6400-51a3-b786-2a8a747f8305|Pampocactus (Doweld) Doweld|Pampocactus|Pampocactus|(Doweld) Doweld||2
+
+Pampocactus (Doweld)
+Pampocactus (Doweld)
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Possible ICN author instead of subgenus"]],"verbatim":"Pampocactus (Doweld)","normalized":"Pampocactus (Doweld)","canonicalName":{"simple":"Pampocactus","full":"Pampocactus"},"details":[{"uninomial":{"value":"Pampocactus","authorship":{"value":"(Doweld)","basionymAuthorship":{"authors":["Doweld"]}}}}],"positions":[["uninomial",0,11],["authorWord",13,19]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"3ed64c9a-ec8a-52c9-a913-eae09b6c71b9","parserVersion":"test_version"}
+3ed64c9a-ec8a-52c9-a913-eae09b6c71b9|Pampocactus (Doweld)|Pampocactus|Pampocactus|(Doweld)||2
+
 #>
 
 ### Binomials
@@ -1169,6 +1190,12 @@ Acanthoderes (acanthoderes) satanas Aurivillius, 1923
 Acanthoderes (acanthoderes) satanas Aurivillius, 1923
 {"parsed":true,"quality":2,"qualityWarnings":[[2,"Ambiguity: subgenus or superspecies found"]],"verbatim":"Acanthoderes (acanthoderes) satanas Aurivillius, 1923","normalized":"Acanthoderes satanas Aurivillius 1923","canonicalName":{"simple":"Acanthoderes satanas","full":"Acanthoderes satanas"},"details":[{"genus":{"value":"Acanthoderes"},"specificEpithet":{"value":"satanas","authorship":{"value":"Aurivillius 1923","basionymAuthorship":{"authors":["Aurivillius"],"year":{"value":"1923"}}}}}],"positions":[["genus",0,12],["specificEpithet",28,35],["authorWord",36,47],["year",49,53]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"f1082b19-d13f-54a2-95a9-6e342f2a9e6b","parserVersion":"test_version"}
 f1082b19-d13f-54a2-95a9-6e342f2a9e6b|Acanthoderes (acanthoderes) satanas Aurivillius, 1923|Acanthoderes satanas|Acanthoderes satanas|Aurivillius 1923|1923|2
+
+#fake name to illustrate botaincal author instead of subgenus
+Acanthoderes (Abramov) satanas Aurivillius
+Acanthoderes (Abramov) satanas Aurivillius
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Possible ICN author instead of subgenus"]],"verbatim":"Acanthoderes (Abramov) satanas Aurivillius","normalized":"Acanthoderes satanas Aurivillius","canonicalName":{"simple":"Acanthoderes satanas","full":"Acanthoderes satanas"},"details":[{"genus":{"value":"Acanthoderes"},"specificEpithet":{"value":"satanas","authorship":{"value":"Aurivillius","basionymAuthorship":{"authors":["Aurivillius"]}}}}],"positions":[["genus",0,12],["specificEpithet",23,30],["authorWord",31,42]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"8eb2a9be-eb11-537e-8488-eacdb6e2b9e7","parserVersion":"test_version"}
+8eb2a9be-eb11-537e-8488-eacdb6e2b9e7|Acanthoderes (Abramov) satanas Aurivillius|Acanthoderes satanas|Acanthoderes satanas|Aurivillius||2
 #>
 
 #SECTION: Names with multiple dashes in specific epithet<
@@ -2364,8 +2391,8 @@ Acanthochiton
 #SECTION: Names with unparsed_tail at the end<
 Morea (Morea) Burt 2342343242 23424322342 23424234
 Morea (Morea) Burt
-{"parsed":true,"quality":3,"qualityWarnings":[[3,"Unparsed tail"]],"verbatim":"Morea (Morea) Burt 2342343242 23424322342 23424234","normalized":"Morea (Morea) Burt","canonicalName":{"simple":"Morea","full":"Morea"},"details":[{"uninomial":{"value":"Morea","authorship":{"value":"(Morea) Burt","basionymAuthorship":{"authors":["Morea"]},"combinationAuthorship":{"authors":["Burt"]}}}}],"positions":[["uninomial",0,5],["authorWord",7,12],["authorWord",14,18]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"unparsedTail":" 2342343242 23424322342 23424234","nameStringId":"ca23679f-f3d8-5194-a406-048f970c4020","parserVersion":"test_version"}
-ca23679f-f3d8-5194-a406-048f970c4020|Morea (Morea) Burt 2342343242 23424322342 23424234|Morea|Morea|(Morea) Burt||3
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Unparsed tail"],[2,"Combination of two uninomials"]],"verbatim":"Morea (Morea) Burt 2342343242 23424322342 23424234","normalized":"Morea subgen. Morea Burt","canonicalName":{"simple":"Morea","full":"Morea subgen. Morea"},"details":[{"uninomial":{"value":"Morea","rank":"subgen.","parent":"Morea","authorship":{"value":"Burt","basionymAuthorship":{"authors":["Burt"]}}}}],"positions":[["uninomial",0,5],["uninomial",7,12],["authorWord",14,18]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"unparsedTail":" 2342343242 23424322342 23424234","nameStringId":"ca23679f-f3d8-5194-a406-048f970c4020","parserVersion":"test_version"}
+ca23679f-f3d8-5194-a406-048f970c4020|Morea (Morea) Burt 2342343242 23424322342 23424234|Morea|Morea subgen. Morea|Burt||3
 
 Nautilus asterizans von
 Nautilus asterizans
