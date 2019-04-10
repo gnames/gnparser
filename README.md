@@ -56,8 +56,12 @@ gnparser -h
 		- [Usage as a REST API Interface](#usage-as-a-rest-api-interface)
 		- [Use as a Docker image](#use-as-a-docker-image)
 		- [Use as a library in Go](#use-as-a-library-in-go)
+	- [Parsing ambiguities](#parsing-ambiguities)
+		- [Names with `filius` (ICN code)](#names-with-filius-icn-code)
+		- [Names with subgenus (ICZN code) and genus author (ICN code)](#names-with-subgenus-iczn-code-and-genus-author-icn-code)
 	- [Authors](#authors)
 	- [Contributors](#contributors)
+	- [References](#references)
 	- [License](#license)
 
 ## Introduction
@@ -424,6 +428,41 @@ func main() {
 	fmt.Println(res)
 }
 ```
+
+To avoid parsin of JSON gnparser we provide `gnp.ParseToObject` function
+
+```
+gnp := NewGNparser()
+o := gnp.ParseToObject("Homo sapiens")
+fmt.Println(o.Canonical)
+switch d := o.Details[0].(type) {
+case *grammar.SpeciesOutput:
+	fmt.Println.(d.Genus)
+	fmt.Println.(d.SpecEpithet)
+case *grammar.UninomialOutput:
+	fmt.Println(d.Uninomial)
+}
+```
+
+## Parsing ambiguities
+
+Some name-strings cannot be parsed unambiguously without some additional data.
+
+### Names with `filius` (ICN code)
+
+For names like `Aus bus Linn. f. cus` the `f.` is ambiguous. It might mean
+that species were described by son of (`filius`) of Linn., or it might mean
+that `cus` is `forma` of `bus`. We provide a warning
+"Ambiguous f. (filius or forma)" for such cases.
+
+### Names with subgenus (ICZN code) and genus author (ICN code)
+
+For names like `Aus (Bus) L.` or `Aus (Bus) cus L.` the `(Bus)` token would
+mean the name of subgenus for ICZN names, but for ICN names it would be an
+author of genus `Aus`. We created a list of ICN generic authors using data from
+[IRMNG] to distinguish such names from each other. For detected ICN names we
+provide a warning "Possible ICN author instead of subgenus".
+
 ## Authors
 
 - [Dmitry Mozzherin]
@@ -432,8 +471,15 @@ func main() {
 
 - [Geoff Ower]
 
+
 If you want to submit a bug or add a feature read
 [CONTRIBUTING](https://gitlab.com/gogna/gnparser/blob/master/CONTRIBUTING.md) file.
+
+## References
+
+Rees, T. (compiler) (2019). The Interim Register of Marine and Nonmarine
+ Genera. Available from
+ http://www.irmng.org at VLIZ. Accessed 2019-04-10
 
 ## License
 Released under [MIT license]
@@ -452,3 +498,4 @@ Released under [MIT license]
 [Geoff Ower]: https://gitlab.com/gdower
 [MIT license]: https://gitlab.com/gogna/gnparser/raw/master/LICENSE
 [parser-web]: https://parser.globalnames.org
+[IRMNG]: http://www.irmng.org

@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## [v0.8.0]
+
+- Add [#51]: strings like `Aus (Bus)` are parsed differently for ICN and ICZN
+             names. If string inside of parenthesis matches known ICN author
+             name is parsed as `Uninomial (Author)`, otherwise it is parsed
+             as  `Aus subgen. Bus`.
+
 ## [v0.7.5]
 
 - Add [#59]: method `ParseToObject` to avoid json in Go programs.
@@ -72,6 +79,7 @@
 
 This document follows [changelog guidelines]
 
+[v0.8.0]: https://gitlab.com/gogna/gnparser/compare/v0.7.5...v0.8.0
 [v0.7.5]: https://gitlab.com/gogna/gnparser/compare/v0.7.4...v0.7.5
 [v0.7.4]: https://gitlab.com/gogna/gnparser/compare/v0.7.3...v0.7.4
 [v0.7.3]: https://gitlab.com/gogna/gnparser/compare/v0.7.2...v0.7.3
