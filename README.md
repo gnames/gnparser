@@ -473,13 +473,13 @@ provide a warning "Possible ICN author instead of subgenus".
 
 
 If you want to submit a bug or add a feature read
-[CONTRIBUTING](https://gitlab.com/gogna/gnparser/blob/master/CONTRIBUTING.md) file.
+[CONTRIBUTING] file.
 
 ## References
 
 Rees, T. (compiler) (2019). The Interim Register of Marine and Nonmarine
- Genera. Available from
- http://www.irmng.org at VLIZ. Accessed 2019-04-10
+Genera. Available from http://www.irmng.org at VLIZ.
+Accessed 2019-04-10
 
 ## License
 Released under [MIT license]
@@ -499,3 +499,4 @@ Released under [MIT license]
 [MIT license]: https://gitlab.com/gogna/gnparser/raw/master/LICENSE
 [parser-web]: https://parser.globalnames.org
 [IRMNG]: http://www.irmng.org
+[CONTRIBUTING]: https://gitlab.com/gogna/gnparser/blob/master/CONTRIBUTING.md
