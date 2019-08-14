@@ -529,7 +529,7 @@ func (p *Engine) newRankNode(n *node32) *rankNode {
 	w := p.newWordNode(n, RankType)
 	switch n.token32.pegRule {
 	case ruleRankForma:
-		w.NormValue = "fm."
+		w.NormValue = "f."
 	case ruleRankVar:
 		w.NormValue = "var."
 	case ruleRankSsp:
