@@ -16,10 +16,15 @@ var tags = map[string]struct{}{
 	"b":     struct{}{},
 }
 
+type CleanupResult struct {
+	Input  string
+	Output string
+}
+
 // CleanupStream takes input and output string channels, and feeds output with
 // pipe delimited strings with original name on the left and cleaned up name
 // on the right from the pipe.
-func CleanupStream(in <-chan string, out chan<- string, wn int) {
+func CleanupStream(in <-chan string, out chan<- *CleanupResult, wn int) {
 	var wg sync.WaitGroup
 	wg.Add(wn)
 	for i := 0; i < wn; i++ {
@@ -29,11 +34,12 @@ func CleanupStream(in <-chan string, out chan<- string, wn int) {
 	close(out)
 }
 
-func cleanupWorker(in <-chan string, out chan<- string, wg *sync.WaitGroup) {
+func cleanupWorker(in <-chan string, out chan<- *CleanupResult,
+	wg *sync.WaitGroup) {
 	defer wg.Done()
 	for s := range in {
 		res := StripTags(s)
-		out <- s + "|" + res
+		out <- &CleanupResult{Input: s, Output: res}
 	}
 }
 

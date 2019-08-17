@@ -44,17 +44,17 @@ asset:
 	cd fs; \
 	$(FLAGS_SHARED) go run -tags=dev assets_gen.go
 
-build: version peg grpc asset
+build: version peg pb asset
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) $(GOBUILD)
 
-install: version peg grpc asset
+install: version peg pb asset
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) $(GOINSTALL)
 
-release: version peg grpc asset dockerhub
+release: version peg pb asset dockerhub
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_LINUX) $(GOBUILD); \
@@ -67,9 +67,9 @@ release: version peg grpc asset dockerhub
 	zip -9 /tmp/gnparser-$(VER)-win-64.zip gnparser.exe; \
 	$(GOCLEAN);
 
-.PHONY:grpc
-grpc:
-	cd grpc; \
+.PHONY:pb
+pb:
+	cd pb; \
 	protoc -I . ./gnparser.proto --go_out=plugins=grpc:.;
 
 docker: build

@@ -7,7 +7,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
-	"gitlab.com/gogna/gnparser/grammar"
+	"gitlab.com/gogna/gnparser/pb"
 	"gitlab.com/gogna/gnparser/preprocess"
 )
 
@@ -32,12 +32,32 @@ var _ = Describe("GNparser", func() {
 			gnp := NewGNparser()
 			o := gnp.ParseToObject("Homo sapiens")
 			Expect(o.Parsed).To(Equal(true))
-			Expect(o.CanonicalName.Simple).To(Equal("Homo sapiens"))
-			switch d := o.Details[0].(type) {
-			case *grammar.SpeciesOutput:
-				Expect(d.Genus.Value).To(Equal("Homo"))
+			Expect(o.Canonical.Simple).To(Equal("Homo sapiens"))
+			switch d := o.Details.(type) {
+			case *pb.Parsed_Species:
+				Expect(d.Species.Genus).To(Equal("Homo"))
 			default:
-				Expect(2).To(Equal(1))
+				Expect(2).To(Equal(3))
+			}
+		})
+
+		It("parses hybrid formula", func() {
+			gnp := NewGNparser()
+			o := gnp.ParseToObject("Stanhopea tigrina Bateman ex Lindl. x S. ecornuta Lem.")
+			Expect(o.Parsed).To(Equal(true))
+			Expect(o.Cardinality).To(Equal(int32(0)))
+			Expect(pb.NameType_name[int32(o.NameType)]).To(Equal("HYBRID_FORMULA"))
+			Expect(o.Canonical.Full).To(Equal("Stanhopea tigrina × Stanhopea ecornuta"))
+			Expect(o.Details).To(BeNil())
+			det := o.DetailsHybridFormula
+			Expect(len(det)).To(Equal(2))
+			for _, v := range det {
+				switch d := v.Element.(type) {
+				case *pb.HybridFormula_Species:
+					Expect(d.Species.Genus).To(Equal("Stanhopea"))
+				default:
+					Expect(2).To(Equal(3))
+				}
 			}
 		})
 	})

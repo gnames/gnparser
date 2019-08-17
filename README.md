@@ -15,14 +15,13 @@ parsed into human readable information as follows:
 This parser, written in Go, is the 3rd iteration of the project. The first,
 [biodiversity] had been written in Ruby, the second, [also
 gnparser][gnparser-scala], had been written in Scala. This project learned
-from previous ones, and, when it matures, it is going to be the a
-substitution for other two, and will be the only one that is maintained
-further. All three projects were developed as a part of [Global Names
-Architecture Project][gna].
+from the previous ones, and is now a substitution for the other two. It will be
+the only one that is maintained further. All three projects were developed as
+a part of [Global Names Architecture Project][gna].
 
-Try as a command tool under Windows, Mac or Linux by downloading the [latest
-release][releases], uncompressing it, and copying `gnparser` binary somewhere
-in your PATH.
+To use `gnparser` as a command line tool under Windows, Mac or Linux,
+download the [latest release][releases], uncompress it, and copy `gnparser`
+binary somewhere in your PATH.
 
 ```bash
 wget https://www.dropbox.com/s/blvmejmp4378cao/gnparser-v0.5.1-linux.tar.gz
@@ -67,7 +66,7 @@ gnparser -h
 ## Introduction
 
 Global Names Parser or ``gnparser`` is a program written in Go for breaking up
-scientific names into their different elements.  It uses [peg] -- a Parsing
+scientific names into their elements.  It uses [peg] -- a Parsing
 Expression Grammar (PEG) tool.
 
 Many other parsing algorithms for scientific names use regular expressions.
@@ -353,7 +352,7 @@ ruby] as well as [gRPC documentation].
 
 ### Usage as a REST API Interface
 
-Use web-server REST API as a slower, but more wide-spread alternative to
+Use web-server REST API as a slower, but a more wide-spread alternative to
 gRPC server. Web-based user interface and API are invoked by ``--web-port`` or
 ``-w`` flag. To start web server on ``http://0.0.0.0:9000``
 
@@ -429,18 +428,20 @@ func main() {
 }
 ```
 
-To avoid parsin of JSON gnparser we provide `gnp.ParseToObject` function
+To avoid JSON format we provide `gnp.ParseToObject` function.
+Use [gnparser.proto] file as a reference of the available object fields.
 
-```
+```go
 gnp := NewGNparser()
 o := gnp.ParseToObject("Homo sapiens")
-fmt.Println(o.Canonical)
-switch d := o.Details[0].(type) {
-case *grammar.SpeciesOutput:
-	fmt.Println.(d.Genus)
-	fmt.Println.(d.SpecEpithet)
-case *grammar.UninomialOutput:
-	fmt.Println(d.Uninomial)
+
+fmt.Println(o.Canonical.Simple)
+switch d := o.Details.(type) {
+case *pb.Parsed_Species:
+	fmt.Println(d.Species.Genus)
+case *pb.Parsed_Uninomial:
+	fmt.Println(d.Uninomial.Value)
+...
 }
 ```
 
@@ -500,3 +501,4 @@ Released under [MIT license]
 [parser-web]: https://parser.globalnames.org
 [IRMNG]: http://www.irmng.org
 [CONTRIBUTING]: https://gitlab.com/gogna/gnparser/blob/master/CONTRIBUTING.md
+[gnparser.proto]: https://gitlab.com/gogna/gnparser/blob/master/pb/gnparser.proto

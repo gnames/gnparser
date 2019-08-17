@@ -6,6 +6,7 @@ import (
 	"runtime"
 	"strings"
 
+	"gitlab.com/gogna/gnparser/pb"
 	"gitlab.com/gogna/gnparser/preprocess"
 
 	"gitlab.com/gogna/gnparser/grammar"
@@ -134,9 +135,9 @@ func (gnp *GNparser) ParseAndFormat(s string) (string, error) {
 
 // ParseToObject function parses input and
 // returns result as output.
-func (gnp *GNparser) ParseToObject(s string) *output.Output {
+func (gnp *GNparser) ParseToObject(s string) *pb.Parsed {
 	gnp.Parse(s)
-	return output.NewOutput(gnp.parser.SN)
+	return pb.ToPB(output.NewOutput(gnp.parser.SN))
 }
 
 // ToPrettyJSON function creates pretty JSON output out of parsed results.

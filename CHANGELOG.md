@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Add [#65]: gRPC is able to return a protobuf object now instead of JSON
+string (only for ParseArray function so far). The same protobuf object is now
+also used by gnparser.ParseToObject function.
+- Add [#64]: gRPC method ParseArray that cleans and parses an input from an
+array of names instead of a stream.
+- Add [#63]: abbreviation for `form` or `forma` is now `f.` instead of `fm.`.
+
 ## [v0.8.0]
 
 - Add [#51]: strings like `Aus (Bus)` are parsed differently for ICN and ICZN
@@ -89,6 +96,12 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#65]: https://gitlab.com/gogna/gnparser/issues/65
+[#64]: https://gitlab.com/gogna/gnparser/issues/64
+[#63]: https://gitlab.com/gogna/gnparser/issues/63
+[#62]: https://gitlab.com/gogna/gnparser/issues/62
+[#61]: https://gitlab.com/gogna/gnparser/issues/61
+[#60]: https://gitlab.com/gogna/gnparser/issues/60
 [#59]: https://gitlab.com/gogna/gnparser/issues/59
 [#58]: https://gitlab.com/gogna/gnparser/issues/58
 [#57]: https://gitlab.com/gogna/gnparser/issues/57

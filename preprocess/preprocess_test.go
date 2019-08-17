@@ -16,6 +16,8 @@ var _ = Describe("Cleanup", func() {
 		Entry("no html", "Hello", "Hello"),
 		Entry("html tags", "<i>Hello</i>", "Hello"),
 		Entry("html tags", "<I>Hello</I>", "Hello"),
+		Entry("bad tag", "<!--", ""),
+		Entry("bad tag with newline", "<!--\n", ""),
 		Entry("keep other tags",
 			"<code>Hello</code> & you",
 			"<code>Hello</code> & you"),
@@ -25,6 +27,13 @@ var _ = Describe("Cleanup", func() {
 		Entry("unknown tags", "<NA>Hello</NA> & you", "<NA>Hello</NA> & you"),
 		Entry("entities", "Hello &amp; you", "Hello & you"),
 	)
+
+	Describe("StripTags no nil output", func() {
+		It("does not return nil", func() {
+			Expect(StripTags("<!--")).ToNot(Equal(nil))
+			Expect(StripTags("<!--\r\n")).ToNot(Equal(nil))
+		})
+	})
 })
 
 var _ = Describe("Preprocess", func() {

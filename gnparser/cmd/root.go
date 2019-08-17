@@ -31,8 +31,8 @@ import (
 
 	"github.com/spf13/cobra"
 	"gitlab.com/gogna/gnparser"
-	"gitlab.com/gogna/gnparser/grpc"
 	"gitlab.com/gogna/gnparser/preprocess"
+	"gitlab.com/gogna/gnparser/rpc"
 	"gitlab.com/gogna/gnparser/web"
 )
 
@@ -55,7 +55,8 @@ gnparser names.txt [flags] > parsed_names.txt
 To clean names from html tags and entities
 gnparser names.txt -c > cleanded_names.txt
 
-To start gRPC parsing service on port 3355 with 10 concurrent jobs:
+To start gRPC parsing service on port 3355 with a limit
+of 10 concurrent jobs per request:
 gnparser -j 10 -g 3355
 
 To start web service on port 8080 with 5 concurrent jobs:
@@ -74,8 +75,8 @@ gnparser -j 5 -g 8080
 		if grpcPort != 0 {
 			fmt.Println("Running gnparser as gRPC service:")
 			fmt.Printf("port: %d\n", grpcPort)
-			fmt.Printf("jobs: %d\n\n", wn)
-			grpc.Run(grpcPort, wn)
+			fmt.Printf("Max jobs per request: %d\n\n", wn)
+			rpc.Run(grpcPort, wn)
 			os.Exit(0)
 		}
 
@@ -316,7 +317,7 @@ func cleanupData(data string, wc int) {
 
 func cleanupFile(f io.Reader, wn int) {
 	in := make(chan string)
-	out := make(chan string)
+	out := make(chan *preprocess.CleanupResult)
 	var wg sync.WaitGroup
 	wg.Add(1)
 
@@ -336,9 +337,9 @@ func cleanupFile(f io.Reader, wn int) {
 	wg.Wait()
 }
 
-func processCleanup(out <-chan string, wg *sync.WaitGroup) {
+func processCleanup(out <-chan *preprocess.CleanupResult, wg *sync.WaitGroup) {
 	defer wg.Done()
 	for r := range out {
-		fmt.Println(r)
+		fmt.Printf("%s|%s", r.Input, r.Output)
 	}
 }

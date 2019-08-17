@@ -1,0 +1,243 @@
+syntax = "proto3";
+
+// Version contains version of gnparser as well as the timestamp when it
+// was compiled.
+package pb;
+message Version {
+  string value = 1;
+  string build_time = 2;
+}
+
+// Void is an empty input.
+message Void {}
+
+// InputArray contains name-strings to parse as well as options for parsing.
+message InputArray {
+  // jobs_number sets how many go-routines will be created. This number is
+  // overriden by max number of jobs that is set at the start of gnparser's
+  // gRPC server.
+  int32 jobs_number = 1;
+  // skip_cleaning indicates weather to run removal of HTML tags or not. When
+  // it is true HTML tags are not remooved and names that contain them will not
+  // be parsed.
+  bool skip_cleaning = 2;
+  // names is a list of name-strings to parse.
+  repeated string names = 3;
+}
+
+message OutputArray {
+  // output contains results of parsing. It keeps the same order of output as
+  // the one given in the input.
+  repeated Parsed output = 1;
+}
+
+message Parsed {
+  // parsed is false if parsing a string failed.
+  bool parsed = 1;
+  // quality is 1 when name parsed well, 2 if there were some inconsistencies,
+  // and 3 when name contains serious problems.
+  int32 quality = 2;
+  // quality_warning is empty if quality is 1. In other cases it contains a
+  // a list of parsing problems.
+  repeated QualityWarning quality_warning = 3;
+  // verbatim as the original name-string as it was given with input.
+  string verbatim = 4;
+  // normalized is cleaned-up version of the input name-string
+  string normalized = 5;
+  // canoincal contains the "core" of scientific name without authorships.
+  Canonical canonical = 6;
+  // authorship of the name. It is nil when authorship of the most specific
+  // element of the name is not given.
+  Authorship authorship = 7;
+  // flattened list of words in the name, their offsets and the semantic
+  // meaning.
+  repeated Position positions = 8;
+  // hybrid is true for named hybrids and hybrid formulas.
+  bool hybrid = 9;
+  // is true if a name contains an unambiguous bacterial genus.
+  bool bacteria = 10;
+  // tail contains unparseable end of a string, if it exists.
+  string tail = 11;
+  // id is a UUID version 5. It is always the same for a particular name-string.
+  string id = 12;
+  // parser_version is the version of gnparser.
+  string parser_version = 13;
+  // cardinality is the number of main elements of a name. For uninomials it is
+  // 1, for binomials 2, for trinomials 3 etc. For viruses, hybrid formulas we
+  // return 0.
+  int32 cardinality = 14;
+  // name_type designates the kind of a name.
+  NameType name_type = 15;
+  // details break name into smallest semantic elements.
+  oneof details {
+    // uninomial are details for names for genera and higher taxa.
+    Uninomial uninomial = 16;
+    // species describe names of species and infraspecies.
+    Species species = 17;
+    // comparison is a name with uncertain indentification usually marked by
+    // 'cf.' element.
+    Comparison comparison = 18;
+    // approximation is a name of incomplete identification, a surrogate name.
+    Approximation approximation = 19;
+  }
+  // detailes_hybrid_formula describes details of hybrids. Hybrid formula
+  // contains several names.
+  repeated HybridFormula details_hybrid_formula = 20;
+}
+
+message HybridFormula {
+  // element describes one of names in the hybrid formula.
+  oneof element {
+    Uninomial uninomial = 1;
+    Species species = 2;
+    Comparison comparison = 3;
+    Approximation approximation = 4;
+  }
+}
+
+
+enum NameType {
+  // NONE is for unparsed names.
+  NONE = 0;
+  // UNINOMIAL is for names of genus and higher taxa.
+  UNINOMIAL = 1;
+  // SPECIES is for species and lower taxa (subspecies, varieties etc).
+  SPECIES = 2;
+  // COMPARISON is for names with uncertain identification.
+  COMPARISON = 3;
+  // APPROX_SURROGATE is for suroogate names with incomplete identification.
+  APPROX_SURROGATE = 4;
+  // SURROGATE is for all other surrogate names.
+  SURROGATE = 5;
+  // NAMED_HYBRID is for names that designate stable hybrids that are given
+  // their own name.
+  NAMED_HYBRID = 6;
+  // HYBRID_FORMULA is for names built from several 'simple' names.
+  HYBRID_FORMULA = 7;
+  // VIRUS is for names of viruses, plasmids etc.
+  VIRUS = 8;
+}
+
+message Canonical {
+  // simple contains canonical form without ranks.
+  string simple = 1;
+  // ful contains canonical form with ranks.
+  string full = 2;
+}
+
+message Position {
+  // type is a semantic meaning of a word.
+  string type = 1;
+  // start is an offset of the start of the word.
+  int32 start = 2;
+  // end is an offset of the end of the word.
+  int32 end = 3;
+}
+
+message QualityWarning {
+  // quality of the warning. 2 means minor inconsistencies, 3 means
+  // major problems.
+  int32 quality = 1;
+  // message describes the warning.
+  string message = 2;
+}
+
+message Uninomial {
+  // value of the uninomial, like 'Homo' for 'Homo L.'
+  string value = 1;
+  // rank of the uninomial, if given.
+  string rank = 2;
+  // higher clade of the uninomial, if given.
+  string parent = 3;
+  // authorship of the uninomial, if given.
+  Authorship authorship = 4;
+}
+
+message Species {
+  // genux of the name.
+  string genus = 1;
+  // sub_genus of the name, if given.
+  string sub_genus = 2;
+  // species epithet of the name.
+  string species = 3;
+  // authorship of the specific epithet.
+  Authorship species_authorship = 4;
+  // details of subspecies, varieties etc, if given.
+  repeated InfraSpecies infra_species = 5;
+}
+
+message InfraSpecies {
+  // value of the infraspecific epithet.
+  string value = 1;
+  // rank of the inraspecific epithet.
+  string rank = 2;
+  // authorship of the infraspecific epithet.
+  Authorship authorship = 3;
+}
+
+message Comparison {
+  // genus of the name.
+  string genus = 1;
+  // specific epithet of the name.
+  string species = 2;
+  // authorship of the name.
+  Authorship species_authorship = 3;
+  // comparison marker (usually cf.).
+  string comparison = 4;
+}
+
+message Approximation {
+  // genus of the name.
+  string genus = 1;
+  // specific epithet if given (in case if the approximation for subspecies
+  // for example).
+  string species = 2;
+  // species_authorship, if given.
+  Authorship species_authorship = 3;
+  // approximation marker, like sp.
+  string approximation = 4;
+  // unparsed annotation of the name.
+  string ignored = 5;
+}
+
+message Authorship {
+  // value is authorship string.
+  string value = 1;
+  // list of all authors in the name (might include 'ex' and 'emend' authors).
+  repeated string all_authors = 2;
+  // authors of the original combination.
+  AuthGroup original = 3;
+  // authors of a new combination.
+  AuthGroup combination = 4;
+}
+
+message AuthGroup {
+  // list of authors in the group.
+  repeated string authors = 1;
+  // year of the publication.
+  string year = 2;
+  // approximate_year is true, if the year is uncertain.
+  bool approximate_year = 3;
+  // ex_authors are authors of a publication where name was described.
+  Authors ex_authors = 4;
+  // emend_authors are authors that altered name meaning.
+  Authors emend_authors = 5;
+}
+
+message Authors {
+  // authors is a list of authors.
+  repeated string authors = 1;
+  // year of the publication.
+  string year = 2;
+  // approximate_year is true if exact year of the publication is uncertain.
+  bool approximate_year = 3;
+}
+
+service GNparser {
+  // Ver takes an empty argument (Void) and returns description of the gnparser
+  // version and build date and time.
+  rpc Ver(Void) returns(Version) {}
+  // ParseArray takes a list of name-strings (up to 10000), and retuns back
+  // a list of parsed results.
+  rpc ParseArray(InputArray) returns (OutputArray) {}
+}

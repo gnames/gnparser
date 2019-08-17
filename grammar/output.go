@@ -6,15 +6,22 @@ import (
 	"gitlab.com/gogna/gnparser/str"
 )
 
+type UninomialOutput struct {
+	Uninomial *uniDetails `json:"uninomial"`
+}
+
+type SpeciesOutput struct {
+	Genus        *genusOutput            `json:"genus"`
+	SpecEpithet  *specEpithetOutput      `json:"specificEpithet"`
+	SubGenus     *subGenusOutput         `json:"infragenericEpithet,omitempty"`
+	InfraSpecies []*InfraSpEpithetOutput `json:"infraspecificEpithets,omitempty"`
+}
+
 type ApproxOutput struct {
 	Genus       *genusOutput       `json:"genus"`
 	SpecEpithet *specEpithetOutput `json:"specificEpithet,omitempty"`
 	Approx      string             `json:"annotationIdentification"`
 	Ignored     *ignoredOutput     `json:"ignored,omitempty"`
-}
-
-type ignoredOutput struct {
-	Value string `json:"value"`
 }
 
 type ComparisonOutput struct {
@@ -23,11 +30,8 @@ type ComparisonOutput struct {
 	Comparison  string             `json:"annotationIdentification"`
 }
 
-type SpeciesOutput struct {
-	Genus        *genusOutput            `json:"genus"`
-	SpecEpithet  *specEpithetOutput      `json:"specificEpithet"`
-	SubGenus     *subGenusOutput         `json:"infragenericEpithet,omitempty"`
-	InfraSpecies []*infraSpEpithetOutput `json:"infraspecificEpithets,omitempty"`
+type ignoredOutput struct {
+	Value string `json:"value"`
 }
 
 type genusOutput struct {
@@ -39,45 +43,36 @@ type subGenusOutput struct {
 }
 type specEpithetOutput struct {
 	Value      string            `json:"value"`
-	Authorship *authorshipOutput `json:"authorship,omitempty"`
+	Authorship *AuthorshipOutput `json:"authorship,omitempty"`
 }
 
-type infraSpEpithetOutput struct {
+type InfraSpEpithetOutput struct {
 	Value      string            `json:"value"`
 	Rank       string            `json:"rank,omitempty"`
-	Authorship *authorshipOutput `json:"authorship,omitempty"`
-}
-
-type UninomialOutput struct {
-	Uninomial *uniDetails `json:"uninomial"`
+	Authorship *AuthorshipOutput `json:"authorship,omitempty"`
 }
 
 type uniDetails struct {
 	Value      string            `json:"value"`
 	Rank       string            `json:"rank,omitempty"`
 	Parent     string            `json:"parent,omitempty"`
-	Authorship *authorshipOutput `json:"authorship,omitempty"`
+	Authorship *AuthorshipOutput `json:"authorship,omitempty"`
 }
 
-type authorshipOutput struct {
+type AuthorshipOutput struct {
 	Value       string           `json:"value"`
-	Original    *authGroupOutput `json:"basionymAuthorship,omitempty"`
-	Combination *authGroupOutput `json:"combinationAuthorship,omitempty"`
+	Original    *AuthGroupOutput `json:"basionymAuthorship,omitempty"`
+	Combination *AuthGroupOutput `json:"combinationAuthorship,omitempty"`
 }
 
-type authGroupOutput struct {
-	Authors      []string            `json:"authors"`
-	Year         *yearOutput         `json:"year,omitempty"`
-	ExAuthors    *exAuthorsOutput    `json:"exAuthors,omitempty"`
-	EmendAuthors *emendAuthorsOutput `json:"emendAuthors,omitempty"`
+type AuthGroupOutput struct {
+	Authors      []string       `json:"authors"`
+	Year         *yearOutput    `json:"year,omitempty"`
+	ExAuthors    *AuthorsOutput `json:"exAuthors,omitempty"`
+	EmendAuthors *AuthorsOutput `json:"emendAuthors,omitempty"`
 }
 
-type exAuthorsOutput struct {
-	Authors []string    `json:"authors"`
-	Year    *yearOutput `json:"year,omitempty"`
-}
-
-type emendAuthorsOutput struct {
+type AuthorsOutput struct {
 	Authors []string    `json:"authors"`
 	Year    *yearOutput `json:"year,omitempty"`
 }
@@ -125,8 +120,8 @@ func (sn *ScientificNameNode) Details() []interface{} {
 	return sn.Name.details()
 }
 
-func (sn *ScientificNameNode) LastAuthorship() *authorshipOutput {
-	var ao *authorshipOutput
+func (sn *ScientificNameNode) LastAuthorship() *AuthorshipOutput {
+	var ao *AuthorshipOutput
 	if sn.Name == nil {
 		return ao
 	}
@@ -278,7 +273,7 @@ func (nh *namedSpeciesHybridNode) details() []interface{} {
 	if len(nh.InfraSpecies) == 0 {
 		return []interface{}{so}
 	}
-	infs := make([]*infraSpEpithetOutput, len(nh.InfraSpecies))
+	infs := make([]*InfraSpEpithetOutput, len(nh.InfraSpecies))
 	for i, v := range nh.InfraSpecies {
 		infs[i] = v.details()
 	}
@@ -487,7 +482,7 @@ func (sp *speciesNode) details() []interface{} {
 	if len(sp.InfraSpecies) == 0 {
 		return []interface{}{&so}
 	}
-	infs := make([]*infraSpEpithetOutput, len(sp.InfraSpecies))
+	infs := make([]*InfraSpEpithetOutput, len(sp.InfraSpecies))
 	for i, v := range sp.InfraSpecies {
 		infs[i] = v.details()
 	}
@@ -562,8 +557,8 @@ func (inf *infraspEpithetNode) canonical() *Canonical {
 	return &c
 }
 
-func (inf *infraspEpithetNode) details() *infraSpEpithetOutput {
-	var info infraSpEpithetOutput
+func (inf *infraspEpithetNode) details() *InfraSpEpithetOutput {
+	var info InfraSpEpithetOutput
 	if inf == nil {
 		return &info
 	}
@@ -571,7 +566,7 @@ func (inf *infraspEpithetNode) details() *infraSpEpithetOutput {
 	if inf.Rank != nil && inf.Rank.Word != nil {
 		rank = inf.Rank.Word.NormValue
 	}
-	info = infraSpEpithetOutput{
+	info = InfraSpEpithetOutput{
 		Value:      inf.Word.NormValue,
 		Rank:       rank,
 		Authorship: inf.Authorship.details(),
@@ -653,12 +648,12 @@ func (u *uninomialComboNode) details() []interface{} {
 	return []interface{}{&uo}
 }
 
-func (au *authorshipNode) details() *authorshipOutput {
+func (au *authorshipNode) details() *AuthorshipOutput {
 	if au == nil {
-		var ao *authorshipOutput
+		var ao *AuthorshipOutput
 		return ao
 	}
-	ao := authorshipOutput{Value: au.value()}
+	ao := AuthorshipOutput{Value: au.value()}
 	ao.Original = authGroupDetail(au.OriginalAuthors)
 
 	if au.CombinationAuthors != nil {
@@ -667,13 +662,13 @@ func (au *authorshipNode) details() *authorshipOutput {
 	return &ao
 }
 
-func authGroupDetail(ag *authorsGroupNode) *authGroupOutput {
-	var ago authGroupOutput
+func authGroupDetail(ag *authorsGroupNode) *AuthGroupOutput {
+	var ago AuthGroupOutput
 	if ag == nil {
 		return &ago
 	}
 	aus, yr := ag.Team1.details()
-	ago = authGroupOutput{
+	ago = AuthGroupOutput{
 		Authors: aus,
 		Year:    yr,
 	}
@@ -683,13 +678,13 @@ func authGroupDetail(ag *authorsGroupNode) *authGroupOutput {
 	aus, yr = ag.Team2.details()
 	switch ag.Team2Type.Pos.Type {
 	case AuthorWordExType:
-		eao := exAuthorsOutput{
+		eao := AuthorsOutput{
 			Authors: aus,
 			Year:    yr,
 		}
 		ago.ExAuthors = &eao
 	case AuthorWordEmendType:
-		eao := emendAuthorsOutput{
+		eao := AuthorsOutput{
 			Authors: aus,
 			Year:    yr,
 		}
