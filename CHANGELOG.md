@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [v0.9.0]
+
 - Add [#65]: gRPC is able to return a protobuf object now instead of JSON
 string (only for ParseArray function so far). The same protobuf object is now
 also used by gnparser.ParseToObject function.
@@ -86,6 +88,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v0.9.0]: https://gitlab.com/gogna/gnparser/compare/v0.0.8...v0.9.0
 [v0.8.0]: https://gitlab.com/gogna/gnparser/compare/v0.7.5...v0.8.0
 [v0.7.5]: https://gitlab.com/gogna/gnparser/compare/v0.7.4...v0.7.5
 [v0.7.4]: https://gitlab.com/gogna/gnparser/compare/v0.7.3...v0.7.4
