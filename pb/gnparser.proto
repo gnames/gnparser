@@ -13,9 +13,9 @@ message Void {}
 
 // InputArray contains name-strings to parse as well as options for parsing.
 message InputArray {
-  // jobs_number sets how many go-routines will be created. This number is
-  // overriden by max number of jobs that is set at the start of gnparser's
-  // gRPC server.
+  // jobs_number sets how many go-routines will be created. If this number is
+  // higher than max number of jobs set by gnparser's gRPC server, it will be
+  // ignored and max number of jobs will be used instead.
   int32 jobs_number = 1;
   // skip_cleaning indicates weather to run removal of HTML tags or not. When
   // it is true HTML tags are not remooved and names that contain them will not
