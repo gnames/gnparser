@@ -24,8 +24,8 @@ download the [latest release][releases], uncompress it, and copy `gnparser`
 binary somewhere in your PATH.
 
 ```bash
-wget https://www.dropbox.com/s/blvmejmp4378cao/gnparser-v0.5.1-linux.tar.gz
-tar xvf gnparser-v0.5.1-linux.tar.gz
+wget https://gitlab.com/gogna/gnparser/uploads/55d247b8fbade60116c7e3b650dd978c/gnparser-v0.9.0-linux.tar.gz
+tar xvf gnparser-v0.9.0-linux.tar.gz
 sudo cp gnparser /usr/local/bin
 # for JSON output
 gnparser -f pretty "Homo sapiens Linnaeus"
