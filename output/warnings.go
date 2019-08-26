@@ -93,6 +93,10 @@ var warningMap = map[grm.Warning]Warning{
 		Quality: 2,
 		Message: "Apparent genus with capital character after hyphen",
 	},
+	grm.GreekLetterInRank: Warning{
+		Quality: 2,
+		Message: "Deprecated Greek letter enumeration in rank",
+	},
 	grm.HybridCharNoSpaceWarn: Warning{
 		Quality: 3,
 		Message: "Hybrid char not separated by space",

@@ -44,8 +44,8 @@ SpeciesEpithet <- !(AuthorEx) Word (_? Authorship)?
 
 Comparison <- 'cf' '.'?
 
-Rank <- RankForma / RankVar / RankSsp / RankOther / RankOtherUncommon /
-  RankAgamo / RankNotho
+Rank <- (RankForma / RankVar / RankSsp / RankOther / RankOtherUncommon /
+  RankAgamo / RankNotho) (_? LowerGreek ('.' / &(SpaceCharEOI)))?
 
 RankNotho <- (('notho' ('var' / 'fo' / 'f' / 'subsp' / 'ssp' / 'sp' /
   'morth' / 'supsp' / 'su' )) / 'nvar') ('.' / &(SpaceCharEOI))
@@ -246,6 +246,8 @@ LowerChar <- LowerASCII
 SpaceCharEOI <- _ / !.
 
 Nums <- [0-9]
+
+LowerGreek <- [α-ω]
 
 LowerASCII <- [a-z]
 

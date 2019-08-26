@@ -2,9 +2,12 @@
 
 ## Unreleased
 
+- Add [#60]: handle correctly deprecated ranks with greek letters.
+- Add [#62]: parser breaks on ``Drepanolejeunea (Spruce) (Steph.)``.
+
 ## [v0.9.0]
 
-- Add [#65]: gRPC is able to return a protobuf object now instead of JSON
+- Add [#65]: gRPC is able to return a protobuf object now instead of JSON.
 string (only for ParseArray function so far). The same protobuf object is now
 also used by gnparser.ParseToObject function.
 - Add [#64]: gRPC method ParseArray that cleans and parses an input from an

@@ -890,6 +890,29 @@ Euastrum divergens var. rhodesiense f. coronulum A.M. Scott & Prescott
 3e5a8eed-9f34-5f2b-95b5-1a45740e4306|Euastrum divergens var. rhodesiense f. coronulum A.M. Scott & Prescott|Euastrum divergens rhodesiense coronulum|Euastrum divergens var. rhodesiense f. coronulum|A. M. Scott & Prescott||1
 #>
 
+#SECTION: Infraspecies with greek letters (ICN)<
+Aristotelia fruticosa var. δ. microphylla Hook.f.
+Aristotelia fruticosa var. δ. microphylla Hook.f.
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Deprecated Greek letter enumeration in rank"]],"verbatim":"Aristotelia fruticosa var. δ. microphylla Hook.f.","normalized":"Aristotelia fruticosa var. microphylla Hook. fil.","canonicalName":{"simple":"Aristotelia fruticosa microphylla","full":"Aristotelia fruticosa var. microphylla"},"details":[{"genus":{"value":"Aristotelia"},"specificEpithet":{"value":"fruticosa"},"infraspecificEpithets":[{"value":"microphylla","rank":"var.","authorship":{"value":"Hook. fil.","basionymAuthorship":{"authors":["Hook. fil."]}}}]}],"positions":[["genus",0,11],["specificEpithet",12,21],["rank",22,26],["infraspecificEpithet",30,41],["authorWord",42,47],["authorWordFilius",47,49]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"34378b1d-27ef-5a38-a3ad-b2da249bc9d4","parserVersion":"test_version"}
+34378b1d-27ef-5a38-a3ad-b2da249bc9d4|Aristotelia fruticosa var. δ. microphylla Hook.f.|Aristotelia fruticosa microphylla|Aristotelia fruticosa var. microphylla|Hook. fil.||2
+
+Aristotelia fruticosa var. δ microphylla Hook.f.
+Aristotelia fruticosa var. δ microphylla Hook.f.
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Deprecated Greek letter enumeration in rank"]],"verbatim":"Aristotelia fruticosa var. δ microphylla Hook.f.","normalized":"Aristotelia fruticosa var. microphylla Hook. fil.","canonicalName":{"simple":"Aristotelia fruticosa microphylla","full":"Aristotelia fruticosa var. microphylla"},"details":[{"genus":{"value":"Aristotelia"},"specificEpithet":{"value":"fruticosa"},"infraspecificEpithets":[{"value":"microphylla","rank":"var.","authorship":{"value":"Hook. fil.","basionymAuthorship":{"authors":["Hook. fil."]}}}]}],"positions":[["genus",0,11],["specificEpithet",12,21],["rank",22,26],["infraspecificEpithet",29,40],["authorWord",41,46],["authorWordFilius",46,48]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"d31a653a-8686-5bf4-b657-6164f494e6b4","parserVersion":"test_version"}
+d31a653a-8686-5bf4-b657-6164f494e6b4|Aristotelia fruticosa var. δ microphylla Hook.f.|Aristotelia fruticosa microphylla|Aristotelia fruticosa var. microphylla|Hook. fil.||2
+
+Aristotelia fruticosa var.δ.microphylla Hook.f.
+Aristotelia fruticosa var.δ.microphylla Hook.f.
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Deprecated Greek letter enumeration in rank"]],"verbatim":"Aristotelia fruticosa var.δ.microphylla Hook.f.","normalized":"Aristotelia fruticosa var. microphylla Hook. fil.","canonicalName":{"simple":"Aristotelia fruticosa microphylla","full":"Aristotelia fruticosa var. microphylla"},"details":[{"genus":{"value":"Aristotelia"},"specificEpithet":{"value":"fruticosa"},"infraspecificEpithets":[{"value":"microphylla","rank":"var.","authorship":{"value":"Hook. fil.","basionymAuthorship":{"authors":["Hook. fil."]}}}]}],"positions":[["genus",0,11],["specificEpithet",12,21],["rank",22,26],["infraspecificEpithet",28,39],["authorWord",40,45],["authorWordFilius",45,47]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"c2f051e5-c1a2-52f8-a02f-70510030faa1","parserVersion":"test_version"}
+c2f051e5-c1a2-52f8-a02f-70510030faa1|Aristotelia fruticosa var.δ.microphylla Hook.f.|Aristotelia fruticosa microphylla|Aristotelia fruticosa var. microphylla|Hook. fil.||2
+
+
+Aristotelia fruticosa var. δmicrophylla Hook.f.
+Aristotelia fruticosa
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Unparsed tail"]],"verbatim":"Aristotelia fruticosa var. δmicrophylla Hook.f.","normalized":"Aristotelia fruticosa","canonicalName":{"simple":"Aristotelia fruticosa","full":"Aristotelia fruticosa"},"details":[{"genus":{"value":"Aristotelia"},"specificEpithet":{"value":"fruticosa"}}],"positions":[["genus",0,11],["specificEpithet",12,21]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"unparsedTail":" var. δmicrophylla Hook.f.","nameStringId":"f7749c21-82a6-5c42-ab58-7b3d5a824e96","parserVersion":"test_version"}
+f7749c21-82a6-5c42-ab58-7b3d5a824e96|Aristotelia fruticosa var. δmicrophylla Hook.f.|Aristotelia fruticosa|Aristotelia fruticosa|||3
+#>
+
 ### Hybrids
 
 #SECTION: notho- ranks<

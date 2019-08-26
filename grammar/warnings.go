@@ -23,6 +23,7 @@ const (
 	CharBadWarn
 	GenusAbbrWarn
 	GenusUpperCharAfterDash
+	GreekLetterInRank
 	HybridCharNoSpaceWarn
 	HybridFormulaWarn
 	HybridFormulaIncompleteWarn
