@@ -121,7 +121,7 @@ enum NameType {
 message Canonical {
   // simple contains canonical form without ranks.
   string simple = 1;
-  // ful contains canonical form with ranks.
+  // full contains canonical form with ranks.
   string full = 2;
 }
 
@@ -238,6 +238,6 @@ service GNparser {
   // version and build date and time.
   rpc Ver(Void) returns(Version) {}
   // ParseArray takes a list of name-strings (up to 10000), and retuns back
-  // a list of parsed results.
+  // a list of parsed results, preserving the order of input.
   rpc ParseArray(InputArray) returns (OutputArray) {}
 }
