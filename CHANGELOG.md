@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add [#61]: handle authors that end with a word "bis"
 - Add [#60]: handle correctly deprecated ranks with greek letters.
 - Add [#62]: parser breaks on ``Drepanolejeunea (Spruce) (Steph.)``.
 

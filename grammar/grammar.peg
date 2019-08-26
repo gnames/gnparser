@@ -173,7 +173,7 @@ AuthorEmend <- 'emend' '.'? _
 
 Author <- (Author1 / Author2 / UnknownAuthor)
 
-Author1 <- Author2 _? Filius
+Author1 <- Author2 _? (Filius/AuthorSuffix)
 
 Author2 <- AuthorWord (_? AuthorWord)*
 
@@ -195,6 +195,8 @@ CapAuthorWord <- AuthorUpperChar AuthorLowerChar*
 AllCapsAuthorWord <- AuthorUpperChar AuthorUpperChar+
 
 Filius <- 'f.' / 'fil.' / 'filius'
+
+AuthorSuffix <- 'bis'
 
 AuthorPrefixGlued <- ('d' / 'O' / 'L') Apostrophe
 

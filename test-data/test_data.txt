@@ -508,6 +508,11 @@ Velutina haliotoides (Linnaeus, 1758),
 Velutina haliotoides (Linnaeus, 1758)
 {"parsed":true,"quality":3,"qualityWarnings":[[3,"Unparsed tail"]],"verbatim":"Velutina haliotoides (Linnaeus, 1758),","normalized":"Velutina haliotoides (Linnaeus 1758)","canonicalName":{"simple":"Velutina haliotoides","full":"Velutina haliotoides"},"details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"haliotoides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"year":{"value":"1758"}}}}}],"positions":[["genus",0,8],["specificEpithet",9,20],["authorWord",22,30],["year",32,36]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"unparsedTail":",","nameStringId":"59093ba7-64a1-53c4-9795-12de7ff9e718","parserVersion":"test_version"}
 59093ba7-64a1-53c4-9795-12de7ff9e718|Velutina haliotoides (Linnaeus, 1758),|Velutina haliotoides|Velutina haliotoides|(Linnaeus 1758)|1758|3
+
+Hennediella microphylla (R.Br.bis) Paris
+Hennediella microphylla (R.Br.bis) Paris
+{"parsed":true,"quality":1,"verbatim":"Hennediella microphylla (R.Br.bis) Paris","normalized":"Hennediella microphylla (R. Br. bis) Paris","canonicalName":{"simple":"Hennediella microphylla","full":"Hennediella microphylla"},"details":[{"genus":{"value":"Hennediella"},"specificEpithet":{"value":"microphylla","authorship":{"value":"(R. Br. bis) Paris","basionymAuthorship":{"authors":["R. Br. bis"]},"combinationAuthorship":{"authors":["Paris"]}}}}],"positions":[["genus",0,11],["specificEpithet",12,23],["authorWord",25,27],["authorWord",27,30],["authorWord",30,33],["authorWord",35,40]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"e8cc6d9d-6e6c-53a1-99a9-59f636009ed0","parserVersion":"test_version"}
+e8cc6d9d-6e6c-53a1-99a9-59f636009ed0|Hennediella microphylla (R.Br.bis) Paris|Hennediella microphylla|Hennediella microphylla|(R. Br. bis) Paris||1
 #>
 
 #SECTION: Binomial with an abbreviated genus<
