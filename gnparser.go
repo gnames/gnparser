@@ -19,8 +19,12 @@ type GNparser struct {
 	workersNum int
 	// format defines the output format of the parser.
 	format
+	// removeHTML indicates that HTML tags have to be removed.
+	removeHTML bool
 	// nameString keeps parsed string
 	nameString string
+	// verbatim is originally entered name-string.
+	verbatim string
 	// isTest indicates that parsing is done for test purposes, so instead of
 	// real version of the paraser output will contain "test_version" phrase.
 	isTest bool
@@ -54,10 +58,18 @@ func IsTest() Option {
 	}
 }
 
+// RemoveHTML Option is true of false. When true, the preprocess removes
+// HTML tags from name-strings.
+func RemoveHTML(r bool) Option {
+	return func(gnp *GNparser) {
+		gnp.removeHTML = r
+	}
+}
+
 // NewGNparser constructor function takes options and returns
 // configured GNparser.
 func NewGNparser(opts ...Option) GNparser {
-	gnp := GNparser{workersNum: runtime.NumCPU(), format: Compact}
+	gnp := GNparser{workersNum: runtime.NumCPU(), format: Compact, removeHTML: true}
 	for _, opt := range opts {
 		opt(&gnp)
 	}
@@ -77,12 +89,23 @@ func (gnp *GNparser) WorkersNum() int {
 // `gnp.parser.SN` field.
 func (gnp *GNparser) Parse(s string) {
 	gnp.nameString = s
-	preproc := preprocess.Preprocess([]byte(s))
+	tagsOrEntities := false
+	if gnp.removeHTML {
+		orig := gnp.nameString
+		gnp.nameString = preprocess.StripTags(gnp.nameString)
+		if orig != gnp.nameString {
+			tagsOrEntities = true
+		}
+	}
+	preproc := preprocess.Preprocess([]byte(gnp.nameString))
 	if preproc.NoParse {
 		gnp.parser.NewNotParsedScientificNameNode(preproc)
 	}
 	gnp.parser.Buffer = string(preproc.Body)
 	gnp.parser.FullReset()
+	if tagsOrEntities {
+		gnp.parser.AddWarn(grammar.HTMLTagsEntitiesWarn)
+	}
 	if len(preproc.Tail) > 0 {
 		gnp.parser.AddWarn(grammar.TailWarn)
 	}

@@ -31,7 +31,6 @@ import (
 
 	"github.com/spf13/cobra"
 	"gitlab.com/gogna/gnparser"
-	"gitlab.com/gogna/gnparser/preprocess"
 	"gitlab.com/gogna/gnparser/rpc"
 	"gitlab.com/gogna/gnparser/web"
 )
@@ -52,8 +51,8 @@ gnparser "Homo sapiens Linnaeus 1753" [flags]
 To parse many names from a file (one name per line):
 gnparser names.txt [flags] > parsed_names.txt
 
-To clean names from html tags and entities
-gnparser names.txt -c > cleanded_names.txt
+To leave HTML tags and entities intact when parsing (faster)
+gnparser names.txt -n > parsed_names.txt
 
 To start gRPC parsing service on port 3355 with a limit
 of 10 concurrent jobs per request:
@@ -69,7 +68,7 @@ gnparser -j 5 -g 8080
 		versionFlag(cmd)
 		wn := workersNumFlag(cmd)
 
-		cleanup := cleanupFlag(cmd)
+		nocleanup := skipCleanupFlag(cmd)
 
 		grpcPort := grpcFlag(cmd)
 		if grpcPort != 0 {
@@ -92,16 +91,13 @@ gnparser -j 5 -g 8080
 		opts := []gnparser.Option{
 			gnparser.WorkersNum(wn),
 			gnparser.Format(f),
+			gnparser.RemoveHTML(!nocleanup),
 		}
 		if len(args) == 0 {
-			processStdin(cmd, cleanup, wn, opts)
+			processStdin(cmd, opts)
 			os.Exit(0)
 		}
 		data := getInput(cmd, args)
-		if cleanup {
-			cleanupData(data, wn)
-			os.Exit(0)
-		}
 		parse(data, opts)
 	},
 }
@@ -129,7 +125,7 @@ func init() {
 	rootCmd.Flags().IntP("jobs", "j", dj,
 		"nubmer of threads to run. CPU's threads number is the default.")
 
-	rootCmd.Flags().BoolP("cleanup", "c", false, "removes HTML entities and tags instead of parsing.")
+	rootCmd.Flags().BoolP("nocleanup", "n", false, "keep HTML entities and tags when parsing.")
 
 	rootCmd.Flags().IntP("grpc_port", "g", 0, "starts gRPC server on the port.")
 
@@ -151,13 +147,13 @@ func versionFlag(cmd *cobra.Command) {
 	}
 }
 
-func cleanupFlag(cmd *cobra.Command) bool {
-	cleanup, err := cmd.Flags().GetBool("cleanup")
+func skipCleanupFlag(cmd *cobra.Command) bool {
+	nocleanup, err := cmd.Flags().GetBool("nocleanup")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	return cleanup
+	return nocleanup
 }
 
 func grpcFlag(cmd *cobra.Command) int {
@@ -197,14 +193,9 @@ func workersNumFlag(cmd *cobra.Command) int {
 	return i
 }
 
-func processStdin(cmd *cobra.Command, cleanup bool, wn int,
-	opts []gnparser.Option) {
+func processStdin(cmd *cobra.Command, opts []gnparser.Option) {
 	if !checkStdin() {
 		cmd.Help()
-		return
-	}
-	if cleanup {
-		cleanupFile(os.Stdin, wn)
 		return
 	}
 	parseFile(os.Stdin, opts)
@@ -297,49 +288,4 @@ func parseString(gnp gnparser.GNparser, data string) {
 		os.Exit(1)
 	}
 	fmt.Println(res)
-}
-
-func cleanupData(data string, wc int) {
-	path := string(data)
-	if fileExists(path) {
-		f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
-		if err != nil {
-			log.Fatal(err)
-			os.Exit(1)
-		}
-		cleanupFile(f, wc)
-		f.Close()
-	} else {
-		res := preprocess.StripTags(data)
-		fmt.Println(data + "|" + res)
-	}
-}
-
-func cleanupFile(f io.Reader, wn int) {
-	in := make(chan string)
-	out := make(chan *preprocess.CleanupResult)
-	var wg sync.WaitGroup
-	wg.Add(1)
-
-	go preprocess.CleanupStream(in, out, wn)
-	go processCleanup(out, &wg)
-	sc := bufio.NewScanner(f)
-	count := 0
-	for sc.Scan() {
-		count++
-		if count%1000000 == 0 {
-			log.Printf("Cleaning %d-th line\n", count)
-		}
-		name := sc.Text()
-		in <- name
-	}
-	close(in)
-	wg.Wait()
-}
-
-func processCleanup(out <-chan *preprocess.CleanupResult, wg *sync.WaitGroup) {
-	defer wg.Done()
-	for r := range out {
-		fmt.Printf("%s|%s", r.Input, r.Output)
-	}
 }

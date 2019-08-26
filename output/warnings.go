@@ -97,6 +97,10 @@ var warningMap = map[grm.Warning]Warning{
 		Quality: 2,
 		Message: "Deprecated Greek letter enumeration in rank",
 	},
+	grm.HTMLTagsEntitiesWarn: Warning{
+		Quality: 3,
+		Message: "HTML tags or entities in the name",
+	},
 	grm.HybridCharNoSpaceWarn: Warning{
 		Quality: 3,
 		Message: "Hybrid char not separated by space",

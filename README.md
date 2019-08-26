@@ -1,10 +1,10 @@
 # Global Names Parser: gnparser written in Go
 
-Try in [online][parser-web].
+Try `gnparser` [online][parser-web].
 
-``gnparser`` splits scientific names into their component elements with
-associated meta information.  For example, ``"Homo sapiens Linnaeus"`` is
-parsed into human readable information as follows:
+``gnparser`` splits scientific names into their semantic elements with an
+associated meta information. For example, ``"Homo sapiens Linnaeus"`` is
+parsed into:
 
 | Element  | Meaning          | Position
 | -------- | ---------------- | --------
@@ -14,10 +14,10 @@ parsed into human readable information as follows:
 
 This parser, written in Go, is the 3rd iteration of the project. The first,
 [biodiversity] had been written in Ruby, the second, [also
-gnparser][gnparser-scala], had been written in Scala. This project learned
-from the previous ones, and is now a substitution for the other two. It will be
-the only one that is maintained further. All three projects were developed as
-a part of [Global Names Architecture Project][gna].
+gnparser][gnparser-scala], had been written in Scala. This project and is now
+a substitution for the other two. It will be the only one that is maintained
+further. All three projects were developed as a part of
+[Global Names Architecture Project][gna].
 
 To use `gnparser` as a command line tool under Windows, Mac or Linux,
 download the [latest release][releases], uncompress it, and copy `gnparser`
@@ -72,14 +72,15 @@ Expression Grammar (PEG) tool.
 Many other parsing algorithms for scientific names use regular expressions.
 This approach works well for extracting canonical forms in simple cases.
 However, for complex scientific names and to parse scientific names into
-all semantic elements regular expressions often fail, unable to overcome
+all semantic elements, regular expressions often fail, unable to overcome
 the recursive nature of data embedded in names. By contrast, ``gnparser``
 is able to deal with the most complex scientific name-strings.
 
 ``gnparser`` takes a name-string like ``Drosophila (Sophophora) melanogaster
-Meigen, 1830`` and returns parsed components in `JSON` format. This behavior is
-defined in its tests and the [test file] is a good source of information about
-parser's capabilities, its input and output.
+Meigen, 1830`` and returns parsed components in `JSON` format. The parsing of
+scientific names might become surprisingly complex and the `gnparser's`
+[test file] is a good source of information about the parser's capabilities,
+its input and output.
 
 ## Speed
 
@@ -106,7 +107,7 @@ more efficient JSON conversion.
 - Very easy to install, just placing executable somewhere in the PATH is
   sufficient.
 - Extracts all elements from a name, not only canonical forms.
-- Works with very complex scientific names, including hybrids.
+- Works with very complex scientific names, including hybrid formulas.
 - Includes gRPC server that can be used as if a native method call from C++,
   C#, Java, Python, Ruby, PHP, JavaScript, Objective C, Dart.
 - Use as a native library from Go projects.
@@ -120,8 +121,8 @@ more efficient JSON conversion.
 ### Getting the simplest possible canonical form
 
 Canonical forms of a scientific name are the latinized components without
-annotations, authors or dates. They are great for matching names despite
-alternative spellings. Use the ``canonicalName -> simple`` or ``canonicalName
+annotations, authors or dates. They are great for matching names that differ
+in less stable parts. Use the ``canonicalName -> simple`` or ``canonicalName
 -> full`` fields from parsing results for this use case. ``Full`` version of
 canonical form includes infra-specific ranks and hybrid character for named
 hybrids.
@@ -134,7 +135,7 @@ The ``canonicalName -> full`` is good for presentation, as it keeps more
 details.
 
 If you only care about canonical form of a name you can use ``--format simple``
-flag with command line tool or gRPC service.
+flag with command line tool.
 
 ### Normalizing name-strings
 
@@ -240,6 +241,10 @@ You do need your ``PATH`` to include ``$HOME/go/bin``
 
 ### Command Line
 
+```bash
+gnparser -f pretty "Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo"
+```
+
 Relevant flags:
 
 ``--help -h``
@@ -252,8 +257,10 @@ Default is ``compact``.
 ``--jobs -j``
 : number of jobs running concurrently.
 
-``--cleanup -c``
-: cleans up input from HTML entities and tags instead of parsing
+``--nocleanup -n``
+: keeps HTML entities and tags if they are present in a name-string. If your
+data is clean from HTML tags or entities, you can use this flag to increase
+performance.
 
 To parse one name:
 
@@ -273,10 +280,10 @@ echo "Parus major Linnaeus, 1788" | gnparser
 
 To parse a file:
 
-There is no flag for parsing a file. If parser finds file path on your computer
-it will parse the content of the file, assuming every line is a new scientific
-name.  If the file path is not found, ``gnparser`` will try to parse the "path"
-as a scientific name.
+There is no flag for parsing a file. If parser finds the given file path on
+your computer, it will parse the content of the file, assuming every line is a
+new scientific name. If the file path is not found, ``gnparser`` will try to
+parse the "path" as a scientific name.
 
 Parsed results will stream to STDOUT, while progress of the parsing
 will be directed to STDERR.
@@ -287,9 +294,11 @@ gnparser -j 200 names.txt > names_parsed.txt
 # to parse files using pipes
 cat names.txt | gnparser -f simple -j 200 > names_parsed.txt
 
-# to clean names from html tags and entities first (no parsing
-# or other changes), then parse
-cat names.txt | gnparser -c | sed "s/.*|//" | gnparser > names_parsed.txt
+# to keep html tags and entities during parsing. You gain a bit of performance
+# with this option if your data does not contain HTML tags or entities.
+gnparser "<i>Pomatomus</i>&nbsp;<i>saltator</i>"
+gnparser -n "<i>Pomatomus</i>&nbsp;<i>saltator</i>"
+gnparser -n "Pomatomus saltator"
 ```
 
 To parse a file returning results in the same order as they are given (slower):
@@ -307,28 +316,6 @@ reach maximum speed of parsing (``--jobs 200`` flag). It is practical because
 additional threads are very cheap in Go and they try to fill out every idle
 gap in the CPU usage.
 
-To cleanup a name (no parsing here, it just removes HTML tags and entities,
-and makes no other modifications):
-
-The output contains the original name-string, and "HTML-normalized" one
-separated by a pipe ("|") character.
-
-```bash
-gnparser -c "<i>Abacopteris glandulosa</i> (Bl.) F&eacute;e &amp; Chin"
-```
-
-To cleanup a file of names
-
-```bash
-gnparser -j 200 -c names.txt > no_html_names.txt
-
-# using pipes
-cat names.txt | gnparser -c -j 200 > no_html_names.txt
-```
-
-If you have data that has names with tags or HTML entities, the ``--cleanup
--c`` flag will help to normalize such names for parsing or other purposes.
-
 ### gRPC server
 
 Relevant flags:
@@ -341,14 +328,18 @@ Relevant flags:
 
 ``--jobs -j``
 : number or workers allocated per gRPC request. Default corresponds to the
-  number of CPU threads.
+  number of CPU threads. If you have a full control over gRPC server of
+  `gnparser`, set this option to 100-300 jobs.
 
 ```bash
-gnparser -g 8989 -j 20
+gnparser -g 8989 -j 200
 ```
 
 For an example how to use gRPC server check ``gnparser`` [Ruby gem][gnparser
 ruby] as well as [gRPC documentation].
+
+It also helps to read [gnparser.proto] file to understand how to deal with
+inputs and outputs of gRPC server.
 
 ### Usage as a REST API Interface
 
@@ -357,7 +348,7 @@ gRPC server. Web-based user interface and API are invoked by ``--web-port`` or
 ``-w`` flag. To start web server on ``http://0.0.0.0:9000``
 
 ```bash
-    gnparser -w 9000
+gnparser -w 9000
 ```
 
 Opening a browser with this address will now show an interactive interface
@@ -452,7 +443,7 @@ Some name-strings cannot be parsed unambiguously without some additional data.
 ### Names with `filius` (ICN code)
 
 For names like `Aus bus Linn. f. cus` the `f.` is ambiguous. It might mean
-that species were described by son of (`filius`) of Linn., or it might mean
+that species were described by a son of (`filius`) Linn., or it might mean
 that `cus` is `forma` of `bus`. We provide a warning
 "Ambiguous f. (filius or forma)" for such cases.
 

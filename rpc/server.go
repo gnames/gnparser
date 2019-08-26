@@ -10,7 +10,6 @@ import (
 	"gitlab.com/gogna/gnparser/dict"
 	"gitlab.com/gogna/gnparser/output"
 	"gitlab.com/gogna/gnparser/pb"
-	"gitlab.com/gogna/gnparser/preprocess"
 	context "golang.org/x/net/context"
 	"google.golang.org/grpc"
 )
@@ -110,13 +109,10 @@ func (gnps gnparserServer) parseArray(ia *pb.InputArray) []*pb.Parsed {
 func parseWorker(inCh <-chan string, outCh chan<- *parseArrayOutput,
 	skipClean bool, wg *sync.WaitGroup) {
 	defer wg.Done()
-	gnp := gnparser.NewGNparser()
+	opts := []gnparser.Option{gnparser.RemoveHTML(!skipClean)}
+	gnp := gnparser.NewGNparser(opts...)
 	for v := range inCh {
-		input := v
-		if !skipClean {
-			input = preprocess.StripTags(input)
-		}
-		res := gnp.ParseToObject(input)
+		res := gnp.ParseToObject(v)
 		outCh <- &parseArrayOutput{inputName: v, outputParsed: res}
 	}
 }

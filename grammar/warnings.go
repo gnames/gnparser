@@ -24,6 +24,7 @@ const (
 	GenusAbbrWarn
 	GenusUpperCharAfterDash
 	GreekLetterInRank
+	HTMLTagsEntitiesWarn
 	HybridCharNoSpaceWarn
 	HybridFormulaWarn
 	HybridFormulaIncompleteWarn
