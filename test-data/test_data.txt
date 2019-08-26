@@ -298,6 +298,10 @@ Pampocactus (Doweld)
 {"parsed":true,"quality":2,"qualityWarnings":[[2,"Possible ICN author instead of subgenus"]],"verbatim":"Pampocactus (Doweld)","normalized":"Pampocactus (Doweld)","canonicalName":{"simple":"Pampocactus","full":"Pampocactus"},"details":[{"uninomial":{"value":"Pampocactus","authorship":{"value":"(Doweld)","basionymAuthorship":{"authors":["Doweld"]}}}}],"positions":[["uninomial",0,11],["authorWord",13,19]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"3ed64c9a-ec8a-52c9-a913-eae09b6c71b9","parserVersion":"test_version"}
 3ed64c9a-ec8a-52c9-a913-eae09b6c71b9|Pampocactus (Doweld)|Pampocactus|Pampocactus|(Doweld)||2
 
+Drepanolejeunea (Spruce) (Steph.)
+Drepanolejeunea (Spruce) (Steph.)
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Unparsed tail"],[2,"Possible ICN author instead of subgenus"]],"verbatim":"Drepanolejeunea (Spruce) (Steph.)","normalized":"Drepanolejeunea (Spruce)","canonicalName":{"simple":"Drepanolejeunea","full":"Drepanolejeunea"},"details":[{"uninomial":{"value":"Drepanolejeunea","authorship":{"value":"(Spruce)","basionymAuthorship":{"authors":["Spruce"]}}}}],"positions":[["uninomial",0,15],["authorWord",17,23]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"unparsedTail":"(Steph.)","nameStringId":"19265c95-0a2b-5e8a-b2c4-478716e9c9ec","parserVersion":"test_version"}
+19265c95-0a2b-5e8a-b2c4-478716e9c9ec|Drepanolejeunea (Spruce) (Steph.)|Drepanolejeunea|Drepanolejeunea|(Spruce)||3
 #>
 
 ### Binomials

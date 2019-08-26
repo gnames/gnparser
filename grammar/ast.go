@@ -48,6 +48,9 @@ func (p *Engine) NewScientificNameNode() {
 	if str.IsBoldSurrogate(tail) {
 		p.Surrogate = true
 	}
+	if p.Tail != "" && tail == "" {
+		tail = p.Tail
+	}
 	sn := ScientificNameNode{
 		Name:      name,
 		Hybrid:    p.Hybrid,
@@ -286,7 +289,12 @@ func (p *Engine) newBotanicalUninomialNode(n *node32) *uninomialNode {
 	n = n.next
 	if n != nil {
 		n = n.up // fake OriginalAuthorship
-		at2 = p.newAuthorsGroupNode(n.up)
+		switch n.token32.pegRule {
+		case ruleOriginalAuthorship:
+			at2 = p.newAuthorsGroupNode(n.up)
+		default:
+			p.Tail = p.tailValue(n)
+		}
 	}
 	authorship := &authorshipNode{OriginalAuthors: ag, CombinationAuthors: at2}
 	u := &uninomialNode{Word: w, Authorship: authorship}

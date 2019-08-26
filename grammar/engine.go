@@ -14,6 +14,7 @@ type BaseEngine struct {
 	Surrogate bool
 	Bacteria  bool
 	Warnings  map[Warning]struct{}
+	Tail      string
 }
 
 func (p *Engine) FullReset() {
@@ -23,6 +24,7 @@ func (p *Engine) FullReset() {
 	p.Bacteria = false
 	var warnReset map[Warning]struct{}
 	p.Warnings = warnReset
+	p.Tail = ""
 	p.Reset()
 }
 
