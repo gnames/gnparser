@@ -14,7 +14,7 @@ parsed into:
 
 This parser, written in Go, is the 3rd iteration of the project. The first,
 [biodiversity] had been written in Ruby, the second, [also
-gnparser][gnparser-scala], had been written in Scala. This project and is now
+gnparser][gnparser-scala], had been written in Scala. This project is now
 a substitution for the other two. It will be the only one that is maintained
 further. All three projects were developed as a part of
 [Global Names Architecture Project][gna].
