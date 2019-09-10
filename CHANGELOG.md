@@ -2,9 +2,10 @@
 
 ## Unreleased
 
-## [v0.9.1]
+## [v0.10.0]
 
-- Add [#66]: parsing removes HTML tags as well.
+- Add [#67]: field `authorship` of the name for JSON output
+- Add [#66]: remove HTML tags during parsing instead of a separate step.
 - Add [#61]: handle authors that end with a word "bis".
 - Add [#60]: handle correctly deprecated ranks with greek letters.
 - Add [#62]: parser breaks on ``Drepanolejeunea (Spruce) (Steph.)``.
@@ -95,7 +96,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
-[v0.9.1]: https://gitlab.com/gogna/gnparser/compare/v0.9.0...v0.9.1
+[v0.10.0]: https://gitlab.com/gogna/gnparser/compare/v0.9.0...v0.10.0
 [v0.9.0]: https://gitlab.com/gogna/gnparser/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://gitlab.com/gogna/gnparser/compare/v0.7.5...v0.8.0
 [v0.7.5]: https://gitlab.com/gogna/gnparser/compare/v0.7.4...v0.7.5
@@ -107,6 +108,7 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#67]: https://gitlab.com/gogna/gnparser/issues/67
 [#66]: https://gitlab.com/gogna/gnparser/issues/66
 [#65]: https://gitlab.com/gogna/gnparser/issues/65
 [#64]: https://gitlab.com/gogna/gnparser/issues/64

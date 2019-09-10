@@ -14,6 +14,7 @@ type Output struct {
 	Verbatim      string        `json:"verbatim"`
 	Normalized    string        `json:"normalized,omitempty"`
 	CanonicalName *canonical    `json:"canonicalName,omitempty"`
+	Authorship    string        `json:"authorship,omitempty"`
 	Details       []interface{} `json:"details,omitempty"`
 	Positions     []pos         `json:"positions,omitempty"`
 	Surrogate     bool          `json:"surrogate"`
@@ -28,6 +29,7 @@ type Output struct {
 func NewOutput(sn *grm.ScientificNameNode) *Output {
 	var co *canonical
 	var quality int
+	var au string
 	var ws []Warning
 	var ps []pos
 	var hybrid bool
@@ -40,6 +42,11 @@ func NewOutput(sn *grm.ScientificNameNode) *Output {
 		ps = convertPos(sn.Pos())
 		hybrid = sn.Hybrid
 		parsed = true
+		lastAuthorship := sn.LastAuthorship()
+		if lastAuthorship != nil {
+			au = lastAuthorship.Value
+		}
+
 	}
 
 	o := Output{
@@ -57,6 +64,7 @@ func NewOutput(sn *grm.ScientificNameNode) *Output {
 		Bacteria:      sn.Bacteria,
 		Tail:          sn.Tail,
 		Details:       det,
+		Authorship:    au,
 		ParserVersion: sn.ParserVersion,
 	}
 	return &o
