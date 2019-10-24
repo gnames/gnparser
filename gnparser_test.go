@@ -1,8 +1,12 @@
 package gnparser
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"path/filepath"
 	"strings"
+	"testing"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
@@ -33,6 +37,7 @@ var _ = Describe("GNparser", func() {
 			o := gnp.ParseToObject("Homo sapiens")
 			Expect(o.Parsed).To(Equal(true))
 			Expect(o.Canonical.Simple).To(Equal("Homo sapiens"))
+			Expect(o.Canonical.Stem).To(Equal("Homo sapiens"))
 			switch d := o.Details.(type) {
 			case *pb.Parsed_Species:
 				Expect(d.Species.Genus).To(Equal("Homo"))
@@ -112,4 +117,63 @@ func astEntries() []TableEntry {
 		entries = append(entries, te)
 	}
 	return entries
+}
+
+// BenchmarkParse checks parsing event speed. Run it with:
+// `go test -bench=. -benchmem -count=10 -run=XXX > bench.txt && benchstat bench.txt`
+func BenchmarkParse(b *testing.B) {
+	path := filepath.Join("testdata", "200k-lines.txt")
+	count := 1000
+	test := make([]string, count)
+	gnp := NewGNparser()
+	ops := []Option{Format("simple")}
+	gnpSimple := NewGNparser(ops...)
+	f, err := os.Open(path)
+
+	if err != nil {
+		panic(err)
+	}
+	scanner := bufio.NewScanner(f)
+
+	for scanner.Scan() {
+		if count == 0 {
+			break
+		}
+		test = append(test, scanner.Text())
+		count--
+	}
+	b.Run("ParseToObject", func(b *testing.B) {
+		var p *pb.Parsed
+		for i := 0; i < b.N; i++ {
+			for _, v := range test {
+				p = gnp.ParseToObject(v)
+			}
+		}
+		_ = fmt.Sprintf("%v", p.Parsed)
+	})
+
+	b.Run("ParseAndFormat", func(b *testing.B) {
+		var p string
+		for i := 0; i < b.N; i++ {
+			for _, v := range test {
+				p, err = gnp.ParseAndFormat(v)
+				if err != nil {
+					panic(err)
+				}
+			}
+		}
+		_ = fmt.Sprintf("%d", len(p))
+	})
+	b.Run("ParseAndFormat(Simple)", func(b *testing.B) {
+		var p string
+		for i := 0; i < b.N; i++ {
+			for _, v := range test {
+				p, err = gnpSimple.ParseAndFormat(v)
+				if err != nil {
+					panic(err)
+				}
+			}
+		}
+		_ = fmt.Sprintf("%d", len(p))
+	})
 }

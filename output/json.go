@@ -5,6 +5,7 @@ import (
 
 	jsoniter "github.com/json-iterator/go"
 	grm "gitlab.com/gogna/gnparser/grammar"
+	"gitlab.com/gogna/gnparser/stemmer"
 )
 
 type Output struct {
@@ -37,7 +38,11 @@ func NewOutput(sn *grm.ScientificNameNode) *Output {
 	det := sn.Details()
 	c := sn.Canonical()
 	if c != nil {
-		co = &canonical{Simple: c.Value, Full: c.ValueRanked}
+		co = &canonical{
+			Full:   c.ValueRanked,
+			Simple: c.Value,
+			Stem:   stemmer.StemCanonical(c.Value),
+		}
 		ws, quality = qualityAndWarnings(sn.Warnings)
 		ps = convertPos(sn.Pos())
 		hybrid = sn.Hybrid
@@ -96,8 +101,9 @@ func FromJSON(data []byte) (Output, error) {
 }
 
 type canonical struct {
-	Simple string `json:"simple"`
 	Full   string `json:"full"`
+	Simple string `json:"simple"`
+	Stem   string `json:"stem"`
 }
 
 type pos struct {

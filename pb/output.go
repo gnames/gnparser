@@ -2,6 +2,7 @@ package pb
 
 import (
 	"gitlab.com/gogna/gnparser/output"
+	"gitlab.com/gogna/gnparser/stemmer"
 )
 
 func ToPB(o *output.Output) *Parsed {
@@ -35,6 +36,7 @@ func canonicalName(o *output.Output) *Canonical {
 		return cn
 	}
 	cn = &Canonical{
+		Stem:   stemmer.StemCanonical(o.CanonicalName.Simple),
 		Simple: o.CanonicalName.Simple,
 		Full:   o.CanonicalName.Full,
 	}

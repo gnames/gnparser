@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v0.11.0]
+
+- Add [#68]: add stemmed version of canonical form to outputs.
+- Add: benchmarks to gnparser_test.go
+
 ## [v0.10.0]
 
 - Add [#67]: field `authorship` of the name for JSON output
@@ -96,6 +101,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v0.11.0]: https://gitlab.com/gogna/gnparser/compare/v0.10.0...v0.11.0
 [v0.10.0]: https://gitlab.com/gogna/gnparser/compare/v0.9.0...v0.10.0
 [v0.9.0]: https://gitlab.com/gogna/gnparser/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://gitlab.com/gogna/gnparser/compare/v0.7.5...v0.8.0
@@ -108,6 +114,7 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#68]: https://gitlab.com/gogna/gnparser/issues/68
 [#67]: https://gitlab.com/gogna/gnparser/issues/67
 [#66]: https://gitlab.com/gogna/gnparser/issues/66
 [#65]: https://gitlab.com/gogna/gnparser/issues/65

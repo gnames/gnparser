@@ -119,10 +119,13 @@ enum NameType {
 }
 
 message Canonical {
+  // stem contains simple canonical form with
+  // removed suffixes for species, infraspecies.
+  string stem = 1;
   // simple contains canonical form without ranks.
-  string simple = 1;
+  string simple = 2;
   // full contains canonical form with ranks.
-  string full = 2;
+  string full = 3;
 }
 
 message Position {

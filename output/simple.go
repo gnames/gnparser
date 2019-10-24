@@ -5,13 +5,15 @@ import (
 	"strconv"
 
 	"gitlab.com/gogna/gnparser/grammar"
+	"gitlab.com/gogna/gnparser/stemmer"
 )
 
 type simple struct {
 	ID              string
 	Verbatim        string
-	Canonical       string
 	CanonicalRanked string
+	Canonical       string
+	CanonicalStem   string
 	Authorship      string
 	Year            string
 	Quality         int
@@ -42,8 +44,9 @@ func NewSimpleOutput(sn *grammar.ScientificNameNode) *simple {
 	so := simple{
 		ID:              sn.VerbatimID,
 		Verbatim:        sn.Verbatim,
-		Canonical:       c.Value,
 		CanonicalRanked: c.ValueRanked,
+		Canonical:       c.Value,
+		CanonicalStem:   stemmer.StemCanonical(c.Value),
 		Authorship:      authorship,
 		Year:            yr,
 		Quality:         quality,
@@ -61,8 +64,9 @@ func (so *simple) ToSlice() []string {
 	res := []string{
 		so.ID,
 		so.Verbatim,
-		so.Canonical,
 		so.CanonicalRanked,
+		so.Canonical,
+		so.CanonicalStem,
 		so.Authorship,
 		yr,
 		qual,

@@ -2,6 +2,7 @@
 
 // Generates a new test_data_new.txt file out of test_data.txt using current
 // parser output. We need to do this in cases when parser output is modified.
+// Run `go run gentest.go`
 package main
 
 import (
@@ -18,8 +19,8 @@ func genTestData() error {
 	var nameString string
 	empty := regexp.MustCompile(`^\s*$`)
 	comment := regexp.MustCompile(`^\s*#`)
-	path := filepath.Join("..", "test-data", "test_data.txt")
-	outPath := filepath.Join("..", "test-data", "test_data_new.txt")
+	path := filepath.Join("..", "testdata", "test_data.txt")
+	outPath := filepath.Join("..", "testdata", "test_data_new.txt")
 	f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
 	if err != nil {
 		return err

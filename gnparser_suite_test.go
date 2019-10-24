@@ -31,7 +31,7 @@ func testData() ([]testRecord, error) {
 	var test testRecord
 	empty := regexp.MustCompile(`^\s*$`)
 	comment := regexp.MustCompile(`^\s*#`)
-	path := filepath.Join("test-data", "test_data.txt")
+	path := filepath.Join("testdata", "test_data.txt")
 	f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
 	if err != nil {
 		return nil, err
@@ -68,7 +68,7 @@ func testData() ([]testRecord, error) {
 }
 
 func makeBigFile(t []testRecord) error {
-	path := filepath.Join("test-data", "200k-lines.txt")
+	path := filepath.Join("testdata", "200k-lines.txt")
 	iterNum := 200000 / len(t)
 
 	f, err := os.Create(path)

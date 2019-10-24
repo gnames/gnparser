@@ -1,9 +1,6 @@
 package output
 
 import (
-	"math/rand"
-	"time"
-
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	grm "gitlab.com/gogna/gnparser/grammar"
@@ -51,11 +48,11 @@ var _ = Describe("Private Functions", func() {
 	})
 })
 
-func randIntSlice(sl []int) []int {
-	res := make([]int, len(sl))
-	r := rand.New(rand.NewSource(time.Now().Unix()))
-	for i, v := range r.Perm(len(sl)) {
-		res[i] = sl[v]
-	}
-	return res
-}
+// func randIntSlice(sl []int) []int {
+// 	res := make([]int, len(sl))
+// 	r := rand.New(rand.NewSource(time.Now().Unix()))
+// 	for i, v := range r.Perm(len(sl)) {
+// 		res[i] = sl[v]
+// 	}
+// 	return res
+// }

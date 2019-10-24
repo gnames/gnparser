@@ -127,15 +127,26 @@ in less stable parts. Use the ``canonicalName -> simple`` or ``canonicalName
 canonical form includes infra-specific ranks and hybrid character for named
 hybrids.
 
+The ``canonicalName -> full`` is good for presentation, as it keeps more
+details.
+
 The ``canonicalName -> simple`` field is good for matching names from different
 sources, because sometimes dataset curators omit hybrid sign in named hybrids,
 or remove ranks for infraspecific epithets.
 
-The ``canonicalName -> full`` is good for presentation, as it keeps more
-details.
+The ``canonicalName -> stem`` field contains simple canonical normalized even
+further. The normalization is done according to stemming rules for Latin
+language described in [Schinke R et al (1996)]. For example letters `j` are
+converted to `i`, letters `v` are converted to `u`, and suffixes are removed
+from the specific and infraspecific epithets.
 
 If you only care about canonical form of a name you can use ``--format simple``
 flag with command line tool.
+
+Simple format has the following fields separated by a pipe character(`|`):
+
+`ID|Verbatim|CanonicalFull|CanonicalSimple|CanonicalStem|Authors|Year|Quality`
+
 
 ### Normalizing name-strings
 
@@ -253,6 +264,10 @@ Relevant flags:
 ``--format -f``
 : output format. Can be ``compact``, ``pretty``, ``simple``, or ``debug``.
 Default is ``compact``.
+
+Simple format has the following fields separated by a pipe character(`|`):
+
+`ID|Verbatim|CanonicalFull|CanonicalSimple|CanonicalStem|Authors|Year|Quality`
 
 ``--jobs -j``
 : number of jobs running concurrently.
@@ -481,7 +496,7 @@ Released under [MIT license]
 [gnparser-scala]: https://github.com/GlobalNamesArchitecture/gnparser
 [peg]: https://github.com/pointlander/peg
 [gna]: http://globalnames.org
-[test file]: https://gitlab.com/gogna/gnparser/raw/master/test-data/test_data.txt
+[test file]: https://gitlab.com/gogna/gnparser/raw/master/testdata/test_data.txt
 [uuid5]: http://globalnames.org/news/2015/05/31/gn-uuid-0-5-0
 [winpath]: https://www.computerhope.com/issues/ch000549.htm
 [gnparser ruby]: https://gitlab.com/gnames/gnparser_rb
@@ -493,3 +508,4 @@ Released under [MIT license]
 [IRMNG]: http://www.irmng.org
 [CONTRIBUTING]: https://gitlab.com/gogna/gnparser/blob/master/CONTRIBUTING.md
 [gnparser.proto]: https://gitlab.com/gogna/gnparser/blob/master/pb/gnparser.proto
+[Schinke R et al (1996)]: https://caio.ueberalles.net/a_stemming_algorithm_for_latin_text_databases-schinke_et_al.pdf

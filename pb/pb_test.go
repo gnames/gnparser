@@ -45,7 +45,7 @@ var _ = Describe("PB", func() {
 func pbEntries() []TableEntry {
 	var td TestData
 	var entries []TableEntry
-	data, err := ioutil.ReadFile("../test-data/test_pb.json")
+	data, err := ioutil.ReadFile("../testdata/test_pb.json")
 	if err != nil {
 		log.Fatal(err)
 	}
