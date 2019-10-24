@@ -48,6 +48,12 @@ gnparser -v
 To parse one name:
 gnparser "Homo sapiens Linnaeus 1753" [flags]
 
+To parse one name using simple format
+gnparser "Homo sapiens Linnaeus 1753" -f simple
+Simple format has the following fields:
+
+ID|Verbatim|CanonicalFull|CanonicalSimple|CanonicalStem|Authors|Year|Quality
+
 To parse many names from a file (one name per line):
 gnparser names.txt [flags] > parsed_names.txt
 
