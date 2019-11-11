@@ -5,7 +5,6 @@ prof
 200k-lines.txt
 test_data.new.txt
 .idea
-gnparser.pb.go
 gnparser/gnparser
 bench*.txt
 
