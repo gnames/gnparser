@@ -1,17 +1,19 @@
-GOCMD = go
-GOBUILD = $(GOCMD) build
-GOINSTALL = $(GOCMD) install
-GOCLEAN = $(GOCMD) clean
-GOGET = $(GOCMD) get
+VERSION = $(shell git describe --tags)
+VER = $(shell git describe --tags --abbrev=0)
+DATE = $(shell date -u '+%Y-%m-%d_%H:%M:%S%Z')
+
 FLAG_MODULE = GO111MODULE=on
 FLAGS_SHARED = $(FLAG_MODULE) CGO_ENABLED=0 GOARCH=amd64
 FLAGS_LINUX = $(FLAGS_SHARED) GOOS=linux
 FLAGS_MAC = $(FLAGS_SHARED) GOOS=darwin
 FLAGS_WIN = $(FLAGS_SHARED) GOOS=windows
-
-VERSION = $(shell git describe --tags)
-VER = $(shell git describe --tags --abbrev=0)
-DATE = $(shell date -u '+%Y-%m-%d_%H:%M:%S%Z')
+FLAGS_LD=-ldflags "-X gitlab.com/gogna/gnparser/output.Build=${DATE} \
+                  -X gitlab.com/gogna/gnparser/output.Version=${VERSION}"
+GOCMD = go
+GOBUILD = $(GOCMD) build $(FLAGS_LD)
+GOINSTALL = $(GOCMD) install $(FLAGS_LD)
+GOCLEAN = $(GOCMD) clean
+GOGET = $(GOCMD) get
 
 all: install
 
@@ -29,12 +31,6 @@ deps:
 	$(FLAG_MODULE) $(GOGET) github.com/golang/protobuf/protoc-gen-go@347cf4a; \
   $(FLAG_MODULE) $(GOGET) golang.org/x/tools/cmd/goimports
 
-version:
-	echo "package output" > output/version.go
-	echo "" >> output/version.go
-	echo "const Version = \"$(VERSION)"\" >> output/version.go
-	echo "const Build = \"$(DATE)\"" >> output/version.go
-
 peg:
 	cd grammar; \
 	peg grammar.peg; \
@@ -44,17 +40,17 @@ asset:
 	cd fs; \
 	$(FLAGS_SHARED) go run -tags=dev assets_gen.go
 
-build: version peg pb asset
+build: peg pb asset
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) $(GOBUILD)
 
-install: version peg pb asset
+install: peg pb asset
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) $(GOINSTALL)
 
-release: version peg pb asset dockerhub
+release: peg pb asset dockerhub
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_LINUX) $(GOBUILD); \

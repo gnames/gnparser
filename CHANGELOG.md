@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Make dynamic version using ldflags.
+
 ## [v0.11.0]
 
 - Add [#68]: add stemmed version of canonical form to outputs.
