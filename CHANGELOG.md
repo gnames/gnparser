@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v0.12.0]
+
+- Add [#69]: gnparser as a shared C library.
 - Make dynamic version using ldflags.
 
 ## [v0.11.0]

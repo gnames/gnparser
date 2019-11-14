@@ -41,10 +41,9 @@ func apiPostParse(w http.ResponseWriter, r *http.Request) {
 func parseSlice(w http.ResponseWriter, ns []string) {
 	in := make(chan string)
 	out := make(chan *gnparser.ParseResult)
-	gnp := gnparser.NewGNparser()
 	var wg sync.WaitGroup
 	wg.Add(1)
-	go gnp.ParseStream(in, out)
+	go gnparser.ParseStream(8, in, out)
 	go processResults(w, out, &wg)
 	for _, v := range ns {
 		in <- v

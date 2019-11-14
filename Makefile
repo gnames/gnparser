@@ -3,7 +3,8 @@ VER = $(shell git describe --tags --abbrev=0)
 DATE = $(shell date -u '+%Y-%m-%d_%H:%M:%S%Z')
 
 FLAG_MODULE = GO111MODULE=on
-FLAGS_SHARED = $(FLAG_MODULE) CGO_ENABLED=0 GOARCH=amd64
+FLAGS_SHARED = $(FLAG_MODULE) GOARCH=amd64
+NO_C = CGO_ENABLED=0
 FLAGS_LINUX = $(FLAGS_SHARED) GOOS=linux
 FLAGS_MAC = $(FLAGS_SHARED) GOOS=darwin
 FLAGS_WIN = $(FLAGS_SHARED) GOOS=windows
@@ -43,23 +44,23 @@ asset:
 build: peg pb asset
 	cd gnparser; \
 	$(GOCLEAN); \
-	$(FLAGS_SHARED) $(GOBUILD)
+	$(FLAGS_SHARED) $(NO_C) $(GOBUILD)
 
 install: peg pb asset
 	cd gnparser; \
 	$(GOCLEAN); \
-	$(FLAGS_SHARED) $(GOINSTALL)
+	$(FLAGS_SHARED) $(NO_C) $(GOINSTALL)
 
 release: peg pb asset dockerhub
 	cd gnparser; \
 	$(GOCLEAN); \
-	$(FLAGS_LINUX) $(GOBUILD); \
+	$(FLAGS_LINUX) $(NO_C) $(GOBUILD); \
 	tar zcf /tmp/gnparser-$(VER)-linux.tar.gz gnparser; \
 	$(GOCLEAN); \
-	$(FLAGS_MAC) $(GOBUILD); \
+	$(FLAGS_MAC) $(NO_C) $(GOBUILD); \
 	tar zcf /tmp/gnparser-$(VER)-mac.tar.gz gnparser; \
 	$(GOCLEAN); \
-	$(FLAGS_WIN) $(GOBUILD); \
+	$(FLAGS_WIN) $(NO_C) $(GOBUILD); \
 	zip -9 /tmp/gnparser-$(VER)-win-64.zip gnparser.exe; \
 	$(GOCLEAN);
 
@@ -76,3 +77,7 @@ docker: build
 dockerhub: docker
 	docker push gnames/gognparser; \
 	docker push gnames/gognparser:$(VERSION)
+
+clib:
+	cd binding; \
+	$(GOBUILD) -buildmode=c-shared -o libgnparser.so;

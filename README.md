@@ -6,11 +6,11 @@ Try `gnparser` [online][parser-web].
 associated meta information. For example, ``"Homo sapiens Linnaeus"`` is
 parsed into:
 
-| Element  | Meaning          | Position
-| -------- | ---------------- | --------
-| Homo     | genus            | (0,4)
-| sapiens  | specificEpithet  | (5,12)
-| Linnaeus | author           | (13,21)
+| Element  | Meaning         | Position |
+| -------- | --------------- | -------- |
+| Homo     | genus           | (0,4)    |
+| sapiens  | specificEpithet | (5,12)   |
+| Linnaeus | author          | (13,21)  |
 
 This parser, written in Go, is the 3rd iteration of the project. The first,
 [biodiversity] had been written in Ruby, the second, [also
@@ -55,6 +55,7 @@ gnparser -h
 		- [Usage as a REST API Interface](#usage-as-a-rest-api-interface)
 		- [Use as a Docker image](#use-as-a-docker-image)
 		- [Use as a library in Go](#use-as-a-library-in-go)
+		- [Use as a shared C library](#use-as-a-shared-c-library)
 	- [Parsing ambiguities](#parsing-ambiguities)
 		- [Names with `filius` (ICN code)](#names-with-filius-icn-code)
 		- [Names with subgenus (ICZN code) and genus author (ICN code)](#names-with-subgenus-iczn-code-and-genus-author-icn-code)
@@ -87,14 +88,14 @@ its input and output.
 Number of names parsed per hour on a i7-8750H CPU
 (6 cores, 12 threads, at 2.20 GHz), parser v0.5.1
 
-| Threads  | names/hr
-| -------- | ------------
-| 1        |  48,000,000
-| 2        |  63,000,000
-| 4        | 128,000,000
-| 8        | 202,000,000
-| 16       | 248,000,000
-| 100      | 293,000,000
+| Threads | names/hr    |
+| ------- | ----------- |
+| 1       | 48,000,000  |
+| 2       | 63,000,000  |
+| 4       | 128,000,000 |
+| 8       | 202,000,000 |
+| 16      | 248,000,000 |
+| 100     | 293,000,000 |
 
 For simplest output Go ``gnparser`` is roughly 2 times faster than Scala
 ``gnparser`` and about 100 times faster than Ruby ``biodiversity`` parser. For
@@ -451,6 +452,25 @@ case *pb.Parsed_Uninomial:
 }
 ```
 
+### Use as a shared C library
+
+It is possible to bind `gnparser` functionality with languages that can use
+C Application Binary Interface. For example such languages include
+Python, Ruby, Rust, C, C++, Java (via JNI).
+
+To compile `gnparser` shared library for your platform/operating system of
+choice you need `GNU make` and `GNU gcc compiler` installed:
+
+```bash
+make clib
+cd binding
+cp libgnparser* /path/to/some/project
+```
+
+As an example how to use the shared library check this
+[StackOverflow question][ruby_ffi_go_usage]. You can find shared functions
+at their [export file].
+
 ## Parsing ambiguities
 
 Some name-strings cannot be parsed unambiguously without some additional data.
@@ -509,3 +529,5 @@ Released under [MIT license]
 [CONTRIBUTING]: https://gitlab.com/gogna/gnparser/blob/master/CONTRIBUTING.md
 [gnparser.proto]: https://gitlab.com/gogna/gnparser/blob/master/pb/gnparser.proto
 [Schinke R et al (1996)]: https://caio.ueberalles.net/a_stemming_algorithm_for_latin_text_databases-schinke_et_al.pdf
+[ruby_ffi_go_usage]: https://stackoverflow.com/questions/58866962/how-to-pass-an-array-of-strings-and-get-an-array-of-strings-in-ruby-using-go-sha
+[export file]: https://gitlab.com/gogna/gnparser/blob/master/binding/main.go

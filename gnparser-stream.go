@@ -9,54 +9,55 @@ import (
 // ParseResult structure contains parsing output and/or error generated
 // by the parser.
 type ParseResult struct {
+	Input  string
 	Output string
 	Error  error
 }
 
 // ParseStream function takes input/output channels to do concurrent
 // parsing jobs. Output is pushed as ParseResult objects.
-func (gnp *GNparser) ParseStream(in <-chan string, out chan<- *ParseResult,
+func ParseStream(jobs int, in <-chan string, out chan<- *ParseResult,
 	opts ...Option) {
 	var wg sync.WaitGroup
-	wg.Add(gnp.workersNum)
-	for i := 0; i < gnp.workersNum; i++ {
-		go gnp.parserWorker(i, in, out, &wg, opts...)
+	wg.Add(jobs)
+	for i := 0; i < jobs; i++ {
+		go parserWorker(i, in, out, &wg, opts...)
 	}
 	wg.Wait()
 	close(out)
 }
 
-func (gnp *GNparser) parserWorker(i int, in <-chan string, out chan<- *ParseResult,
+func parserWorker(i int, in <-chan string, out chan<- *ParseResult,
 	wg *sync.WaitGroup, opts ...Option) {
-	gnp1 := NewGNparser(opts...)
+	gnp := NewGNparser(opts...)
 	defer wg.Done()
 	for s := range in {
-		res, err := gnp1.ParseAndFormat(s)
+		res, err := gnp.ParseAndFormat(s)
 		if err != nil {
-			out <- &ParseResult{Output: "", Error: err}
+			out <- &ParseResult{Input: s, Output: "", Error: err}
 		}
-		out <- &ParseResult{Output: res, Error: nil}
+		out <- &ParseResult{Input: s, Output: res, Error: nil}
 	}
 }
 
 // ParseStreamToObjects function takes input/output channels to do concurrent
 // parsing to object jobs. Output is pushed as ParseObjectResult objects.
-func (gnp *GNparser) ParseStreamToObjects(in <-chan string,
+func ParseStreamToObjects(jobs int, in <-chan string,
 	out chan<- *pb.Parsed, opts ...Option) {
 	var wg sync.WaitGroup
-	wg.Add(gnp.workersNum)
-	for i := 0; i < gnp.workersNum; i++ {
-		go gnp.parserObjectWorker(i, in, out, &wg, opts...)
+	wg.Add(jobs)
+	for i := 0; i < jobs; i++ {
+		go parserObjectWorker(i, in, out, &wg, opts...)
 	}
 	wg.Wait()
 	close(out)
 }
 
-func (gnp *GNparser) parserObjectWorker(i int, in <-chan string,
+func parserObjectWorker(i int, in <-chan string,
 	out chan<- *pb.Parsed, wg *sync.WaitGroup, opts ...Option) {
-	gnp1 := NewGNparser(opts...)
+	gnp := NewGNparser(opts...)
 	defer wg.Done()
 	for s := range in {
-		out <- gnp1.ParseToObject(s)
+		out <- gnp.ParseToObject(s)
 	}
 }

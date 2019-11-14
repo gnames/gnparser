@@ -26,6 +26,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"runtime"
 	"strings"
 	"sync"
 
@@ -100,11 +101,11 @@ gnparser -j 5 -g 8080
 			gnparser.RemoveHTML(!nocleanup),
 		}
 		if len(args) == 0 {
-			processStdin(cmd, opts)
+			processStdin(cmd, wn, opts)
 			os.Exit(0)
 		}
 		data := getInput(cmd, args)
-		parse(data, opts)
+		parse(data, wn, opts)
 	},
 }
 
@@ -127,8 +128,7 @@ func init() {
 	formatHelp := fmt.Sprintf("sets output format. Can be one of:\n %s.", formats)
 	rootCmd.Flags().StringP("format", "f", df, formatHelp)
 
-	dj := gnp.WorkersNum()
-	rootCmd.Flags().IntP("jobs", "j", dj,
+	rootCmd.Flags().IntP("jobs", "j", runtime.NumCPU(),
 		"nubmer of threads to run. CPU's threads number is the default.")
 
 	rootCmd.Flags().BoolP("nocleanup", "n", false, "keep HTML entities and tags when parsing.")
@@ -199,12 +199,12 @@ func workersNumFlag(cmd *cobra.Command) int {
 	return i
 }
 
-func processStdin(cmd *cobra.Command, opts []gnparser.Option) {
+func processStdin(cmd *cobra.Command, jobs int, opts []gnparser.Option) {
 	if !checkStdin() {
 		cmd.Help()
 		return
 	}
-	parseFile(os.Stdin, opts)
+	parseFile(os.Stdin, jobs, opts)
 }
 
 func checkStdin() bool {
@@ -228,7 +228,7 @@ func getInput(cmd *cobra.Command, args []string) string {
 	return data
 }
 
-func parse(data string, opts []gnparser.Option) {
+func parse(data string, jobs int, opts []gnparser.Option) {
 	gnp := gnparser.NewGNparser(opts...)
 
 	path := string(data)
@@ -238,7 +238,7 @@ func parse(data string, opts []gnparser.Option) {
 			log.Fatal(err)
 			os.Exit(1)
 		}
-		parseFile(f, opts)
+		parseFile(f, jobs, opts)
 		f.Close()
 	} else {
 		parseString(gnp, data)
@@ -254,14 +254,13 @@ func fileExists(path string) bool {
 	return false
 }
 
-func parseFile(f io.Reader, opts []gnparser.Option) {
+func parseFile(f io.Reader, jobs int, opts []gnparser.Option) {
 	in := make(chan string)
 	out := make(chan *gnparser.ParseResult)
-	gnp := gnparser.NewGNparser(opts...)
 	var wg sync.WaitGroup
 	wg.Add(1)
 
-	go gnp.ParseStream(in, out, opts...)
+	go gnparser.ParseStream(jobs, in, out, opts...)
 	go processResults(out, &wg)
 	sc := bufio.NewScanner(f)
 	count := 0
