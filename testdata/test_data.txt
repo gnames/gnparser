@@ -336,6 +336,12 @@ Aëtosaurus ferratus
 Aëtosaurus ferratus
 {"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Aëtosaurus ferratus","normalized":"Aetosaurus ferratus","canonicalName":{"full":"Aetosaurus ferratus","simple":"Aetosaurus ferratus","stem":"Aetosaurus ferrat"},"details":[{"genus":{"value":"Aetosaurus"},"specificEpithet":{"value":"ferratus"}}],"positions":[["genus",0,10],["specificEpithet",11,19]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"9d95ffa0-0203-541f-854a-77ca7ff187fa","parserVersion":"test_version"}
 9d95ffa0-0203-541f-854a-77ca7ff187fa|Aëtosaurus ferratus|Aetosaurus ferratus|Aetosaurus ferratus|Aetosaurus ferrat|||2
+
+Remera cvancarai
+Remera cvancarai
+{"parsed":true,"quality":1,"verbatim":"Remera cvancarai","normalized":"Remera cvancarai","canonicalName":{"full":"Remera cvancarai","simple":"Remera cvancarai","stem":"Remera cuancara"},"details":[{"genus":{"value":"Remera"},"specificEpithet":{"value":"cvancarai"}}],"positions":[["genus",0,6],["specificEpithet",7,16]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"d5d77ab3-2648-5409-a6c7-e3e20d75c38b","parserVersion":"test_version"}
+d5d77ab3-2648-5409-a6c7-e3e20d75c38b|Remera cvancarai|Remera cvancarai|Remera cvancarai|Remera cuancara|||1
+
 #>
 
 #SECTION: Binomial with authorship<
