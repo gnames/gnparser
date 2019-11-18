@@ -19,7 +19,7 @@ var virusRe = regexp.MustCompile(
 		`(alpha|beta)?satellites?)\b`,
 )
 var noParseRe = regexp.MustCompile(
-	`(^(Not|None|Unidentified)[\W_].*|.*[Ii]ncertae\s+[Ss]edis.*` +
+	`(^(Not|None|Un(n?amed|identified))[\W_].*|.*[Ii]ncertae\s+[Ss]edis.*` +
 		`|[Ii]nc\.\s*[Ss]ed\.|phytoplasma\b|plasmids?\b|[^A-Z]RNA[^A-Z]*)`,
 )
 var notesRe = regexp.MustCompile(

@@ -4,8 +4,10 @@
 
 ## [v0.12.0]
 
+- Add [#71]: do not parse 'Unamed clade...'.
 - Add [#69]: gnparser as a shared C library.
-- Make dynamic version using ldflags.
+- Add: Make dynamic version using ldflags.
+- Fix [#70]: parse 'Remera cvancarai' correctly.
 
 ## [v0.11.0]
 
@@ -106,6 +108,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v0.12.0]: https://gitlab.com/gogna/gnparser/compare/v0.11.0...v0.12.0
 [v0.11.0]: https://gitlab.com/gogna/gnparser/compare/v0.10.0...v0.11.0
 [v0.10.0]: https://gitlab.com/gogna/gnparser/compare/v0.9.0...v0.10.0
 [v0.9.0]: https://gitlab.com/gogna/gnparser/compare/v0.8.0...v0.9.0
@@ -119,6 +122,9 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#71]: https://gitlab.com/gogna/gnparser/issues/71
+[#70]: https://gitlab.com/gogna/gnparser/issues/70
+[#69]: https://gitlab.com/gogna/gnparser/issues/69
 [#68]: https://gitlab.com/gogna/gnparser/issues/68
 [#67]: https://gitlab.com/gogna/gnparser/issues/67
 [#66]: https://gitlab.com/gogna/gnparser/issues/66

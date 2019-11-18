@@ -3035,6 +3035,16 @@ Notassigned
 Notassigned
 {"parsed":true,"quality":1,"verbatim":"Notassigned","normalized":"Notassigned","canonicalName":{"full":"Notassigned","simple":"Notassigned","stem":"Notassigned"},"details":[{"uninomial":{"value":"Notassigned"}}],"positions":[["uninomial",0,11]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"8c07b58a-be4e-5c31-871b-cffe36b9860a","parserVersion":"test_version"}
 8c07b58a-be4e-5c31-871b-cffe36b9860a|Notassigned|Notassigned|Notassigned|Notassigned|||1
+
+Unnamed clade
+noparse
+{"parsed":false,"quality":0,"verbatim":"Unnamed clade","surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"d510b662-0a4d-5678-a1a7-c58b20d25fa0","parserVersion":"test_version"}
+d510b662-0a4d-5678-a1a7-c58b20d25fa0|Unnamed clade||||||0
+
+Unamed clade
+noparse
+{"parsed":false,"quality":0,"verbatim":"Unamed clade","surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"be6943d3-fa83-5e5d-9515-7cc339473d4d","parserVersion":"test_version"}
+be6943d3-fa83-5e5d-9515-7cc339473d4d|Unamed clade||||||0
 #>
 
 #SECTION: No parsing -- genus with apostrophe<
