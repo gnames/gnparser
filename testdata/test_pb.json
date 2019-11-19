@@ -98,7 +98,7 @@
     },
     {
       "name": "Aesculus cf. × hybrida",
-      "name_type": "NAMED_HYBRID",
+      "name_type": "SURROGATE",
       "cardinality": 2,
       "all_auth": []
     },
@@ -136,19 +136,19 @@
     },
     {
       "name": "Ctenotus cf. something",
-      "name_type": "COMPARISON",
+      "name_type": "SURROGATE",
       "cardinality": 2,
       "all_auth": []
     },
     {
       "name": "Ctenotus sp. something",
-      "name_type": "APPROX_SURROGATE",
+      "name_type": "SURROGATE",
       "cardinality": 0,
       "all_auth": []
     },
     {
       "name": "Ctenotus sp.",
-      "name_type": "APPROX_SURROGATE",
+      "name_type": "SURROGATE",
       "cardinality": 0,
       "all_auth": []
     },
@@ -166,7 +166,7 @@
     },
     {
       "name": "Coleoptera sp. BOLD:AAV0432",
-      "name_type": "APPROX_SURROGATE",
+      "name_type": "SURROGATE",
       "cardinality": 0,
       "all_auth": []
     },
