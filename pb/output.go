@@ -20,13 +20,14 @@ func ToPB(o *output.Output) *Parsed {
 		Tail:           o.Tail,
 		ParserVersion:  o.ParserVersion,
 	}
+	details(po, o)
+
 	if o.Virus {
 		po.NameType = NameType_VIRUS
 	} else if o.Surrogate {
 		po.NameType = NameType_SURROGATE
 	}
 
-	details(po, o)
 	return po
 }
 
