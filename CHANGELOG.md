@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix [#72]: Surrogate detection by `gnparser.ParseToObject` method.
+
 ## [v0.12.0]
 
 - Add [#71]: do not parse 'Unamed clade...'.
@@ -122,6 +124,7 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#72]: https://gitlab.com/gogna/gnparser/issues/72
 [#71]: https://gitlab.com/gogna/gnparser/issues/71
 [#70]: https://gitlab.com/gogna/gnparser/issues/70
 [#69]: https://gitlab.com/gogna/gnparser/issues/69

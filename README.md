@@ -467,9 +467,9 @@ cd binding
 cp libgnparser* /path/to/some/project
 ```
 
-As an example how to use the shared library check this
-[StackOverflow question][ruby_ffi_go_usage]. You can find shared functions
-at their [export file].
+As an example how to use the shared library check this [StackOverflow
+question][ruby_ffi_go_usage] and [biodiversity] Ruby gem. You can
+find shared functions at their [export file].
 
 ## Parsing ambiguities
 
