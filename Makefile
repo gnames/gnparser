@@ -24,7 +24,7 @@ test: deps install
 test-build: deps build
 
 deps:
-	$(FLAG_MODULE) $(GOGET) github.com/pointlander/peg@fa48cc2; \
+	$(FLAG_MODULE) $(GOGET) github.com/pointlander/peg@21bead84a59; \
 	$(FLAG_MODULE) $(GOGET) github.com/shurcooL/vfsgen@6a9ea43; \
 	$(FLAG_MODULE) $(GOGET) github.com/spf13/cobra/cobra@7547e83; \
 	$(FLAG_MODULE) $(GOGET) github.com/onsi/ginkgo/ginkgo@505cc35; \

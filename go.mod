@@ -28,9 +28,7 @@ require (
 	github.com/onsi/gomega v1.4.4-0.20190102141312-ce690c543be4
 	github.com/openzipkin/zipkin-go v0.1.5 // indirect
 	github.com/pkg/errors v0.8.1 // indirect
-	github.com/pointlander/compress v1.1.0 // indirect
-	github.com/pointlander/jetset v1.0.0 // indirect
-	github.com/pointlander/peg v1.0.1-0.20181228211923-fa48cc294fa1 // indirect
+	github.com/pointlander/peg v1.0.1-0.20200103050457-21bead84a598 // indirect
 	github.com/prometheus/client_model v0.0.0-20190129233127-fd36f4220a90 // indirect
 	github.com/prometheus/common v0.2.0 // indirect
 	github.com/prometheus/procfs v0.0.0-20190203183350-488faf799f86 // indirect
@@ -64,7 +62,7 @@ require (
 	golang.org/x/oauth2 v0.0.0-20190130055435-99b60b757ec1 // indirect
 	golang.org/x/perf v0.0.0-20190124201629-844a5f5b46f4 // indirect
 	golang.org/x/text v0.3.1-0.20180807135948-17ff2d5776d2
-	golang.org/x/tools v0.0.0-20190909194007-75be6cdcda07 // indirect
+	golang.org/x/tools v0.0.0-20200102200121-6de373a2766c // indirect
 	google.golang.org/genproto v0.0.0-20190201180003-4b09977fb922 // indirect
 	google.golang.org/grpc v1.18.0
 	honnef.co/go/tools v0.0.0-20190128043916-71123fcbb8fe // indirect
