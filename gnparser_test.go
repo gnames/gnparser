@@ -142,6 +142,21 @@ func BenchmarkParse(b *testing.B) {
 		test = append(test, scanner.Text())
 		count--
 	}
+	b.Run("ParseToObjectOnce", func(b *testing.B) {
+		var p *pb.Parsed
+		for i := 0; i < b.N; i++ {
+			p = gnp.ParseToObject("Abarema clypearia (Jack) Kosterm., p.p.")
+		}
+		_ = fmt.Sprintf("%v", p.Parsed)
+	})
+	b.Run("ParseToObjectOnceWithInit", func(b *testing.B) {
+		var p *pb.Parsed
+		for i := 0; i < b.N; i++ {
+			gnp1 := NewGNparser()
+			p = gnp1.ParseToObject("Abarema clypearia (Jack) Kosterm., p.p.")
+		}
+		_ = fmt.Sprintf("%v", p.Parsed)
+	})
 	b.Run("ParseToObject", func(b *testing.B) {
 		var p *pb.Parsed
 		for i := 0; i < b.N; i++ {
