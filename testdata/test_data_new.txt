@@ -3157,17 +3157,17 @@ b8d77a78-2698-5050-9c7a-638f615bd357|Velutina haliotoides (Linnaeus, 1758), <i>s
 
 #AST is no parse because preprocessing removes tags
 <i>Velutina halioides</i> (Linnaeus, 1758)
-noparse
+Velutina halioides (Linnaeus, 1758)
 {"parsed":true,"quality":3,"qualityWarnings":[[3,"HTML tags or entities in the name"]],"verbatim":"\u003ci\u003eVelutina halioides\u003c/i\u003e (Linnaeus, 1758)","normalized":"Velutina halioides (Linnaeus 1758)","canonicalName":{"full":"Velutina halioides","simple":"Velutina halioides","stem":"Velutina halioid"},"authorship":"(Linnaeus 1758)","details":[{"genus":{"value":"Velutina"},"specificEpithet":{"value":"halioides","authorship":{"value":"(Linnaeus 1758)","basionymAuthorship":{"authors":["Linnaeus"],"year":{"value":"1758"}}}}}],"positions":[["genus",0,8],["specificEpithet",9,18],["authorWord",20,28],["year",30,34]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"653bbe42-aef4-5847-add4-8c7f8a4d1f9b","parserVersion":"test_version"}
 653bbe42-aef4-5847-add4-8c7f8a4d1f9b|<i>Velutina halioides</i> (Linnaeus, 1758)|Velutina halioides|Velutina halioides|Velutina halioid|(Linnaeus 1758)|1758|3
 
 Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo
-Quadrella steyermarkii (Standl.) Iltis
+Quadrella steyermarkii (Standl.) Iltis & Cornejo
 {"parsed":true,"quality":3,"qualityWarnings":[[3,"HTML tags or entities in the name"]],"verbatim":"Quadrella steyermarkii (Standl.) Iltis \u0026amp; Cornejo","normalized":"Quadrella steyermarkii (Standl.) Iltis \u0026 Cornejo","canonicalName":{"full":"Quadrella steyermarkii","simple":"Quadrella steyermarkii","stem":"Quadrella steyermarki"},"authorship":"(Standl.) Iltis \u0026 Cornejo","details":[{"genus":{"value":"Quadrella"},"specificEpithet":{"value":"steyermarkii","authorship":{"value":"(Standl.) Iltis \u0026 Cornejo","basionymAuthorship":{"authors":["Standl."]},"combinationAuthorship":{"authors":["Iltis","Cornejo"]}}}}],"positions":[["genus",0,9],["specificEpithet",10,22],["authorWord",24,31],["authorWord",33,38],["authorWord",41,48]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"fbd1b4fe-f8ed-5390-9cb1-e0f798691b1e","parserVersion":"test_version"}
 fbd1b4fe-f8ed-5390-9cb1-e0f798691b1e|Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo|Quadrella steyermarkii|Quadrella steyermarkii|Quadrella steyermarki|(Standl.) Iltis & Cornejo||3
 
 Torymus bangalorensis (Mani &amp; Kurian, 1953)
-Torymus bangalorensis (Mani
+Torymus bangalorensis (Mani & Kurian, 1953)
 {"parsed":true,"quality":3,"qualityWarnings":[[3,"HTML tags or entities in the name"]],"verbatim":"Torymus bangalorensis (Mani \u0026amp; Kurian, 1953)","normalized":"Torymus bangalorensis (Mani \u0026 Kurian 1953)","canonicalName":{"full":"Torymus bangalorensis","simple":"Torymus bangalorensis","stem":"Torymus bangalorens"},"authorship":"(Mani \u0026 Kurian 1953)","details":[{"genus":{"value":"Torymus"},"specificEpithet":{"value":"bangalorensis","authorship":{"value":"(Mani \u0026 Kurian 1953)","basionymAuthorship":{"authors":["Mani","Kurian"],"year":{"value":"1953"}}}}}],"positions":[["genus",0,7],["specificEpithet",8,21],["authorWord",23,27],["authorWord",30,36],["year",38,42]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"8131ebda-dce6-5aaf-97ae-2370fe8e77d7","parserVersion":"test_version"}
 8131ebda-dce6-5aaf-97ae-2370fe8e77d7|Torymus bangalorensis (Mani &amp; Kurian, 1953)|Torymus bangalorensis|Torymus bangalorensis|Torymus bangalorens|(Mani & Kurian 1953)|1953|3
 # #>

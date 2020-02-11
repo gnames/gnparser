@@ -541,7 +541,7 @@ func (p *Engine) newRankNode(n *node32) *rankNode {
 	case ruleRankVar:
 		w.NormValue = "var."
 	case ruleRankSsp:
-		w.NormValue = "ssp."
+		w.NormValue = "subsp."
 	case ruleRankOtherUncommon:
 		p.AddWarn(RankUncommonWarn)
 	}
