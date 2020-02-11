@@ -266,9 +266,7 @@ Relevant flags:
 : output format. Can be ``compact``, ``pretty``, ``simple``, or ``debug``.
 Default is ``compact``.
 
-Simple format has the following fields separated by a pipe character(`|`):
-
-`ID|Verbatim|CanonicalFull|CanonicalSimple|CanonicalStem|Authors|Year|Quality`
+Simple format returns a header row and the CSV-compatible parsed result.
 
 ``--jobs -j``
 : number of jobs running concurrently.
@@ -287,7 +285,7 @@ gnparser "Parus major Linnaeus, 1788"
 # pretty format
 gnparser -f pretty "Parus major Linnaeus, 1788"
 
-# simple pipe-delimited flat format
+# simple CSV-compatible flat format
 gnparser -f simple "Parus major Linnaeus, 1788"
 
 # to parse a name from standard input

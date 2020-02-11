@@ -5,11 +5,11 @@ import (
 	"log"
 )
 
-type format int
+type Format int
 
 const (
 	// Compact is a JSON format without new lines and spaces.
-	Compact format = iota
+	Compact Format = iota
 	// Pretty is a JSON nested easy to read format.
 	Pretty
 	// Simple is a flat format with only few most 'popular' fields.
@@ -20,27 +20,27 @@ const (
 
 var formats = []string{"compact", "pretty", "simple", "debug"}
 
-func (of format) String() string {
+func (of Format) String() string {
 	return formats[of]
 }
 
-func newFormat(f string) format {
+func newFormat(f string) Format {
 	gnp := NewGNparser()
 	for i, v := range formats {
 		if v == f {
-			return format(i)
+			return Format(i)
 		}
 	}
 	err := fmt.Errorf("unknown format '%s', using default '%s' format",
-		f, gnp.format.String())
+		f, gnp.Format.String())
 	log.Println(err)
-	return gnp.format
+	return gnp.Format
 }
 
 // OutputFormat returns string representation of the current output format
 // for GNparser
 func (gnp *GNparser) OutputFormat() string {
-	return gnp.format.String()
+	return gnp.Format.String()
 }
 
 // AvailableFormats function returns a string representation of supported

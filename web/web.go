@@ -65,7 +65,7 @@ func docAPI(w http.ResponseWriter, r *http.Request) {
 
 func parseForWeb(names []string) []string {
 	parsed := make([]string, len(names))
-	opts := []gnparser.Option{gnparser.Format("pretty")}
+	opts := []gnparser.Option{gnparser.OptFormat("pretty")}
 	gnp := gnparser.NewGNparser(opts...)
 	for i, v := range names {
 		json, err := gnp.ParseAndFormat(v)

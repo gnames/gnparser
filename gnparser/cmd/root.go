@@ -32,6 +32,7 @@ import (
 
 	"github.com/spf13/cobra"
 	"gitlab.com/gogna/gnparser"
+	"gitlab.com/gogna/gnparser/output"
 	"gitlab.com/gogna/gnparser/rpc"
 	"gitlab.com/gogna/gnparser/web"
 )
@@ -96,9 +97,9 @@ gnparser -j 5 -g 8080
 		}
 		f := formatFlag(cmd)
 		opts := []gnparser.Option{
-			gnparser.WorkersNum(wn),
-			gnparser.Format(f),
-			gnparser.RemoveHTML(!nocleanup),
+			gnparser.OptWorkersNum(wn),
+			gnparser.OptFormat(f),
+			gnparser.OptRemoveHTML(!nocleanup),
 		}
 		if len(args) == 0 {
 			processStdin(cmd, wn, opts)
@@ -201,10 +202,11 @@ func workersNumFlag(cmd *cobra.Command) int {
 
 func processStdin(cmd *cobra.Command, jobs int, opts []gnparser.Option) {
 	if !checkStdin() {
-		cmd.Help()
+		_ = cmd.Help()
 		return
 	}
-	parseFile(os.Stdin, jobs, opts)
+	gnp := gnparser.NewGNparser(opts...)
+	parseFile(gnp, os.Stdin, jobs, opts)
 }
 
 func checkStdin() bool {
@@ -222,7 +224,7 @@ func getInput(cmd *cobra.Command, args []string) string {
 	case 1:
 		data = args[0]
 	default:
-		cmd.Help()
+		_ = cmd.Help()
 		os.Exit(0)
 	}
 	return data
@@ -238,7 +240,7 @@ func parse(data string, jobs int, opts []gnparser.Option) {
 			log.Fatal(err)
 			os.Exit(1)
 		}
-		parseFile(f, jobs, opts)
+		parseFile(gnp, f, jobs, opts)
 		f.Close()
 	} else {
 		parseString(gnp, data)
@@ -254,14 +256,15 @@ func fileExists(path string) bool {
 	return false
 }
 
-func parseFile(f io.Reader, jobs int, opts []gnparser.Option) {
+func parseFile(gnp gnparser.GNparser, f io.Reader, jobs int,
+	opts []gnparser.Option) {
 	in := make(chan string)
 	out := make(chan *gnparser.ParseResult)
 	var wg sync.WaitGroup
 	wg.Add(1)
 
 	go gnparser.ParseStream(jobs, in, out, opts...)
-	go processResults(out, &wg)
+	go processResults(gnp, out, &wg)
 	sc := bufio.NewScanner(f)
 	count := 0
 	for sc.Scan() {
@@ -276,8 +279,12 @@ func parseFile(f io.Reader, jobs int, opts []gnparser.Option) {
 	wg.Wait()
 }
 
-func processResults(out <-chan *gnparser.ParseResult, wg *sync.WaitGroup) {
+func processResults(gnp gnparser.GNparser, out <-chan *gnparser.ParseResult,
+	wg *sync.WaitGroup) {
 	defer wg.Done()
+	if gnp.Format == gnparser.Simple {
+		fmt.Println(output.CSVHeader())
+	}
 	for r := range out {
 		if r.Error != nil {
 			log.Println(r.Error)
@@ -291,6 +298,9 @@ func parseString(gnp gnparser.GNparser, data string) {
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(1)
+	}
+	if gnp.Format == gnparser.Simple {
+		fmt.Println(output.CSVHeader())
 	}
 	fmt.Println(res)
 }

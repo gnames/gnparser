@@ -2,12 +2,39 @@ package output
 
 import (
 	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
 	grm "gitlab.com/gogna/gnparser/grammar"
 )
 
 var _ = Describe("Output", func() {
-
+	DescribeTable("ToCSV", func(r []string, expected string) {
+		Expect(ToCSV(r)).To(Equal(expected))
+	},
+		Entry("simple case", []string{"abc"}, "abc"),
+		Entry("", []string{`"abc"`}, `"""abc"""`),
+		Entry("", []string{`a"b`}, `"a""b"`),
+		Entry("", []string{`"a"b"`}, `"""a""b"""`),
+		Entry("", []string{" abc"}, `" abc"`),
+		Entry("", []string{"abc,def"}, `"abc,def"`),
+		Entry("", []string{"abc", "def"}, "abc,def"),
+		Entry("", []string{"abc\ndef"}, "\"abc\ndef\""),
+		Entry("", []string{"abc\ndef"}, "\"abc\ndef\""),
+		Entry("", []string{"abc\rdef"}, "\"abc\rdef\""),
+		Entry("", []string{""}, ""),
+		Entry("", []string{"", ""}, ","),
+		Entry("", []string{"", "", ""}, ",,"),
+		Entry("", []string{"", "", "a"}, ",,a"),
+		Entry("", []string{"", "a", ""}, ",a,"),
+		Entry("", []string{"", "a", "a"}, ",a,a"),
+		Entry("", []string{"a", "", ""}, "a,,"),
+		Entry("", []string{"a", "", "a"}, "a,,a"),
+		Entry("", []string{"a", "a", ""}, "a,a,"),
+		Entry("", []string{"a", "a", "a"}, "a,a,a"),
+		Entry("", []string{`\.`}, "\"\\.\""),
+		Entry("", []string{"x09\x41\xb4\x1c", "aktau"}, "x09\x41\xb4\x1c,aktau"),
+		Entry("", []string{",x09\x41\xb4\x1c", "aktau"}, "\",x09\x41\xb4\x1c\",aktau"),
+	)
 })
 
 var _ = Describe("Private Functions", func() {

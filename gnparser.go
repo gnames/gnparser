@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"runtime"
-	"strings"
 
 	"gitlab.com/gogna/gnparser/pb"
 	"gitlab.com/gogna/gnparser/preprocess"
@@ -15,10 +14,10 @@ import (
 
 // GNparser is responsible for parsing operations.
 type GNparser struct {
+	// Format defines the output format of the parser.
+	Format
 	// workersNum defines the number of goroutines running parser in parallel.
 	workersNum int
-	// format defines the output format of the parser.
-	format
 	// removeHTML indicates that HTML tags have to be removed.
 	removeHTML bool
 	// nameString keeps parsed string
@@ -35,32 +34,32 @@ type GNparser struct {
 // Option is a function that creates a new option for GNparser.
 type Option func(*GNparser)
 
-// WorkersNum Option sets the quantity of workers to run parsing jobs.
-func WorkersNum(wn int) Option {
+// OptWorkersNum Option sets the quantity of workers to run parsing jobs.
+func OptWorkersNum(wn int) Option {
 	return func(gnp *GNparser) {
 		gnp.workersNum = wn
 	}
 }
 
-// Format Option sets the output format to return/display parsing results.
-func Format(f string) Option {
+// OptFormat Option sets the output format to return/display parsing results.
+func OptFormat(f string) Option {
 	return func(gnp *GNparser) {
 		fo := newFormat(f)
-		gnp.format = fo
+		gnp.Format = fo
 	}
 }
 
-// IsTest Option to substitute real version of the parser with 'test_version'
+// OptIsTest Option to substitute real version of the parser with 'test_version'
 // string.
-func IsTest() Option {
+func OptIsTest() Option {
 	return func(gnp *GNparser) {
 		gnp.isTest = true
 	}
 }
 
-// RemoveHTML Option is true of false. When true, the preprocess removes
+// OptRemoveHTML Option is true of false. When true, the preprocess removes
 // HTML tags from name-strings.
-func RemoveHTML(r bool) Option {
+func OptRemoveHTML(r bool) Option {
 	return func(gnp *GNparser) {
 		gnp.removeHTML = r
 	}
@@ -69,7 +68,7 @@ func RemoveHTML(r bool) Option {
 // NewGNparser constructor function takes options and returns
 // configured GNparser.
 func NewGNparser(opts ...Option) GNparser {
-	gnp := GNparser{workersNum: runtime.NumCPU(), format: Compact, removeHTML: true}
+	gnp := GNparser{workersNum: runtime.NumCPU(), Format: Compact, removeHTML: true}
 	for _, opt := range opts {
 		opt(&gnp)
 	}
@@ -131,13 +130,13 @@ func (gnp *GNparser) Parse(s string) {
 // to format setting of GNparser.
 func (gnp *GNparser) ParseAndFormat(s string) (string, error) {
 	var err error
-	if gnp.format == Debug {
+	if gnp.Format == Debug {
 		bs := gnp.Debug(s)
 		return string(bs), nil
 	}
 	gnp.Parse(s)
 	var bs []byte
-	switch gnp.format {
+	switch gnp.Format {
 	case Compact:
 		bs, err = gnp.ToJSON()
 		if err != nil {
@@ -151,7 +150,7 @@ func (gnp *GNparser) ParseAndFormat(s string) (string, error) {
 		}
 		s = string(bs)
 	case Simple:
-		s = strings.Join(gnp.ToSlice(), "|")
+		s = output.ToCSV(gnp.ToSlice())
 	}
 	return s, nil
 }

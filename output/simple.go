@@ -3,6 +3,7 @@ package output
 import (
 	"fmt"
 	"strconv"
+	"strings"
 
 	"gitlab.com/gogna/gnparser/grammar"
 	"gitlab.com/gogna/gnparser/stemmer"
@@ -52,6 +53,20 @@ func NewSimpleOutput(sn *grammar.ScientificNameNode) *simple {
 		Quality:         quality,
 	}
 	return &so
+}
+
+func CSVHeader() string {
+	header := ([]string{
+		"Id",
+		"Verbatim",
+		"CanonicalFull",
+		"Canonical",
+		"CanonicalStem",
+		"Authorship",
+		"Year",
+		"Quality",
+	})
+	return strings.Join(header, ",")
 }
 
 func (so *simple) ToSlice() []string {

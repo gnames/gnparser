@@ -220,8 +220,7 @@ func (w *Warning) MarshalJSON() ([]byte, error) {
 
 func (w *Warning) UnmarshalJSON(bs []byte) error {
 	arr := []interface{}{}
-	jsoniter.Unmarshal(bs, &arr)
-	// TODO: add error handling here.
+	_ = jsoniter.Unmarshal(bs, &arr)
 	w.Quality = int(arr[0].(float64))
 	w.Message = arr[1].(string)
 	return nil

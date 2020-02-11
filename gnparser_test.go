@@ -74,7 +74,7 @@ func outputEntries() []TableEntry {
 	if err != nil {
 		panic(err)
 	}
-	gnp := NewGNparser(IsTest())
+	gnp := NewGNparser(OptIsTest())
 	for i, v := range tests {
 		gnp.Parse(v.NameString)
 		res, err := gnp.ToJSON()
@@ -126,7 +126,7 @@ func BenchmarkParse(b *testing.B) {
 	count := 1000
 	test := make([]string, count)
 	gnp := NewGNparser()
-	ops := []Option{Format("simple")}
+	ops := []Option{OptFormat("simple")}
 	gnpSimple := NewGNparser(ops...)
 	f, err := os.Open(path)
 

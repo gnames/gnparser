@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v0.13.0]
+
+- Add [#74]: Simple format output is now in CSV format.
+- Fix [#75]: Normalize subspecies to `subsp.` instead of `ssp.`.
 - Fix [#72]: Surrogate detection by `gnparser.ParseToObject` method.
 
 ## [v0.12.0]
@@ -110,6 +114,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v0.13.0]: https://gitlab.com/gogna/gnparser/compare/v0.12.0...v0.13.0
 [v0.12.0]: https://gitlab.com/gogna/gnparser/compare/v0.11.0...v0.12.0
 [v0.11.0]: https://gitlab.com/gogna/gnparser/compare/v0.10.0...v0.11.0
 [v0.10.0]: https://gitlab.com/gogna/gnparser/compare/v0.9.0...v0.10.0

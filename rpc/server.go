@@ -109,7 +109,7 @@ func (gnps gnparserServer) parseArray(ia *pb.InputArray) []*pb.Parsed {
 func parseWorker(inCh <-chan string, outCh chan<- *parseArrayOutput,
 	skipClean bool, wg *sync.WaitGroup) {
 	defer wg.Done()
-	opts := []gnparser.Option{gnparser.RemoveHTML(!skipClean)}
+	opts := []gnparser.Option{gnparser.OptRemoveHTML(!skipClean)}
 	gnp := gnparser.NewGNparser(opts...)
 	for v := range inCh {
 		res := gnp.ParseToObject(v)

@@ -33,7 +33,7 @@ func genTestData() error {
 	defer w.Close()
 
 	sc := bufio.NewScanner(f)
-	gnp := gnparser.NewGNparser(gnparser.IsTest())
+	gnp := gnparser.NewGNparser(gnparser.OptIsTest())
 	count := 0
 	for sc.Scan() {
 		line := sc.Text()
