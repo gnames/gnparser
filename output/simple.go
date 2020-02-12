@@ -60,7 +60,7 @@ func CSVHeader() string {
 		"Id",
 		"Verbatim",
 		"CanonicalFull",
-		"Canonical",
+		"CanonicalSimple",
 		"CanonicalStem",
 		"Authorship",
 		"Year",

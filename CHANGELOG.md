@@ -5,6 +5,7 @@
 ## [v0.13.0]
 
 - Add [#74]: Simple format output is now in CSV format.
+- Add [#73]: Improve speed by using ragel's FSM instead of regex.
 - Fix [#75]: Normalize subspecies to `subsp.` instead of `ssp.`.
 - Fix [#72]: Surrogate detection by `gnparser.ParseToObject` method.
 
@@ -129,6 +130,11 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#77]: https://gitlab.com/gogna/gnparser/issues/77
+[#76]: https://gitlab.com/gogna/gnparser/issues/76
+[#75]: https://gitlab.com/gogna/gnparser/issues/75
+[#74]: https://gitlab.com/gogna/gnparser/issues/74
+[#73]: https://gitlab.com/gogna/gnparser/issues/73
 [#72]: https://gitlab.com/gogna/gnparser/issues/72
 [#71]: https://gitlab.com/gogna/gnparser/issues/71
 [#70]: https://gitlab.com/gogna/gnparser/issues/70

@@ -10,18 +10,6 @@ import (
 var hybridCharRe1 = regexp.MustCompile(`(^)[Xx](\p{Lu})`)
 var hybridCharRe2 = regexp.MustCompile(`(\s|^)[Xx](\s|$)`)
 
-var virusRe = regexp.MustCompile(
-	`(?i)(\b|\d)` +
-		`(ictv|[a-z]*virus(es)?|` +
-		`particles?|vectors?|` +
-		`(bacterio|viro)?phages?|` +
-		`viroids?|prions?|[a-z]*npv|` +
-		`(alpha|beta)?satellites?)\b`,
-)
-var noParseRe = regexp.MustCompile(
-	`(^(Not|None|Un(n?amed|identified))[\W_].*|.*[Ii]ncertae\s+[Ss]edis.*` +
-		`|[Ii]nc\.\s*[Ss]ed\.|phytoplasma\b|plasmids?\b|[^A-Z]RNA[^A-Z]*)`,
-)
 var notesRe = regexp.MustCompile(
 	`(?i)\s+(species\s+group|species\s+complex|group|author)\b.*$`,
 )
@@ -99,16 +87,6 @@ func NormalizeHybridChar(bs []byte) []byte {
 	res := hybridCharRe1.ReplaceAll(bs, hybridChar)
 	res = hybridCharRe2.ReplaceAll(res, hybridChar)
 	return res
-}
-
-// IsVirus returns if a string is a virus name.
-func IsVirus(bs []byte) bool {
-	return virusRe.Match(bs)
-}
-
-// NoParse retuns if a string need to be parsed.
-func NoParse(bs []byte) bool {
-	return noParseRe.Match(bs)
 }
 
 // Annotation returns index where unparsed part starts. In case if

@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"strings"
 	"testing"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
+	"gitlab.com/gogna/gnparser/output"
 	"gitlab.com/gogna/gnparser/pb"
 	"gitlab.com/gogna/gnparser/preprocess"
 )
@@ -85,7 +85,7 @@ func outputEntries() []TableEntry {
 		json := string(res)
 
 		gnp.Parse(v.NameString)
-		simple := strings.Join(gnp.ToSlice(), "|")
+		simple := output.ToCSV(gnp.ToSlice())
 		testName := fmt.Sprintf("%000d: |%s|", i+1, v.NameString)
 		te := Entry(testName, json, v.Compact, simple, v.Simple)
 		entries = append(entries, te)

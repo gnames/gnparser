@@ -37,6 +37,11 @@ peg:
 	peg grammar.peg; \
 	goimports -w grammar.peg.go; \
 
+ragel:
+	cd preprocess; \
+	ragel -Z -G2 virus.rl; \
+	ragel -Z -G2 noparse.rl
+
 asset:
 	cd fs; \
 	$(FLAGS_SHARED) go run -tags=dev assets_gen.go

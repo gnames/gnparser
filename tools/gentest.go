@@ -10,9 +10,9 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
-	"strings"
 
 	"gitlab.com/gogna/gnparser"
+	"gitlab.com/gogna/gnparser/output"
 )
 
 func genTestData() error {
@@ -56,7 +56,7 @@ func genTestData() error {
 			w.Write(bs)
 			w.Write([]byte("\n"))
 			sl := gnp.ToSlice()
-			res = strings.Join(sl, "|") + "\n"
+			res = output.ToCSV(sl) + "\n"
 			w.Write([]byte(res))
 		case 4:
 			count = 0

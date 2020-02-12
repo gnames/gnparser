@@ -144,9 +144,9 @@ from the specific and infraspecific epithets.
 If you only care about canonical form of a name you can use ``--format simple``
 flag with command line tool.
 
-Simple format has the following fields separated by a pipe character(`|`):
+Simple format is CSV-compatible and has the following fields:
 
-`ID|Verbatim|CanonicalFull|CanonicalSimple|CanonicalStem|Authors|Year|Quality`
+`Id,Verbatim,CanonicalFull,CanonicalSimple,CanonicalStem,Authors,Year,Quality`
 
 
 ### Normalizing name-strings
