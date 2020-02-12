@@ -7,8 +7,8 @@ import "C"
 
 import (
 	"fmt"
-	"runtime"
 	"log"
+	"runtime"
 	"sync"
 	"unsafe"
 
@@ -21,7 +21,7 @@ import (
 //export ParseToString
 func ParseToString(name *C.char, format *C.char) *C.char {
 	goname := C.GoString(name)
-	opts := []gnparser.Option{gnparser.Format(C.GoString(format))}
+	opts := []gnparser.Option{gnparser.OptFormat(C.GoString(format))}
 	gnp := gnparser.NewGNparser(opts...)
 	parsed, err := gnp.ParseAndFormat(goname)
 	if err != nil {
@@ -46,7 +46,7 @@ func ParseAryToStrings(in **C.char, length C.int, format *C.char, out ***C.char)
 	wg.Add(1)
 
 	opts := []gnparser.Option{
-		gnparser.Format(C.GoString(format)),
+		gnparser.OptFormat(C.GoString(format)),
 	}
 	jobs := runtime.NumCPU()
 	go gnparser.ParseStream(jobs, inCh, outCh, opts...)
