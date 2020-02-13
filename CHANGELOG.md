@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix [#75]: Non ASCII apostrophe does not show up in canonical.
+
 ## [v0.13.0]
 
 - Add [#74]: Simple format output is now in CSV format.

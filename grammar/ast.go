@@ -919,6 +919,7 @@ func (p *Engine) newWordNode(n *node32, wt WordType) *wordNode {
 	pos := Pos{Type: wt, Start: int(t.begin), End: int(t.end)}
 	wrd := wordNode{Value: val, NormValue: val, Pos: pos}
 	children := n.flatChildren()
+	var canApostrophe bool
 	for _, v := range children {
 		switch v.token32.pegRule {
 		case ruleAuthorEtAl:
@@ -927,17 +928,20 @@ func (p *Engine) newWordNode(n *node32, wt WordType) *wordNode {
 			}
 		case ruleUpperCharExtended, ruleLowerCharExtended:
 			p.AddWarn(CharBadWarn)
-			wrd.normalize()
+			_ = wrd.normalize()
 		case ruleWordApostr:
 			p.AddWarn(CanonicalApostropheWarn)
-			wrd.normalize()
+			canApostrophe = true
+			_ = wrd.normalize()
 		case ruleWordStartsWithDigit:
 			p.AddWarn(SpeciesNumericWarn)
 			wrd.normalizeNums()
 		case ruleApostrOther:
 			p.AddWarn(ApostrOtherWarn)
-			nv, _ := str.ToASCII([]byte(wrd.Value), str.GlobalTransliterations)
-			wrd.NormValue = string(nv)
+			if !canApostrophe {
+				nv, _ := str.ToASCII([]byte(wrd.Value), str.GlobalTransliterations)
+				wrd.NormValue = string(nv)
+			}
 		}
 	}
 	if wt == GenusType || wt == UninomialType {

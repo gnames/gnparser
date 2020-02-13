@@ -355,6 +355,21 @@ Architectonica offlexa Iredale, 1931
 {"parsed":true,"quality":1,"verbatim":"Architectonica offlexa Iredale, 1931","normalized":"Architectonica offlexa Iredale 1931","canonicalName":{"full":"Architectonica offlexa","simple":"Architectonica offlexa","stem":"Architectonica offlex"},"authorship":"Iredale 1931","details":[{"genus":{"value":"Architectonica"},"specificEpithet":{"value":"offlexa","authorship":{"value":"Iredale 1931","basionymAuthorship":{"authors":["Iredale"],"year":{"value":"1931"}}}}}],"positions":[["genus",0,14],["specificEpithet",15,22],["authorWord",23,30],["year",32,36]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"d8088d2a-6d20-5ef6-9ec8-68753e2e6da0","parserVersion":"test_version"}
 d8088d2a-6d20-5ef6-9ec8-68753e2e6da0,"Architectonica offlexa Iredale, 1931",Architectonica offlexa,Architectonica offlexa,Architectonica offlex,Iredale 1931,1931,1
 
+Maracanda amoena Mc'Lach
+Maracanda amoena Mc'Lach
+{"parsed":true,"quality":1,"verbatim":"Maracanda amoena Mc'Lach","normalized":"Maracanda amoena Mc'Lach","canonicalName":{"full":"Maracanda amoena","simple":"Maracanda amoena","stem":"Maracanda amoen"},"authorship":"Mc'Lach","details":[{"genus":{"value":"Maracanda"},"specificEpithet":{"value":"amoena","authorship":{"value":"Mc'Lach","basionymAuthorship":{"authors":["Mc'Lach"]}}}}],"positions":[["genus",0,9],["specificEpithet",10,16],["authorWord",17,24]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"b561edfc-29e8-5e8d-8849-60899356be0d","parserVersion":"test_version"}
+b561edfc-29e8-5e8d-8849-60899356be0d,Maracanda amoena Mc'Lach,Maracanda amoena,Maracanda amoena,Maracanda amoen,Mc'Lach,,1
+
+Maracanda amoena Mc’Lach
+Maracanda amoena Mc’Lach
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Not an ASCII apostrophe"]],"verbatim":"Maracanda amoena Mc’Lach","normalized":"Maracanda amoena Mc'Lach","canonicalName":{"full":"Maracanda amoena","simple":"Maracanda amoena","stem":"Maracanda amoen"},"authorship":"Mc'Lach","details":[{"genus":{"value":"Maracanda"},"specificEpithet":{"value":"amoena","authorship":{"value":"Mc'Lach","basionymAuthorship":{"authors":["Mc'Lach"]}}}}],"positions":[["genus",0,9],["specificEpithet",10,16],["authorWord",17,24]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"98ddd2f7-2f78-5970-adac-677273dc3caf","parserVersion":"test_version"}
+98ddd2f7-2f78-5970-adac-677273dc3caf,Maracanda amoena Mc’Lach,Maracanda amoena,Maracanda amoena,Maracanda amoen,Mc'Lach,,3
+
+Zanthopsis bispinosa M'Coy, 1849
+Zanthopsis bispinosa M'Coy, 1849
+{"parsed":true,"quality":1,"verbatim":"Zanthopsis bispinosa M'Coy, 1849","normalized":"Zanthopsis bispinosa M'Coy 1849","canonicalName":{"full":"Zanthopsis bispinosa","simple":"Zanthopsis bispinosa","stem":"Zanthopsis bispinos"},"authorship":"M'Coy 1849","details":[{"genus":{"value":"Zanthopsis"},"specificEpithet":{"value":"bispinosa","authorship":{"value":"M'Coy 1849","basionymAuthorship":{"authors":["M'Coy"],"year":{"value":"1849"}}}}}],"positions":[["genus",0,10],["specificEpithet",11,20],["authorWord",21,26],["year",28,32]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"88b58b88-d8fd-55d9-a9c4-ddd11459820e","parserVersion":"test_version"}
+88b58b88-d8fd-55d9-a9c4-ddd11459820e,"Zanthopsis bispinosa M'Coy, 1849",Zanthopsis bispinosa,Zanthopsis bispinosa,Zanthopsis bispinos,M'Coy 1849,1849,1
+
 Scilla rupestris v.d. Merwe
 Scilla rupestris v.d. Merwe
 {"parsed":true,"quality":1,"verbatim":"Scilla rupestris v.d. Merwe","normalized":"Scilla rupestris v.d. Merwe","canonicalName":{"full":"Scilla rupestris","simple":"Scilla rupestris","stem":"Scilla rupestr"},"authorship":"v.d. Merwe","details":[{"genus":{"value":"Scilla"},"specificEpithet":{"value":"rupestris","authorship":{"value":"v.d. Merwe","basionymAuthorship":{"authors":["v.d. Merwe"]}}}}],"positions":[["genus",0,6],["specificEpithet",7,16],["authorWord",17,21],["authorWord",22,27]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"72ec3a37-8a80-5a82-97dd-b6a67a52d209","parserVersion":"test_version"}
@@ -1661,6 +1676,11 @@ Trophon d'orbignyi Carcelles, 1946
 Trophon d'orbignyi Carcelles, 1946
 {"parsed":true,"quality":3,"qualityWarnings":[[3,"Apostrophe is not allowed in canonical"]],"verbatim":"Trophon d'orbignyi Carcelles, 1946","normalized":"Trophon dorbignyi Carcelles 1946","canonicalName":{"full":"Trophon dorbignyi","simple":"Trophon dorbignyi","stem":"Trophon dorbigny"},"authorship":"Carcelles 1946","details":[{"genus":{"value":"Trophon"},"specificEpithet":{"value":"dorbignyi","authorship":{"value":"Carcelles 1946","basionymAuthorship":{"authors":["Carcelles"],"year":{"value":"1946"}}}}}],"positions":[["genus",0,7],["specificEpithet",8,18],["authorWord",19,28],["year",30,34]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"935d4414-05d4-5c16-be30-466f6144b666","parserVersion":"test_version"}
 935d4414-05d4-5c16-be30-466f6144b666,"Trophon d'orbignyi Carcelles, 1946",Trophon dorbignyi,Trophon dorbignyi,Trophon dorbigny,Carcelles 1946,1946,3
+
+Phrynosoma m’callii
+Phrynosoma m’callii
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Apostrophe is not allowed in canonical"],[3,"Not an ASCII apostrophe"]],"verbatim":"Phrynosoma m’callii","normalized":"Phrynosoma mcallii","canonicalName":{"full":"Phrynosoma mcallii","simple":"Phrynosoma mcallii","stem":"Phrynosoma mcalli"},"details":[{"genus":{"value":"Phrynosoma"},"specificEpithet":{"value":"mcallii"}}],"positions":[["genus",0,10],["specificEpithet",11,19]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"7907df5c-50f2-532c-a8fe-e5b75f924f73","parserVersion":"test_version"}
+7907df5c-50f2-532c-a8fe-e5b75f924f73,Phrynosoma m’callii,Phrynosoma mcallii,Phrynosoma mcallii,Phrynosoma mcalli,,,3
 
 Arca m'coyi Tenison-Woods, 1878
 Arca m'coyi Tenison-Woods, 1878

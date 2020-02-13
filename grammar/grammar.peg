@@ -198,7 +198,7 @@ Filius <- 'f.' / 'fil.' / 'filius'
 
 AuthorSuffix <- 'bis'
 
-AuthorPrefixGlued <- ('d' / 'O' / 'L') Apostrophe
+AuthorPrefixGlued <- ('d' / 'O' / 'L' / 'Mc' / 'M') Apostrophe
 
 AuthorPrefix <- AuthorPrefix1 / AuthorPrefix2
 
