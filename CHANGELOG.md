@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Fix [#75]: Non ASCII apostrophe does not show up in canonical.
+- Fix [#76]: Non ASCII apostrophe does not show up in canonical.
 
 ## [v0.13.0]
 
