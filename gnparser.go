@@ -22,8 +22,6 @@ type GNparser struct {
 	removeHTML bool
 	// nameString keeps parsed string
 	nameString string
-	// verbatim is originally entered name-string.
-	verbatim string
 	// isTest indicates that parsing is done for test purposes, so instead of
 	// real version of the paraser output will contain "test_version" phrase.
 	isTest bool
@@ -86,7 +84,7 @@ func (gnp *GNparser) WorkersNum() int {
 // Parse function parses input using GNparser's supplied options.
 // The abstract syntax tree formed by the parser is stored in an
 // `gnp.parser.SN` field.
-func (gnp *GNparser) Parse(s string) {
+func (gnp GNparser) Parse(s string) {
 	gnp.nameString = s
 	tagsOrEntities := false
 	if gnp.removeHTML {
@@ -128,7 +126,7 @@ func (gnp *GNparser) Parse(s string) {
 
 // ParseAndFormat function parses input and formats results according
 // to format setting of GNparser.
-func (gnp *GNparser) ParseAndFormat(s string) (string, error) {
+func (gnp GNparser) ParseAndFormat(s string) (string, error) {
 	var err error
 	if gnp.Format == Debug {
 		bs := gnp.Debug(s)
@@ -157,31 +155,31 @@ func (gnp *GNparser) ParseAndFormat(s string) (string, error) {
 
 // ParseToObject function parses input and
 // returns result as output.
-func (gnp *GNparser) ParseToObject(s string) *pb.Parsed {
+func (gnp GNparser) ParseToObject(s string) *pb.Parsed {
 	gnp.Parse(s)
 	return pb.ToPB(output.NewOutput(gnp.parser.SN))
 }
 
 // ToPrettyJSON function creates pretty JSON output out of parsed results.
-func (gnp *GNparser) ToPrettyJSON() ([]byte, error) {
+func (gnp GNparser) ToPrettyJSON() ([]byte, error) {
 	o := output.NewOutput(gnp.parser.SN)
 	return o.ToJSON(true)
 }
 
 // ToJSON function creates a 'compact' output out of parsed results.
-func (gnp *GNparser) ToJSON() ([]byte, error) {
+func (gnp GNparser) ToJSON() ([]byte, error) {
 	o := output.NewOutput(gnp.parser.SN)
 	return o.ToJSON(false)
 }
 
 // ToSlice function creates a flat simplified output of parsed results.
-func (gnp *GNparser) ToSlice() []string {
+func (gnp GNparser) ToSlice() []string {
 	so := output.NewSimpleOutput(gnp.parser.SN)
 	return so.ToSlice()
 }
 
 // Debug returns byte representation of complete and 'output' syntax trees.
-func (gnp *GNparser) Debug(s string) []byte {
+func (gnp GNparser) Debug(s string) []byte {
 	ppr := preprocess.Preprocess([]byte(s))
 	var b bytes.Buffer
 	if ppr.NoParse || ppr.Virus {
@@ -191,7 +189,7 @@ func (gnp *GNparser) Debug(s string) []byte {
 	}
 	gnp.parser.Buffer = string(ppr.Body)
 	gnp.parser.FullReset()
-	gnp.parser.Parse()
+	_ = gnp.parser.Parse()
 	gnp.parser.OutputAST()
 	b.WriteString("\n*** Complete Syntax Tree ***\n")
 	gnp.parser.AST().PrettyPrint(&b, gnp.parser.Buffer)
@@ -201,19 +199,19 @@ func (gnp *GNparser) Debug(s string) []byte {
 }
 
 // ParsedName returns the string of parsed result without a tail.
-func (gnp *GNparser) ParsedName() string {
+func (gnp GNparser) ParsedName() string {
 	return gnp.parser.ParsedName()
 }
 
 // Version function returns version number of `gnparser`.
-func (gnp *GNparser) Version() string {
-	if gnp != nil && gnp.isTest {
+func (gnp GNparser) Version() string {
+	if gnp.isTest {
 		return "test_version"
 	}
 	return output.Version
 }
 
 // Build returns date and time when gnparser was built
-func (gnp *GNparser) Build() string {
+func (gnp GNparser) Build() string {
 	return output.Build
 }

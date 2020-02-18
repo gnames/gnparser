@@ -31,6 +31,12 @@ func ParseToString(name *C.char, format *C.char) *C.char {
 	return C.CString(parsed)
 }
 
+// FreeMemory takes a string pointer and frees its memory.
+//export FreeMemory
+func FreeMemory(p *C.char) {
+	C.free(unsafe.Pointer(p))
+}
+
 // ParseAryToStrings function takes an array of names, parsing format and a
 // reference to an output: an empty array of strings to return the the data
 // back. It populates the output array with raw strings of either JSON or
