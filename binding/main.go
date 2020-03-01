@@ -2,6 +2,7 @@ package main
 
 /*
 	#include "stdlib.h"
+	#include "callback_bridge.h"
 */
 import "C"
 
@@ -18,23 +19,23 @@ import (
 // ParseToString function takes a name-string, desired format, and parses
 // the name-string to either JSON, or pipe-separated values, depending on
 // the desired format. Format can take values of 'simple', 'compact', 'pretty'.
+// NOTE: Read callback type as "void (*callback)(char *parsed)"
 //export ParseToString
-func ParseToString(name *C.char, format *C.char) *C.char {
+func ParseToString(name *C.char, format *C.char, callback unsafe.Pointer) {
 	goname := C.GoString(name)
 	opts := []gnparser.Option{gnparser.OptFormat(C.GoString(format))}
 	gnp := gnparser.NewGNparser(opts...)
 	parsed, err := gnp.ParseAndFormat(goname)
+
 	if err != nil {
 		fmt.Println(err)
-		return C.CString("")
+		return
 	}
-	return C.CString(parsed)
-}
 
-// FreeMemory takes a string pointer and frees its memory.
-//export FreeMemory
-func FreeMemory(p *C.char) {
-	C.free(unsafe.Pointer(p))
+	p := C.CString(parsed)
+	defer C.free(unsafe.Pointer(p))
+
+	C.callback_bridge(callback, p)
 }
 
 // ParseAryToStrings function takes an array of names, parsing format and a
@@ -43,7 +44,7 @@ func FreeMemory(p *C.char) {
 // pipe-separated parsed values (depending on a given format). Format can take
 // values of 'simple', 'compact', or 'pretty'.
 //export ParseAryToStrings
-func ParseAryToStrings(in **C.char, length C.int, format *C.char, out ***C.char) {
+func ParseAryToStrings(in **C.char, length C.int, format *C.char, callback unsafe.Pointer) {
 	names := make([]string, int(length))
 	inCh := make(chan string)
 	outCh := make(chan *gnparser.ParseResult)
@@ -78,17 +79,20 @@ func ParseAryToStrings(in **C.char, length C.int, format *C.char, out ***C.char)
 	close(inCh)
 	wg.Wait()
 
-	outArray := (C.malloc(C.ulong(length) * C.ulong(pointerSize)))
-	*out = (**C.char)(outArray)
-
 	for i := 0; i < int(length); i++ {
-		pointer := (**C.char)(unsafe.Pointer(uintptr(outArray) + uintptr(i)*pointerSize))
+		var parsed_out string
+
 		if parsed, ok := resMap[names[i]]; ok {
-			*pointer = C.CString(parsed)
+			parsed_out = parsed
 		} else {
 			log.Printf("Cannot find result for %s", names[i])
-			*pointer = C.CString("[]")
+			parsed_out = "[]"
 		}
+
+		p := C.CString(parsed_out)
+		C.callback_bridge(callback, p)
+		// TODO: defer but doing it in a way it happens on each iteration and not when function returns
+		C.free(unsafe.Pointer(p))
 	}
 }
 
