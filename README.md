@@ -495,6 +495,7 @@ provide a warning "Possible ICN author instead of subgenus".
 ## Contributors
 
 - [Geoff Ower]
+- [Hernan Lucas Pereira]
 
 
 If you want to submit a bug or add a feature read
@@ -521,6 +522,7 @@ Released under [MIT license]
 [gRPC documentation]: https://grpc.io/docs/quickstart
 [Dmitry Mozzherin]: https://gitlab.com/dimus
 [Geoff Ower]: https://gitlab.com/gdower
+[Hernan Lucas Pereira]: https://gitlab.com/LocoDelAssembly
 [MIT license]: https://gitlab.com/gogna/gnparser/raw/master/LICENSE
 [parser-web]: https://parser.globalnames.org
 [IRMNG]: http://www.irmng.org

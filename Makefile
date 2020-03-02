@@ -26,10 +26,10 @@ test-build: deps build
 deps:
 	$(FLAG_MODULE) $(GOGET) github.com/pointlander/peg@21bead84a59; \
 	$(FLAG_MODULE) $(GOGET) github.com/shurcooL/vfsgen@6a9ea43; \
-	$(FLAG_MODULE) $(GOGET) github.com/spf13/cobra/cobra@7547e83; \
-	$(FLAG_MODULE) $(GOGET) github.com/onsi/ginkgo/ginkgo@505cc35; \
-	$(FLAG_MODULE) $(GOGET) github.com/onsi/gomega@ce690c5; \
-	$(FLAG_MODULE) $(GOGET) github.com/golang/protobuf/protoc-gen-go@347cf4a; \
+	$(FLAG_MODULE) $(GOGET) github.com/spf13/cobra/cobra@v0.0.6; \
+	$(FLAG_MODULE) $(GOGET) github.com/onsi/ginkgo/ginkgo@v1.12.0; \
+	$(FLAG_MODULE) $(GOGET) github.com/onsi/gomega@v1.9.0; \
+  $(FLAG_MODULE) $(GOGET) github.com/golang/protobuf/protoc-gen-go@347cf4a; \
   $(FLAG_MODULE) $(GOGET) golang.org/x/tools/cmd/goimports
 
 peg:
@@ -83,6 +83,6 @@ dockerhub: docker
 	docker push gnames/gognparser; \
 	docker push gnames/gognparser:$(VERSION)
 
-clib:
+clib: peg pb asset
 	cd binding; \
 	$(GOBUILD) -buildmode=c-shared -o libgnparser.so;

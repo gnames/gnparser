@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v0.13.1]
+
+- Fix [#77]: Memory leak when used as clib
 - Fix [#76]: Non ASCII apostrophe does not show up in canonical.
 
 ## [v0.13.0]
@@ -117,6 +120,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v0.13.1]: https://gitlab.com/gogna/gnparser/compare/v0.13.0...v0.13.1
 [v0.13.0]: https://gitlab.com/gogna/gnparser/compare/v0.12.0...v0.13.0
 [v0.12.0]: https://gitlab.com/gogna/gnparser/compare/v0.11.0...v0.12.0
 [v0.11.0]: https://gitlab.com/gogna/gnparser/compare/v0.10.0...v0.11.0
