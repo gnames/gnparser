@@ -34,35 +34,40 @@ gnparser -f simple "Homo sapiens Linnaeus"
 gnparser -h
 ```
 
-- [Global Names Parser: gnparser written in Go](#global-names-parser-gnparser-written-in-go)
-	- [Introduction](#introduction)
-	- [Speed](#speed)
-	- [Features](#features)
-	- [Use Cases](#use-cases)
-		- [Getting the simplest possible canonical form](#getting-the-simplest-possible-canonical-form)
-		- [Normalizing name-strings](#normalizing-name-strings)
-		- [Removing authorships in the middle of the name](#removing-authorships-in-the-middle-of-the-name)
-		- [Figuring out if names are well-formed](#figuring-out-if-names-are-well-formed)
-		- [Creating stable GUIDs for name-strings](#creating-stable-guids-for-name-strings)
-		- [Assembling canonical forms etc. from original spelling](#assembling-canonical-forms-etc-from-original-spelling)
-	- [Installation](#installation)
-		- [Linux or OS X](#linux-or-os-x)
-		- [Windows](#windows)
-		- [Install with Go](#install-with-go)
-	- [Usage](#usage)
-		- [Command Line](#command-line)
-		- [gRPC server](#grpc-server)
-		- [Usage as a REST API Interface](#usage-as-a-rest-api-interface)
-		- [Use as a Docker image](#use-as-a-docker-image)
-		- [Use as a library in Go](#use-as-a-library-in-go)
-		- [Use as a shared C library](#use-as-a-shared-c-library)
-	- [Parsing ambiguities](#parsing-ambiguities)
-		- [Names with `filius` (ICN code)](#names-with-filius-icn-code)
-		- [Names with subgenus (ICZN code) and genus author (ICN code)](#names-with-subgenus-iczn-code-and-genus-author-icn-code)
-	- [Authors](#authors)
-	- [Contributors](#contributors)
-	- [References](#references)
-	- [License](#license)
+<!-- vim-markdown-toc GitLab -->
+
+* [Introduction](#introduction)
+* [Speed](#speed)
+* [Features](#features)
+* [Use Cases](#use-cases)
+  * [Getting the simplest possible canonical form](#getting-the-simplest-possible-canonical-form)
+  * [Normalizing name-strings](#normalizing-name-strings)
+  * [Removing authorships in the middle of the name](#removing-authorships-in-the-middle-of-the-name)
+  * [Figuring out if names are well-formed](#figuring-out-if-names-are-well-formed)
+  * [Creating stable GUIDs for name-strings](#creating-stable-guids-for-name-strings)
+  * [Assembling canonical forms etc. from original spelling](#assembling-canonical-forms-etc-from-original-spelling)
+* [Installation](#installation)
+  * [Linux or OS X](#linux-or-os-x)
+  * [Windows](#windows)
+  * [Install with Go](#install-with-go)
+* [Usage](#usage)
+  * [Command Line](#command-line)
+  * [Pipes](#pipes)
+  * [gRPC server](#grpc-server)
+  * [Usage as a REST API Interface](#usage-as-a-rest-api-interface)
+  * [Use as a Docker image](#use-as-a-docker-image)
+  * [Use as a library in Go](#use-as-a-library-in-go)
+  * [Use as a shared C library](#use-as-a-shared-c-library)
+* [Parsing ambiguities](#parsing-ambiguities)
+  * [Names with `filius` (ICN code)](#names-with-filius-icn-code)
+  * [Names with subgenus (ICZN code) and genus author (ICN code)](#names-with-subgenus-iczn-code-and-genus-author-icn-code)
+* [Authors](#authors)
+* [Contributors](#contributors)
+* [References](#references)
+* [License](#license)
+
+<!-- vim-markdown-toc -->
+
 
 ## Introduction
 
@@ -329,6 +334,26 @@ You can use up to 20 times more "threads" than the number of your CPU cores to
 reach maximum speed of parsing (``--jobs 200`` flag). It is practical because
 additional threads are very cheap in Go and they try to fill out every idle
 gap in the CPU usage.
+
+### Pipes
+
+About any language has an ability to use pipes of the underlying operating
+system. From the inside of your program you can make the CLI executable `gnparser`
+to listen on a STDIN pipe and produce output into STDOUT pipe. Here is an
+example in Ruby:
+
+```ruby
+def self.start_gnparser
+  io = {}
+
+  ['compact', 'simple'].each do |format|
+    stdin, stdout, stderr = Open3.popen3("./gnparser -j 200 --format #{format}")
+    io[format.to_sym] = { stdin: stdin, stdout: stdout, stderr: stderr }
+  end
+end
+```
+
+Such arrangement would give you a nearly native performance for large datasets.
 
 ### gRPC server
 
