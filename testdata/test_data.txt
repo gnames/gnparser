@@ -77,11 +77,6 @@ Pseudocercospora Spegazzini, 1910
 {"parsed":true,"quality":1,"verbatim":"Pseudocercospora Spegazzini, 1910","normalized":"Pseudocercospora Spegazzini 1910","canonicalName":{"full":"Pseudocercospora","simple":"Pseudocercospora","stem":"Pseudocercospora"},"authorship":"Spegazzini 1910","details":[{"uninomial":{"value":"Pseudocercospora","authorship":{"value":"Spegazzini 1910","basionymAuthorship":{"authors":["Spegazzini"],"year":{"value":"1910"}}}}}],"positions":[["uninomial",0,16],["authorWord",17,27],["year",29,33]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"6cc2922a-1f1d-5a40-90a7-b155fd16b233","parserVersion":"test_version"}
 6cc2922a-1f1d-5a40-90a7-b155fd16b233,"Pseudocercospora Spegazzini, 1910",Pseudocercospora,Pseudocercospora,Pseudocercospora,Spegazzini 1910,1910,1
 
-Tridentella tangeroae Bruce, 198?
-Tridentella tangeroae Bruce, 198?
-{"parsed":true,"quality":2,"qualityWarnings":[[2,"Year with question mark"]],"verbatim":"Tridentella tangeroae Bruce, 198?","normalized":"Tridentella tangeroae Bruce (198?)","canonicalName":{"full":"Tridentella tangeroae","simple":"Tridentella tangeroae","stem":"Tridentella tangero"},"authorship":"Bruce (198?)","details":[{"genus":{"value":"Tridentella"},"specificEpithet":{"value":"tangeroae","authorship":{"value":"Bruce (198?)","basionymAuthorship":{"authors":["Bruce"],"year":{"value":"198?","approximate":true}}}}}],"positions":[["genus",0,11],["specificEpithet",12,21],["authorWord",22,27],["approximateYear",29,33]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"179d63c9-bad4-5e61-bf2e-7261b4aa5066","parserVersion":"test_version"}
-179d63c9-bad4-5e61-bf2e-7261b4aa5066,"Tridentella tangeroae Bruce, 198?",Tridentella tangeroae,Tridentella tangeroae,Tridentella tangero,Bruce (198?),(198?),2
-
 Rhynchonellidae d'Orbigny 1847
 Rhynchonellidae d'Orbigny 1847
 {"parsed":true,"quality":1,"verbatim":"Rhynchonellidae d'Orbigny 1847","normalized":"Rhynchonellidae d'Orbigny 1847","canonicalName":{"full":"Rhynchonellidae","simple":"Rhynchonellidae","stem":"Rhynchonellidae"},"authorship":"d'Orbigny 1847","details":[{"uninomial":{"value":"Rhynchonellidae","authorship":{"value":"d'Orbigny 1847","basionymAuthorship":{"authors":["d'Orbigny"],"year":{"value":"1847"}}}}}],"positions":[["uninomial",0,15],["authorWord",16,25],["year",26,30]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"f3b90050-32f2-5009-ae9d-705fc58e45c4","parserVersion":"test_version"}
@@ -364,6 +359,11 @@ Maracanda amoena Mc’Lach
 Maracanda amoena Mc’Lach
 {"parsed":true,"quality":3,"qualityWarnings":[[3,"Not an ASCII apostrophe"]],"verbatim":"Maracanda amoena Mc’Lach","normalized":"Maracanda amoena Mc'Lach","canonicalName":{"full":"Maracanda amoena","simple":"Maracanda amoena","stem":"Maracanda amoen"},"authorship":"Mc'Lach","details":[{"genus":{"value":"Maracanda"},"specificEpithet":{"value":"amoena","authorship":{"value":"Mc'Lach","basionymAuthorship":{"authors":["Mc'Lach"]}}}}],"positions":[["genus",0,9],["specificEpithet",10,16],["authorWord",17,24]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"98ddd2f7-2f78-5970-adac-677273dc3caf","parserVersion":"test_version"}
 98ddd2f7-2f78-5970-adac-677273dc3caf,Maracanda amoena Mc’Lach,Maracanda amoena,Maracanda amoena,Maracanda amoen,Mc'Lach,,3
+
+Tridentella tangeroae Bruce, 198?
+Tridentella tangeroae Bruce, 198?
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Year with question mark"]],"verbatim":"Tridentella tangeroae Bruce, 198?","normalized":"Tridentella tangeroae Bruce (198?)","canonicalName":{"full":"Tridentella tangeroae","simple":"Tridentella tangeroae","stem":"Tridentella tangero"},"authorship":"Bruce (198?)","details":[{"genus":{"value":"Tridentella"},"specificEpithet":{"value":"tangeroae","authorship":{"value":"Bruce (198?)","basionymAuthorship":{"authors":["Bruce"],"year":{"value":"198?","approximate":true}}}}}],"positions":[["genus",0,11],["specificEpithet",12,21],["authorWord",22,27],["approximateYear",29,33]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"179d63c9-bad4-5e61-bf2e-7261b4aa5066","parserVersion":"test_version"}
+179d63c9-bad4-5e61-bf2e-7261b4aa5066,"Tridentella tangeroae Bruce, 198?",Tridentella tangeroae,Tridentella tangeroae,Tridentella tangero,Bruce (198?),(198?),2
 
 Zanthopsis bispinosa M'Coy, 1849
 Zanthopsis bispinosa M'Coy, 1849
