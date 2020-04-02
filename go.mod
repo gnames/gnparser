@@ -12,6 +12,7 @@ require (
 	github.com/onsi/gomega v1.9.0
 	github.com/rendon/testcli v0.0.0-20161027181003-6283090d169f
 	github.com/shurcooL/httpfs v0.0.0-20181222201310-74dc9339e414
+	github.com/shurcool/vfsgen v0.0.0-20181202132449-6a9ea43bcacd // indirect
 	github.com/spf13/cobra v0.0.5
 	github.com/stretchr/testify v1.3.0 // indirect
 	golang.org/x/net v0.0.0-20190620200207-3b0461eec859

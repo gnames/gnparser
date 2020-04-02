@@ -1935,6 +1935,12 @@ Coleoptera
 
 ### Viruses etc.
 
+#SECTION Parse virus-like "normal" names
+Ceylonesmus vector Chamberlin, 1941
+Ceylonesmus vector Chamberlin, 1941
+{"parsed":true,"quality":1,"verbatim":"Ceylonesmus vector Chamberlin, 1941","normalized":"Ceylonesmus vector Chamberlin 1941","canonicalName":{"full":"Ceylonesmus vector","simple":"Ceylonesmus vector","stem":"Ceylonesmus uector"},"authorship":"Chamberlin 1941","details":[{"genus":{"value":"Ceylonesmus"},"specificEpithet":{"value":"vector","authorship":{"value":"Chamberlin 1941","basionymAuthorship":{"authors":["Chamberlin"],"year":{"value":"1941"}}}}}],"positions":[["genus",0,11],["specificEpithet",12,18],["authorWord",19,29],["year",31,35]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"00b874b9-c9ac-5b8a-9821-0a641ca26ca0","parserVersion":"test_version"}
+00b874b9-c9ac-5b8a-9821-0a641ca26ca0,"Ceylonesmus vector Chamberlin, 1941",Ceylonesmus vector,Ceylonesmus vector,Ceylonesmus uector,Chamberlin 1941,1941,1
+
 #SECTION: No parsing -- viruses, plasmids, prions etc.<
 Arv1virus
 noparse

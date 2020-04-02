@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"io"
 	"regexp"
+	"strings"
 	"unicode"
 )
 
@@ -54,7 +55,10 @@ func Preprocess(bs []byte) *Preprocessor {
 		return pr
 	}
 	i := len(bs)
-	pr.Virus = IsVirus(bs[0:i])
+	name := string(bs)
+	if !VirusLikeName(name) {
+		pr.Virus = IsVirus(bs[0:i])
+	}
 	if pr.Virus {
 		pr.NoParse = true
 		return pr
@@ -78,6 +82,58 @@ func Preprocess(bs []byte) *Preprocessor {
 	pr.Body = NormalizeHybridChar(bs[0:i])
 	pr.Tail = bs[i:]
 	return pr
+}
+
+// LikeVirus takes a string and checks it against known species that can
+// easily be misparsed as viruses. If the string belongs to one of such species
+// returns true.
+// The following names are covered:
+//    Aspilota vector Belokobylskij, 2007
+//    Ceylonesmus vector Chamberlin, 1941
+//    Cryptops (Cryptops) vector Chamberlin, 1939
+//    Culex vector Dyar & Knab, 1906
+//    Dasyproctus cevirus Leclercq, 1963
+//    Desmoxytes vector (Chamberlin, 1941)
+//    Dicathais vector Thornley, 1952
+//    Euragallia prion Kramer, 1976
+//    Exochus virus Gauld & Sithole, 2002
+//    Hilara vector Miller, 1923
+//    Microgoneplax prion Castro, 2007
+//    Neoaemula vector Mackinnon, Hiller, Long & Marshall, 2008
+//    Ophion virus Gauld & Mitchell, 1981
+//    Psenulus trevirus Leclercq, 1961
+//    Tidabius vector Chamberlin, 1931
+
+func VirusLikeName(name string) bool {
+	names := map[string]string{
+		"Aspilota":      "vector",
+		"Ceylonesmus":   "vector",
+		"Cryptops":      "vector",
+		"Culex":         "vector",
+		"Dasyproctus":   "cevirus",
+		"Desmoxytes":    "vector",
+		"Dicathais":     "vector",
+		"Euragallia":    "prion",
+		"Exochus":       "virus",
+		"Hilara":        "vector",
+		"Microgoneplax": "prion",
+		"Neoaemula":     "vector",
+		"Ophion":        "virus",
+		"Psenulus":      "trevirus",
+		"Tidabius":      "vector",
+	}
+	words := strings.Fields(name)
+	if len(words) < 2 {
+		return false
+	}
+	if epithet, ok := names[words[0]]; ok {
+		for _, w := range words[1:] {
+			if strings.HasPrefix(w, epithet) {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 // NormalizeHybridChar substitutes hybrid chars 'X' or 'x' with

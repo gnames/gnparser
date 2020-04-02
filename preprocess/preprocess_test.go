@@ -104,6 +104,29 @@ var _ = Describe("Preprocess", func() {
 		),
 	)
 
+	DescribeTable("VirusLikeName",
+		func(s string, expected bool) {
+			Expect(VirusLikeName(s)).To(Equal(expected))
+		},
+		Entry("name1", "Aspilota vector Belokobylskij, 2007", true),
+		Entry("name2", "Ceylonesmus vector Chamberlin, 1941", true),
+		Entry("name3", "Cryptops (Cryptops) vector Chamberlin, 1939", true),
+		Entry("name4", "Culex vector Dyar & Knab, 1906", true),
+		Entry("name5", "Dasyproctus cevirus Leclercq, 1963", true),
+		Entry("name6", "Desmoxytes vector (Chamberlin, 1941)", true),
+		Entry("name7", "Dicathais vector Thornley, 1952", true),
+		Entry("name8", "Euragallia prion Kramer, 1976", true),
+		Entry("name9", "Exochus virus Gauld & Sithole, 2002", true),
+		Entry("name10", "Hilara vector Miller, 1923", true),
+		Entry("name11", "Microgoneplax prion Castro, 2007", true),
+		Entry("name12", "Neoaemula vector Mackinnon, Hiller, Long & Marshall, 2008", true),
+		Entry("name13", "Ophion virus Gauld & Mitchell, 1981", true),
+		Entry("name14", "Psenulus trevirus Leclercq, 1961", true),
+		Entry("name15", "Tidabius vector Chamberlin, 1931", true),
+		Entry("name16", "Ceylonesmus prion", false),
+		Entry("name17", "Homo sapiens coronavirus", false),
+	)
+
 	DescribeTable("IsVirus",
 		func(s string, itIs bool) {
 			res := IsVirus([]byte(s))
