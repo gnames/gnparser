@@ -2,11 +2,11 @@
 
 ## Unreleased
 
-- Add [#78]: Take into account non-virus names that look like virus names.
+- Add [#78]: Take into account `non-virus` names that look like virus names.
 
 ## [v0.13.1]
 
-- Fix [#77]: Memory leak when used as clib
+- Fix [#77]: Memory leak when used as clib.
 - Fix [#76]: Non ASCII apostrophe does not show up in canonical.
 
 ## [v0.13.0]
