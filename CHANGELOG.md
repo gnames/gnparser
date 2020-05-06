@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v0.14.0]
+
+- Add [#81]: Add year range in format "1888/89"
+- Add [#80]: Add Cardinality to parser outputs.
 - Add [#78]: Take into account `non-virus` names that look like virus names.
 
 ## [v0.13.1]
@@ -34,7 +38,7 @@
 - Add [#66]: remove HTML tags during parsing instead of a separate step.
 - Add [#61]: handle authors that end with a word "bis".
 - Add [#60]: handle correctly deprecated ranks with greek letters.
-- Add [#62]: parser breaks on ``Drepanolejeunea (Spruce) (Steph.)``.
+- Fix [#62]: parser breaks on ``Drepanolejeunea (Spruce) (Steph.)``.
 
 ## [v0.9.0]
 
@@ -122,6 +126,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v0.14.0]: https://gitlab.com/gogna/gnparser/compare/v0.13.1...v0.14.0
 [v0.13.1]: https://gitlab.com/gogna/gnparser/compare/v0.13.0...v0.13.1
 [v0.13.0]: https://gitlab.com/gogna/gnparser/compare/v0.12.0...v0.13.0
 [v0.12.0]: https://gitlab.com/gogna/gnparser/compare/v0.11.0...v0.12.0
@@ -138,6 +143,10 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#81]: https://gitlab.com/gogna/gnparser/issues/81
+[#80]: https://gitlab.com/gogna/gnparser/issues/80
+[#79]: https://gitlab.com/gogna/gnparser/issues/79
+[#78]: https://gitlab.com/gogna/gnparser/issues/78
 [#77]: https://gitlab.com/gogna/gnparser/issues/77
 [#76]: https://gitlab.com/gogna/gnparser/issues/76
 [#75]: https://gitlab.com/gogna/gnparser/issues/75

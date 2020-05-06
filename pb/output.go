@@ -15,6 +15,7 @@ func ToPB(o *output.Output) *Parsed {
 		Canonical:      canonicalName(o),
 		Hybrid:         o.Hybrid,
 		Normalized:     o.Normalized,
+		Cardinality:    int32(o.Cardinality),
 		Positions:      positions(o),
 		Bacteria:       o.Bacteria,
 		Tail:           o.Tail,

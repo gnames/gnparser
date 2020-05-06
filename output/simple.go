@@ -12,6 +12,7 @@ import (
 type simple struct {
 	ID              string
 	Verbatim        string
+	Cardinality     int
 	CanonicalRanked string
 	Canonical       string
 	CanonicalStem   string
@@ -45,6 +46,7 @@ func NewSimpleOutput(sn *grammar.ScientificNameNode) *simple {
 	so := simple{
 		ID:              sn.VerbatimID,
 		Verbatim:        sn.Verbatim,
+		Cardinality:     sn.Cardinality,
 		CanonicalRanked: c.ValueRanked,
 		Canonical:       c.Value,
 		CanonicalStem:   stemmer.StemCanonical(c.Value),
@@ -59,6 +61,7 @@ func CSVHeader() string {
 	header := ([]string{
 		"Id",
 		"Verbatim",
+		"Cardinality",
 		"CanonicalFull",
 		"CanonicalSimple",
 		"CanonicalStem",
@@ -76,9 +79,11 @@ func (so *simple) ToSlice() []string {
 	}
 
 	qual := strconv.Itoa(so.Quality)
+	card := strconv.Itoa(so.Cardinality)
 	res := []string{
 		so.ID,
 		so.Verbatim,
+		card,
 		so.CanonicalRanked,
 		so.Canonical,
 		so.CanonicalStem,

@@ -7,17 +7,19 @@ import (
 )
 
 type BaseEngine struct {
-	SN        *ScientificNameNode
-	root      *node32
-	Error     error
-	Hybrid    bool
-	Surrogate bool
-	Bacteria  bool
-	Warnings  map[Warning]struct{}
-	Tail      string
+	SN          *ScientificNameNode
+	root        *node32
+	Cardinality int
+	Error       error
+	Hybrid      bool
+	Surrogate   bool
+	Bacteria    bool
+	Warnings    map[Warning]struct{}
+	Tail        string
 }
 
 func (p *Engine) FullReset() {
+	p.Cardinality = 0
 	p.Error = nil
 	p.Hybrid = false
 	p.Surrogate = false

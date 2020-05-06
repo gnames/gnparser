@@ -16,6 +16,7 @@ type ScientificNameNode struct {
 	Name
 	Verbatim      string
 	VerbatimID    string
+	Cardinality   int
 	Hybrid        bool
 	Virus         bool
 	Bacteria      bool
@@ -46,18 +47,20 @@ func (p *Engine) NewScientificNameNode() {
 		i++
 	}
 	if str.IsBoldSurrogate(tail) {
+		p.Cardinality = 0
 		p.Surrogate = true
 	}
 	if p.Tail != "" && tail == "" {
 		tail = p.Tail
 	}
 	sn := ScientificNameNode{
-		Name:      name,
-		Hybrid:    p.Hybrid,
-		Surrogate: p.Surrogate,
-		Bacteria:  p.Bacteria,
-		Tail:      tail,
-		Warnings:  warns,
+		Name:        name,
+		Cardinality: p.Cardinality,
+		Hybrid:      p.Hybrid,
+		Surrogate:   p.Surrogate,
+		Bacteria:    p.Bacteria,
+		Tail:        tail,
+		Warnings:    warns,
 	}
 	p.SN = &sn
 }
@@ -151,6 +154,7 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 		HybridElements: hes,
 	}
 	hf.normalizeAbbreviated()
+	p.Cardinality = 0
 	return hf
 }
 
@@ -249,6 +253,7 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 	if hybrid.Pos.End == sp.Word.Pos.Start {
 		p.AddWarn(HybridCharNoSpaceWarn)
 	}
+	p.Cardinality = 2 + len(infs)
 	nhl = &namedSpeciesHybridNode{
 		Genus:        gen,
 		Comparison:   cf,
@@ -299,6 +304,7 @@ func (p *Engine) newBotanicalUninomialNode(n *node32) *uninomialNode {
 	authorship := &authorshipNode{OriginalAuthors: ag, CombinationAuthors: at2}
 	u := &uninomialNode{Word: w, Authorship: authorship}
 	p.AddWarn(BotanyAuthorNotSubgenWarn)
+	p.Cardinality = 1
 	return u
 }
 
@@ -364,6 +370,7 @@ func (p *Engine) newApproxNode(n *node32) *approxNode {
 		Approx:    annot,
 		Ignored:   ign,
 	}
+	p.Cardinality = 0
 	return an
 }
 
@@ -385,10 +392,12 @@ func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
 		switch n.pegRule {
 		case ruleGenusWord:
 			gen = p.newWordNode(n, GenusType)
+			p.Cardinality = 1
 		case ruleComparison:
 			comp = p.newWordNode(n, ComparisonType)
 		case ruleSpeciesEpithet:
 			spEp = p.newSpeciesEpithetNode(n)
+			p.Cardinality = 2
 		}
 		n = n.next
 	}
@@ -435,6 +444,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		}
 		n = n.next
 	}
+	p.Cardinality = 2 + len(infs)
 	sn := speciesNode{
 		Genus:        gen,
 		SubGenus:     sg,
@@ -565,6 +575,7 @@ func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 		Word:       w,
 		Authorship: au,
 	}
+	p.Cardinality = 1
 	return &un
 }
 
@@ -606,6 +617,7 @@ func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
 		Rank:       r,
 		Uninomial2: u2,
 	}
+	p.Cardinality = 1
 	return &ucn
 }
 

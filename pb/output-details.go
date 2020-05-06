@@ -56,7 +56,6 @@ func hybridName(po *Parsed, o *output.Output) {
 	}
 	po.Authorship = nil
 	po.NameType = NameType_HYBRID_FORMULA
-	po.Cardinality = 0
 	po.DetailsHybridFormula = hf
 }
 
@@ -74,7 +73,6 @@ func uninomial(po *Parsed, o *output.Output,
 		po.Authorship = au
 	}
 	po.NameType = NameType_UNINOMIAL
-	po.Cardinality = 1
 	return u
 }
 
@@ -107,20 +105,17 @@ func species(po *Parsed, o *output.Output,
 	}
 	po.Authorship = au
 	po.NameType = NameType_SPECIES
-	po.Cardinality = int32(2 + len(so.InfraSpecies))
 	return s
 }
 
 func comparison(po *Parsed, o *output.Output,
 	co *grammar.ComparisonOutput) *Comparison {
-	po.Cardinality = 1
 	c := &Comparison{
 		Genus: co.Genus.Value,
 	}
 
 	if co.SpecEpithet != nil {
 		c.Species = co.SpecEpithet.Value
-		po.Cardinality = 2
 		if co.SpecEpithet.Authorship != nil {
 			c.SpeciesAuthorship = authorship(co.SpecEpithet.Authorship)
 		}
@@ -135,7 +130,6 @@ func comparison(po *Parsed, o *output.Output,
 
 func approx(po *Parsed, o *output.Output,
 	ao *grammar.ApproxOutput) *Approximation {
-	po.Cardinality = 0
 	po.NameType = NameType_APPROX_SURROGATE
 	a := &Approximation{Genus: ao.Genus.Value}
 	if ao.SpecEpithet != nil {

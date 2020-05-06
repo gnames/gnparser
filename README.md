@@ -41,6 +41,7 @@ gnparser -h
 * [Features](#features)
 * [Use Cases](#use-cases)
   * [Getting the simplest possible canonical form](#getting-the-simplest-possible-canonical-form)
+  * [Quickly partition names by the type](#quickly-partition-names-by-the-type)
   * [Normalizing name-strings](#normalizing-name-strings)
   * [Removing authorships in the middle of the name](#removing-authorships-in-the-middle-of-the-name)
   * [Figuring out if names are well-formed](#figuring-out-if-names-are-well-formed)
@@ -151,8 +152,31 @@ flag with command line tool.
 
 Simple format is CSV-compatible and has the following fields:
 
-`Id,Verbatim,CanonicalFull,CanonicalSimple,CanonicalStem,Authors,Year,Quality`
+`Id,Verbatim,CanonicalFull,Cardinality,CanonicalSimple,CanonicalStem,Authors,Year,Quality`
 
+### Quickly partition names by the type
+
+Usually scientific names can be broken into groups accoring by number of
+elements:
+
+* Uninomial
+* Binomial
+* Trinomial
+* Quadrinomial
+
+The output of `gnparser` contains a `Cardinality` field that tells, when
+possible, how many elements are detected in the name.
+
+| Cardinality  | Name Type    |
+| ------------ | ------------ |
+| 0            | Undetermined |
+| 1            | Uninomial    |
+| 2            | Binomial     |
+| 3            | Trinomial    |
+| 4            | Quadrinomial |
+
+For hybrid formulas, "approximate" names (with "sp.", "spp." etc.), unparsed
+names, as well as names from `BOLD` project cardinality is 0 (Undetermined)
 
 ### Normalizing name-strings
 
