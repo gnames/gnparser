@@ -27,10 +27,12 @@ binary somewhere in your PATH.
 wget https://gitlab.com/gogna/gnparser/uploads/55d247b8fbade60116c7e3b650dd978c/gnparser-v0.9.0-linux.tar.gz
 tar xvf gnparser-v0.9.0-linux.tar.gz
 sudo cp gnparser /usr/local/bin
-# for JSON output
-gnparser -f pretty "Homo sapiens Linnaeus"
 # for CSV output
-gnparser -f csv "Homo sapiens Linnaeus"
+gnparser "Homo sapiens Linnaeus"
+# for JSON output
+gnparser -f compact "Homo sapiens Linnaeus"
+# or
+gnparser -f pretty "Homo sapiens Linnaeus"
 gnparser -h
 ```
 
@@ -43,7 +45,7 @@ gnparser -h
   * [Getting the simplest possible canonical form](#getting-the-simplest-possible-canonical-form)
   * [Quickly partition names by the type](#quickly-partition-names-by-the-type)
   * [Normalizing name-strings](#normalizing-name-strings)
-  * [Removing authorships in the middle of the name](#removing-authorships-in-the-middle-of-the-name)
+  * [Removing authorships from the middle of the name](#removing-authorships-from-the-middle-of-the-name)
   * [Figuring out if names are well-formed](#figuring-out-if-names-are-well-formed)
   * [Creating stable GUIDs for name-strings](#creating-stable-guids-for-name-strings)
   * [Assembling canonical forms etc. from original spelling](#assembling-canonical-forms-etc-from-original-spelling)
@@ -84,10 +86,10 @@ the recursive nature of data embedded in names. By contrast, ``gnparser``
 is able to deal with the most complex scientific name-strings.
 
 ``gnparser`` takes a name-string like ``Drosophila (Sophophora) melanogaster
-Meigen, 1830`` and returns parsed components in `JSON` format. The parsing of
-scientific names might become surprisingly complex and the `gnparser's`
-[test file] is a good source of information about the parser's capabilities,
-its input and output.
+Meigen, 1830`` and returns parsed components in `CSV` or `JSON` format. The
+parsing of scientific names might become surprisingly complex and the
+`gnparser's` [test file] is a good source of information about the parser's
+capabilities, its input and output.
 
 ## Speed
 
@@ -122,6 +124,7 @@ more efficient JSON conversion.
 - Can be scaled to many CPUs and computers (if 300 millions names an
    hour is not enough).
 - Calculates a stable UUID version 5 ID from the content of a string.
+- Provides C-binding to incorporate parser into other languages.
 
 ## Use Cases
 
@@ -141,7 +144,7 @@ The ``canonicalName -> simple`` field is good for matching names from different
 sources, because sometimes dataset curators omit hybrid sign in named hybrids,
 or remove ranks for infraspecific epithets.
 
-The ``canonicalName -> stem`` field contains simple canonical normalized even
+The ``canonicalName -> stem`` field normalizes `simple` canonical form even
 further. The normalization is done according to stemming rules for Latin
 language described in [Schinke R et al (1996)]. For example letters `j` are
 converted to `i`, letters `v` are converted to `u`, and suffixes are removed
@@ -152,7 +155,17 @@ flag with command line tool.
 
 CSV output has the following fields:
 
-`Id,Verbatim,CanonicalFull,Cardinality,CanonicalSimple,CanonicalStem,Authors,Year,Quality`
+| Field             | Meaning                                         |
+| ------------------| ----------------------------------------------- |
+| Id                | UUID v5 generated out of Verbatim               |
+| Verbatim          | Input name-string without any changes           |
+| Cardinality       | 0 - N/A, 1 - Uninomial, 2 - Binomial etc.       |
+| CanonicalFull     | Canonical form with hybrid sign and ranks       |
+| CanonicalSimple   | Simplest canonical form                         |
+| CanonicalStem     | Simplest canonical form with removed suffixes   |
+| Authors           | Author string of a name                         |
+| Year              | Year of the name (if given)                     |
+| Quality           | Parsing quality                                 |
 
 ### Quickly partition names by the type
 
@@ -184,13 +197,13 @@ There are many inconsistencies in how scientific names may be written.
 Use ``normalized`` field to bring them all to a common form (spelling, spacing,
 ranks).
 
-### Removing authorships in the middle of the name
+### Removing authorships from the middle of the name
 
 Many data administrators store name-strings in two columns and split them into
 "name part" and "authorship part". This practice misses some information when
 dealing with names like "*Prosthechea cochleata* (L.) W.E.Higgins *var.
 grandiflora* (Mutel) Christenson". However, if this is the use case, a
-combination of ``canonicalName -> valueRanked`` with the authorship from the
+combination of ``canonicalName -> full`` with the authorship from the
 lowest taxon will do the job. You can also use ``--format csv`` flag for
 ``gnparse`` command line tool.
 
@@ -293,7 +306,7 @@ Relevant flags:
 
 ``--format -f``
 : output format. Can be ``compact``, ``pretty``, ``csv``, or ``debug``.
-Default is ``compact``.
+Default is ``csv``.
 
 CSV format returns a header row and the CSV-compatible parsed result.
 
@@ -326,9 +339,9 @@ echo "Parus major Linnaeus, 1788" | gnparser
 To parse a file:
 
 There is no flag for parsing a file. If parser finds the given file path on
-your computer, it will parse the content of the file, assuming every line is a
-new scientific name. If the file path is not found, ``gnparser`` will try to
-parse the "path" as a scientific name.
+your computer, it will parse the content of the file, assuming that every line
+is a new scientific name. If the file path is not found, ``gnparser`` will try
+to parse the "path" as a scientific name.
 
 Parsed results will stream to STDOUT, while progress of the parsing
 will be directed to STDERR.
