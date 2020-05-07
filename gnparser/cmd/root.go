@@ -47,14 +47,15 @@ Parses scientific names into their semantic elements.
 To see version:
 gnparser -v
 
-To parse one name:
+To parse one name in CSV format
 gnparser "Homo sapiens Linnaeus 1753" [flags]
+or (the same)
+gnparser "Homo sapiens Linnaeus 1753" -f csv [flags]
 
-To parse one name using simple format
-gnparser "Homo sapiens Linnaeus 1753" -f simple
-Simple format has the following fields:
-
-ID|Verbatim|CanonicalFull|CanonicalSimple|CanonicalStem|Authors|Year|Quality
+To parse one name using JSON format:
+gnparser "Homo sapiens Linnaeus 1753" -f compact [flags]
+or
+gnparser "Homo sapiens Linnaeus 1753" -f pretty [flags]
 
 To parse many names from a file (one name per line):
 gnparser names.txt [flags] > parsed_names.txt
@@ -282,7 +283,7 @@ func parseFile(gnp gnparser.GNparser, f io.Reader, jobs int,
 func processResults(gnp gnparser.GNparser, out <-chan *gnparser.ParseResult,
 	wg *sync.WaitGroup) {
 	defer wg.Done()
-	if gnp.Format == gnparser.Simple {
+	if gnp.Format == gnparser.CSV {
 		fmt.Println(output.CSVHeader())
 	}
 	for r := range out {
@@ -299,7 +300,7 @@ func parseString(gnp gnparser.GNparser, data string) {
 		log.Fatal(err)
 		os.Exit(1)
 	}
-	if gnp.Format == gnparser.Simple {
+	if gnp.Format == gnparser.CSV {
 		fmt.Println(output.CSVHeader())
 	}
 	fmt.Println(res)

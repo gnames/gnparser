@@ -13,12 +13,12 @@ const (
 	// Pretty is a JSON nested easy to read format.
 	Pretty
 	// Simple is a flat format with only few most 'popular' fields.
-	Simple
+	CSV
 	// Debug is a format that shows complete and truncated AST for debugging.
 	Debug
 )
 
-var formats = []string{"compact", "pretty", "simple", "debug"}
+var formats = []string{"compact", "pretty", "csv", "debug"}
 
 func (of Format) String() string {
 	return formats[of]

@@ -49,7 +49,7 @@ var _ = Describe("Main", func() {
 				c.Run()
 				Expect(c.Success()).To(BeTrue())
 				Expect(c.Stdout()).
-					To(HavePrefix(`{"parsed":true,"quality":1,`))
+					To(HavePrefix(`Id,Verbatim,Cardinality,CanonicalFull`))
 			})
 	})
 	Describe("Stdin", func() {

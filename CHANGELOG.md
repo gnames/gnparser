@@ -4,8 +4,9 @@
 
 ## [v0.14.0]
 
-- Add [#81]: Add year range in format "1888/89"
+- Add [#81]: Add year range in format "1888/89".
 - Add [#80]: Add Cardinality to parser outputs.
+- Add [#79]: Make CSV the default format for CLI.
 - Add [#78]: Take into account `non-virus` names that look like virus names.
 
 ## [v0.13.1]

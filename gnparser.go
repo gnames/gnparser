@@ -66,7 +66,7 @@ func OptRemoveHTML(r bool) Option {
 // NewGNparser constructor function takes options and returns
 // configured GNparser.
 func NewGNparser(opts ...Option) GNparser {
-	gnp := GNparser{workersNum: runtime.NumCPU(), Format: Compact, removeHTML: true}
+	gnp := GNparser{workersNum: runtime.NumCPU(), Format: CSV, removeHTML: true}
 	for _, opt := range opts {
 		opt(&gnp)
 	}
@@ -147,7 +147,7 @@ func (gnp GNparser) ParseAndFormat(s string) (string, error) {
 			return "", err
 		}
 		s = string(bs)
-	case Simple:
+	case CSV:
 		s = output.ToCSV(gnp.ToSlice())
 	}
 	return s, nil
