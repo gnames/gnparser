@@ -43,7 +43,8 @@ func parseSlice(w http.ResponseWriter, ns []string) {
 	out := make(chan *gnparser.ParseResult)
 	var wg sync.WaitGroup
 	wg.Add(1)
-	go gnparser.ParseStream(8, in, out)
+	opts := []gnparser.Option{gnparser.OptFormat("compact")}
+	go gnparser.ParseStream(8, in, out, opts...)
 	go processResults(w, out, &wg)
 	for _, v := range ns {
 		in <- v
