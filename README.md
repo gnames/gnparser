@@ -29,8 +29,8 @@ tar xvf gnparser-v0.9.0-linux.tar.gz
 sudo cp gnparser /usr/local/bin
 # for JSON output
 gnparser -f pretty "Homo sapiens Linnaeus"
-# for very simple text output
-gnparser -f simple "Homo sapiens Linnaeus"
+# for CSV output
+gnparser -f csv "Homo sapiens Linnaeus"
 gnparser -h
 ```
 
@@ -147,10 +147,10 @@ language described in [Schinke R et al (1996)]. For example letters `j` are
 converted to `i`, letters `v` are converted to `u`, and suffixes are removed
 from the specific and infraspecific epithets.
 
-If you only care about canonical form of a name you can use ``--format simple``
+If you only care about canonical form of a name you can use ``--format csv``
 flag with command line tool.
 
-Simple format is CSV-compatible and has the following fields:
+CSV output has the following fields:
 
 `Id,Verbatim,CanonicalFull,Cardinality,CanonicalSimple,CanonicalStem,Authors,Year,Quality`
 
@@ -191,7 +191,7 @@ Many data administrators store name-strings in two columns and split them into
 dealing with names like "*Prosthechea cochleata* (L.) W.E.Higgins *var.
 grandiflora* (Mutel) Christenson". However, if this is the use case, a
 combination of ``canonicalName -> valueRanked`` with the authorship from the
-lowest taxon will do the job. You can also use ``--format simple`` flag for
+lowest taxon will do the job. You can also use ``--format csv`` flag for
 ``gnparse`` command line tool.
 
 ### Figuring out if names are well-formed
@@ -292,10 +292,10 @@ Relevant flags:
 : help information about flags
 
 ``--format -f``
-: output format. Can be ``compact``, ``pretty``, ``simple``, or ``debug``.
+: output format. Can be ``compact``, ``pretty``, ``csv``, or ``debug``.
 Default is ``compact``.
 
-Simple format returns a header row and the CSV-compatible parsed result.
+CSV format returns a header row and the CSV-compatible parsed result.
 
 ``--jobs -j``
 : number of jobs running concurrently.
@@ -308,16 +308,18 @@ performance.
 To parse one name:
 
 ```bash
-# default compact format
+# CSV ouput (default)
 gnparser "Parus major Linnaeus, 1788"
+# or
+gnparser -f csv "Parus major Linnaeus, 1788"
+
+# JSON compact format
+gnparser "Parus major Linnaeus, 1788" -f compact
 
 # pretty format
 gnparser -f pretty "Parus major Linnaeus, 1788"
 
-# simple CSV-compatible flat format
-gnparser -f simple "Parus major Linnaeus, 1788"
-
-# to parse a name from standard input
+# to parse a name from the standard input
 echo "Parus major Linnaeus, 1788" | gnparser
 ```
 
@@ -335,7 +337,7 @@ will be directed to STDERR.
 gnparser -j 200 names.txt > names_parsed.txt
 
 # to parse files using pipes
-cat names.txt | gnparser -f simple -j 200 > names_parsed.txt
+cat names.txt | gnparser -f csv -j 200 > names_parsed.txt
 
 # to keep html tags and entities during parsing. You gain a bit of performance
 # with this option if your data does not contain HTML tags or entities.
@@ -370,7 +372,7 @@ example in Ruby:
 def self.start_gnparser
   io = {}
 
-  ['compact', 'simple'].each do |format|
+  ['compact', 'csv'].each do |format|
     stdin, stdout, stderr = Open3.popen3("./gnparser -j 200 --format #{format}")
     io[format.to_sym] = { stdin: stdin, stdout: stdout, stderr: stderr }
   end
@@ -470,7 +472,7 @@ import (
 
 func main() {
 	opts := []gnparser.Option{
-		gnparser.Format("simple"),
+		gnparser.Format("csv"),
 		gnparser.WorkersNum(100),
 	}
 	gnp := gnparser.NewGNparser(opts...)
