@@ -2335,6 +2335,16 @@ Tridentella tangeroae Bruce, 1987-92
 Tridentella tangeroae Bruce, 1987-92
 {"parsed":true,"quality":3,"qualityWarnings":[[3,"Years range"]],"verbatim":"Tridentella tangeroae Bruce, 1987-92","normalized":"Tridentella tangeroae Bruce (1987)","cardinality":2,"canonicalName":{"full":"Tridentella tangeroae","simple":"Tridentella tangeroae","stem":"Tridentella tangero"},"authorship":"Bruce (1987)","details":[{"genus":{"value":"Tridentella"},"specificEpithet":{"value":"tangeroae","authorship":{"value":"Bruce (1987)","basionymAuthorship":{"authors":["Bruce"],"year":{"value":"1987","approximate":true}}}}}],"positions":[["genus",0,11],["specificEpithet",12,21],["authorWord",22,27],["approximateYear",29,33]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"6c943756-7f67-51ee-9c06-8f9016538be6","parserVersion":"test_version"}
 6c943756-7f67-51ee-9c06-8f9016538be6,"Tridentella tangeroae Bruce, 1987-92",2,Tridentella tangeroae,Tridentella tangeroae,Tridentella tangero,Bruce (1987),(1987),3
+
+Macroplectra unicolor Moore, 1858/59
+Macroplectra unicolor Moore, 1858/59
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Years range"]],"verbatim":"Macroplectra unicolor Moore, 1858/59","normalized":"Macroplectra unicolor Moore (1858)","cardinality":2,"canonicalName":{"full":"Macroplectra unicolor","simple":"Macroplectra unicolor","stem":"Macroplectra unicolor"},"authorship":"Moore (1858)","details":[{"genus":{"value":"Macroplectra"},"specificEpithet":{"value":"unicolor","authorship":{"value":"Moore (1858)","basionymAuthorship":{"authors":["Moore"],"year":{"value":"1858","approximate":true}}}}}],"positions":[["genus",0,12],["specificEpithet",13,21],["authorWord",22,27],["approximateYear",29,33]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"d6fc4a96-793c-58ce-9926-ec40281062b2","parserVersion":"test_version"}
+d6fc4a96-793c-58ce-9926-ec40281062b2,"Macroplectra unicolor Moore, 1858/59",2,Macroplectra unicolor,Macroplectra unicolor,Macroplectra unicolor,Moore (1858),(1858),3
+
+Seryda basirei Druce, 1891/901
+Seryda basirei Druce, 1891/901
+{"parsed":true,"quality":3,"qualityWarnings":[[3,"Years range"]],"verbatim":"Seryda basirei Druce, 1891/901","normalized":"Seryda basirei Druce (1891)","cardinality":2,"canonicalName":{"full":"Seryda basirei","simple":"Seryda basirei","stem":"Seryda basire"},"authorship":"Druce (1891)","details":[{"genus":{"value":"Seryda"},"specificEpithet":{"value":"basirei","authorship":{"value":"Druce (1891)","basionymAuthorship":{"authors":["Druce"],"year":{"value":"1891","approximate":true}}}}}],"positions":[["genus",0,6],["specificEpithet",7,14],["authorWord",15,20],["approximateYear",22,26]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"574ff67d-f220-5c14-9634-fcadc3794891","parserVersion":"test_version"}
+574ff67d-f220-5c14-9634-fcadc3794891,"Seryda basirei Druce, 1891/901",2,Seryda basirei,Seryda basirei,Seryda basire,Druce (1891),(1891),3
 #>
 
 #SECTION: Year with page<

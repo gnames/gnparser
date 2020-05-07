@@ -217,7 +217,7 @@ AuthorLowerChar <- LowerASCII / MiscodedChar /
 Year <- YearRange / YearApprox / YearWithParens / YearWithPage / YearWithDot /
   YearWithChar / YearNum
 
-YearRange <- YearNum Dash (Nums+ [abcdefghijklmnopqrstuvwxyz?]*)
+YearRange <- YearNum (Dash / Slash) (Nums+ [abcdefghijklmnopqrstuvwxyz?]*)
 
 YearWithDot <-  YearNum '.'
 
@@ -262,6 +262,8 @@ ApostrASCII <- '\''
 ApostrOther <- '‘' / '’'
 
 Dash <- '-'
+
+Slash <- '/'
 
 _ <- MultipleSpace / SingleSpace
 
