@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v0.14.1]
+
+- Fix: Change web API from default to Compact format to get correct API output.
+
 ## [v0.14.0]
 
 - Add [#81]: Add year range in format "1888/89".
