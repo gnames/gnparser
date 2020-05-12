@@ -1,8 +1,10 @@
 syntax = "proto3";
 
+package pb;
+option go_package = ".;pb";
+
 // Version contains version of gnparser as well as the timestamp when it
 // was compiled.
-package pb;
 message Version {
   string value = 1;
   string build_time = 2;
