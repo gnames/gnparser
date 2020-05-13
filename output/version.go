@@ -1,6 +1,6 @@
 package output
 
 var (
-	Version = "v0.13.1"
+	Version = "v0.4.2+"
 	Build   string
 )
