@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#82]: Support authors with prefix `zu`.
+
 ## [v0.14.1]
 
 - Fix: Change web API from default to Compact format to get correct API output.
@@ -148,6 +150,11 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#86]: https://gitlab.com/gogna/gnparser/issues/86
+[#85]: https://gitlab.com/gogna/gnparser/issues/85
+[#84]: https://gitlab.com/gogna/gnparser/issues/84
+[#83]: https://gitlab.com/gogna/gnparser/issues/83
+[#82]: https://gitlab.com/gogna/gnparser/issues/82
 [#81]: https://gitlab.com/gogna/gnparser/issues/81
 [#80]: https://gitlab.com/gogna/gnparser/issues/80
 [#79]: https://gitlab.com/gogna/gnparser/issues/79
