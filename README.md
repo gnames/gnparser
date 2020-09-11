@@ -574,7 +574,7 @@ Accessed 2019-04-10
 ## License
 Released under [MIT license]
 
-[releases]: https://gitlab.com/gogna/gnparser/releases
+[releases]: https://gitlab.com/gogna/gnparser/-/releases
 [biodiversity]: https://github.com/GlobalNamesArchitecture/biodiversity
 [gnparser-scala]: https://github.com/GlobalNamesArchitecture/gnparser
 [peg]: https://github.com/pointlander/peg
