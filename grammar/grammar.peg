@@ -63,7 +63,7 @@ RankVar <- ('variety' / '[var.]' / 'var') ('.' / &(SpaceCharEOI))
 
 RankForma <- ('forma' / 'fma' / 'form' / 'fo' / 'f') ('.' / &(SpaceCharEOI))
 
-RankSsp <- ('ssp' / 'subsp') ('.' / &(SpaceCharEOI))
+RankSsp <- ('ssp' / 'subspec' / 'subsp') ('.' / &(SpaceCharEOI))
 
 RankAgamo <- ('agamosp' / 'agamossp' / 'agamovar') ('.' / &(SpaceCharEOI))
 
