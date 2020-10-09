@@ -1785,6 +1785,11 @@ Amphisbæna fuliginoſa Linnaeus 1758
 Amphisbæna fuliginoſa Linnaeus 1758
 {"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Amphisbæna fuliginoſa Linnaeus 1758","normalized":"Amphisbaena fuliginosa Linnaeus 1758","cardinality":2,"canonicalName":{"full":"Amphisbaena fuliginosa","simple":"Amphisbaena fuliginosa","stem":"Amphisbaena fuliginos"},"authorship":"Linnaeus 1758","details":[{"genus":{"value":"Amphisbaena"},"specificEpithet":{"value":"fuliginosa","authorship":{"value":"Linnaeus 1758","basionymAuthorship":{"authors":["Linnaeus"],"year":{"value":"1758"}}}}}],"positions":[["genus",0,10],["specificEpithet",11,21],["authorWord",22,30],["year",31,35]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"d2f6423b-7a8f-5389-a286-c074fb634c5a","parserVersion":"test_version"}
 d2f6423b-7a8f-5389-a286-c074fb634c5a,Amphisbæna fuliginoſa Linnaeus 1758,2,Amphisbaena fuliginosa,Amphisbaena fuliginosa,Amphisbaena fuliginos,Linnaeus 1758,1758,2
+
+Dreyfusia nüßlini
+Dreyfusia nüßlini
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Non-standard characters in canonical"]],"verbatim":"Dreyfusia nüßlini","normalized":"Dreyfusia nuesslini","cardinality":2,"canonicalName":{"full":"Dreyfusia nuesslini","simple":"Dreyfusia nuesslini","stem":"Dreyfusia nuesslin"},"details":[{"genus":{"value":"Dreyfusia"},"specificEpithet":{"value":"nuesslini"}}],"positions":[["genus",0,9],["specificEpithet",10,17]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"27679e50-c41b-5a3d-b619-d378d503be8c","parserVersion":"test_version"}
+27679e50-c41b-5a3d-b619-d378d503be8c,Dreyfusia nüßlini,2,Dreyfusia nuesslini,Dreyfusia nuesslini,Dreyfusia nuesslin,,,2
 #>
 
 #SECTION other diacritics, best we can do for now<

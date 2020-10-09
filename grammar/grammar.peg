@@ -241,7 +241,7 @@ NameLowerChar <- LowerChar / LowerCharExtended / MiscodedChar
 
 MiscodedChar <- '�'
 
-LowerCharExtended <- [æœàâåãäáçčéèëíìïňññóòôøõöúùüŕřŗſššşž]
+LowerCharExtended <- [æœàâåãäáçčéèëíìïňññóòôøõöúùüŕřŗſššşßž]
 
 LowerChar <- LowerASCII
 
