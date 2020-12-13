@@ -46,17 +46,17 @@ asset:
 	cd fs; \
 	$(FLAGS_SHARED) go run -tags=dev assets_gen.go
 
-build: peg pb asset
+build: peg asset
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) $(NO_C) $(GOBUILD)
 
-install: peg pb asset
+install: peg asset
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) $(NO_C) $(GOINSTALL)
 
-release: peg pb asset dockerhub
+release: peg asset dockerhub
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_LINUX) $(NO_C) $(GOBUILD); \

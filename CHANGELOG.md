@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add [#95]: Remove make depenency on gRPC tooling.
 - Add [#90]: Allow `ß` in names.
 - Add [#89]: Support `subspec.` as a rank.
 - Add [#82]: Support authors with prefix `zu`.
