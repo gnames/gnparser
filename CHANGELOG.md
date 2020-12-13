@@ -2,7 +2,11 @@
 
 ## Unreleased
 
+## [v.0.14.2]
+
+- Add [#96]: Do not parse names starting with "Candidatus".
 - Add [#95]: Remove make depenency on gRPC tooling.
+- Add [#94]: Do not parse names with "bacterium" "epithet.
 - Add [#90]: Allow `ß` in names.
 - Add [#89]: Support `subspec.` as a rank.
 - Add [#82]: Support authors with prefix `zu`.
@@ -136,6 +140,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v0.14.3]: https://gitlab.com/gogna/gnparser/compare/v0.14.2...v0.14.3
 [v0.14.2]: https://gitlab.com/gogna/gnparser/compare/v0.14.1...v0.14.2
 [v0.14.1]: https://gitlab.com/gogna/gnparser/compare/v0.14.0...v0.14.1
 [v0.14.0]: https://gitlab.com/gogna/gnparser/compare/v0.13.1...v0.14.0
@@ -155,6 +160,14 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://gitlab.com/gogna/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://gitlab.com/gogna/gnparser/tree/v0.5.1
 
+[#100]: https://gitlab.com/gogna/gnparser/issues/100
+[#99]: https://gitlab.com/gogna/gnparser/issues/99
+[#98]: https://gitlab.com/gogna/gnparser/issues/98
+[#97]: https://gitlab.com/gogna/gnparser/issues/97
+[#96]: https://gitlab.com/gogna/gnparser/issues/96
+[#95]: https://gitlab.com/gogna/gnparser/issues/95
+[#94]: https://gitlab.com/gogna/gnparser/issues/94
+[#93]: https://gitlab.com/gogna/gnparser/issues/93
 [#92]: https://gitlab.com/gogna/gnparser/issues/92
 [#91]: https://gitlab.com/gogna/gnparser/issues/91
 [#90]: https://gitlab.com/gogna/gnparser/issues/90

@@ -71,7 +71,6 @@ gnparser -h
 
 <!-- vim-markdown-toc -->
 
-
 ## Introduction
 
 Global Names Parser or ``gnparser`` is a program written in Go for breaking up
@@ -112,19 +111,19 @@ more efficient JSON conversion.
 
 ## Features
 
-- Fastest parser ever.
-- Very easy to install, just placing executable somewhere in the PATH is
+* Fastest parser ever.
+* Very easy to install, just placing executable somewhere in the PATH is
   sufficient.
-- Extracts all elements from a name, not only canonical forms.
-- Works with very complex scientific names, including hybrid formulas.
-- Includes gRPC server that can be used as if a native method call from C++,
-  C#, Java, Python, Ruby, PHP, JavaScript, Objective C, Dart.
-- Use as a native library from Go projects.
-- Can run as a command line application.
-- Can be scaled to many CPUs and computers (if 300 millions names an
-   hour is not enough).
-- Calculates a stable UUID version 5 ID from the content of a string.
-- Provides C-binding to incorporate parser into other languages.
+* Extracts all elements from a name, not only canonical forms.
+* Works with very complex scientific names, including hybrid formulas.
+* Includes gRPC server that can be used as if a native method call from C++,
+* C#, Java, Python, Ruby, PHP, JavaScript, Objective C, Dart.
+* Use as a native library from Go projects.
+* Can run as a command line application.
+* Can be scaled to many CPUs and computers (if 300 millions names an
+  hour is not enough).
+* Calculates a stable UUID version 5 ID from the content of a string.
+* Provides C-binding to incorporate parser into other languages.
 
 ## Use Cases
 
@@ -213,12 +212,12 @@ If there are problems with parsing a name, parser generates ``qualityWarnings``
 messages and lowers parsing ``quality`` of the name.  Quality values mean the
 following:
 
-- ``"quality": 1`` - No problems were detected
-- ``"quality": 2`` - There were small problems, normalized result
+* ``"quality": 1`` - No problems were detected
+* ``"quality": 2`` - There were small problems, normalized result
   should still be good
-- ``"quality": 3`` - There were serious problems with the name, and the
+* ``"quality": 3`` - There were serious problems with the name, and the
   final result is rather doubtful
-- ``"quality": 0`` - A string could not be recognized as a scientific
+* ``"quality": 0`` - A string could not be recognized as a scientific
   name and parsing fails
 
 ### Creating stable GUIDs for name-strings
@@ -435,8 +434,8 @@ to parser. API calls would be accessibe on ``http://0.0.0.0:9000/api``.
 Make sure to CGI-escape name-strings for GET requests. An '&' character
 needs to be converted to '%26'
 
-- ``GET /api?q=Aus+bus|Aus+bus+D.+%26+M.,+1870``
-- ``POST /api`` with request body of JSON array of strings
+* ``GET /api?q=Aus+bus|Aus+bus+D.+%26+M.,+1870``
+* ``POST /api`` with request body of JSON array of strings
 
 ```ruby
 require 'json'
@@ -478,22 +477,22 @@ docker run gnames/gognparser "Amaurorhinus bewichianus (Wollaston,1860) (s.str.)
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"gitlab.com/gogna/gnparser"
+  "gitlab.com/gogna/gnparser"
 )
 
 func main() {
-	opts := []gnparser.Option{
-		gnparser.Format("csv"),
-		gnparser.WorkersNum(100),
-	}
-	gnp := gnparser.NewGNparser(opts...)
-	res, err := gnp.ParseAndFormat("Bubo bubo")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(res)
+  opts := []gnparser.Option{
+    gnparser.Format("csv"),
+    gnparser.WorkersNum(100),
+  }
+  gnp := gnparser.NewGNparser(opts...)
+  res, err := gnp.ParseAndFormat("Bubo bubo")
+  if err != nil {
+    fmt.Println(err)
+  }
+  fmt.Println(res)
 }
 ```
 
@@ -507,9 +506,9 @@ o := gnp.ParseToObject("Homo sapiens")
 fmt.Println(o.Canonical.Simple)
 switch d := o.Details.(type) {
 case *pb.Parsed_Species:
-	fmt.Println(d.Species.Genus)
+  fmt.Println(d.Species.Genus)
 case *pb.Parsed_Uninomial:
-	fmt.Println(d.Uninomial.Value)
+  fmt.Println(d.Uninomial.Value)
 ...
 }
 ```
@@ -554,13 +553,12 @@ provide a warning "Possible ICN author instead of subgenus".
 
 ## Authors
 
-- [Dmitry Mozzherin]
+* [Dmitry Mozzherin]
 
 ## Contributors
 
-- [Geoff Ower]
-- [Hernan Lucas Pereira]
-
+* [Geoff Ower]
+* [Hernan Lucas Pereira]
 
 If you want to submit a bug or add a feature read
 [CONTRIBUTING] file.
@@ -568,10 +566,11 @@ If you want to submit a bug or add a feature read
 ## References
 
 Rees, T. (compiler) (2019). The Interim Register of Marine and Nonmarine
-Genera. Available from http://www.irmng.org at VLIZ.
+Genera. Available from `http://www.irmng.org` at VLIZ.
 Accessed 2019-04-10
 
 ## License
+
 Released under [MIT license]
 
 [releases]: https://gitlab.com/gogna/gnparser/-/releases

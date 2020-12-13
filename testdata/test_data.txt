@@ -3065,6 +3065,33 @@ noparse
 3bf556bb-ea7c-536e-8b62-93ba329c559d,Uropodoideaincertaesedis,0,,,,,,0
 #>
 
+#SECTION: No parsing -- bacterium, Candidatus<
+Acidobacteria bacterium
+noparse
+{"parsed":false,"quality":0,"verbatim":"Acidobacteria bacterium","cardinality":0,"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"c982b4fd-c41a-5987-bcc8-989c4164b9ec","parserVersion":"test_version"}
+c982b4fd-c41a-5987-bcc8-989c4164b9ec,Acidobacteria bacterium,0,,,,,,0
+
+Acidimicrobiales bacterium JGI 01_E13
+noparse
+{"parsed":false,"quality":0,"verbatim":"Acidimicrobiales bacterium JGI 01_E13","cardinality":0,"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"8b71a29b-4271-5a83-8a92-5dab1d9dc4c3","parserVersion":"test_version"}
+8b71a29b-4271-5a83-8a92-5dab1d9dc4c3,Acidimicrobiales bacterium JGI 01_E13,0,,,,,,0
+
+Acidobacterium ailaaui Myers & King, 2016
+Acidobacterium ailaaui Myers & King, 2016
+{"parsed":true,"quality":1,"verbatim":"Acidobacterium ailaaui Myers \u0026 King, 2016","normalized":"Acidobacterium ailaaui Myers \u0026 King 2016","cardinality":2,"canonicalName":{"full":"Acidobacterium ailaaui","simple":"Acidobacterium ailaaui","stem":"Acidobacterium ailaau"},"authorship":"Myers \u0026 King 2016","details":[{"genus":{"value":"Acidobacterium"},"specificEpithet":{"value":"ailaaui","authorship":{"value":"Myers \u0026 King 2016","basionymAuthorship":{"authors":["Myers","King"],"year":{"value":"2016"}}}}}],"positions":[["genus",0,14],["specificEpithet",15,22],["authorWord",23,28],["authorWord",31,35],["year",37,41]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":true,"nameStringId":"b9f4555f-d2e0-5d40-acde-2b546a28a7fc","parserVersion":"test_version"}
+b9f4555f-d2e0-5d40-acde-2b546a28a7fc,"Acidobacterium ailaaui Myers & King, 2016",2,Acidobacterium ailaaui,Acidobacterium ailaaui,Acidobacterium ailaau,Myers & King 2016,2016,1
+
+Candidatus Amesbacteria bacterium GW2011_GWC1_46_24
+noparse
+{"parsed":false,"quality":0,"verbatim":"Candidatus Amesbacteria bacterium GW2011_GWC1_46_24","cardinality":0,"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"83382178-94bf-5bf3-a8c8-fdbca4af927c","parserVersion":"test_version"}
+83382178-94bf-5bf3-a8c8-fdbca4af927c,Candidatus Amesbacteria bacterium GW2011_GWC1_46_24,0,,,,,,0
+
+Candidatus
+noparse
+{"parsed":false,"quality":0,"verbatim":"Candidatus","cardinality":0,"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"fb9138ac-ae7a-58c9-a912-d31d0a4eeed3","parserVersion":"test_version"}
+fb9138ac-ae7a-58c9-a912-d31d0a4eeed3,Candidatus,0,,,,,,0
+#>
+
 #SECTION: No parsing -- 'Not', 'None', 'Unidentified'  phrases<
 
 None recorded
