@@ -63,9 +63,6 @@ func Preprocess(bs []byte) *Preprocessor {
 		pr.NoParse = true
 		return pr
 	}
-	if name == "Candidatus" || strings.HasPrefix("Candidatus ", name) {
-		return pr
-	}
 	pr.NoParse = NoParse(bs[0:i])
 	if pr.NoParse {
 		return pr

@@ -3090,6 +3090,16 @@ Candidatus
 noparse
 {"parsed":false,"quality":0,"verbatim":"Candidatus","cardinality":0,"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"fb9138ac-ae7a-58c9-a912-d31d0a4eeed3","parserVersion":"test_version"}
 fb9138ac-ae7a-58c9-a912-d31d0a4eeed3,Candidatus,0,,,,,,0
+
+Candidatus Puniceispirillum Oh, Kwon, Kang, Kang, Lee, Kim & Cho, 2010
+noparse
+{"parsed":false,"quality":0,"verbatim":"Candidatus Puniceispirillum Oh, Kwon, Kang, Kang, Lee, Kim \u0026 Cho, 2010","cardinality":0,"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"82fde2e2-8e50-5fd0-8ffe-96f34f85505b","parserVersion":"test_version"}
+82fde2e2-8e50-5fd0-8ffe-96f34f85505b,"Candidatus Puniceispirillum Oh, Kwon, Kang, Kang, Lee, Kim & Cho, 2010",0,,,,,,0
+
+Candidatus Halobonum
+noparse
+{"parsed":false,"quality":0,"verbatim":"Candidatus Halobonum","cardinality":0,"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"289152c0-1042-5cac-a649-44314b25c857","parserVersion":"test_version"}
+289152c0-1042-5cac-a649-44314b25c857,Candidatus Halobonum,0,,,,,,0
 #>
 
 #SECTION: No parsing -- 'Not', 'None', 'Unidentified'  phrases<
