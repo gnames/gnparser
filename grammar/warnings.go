@@ -35,6 +35,7 @@ const (
 	RankUncommonWarn
 	SpaceMultipleWarn
 	SpaceNonStandardWarn
+	SpanishAndAsSeparator
 	SpeciesNumericWarn
 	SuperSpeciesWarn
 	UTF8ConvBadWarn

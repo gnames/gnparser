@@ -163,9 +163,11 @@ AuthorsTeam <- Author (AuthorSep Author)* (_? ','? _? Year)?
 
 AuthorSep <- AuthorSep1 / AuthorSep2
 
-AuthorSep1 <- _? (',' _)? ( '&' / 'et' / 'and' / 'apud') _?
+AuthorSep1 <- _? (',' _)? ( '&' / AuthorSepSpanish / 'et' / 'and' / 'apud') _?
 
 AuthorSep2 <- _? ',' _?
+
+AuthorSepSpanish <- _? 'y' _?
 
 AuthorEx <- ('ex' '.'? / 'in') _
 

@@ -2,11 +2,18 @@
 
 ## Unreleased
 
-## [v.0.14.2]
+## [v.0.14.4]
 
 - Add [#96]: Do not parse names starting with "Candidatus".
+- Add [#93]: Parse 'y' (Spanish '&') as an author separator.
+
+## [v.0.14.3]
+
 - Add [#95]: Remove make depenency on gRPC tooling.
 - Add [#94]: Do not parse names with "bacterium" "epithet.
+
+## [v.0.14.2]
+
 - Add [#90]: Allow `ß` in names.
 - Add [#89]: Support `subspec.` as a rank.
 - Add [#82]: Support authors with prefix `zu`.
@@ -140,6 +147,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v0.14.4]: https://gitlab.com/gogna/gnparser/compare/v0.14.3...v0.14.4
 [v0.14.3]: https://gitlab.com/gogna/gnparser/compare/v0.14.2...v0.14.3
 [v0.14.2]: https://gitlab.com/gogna/gnparser/compare/v0.14.1...v0.14.2
 [v0.14.1]: https://gitlab.com/gogna/gnparser/compare/v0.14.0...v0.14.1

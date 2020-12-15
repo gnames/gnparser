@@ -2498,6 +2498,23 @@ Acanthochiton
 00392ae2-1bd9-5a14-bea9-9d26f1107892,Acanthochiton ex quisitus,1,Acanthochiton,Acanthochiton,Acanthochiton,,,3
 #>
 
+#SECTION names with Spanish 'y' instead of '&'
+Caloptenopsis crassiusculus (Martínez y Fernández-Castillo, 1896)
+Caloptenopsis crassiusculus (Martínez y Fernández-Castillo, 1896)
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Spanish 'y' is used instead of '\u0026'"]],"verbatim":"Caloptenopsis crassiusculus (Martínez y Fernández-Castillo, 1896)","normalized":"Caloptenopsis crassiusculus (Martínez \u0026 Fernández-Castillo 1896)","cardinality":2,"canonicalName":{"full":"Caloptenopsis crassiusculus","simple":"Caloptenopsis crassiusculus","stem":"Caloptenopsis crassiuscul"},"authorship":"(Martínez \u0026 Fernández-Castillo 1896)","details":[{"genus":{"value":"Caloptenopsis"},"specificEpithet":{"value":"crassiusculus","authorship":{"value":"(Martínez \u0026 Fernández-Castillo 1896)","basionymAuthorship":{"authors":["Martínez","Fernández-Castillo"],"year":{"value":"1896"}}}}}],"positions":[["genus",0,13],["specificEpithet",14,27],["authorWord",29,37],["authorWord",40,58],["year",60,64]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"0080ce8d-aba5-512d-8e33-8ee3914e386a","parserVersion":"test_version"}
+0080ce8d-aba5-512d-8e33-8ee3914e386a,"Caloptenopsis crassiusculus (Martínez y Fernández-Castillo, 1896)",2,Caloptenopsis crassiusculus,Caloptenopsis crassiusculus,Caloptenopsis crassiuscul,(Martínez & Fernández-Castillo 1896),1896,2
+
+Dicranum saxatile Lagasca y Segura, García & Clemente y Rubio, 1802
+Dicranum saxatile Lagasca y Segura, García & Clemente y Rubio, 1802
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Spanish 'y' is used instead of '\u0026'"]],"verbatim":"Dicranum saxatile Lagasca y Segura, García \u0026 Clemente y Rubio, 1802","normalized":"Dicranum saxatile Lagasca, Segura, García, Clemente \u0026 Rubio 1802","cardinality":2,"canonicalName":{"full":"Dicranum saxatile","simple":"Dicranum saxatile","stem":"Dicranum saxatil"},"authorship":"Lagasca, Segura, García, Clemente \u0026 Rubio 1802","details":[{"genus":{"value":"Dicranum"},"specificEpithet":{"value":"saxatile","authorship":{"value":"Lagasca, Segura, García, Clemente \u0026 Rubio 1802","basionymAuthorship":{"authors":["Lagasca","Segura","García","Clemente","Rubio"],"year":{"value":"1802"}}}}}],"positions":[["genus",0,8],["specificEpithet",9,17],["authorWord",18,25],["authorWord",28,34],["authorWord",36,42],["authorWord",45,53],["authorWord",56,61],["year",63,67]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"39054306-2722-5119-a040-f8671b5b31a0","parserVersion":"test_version"}
+39054306-2722-5119-a040-f8671b5b31a0,"Dicranum saxatile Lagasca y Segura, García & Clemente y Rubio, 1802",2,Dicranum saxatile,Dicranum saxatile,Dicranum saxatil,"Lagasca, Segura, García, Clemente & Rubio 1802",1802,2
+
+Carabus (Tanaocarabus) hendrichsi Bolvar y Pieltain, Rotger & Coronado 1967
+Carabus (Tanaocarabus) hendrichsi Bolvar y Pieltain, Rotger & Coronado 1967
+{"parsed":true,"quality":2,"qualityWarnings":[[2,"Spanish 'y' is used instead of '\u0026'"]],"verbatim":"Carabus (Tanaocarabus) hendrichsi Bolvar y Pieltain, Rotger \u0026 Coronado 1967","normalized":"Carabus (Tanaocarabus) hendrichsi Bolvar, Pieltain, Rotger \u0026 Coronado 1967","cardinality":2,"canonicalName":{"full":"Carabus hendrichsi","simple":"Carabus hendrichsi","stem":"Carabus hendrichs"},"authorship":"Bolvar, Pieltain, Rotger \u0026 Coronado 1967","details":[{"genus":{"value":"Carabus"},"specificEpithet":{"value":"hendrichsi","authorship":{"value":"Bolvar, Pieltain, Rotger \u0026 Coronado 1967","basionymAuthorship":{"authors":["Bolvar","Pieltain","Rotger","Coronado"],"year":{"value":"1967"}}}},"infragenericEpithet":{"value":"Tanaocarabus"}}],"positions":[["genus",0,7],["infragenericEpithet",9,21],["specificEpithet",23,33],["authorWord",34,40],["authorWord",43,51],["authorWord",53,59],["authorWord",62,70],["year",71,75]],"surrogate":false,"virus":false,"hybrid":false,"bacteria":false,"nameStringId":"519c0687-2303-5b8c-a69f-68e2bd055b5e","parserVersion":"test_version"}
+519c0687-2303-5b8c-a69f-68e2bd055b5e,"Carabus (Tanaocarabus) hendrichsi Bolvar y Pieltain, Rotger & Coronado 1967",2,Carabus hendrichsi,Carabus hendrichsi,Carabus hendrichs,"Bolvar, Pieltain, Rotger & Coronado 1967",1967,2
+#>
+
 ### Unparseable Tail
 
 #SECTION: Names with unparsed_tail at the end<

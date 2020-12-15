@@ -13,183 +13,187 @@ type Warning struct {
 }
 
 var warningMap = map[grm.Warning]Warning{
-	grm.TailWarn: Warning{
+	grm.TailWarn: {
 		Quality: 3,
 		Message: "Unparsed tail",
 	},
-	grm.ApostrOtherWarn: Warning{
+	grm.ApostrOtherWarn: {
 		Quality: 3,
 		Message: "Not an ASCII apostrophe",
 	},
-	grm.AuthAmbiguousFiliusWarn: Warning{
+	grm.AuthAmbiguousFiliusWarn: {
 		Quality: 2,
 		Message: "Ambiguous f. (filius or forma)",
 	},
-	grm.AuthDoubleParensWarn: Warning{
+	grm.AuthDoubleParensWarn: {
 		Quality: 3,
 		Message: "Authorship in double parentheses",
 	},
-	grm.AuthExWarn: Warning{
+	grm.AuthExWarn: {
 		Quality: 2,
 		Message: "Ex authors are not required",
 	},
-	grm.AuthExWithDotWarn: Warning{
+	grm.AuthExWithDotWarn: {
 		Quality: 3,
 		Message: "`ex` ends with dot",
 	},
-	grm.AuthEmendWarn: Warning{
+	grm.AuthEmendWarn: {
 		Quality: 2,
 		Message: "Emend authors are not required",
 	},
-	grm.AuthEmendWithoutDotWarn: Warning{
+	grm.AuthEmendWithoutDotWarn: {
 		Quality: 3,
 		Message: "`emend` without a period",
 	},
-	grm.AuthMissingOneParensWarn: Warning{
+	grm.AuthMissingOneParensWarn: {
 		Quality: 3,
 		Message: "Authorship is missing one parenthesis",
 	},
-	grm.AuthQuestionWarn: Warning{
+	grm.AuthQuestionWarn: {
 		Quality: 3,
 		Message: "Author as a question mark",
 	},
-	grm.AuthShortWarn: Warning{
+	grm.AuthShortWarn: {
 		Quality: 3,
 		Message: "Author is too short",
 	},
-	grm.AuthUnknownWarn: Warning{
+	grm.AuthUnknownWarn: {
 		Quality: 2,
 		Message: "Author is unknown",
 	},
-	grm.AuthUpperCaseWarn: Warning{
+	grm.AuthUpperCaseWarn: {
 		Quality: 2,
 		Message: "Author in upper case",
 	},
-	grm.BacteriaMaybeWarn: Warning{
+	grm.BacteriaMaybeWarn: {
 		Quality: 1,
 		Message: "The genus is a homonym of a bacterial genus",
 	},
-	grm.BotanyAuthorNotSubgenWarn: Warning{
+	grm.BotanyAuthorNotSubgenWarn: {
 		Quality: 2,
 		Message: "Possible ICN author instead of subgenus",
 	},
-	grm.CanonicalApostropheWarn: Warning{
+	grm.CanonicalApostropheWarn: {
 		Quality: 3,
 		Message: "Apostrophe is not allowed in canonical",
 	},
-	grm.CapWordQuestionWarn: Warning{
+	grm.CapWordQuestionWarn: {
 		Quality: 3,
 		Message: "Uninomial word with question mark",
 	},
-	grm.CharBadWarn: Warning{
+	grm.CharBadWarn: {
 		Quality: 2,
 		Message: "Non-standard characters in canonical",
 	},
-	grm.GenusAbbrWarn: Warning{
+	grm.GenusAbbrWarn: {
 		Quality: 3,
 		Message: "Abbreviated uninomial word",
 	},
-	grm.GenusUpperCharAfterDash: Warning{
+	grm.GenusUpperCharAfterDash: {
 		Quality: 2,
 		Message: "Apparent genus with capital character after hyphen",
 	},
-	grm.GreekLetterInRank: Warning{
+	grm.GreekLetterInRank: {
 		Quality: 2,
 		Message: "Deprecated Greek letter enumeration in rank",
 	},
-	grm.HTMLTagsEntitiesWarn: Warning{
+	grm.HTMLTagsEntitiesWarn: {
 		Quality: 3,
 		Message: "HTML tags or entities in the name",
 	},
-	grm.HybridCharNoSpaceWarn: Warning{
+	grm.HybridCharNoSpaceWarn: {
 		Quality: 3,
 		Message: "Hybrid char not separated by space",
 	},
-	grm.HybridFormulaWarn: Warning{
+	grm.HybridFormulaWarn: {
 		Quality: 2,
 		Message: "Hybrid formula",
 	},
-	grm.HybridFormulaIncompleteWarn: Warning{
+	grm.HybridFormulaIncompleteWarn: {
 		Quality: 3,
 		Message: "Incomplete hybrid formula",
 	},
-	grm.HybridFormulaProbIncompleteWarn: Warning{
+	grm.HybridFormulaProbIncompleteWarn: {
 		Quality: 2,
 		Message: "Probably incomplete hybrid formula",
 	},
-	grm.HybridNamedWarn: Warning{
+	grm.HybridNamedWarn: {
 		Quality: 2,
 		Message: "Named hybrid",
 	},
-	grm.NameApproxWarn: Warning{
+	grm.NameApproxWarn: {
 		Quality: 3,
 		Message: "Name is approximate",
 	},
-	grm.NameComparisonWarn: Warning{
+	grm.NameComparisonWarn: {
 		Quality: 3,
 		Message: "Name comparison",
 	},
-	grm.RankUncommonWarn: Warning{
+	grm.RankUncommonWarn: {
 		Quality: 3,
 		Message: "Uncommon rank",
 	},
-	grm.SpaceMultipleWarn: Warning{
+	grm.SpaceMultipleWarn: {
 		Quality: 2,
 		Message: "Multiple adjacent space characters",
 	},
-	grm.SpaceNonStandardWarn: Warning{
+	grm.SpaceNonStandardWarn: {
 		Quality: 3,
 		Message: "Non-standard space characters",
 	},
-	grm.SpeciesNumericWarn: Warning{
+	grm.SpanishAndAsSeparator: {
+		Quality: 2,
+		Message: "Spanish 'y' is used instead of '&'",
+	},
+	grm.SpeciesNumericWarn: {
 		Quality: 3,
 		Message: "Numeric prefix",
 	},
-	grm.SuperSpeciesWarn: Warning{
+	grm.SuperSpeciesWarn: {
 		Quality: 2,
 		Message: "Ambiguity: subgenus or superspecies found",
 	},
-	grm.UTF8ConvBadWarn: Warning{
+	grm.UTF8ConvBadWarn: {
 		Quality: 3,
 		Message: "Incorrect conversion to UTF-8",
 	},
-	grm.UninomialComboWarn: Warning{
+	grm.UninomialComboWarn: {
 		Quality: 2,
 		Message: "Combination of two uninomials",
 	},
-	grm.WhiteSpaceTrailWarn: Warning{
+	grm.WhiteSpaceTrailWarn: {
 		Quality: 2,
 		Message: "Trailing whitespace",
 	},
-	grm.YearCharWarn: Warning{
+	grm.YearCharWarn: {
 		Quality: 2,
 		Message: "Year with latin character",
 	},
-	grm.YearDotWarn: Warning{
+	grm.YearDotWarn: {
 		Quality: 2,
 		Message: "Year with period",
 	},
-	grm.YearOrigMisplacedWarn: Warning{
+	grm.YearOrigMisplacedWarn: {
 		Quality: 2,
 		Message: "Misplaced basionym year",
 	},
-	grm.YearPageWarn: Warning{
+	grm.YearPageWarn: {
 		Quality: 3,
 		Message: "Year with page info",
 	},
-	grm.YearParensWarn: Warning{
+	grm.YearParensWarn: {
 		Quality: 2,
 		Message: "Year with parentheses",
 	},
-	grm.YearQuestionWarn: Warning{
+	grm.YearQuestionWarn: {
 		Quality: 2,
 		Message: "Year with question mark",
 	},
-	grm.YearRangeWarn: Warning{
+	grm.YearRangeWarn: {
 		Quality: 3,
 		Message: "Years range",
 	},
-	grm.YearSqBraketsWarn: Warning{
+	grm.YearSqBraketsWarn: {
 		Quality: 3,
 		Message: "Year with square brakets",
 	},

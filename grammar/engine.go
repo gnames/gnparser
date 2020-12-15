@@ -106,6 +106,8 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 		p.AddWarn(GenusUpperCharAfterDash)
 	case ruleLowerGreek:
 		p.AddWarn(GreekLetterInRank)
+	case ruleAuthorSepSpanish:
+		p.AddWarn(SpanishAndAsSeparator)
 	}
 	if _, ok := nodeRules[t.pegRule]; ok {
 		node := &node32{token32: t}
