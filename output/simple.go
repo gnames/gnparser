@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"strings"
 
-	"gitlab.com/gogna/gnparser/grammar"
-	"gitlab.com/gogna/gnparser/stemmer"
+	"github.com/gnames/gnparser/grammar"
+	"github.com/gnames/gnparser/stemmer"
 )
 
 type simple struct {

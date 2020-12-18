@@ -30,11 +30,11 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/output"
+	"github.com/gnames/gnparser/rpc"
+	"github.com/gnames/gnparser/web"
 	"github.com/spf13/cobra"
-	"gitlab.com/gogna/gnparser"
-	"gitlab.com/gogna/gnparser/output"
-	"gitlab.com/gogna/gnparser/rpc"
-	"gitlab.com/gogna/gnparser/web"
 )
 
 // rootCmd represents the base command when called without any subcommands

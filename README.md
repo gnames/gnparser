@@ -24,7 +24,7 @@ download the [latest release][releases], uncompress it, and copy `gnparser`
 binary somewhere in your PATH.
 
 ```bash
-wget https://gitlab.com/gogna/gnparser/uploads/55d247b8fbade60116c7e3b650dd978c/gnparser-v0.9.0-linux.tar.gz
+wget https://github.com/gnames/gnparser/uploads/55d247b8fbade60116c7e3b650dd978c/gnparser-v0.9.0-linux.tar.gz
 tar xvf gnparser-v0.9.0-linux.tar.gz
 sudo cp gnparser /usr/local/bin
 # for CSV output
@@ -36,7 +36,7 @@ gnparser -f pretty "Homo sapiens Linnaeus"
 gnparser -h
 ```
 
-<!-- vim-markdown-toc GitLab -->
+<!-- vim-markdown-toc GFM -->
 
 * [Introduction](#introduction)
 * [Speed](#speed)
@@ -283,8 +283,8 @@ copy path_to\gnparser.exe C:\bin
 If you have Go installed on your computer use
 
 ```bash
-go get -u gitlab.com/gogna/gnparser
-cd $GOPATH/srs/gitlab.com/gogna/gnparser
+go get -u github.com/gnames/gnparser
+cd $GOPATH/srs/github.com/gnames/gnparser
 make install
 ```
 
@@ -479,7 +479,7 @@ package main
 import (
   "fmt"
 
-  "gitlab.com/gogna/gnparser"
+  "github.com/gnames/gnparser"
 )
 
 func main() {
@@ -573,24 +573,24 @@ Accessed 2019-04-10
 
 Released under [MIT license]
 
-[releases]: https://gitlab.com/gogna/gnparser/-/releases
+[releases]: https://github.com/gnames/gnparser/-/releases
 [biodiversity]: https://github.com/GlobalNamesArchitecture/biodiversity
 [gnparser-scala]: https://github.com/GlobalNamesArchitecture/gnparser
 [peg]: https://github.com/pointlander/peg
 [gna]: http://globalnames.org
-[test file]: https://gitlab.com/gogna/gnparser/raw/master/testdata/test_data.txt
+[test file]: https://github.com/gnames/gnparser/raw/master/testdata/test_data.txt
 [uuid5]: http://globalnames.org/news/2015/05/31/gn-uuid-0-5-0
 [winpath]: https://www.computerhope.com/issues/ch000549.htm
 [gnparser ruby]: https://gitlab.com/gnames/gnparser_rb
 [gRPC documentation]: https://grpc.io/docs/quickstart
-[Dmitry Mozzherin]: https://gitlab.com/dimus
-[Geoff Ower]: https://gitlab.com/gdower
-[Hernan Lucas Pereira]: https://gitlab.com/LocoDelAssembly
-[MIT license]: https://gitlab.com/gogna/gnparser/raw/master/LICENSE
+[Dmitry Mozzherin]: https://github.com/dimus
+[Geoff Ower]: https://github.com/gdower
+[Hernan Lucas Pereira]: https://github.com/LocoDelAssembly
+[MIT license]: https://github.com/gnames/gnparser/raw/master/LICENSE
 [parser-web]: https://parser.globalnames.org
 [IRMNG]: http://www.irmng.org
-[CONTRIBUTING]: https://gitlab.com/gogna/gnparser/blob/master/CONTRIBUTING.md
-[gnparser.proto]: https://gitlab.com/gogna/gnparser/blob/master/pb/gnparser.proto
+[CONTRIBUTING]: https://github.com/gnames/gnparser/blob/master/CONTRIBUTING.md
+[gnparser.proto]: https://github.com/gnames/gnparser/blob/master/pb/gnparser.proto
 [Schinke R et al (1996)]: https://caio.ueberalles.net/a_stemming_algorithm_for_latin_text_databases-schinke_et_al.pdf
 [ruby_ffi_go_usage]: https://stackoverflow.com/questions/58866962/how-to-pass-an-array-of-strings-and-get-an-array-of-strings-in-ruby-using-go-sha
-[export file]: https://gitlab.com/gogna/gnparser/blob/master/binding/main.go
+[export file]: https://github.com/gnames/gnparser/blob/master/binding/main.go

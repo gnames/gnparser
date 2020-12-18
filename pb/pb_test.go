@@ -6,13 +6,13 @@ import (
 	"io/ioutil"
 	"log"
 
+	. "github.com/gnames/gnparser/pb"
 	jsoniter "github.com/json-iterator/go"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
-	. "gitlab.com/gogna/gnparser/pb"
 
-	"gitlab.com/gogna/gnparser"
+	"github.com/gnames/gnparser"
 )
 
 type TestData struct {

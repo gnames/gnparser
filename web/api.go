@@ -8,8 +8,8 @@ import (
 
 	"github.com/gorilla/mux"
 
+	"github.com/gnames/gnparser"
 	jsoniter "github.com/json-iterator/go"
-	"gitlab.com/gogna/gnparser"
 )
 
 func apiEmptyRequest(w http.ResponseWriter, r *http.Request) {

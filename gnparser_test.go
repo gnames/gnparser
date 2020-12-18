@@ -7,12 +7,12 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/gnames/gnparser/output"
+	"github.com/gnames/gnparser/pb"
+	"github.com/gnames/gnparser/preprocess"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
-	"gitlab.com/gogna/gnparser/output"
-	"gitlab.com/gogna/gnparser/pb"
-	"gitlab.com/gogna/gnparser/preprocess"
 )
 
 var _ = Describe("grammar", func() {

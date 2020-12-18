@@ -3,7 +3,7 @@ package gnparser
 import (
 	"sync"
 
-	"gitlab.com/gogna/gnparser/pb"
+	"github.com/gnames/gnparser/pb"
 )
 
 // ParseResult structure contains parsing output and/or error generated

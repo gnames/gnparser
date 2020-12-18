@@ -4,8 +4,8 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
+	. "github.com/gnames/gnparser/preprocess"
 	. "github.com/onsi/ginkgo/extensions/table"
-	. "gitlab.com/gogna/gnparser/preprocess"
 )
 
 var _ = Describe("Cleanup", func() {

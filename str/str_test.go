@@ -5,7 +5,7 @@ import (
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
 
-	. "gitlab.com/gogna/gnparser/str"
+	. "github.com/gnames/gnparser/str"
 )
 
 var _ = Describe("string tools", func() {

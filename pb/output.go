@@ -1,8 +1,8 @@
 package pb
 
 import (
-	"gitlab.com/gogna/gnparser/output"
-	"gitlab.com/gogna/gnparser/stemmer"
+	"github.com/gnames/gnparser/output"
+	"github.com/gnames/gnparser/stemmer"
 )
 
 func ToPB(o *output.Output) *Parsed {

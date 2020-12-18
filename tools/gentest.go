@@ -11,8 +11,8 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"gitlab.com/gogna/gnparser"
-	"gitlab.com/gogna/gnparser/output"
+	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/output"
 )
 
 func genTestData() error {

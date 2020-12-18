@@ -1,8 +1,8 @@
 package pb
 
 import (
-	"gitlab.com/gogna/gnparser/grammar"
-	"gitlab.com/gogna/gnparser/output"
+	"github.com/gnames/gnparser/grammar"
+	"github.com/gnames/gnparser/output"
 )
 
 func details(po *Parsed, o *output.Output) {

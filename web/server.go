@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/gnames/gnparser/fs"
 	"github.com/gorilla/mux"
-	"gitlab.com/gogna/gnparser/fs"
 )
 
 // Run starts RESTful service on /api route for both GET and

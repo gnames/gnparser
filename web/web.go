@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/fs"
+	"github.com/gnames/gnparser/output"
 	"github.com/shurcooL/httpfs/html/vfstemplate"
-	"gitlab.com/gogna/gnparser"
-	"gitlab.com/gogna/gnparser/fs"
-	"gitlab.com/gogna/gnparser/output"
 )
 
 type Data struct {

@@ -2,11 +2,11 @@
 
 ## **Did you find a bug?**
 
-* **Ensure the bug was not already reported** by searching on GitLab under
-  [Issues](https://gitlab.com/gogna/gnparser/issues).
+* **Ensure the bug was not already reported** by searching on GitHub under
+  [Issues](https://github.com/gnames/gnparser/issues).
 
 * If you're unable to find an open issue addressing the problem, [open a new
-  one](https://gitlab.com/gogna/gnparser/issues/new). Be sure to include a
+  one](https://github.com/gnames/gnparser/issues/new). Be sure to include a
   **title and clear description**, as much relevant information as possible,
   and a **code sample** or an **executable test case** via
   [https:parser.globalnames.org](https://parser.globalnames.org) demonstrating
@@ -17,7 +17,7 @@
 
 * Suggest your change in the [GlobalNames gitter
   group](https://gitter.im/GlobalNamesArchitecture/GlobalNames), or [create an
-  issue](https://gitlab.com/gogna/gnparser/issues/new) that describes your
+  issue](https://github.com/gnames/gnparser/issues/new) that describes your
   suggestion in detail.
 * Make sure you **do not put more than one feature or change** in the new issue.
 
@@ -95,7 +95,7 @@ rm -f $PROTOC_ZIP
 
 #### Installation of ``protoc`` on Linux
 
-Use our [script for continuous integration](https://gitlab.com/gogna/gnparser/blob/master/scripts/protoc-install.sh)
+Use our [script for continuous integration](https://github.com/gnames/gnparser/blob/master/scripts/protoc-install.sh)
 as a guide.
 
 ### Install Go
@@ -113,10 +113,10 @@ necessary, however many tools still behave assuming old ways, so we recommend
 to setup ``gnparser`` code traditional way.
 
 ```bash
-mkdir -p $GOPATH/src/gitlab.com/gogna
-cd $GOPATH/src/gitlab.com/gogna
-git clone https://gitlab.com/gogna/gnparser.git
-# or use URL of your fork on gitlab or github
+mkdir -p $GOPATH/src/github.com/gnames
+cd $GOPATH/src/github.com/gnames
+git clone https://github.com/gnames/gnparser.git
+# or use URL of your fork on GitHub or GitLab
 
 cd gnparser
 # to download all dependencies

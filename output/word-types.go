@@ -1,6 +1,6 @@
 package output
 
-import grm "gitlab.com/gogna/gnparser/grammar"
+import grm "github.com/gnames/gnparser/grammar"
 
 var wordTypeMap = map[grm.WordType]string{
 	grm.UnknownType:          "word",

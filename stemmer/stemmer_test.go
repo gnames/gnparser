@@ -1,10 +1,10 @@
 package stemmer_test
 
 import (
+	. "github.com/gnames/gnparser/stemmer"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
-	. "gitlab.com/gogna/gnparser/stemmer"
 )
 
 var _ = Describe("Stemmer", func() {

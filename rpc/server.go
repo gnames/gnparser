@@ -6,10 +6,10 @@ import (
 	"net"
 	"sync"
 
-	"gitlab.com/gogna/gnparser"
-	"gitlab.com/gogna/gnparser/dict"
-	"gitlab.com/gogna/gnparser/output"
-	"gitlab.com/gogna/gnparser/pb"
+	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/dict"
+	"github.com/gnames/gnparser/output"
+	"github.com/gnames/gnparser/pb"
 	context "golang.org/x/net/context"
 	"google.golang.org/grpc"
 )

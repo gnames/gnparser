@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"runtime"
 
-	"gitlab.com/gogna/gnparser/pb"
-	"gitlab.com/gogna/gnparser/preprocess"
+	"github.com/gnames/gnparser/pb"
+	"github.com/gnames/gnparser/preprocess"
 
-	"gitlab.com/gogna/gnparser/grammar"
-	"gitlab.com/gogna/gnparser/output"
+	"github.com/gnames/gnparser/grammar"
+	"github.com/gnames/gnparser/output"
 )
 
 // GNparser is responsible for parsing operations.

@@ -1,10 +1,10 @@
 package output
 
 import (
+	grm "github.com/gnames/gnparser/grammar"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
-	grm "gitlab.com/gogna/gnparser/grammar"
 )
 
 var _ = Describe("Output", func() {

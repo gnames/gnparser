@@ -3,8 +3,8 @@ package output
 import (
 	"sort"
 
+	grm "github.com/gnames/gnparser/grammar"
 	jsoniter "github.com/json-iterator/go"
-	grm "gitlab.com/gogna/gnparser/grammar"
 )
 
 type Warning struct {

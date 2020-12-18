@@ -5,8 +5,8 @@ package main
 import (
 	"log"
 
+	"github.com/gnames/gnparser/fs"
 	"github.com/shurcool/vfsgen"
-	"gitlab.com/gogna/gnparser/fs"
 )
 
 func main() {

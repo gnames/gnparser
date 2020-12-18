@@ -3,7 +3,7 @@ package grammar
 import (
 	"io"
 
-	"gitlab.com/gogna/gnparser/dict"
+	"github.com/gnames/gnparser/dict"
 )
 
 type BaseEngine struct {

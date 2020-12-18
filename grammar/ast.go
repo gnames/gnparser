@@ -5,11 +5,11 @@ import (
 	"strings"
 	"unicode"
 
-	"gitlab.com/gogna/gnparser/preprocess"
+	"github.com/gnames/gnparser/preprocess"
 
+	"github.com/gnames/gnparser/dict"
+	"github.com/gnames/gnparser/str"
 	"github.com/gnames/uuid5"
-	"gitlab.com/gogna/gnparser/dict"
-	"gitlab.com/gogna/gnparser/str"
 )
 
 type ScientificNameNode struct {

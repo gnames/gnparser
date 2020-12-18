@@ -3,9 +3,9 @@ package output
 import (
 	"bytes"
 
+	grm "github.com/gnames/gnparser/grammar"
+	"github.com/gnames/gnparser/stemmer"
 	jsoniter "github.com/json-iterator/go"
-	grm "gitlab.com/gogna/gnparser/grammar"
-	"gitlab.com/gogna/gnparser/stemmer"
 )
 
 // Output is a result of parsing that can be returned in JSON or CSV  formats.

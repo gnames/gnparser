@@ -3,7 +3,7 @@ package grammar
 import (
 	"fmt"
 
-	"gitlab.com/gogna/gnparser/str"
+	"github.com/gnames/gnparser/str"
 )
 
 type UninomialOutput struct {

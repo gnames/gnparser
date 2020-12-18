@@ -4,7 +4,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	. "gitlab.com/gogna/gnparser/dict"
+	. "github.com/gnames/gnparser/dict"
 )
 
 var _ = Describe("Dict", func() {

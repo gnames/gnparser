@@ -13,7 +13,7 @@ import (
 	"sync"
 	"unsafe"
 
-	"gitlab.com/gogna/gnparser"
+	"github.com/gnames/gnparser"
 )
 
 // ParseToString function takes a name-string, desired format, and parses

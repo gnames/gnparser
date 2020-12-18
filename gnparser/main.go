@@ -20,7 +20,7 @@
 
 package main
 
-import "gitlab.com/gogna/gnparser/gnparser/cmd"
+import "github.com/gnames/gnparser/gnparser/cmd"
 
 func main() {
 	cmd.Execute()
