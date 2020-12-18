@@ -1,5 +1,15 @@
 # Global Names Parser: gnparser written in Go
 
+## IMPORTANT
+
+This repo is **archived** now, because `gnparser` development moved to 
+[GitHub](https://github.com/gnames/gnparser) to keep it closer to
+the rest of [Global Names Projects](https://github.com/gnames). 
+Please get latest versions and leave issues at its new 
+[home](https://github.com/gnames/gnparser)
+
+## Summary
+
 Try `gnparser` [online][parser-web].
 
 ``gnparser`` splits scientific names into their semantic elements with an
