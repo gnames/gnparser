@@ -7,9 +7,9 @@ import (
 
 	"github.com/gnames/gnparser/preprocess"
 
+	"github.com/gnames/gnlib/gnuuid"
 	"github.com/gnames/gnparser/dict"
 	"github.com/gnames/gnparser/str"
-	"github.com/gnames/uuid5"
 )
 
 type ScientificNameNode struct {
@@ -72,7 +72,7 @@ func (p *Engine) NewNotParsedScientificNameNode(pp *preprocess.Preprocessor) {
 
 func (sn *ScientificNameNode) AddVerbatim(s string) {
 	sn.Verbatim = s
-	sn.VerbatimID = uuid5.UUID5(s).String()
+	sn.VerbatimID = gnuuid.New(s).String()
 }
 
 func (p *Engine) tailValue(n *node32) string {
