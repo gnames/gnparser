@@ -24,18 +24,55 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"os"
-	"runtime"
-	"strings"
+	"path/filepath"
 	"sync"
 
+	"github.com/gnames/gnlib/sys"
 	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/config"
 	"github.com/gnames/gnparser/output"
-	"github.com/gnames/gnparser/rpc"
-	"github.com/gnames/gnparser/web"
+	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
+
+const configText = `# Format sets the output format for CLI and Web
+interfaces. There are 3 possible settings: 'csv', 'compact', 'pretty'.
+# Format csv
+
+# JobsNum sets the level of parallelism used during parsing of a stream
+# of name-strings.
+# JobsNum 4
+
+# KeepHTMLTags can be set to true if it is desirable to not try to remove from
+# a few HTML tags often present in names-strings that were planned to be
+# presented via an HTML page.  
+# KeepHTMLTags false
+
+# WithDetails can be set to true when a simplified output is not sufficient
+# for obtaining a required information.
+# WithDetails false
+
+# Port is a port for the gnames service
+# Port: 8080
+`
+
+var (
+	opts []config.Option
+)
+
+// config purpose is to achieve automatic import of data from the
+// configuration file, if it exists.
+type cfgData struct {
+	Format       string
+	JobsNum      int
+	KeepHTMLTags bool
+	WithDetails  bool
+	Port         int
+}
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -45,7 +82,7 @@ var rootCmd = &cobra.Command{
 Parses scientific names into their semantic elements.
 
 To see version:
-gnparser -v
+gnparser -V
 
 To parse one name in CSV format
 gnparser "Homo sapiens Linnaeus 1753" [flags]
@@ -63,51 +100,37 @@ gnparser names.txt [flags] > parsed_names.txt
 To leave HTML tags and entities intact when parsing (faster)
 gnparser names.txt -n > parsed_names.txt
 
-To start gRPC parsing service on port 3355 with a limit
-of 10 concurrent jobs per request:
-gnparser -j 10 -g 3355
-
 To start web service on port 8080 with 5 concurrent jobs:
-gnparser -j 5 -g 8080
+gnparser -j 5 -p 8080
  `,
 
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
-		versionFlag(cmd)
-		wn := workersNumFlag(cmd)
-
-		nocleanup := skipCleanupFlag(cmd)
-
-		grpcPort := grpcFlag(cmd)
-		if grpcPort != 0 {
-			fmt.Println("Running gnparser as gRPC service:")
-			fmt.Printf("port: %d\n", grpcPort)
-			fmt.Printf("Max jobs per request: %d\n\n", wn)
-			rpc.Run(grpcPort, wn)
+		if versionFlag(cmd) {
 			os.Exit(0)
 		}
 
-		webPort := webFlag(cmd)
-		if webPort != 0 {
+		formatFlag(cmd)
+		jobsNumFlag(cmd)
+		keepHTMLTagsFlag(cmd)
+		withDetailsFlag(cmd)
+		port := portFlag(cmd)
+		cfg := config.NewConfig(opts...)
+		log.Printf("Conf: %+v\n", cfg)
+
+		if port != 0 {
 			fmt.Println("Running gnparser as a website and REST server:")
-			fmt.Printf("port: %d\n", webPort)
-			fmt.Printf("jobs: %d\n\n", wn)
-			web.Run(webPort, wn)
+			fmt.Printf("port: %d\n", port)
+			fmt.Printf("jobs: %d\n\n", cfg.JobsNum)
+			// web.Run(port, jn)
 			os.Exit(0)
 		}
-		f := formatFlag(cmd)
-		opts := []gnparser.Option{
-			gnparser.OptWorkersNum(wn),
-			gnparser.OptFormat(f),
-			gnparser.OptRemoveHTML(!nocleanup),
-		}
-		if len(args) == 0 {
-			processStdin(cmd, wn, opts)
-			os.Exit(0)
-		}
-		data := getInput(cmd, args)
-		parse(data, wn, opts)
+
+		// if len(args) == 0 {
+		// 	processStdin(cmd, jn, opts)
+		// 	os.Exit(0)
+		// }
+		// data := getInput(cmd, args)
+		// parse(data, jn, opts)
 	},
 }
 
@@ -122,83 +145,173 @@ func Execute() {
 }
 
 func init() {
-	gnp := gnparser.NewGNparser()
-	rootCmd.PersistentFlags().BoolP("version", "v", false, "shows build version and date, ignores other flags.")
+	rootCmd.PersistentFlags().BoolP("version", "V", false,
+		"shows build version and date, ignores other flags.")
 
-	df := gnp.OutputFormat()
-	formats := strings.Join(gnparser.AvailableFormats(), ", ")
-	formatHelp := fmt.Sprintf("sets output format. Can be one of:\n %s.", formats)
-	rootCmd.Flags().StringP("format", "f", df, formatHelp)
+	formatHelp := "sets output format. Can be one of:\n  " +
+		"'csv', 'compact', 'pretty'"
+	rootCmd.Flags().StringP("format", "f", "", formatHelp)
 
-	rootCmd.Flags().IntP("jobs", "j", runtime.NumCPU(),
+	rootCmd.Flags().IntP("jobs", "j", 0,
 		"nubmer of threads to run. CPU's threads number is the default.")
 
-	rootCmd.Flags().BoolP("nocleanup", "n", false, "keep HTML entities and tags when parsing.")
+	rootCmd.Flags().BoolP("keep_tags", "k", false,
+		"keeps HTML entities and tags when parsing.")
 
-	rootCmd.Flags().IntP("grpc_port", "g", 0, "starts gRPC server on the port.")
+	rootCmd.Flags().BoolP("details", "d", false, "provides more details")
 
-	rootCmd.Flags().IntP("web_port", "w", 0,
+	rootCmd.Flags().IntP("port", "p", 0,
 		"starts web site and REST server on the port.")
 }
 
-func versionFlag(cmd *cobra.Command) {
+// initConfig reads in config file and ENV variables if set.
+func initConfig() {
+	configFile := "gnparser"
+	home, err := homedir.Dir()
+	if err != nil {
+		log.Fatalf("Cannot find home directory: %s.", err)
+	}
+	home = filepath.Join(home, ".config")
+
+	// Search config in home directory with name ".gnames" (without extension).
+	viper.AddConfigPath(home)
+	viper.SetConfigName(configFile)
+
+	// Set environment variables to override
+	// config file settings
+	viper.BindEnv("Format", "GNPARSER_FORMAT")
+	viper.BindEnv("JobsNum", "GNPARSER_JOBS_NUM")
+	viper.BindEnv("KeepHTMLTags", "GNPARSER_KEEP_HTML_TAGS")
+	viper.BindEnv("WithDetails", "GNPARSER_WITH_DETAILS")
+	viper.BindEnv("Port", "GNPARSER_PORT")
+
+	viper.AutomaticEnv() // read in environment variables that match
+
+	configPath := filepath.Join(home, fmt.Sprintf("%s.yaml", configFile))
+	touchConfigFile(configPath, configFile)
+
+	// If a config file is found, read it in.
+	if err := viper.ReadInConfig(); err == nil {
+		log.Printf("Using config file: %s.", viper.ConfigFileUsed())
+	}
+	getOpts()
+}
+
+func getOpts() []config.Option {
+	cfg := &cfgData{}
+	err := viper.Unmarshal(cfg)
+	if err != nil {
+		log.Fatalf("Cannot deserialize config data: %s.", err)
+	}
+	if cfg.Format != "" {
+		opts = append(opts, config.OptFormat(cfg.Format))
+	}
+	if cfg.JobsNum != 0 {
+		opts = append(opts, config.OptJobsNum(cfg.JobsNum))
+	}
+	if cfg.KeepHTMLTags != false {
+		opts = append(opts, config.OptKeepHTMLTags(cfg.KeepHTMLTags))
+	}
+	if cfg.WithDetails != false {
+		opts = append(opts, config.OptWithDetails(cfg.WithDetails))
+	}
+	if cfg.Port != 0 {
+		opts = append(opts, config.OptPort(cfg.Port))
+	}
+
+	return opts
+}
+
+// touchConfigFile checks if config file exists, and if not, it gets created.
+func touchConfigFile(configPath string, configFile string) {
+	if sys.FileExists(configPath) {
+		return
+	}
+
+	log.Printf("Creating config file: %s.", configPath)
+	createConfig(configPath, configFile)
+}
+
+// createConfig creates config file.
+func createConfig(path string, file string) {
+	err := sys.MakeDir(filepath.Dir(path))
+	if err != nil {
+		log.Fatalf("Cannot create dir %s: %s.", path, err)
+	}
+
+	err = ioutil.WriteFile(path, []byte(configText), 0644)
+	if err != nil {
+		log.Fatalf("Cannot write to file %s: %s.", path, err)
+	}
+}
+func versionFlag(cmd *cobra.Command) bool {
 	version, err := cmd.Flags().GetBool("version")
 	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
 	if version {
 		gnp := gnparser.NewGNparser()
 		fmt.Printf("\nversion: %s\n\nbuild:   %s\n\n",
 			gnp.Version(), gnp.Build())
-		os.Exit(0)
+		return true
 	}
+	return false
 }
 
-func skipCleanupFlag(cmd *cobra.Command) bool {
-	nocleanup, err := cmd.Flags().GetBool("nocleanup")
+func formatFlag(cmd *cobra.Command) {
+	f, err := cmd.Flags().GetString("format")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	return nocleanup
+	if f != "" {
+		opts = append(opts, config.OptFormat(f))
+	}
 }
 
-func grpcFlag(cmd *cobra.Command) int {
-	grpcPort, err := cmd.Flags().GetInt("grpc_port")
+func jobsNumFlag(cmd *cobra.Command) {
+	jn, err := cmd.Flags().GetInt("jobs")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	return grpcPort
+	if jn > 0 {
+		opts = append(opts, config.OptJobsNum(jn))
+	}
 }
 
-func webFlag(cmd *cobra.Command) int {
-	webPort, err := cmd.Flags().GetInt("web_port")
+func keepHTMLTagsFlag(cmd *cobra.Command) {
+	keepTags, err := cmd.Flags().GetBool("keep_tags")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
+	}
+	if keepTags {
+		opts = append(opts, config.OptKeepHTMLTags(true))
+	}
+}
+
+func withDetailsFlag(cmd *cobra.Command) {
+	withDet, err := cmd.Flags().GetBool("details")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	if withDet {
+		opts = append(opts, config.OptWithDetails(true))
+	}
+}
+
+func portFlag(cmd *cobra.Command) int {
+	webPort, err := cmd.Flags().GetInt("port")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	if webPort > 0 {
+		opts = append(opts, config.OptPort(webPort))
 	}
 	return webPort
-}
-
-func formatFlag(cmd *cobra.Command) string {
-	str, err := cmd.Flags().GetString("format")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-
-	return str
-}
-
-func workersNumFlag(cmd *cobra.Command) int {
-	i, err := cmd.Flags().GetInt("jobs")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-	return i
 }
 
 func processStdin(cmd *cobra.Command, jobs int, opts []gnparser.Option) {

@@ -13,10 +13,10 @@ func TestString(t *testing.T) {
 		annot out.Annotation
 		res   string
 	}{
-		{out.None, ""},
-		{out.Comparison, "Comparison"},
-		{out.ApproxSurrogate, "Approx. surrogate"},
-		{out.Surrogate, "Surrogate"},
+		{out.NoAnnot, ""},
+		{out.ComparisonAnnot, "Comparison"},
+		{out.ApproxSurrogateAnnot, "Approx. surrogate"},
+		{out.SurrogateAnnot, "Surrogate"},
 	}
 
 	for i := range data {
@@ -34,9 +34,9 @@ func TestJSON(t *testing.T) {
 		dob dataOb
 		res string
 	}{
-		{dataOb{"None", out.None, []int{}},
+		{dataOb{"None", out.NoAnnot, []int{}},
 			`{"f1":"None","f2":[]}`},
-		{dataOb{"Comparison", out.Comparison, []int{2, 3, 4}},
+		{dataOb{"Comparison", out.ComparisonAnnot, []int{2, 3, 4}},
 			`{"f1":"Comparison","annot":"Comparison","f2":[2,3,4]}`},
 	}
 	enc := encode.GNjson{}
