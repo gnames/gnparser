@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"log"
 
-	"github.com/gnames/gnparser/fs"
+	"github.com/gnames/gnparser/io/fs"
 )
 
 // Dict contains loaded dictionaries
