@@ -24,13 +24,7 @@ test: deps install
 test-build: deps build
 
 deps:
-	$(FLAG_MODULE) $(GOGET) github.com/pointlander/peg@21bead84a59; \
-	$(FLAG_MODULE) $(GOGET) github.com/shurcooL/vfsgen@6a9ea43; \
-	$(FLAG_MODULE) $(GOGET) github.com/spf13/cobra/cobra@v0.0.6; \
-	$(FLAG_MODULE) $(GOGET) github.com/onsi/ginkgo/ginkgo@v1.12.0; \
-	$(FLAG_MODULE) $(GOGET) github.com/onsi/gomega@v1.9.0; \
-  $(FLAG_MODULE) $(GOGET) github.com/golang/protobuf/protoc-gen-go@347cf4a; \
-  $(FLAG_MODULE) $(GOGET) golang.org/x/tools/cmd/goimports
+	$(GOCMD) mod download;
 
 peg:
 	cd grammar; \
@@ -38,12 +32,12 @@ peg:
 	goimports -w grammar.peg.go; \
 
 ragel:
-	cd preprocess; \
+	cd entity/preprocess; \
 	ragel -Z -G2 virus.rl; \
 	ragel -Z -G2 noparse.rl
 
 asset:
-	cd fs; \
+	cd io/fs; \
 	$(FLAGS_SHARED) go run -tags=dev assets_gen.go
 
 build: peg asset

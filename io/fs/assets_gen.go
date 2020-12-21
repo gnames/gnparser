@@ -5,7 +5,7 @@ package main
 import (
 	"log"
 
-	"github.com/gnames/gnparser/fs"
+	"github.com/gnames/gnparser/io/fs"
 	"github.com/shurcool/vfsgen"
 )
 
