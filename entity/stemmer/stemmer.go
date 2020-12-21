@@ -107,9 +107,13 @@ var nounSuffixes = []string{
 	"a", "e", "i", "o", "u",
 }
 
+// StemmedWord is the output of stemming algorithm applied to a word.
 type StemmedWord struct {
-	Orig   string
-	Stem   string
+	// Orig is the original word (input).
+	Orig string
+	// Stem is the stemmed version of the original word.
+	Stem string
+	// Suffix is the 'tail' left after stemming.
 	Suffix string
 }
 
@@ -118,7 +122,7 @@ type StemmedWord struct {
 // It assumes the following properties of a string:
 //
 // 1. There are no empty spaces over any side of a string.
-// 2. All spaces withing the string are single.
+// 2. All spaces within the string are single.
 // 3. All characters in the string are ASCII with exception of the
 //    hybrid sign.
 // 4. The string always starts with a capitalized word.
