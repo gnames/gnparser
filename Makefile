@@ -27,7 +27,7 @@ deps:
 	$(GOCMD) mod download;
 
 peg:
-	cd grammar; \
+	cd entity/parser; \
 	peg grammar.peg; \
 	goimports -w grammar.peg.go; \
 

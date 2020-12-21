@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestString(t *testing.T) {
+func TestStringAnnot(t *testing.T) {
 	data := []struct {
 		annot out.Annotation
 		res   string
@@ -24,10 +24,10 @@ func TestString(t *testing.T) {
 	}
 }
 
-func TestJSON(t *testing.T) {
+func TestJSONAnnot(t *testing.T) {
 	type dataOb struct {
 		Field1 string         `json:"f1"`
-		Annot  out.Annotation `json:"annot,omitempty"`
+		Annot  out.Annotation `json:"annot"`
 		Field2 []int          `json:"f2"`
 	}
 	data := []struct {
@@ -35,7 +35,7 @@ func TestJSON(t *testing.T) {
 		res string
 	}{
 		{dataOb{"None", out.NoAnnot, []int{}},
-			`{"f1":"None","f2":[]}`},
+			`{"f1":"None","annot":"","f2":[]}`},
 		{dataOb{"Comparison", out.ComparisonAnnot, []int{2, 3, 4}},
 			`{"f1":"Comparison","annot":"Comparison","f2":[2,3,4]}`},
 	}

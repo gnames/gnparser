@@ -1,9 +1,11 @@
-package grammar
+package parser
 
 import (
 	"fmt"
 
-	"github.com/gnames/gnparser/str"
+	o "github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/stemmer"
+	"github.com/gnames/gnparser/entity/str"
 )
 
 type UninomialOutput struct {
@@ -42,94 +44,80 @@ type subGenusOutput struct {
 	Value string `json:"value"`
 }
 type specEpithetOutput struct {
-	Value      string            `json:"value"`
-	Authorship *AuthorshipOutput `json:"authorship,omitempty"`
+	Value      string        `json:"value"`
+	Authorship *o.Authorship `json:"authorship,omitempty"`
 }
 
 type InfraSpEpithetOutput struct {
-	Value      string            `json:"value"`
-	Rank       string            `json:"rank,omitempty"`
-	Authorship *AuthorshipOutput `json:"authorship,omitempty"`
+	Value      string        `json:"value"`
+	Rank       string        `json:"rank,omitempty"`
+	Authorship *o.Authorship `json:"authorship,omitempty"`
 }
 
 type uniDetails struct {
-	Value      string            `json:"value"`
-	Rank       string            `json:"rank,omitempty"`
-	Parent     string            `json:"parent,omitempty"`
-	Authorship *AuthorshipOutput `json:"authorship,omitempty"`
+	Value      string        `json:"value"`
+	Rank       string        `json:"rank,omitempty"`
+	Parent     string        `json:"parent,omitempty"`
+	Authorship *o.Authorship `json:"authorship,omitempty"`
 }
 
-type AuthorshipOutput struct {
-	Value       string           `json:"value"`
-	Original    *AuthGroupOutput `json:"basionymAuthorship,omitempty"`
-	Combination *AuthGroupOutput `json:"combinationAuthorship,omitempty"`
-}
-
-type AuthGroupOutput struct {
-	Authors      []string       `json:"authors"`
-	Year         *yearOutput    `json:"year,omitempty"`
-	ExAuthors    *AuthorsOutput `json:"exAuthors,omitempty"`
-	EmendAuthors *AuthorsOutput `json:"emendAuthors,omitempty"`
-}
-
-type AuthorsOutput struct {
-	Authors []string    `json:"authors"`
-	Year    *yearOutput `json:"year,omitempty"`
-}
-
-type yearOutput struct {
-	Value       string `json:"value,omitempty"`
-	Approximate bool   `json:"approximate,omitempty"`
-}
-
-type Canonical struct {
+type canonical struct {
 	Value       string
 	ValueRanked string
 }
 
-func appendCanonical(c1 *Canonical, c2 *Canonical, sep string) *Canonical {
-	return &Canonical{
+func appendCanonical(c1 *canonical, c2 *canonical, sep string) *canonical {
+	return &canonical{
 		Value:       str.JoinStrings(c1.Value, c2.Value, sep),
 		ValueRanked: str.JoinStrings(c1.ValueRanked, c2.ValueRanked, sep),
 	}
 }
 
 func (sn *ScientificNameNode) Pos() []Pos {
-	return sn.Name.pos()
+	return sn.nameData.pos()
 }
 
 func (sn *ScientificNameNode) Value() string {
-	if sn.Name == nil {
+	if sn.nameData == nil {
 		return ""
 	}
-	return sn.Name.value()
+	return sn.nameData.value()
 }
 
-func (sn *ScientificNameNode) Canonical() *Canonical {
-	if sn.Name == nil {
-		var c *Canonical
-		return c
+func (sn *ScientificNameNode) Canonical() *o.Canonical {
+	var res *o.Canonical
+	if sn.nameData == nil {
+		return res
 	}
-	return sn.Name.canonical()
+	c := sn.nameData.canonical()
+	return &o.Canonical{
+		Stemmed: stemmer.StemCanonical(c.Value),
+		Simple:  c.Value,
+		Full:    c.ValueRanked,
+	}
 }
 
 func (sn *ScientificNameNode) Details() []interface{} {
-	if sn.Name == nil {
+	if sn.nameData == nil {
 		return []interface{}{}
 	}
-	return sn.Name.details()
+	return sn.nameData.details()
 }
 
-func (sn *ScientificNameNode) LastAuthorship() *AuthorshipOutput {
-	var ao *AuthorshipOutput
-	if sn.Name == nil {
+func (sn *ScientificNameNode) LastAuthorship(withDetails bool) *o.Authorship {
+	var ao *o.Authorship
+	if sn.nameData == nil {
 		return ao
 	}
-	an := sn.Name.lastAuthorship()
+	an := sn.nameData.lastAuthorship()
 	if an == nil {
 		return ao
 	}
-	return an.details()
+	res := an.details()
+	if withDetails {
+		res = &o.Authorship{Normalized: res.Normalized}
+	}
+	return res
 }
 
 func (nf *hybridFormulaNode) pos() []Pos {
@@ -154,10 +142,10 @@ func (nf *hybridFormulaNode) value() string {
 	return val
 }
 
-func (nf *hybridFormulaNode) canonical() *Canonical {
+func (nf *hybridFormulaNode) canonical() *canonical {
 	c := nf.FirstSpecies.canonical()
 	for _, v := range nf.HybridElements {
-		hc := &Canonical{
+		hc := &canonical{
 			Value:       v.HybridChar.NormValue,
 			ValueRanked: v.HybridChar.NormValue,
 		}
@@ -187,34 +175,34 @@ func (nf *hybridFormulaNode) details() []interface{} {
 
 func (nh *namedGenusHybridNode) pos() []Pos {
 	pos := []Pos{nh.Hybrid.Pos}
-	pos = append(pos, nh.Name.pos()...)
+	pos = append(pos, nh.nameData.pos()...)
 	return pos
 }
 
 func (nh *namedGenusHybridNode) value() string {
-	v := nh.Name.value()
+	v := nh.nameData.value()
 	v = "× " + v
 	return v
 }
 
-func (nh *namedGenusHybridNode) canonical() *Canonical {
-	c := &Canonical{
+func (nh *namedGenusHybridNode) canonical() *canonical {
+	c := &canonical{
 		Value:       "",
 		ValueRanked: "×",
 	}
 
-	c1 := nh.Name.canonical()
+	c1 := nh.nameData.canonical()
 	c = appendCanonical(c, c1, " ")
 	return c
 }
 
 func (nh *namedGenusHybridNode) details() []interface{} {
-	d := nh.Name.details()
+	d := nh.nameData.details()
 	return d
 }
 
 func (nh *namedGenusHybridNode) lastAuthorship() *authorshipNode {
-	au := nh.Name.lastAuthorship()
+	au := nh.nameData.lastAuthorship()
 	return au
 }
 
@@ -241,10 +229,10 @@ func (nh *namedSpeciesHybridNode) value() string {
 	return res
 }
 
-func (nh *namedSpeciesHybridNode) canonical() *Canonical {
+func (nh *namedSpeciesHybridNode) canonical() *canonical {
 	g := nh.Genus.NormValue
-	c := &Canonical{Value: g, ValueRanked: g}
-	hCan := &Canonical{Value: "", ValueRanked: "×"}
+	c := &canonical{Value: g, ValueRanked: g}
+	hCan := &canonical{Value: "", ValueRanked: "×"}
 	c = appendCanonical(c, hCan, " ")
 	cSp := nh.SpEpithet.canonical()
 	c = appendCanonical(c, cSp, " ")
@@ -308,12 +296,12 @@ func (apr *approxNode) value() string {
 	return val
 }
 
-func (apr *approxNode) canonical() *Canonical {
-	var c *Canonical
+func (apr *approxNode) canonical() *canonical {
+	var c *canonical
 	if apr == nil {
 		return c
 	}
-	c = &Canonical{Value: apr.Genus.NormValue, ValueRanked: apr.Genus.NormValue}
+	c = &canonical{Value: apr.Genus.NormValue, ValueRanked: apr.Genus.NormValue}
 	if apr.SpEpithet != nil {
 		spCan := apr.SpEpithet.canonical()
 		c = appendCanonical(c, spCan, " ")
@@ -377,12 +365,12 @@ func (comp *comparisonNode) value() string {
 	return val
 }
 
-func (comp *comparisonNode) canonical() *Canonical {
+func (comp *comparisonNode) canonical() *canonical {
 	if comp == nil {
-		return &Canonical{}
+		return &canonical{}
 	}
 	gen := comp.Genus.NormValue
-	c := &Canonical{Value: gen, ValueRanked: gen}
+	c := &canonical{Value: gen, ValueRanked: gen}
 	if comp.SpEpithet != nil {
 		sCan := comp.SpEpithet.canonical()
 		c = appendCanonical(c, sCan, " ")
@@ -444,9 +432,9 @@ func (sp *speciesNode) value() string {
 	return res
 }
 
-func (sp *speciesNode) canonical() *Canonical {
+func (sp *speciesNode) canonical() *canonical {
 	spPart := str.JoinStrings(sp.Genus.NormValue, sp.SpEpithet.Word.NormValue, " ")
-	c := &Canonical{Value: spPart, ValueRanked: spPart}
+	c := &canonical{Value: spPart, ValueRanked: spPart}
 	for _, v := range sp.InfraSpecies {
 		c1 := v.canonical()
 		c = appendCanonical(c, c1, " ")
@@ -503,8 +491,8 @@ func (sep *spEpithetNode) value() string {
 	return val
 }
 
-func (sep *spEpithetNode) canonical() *Canonical {
-	c := &Canonical{Value: sep.Word.NormValue, ValueRanked: sep.Word.NormValue}
+func (sep *spEpithetNode) canonical() *canonical {
+	c := &canonical{Value: sep.Word.NormValue, ValueRanked: sep.Word.NormValue}
 	return c
 }
 
@@ -543,14 +531,14 @@ func (inf *infraspEpithetNode) value() string {
 	return res
 }
 
-func (inf *infraspEpithetNode) canonical() *Canonical {
+func (inf *infraspEpithetNode) canonical() *canonical {
 	val := inf.Word.NormValue
 	rank := ""
 	if inf.Rank != nil {
 		rank = inf.Rank.Word.NormValue
 	}
 	rankedVal := str.JoinStrings(rank, val, " ")
-	c := Canonical{
+	c := canonical{
 		Value:       val,
 		ValueRanked: rankedVal,
 	}
@@ -584,8 +572,8 @@ func (u *uninomialNode) value() string {
 	return str.JoinStrings(u.Word.NormValue, u.Authorship.value(), " ")
 }
 
-func (u *uninomialNode) canonical() *Canonical {
-	c := Canonical{Value: u.Word.NormValue, ValueRanked: u.Word.NormValue}
+func (u *uninomialNode) canonical() *canonical {
+	c := canonical{Value: u.Word.NormValue, ValueRanked: u.Word.NormValue}
 	return &c
 }
 
@@ -620,11 +608,11 @@ func (u *uninomialComboNode) value() string {
 	return str.JoinStrings(vl, tail, " ")
 }
 
-func (u *uninomialComboNode) canonical() *Canonical {
+func (u *uninomialComboNode) canonical() *canonical {
 	ranked := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.NormValue, " ")
 	ranked = str.JoinStrings(ranked, u.Uninomial2.Word.NormValue, " ")
 
-	c := Canonical{
+	c := canonical{
 		Value:       u.Uninomial2.Word.NormValue,
 		ValueRanked: ranked,
 	}
@@ -648,12 +636,12 @@ func (u *uninomialComboNode) details() []interface{} {
 	return []interface{}{&uo}
 }
 
-func (au *authorshipNode) details() *AuthorshipOutput {
+func (au *authorshipNode) details() *o.Authorship {
 	if au == nil {
-		var ao *AuthorshipOutput
+		var ao *o.Authorship
 		return ao
 	}
-	ao := AuthorshipOutput{Value: au.value()}
+	ao := o.Authorship{Normalized: au.value()}
 	ao.Original = authGroupDetail(au.OriginalAuthors)
 
 	if au.CombinationAuthors != nil {
@@ -662,13 +650,13 @@ func (au *authorshipNode) details() *AuthorshipOutput {
 	return &ao
 }
 
-func authGroupDetail(ag *authorsGroupNode) *AuthGroupOutput {
-	var ago AuthGroupOutput
+func authGroupDetail(ag *authorsGroupNode) *o.AuthGroup {
+	var ago o.AuthGroup
 	if ag == nil {
 		return &ago
 	}
 	aus, yr := ag.Team1.details()
-	ago = AuthGroupOutput{
+	ago = o.AuthGroup{
 		Authors: aus,
 		Year:    yr,
 	}
@@ -676,15 +664,15 @@ func authGroupDetail(ag *authorsGroupNode) *AuthGroupOutput {
 		return &ago
 	}
 	aus, yr = ag.Team2.details()
-	switch ag.Team2Type.Pos.Type {
-	case AuthorWordExType:
-		eao := AuthorsOutput{
+	switch ag.Team2Type {
+	case teamEx:
+		eao := o.Authors{
 			Authors: aus,
 			Year:    yr,
 		}
 		ago.ExAuthors = &eao
-	case AuthorWordEmendType:
-		eao := AuthorsOutput{
+	case teamEmend:
+		eao := o.Authors{
 			Authors: aus,
 			Year:    yr,
 		}
@@ -727,7 +715,7 @@ func (ag *authorsGroupNode) value() string {
 	if ag.Team2 == nil {
 		return v
 	}
-	v = fmt.Sprintf("%s %s %s", v, ag.Team2Type.NormValue, ag.Team2.value())
+	v = fmt.Sprintf("%s %s %s", v, ag.Team2Word.NormValue, ag.Team2.value())
 	return v
 }
 
@@ -766,8 +754,8 @@ func (aut *authorsTeamNode) value() string {
 	return value
 }
 
-func (at *authorsTeamNode) details() ([]string, *yearOutput) {
-	var yr *yearOutput
+func (at *authorsTeamNode) details() ([]string, *o.Year) {
+	var yr *o.Year
 	var aus []string
 	if at == nil {
 		return aus, yr
@@ -779,9 +767,9 @@ func (at *authorsTeamNode) details() ([]string, *yearOutput) {
 	if at.Year == nil {
 		return aus, yr
 	}
-	yr = &yearOutput{
-		Value:       at.Year.Word.NormValue,
-		Approximate: at.Year.Approximate,
+	yr = &o.Year{
+		Value:         at.Year.Word.NormValue,
+		IsApproximate: at.Year.Approximate,
 	}
 	return aus, yr
 }

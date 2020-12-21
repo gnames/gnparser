@@ -2,27 +2,26 @@ package output
 
 import (
 	tb "github.com/gnames/gnlib/tribool"
-	"github.com/gnames/gnparser/entity/quality"
 )
 
 type Parsed struct {
-	Parsed          bool              `json:"parsed"`
-	OweralQuality   int               `json:"parseQuality"`
-	QualityWarnings []quality.Warning `json:"qualityWarnings,omitempty"`
-	Verbatim        string            `json:"verbatim"`
-	Normalized      *string           `json:"normalized,omitempty"`
-	Canonical       *Canonical        `json:"canonical,omitempty"`
-	Cardinality     int               `json:"cardinality"`
-	Authorship      *Authorship       `json:"authorship,omitempty"`
-	Positions       []Position        `json:"pos,omitempty"`
-	Hybrid          bool              `json:"isHybrid,omitempty"`
-	Bacteria        tb.Tribool        `json:"isBacteria,omitempty"`
-	Virus           bool              `json:"isVirus,omitempty"`
-	Annotation      Annotation        `json:"annotation,omitempty"`
-	Tail            string            `json:"tail,omitempty"`
-	Details         Details           `json:"details,omitempty"`
-	NameStringID    string            `json:"tail,omitempty"`
-	ParserVersion   string            `json:"parserVersion"`
+	Parsed          bool             `json:"parsed"`
+	OverallQuality  int              `json:"parseQuality"`
+	QualityWarnings []QualityWarning `json:"qualityWarnings,omitempty"`
+	Verbatim        string           `json:"verbatim"`
+	Normalized      *string          `json:"normalized,omitempty"`
+	Canonical       *Canonical       `json:"canonical,omitempty"`
+	Cardinality     int              `json:"cardinality"`
+	Authorship      *Authorship      `json:"authorship,omitempty"`
+	Positions       []Position       `json:"pos,omitempty"`
+	Hybrid          bool             `json:"isHybrid,omitempty"`
+	Bacteria        tb.Tribool       `json:"isBacteria,omitempty"`
+	Virus           bool             `json:"isVirus,omitempty"`
+	Annotation      Annotation       `json:"annotation,omitempty"`
+	Tail            string           `json:"tail,omitempty"`
+	Details         Details          `json:"details,omitempty"`
+	VerbatimID      string           `json:"id"`
+	ParserVersion   string           `json:"parserVersion"`
 }
 
 type Canonical struct {
@@ -57,7 +56,7 @@ type Year struct {
 }
 
 type Position struct {
-	Type  string `json:"type"`
-	Start int    `json:"start"`
-	End   int    `json:"end"`
+	Type  WordType `json:"wordType"`
+	Start int      `json:"start"`
+	End   int      `json:"end"`
 }

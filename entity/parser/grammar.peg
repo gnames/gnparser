@@ -1,4 +1,4 @@
-package grammar
+package parser
 
 type Engine Peg {
   BaseEngine
@@ -229,7 +229,7 @@ YearWithPage <- (YearWithChar / YearNum)  _? ":" _? Nums+
 
 YearWithParens <- '(' (YearWithChar / YearNum) ')'
 
-YearWithChar <- YearNum LowerASCII { p.AddWarn(YearCharWarn) }
+YearWithChar <- YearNum LowerASCII
 
 YearNum <- [12] [0789] Nums (Nums / '?') '?'*
 

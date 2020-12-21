@@ -1,4 +1,9 @@
-package quality
+package output
+
+import (
+	"errors"
+	"strings"
+)
 
 type Warning int
 
@@ -100,57 +105,65 @@ var warningMap = map[Warning]string{
 	YearSqBraketsWarn:               "Year with square brakets",
 }
 
-var warningValueMap = map[Warning]Value{
-	TailWarn:                        MajorProblems,
-	ApostrOtherWarn:                 MediumProblems,
-	AuthAmbiguousFiliusWarn:         SmallProblems,
-	AuthDoubleParensWarn:            MajorProblems,
-	AuthExWarn:                      SmallProblems,
-	AuthExWithDotWarn:               MediumProblems,
-	AuthEmendWarn:                   SmallProblems,
-	AuthEmendWithoutDotWarn:         MediumProblems,
-	AuthMissingOneParensWarn:        MajorProblems,
-	AuthQuestionWarn:                MajorProblems,
-	AuthShortWarn:                   MediumProblems,
-	AuthUnknownWarn:                 SmallProblems,
-	AuthUpperCaseWarn:               SmallProblems,
-	BacteriaMaybeWarn:               Clean,
-	BotanyAuthorNotSubgenWarn:       SmallProblems,
-	CanonicalApostropheWarn:         MediumProblems,
-	CapWordQuestionWarn:             MajorProblems,
-	CharBadWarn:                     SmallProblems,
-	GenusAbbrWarn:                   MajorProblems,
-	GenusUpperCharAfterDash:         SmallProblems,
-	GreekLetterInRank:               SmallProblems,
-	HTMLTagsEntitiesWarn:            MediumProblems,
-	HybridCharNoSpaceWarn:           MediumProblems,
-	HybridFormulaWarn:               SmallProblems,
-	HybridFormulaIncompleteWarn:     MajorProblems,
-	HybridFormulaProbIncompleteWarn: SmallProblems,
-	HybridNamedWarn:                 SmallProblems,
-	NameApproxWarn:                  MajorProblems,
-	NameComparisonWarn:              MajorProblems,
-	RankUncommonWarn:                MediumProblems,
-	SpaceMultipleWarn:               SmallProblems,
-	SpaceNonStandardWarn:            SmallProblems,
-	SpanishAndAsSeparator:           SmallProblems,
-	SpeciesNumericWarn:              MediumProblems,
-	SuperSpeciesWarn:                SmallProblems,
-	UTF8ConvBadWarn:                 MajorProblems,
-	UninomialComboWarn:              SmallProblems,
-	WhiteSpaceTrailWarn:             SmallProblems,
-	YearCharWarn:                    SmallProblems,
-	YearDotWarn:                     SmallProblems,
-	YearOrigMisplacedWarn:           SmallProblems,
-	YearPageWarn:                    SmallProblems,
-	YearParensWarn:                  SmallProblems,
-	YearQuestionWarn:                SmallProblems,
-	YearRangeWarn:                   MediumProblems,
-	YearSqBraketsWarn:               MediumProblems,
+var warningStrMap = func() map[string]Warning {
+	res := make(map[string]Warning)
+	for k, v := range warningMap {
+		res[v] = k
+	}
+	return res
+}()
+
+var warningQualityMap = map[Warning]int{
+	TailWarn:                        4,
+	ApostrOtherWarn:                 3,
+	AuthAmbiguousFiliusWarn:         2,
+	AuthDoubleParensWarn:            4,
+	AuthExWarn:                      2,
+	AuthExWithDotWarn:               3,
+	AuthEmendWarn:                   2,
+	AuthEmendWithoutDotWarn:         3,
+	AuthMissingOneParensWarn:        4,
+	AuthQuestionWarn:                4,
+	AuthShortWarn:                   3,
+	AuthUnknownWarn:                 2,
+	AuthUpperCaseWarn:               2,
+	BacteriaMaybeWarn:               1,
+	BotanyAuthorNotSubgenWarn:       2,
+	CanonicalApostropheWarn:         3,
+	CapWordQuestionWarn:             4,
+	CharBadWarn:                     2,
+	GenusAbbrWarn:                   4,
+	GenusUpperCharAfterDash:         2,
+	GreekLetterInRank:               2,
+	HTMLTagsEntitiesWarn:            3,
+	HybridCharNoSpaceWarn:           3,
+	HybridFormulaWarn:               2,
+	HybridFormulaIncompleteWarn:     4,
+	HybridFormulaProbIncompleteWarn: 2,
+	HybridNamedWarn:                 2,
+	NameApproxWarn:                  4,
+	NameComparisonWarn:              4,
+	RankUncommonWarn:                3,
+	SpaceMultipleWarn:               2,
+	SpaceNonStandardWarn:            2,
+	SpanishAndAsSeparator:           2,
+	SpeciesNumericWarn:              3,
+	SuperSpeciesWarn:                2,
+	UTF8ConvBadWarn:                 4,
+	UninomialComboWarn:              2,
+	WhiteSpaceTrailWarn:             2,
+	YearCharWarn:                    2,
+	YearDotWarn:                     2,
+	YearOrigMisplacedWarn:           2,
+	YearPageWarn:                    2,
+	YearParensWarn:                  2,
+	YearQuestionWarn:                2,
+	YearRangeWarn:                   3,
+	YearSqBraketsWarn:               3,
 }
 
 type QualityWarning struct {
-	Value   Value   `json:"value"`
+	Quality int     `json:"quality"`
 	Warning Warning `json:"warning"`
 }
 
@@ -158,13 +171,13 @@ func (w Warning) String() string {
 	return warningMap[w]
 }
 
-func (w Warning) Value() Value {
-	return warningValueMap[w]
+func (w Warning) Quality() int {
+	return warningQualityMap[w]
 }
 
-func (w Warning) QualityWarning() QualityWarning {
+func (w Warning) NewQualityWarning() QualityWarning {
 	return QualityWarning{
-		Value:   w.Value(),
+		Quality: w.Quality(),
 		Warning: w,
 	}
 }
@@ -172,7 +185,27 @@ func (w Warning) QualityWarning() QualityWarning {
 func Map(ws []Warning) []QualityWarning {
 	res := make([]QualityWarning, len(ws))
 	for i, v := range ws {
-		res[i] = v.QualityWarning()
+		res[i] = v.NewQualityWarning()
 	}
 	return res
+}
+
+// MarshalJSON implements json.Marshaler.
+// It will encode null if this Int is null.
+func (w Warning) MarshalJSON() ([]byte, error) {
+	return []byte("\"" + w.String() + "\""), nil
+}
+
+// UnmarshalJSON implements json.Unmarshaller.
+func (w *Warning) UnmarshalJSON(bs []byte) error {
+	var err error
+	var ok bool
+	// strings.Trim seems to be ~10 time faster here than
+	// json-iter Unmarshal
+	s := strings.Trim(string(bs), `"`)
+	*w, ok = warningStrMap[s]
+	if !ok {
+		err = errors.New("cannot decode Warning")
+	}
+	return err
 }
