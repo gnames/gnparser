@@ -8,59 +8,6 @@ import (
 	"github.com/gnames/gnparser/entity/str"
 )
 
-type UninomialOutput struct {
-	Uninomial *uniDetails `json:"uninomial"`
-}
-
-type SpeciesOutput struct {
-	Genus        *genusOutput            `json:"genus"`
-	SpecEpithet  *specEpithetOutput      `json:"specificEpithet"`
-	SubGenus     *subGenusOutput         `json:"infragenericEpithet,omitempty"`
-	InfraSpecies []*InfraSpEpithetOutput `json:"infraspecificEpithets,omitempty"`
-}
-
-type ApproxOutput struct {
-	Genus       *genusOutput       `json:"genus"`
-	SpecEpithet *specEpithetOutput `json:"specificEpithet,omitempty"`
-	Approx      string             `json:"annotationIdentification"`
-	Ignored     *ignoredOutput     `json:"ignored,omitempty"`
-}
-
-type ComparisonOutput struct {
-	Genus       *genusOutput       `json:"genus"`
-	SpecEpithet *specEpithetOutput `json:"specificEpithet"`
-	Comparison  string             `json:"annotationIdentification"`
-}
-
-type ignoredOutput struct {
-	Value string `json:"value"`
-}
-
-type genusOutput struct {
-	Value string `json:"value"`
-}
-
-type subGenusOutput struct {
-	Value string `json:"value"`
-}
-type specEpithetOutput struct {
-	Value      string        `json:"value"`
-	Authorship *o.Authorship `json:"authorship,omitempty"`
-}
-
-type InfraSpEpithetOutput struct {
-	Value      string        `json:"value"`
-	Rank       string        `json:"rank,omitempty"`
-	Authorship *o.Authorship `json:"authorship,omitempty"`
-}
-
-type uniDetails struct {
-	Value      string        `json:"value"`
-	Rank       string        `json:"rank,omitempty"`
-	Parent     string        `json:"parent,omitempty"`
-	Authorship *o.Authorship `json:"authorship,omitempty"`
-}
-
 type canonical struct {
 	Value       string
 	ValueRanked string
@@ -73,11 +20,11 @@ func appendCanonical(c1 *canonical, c2 *canonical, sep string) *canonical {
 	}
 }
 
-func (sn *ScientificNameNode) Pos() []Pos {
+func (sn *ScientificNameNode) Pos() []o.Position {
 	return sn.nameData.pos()
 }
 
-func (sn *ScientificNameNode) Value() string {
+func (sn *ScientificNameNode) Normalized() string {
 	if sn.nameData == nil {
 		return ""
 	}
@@ -97,9 +44,9 @@ func (sn *ScientificNameNode) Canonical() *o.Canonical {
 	}
 }
 
-func (sn *ScientificNameNode) Details() []interface{} {
+func (sn *ScientificNameNode) Details() o.Details {
 	if sn.nameData == nil {
-		return []interface{}{}
+		return nil
 	}
 	return sn.nameData.details()
 }
@@ -114,13 +61,14 @@ func (sn *ScientificNameNode) LastAuthorship(withDetails bool) *o.Authorship {
 		return ao
 	}
 	res := an.details()
-	if withDetails {
-		res = &o.Authorship{Normalized: res.Normalized}
+	if !withDetails {
+		res.Original = nil
+		res.Combination = nil
 	}
 	return res
 }
 
-func (nf *hybridFormulaNode) pos() []Pos {
+func (nf *hybridFormulaNode) pos() []o.Position {
 	pos := nf.FirstSpecies.pos()
 	for _, v := range nf.HybridElements {
 		pos = append(pos, v.HybridChar.Pos)
@@ -163,18 +111,19 @@ func (nf *hybridFormulaNode) lastAuthorship() *authorshipNode {
 	return au
 }
 
-func (nf *hybridFormulaNode) details() []interface{} {
-	ds := nf.FirstSpecies.details()
+func (nf *hybridFormulaNode) details() o.Details {
+	dets := make([]o.Details, 0, len(nf.HybridElements)+1)
+	dets = append(dets, nf.FirstSpecies.details())
 	for _, v := range nf.HybridElements {
 		if v.Species != nil {
-			ds = append(ds, v.Species.details()[0])
+			dets = append(dets, v.Species.details())
 		}
 	}
-	return ds
+	return o.DetailsHybridFormula{HybridFormula: dets}
 }
 
-func (nh *namedGenusHybridNode) pos() []Pos {
-	pos := []Pos{nh.Hybrid.Pos}
+func (nh *namedGenusHybridNode) pos() []o.Position {
+	pos := []o.Position{nh.Hybrid.Pos}
 	pos = append(pos, nh.nameData.pos()...)
 	return pos
 }
@@ -196,7 +145,7 @@ func (nh *namedGenusHybridNode) canonical() *canonical {
 	return c
 }
 
-func (nh *namedGenusHybridNode) details() []interface{} {
+func (nh *namedGenusHybridNode) details() o.Details {
 	d := nh.nameData.details()
 	return d
 }
@@ -206,8 +155,8 @@ func (nh *namedGenusHybridNode) lastAuthorship() *authorshipNode {
 	return au
 }
 
-func (nh *namedSpeciesHybridNode) pos() []Pos {
-	pos := []Pos{nh.Genus.Pos}
+func (nh *namedSpeciesHybridNode) pos() []o.Position {
+	pos := []o.Position{nh.Genus.Pos}
 	if nh.Comparison != nil {
 		pos = append(pos, nh.Comparison.Pos)
 	}
@@ -251,27 +200,36 @@ func (nh *namedSpeciesHybridNode) lastAuthorship() *authorshipNode {
 	return nh.InfraSpecies[len(nh.InfraSpecies)-1].Authorship
 }
 
-func (nh *namedSpeciesHybridNode) details() []interface{} {
-	g := &genusOutput{Value: nh.Genus.NormValue}
-	sp := nh.SpEpithet.details()
-	so := &SpeciesOutput{
-		Genus:       g,
-		SpecEpithet: sp,
+func (nh *namedSpeciesHybridNode) details() o.Details {
+	g := nh.Genus.NormValue
+	so := o.Species{
+		Genus:   g,
+		Species: nh.SpEpithet.value(),
 	}
-	if len(nh.InfraSpecies) == 0 {
-		return []interface{}{so}
+	if nh.SpEpithet.Authorship != nil {
+		so.Authorship = nh.SpEpithet.Authorship.details()
 	}
-	infs := make([]*InfraSpEpithetOutput, len(nh.InfraSpecies))
-	for i, v := range nh.InfraSpecies {
-		infs[i] = v.details()
-	}
-	so.InfraSpecies = infs
 
-	return []interface{}{so}
+	if len(nh.InfraSpecies) == 0 {
+		return o.DetailsSpecies{Species: so}
+	}
+	infs := make([]o.InfraSpeciesElem, 0, len(nh.InfraSpecies))
+	for _, v := range nh.InfraSpecies {
+		if v == nil {
+			continue
+		}
+		infs = append(infs, v.details())
+	}
+	iso := o.InfraSpecies{
+		Species:      so,
+		InfraSpecies: infs,
+	}
+
+	return o.DetailsInfraSpecies{InfraSpecies: iso}
 }
 
-func (apr *approxNode) pos() []Pos {
-	var pos []Pos
+func (apr *approxNode) pos() []o.Position {
+	var pos []o.Position
 	if apr == nil {
 		return pos
 	}
@@ -317,35 +275,32 @@ func (apr *approxNode) lastAuthorship() *authorshipNode {
 	return apr.SpEpithet.Authorship
 }
 
-func (apr *approxNode) details() []interface{} {
+func (apr *approxNode) details() o.Details {
 	if apr == nil {
-		return []interface{}{}
+		return nil
 	}
-	g := apr.Genus.NormValue
-	ao := &ApproxOutput{
-		Genus:   &genusOutput{Value: g},
-		Approx:  apr.Approx.NormValue,
-		Ignored: &ignoredOutput{Value: apr.Ignored},
+	ao := o.Approximation{
+		Genus:        apr.Genus.NormValue,
+		ApproxMarker: apr.Approx.NormValue,
+		Ignored:      apr.Ignored,
 	}
 	if apr.SpEpithet == nil {
-		return []interface{}{ao}
+		return o.DetailsApproximation{Approximation: ao}
 	}
-	se := &specEpithetOutput{
-		Value: apr.SpEpithet.Word.NormValue,
-	}
+	ao.Species = apr.SpEpithet.Word.NormValue
+
 	if apr.SpEpithet.Authorship != nil {
-		se.Authorship = apr.SpEpithet.Authorship.details()
+		ao.SpeciesAuthorship = apr.SpEpithet.Authorship.details()
 	}
-	ao.SpecEpithet = se
-	return []interface{}{ao}
+	return o.DetailsApproximation{Approximation: ao}
 }
 
-func (comp *comparisonNode) pos() []Pos {
-	var pos []Pos
+func (comp *comparisonNode) pos() []o.Position {
+	var pos []o.Position
 	if comp == nil {
-		return pos
+		return nil
 	}
-	pos = []Pos{comp.Genus.Pos}
+	pos = []o.Position{comp.Genus.Pos}
 	pos = append(pos, comp.Comparison.Pos)
 	if comp.SpEpithet != nil {
 		pos = append(pos, comp.SpEpithet.pos()...)
@@ -386,25 +341,27 @@ func (comp *comparisonNode) lastAuthorship() *authorshipNode {
 	return comp.SpEpithet.Authorship
 }
 
-func (comp *comparisonNode) details() []interface{} {
+func (comp *comparisonNode) details() o.Details {
 	if comp == nil {
-		return []interface{}{}
+		return nil
 	}
-	var se *specEpithetOutput
-	if comp.SpEpithet != nil {
-		se = comp.SpEpithet.details()
+	co := o.Comparison{
+		Genus:      comp.Genus.NormValue,
+		CompMarker: comp.Comparison.NormValue,
+	}
+	if comp.SpEpithet == nil {
+		return o.DetailsComparison{Comparison: co}
 	}
 
-	co := &ComparisonOutput{
-		Genus:       &genusOutput{Value: comp.Genus.NormValue},
-		Comparison:  comp.Comparison.NormValue,
-		SpecEpithet: se,
+	co.Species = comp.SpEpithet.value()
+	if comp.SpEpithet.Authorship != nil {
+		co.SpeciesAuthorship = comp.SpEpithet.Authorship.details()
 	}
-	return []interface{}{co}
+	return o.DetailsComparison{Comparison: co}
 }
 
-func (sp *speciesNode) pos() []Pos {
-	var pos []Pos
+func (sp *speciesNode) pos() []o.Position {
+	var pos []o.Position
 	if sp.Genus.Pos.End != 0 {
 		pos = append(pos, sp.Genus.Pos)
 	}
@@ -449,38 +406,38 @@ func (sp *speciesNode) lastAuthorship() *authorshipNode {
 	return sp.InfraSpecies[len(sp.InfraSpecies)-1].Authorship
 }
 
-func (sp *speciesNode) details() []interface{} {
-	se := specEpithetOutput{
-		Value: sp.SpEpithet.Word.NormValue,
+func (sp *speciesNode) details() o.Details {
+	so := o.Species{
+		Genus:   sp.Genus.NormValue,
+		Species: sp.SpEpithet.Word.NormValue,
 	}
 	if sp.SpEpithet.Authorship != nil {
-		se.Authorship = sp.SpEpithet.Authorship.details()
-	}
-
-	g := sp.Genus.NormValue
-	so := SpeciesOutput{
-		Genus:       &genusOutput{Value: g},
-		SpecEpithet: &se,
+		so.Authorship = sp.SpEpithet.Authorship.details()
 	}
 
 	if sp.SubGenus != nil {
-		sg := sp.SubGenus.NormValue
-		so.SubGenus = &subGenusOutput{Value: sg}
+		so.SubGenus = sp.SubGenus.NormValue
 	}
 	if len(sp.InfraSpecies) == 0 {
-		return []interface{}{&so}
+		return o.DetailsSpecies{Species: so}
 	}
-	infs := make([]*InfraSpEpithetOutput, len(sp.InfraSpecies))
-	for i, v := range sp.InfraSpecies {
-		infs[i] = v.details()
+	infs := make([]o.InfraSpeciesElem, 0, len(sp.InfraSpecies))
+	for _, v := range sp.InfraSpecies {
+		if v == nil {
+			continue
+		}
+		infs = append(infs, v.details())
 	}
-	so.InfraSpecies = infs
+	sio := o.InfraSpecies{
+		Species:      so,
+		InfraSpecies: infs,
+	}
 
-	return []interface{}{&so}
+	return o.DetailsInfraSpecies{InfraSpecies: sio}
 }
 
-func (sep *spEpithetNode) pos() []Pos {
-	pos := []Pos{sep.Word.Pos}
+func (sep *spEpithetNode) pos() []o.Position {
+	pos := []o.Position{sep.Word.Pos}
 	pos = append(pos, sep.Authorship.pos()...)
 	return pos
 }
@@ -496,18 +453,8 @@ func (sep *spEpithetNode) canonical() *canonical {
 	return c
 }
 
-func (sep *spEpithetNode) details() *specEpithetOutput {
-	val := sep.Word.NormValue
-	au := sep.Authorship.details()
-	seo := specEpithetOutput{
-		Value:      val,
-		Authorship: au,
-	}
-	return &seo
-}
-
-func (inf *infraspEpithetNode) pos() []Pos {
-	var pos []Pos
+func (inf *infraspEpithetNode) pos() []o.Position {
+	var pos []o.Position
 
 	if inf.Rank != nil && inf.Rank.Word.Pos.Start != 0 {
 		pos = append(pos, inf.Rank.Word.Pos)
@@ -545,25 +492,21 @@ func (inf *infraspEpithetNode) canonical() *canonical {
 	return &c
 }
 
-func (inf *infraspEpithetNode) details() *InfraSpEpithetOutput {
-	var info InfraSpEpithetOutput
-	if inf == nil {
-		return &info
-	}
+func (inf *infraspEpithetNode) details() o.InfraSpeciesElem {
 	rank := ""
 	if inf.Rank != nil && inf.Rank.Word != nil {
 		rank = inf.Rank.Word.NormValue
 	}
-	info = InfraSpEpithetOutput{
+	res := o.InfraSpeciesElem{
 		Value:      inf.Word.NormValue,
 		Rank:       rank,
 		Authorship: inf.Authorship.details(),
 	}
-	return &info
+	return res
 }
 
-func (u *uninomialNode) pos() []Pos {
-	pos := []Pos{u.Word.Pos}
+func (u *uninomialNode) pos() []o.Position {
+	pos := []o.Position{u.Word.Pos}
 	pos = append(pos, u.Authorship.pos()...)
 	return pos
 }
@@ -581,17 +524,17 @@ func (u *uninomialNode) lastAuthorship() *authorshipNode {
 	return u.Authorship
 }
 
-func (u *uninomialNode) details() []interface{} {
-	ud := uniDetails{Value: u.Word.NormValue}
+func (u *uninomialNode) details() o.Details {
+	ud := o.Uninomial{Uninomial: u.Word.NormValue}
 	if u.Authorship != nil {
 		ud.Authorship = u.Authorship.details()
 	}
-	uo := UninomialOutput{Uninomial: &ud}
-	return []interface{}{&uo}
+	uo := o.DetailsUninomial{Uninomial: ud}
+	return uo
 }
 
-func (u *uninomialComboNode) pos() []Pos {
-	pos := []Pos{u.Uninomial1.Word.Pos}
+func (u *uninomialComboNode) pos() []o.Position {
+	pos := []o.Position{u.Uninomial1.Word.Pos}
 	pos = append(pos, u.Uninomial1.Authorship.pos()...)
 	if u.Rank.Word.Pos.Start != 0 {
 		pos = append(pos, u.Rank.Word.Pos)
@@ -623,17 +566,17 @@ func (u *uninomialComboNode) lastAuthorship() *authorshipNode {
 	return u.Uninomial2.Authorship
 }
 
-func (u *uninomialComboNode) details() []interface{} {
-	ud := uniDetails{
-		Value:  u.Uninomial2.Word.NormValue,
-		Rank:   u.Rank.Word.NormValue,
-		Parent: u.Uninomial1.Word.NormValue,
+func (u *uninomialComboNode) details() o.Details {
+	ud := o.Uninomial{
+		Uninomial: u.Uninomial2.Word.NormValue,
+		Rank:      u.Rank.Word.NormValue,
+		Parent:    u.Uninomial1.Word.NormValue,
 	}
 	if u.Uninomial2.Authorship != nil {
 		ud.Authorship = u.Uninomial2.Authorship.details()
 	}
-	uo := UninomialOutput{Uninomial: &ud}
-	return []interface{}{&uo}
+	uo := o.DetailsUninomial{Uninomial: ud}
+	return uo
 }
 
 func (au *authorshipNode) details() *o.Authorship {
@@ -697,9 +640,9 @@ func authGroupDetail(ag *authorsGroupNode) *o.AuthGroup {
 	return &ago
 }
 
-func (a *authorshipNode) pos() []Pos {
+func (a *authorshipNode) pos() []o.Position {
 	if a == nil {
-		var p []Pos
+		var p []o.Position
 		return p
 	}
 	p := a.OriginalAuthors.pos()
@@ -735,9 +678,9 @@ func (ag *authorsGroupNode) value() string {
 	return v
 }
 
-func (ag *authorsGroupNode) pos() []Pos {
+func (ag *authorsGroupNode) pos() []o.Position {
 	if ag == nil {
-		var p []Pos
+		var p []o.Position
 		return p
 	}
 	p := ag.Team1.pos()
@@ -790,8 +733,8 @@ func (at *authorsTeamNode) details() ([]string, *o.Year) {
 	return aus, yr
 }
 
-func (aut *authorsTeamNode) pos() []Pos {
-	var res []Pos
+func (aut *authorsTeamNode) pos() []o.Position {
+	var res []o.Position
 	if aut == nil {
 		return res
 	}
@@ -804,8 +747,8 @@ func (aut *authorsTeamNode) pos() []Pos {
 	return res
 }
 
-func (aun *authorNode) pos() []Pos {
-	p := make([]Pos, len(aun.Words))
+func (aun *authorNode) pos() []o.Position {
+	p := make([]o.Position, len(aun.Words))
 	for i, v := range aun.Words {
 		p[i] = v.Pos
 	}

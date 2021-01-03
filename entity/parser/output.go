@@ -8,19 +8,28 @@ import (
 
 func (sn *ScientificNameNode) ToOutput(withDetails bool) o.Parsed {
 	res := o.Parsed{
-		VerbatimID:    sn.VerbatimID,
 		Verbatim:      sn.Verbatim,
+		Canonical:     sn.Canonical(),
 		Virus:         sn.Virus,
+		VerbatimID:    sn.VerbatimID,
 		ParserVersion: sn.ParserVersion,
 	}
-	res.Canonical = sn.Canonical()
 
-	if res.Canonical != nil {
-		res.Parsed = true
-		res.OverallQuality, res.QualityWarnings = processWarnings(sn.Warnings)
-		res.Hybrid = sn.Hybrid
-		res.Bacteria = sn.Bacteria
-		res.Authorship = sn.LastAuthorship(withDetails)
+	if res.Canonical == nil {
+		return res
+	}
+
+	res.Parsed = true
+	res.OverallQuality, res.QualityWarnings = processWarnings(sn.Warnings)
+	res.Normalized = sn.Normalized()
+	res.Cardinality = sn.Cardinality
+	res.Authorship = sn.LastAuthorship(withDetails)
+	res.Hybrid = sn.Hybrid
+	res.Bacteria = sn.Bacteria
+	res.Tail = sn.Tail
+	if withDetails {
+		res.Details = sn.Details()
+		res.Positions = sn.Pos()
 	}
 	return res
 }

@@ -9,20 +9,26 @@ type Annotation int
 
 const (
 	NoAnnot Annotation = iota
-	ComparisonAnnot
-	ApproxSurrogateAnnot
 	SurrogateAnnot
+	ComparisonAnnot
+	BOLDAnnot
+	HybridAnnot
+	ApproximationAnnot
 	NamedHybridAnnot
 	HybridFormulaAnnot
+	NothoHybridAnnot
 )
 
 var annotMap = map[Annotation]string{
-	NoAnnot:              "",
-	ComparisonAnnot:      "Comparison",
-	ApproxSurrogateAnnot: "Approx. surrogate",
-	SurrogateAnnot:       "Surrogate",
-	NamedHybridAnnot:     "Named hybrid",
-	HybridFormulaAnnot:   "Hybrid formula",
+	NoAnnot:            "",
+	SurrogateAnnot:     "a surrogate name",
+	ComparisonAnnot:    "comparison",
+	BOLDAnnot:          "BOLD surrogate",
+	HybridAnnot:        "a hybrid name",
+	ApproximationAnnot: "approximation",
+	NamedHybridAnnot:   "named hybrid",
+	HybridFormulaAnnot: "hybrid formula",
+	NothoHybridAnnot:   "notho- hybrid",
 }
 
 var annotStrMap = func() map[string]Annotation {

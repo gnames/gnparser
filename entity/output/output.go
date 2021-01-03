@@ -9,17 +9,17 @@ type Parsed struct {
 	OverallQuality  int              `json:"parseQuality"`
 	QualityWarnings []QualityWarning `json:"qualityWarnings,omitempty"`
 	Verbatim        string           `json:"verbatim"`
-	Normalized      *string          `json:"normalized,omitempty"`
+	Normalized      string           `json:"normalized,omitempty"`
 	Canonical       *Canonical       `json:"canonical,omitempty"`
 	Cardinality     int              `json:"cardinality"`
 	Authorship      *Authorship      `json:"authorship,omitempty"`
-	Positions       []Position       `json:"pos,omitempty"`
-	Hybrid          bool             `json:"isHybrid,omitempty"`
-	Bacteria        tb.Tribool       `json:"isBacteria,omitempty"`
+	Bacteria        *tb.Tribool      `json:"isBacteria,omitempty"`
 	Virus           bool             `json:"isVirus,omitempty"`
-	Annotation      Annotation       `json:"annotation,omitempty"`
+	Hybrid          *Annotation      `json:"hybrid,omitempty"`
+	Surrogate       *Annotation      `json:"surrogate,omitempty"`
 	Tail            string           `json:"tail,omitempty"`
 	Details         Details          `json:"details,omitempty"`
+	Positions       []Position       `json:"pos,omitempty"`
 	VerbatimID      string           `json:"id"`
 	ParserVersion   string           `json:"parserVersion"`
 }

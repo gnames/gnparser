@@ -1,8 +1,10 @@
 package parser_test
 
 import (
+	"fmt"
 	"testing"
 
+	"github.com/gnames/gnlib/encode"
 	"github.com/gnames/gnparser/entity/parser"
 	"github.com/stretchr/testify/assert"
 )
@@ -22,7 +24,7 @@ func TestPreNParse(t *testing.T) {
 		can := sn.Canonical()
 		msg := v.name
 		if v.can == "" {
-			assert.Nil(t, can)
+			assert.Nil(t, can, msg)
 			continue
 		}
 		assert.Equal(t, can.Simple, v.can, msg)
@@ -31,23 +33,39 @@ func TestPreNParse(t *testing.T) {
 
 // TTestToOutput tests ToOutput method of ScientificNameNode
 func TestToOutput(t *testing.T) {
+	enc := encode.GNjson{Pretty: true}
 	p := &parser.Engine{Buffer: ""}
 	p.Init()
 	testData := []struct {
-		name, can, auNorm string
-		det, parsed       bool
+		name, can, au string
+		det, parsed   bool
 	}{
 		{"Pardosa moesta L.", "Pardosa moesta", "L.", false, true},
+		{
+			"Bacillus subtilis (Ehrenberg, 1835) Cohn, 1872",
+			"Bacillus subtilis", "(Ehrenberg 1835) Cohn 1872", false, true,
+		},
+		{
+			"Bacillus subtilis (Ehrenberg, 1835) Cohn, 1872 sec. Miller",
+			"Bacillus subtilis", "(Ehrenberg 1835) Cohn 1872", false, true,
+		},
+		{
+			"Aconitum napellus var. formosum (Rchb.) W. D. J. Koch (nom. ambig.)",
+			"Aconitum napellus formosum", "(Rchb.) W. D. J. Koch", true, true,
+		},
 		{"something", "", "", false, false},
 	}
 	for _, v := range testData {
 		sn := p.PreprocessAndParse(v.name, "test_version", true)
 		out := sn.ToOutput(v.det)
+		json, _ := enc.Encode(out)
+		fmt.Println(string(json))
 		msg := v.name
 		if !out.Parsed {
-			assert.Nil(t, out.Canonical)
+			assert.Nil(t, out.Canonical, msg)
 			continue
 		}
 		assert.Equal(t, out.Canonical.Simple, v.can, msg)
+		assert.Equal(t, out.Authorship.Normalized, v.au, msg)
 	}
 }

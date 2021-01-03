@@ -44,32 +44,34 @@ type DetailsHybridFormula struct {
 	HybridFormula []Details `json:"hybridFormula"`
 }
 
-func (hf DetailsHybridFormula) isDetails() {}
+func (DetailsHybridFormula) isDetails() {}
 
 type DetailsUninomial struct {
 	Uninomial Uninomial `json:"uninomial"`
 }
 
-func (du DetailsUninomial) isDetails() {}
+func (DetailsUninomial) isDetails() {}
 
 type DetailsSpecies struct {
 	Species Species `json:"species"`
 }
 
+func (DetailsSpecies) isDetails() {}
+
 type DetailsInfraSpecies struct {
 	InfraSpecies InfraSpecies `json:"infraSpecies"`
 }
 
-func (dis DetailsInfraSpecies) isDetails() {}
+func (DetailsInfraSpecies) isDetails() {}
 
 type DetailsComparison struct {
 	Comparison Comparison `json:"comparison"`
 }
 
-func (c DetailsComparison) isDetails() {}
+func (DetailsComparison) isDetails() {}
 
 type DetailsApproximation struct {
 	Approximation Approximation `json:"approximation"`
 }
 
-func (a Approximation) isDetails() {}
+func (DetailsApproximation) isDetails() {}

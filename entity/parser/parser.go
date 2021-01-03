@@ -9,6 +9,10 @@ func (p *Engine) PreprocessAndParse(
 	s, ver string,
 	keepHTML bool,
 ) *ScientificNameNode {
+	defer func() {
+		p.SN.AddVerbatim(s)
+		p.SN.ParserVersion = ver
+	}()
 	tagsOrEntities := false
 	if !keepHTML {
 		orig := s
@@ -21,7 +25,6 @@ func (p *Engine) PreprocessAndParse(
 
 	if preproc.NoParse {
 		p.NewNotParsedScientificNameNode(preproc)
-		return p.SN
 	}
 
 	p.Buffer = string(preproc.Body)
@@ -47,7 +50,5 @@ func (p *Engine) PreprocessAndParse(
 	if len(preproc.Tail) > 0 {
 		p.SN.Tail += string(preproc.Tail)
 	}
-	p.SN.AddVerbatim(s)
-	p.SN.ParserVersion = ver
 	return p.SN
 }

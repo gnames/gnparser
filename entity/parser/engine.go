@@ -13,9 +13,9 @@ type BaseEngine struct {
 	root        *node32
 	Cardinality int
 	Error       error
-	Hybrid      bool
-	Surrogate   bool
-	Bacteria    tb.Tribool
+	Hybrid      *o.Annotation
+	Surrogate   *o.Annotation
+	Bacteria    *tb.Tribool
 	Warnings    map[o.Warning]struct{}
 	Tail        string
 }
@@ -23,9 +23,9 @@ type BaseEngine struct {
 func (p *Engine) FullReset() {
 	p.Cardinality = 0
 	p.Error = nil
-	p.Hybrid = false
-	p.Surrogate = false
-	p.Bacteria = tb.NewTribool()
+	p.Hybrid = nil
+	p.Surrogate = nil
+	p.Bacteria = nil
 	var warnReset map[o.Warning]struct{}
 	p.Warnings = warnReset
 	p.Tail = ""
@@ -45,9 +45,11 @@ func (p *Engine) IsBacteria(gen string) {
 	if hom, ok := dict.Dict.Bacteria[gen]; ok {
 		if hom {
 			p.AddWarn(o.BacteriaMaybeWarn)
-			p.Bacteria = tb.NewTribool(0)
+			bac := tb.NewTribool(0)
+			p.Bacteria = &bac
 		} else {
-			p.Bacteria = tb.NewTribool(1)
+			bac := tb.NewTribool(1)
+			p.Bacteria = &bac
 		}
 	}
 }
@@ -89,11 +91,14 @@ func (p *Engine) PrintOutputSyntaxTree(w io.Writer) {
 
 func (p *Engine) newNode(t token32) (*node32, bool) {
 	var node *node32
+	var annot o.Annotation
 	switch t.pegRule {
 	case ruleHybridChar:
-		p.Hybrid = true
+		annot = o.HybridAnnot
+		p.Hybrid = &annot
 	case ruleRankNotho, ruleRankUninomialNotho:
-		p.Hybrid = true
+		annot = o.NothoHybridAnnot
+		p.Hybrid = &annot
 		p.AddWarn(o.HybridNamedWarn)
 	case ruleOtherSpace:
 		p.AddWarn(o.SpaceNonStandardWarn)
@@ -140,68 +145,68 @@ func (p *Engine) ParsedName() string {
 }
 
 var nodeRules = map[pegRule]struct{}{
-	ruleSciName:                         struct{}{},
-	ruleName:                            struct{}{},
-	ruleTail:                            struct{}{},
-	ruleHybridFormula:                   struct{}{},
-	ruleNamedSpeciesHybrid:              struct{}{},
-	ruleNamedGenusHybrid:                struct{}{},
-	ruleSingleName:                      struct{}{},
-	ruleNameApprox:                      struct{}{},
-	ruleNameComp:                        struct{}{},
-	ruleNameSpecies:                     struct{}{},
-	ruleGenusWord:                       struct{}{},
-	ruleInfraspGroup:                    struct{}{},
-	ruleInfraspEpithet:                  struct{}{},
-	ruleSpeciesEpithet:                  struct{}{},
-	ruleComparison:                      struct{}{},
-	ruleRank:                            struct{}{},
-	ruleRankOtherUncommon:               struct{}{},
-	ruleRankVar:                         struct{}{},
-	ruleRankForma:                       struct{}{},
-	ruleRankSsp:                         struct{}{},
-	ruleSubGenusOrSuperspecies:          struct{}{},
-	ruleSubGenus:                        struct{}{},
-	ruleUninomialCombo:                  struct{}{},
-	ruleRankUninomial:                   struct{}{},
-	ruleUninomial:                       struct{}{},
-	ruleUninomialWord:                   struct{}{},
-	ruleAbbrGenus:                       struct{}{},
-	ruleWord:                            struct{}{},
-	ruleWordApostr:                      struct{}{},
-	ruleWordStartsWithDigit:             struct{}{},
-	ruleHybridChar:                      struct{}{},
-	ruleApproxNameIgnored:               struct{}{},
-	ruleApproximation:                   struct{}{},
-	ruleAuthorship:                      struct{}{},
-	ruleOriginalAuthorship:              struct{}{},
-	ruleOriginalAuthorshipComb:          struct{}{},
-	ruleCombinationAuthorship:           struct{}{},
-	ruleBasionymAuthorshipYearMisformed: struct{}{},
-	ruleBasionymAuthorshipMissingParens: struct{}{},
-	ruleBasionymAuthorship:              struct{}{},
-	ruleAuthorsGroup:                    struct{}{},
-	ruleAuthorsTeam:                     struct{}{},
-	ruleAuthorSep:                       struct{}{},
-	ruleAuthorEx:                        struct{}{},
-	ruleAuthorEmend:                     struct{}{},
-	ruleAuthor:                          struct{}{},
-	ruleUnknownAuthor:                   struct{}{},
-	ruleAuthorWord:                      struct{}{},
-	ruleAuthorEtAl:                      struct{}{},
-	ruleAllCapsAuthorWord:               struct{}{},
-	ruleFilius:                          struct{}{},
-	ruleAuthorPrefix:                    struct{}{},
-	ruleYear:                            struct{}{},
-	ruleYearRange:                       struct{}{},
-	ruleYearWithDot:                     struct{}{},
-	ruleYearApprox:                      struct{}{},
-	ruleYearWithPage:                    struct{}{},
-	ruleYearWithParens:                  struct{}{},
-	ruleYearWithChar:                    struct{}{},
-	ruleYearNum:                         struct{}{},
-	ruleUpperCharExtended:               struct{}{},
-	ruleLowerCharExtended:               struct{}{},
-	ruleApostrOther:                     struct{}{},
-	ruleAuthorSuffix:                    struct{}{},
+	ruleSciName:                         {},
+	ruleName:                            {},
+	ruleTail:                            {},
+	ruleHybridFormula:                   {},
+	ruleNamedSpeciesHybrid:              {},
+	ruleNamedGenusHybrid:                {},
+	ruleSingleName:                      {},
+	ruleNameApprox:                      {},
+	ruleNameComp:                        {},
+	ruleNameSpecies:                     {},
+	ruleGenusWord:                       {},
+	ruleInfraspGroup:                    {},
+	ruleInfraspEpithet:                  {},
+	ruleSpeciesEpithet:                  {},
+	ruleComparison:                      {},
+	ruleRank:                            {},
+	ruleRankOtherUncommon:               {},
+	ruleRankVar:                         {},
+	ruleRankForma:                       {},
+	ruleRankSsp:                         {},
+	ruleSubGenusOrSuperspecies:          {},
+	ruleSubGenus:                        {},
+	ruleUninomialCombo:                  {},
+	ruleRankUninomial:                   {},
+	ruleUninomial:                       {},
+	ruleUninomialWord:                   {},
+	ruleAbbrGenus:                       {},
+	ruleWord:                            {},
+	ruleWordApostr:                      {},
+	ruleWordStartsWithDigit:             {},
+	ruleHybridChar:                      {},
+	ruleApproxNameIgnored:               {},
+	ruleApproximation:                   {},
+	ruleAuthorship:                      {},
+	ruleOriginalAuthorship:              {},
+	ruleOriginalAuthorshipComb:          {},
+	ruleCombinationAuthorship:           {},
+	ruleBasionymAuthorshipYearMisformed: {},
+	ruleBasionymAuthorshipMissingParens: {},
+	ruleBasionymAuthorship:              {},
+	ruleAuthorsGroup:                    {},
+	ruleAuthorsTeam:                     {},
+	ruleAuthorSep:                       {},
+	ruleAuthorEx:                        {},
+	ruleAuthorEmend:                     {},
+	ruleAuthor:                          {},
+	ruleUnknownAuthor:                   {},
+	ruleAuthorWord:                      {},
+	ruleAuthorEtAl:                      {},
+	ruleAllCapsAuthorWord:               {},
+	ruleFilius:                          {},
+	ruleAuthorPrefix:                    {},
+	ruleYear:                            {},
+	ruleYearRange:                       {},
+	ruleYearWithDot:                     {},
+	ruleYearApprox:                      {},
+	ruleYearWithPage:                    {},
+	ruleYearWithParens:                  {},
+	ruleYearWithChar:                    {},
+	ruleYearNum:                         {},
+	ruleUpperCharExtended:               {},
+	ruleLowerCharExtended:               {},
+	ruleApostrOther:                     {},
+	ruleAuthorSuffix:                    {},
 }

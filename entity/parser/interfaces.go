@@ -37,7 +37,7 @@ type canonizer interface {
 
 type poser interface {
 	// pos function returns a meaning of words in a string and their positions
-	pos() []Pos
+	pos() []o.Position
 }
 
 type authorFinder interface {
@@ -46,5 +46,5 @@ type authorFinder interface {
 
 type outputter interface {
 	// details creates a details structure for JSON-based outputs
-	details() []interface{}
+	details() o.Details
 }

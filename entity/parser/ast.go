@@ -19,10 +19,11 @@ type ScientificNameNode struct {
 	Verbatim      string
 	VerbatimID    string
 	Cardinality   int
-	Hybrid        bool
 	Virus         bool
-	Bacteria      tb.Tribool
-	Surrogate     bool
+	Hybrid        *o.Annotation
+	Surrogate     *o.Annotation
+	Bacteria      *tb.Tribool
+	Annotation    *o.Annotation
 	Tail          string
 	ParserVersion string
 	Warnings      []o.Warning
@@ -32,6 +33,7 @@ func (p *Engine) NewScientificNameNode() {
 	n := p.root.up
 	var name nameData
 	var tail string
+	var annot o.Annotation
 
 	for n != nil {
 		switch n.token32.pegRule {
@@ -50,7 +52,8 @@ func (p *Engine) NewScientificNameNode() {
 	}
 	if str.IsBoldSurrogate(tail) {
 		p.Cardinality = 0
-		p.Surrogate = true
+		annot = o.BOLDAnnot
+		p.Surrogate = &annot
 	}
 	if p.Tail != "" && tail == "" {
 		tail = p.Tail
@@ -83,18 +86,25 @@ func (p *Engine) tailValue(n *node32) string {
 		return ""
 	}
 	p.AddWarn(o.TailWarn)
-	return string([]rune(p.Buffer)[t.begin:t.end])
+	return string(p.buffer[t.begin:t.end])
 }
 
 func (p *Engine) newName(n *node32) nameData {
 	var name nameData
+	var annot o.Annotation
 	n = n.up
 	switch n.token32.pegRule {
 	case ruleHybridFormula:
+		annot = o.HybridFormulaAnnot
+		p.Hybrid = &annot
 		name = p.newHybridFormulaNode(n)
 	case ruleNamedGenusHybrid:
+		annot = o.NamedHybridAnnot
+		p.Hybrid = &annot
 		name = p.newNamedGenusHybridNode(n)
 	case ruleNamedSpeciesHybrid:
+		annot = o.NamedHybridAnnot
+		p.Hybrid = &annot
 		name = p.newNamedSpeciesHybridNode(n)
 	case ruleSingleName:
 		name = p.newSingleName(n)
@@ -188,6 +198,7 @@ type namedGenusHybridNode struct {
 func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 	var nhn *namedGenusHybridNode
 	var name nameData
+	var annot o.Annotation
 	n = n.up
 	if n.token32.pegRule != ruleHybridChar {
 		return nhn
@@ -208,7 +219,8 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
-		p.Surrogate = true
+		annot = o.ApproximationAnnot
+		p.Surrogate = &annot
 		p.AddWarn(o.NameApproxWarn)
 		name = p.newApproxNode(n)
 	}
@@ -229,6 +241,7 @@ type namedSpeciesHybridNode struct {
 
 func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 	var nhl *namedSpeciesHybridNode
+	var annot o.Annotation
 	n = n.up
 	var gen, hybrid, cf *wordNode
 	var sp *spEpithetNode
@@ -239,7 +252,8 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 			gen = p.newWordNode(n, o.GenusType)
 		case ruleComparison:
 			cf = p.newWordNode(n, o.ComparisonType)
-			p.Surrogate = true
+			annot = o.ComparisonAnnot
+			p.Surrogate = &annot
 			p.AddWarn(o.NameComparisonWarn)
 		case ruleHybridChar:
 			hybrid = p.newWordNode(n, o.HybridCharType)
@@ -312,17 +326,20 @@ func (p *Engine) newBotanicalUninomialNode(n *node32) *uninomialNode {
 
 func (p *Engine) newSingleName(n *node32) nameData {
 	var name nameData
+	var annot o.Annotation
 	n = n.up
 	switch n.token32.pegRule {
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
 		p.AddWarn(o.NameApproxWarn)
-		p.Surrogate = true
+		annot = o.ApproximationAnnot
+		p.Surrogate = &annot
 		name = p.newApproxNode(n)
 	case ruleNameComp:
 		p.AddWarn(o.NameComparisonWarn)
-		p.Surrogate = true
+		annot = o.ComparisonAnnot
+		p.Surrogate = &annot
 		name = p.newComparisonNode(n)
 	case ruleUninomial:
 		name = p.newUninomialNode(n)
@@ -608,7 +625,7 @@ func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
 		n := n.next
 		au2 := p.newAuthorshipNode(n)
 		rw := &wordNode{Value: "subgen.", NormValue: "subgen.",
-			Pos: Pos{Type: o.RankType}}
+			Pos: o.Position{Type: o.RankType}}
 		r = &rankUninomialNode{Word: rw}
 		u2 = &uninomialNode{
 			Word:       u2w,
@@ -942,13 +959,13 @@ func (n *node32) flatChildren() []*node32 {
 type wordNode struct {
 	Value     string
 	NormValue string
-	Pos       Pos
+	Pos       o.Position
 }
 
 func (p *Engine) newWordNode(n *node32, wt o.WordType) *wordNode {
 	t := n.token32
 	val := p.nodeValue(n)
-	pos := Pos{Type: wt, Start: int(t.begin), End: int(t.end)}
+	pos := o.Position{Type: wt, Start: int(t.begin), End: int(t.end)}
 	wrd := wordNode{Value: val, NormValue: val, Pos: pos}
 	children := n.flatChildren()
 	var canApostrophe bool
@@ -1022,12 +1039,6 @@ func (w *wordNode) normalizeNums() {
 	num := match[0][1]
 	wrd := match[0][2]
 	w.NormValue = str.NumToStr(num) + wrd
-}
-
-type Pos struct {
-	Type  o.WordType
-	Start int
-	End   int
 }
 
 var numWord = regexp.MustCompile(`^([0-9]+)[-\.]?(.+)$`)
