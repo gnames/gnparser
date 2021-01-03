@@ -31,6 +31,7 @@ type Canonical struct {
 }
 
 type Authorship struct {
+	Verbatim    string     `json:"verbatim"`
 	Normalized  string     `json:"normalized"`
 	Year        string     `json:"year,omitempty"`
 	Authors     []string   `json:"authors,omitempty"`

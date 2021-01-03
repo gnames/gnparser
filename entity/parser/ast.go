@@ -641,6 +641,7 @@ func (p *Engine) newRankUninomialNode(n *node32) *rankUninomialNode {
 }
 
 type authorshipNode struct {
+	Verbatim           string
 	OriginalAuthors    *authorsGroupNode
 	CombinationAuthors *authorsGroupNode
 	TerminalFilius     bool
@@ -654,6 +655,7 @@ func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 	var oa, ca *authorsGroupNode
 	var misplacedYear bool
 	var fil bool
+	verbatim := p.buffer[n.begin:n.end]
 	n = n.up
 	for n != nil {
 		switch n.token32.pegRule {
@@ -685,6 +687,7 @@ func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 	}
 
 	a = &authorshipNode{
+		Verbatim:           string(verbatim),
 		OriginalAuthors:    oa,
 		CombinationAuthors: ca,
 		TerminalFilius:     fil,

@@ -34,8 +34,8 @@ func TestToOutput(t *testing.T) {
 	p := &parser.Engine{Buffer: ""}
 	p.Init()
 	testData := []struct {
-		name, can, au string
-		det, parsed   bool
+		name, can, auNorm string
+		det, parsed       bool
 	}{
 		{"Pardosa moesta L.", "Pardosa moesta", "L.", false, true},
 		{"something", "", "", false, false},

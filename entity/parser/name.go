@@ -641,12 +641,28 @@ func (au *authorshipNode) details() *o.Authorship {
 		var ao *o.Authorship
 		return ao
 	}
-	ao := o.Authorship{Normalized: au.value()}
+	ao := o.Authorship{Verbatim: au.Verbatim, Normalized: au.value()}
 	ao.Original = authGroupDetail(au.OriginalAuthors)
 
 	if au.CombinationAuthors != nil {
 		ao.Combination = authGroupDetail(au.CombinationAuthors)
 	}
+	yr := ""
+	if ao.Original != nil && ao.Original.Year != nil {
+		yr = ao.Original.Year.Value
+		if ao.Original.Year.IsApproximate {
+			yr = fmt.Sprintf("(%s)", yr)
+		}
+	}
+	var aus []string
+	if ao.Original != nil {
+		aus = ao.Original.Authors
+	}
+	if ao.Combination != nil {
+		aus = append(aus, ao.Combination.Authors...)
+	}
+	ao.Authors = aus
+	ao.Year = yr
 	return &ao
 }
 
