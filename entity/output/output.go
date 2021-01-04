@@ -1,63 +1,57 @@
 package output
 
 import (
-	tb "github.com/gnames/gnlib/tribool"
+	"strconv"
+
+	gncsv "github.com/gnames/gnlib/csv"
+	"github.com/gnames/gnlib/encode"
+	"github.com/gnames/gnlib/format"
 )
 
-type Parsed struct {
-	Parsed          bool             `json:"parsed"`
-	OverallQuality  int              `json:"parseQuality"`
-	QualityWarnings []QualityWarning `json:"qualityWarnings,omitempty"`
-	Verbatim        string           `json:"verbatim"`
-	Normalized      string           `json:"normalized,omitempty"`
-	Canonical       *Canonical       `json:"canonical,omitempty"`
-	Cardinality     int              `json:"cardinality"`
-	Authorship      *Authorship      `json:"authorship,omitempty"`
-	Bacteria        *tb.Tribool      `json:"isBacteria,omitempty"`
-	Virus           bool             `json:"isVirus,omitempty"`
-	Hybrid          *Annotation      `json:"hybrid,omitempty"`
-	Surrogate       *Annotation      `json:"surrogate,omitempty"`
-	Tail            string           `json:"tail,omitempty"`
-	Details         Details          `json:"details,omitempty"`
-	Positions       []Position       `json:"pos,omitempty"`
-	VerbatimID      string           `json:"id"`
-	ParserVersion   string           `json:"parserVersion"`
+func (p Parsed) Output(f format.Format) string {
+	switch f {
+	case format.CSV:
+		return p.csvOutput()
+	case format.CompactJSON:
+		return p.jsonOutput(false)
+	case format.PrettyJSON:
+		return p.jsonOutput(true)
+	default:
+		return "N/A"
+	}
 }
 
-type Canonical struct {
-	Stemmed string `json:"stemmed"`
-	Simple  string `json:"simple"`
-	Full    string `json:"full"`
+func CSVHeader() string {
+	return "Id,Verbatim,Cardinality,CanonicalStem,CanonicalSimple,CanonicalFull,Authorship,Year,Quality"
 }
 
-type Authorship struct {
-	Verbatim    string     `json:"verbatim"`
-	Normalized  string     `json:"normalized"`
-	Year        string     `json:"year,omitempty"`
-	Authors     []string   `json:"authors,omitempty"`
-	Original    *AuthGroup `json:"originalAuth,omitempty"`
-	Combination *AuthGroup `json:"combinationAuth,omitempty"`
+func (p Parsed) csvOutput() string {
+	var stem, simple, full, authorship string
+	if p.Canonical != nil {
+		stem = p.Canonical.Stemmed
+		simple = p.Canonical.Simple
+		full = p.Canonical.Full
+	}
+
+	if p.Authorship != nil {
+		authorship = p.Authorship.Normalized
+	}
+
+	res := []string{
+		p.VerbatimID,
+		p.Verbatim,
+		strconv.Itoa(p.Cardinality),
+		stem,
+		simple,
+		full,
+		authorship,
+		strconv.Itoa(p.OverallQuality),
+	}
+	return gncsv.ToCSV(res)
 }
 
-type AuthGroup struct {
-	Authors      []string `json:"authors"`
-	Year         *Year    `json:"year,omitempty"`
-	ExAuthors    *Authors `json:"exAuthors,omitempty"`
-	EmendAuthors *Authors `json:"emendAuthors,omitempty"`
-}
-
-type Authors struct {
-	Authors []string `json:"authors"`
-	Year    *Year    `json:"year,omitempty"`
-}
-
-type Year struct {
-	Value         string `json:"year"`
-	IsApproximate bool   `json:"isApproximate"`
-}
-
-type Position struct {
-	Type  WordType `json:"wordType"`
-	Start int      `json:"start"`
-	End   int      `json:"end"`
+func (p Parsed) jsonOutput(pretty bool) string {
+	enc := encode.GNjson{Pretty: pretty}
+	res, _ := enc.Encode(p)
+	return string(res)
 }
