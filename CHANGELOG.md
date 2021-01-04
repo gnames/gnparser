@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+- Add [#120]: CLI interface for newly created functionality.
+- Add [#119]: Formatted output for `output.Parsed`.
+- Add [#117]: Convert failed parsing results to `output.Parsed`.
+- Add [#114]: Convert parsing result to `output.Parsed`.
+- Add [#118]: Add `Verbatim` and `Year` fields to the root of `Authorship`.
+- Add [#107]: Move `grammar` package to `entity` and rename to `parser`.
+- Add [#110]: Move `stemmer` to `entity`.
+- Add [#113]: Move `str` package to `entity`.
+- Add [#112]: Move `preprocess` package to `entity`.
+- Add [#105]: Move `fs` package to `io`.
+- Add [#111]: Move `dict` package to `io`.
+- Add [#106]: Describe main use-case via interface.
+- Add [#104]: Add configuration package.
+- Add [#103]: Create an output.Parsed object that can be used in Go and as JSON.
+- Add [#101]: Start using gnlib where it makes sense.
+- Add [#99]: Move code to GitHub and change links accordingly.
+
 ## [v.0.14.4]
 
 - Add [#96]: Do not parse names starting with "Candidatus".

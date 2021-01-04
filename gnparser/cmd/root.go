@@ -30,16 +30,19 @@ import (
 	"path/filepath"
 	"sync"
 
+	"github.com/gnames/gnlib/format"
 	"github.com/gnames/gnlib/sys"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/config"
-	"github.com/gnames/gnparser/output"
+	"github.com/gnames/gnparser/entity/output"
 	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
-const configText = `# Format sets the output format for CLI and Web
+const (
+	batchSize  = 50_000
+	configText = `# Format sets the output format for CLI and Web
 interfaces. There are 3 possible settings: 'csv', 'compact', 'pretty'.
 # Format csv
 
@@ -49,7 +52,7 @@ interfaces. There are 3 possible settings: 'csv', 'compact', 'pretty'.
 
 # KeepHTMLTags can be set to true if it is desirable to not try to remove from
 # a few HTML tags often present in names-strings that were planned to be
-# presented via an HTML page.  
+# presented via an HTML page.
 # KeepHTMLTags false
 
 # WithDetails can be set to true when a simplified output is not sufficient
@@ -59,6 +62,7 @@ interfaces. There are 3 possible settings: 'csv', 'compact', 'pretty'.
 # Port is a port for the gnames service
 # Port: 8080
 `
+)
 
 var (
 	opts []config.Option
@@ -115,7 +119,6 @@ gnparser -j 5 -p 8080
 		withDetailsFlag(cmd)
 		port := portFlag(cmd)
 		cfg := config.NewConfig(opts...)
-		log.Printf("Conf: %+v\n", cfg)
 
 		if port != 0 {
 			fmt.Println("Running gnparser as a website and REST server:")
@@ -125,12 +128,12 @@ gnparser -j 5 -p 8080
 			os.Exit(0)
 		}
 
-		// if len(args) == 0 {
-		// 	processStdin(cmd, jn, opts)
-		// 	os.Exit(0)
-		// }
-		// data := getInput(cmd, args)
-		// parse(data, jn, opts)
+		if len(args) == 0 {
+			processStdin(cmd, cfg)
+			os.Exit(0)
+		}
+		data := getInput(cmd, args)
+		parse(data, cfg)
 	},
 }
 
@@ -250,9 +253,8 @@ func versionFlag(cmd *cobra.Command) bool {
 		log.Fatal(err)
 	}
 	if version {
-		gnp := gnparser.NewGNparser()
 		fmt.Printf("\nversion: %s\n\nbuild:   %s\n\n",
-			gnp.Version(), gnp.Build())
+			gnparser.Version, gnparser.Build)
 		return true
 	}
 	return false
@@ -314,13 +316,13 @@ func portFlag(cmd *cobra.Command) int {
 	return webPort
 }
 
-func processStdin(cmd *cobra.Command, jobs int, opts []gnparser.Option) {
+func processStdin(cmd *cobra.Command, cfg config.Config) {
 	if !checkStdin() {
 		_ = cmd.Help()
 		return
 	}
-	gnp := gnparser.NewGNparser(opts...)
-	parseFile(gnp, os.Stdin, jobs, opts)
+	gnp := gnparser.NewGNParser(cfg)
+	parseFile(gnp, os.Stdin)
 }
 
 func checkStdin() bool {
@@ -344,8 +346,11 @@ func getInput(cmd *cobra.Command, args []string) string {
 	return data
 }
 
-func parse(data string, jobs int, opts []gnparser.Option) {
-	gnp := gnparser.NewGNparser(opts...)
+func parse(
+	data string,
+	cfg config.Config,
+) {
+	gnp := gnparser.NewGNParser(cfg)
 
 	path := string(data)
 	if fileExists(path) {
@@ -354,7 +359,7 @@ func parse(data string, jobs int, opts []gnparser.Option) {
 			log.Fatal(err)
 			os.Exit(1)
 		}
-		parseFile(gnp, f, jobs, opts)
+		parseFile(gnp, f)
 		f.Close()
 	} else {
 		parseString(gnp, data)
@@ -370,51 +375,53 @@ func fileExists(path string) bool {
 	return false
 }
 
-func parseFile(gnp gnparser.GNparser, f io.Reader, jobs int,
-	opts []gnparser.Option) {
-	in := make(chan string)
-	out := make(chan *gnparser.ParseResult)
+func parseFile(
+	gnp gnparser.GNParser,
+	f io.Reader,
+) {
+	batch := make([]string, batchSize)
+	chOut := make(chan []output.Parsed)
 	var wg sync.WaitGroup
-	wg.Add(1)
 
-	go gnparser.ParseStream(jobs, in, out, opts...)
-	go processResults(gnp, out, &wg)
+	wg.Add(1)
+	go processResults(chOut, &wg, gnp.Format())
+
 	sc := bufio.NewScanner(f)
-	count := 0
+	var i, count int
 	for sc.Scan() {
-		count++
-		if count%50000 == 0 {
-			log.Printf("Parsing %d-th line\n", count)
+		if count == batchSize {
+			i++
+			log.Printf("Parsing %d-th line\n", count*i)
+			chOut <- gnp.ParseNames(batch)
+			batch = make([]string, batchSize)
+			count = 0
 		}
-		name := sc.Text()
-		in <- name
+		batch[count] = sc.Text()
+		count++
 	}
-	close(in)
+	chOut <- gnp.ParseNames(batch[:count])
+	close(chOut)
 	wg.Wait()
 }
 
-func processResults(gnp gnparser.GNparser, out <-chan *gnparser.ParseResult,
-	wg *sync.WaitGroup) {
+func processResults(
+	out <-chan []output.Parsed,
+	wg *sync.WaitGroup,
+	f format.Format,
+) {
 	defer wg.Done()
-	if gnp.Format == gnparser.CSV {
-		fmt.Println(output.CSVHeader())
-	}
-	for r := range out {
-		if r.Error != nil {
-			log.Println(r.Error)
+	for pr := range out {
+		for i := range pr {
+			fmt.Println(pr[i].Output(f))
 		}
-		fmt.Println(r.Output)
 	}
 }
 
-func parseString(gnp gnparser.GNparser, data string) {
-	res, err := gnp.ParseAndFormat(data)
-	if err != nil {
-		log.Fatal(err)
-		os.Exit(1)
-	}
-	if gnp.Format == gnparser.CSV {
+func parseString(gnp gnparser.GNParser, name string) {
+	res := gnp.ParseName(name)
+	f := gnp.Format()
+	if f == format.CSV {
 		fmt.Println(output.CSVHeader())
 	}
-	fmt.Println(res)
+	fmt.Println(res.Output(f))
 }
