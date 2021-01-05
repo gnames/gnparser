@@ -35,7 +35,11 @@ func NewGNParser(cfg config.Config) GNParser {
 // Parse function parses input string according to configuraions.
 // It takes a string and returns an output.Parsed object.
 func (gnp gnparser) ParseName(s string) output.Parsed {
-	sciNameNode := gnp.parser.PreprocessAndParse(s, Version, gnp.cfg.KeepHTMLTags)
+	ver := Version
+	if gnp.cfg.IsTest {
+		ver = "test_version"
+	}
+	sciNameNode := gnp.parser.PreprocessAndParse(s, ver, gnp.cfg.KeepHTMLTags)
 	res := sciNameNode.ToOutput(gnp.cfg.WithDetails)
 	return res
 }

@@ -525,7 +525,7 @@ func (u *uninomialNode) lastAuthorship() *authorshipNode {
 }
 
 func (u *uninomialNode) details() o.Details {
-	ud := o.Uninomial{Uninomial: u.Word.NormValue}
+	ud := o.Uninomial{Value: u.Word.NormValue}
 	if u.Authorship != nil {
 		ud.Authorship = u.Authorship.details()
 	}
@@ -568,9 +568,9 @@ func (u *uninomialComboNode) lastAuthorship() *authorshipNode {
 
 func (u *uninomialComboNode) details() o.Details {
 	ud := o.Uninomial{
-		Uninomial: u.Uninomial2.Word.NormValue,
-		Rank:      u.Rank.Word.NormValue,
-		Parent:    u.Uninomial1.Word.NormValue,
+		Value:  u.Uninomial2.Word.NormValue,
+		Rank:   u.Rank.Word.NormValue,
+		Parent: u.Uninomial1.Word.NormValue,
 	}
 	if u.Uninomial2.Authorship != nil {
 		ud.Authorship = u.Uninomial2.Authorship.details()

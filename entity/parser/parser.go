@@ -3,16 +3,14 @@ package parser
 import (
 	o "github.com/gnames/gnparser/entity/output"
 	"github.com/gnames/gnparser/entity/preprocess"
+	"github.com/gnames/gnparser/entity/str"
 )
 
 func (p *Engine) PreprocessAndParse(
 	s, ver string,
 	keepHTML bool,
 ) ScientificNameNode {
-	defer func() {
-		p.sn.addVerbatim(s)
-		p.sn.parserVersion = ver
-	}()
+
 	tagsOrEntities := false
 	if !keepHTML {
 		orig := s
@@ -23,17 +21,32 @@ func (p *Engine) PreprocessAndParse(
 	}
 	preproc := preprocess.Preprocess([]byte(s))
 
+	defer func() {
+		if len(preproc.Tail) > 0 {
+			p.sn.tail += string(preproc.Tail)
+		}
+		if len(p.sn.tail) > 0 {
+			p.addWarn(o.TailWarn)
+			if str.IsBoldSurrogate(p.sn.tail) {
+				p.sn.cardinality = 0
+				annot := o.BOLDAnnot
+				p.sn.surrogate = &annot
+			}
+		}
+		p.sn.warnings = p.warnings
+		p.sn.addVerbatim(s)
+		p.sn.parserVersion = ver
+	}()
+
 	if preproc.NoParse {
 		p.newNotParsedScientificNameNode(preproc)
+		return p.sn
 	}
 
 	p.Buffer = string(preproc.Body)
 	p.fullReset()
 	if tagsOrEntities {
 		p.addWarn(o.HTMLTagsEntitiesWarn)
-	}
-	if len(preproc.Tail) > 0 {
-		p.addWarn(o.TailWarn)
 	}
 	if preproc.Underscore {
 		p.addWarn(o.SpaceNonStandardWarn)
@@ -47,8 +60,5 @@ func (p *Engine) PreprocessAndParse(
 
 	p.OutputAST()
 	p.newScientificNameNode()
-	if len(preproc.Tail) > 0 {
-		p.sn.tail += string(preproc.Tail)
-	}
 	return p.sn
 }

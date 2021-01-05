@@ -14,6 +14,7 @@ func TestNew(t *testing.T) {
 	deflt := config.Config{
 		Format:       format.CSV,
 		JobsNum:      runtime.NumCPU(),
+		BatchSize:    50_000,
 		KeepHTMLTags: false,
 		WithDetails:  false,
 		Port:         8080,
@@ -28,6 +29,7 @@ func TestNewOpts(t *testing.T) {
 	updt := config.Config{
 		Format:       format.CompactJSON,
 		JobsNum:      161,
+		BatchSize:    1,
 		KeepHTMLTags: true,
 		WithDetails:  true,
 		Port:         8989,
@@ -39,6 +41,7 @@ func opts() []config.Option {
 	return []config.Option{
 		config.OptFormat("compact"),
 		config.OptJobsNum(161),
+		config.OptBatchSize(1),
 		config.OptKeepHTMLTags(true),
 		config.OptWithDetails(true),
 		config.OptPort(8989),

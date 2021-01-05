@@ -26,14 +26,13 @@ type scientificNameNode struct {
 	annotation    *o.Annotation
 	tail          string
 	parserVersion string
-	warnings      []o.Warning
+	warnings      map[o.Warning]struct{}
 }
 
 func (p *Engine) newScientificNameNode() {
 	n := p.root.up
 	var name nameData
 	var tail string
-	var annot o.Annotation
 
 	for n != nil {
 		switch n.token32.pegRule {
@@ -43,17 +42,6 @@ func (p *Engine) newScientificNameNode() {
 			tail = p.tailValue(n)
 		}
 		n = n.next
-	}
-	warns := make([]o.Warning, len(p.warnings))
-	i := 0
-	for k := range p.warnings {
-		warns[i] = k
-		i++
-	}
-	if str.IsBoldSurrogate(tail) {
-		p.cardinality = 0
-		annot = o.BOLDAnnot
-		p.surrogate = &annot
 	}
 	if p.tail != "" && tail == "" {
 		tail = p.tail
@@ -65,7 +53,6 @@ func (p *Engine) newScientificNameNode() {
 		surrogate:   p.surrogate,
 		bacteria:    p.bacteria,
 		tail:        tail,
-		warnings:    warns,
 	}
 	p.sn = &sn
 }
@@ -85,7 +72,6 @@ func (p *Engine) tailValue(n *node32) string {
 	if t.begin == t.end {
 		return ""
 	}
-	p.addWarn(o.TailWarn)
 	return string(p.buffer[t.begin:t.end])
 }
 
@@ -198,7 +184,6 @@ type namedGenusHybridNode struct {
 func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 	var nhn *namedGenusHybridNode
 	var name nameData
-	var annot o.Annotation
 	n = n.up
 	if n.token32.pegRule != ruleHybridChar {
 		return nhn
@@ -219,9 +204,6 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
-		annot = o.ApproximationAnnot
-		p.surrogate = &annot
-		p.addWarn(o.NameApproxWarn)
 		name = p.newApproxNode(n)
 	}
 	nhn = &namedGenusHybridNode{
@@ -332,9 +314,6 @@ func (p *Engine) newSingleName(n *node32) nameData {
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
-		p.addWarn(o.NameApproxWarn)
-		annot = o.ApproximationAnnot
-		p.surrogate = &annot
 		name = p.newApproxNode(n)
 	case ruleNameComp:
 		p.addWarn(o.NameComparisonWarn)
@@ -362,12 +341,15 @@ type approxNode struct {
 
 func (p *Engine) newApproxNode(n *node32) *approxNode {
 	var an *approxNode
+	annot := o.ApproximationAnnot
+	p.surrogate = &annot
+	p.addWarn(o.NameApproxWarn)
 	if n.token32.pegRule != ruleNameApprox {
 		return an
 	}
 	var gen *wordNode
 	var spEp *spEpithetNode
-	var annot *wordNode
+	var appr *wordNode
 	var ign string
 	n = n.up
 	for n != nil {
@@ -377,7 +359,7 @@ func (p *Engine) newApproxNode(n *node32) *approxNode {
 		case ruleSpeciesEpithet:
 			spEp = p.newSpeciesEpithetNode(n)
 		case ruleApproximation:
-			annot = p.newWordNode(n, o.ApproxType)
+			appr = p.newWordNode(n, o.ApproxType)
 		case ruleApproxNameIgnored:
 			ign = p.nodeValue(n)
 		}
@@ -386,7 +368,7 @@ func (p *Engine) newApproxNode(n *node32) *approxNode {
 	an = &approxNode{
 		Genus:     gen,
 		SpEpithet: spEp,
-		Approx:    annot,
+		Approx:    appr,
 		Ignored:   ign,
 	}
 	p.cardinality = 0

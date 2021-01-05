@@ -45,7 +45,7 @@ func (p Parsed) csvOutput() string {
 		simple,
 		full,
 		authorship,
-		strconv.Itoa(p.OverallQuality),
+		strconv.Itoa(p.ParseQuality),
 	}
 	return gncsv.ToCSV(res)
 }

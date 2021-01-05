@@ -20,11 +20,12 @@ func (sn *scientificNameNode) ToOutput(withDetails bool) o.Parsed {
 	}
 
 	res.Parsed = true
-	res.OverallQuality, res.QualityWarnings = processWarnings(sn.warnings)
+	res.ParseQuality, res.QualityWarnings = qualityWarnings(sn.warnings)
 	res.Normalized = sn.Normalized()
 	res.Cardinality = sn.cardinality
 	res.Authorship = sn.LastAuthorship(withDetails)
 	res.Hybrid = sn.hybrid
+	res.Surrogate = sn.surrogate
 	res.Bacteria = sn.bacteria
 	res.Tail = sn.tail
 	if withDetails {
@@ -34,7 +35,7 @@ func (sn *scientificNameNode) ToOutput(withDetails bool) o.Parsed {
 	return res
 }
 
-func processWarnings(ws []o.Warning) (int, []o.QualityWarning) {
+func qualityWarnings(ws map[o.Warning]struct{}) (int, []o.QualityWarning) {
 	warns := prepareWarnings(ws)
 	quality := 1
 	if len(warns) > 0 {
@@ -43,10 +44,12 @@ func processWarnings(ws []o.Warning) (int, []o.QualityWarning) {
 	return quality, warns
 }
 
-func prepareWarnings(ws []o.Warning) []o.QualityWarning {
+func prepareWarnings(ws map[o.Warning]struct{}) []o.QualityWarning {
 	res := make([]o.QualityWarning, len(ws))
-	for i := range ws {
-		res[i] = ws[i].NewQualityWarning()
+	var i int
+	for k := range ws {
+		res[i] = k.NewQualityWarning()
+		i++
 	}
 
 	sort.Slice(res, func(i, j int) bool {

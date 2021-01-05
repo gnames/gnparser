@@ -19,6 +19,9 @@ type Config struct {
 	// a stream of name-strings.
 	JobsNum int
 
+	// BatchSize sets the maximum number of elements in names-strings slice.
+	BatchSize int
+
 	// KeepHTMLTags can be set to true when it is desirable to clean up names from
 	// a few HTML tags often present in names-strings that were planned to be
 	// presented via an HTML page.
@@ -43,6 +46,7 @@ func NewConfig(opts ...Option) Config {
 	cfg := Config{
 		Format:       format.CSV,
 		JobsNum:      runtime.NumCPU(),
+		BatchSize:    50_000,
 		KeepHTMLTags: false,
 		Port:         8080,
 	}
@@ -92,9 +96,27 @@ func OptWithDetails(b bool) Option {
 	}
 }
 
+// OptBatchSize sets the max number of names in a batch.
+func OptBatchSize(i int) Option {
+	return func(cfg *Config) {
+		if i <= 0 {
+			log.Println("Batch size should be a positive number")
+			return
+		}
+		cfg.BatchSize = i
+	}
+}
+
 // OptPort sets a port for web-service.
 func OptPort(i int) Option {
 	return func(cfg *Config) {
 		cfg.Port = i
+	}
+}
+
+// OptIsTest sets a test flag.
+func OptIsTest(b bool) Option {
+	return func(cfg *Config) {
+		cfg.IsTest = b
 	}
 }

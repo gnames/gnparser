@@ -11,9 +11,9 @@ const (
 	NoAnnot Annotation = iota
 	SurrogateAnnot
 	ComparisonAnnot
+	ApproximationAnnot
 	BOLDAnnot
 	HybridAnnot
-	ApproximationAnnot
 	NamedHybridAnnot
 	HybridFormulaAnnot
 	NothoHybridAnnot
@@ -21,14 +21,14 @@ const (
 
 var annotMap = map[Annotation]string{
 	NoAnnot:            "",
-	SurrogateAnnot:     "a surrogate name",
-	ComparisonAnnot:    "comparison",
-	BOLDAnnot:          "BOLD surrogate",
-	HybridAnnot:        "a hybrid name",
-	ApproximationAnnot: "approximation",
-	NamedHybridAnnot:   "named hybrid",
-	HybridFormulaAnnot: "hybrid formula",
-	NothoHybridAnnot:   "notho- hybrid",
+	SurrogateAnnot:     "SURROGATE",
+	ComparisonAnnot:    "COMPARISON",
+	ApproximationAnnot: "APPROXIMATION",
+	BOLDAnnot:          "BOLD_SURROGATE",
+	HybridAnnot:        "HYBRID",
+	NamedHybridAnnot:   "NAMED_HYBRID",
+	HybridFormulaAnnot: "HYBRID_FORMULA",
+	NothoHybridAnnot:   "NOTHO_HYBRID",
 }
 
 var annotStrMap = func() map[string]Annotation {

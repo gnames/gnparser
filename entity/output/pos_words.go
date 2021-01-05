@@ -28,8 +28,8 @@ const (
 
 var wordTypeMap = map[WordType]string{
 	UnknownType:          "word",
-	ComparisonType:       "comparison",
-	ApproxType:           "approximation",
+	ComparisonType:       "comparisonMarker",
+	ApproxType:           "approximationMarker",
 	AuthorWordType:       "authorWord",
 	AuthorWordFiliusType: "authorWordFilius",
 	GenusType:            "genus",

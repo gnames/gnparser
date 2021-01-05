@@ -1,7 +1,7 @@
 package output
 
 type Uninomial struct {
-	Uninomial  string      `json:"uninomial"`
+	Value      string      `json:"uninomial"`
 	Rank       string      `json:"rank,omitempty"`
 	Parent     string      `json:"parent,omitempty"`
 	Authorship *Authorship `json:"authorship,omitempty"`
@@ -27,15 +27,15 @@ type InfraSpeciesElem struct {
 
 type Comparison struct {
 	Genus             string      `json:"genus"`
-	Species           string      `json:"species"`
-	SpeciesAuthorship *Authorship `json:"speciesAuthorship,omitempty"`
+	Species           string      `json:"species,omitempty"`
+	SpeciesAuthorship *Authorship `json:"authorship,omitempty"`
 	CompMarker        string      `json:"comparisonMarker"`
 }
 
 type Approximation struct {
 	Genus             string      `json:"genus"`
-	Species           string      `json:"species"`
-	SpeciesAuthorship *Authorship `json:"speciesAuthorship"`
+	Species           string      `json:"species,omitempty"`
+	SpeciesAuthorship *Authorship `json:"authorship,omitempty"`
 	ApproxMarker      string      `json:"approximationMarker,omitempty"`
 	Ignored           string      `json:"ignored,omitempty"`
 }

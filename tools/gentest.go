@@ -9,18 +9,18 @@ import (
 	"bufio"
 	"os"
 	"path/filepath"
-	"regexp"
+	"strings"
 
+	"github.com/gnames/gnlib/encode"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/output"
+	"github.com/gnames/gnparser/config"
+	"github.com/gnames/gnparser/entity/output"
 )
 
 func genTestData() error {
-	var nameString string
-	empty := regexp.MustCompile(`^\s*$`)
-	comment := regexp.MustCompile(`^\s*#`)
-	path := filepath.Join("..", "testdata", "test_data.txt")
-	outPath := filepath.Join("..", "testdata", "test_data_new.txt")
+	enc := encode.GNjson{}
+	path := filepath.Join("..", "testdata", "test_data.md")
+	outPath := filepath.Join("..", "testdata", "test_data_new.md")
 	f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
 	if err != nil {
 		return err
@@ -33,33 +33,49 @@ func genTestData() error {
 	defer w.Close()
 
 	sc := bufio.NewScanner(f)
-	gnp := gnparser.NewGNparser(gnparser.OptIsTest())
-	count := 0
+	opts := []config.Option{config.OptIsTest(true), config.OptWithDetails(true)}
+	cfg := config.NewConfig(opts...)
+	gnp := gnparser.NewGNParser(cfg)
+	var res output.Parsed
+	isName := false
+	var count int
+	var can, au, nameString string
+	var jsonData []byte
 	for sc.Scan() {
 		line := sc.Text()
-		if empty.MatchString(line) || comment.MatchString(line) {
+		if !isName {
 			w.Write([]byte(line + "\n"))
+			if strings.HasPrefix(line, "Name: ") {
+				isName = true
+				nameString = line[6:]
+				res = gnp.ParseName(nameString)
+				jsonData, _ = enc.Encode(res)
+				if res.Parsed {
+					can = res.Canonical.Full
+					if res.Authorship != nil {
+						au = res.Authorship.Normalized
+					}
+				}
+			}
 			continue
 		}
 		count++
 		switch count {
-		case 1:
-			nameString = line
-			w.Write([]byte(nameString + "\n"))
-			gnp.Parse(nameString)
-			res := gnp.ParsedName()
-			w.Write([]byte(res + "\n"))
-			bs, err := gnp.ToJSON()
-			if err != nil {
-				return err
-			}
-			w.Write(bs)
+		case 2: // Canonical: name_here
+			can = strings.TrimRight("Canonical: "+can, " ")
+			w.Write([]byte(can + "\n"))
+		case 4: // Authorship
+			au = strings.TrimRight("Authorship: "+au, " ")
+			w.Write([]byte(au + "\n"))
+		case 7:
+			w.Write(jsonData)
 			w.Write([]byte("\n"))
-			sl := gnp.ToSlice()
-			res = output.ToCSV(sl) + "\n"
-			w.Write([]byte(res))
-		case 4:
 			count = 0
+			isName = false
+			can, au = "", ""
+			jsonData = []byte("")
+		default:
+			w.Write([]byte(line + "\n"))
 		}
 	}
 	if err := sc.Err(); err != nil {

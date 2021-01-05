@@ -42,7 +42,6 @@ import (
 )
 
 const (
-	batchSize  = 50_000
 	configText = `# Format sets the output format for CLI and Web
 interfaces. There are 3 possible settings: 'csv', 'compact', 'pretty'.
 # Format csv
@@ -50,6 +49,11 @@ interfaces. There are 3 possible settings: 'csv', 'compact', 'pretty'.
 # JobsNum sets the level of parallelism used during parsing of a stream
 # of name-strings.
 # JobsNum 4
+
+# BatchSize determines maximum number of name-strings sent simultaneously
+# for parsing. When it is important to have no delay in parsing, set the
+# BatchSize to 1.
+# BatchSize 50000
 
 # KeepHTMLTags can be set to true if it is desirable to not try to remove from
 # a few HTML tags often present in names-strings that were planned to be
@@ -66,7 +70,8 @@ interfaces. There are 3 possible settings: 'csv', 'compact', 'pretty'.
 )
 
 var (
-	opts []config.Option
+	opts      []config.Option
+	batchSize int
 )
 
 // config purpose is to achieve automatic import of data from the
@@ -74,6 +79,7 @@ var (
 type cfgData struct {
 	Format       string
 	JobsNum      int
+	BatchSize    int
 	KeepHTMLTags bool
 	WithDetails  bool
 	Port         int
@@ -90,14 +96,17 @@ To see version:
 gnparser -V
 
 To parse one name in CSV format
-gnparser "Homo sapiens Linnaeus 1753" [flags]
+gnparser "Homo sapiens Linnaeus 1758" [flags]
 or (the same)
-gnparser "Homo sapiens Linnaeus 1753" -f csv [flags]
+gnparser "Homo sapiens Linnaeus 1758" -f csv [flags]
 
 To parse one name using JSON format:
-gnparser "Homo sapiens Linnaeus 1753" -f compact [flags]
+gnparser "Homo sapiens Linnaeus 1758" -f compact [flags]
 or
-gnparser "Homo sapiens Linnaeus 1753" -f pretty [flags]
+gnparser "Homo sapiens Linnaeus 1758" -f pretty [flags]
+
+To parse with maximum amount of details:
+gnparser "Homo sapiens Linnaeus 1758" -d -f pretty
 
 To parse many names from a file (one name per line):
 gnparser names.txt [flags] > parsed_names.txt
@@ -118,8 +127,10 @@ gnparser -j 5 -p 8080
 		jobsNumFlag(cmd)
 		keepHTMLTagsFlag(cmd)
 		withDetailsFlag(cmd)
+		batchSizeFlag(cmd)
 		port := portFlag(cmd)
 		cfg := config.NewConfig(opts...)
+		batchSize = cfg.BatchSize
 
 		if port != 0 {
 			gnp := gnparser.NewGNParser(cfg)
@@ -157,6 +168,9 @@ func init() {
 
 	rootCmd.Flags().IntP("jobs", "j", 0,
 		"nubmer of threads to run. CPU's threads number is the default.")
+
+	rootCmd.Flags().IntP("batch_size", "b", 0,
+		"maximum number of names in a batch send for processing.")
 
 	rootCmd.Flags().BoolP("keep_tags", "k", false,
 		"keeps HTML entities and tags when parsing.")
@@ -211,6 +225,9 @@ func getOpts() []config.Option {
 	}
 	if cfg.JobsNum != 0 {
 		opts = append(opts, config.OptJobsNum(cfg.JobsNum))
+	}
+	if cfg.BatchSize > 0 {
+		opts = append(opts, config.OptBatchSize(cfg.BatchSize))
 	}
 	if cfg.KeepHTMLTags != false {
 		opts = append(opts, config.OptKeepHTMLTags(cfg.KeepHTMLTags))
@@ -301,6 +318,17 @@ func withDetailsFlag(cmd *cobra.Command) {
 	}
 	if withDet {
 		opts = append(opts, config.OptWithDetails(true))
+	}
+}
+
+func batchSizeFlag(cmd *cobra.Command) {
+	bs, err := cmd.Flags().GetInt("batch_size")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	if bs > 0 {
+		opts = append(opts, config.OptBatchSize(bs))
 	}
 }
 

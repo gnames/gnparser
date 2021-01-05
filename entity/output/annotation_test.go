@@ -14,9 +14,9 @@ func TestStringAnnot(t *testing.T) {
 		res   string
 	}{
 		{out.NoAnnot, ""},
-		{out.ComparisonAnnot, "Comparison"},
-		{out.ApproxSurrogateAnnot, "Approx. surrogate"},
-		{out.SurrogateAnnot, "Surrogate"},
+		{out.ComparisonAnnot, "COMPARISON"},
+		{out.ApproximationAnnot, "APPROXIMATION"},
+		{out.SurrogateAnnot, "SURROGATE"},
 	}
 
 	for i := range data {
@@ -37,7 +37,7 @@ func TestJSONAnnot(t *testing.T) {
 		{dataOb{"None", out.NoAnnot, []int{}},
 			`{"f1":"None","annot":"","f2":[]}`},
 		{dataOb{"Comparison", out.ComparisonAnnot, []int{2, 3, 4}},
-			`{"f1":"Comparison","annot":"Comparison","f2":[2,3,4]}`},
+			`{"f1":"Comparison","annot":"COMPARISON","f2":[2,3,4]}`},
 	}
 	enc := encode.GNjson{}
 	var dob dataOb

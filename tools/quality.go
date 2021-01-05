@@ -1,3 +1,5 @@
+// +build ignore
+
 // quality.go generates a markdown file that describes meaning of each quality
 // category.
 package main

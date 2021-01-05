@@ -6,15 +6,15 @@ import (
 
 type Parsed struct {
 	Parsed          bool             `json:"parsed"`
-	OverallQuality  int              `json:"parseQuality"`
+	ParseQuality    int              `json:"parseQuality"`
 	QualityWarnings []QualityWarning `json:"qualityWarnings,omitempty"`
 	Verbatim        string           `json:"verbatim"`
 	Normalized      string           `json:"normalized,omitempty"`
 	Canonical       *Canonical       `json:"canonical,omitempty"`
 	Cardinality     int              `json:"cardinality"`
 	Authorship      *Authorship      `json:"authorship,omitempty"`
-	Bacteria        *tb.Tribool      `json:"isBacteria,omitempty"`
-	Virus           bool             `json:"isVirus,omitempty"`
+	Bacteria        *tb.Tribool      `json:"bacteria,omitempty"`
+	Virus           bool             `json:"virus,omitempty"`
 	Hybrid          *Annotation      `json:"hybrid,omitempty"`
 	Surrogate       *Annotation      `json:"surrogate,omitempty"`
 	Tail            string           `json:"tail,omitempty"`
@@ -53,7 +53,7 @@ type Authors struct {
 
 type Year struct {
 	Value         string `json:"year"`
-	IsApproximate bool   `json:"isApproximate"`
+	IsApproximate bool   `json:"isApproximate,omitempty"`
 }
 
 type Position struct {

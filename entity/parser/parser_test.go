@@ -1,10 +1,8 @@
 package parser_test
 
 import (
-	"fmt"
 	"testing"
 
-	"github.com/gnames/gnlib/encode"
 	"github.com/gnames/gnparser/entity/parser"
 	"github.com/stretchr/testify/assert"
 )
@@ -21,7 +19,8 @@ func TestPreNParse(t *testing.T) {
 	}
 	for _, v := range testData {
 		sn := p.PreprocessAndParse(v.name, "test_version", true)
-		can := sn.Canonical()
+		parsed := sn.ToOutput(false)
+		can := parsed.Canonical
 		msg := v.name
 		if v.can == "" {
 			assert.Nil(t, can, msg)
@@ -33,7 +32,6 @@ func TestPreNParse(t *testing.T) {
 
 // TTestToOutput tests ToOutput method of ScientificNameNode
 func TestToOutput(t *testing.T) {
-	enc := encode.GNjson{Pretty: true}
 	p := &parser.Engine{Buffer: ""}
 	p.Init()
 	testData := []struct {
@@ -58,8 +56,6 @@ func TestToOutput(t *testing.T) {
 	for _, v := range testData {
 		sn := p.PreprocessAndParse(v.name, "test_version", true)
 		out := sn.ToOutput(v.det)
-		json, _ := enc.Encode(out)
-		fmt.Println(string(json))
 		msg := v.name
 		if !out.Parsed {
 			assert.Nil(t, out.Canonical, msg)
