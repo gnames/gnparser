@@ -377,7 +377,7 @@ func (t *tokens32) Tokens() []token32 {
 }
 
 type Engine struct {
-	BaseEngine
+	baseEngine
 
 	Buffer string
 	buffer []rune

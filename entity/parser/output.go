@@ -6,13 +6,13 @@ import (
 	o "github.com/gnames/gnparser/entity/output"
 )
 
-func (sn *ScientificNameNode) ToOutput(withDetails bool) o.Parsed {
+func (sn *scientificNameNode) ToOutput(withDetails bool) o.Parsed {
 	res := o.Parsed{
-		Verbatim:      sn.Verbatim,
+		Verbatim:      sn.verbatim,
 		Canonical:     sn.Canonical(),
-		Virus:         sn.Virus,
-		VerbatimID:    sn.VerbatimID,
-		ParserVersion: sn.ParserVersion,
+		Virus:         sn.virus,
+		VerbatimID:    sn.verbatimID,
+		ParserVersion: sn.parserVersion,
 	}
 
 	if res.Canonical == nil {
@@ -20,13 +20,13 @@ func (sn *ScientificNameNode) ToOutput(withDetails bool) o.Parsed {
 	}
 
 	res.Parsed = true
-	res.OverallQuality, res.QualityWarnings = processWarnings(sn.Warnings)
+	res.OverallQuality, res.QualityWarnings = processWarnings(sn.warnings)
 	res.Normalized = sn.Normalized()
-	res.Cardinality = sn.Cardinality
+	res.Cardinality = sn.cardinality
 	res.Authorship = sn.LastAuthorship(withDetails)
-	res.Hybrid = sn.Hybrid
-	res.Bacteria = sn.Bacteria
-	res.Tail = sn.Tail
+	res.Hybrid = sn.hybrid
+	res.Bacteria = sn.bacteria
+	res.Tail = sn.tail
 	if withDetails {
 		res.Details = sn.Details()
 		res.Positions = sn.Pos()

@@ -8,10 +8,10 @@ import (
 func (p *Engine) PreprocessAndParse(
 	s, ver string,
 	keepHTML bool,
-) *ScientificNameNode {
+) ScientificNameNode {
 	defer func() {
-		p.SN.AddVerbatim(s)
-		p.SN.ParserVersion = ver
+		p.sn.addVerbatim(s)
+		p.sn.parserVersion = ver
 	}()
 	tagsOrEntities := false
 	if !keepHTML {
@@ -24,31 +24,31 @@ func (p *Engine) PreprocessAndParse(
 	preproc := preprocess.Preprocess([]byte(s))
 
 	if preproc.NoParse {
-		p.NewNotParsedScientificNameNode(preproc)
+		p.newNotParsedScientificNameNode(preproc)
 	}
 
 	p.Buffer = string(preproc.Body)
-	p.FullReset()
+	p.fullReset()
 	if tagsOrEntities {
-		p.AddWarn(o.HTMLTagsEntitiesWarn)
+		p.addWarn(o.HTMLTagsEntitiesWarn)
 	}
 	if len(preproc.Tail) > 0 {
-		p.AddWarn(o.TailWarn)
+		p.addWarn(o.TailWarn)
 	}
 	if preproc.Underscore {
-		p.AddWarn(o.SpaceNonStandardWarn)
+		p.addWarn(o.SpaceNonStandardWarn)
 	}
 	err := p.Parse()
 	if err != nil {
-		p.Error = err
-		p.NewNotParsedScientificNameNode(preproc)
-		return p.SN
+		p.error = err
+		p.newNotParsedScientificNameNode(preproc)
+		return p.sn
 	}
 
 	p.OutputAST()
-	p.NewScientificNameNode()
+	p.newScientificNameNode()
 	if len(preproc.Tail) > 0 {
-		p.SN.Tail += string(preproc.Tail)
+		p.sn.tail += string(preproc.Tail)
 	}
-	return p.SN
+	return p.sn
 }

@@ -5,12 +5,11 @@ import (
 )
 
 type Parser interface {
-	Init()
-	PreprocessAndParse() *SciNameNode
+	PreprocessAndParse(name, verstion string, keepHTML bool) ScientificNameNode
 }
 
-type SciNameNode interface {
-	ToOutput() o.Parsed
+type ScientificNameNode interface {
+	ToOutput(withDetails bool) o.Parsed
 }
 
 type nameData interface {

@@ -8,48 +8,54 @@ import (
 	"github.com/gnames/gnparser/io/dict"
 )
 
-type BaseEngine struct {
-	SN          *ScientificNameNode
+type baseEngine struct {
+	sn          *scientificNameNode
 	root        *node32
-	Cardinality int
-	Error       error
-	Hybrid      *o.Annotation
-	Surrogate   *o.Annotation
-	Bacteria    *tb.Tribool
-	Warnings    map[o.Warning]struct{}
-	Tail        string
+	cardinality int
+	error       error
+	hybrid      *o.Annotation
+	surrogate   *o.Annotation
+	bacteria    *tb.Tribool
+	warnings    map[o.Warning]struct{}
+	tail        string
 }
 
-func (p *Engine) FullReset() {
-	p.Cardinality = 0
-	p.Error = nil
-	p.Hybrid = nil
-	p.Surrogate = nil
-	p.Bacteria = nil
+func NewParser() Parser {
+	p := Engine{}
+	p.Init()
+	return &p
+}
+
+func (p *Engine) fullReset() {
+	p.cardinality = 0
+	p.error = nil
+	p.hybrid = nil
+	p.surrogate = nil
+	p.bacteria = nil
 	var warnReset map[o.Warning]struct{}
-	p.Warnings = warnReset
-	p.Tail = ""
+	p.warnings = warnReset
+	p.tail = ""
 	p.Reset()
 }
 
-func (p *Engine) AddWarn(w o.Warning) {
-	if p.Warnings == nil {
-		p.Warnings = make(map[o.Warning]struct{})
+func (p *Engine) addWarn(w o.Warning) {
+	if p.warnings == nil {
+		p.warnings = make(map[o.Warning]struct{})
 	}
-	if _, ok := p.Warnings[w]; !ok {
-		p.Warnings[w] = struct{}{}
+	if _, ok := p.warnings[w]; !ok {
+		p.warnings[w] = struct{}{}
 	}
 }
 
-func (p *Engine) IsBacteria(gen string) {
+func (p *Engine) isBacteria(gen string) {
 	if hom, ok := dict.Dict.Bacteria[gen]; ok {
 		if hom {
-			p.AddWarn(o.BacteriaMaybeWarn)
+			p.addWarn(o.BacteriaMaybeWarn)
 			bac := tb.NewTribool(0)
-			p.Bacteria = &bac
+			p.bacteria = &bac
 		} else {
 			bac := tb.NewTribool(1)
-			p.Bacteria = &bac
+			p.bacteria = &bac
 		}
 	}
 }
@@ -95,27 +101,27 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 	switch t.pegRule {
 	case ruleHybridChar:
 		annot = o.HybridAnnot
-		p.Hybrid = &annot
+		p.hybrid = &annot
 	case ruleRankNotho, ruleRankUninomialNotho:
 		annot = o.NothoHybridAnnot
-		p.Hybrid = &annot
-		p.AddWarn(o.HybridNamedWarn)
+		p.hybrid = &annot
+		p.addWarn(o.HybridNamedWarn)
 	case ruleOtherSpace:
-		p.AddWarn(o.SpaceNonStandardWarn)
+		p.addWarn(o.SpaceNonStandardWarn)
 	case ruleMultipleSpace:
-		p.AddWarn(o.SpaceMultipleWarn)
+		p.addWarn(o.SpaceMultipleWarn)
 	case ruleMiscodedChar:
-		p.AddWarn(o.UTF8ConvBadWarn)
+		p.addWarn(o.UTF8ConvBadWarn)
 	case ruleBasionymAuthorship2Parens:
-		p.AddWarn(o.AuthDoubleParensWarn)
+		p.addWarn(o.AuthDoubleParensWarn)
 	case ruleBasionymAuthorshipMissingParens:
-		p.AddWarn(o.AuthMissingOneParensWarn)
+		p.addWarn(o.AuthMissingOneParensWarn)
 	case ruleUpperAfterDash:
-		p.AddWarn(o.GenusUpperCharAfterDash)
+		p.addWarn(o.GenusUpperCharAfterDash)
 	case ruleLowerGreek:
-		p.AddWarn(o.GreekLetterInRank)
+		p.addWarn(o.GreekLetterInRank)
 	case ruleAuthorSepSpanish:
-		p.AddWarn(o.SpanishAndAsSeparator)
+		p.addWarn(o.SpanishAndAsSeparator)
 	}
 	if _, ok := nodeRules[t.pegRule]; ok {
 		node := &node32{token32: t}
@@ -132,7 +138,7 @@ func (p *Engine) nodeValue(n *node32) string {
 }
 
 func (p *Engine) ParsedName() string {
-	if p.Error != nil {
+	if p.error != nil {
 		return "noparse"
 	}
 	for i := len(p.tokens32.tree) - 1; i >= 0; i-- {

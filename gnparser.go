@@ -21,16 +21,14 @@ type gnparser struct {
 	nameString string
 
 	// parser keeps parsing engine
-	parser *parser.Engine
+	parser parser.Parser
 }
 
 // NewGNparser constructor function takes options and returns
 // configured GNparser.
 func NewGNParser(cfg config.Config) GNParser {
 	gnp := gnparser{cfg: cfg}
-	e := &parser.Engine{Buffer: ""}
-	e.Init()
-	gnp.parser = e
+	gnp.parser = parser.NewParser()
 	return gnp
 }
 
@@ -98,9 +96,7 @@ func (gnp gnparser) parseWorker(
 	wgIn *sync.WaitGroup,
 ) {
 	defer wgIn.Done()
-	e := &parser.Engine{Buffer: ""}
-	e.Init()
-	gnp.parser = e
+	gnp.parser = parser.NewParser()
 
 	for v := range chIn {
 		parsed := gnp.ParseName(v.NameString)

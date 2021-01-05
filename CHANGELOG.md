@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- Add [#120]: CLI interface for newly created functionality.
+- Add [#121]: Convert `package` parser to use interfaces.
+- Add [#120]: CLI app for newly created functionality.
 - Add [#119]: Formatted output for `output.Parsed`.
 - Add [#117]: Convert failed parsing results to `output.Parsed`.
 - Add [#114]: Convert parsing result to `output.Parsed`.

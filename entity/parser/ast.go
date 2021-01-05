@@ -14,22 +14,22 @@ import (
 	"github.com/gnames/gnparser/io/dict"
 )
 
-type ScientificNameNode struct {
+type scientificNameNode struct {
 	nameData
-	Verbatim      string
-	VerbatimID    string
-	Cardinality   int
-	Virus         bool
-	Hybrid        *o.Annotation
-	Surrogate     *o.Annotation
-	Bacteria      *tb.Tribool
-	Annotation    *o.Annotation
-	Tail          string
-	ParserVersion string
-	Warnings      []o.Warning
+	verbatim      string
+	verbatimID    string
+	cardinality   int
+	virus         bool
+	hybrid        *o.Annotation
+	surrogate     *o.Annotation
+	bacteria      *tb.Tribool
+	annotation    *o.Annotation
+	tail          string
+	parserVersion string
+	warnings      []o.Warning
 }
 
-func (p *Engine) NewScientificNameNode() {
+func (p *Engine) newScientificNameNode() {
 	n := p.root.up
 	var name nameData
 	var tail string
@@ -44,40 +44,40 @@ func (p *Engine) NewScientificNameNode() {
 		}
 		n = n.next
 	}
-	warns := make([]o.Warning, len(p.Warnings))
+	warns := make([]o.Warning, len(p.warnings))
 	i := 0
-	for k := range p.Warnings {
+	for k := range p.warnings {
 		warns[i] = k
 		i++
 	}
 	if str.IsBoldSurrogate(tail) {
-		p.Cardinality = 0
+		p.cardinality = 0
 		annot = o.BOLDAnnot
-		p.Surrogate = &annot
+		p.surrogate = &annot
 	}
-	if p.Tail != "" && tail == "" {
-		tail = p.Tail
+	if p.tail != "" && tail == "" {
+		tail = p.tail
 	}
-	sn := ScientificNameNode{
+	sn := scientificNameNode{
 		nameData:    name,
-		Cardinality: p.Cardinality,
-		Hybrid:      p.Hybrid,
-		Surrogate:   p.Surrogate,
-		Bacteria:    p.Bacteria,
-		Tail:        tail,
-		Warnings:    warns,
+		cardinality: p.cardinality,
+		hybrid:      p.hybrid,
+		surrogate:   p.surrogate,
+		bacteria:    p.bacteria,
+		tail:        tail,
+		warnings:    warns,
 	}
-	p.SN = &sn
+	p.sn = &sn
 }
 
-func (p *Engine) NewNotParsedScientificNameNode(pp *preprocess.Preprocessor) {
-	sn := &ScientificNameNode{Virus: pp.Virus}
-	p.SN = sn
+func (p *Engine) newNotParsedScientificNameNode(pp *preprocess.Preprocessor) {
+	sn := &scientificNameNode{virus: pp.Virus}
+	p.sn = sn
 }
 
-func (sn *ScientificNameNode) AddVerbatim(s string) {
-	sn.Verbatim = s
-	sn.VerbatimID = gnuuid.New(s).String()
+func (sn *scientificNameNode) addVerbatim(s string) {
+	sn.verbatim = s
+	sn.verbatimID = gnuuid.New(s).String()
 }
 
 func (p *Engine) tailValue(n *node32) string {
@@ -85,7 +85,7 @@ func (p *Engine) tailValue(n *node32) string {
 	if t.begin == t.end {
 		return ""
 	}
-	p.AddWarn(o.TailWarn)
+	p.addWarn(o.TailWarn)
 	return string(p.buffer[t.begin:t.end])
 }
 
@@ -96,15 +96,15 @@ func (p *Engine) newName(n *node32) nameData {
 	switch n.token32.pegRule {
 	case ruleHybridFormula:
 		annot = o.HybridFormulaAnnot
-		p.Hybrid = &annot
+		p.hybrid = &annot
 		name = p.newHybridFormulaNode(n)
 	case ruleNamedGenusHybrid:
 		annot = o.NamedHybridAnnot
-		p.Hybrid = &annot
+		p.hybrid = &annot
 		name = p.newNamedGenusHybridNode(n)
 	case ruleNamedSpeciesHybrid:
 		annot = o.NamedHybridAnnot
-		p.Hybrid = &annot
+		p.hybrid = &annot
 		name = p.newNamedSpeciesHybridNode(n)
 	case ruleSingleName:
 		name = p.newSingleName(n)
@@ -124,7 +124,7 @@ type hybridElement struct {
 
 func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 	var hf *hybridFormulaNode
-	p.AddWarn(o.HybridFormulaWarn)
+	p.addWarn(o.HybridFormulaWarn)
 	n = n.up
 	firstName := p.newSingleName(n)
 	n = n.next
@@ -140,7 +140,7 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 			he.Species = p.newSingleName(n)
 			hes = append(hes, he)
 		case ruleSpeciesEpithet:
-			p.AddWarn(o.HybridFormulaIncompleteWarn)
+			p.addWarn(o.HybridFormulaIncompleteWarn)
 			var g *wordNode
 			switch node := firstName.(type) {
 			case *speciesNode:
@@ -158,7 +158,7 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 		n = n.next
 	}
 	if he.Species == nil {
-		p.AddWarn(o.HybridFormulaProbIncompleteWarn)
+		p.addWarn(o.HybridFormulaProbIncompleteWarn)
 		hes = append(hes, he)
 	}
 	hf = &hybridFormulaNode{
@@ -166,7 +166,7 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 		HybridElements: hes,
 	}
 	hf.normalizeAbbreviated()
-	p.Cardinality = 0
+	p.cardinality = 0
 	return hf
 }
 
@@ -206,22 +206,22 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 	hybr := p.newWordNode(n, o.HybridCharType)
 	n = n.next
 	n = n.up
-	p.AddWarn(o.HybridNamedWarn)
+	p.addWarn(o.HybridNamedWarn)
 	if n.token32.begin == 1 {
-		p.AddWarn(o.HybridCharNoSpaceWarn)
+		p.addWarn(o.HybridCharNoSpaceWarn)
 	}
 	switch n.token32.pegRule {
 	case ruleUninomial:
 		name = p.newUninomialNode(n)
 	case ruleUninomialCombo:
-		p.AddWarn(o.UninomialComboWarn)
+		p.addWarn(o.UninomialComboWarn)
 		name = p.newUninomialComboNode(n)
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
 		annot = o.ApproximationAnnot
-		p.Surrogate = &annot
-		p.AddWarn(o.NameApproxWarn)
+		p.surrogate = &annot
+		p.addWarn(o.NameApproxWarn)
 		name = p.newApproxNode(n)
 	}
 	nhn = &namedGenusHybridNode{
@@ -253,8 +253,8 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 		case ruleComparison:
 			cf = p.newWordNode(n, o.ComparisonType)
 			annot = o.ComparisonAnnot
-			p.Surrogate = &annot
-			p.AddWarn(o.NameComparisonWarn)
+			p.surrogate = &annot
+			p.addWarn(o.NameComparisonWarn)
 		case ruleHybridChar:
 			hybrid = p.newWordNode(n, o.HybridCharType)
 		case ruleSpeciesEpithet:
@@ -265,11 +265,11 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 		n = n.next
 	}
 
-	p.AddWarn(o.HybridNamedWarn)
+	p.addWarn(o.HybridNamedWarn)
 	if hybrid.Pos.End == sp.Word.Pos.Start {
-		p.AddWarn(o.HybridCharNoSpaceWarn)
+		p.addWarn(o.HybridCharNoSpaceWarn)
 	}
-	p.Cardinality = 2 + len(infs)
+	p.cardinality = 2 + len(infs)
 	nhl = &namedSpeciesHybridNode{
 		Genus:        gen,
 		Comparison:   cf,
@@ -314,13 +314,13 @@ func (p *Engine) newBotanicalUninomialNode(n *node32) *uninomialNode {
 		case ruleOriginalAuthorship:
 			at2 = p.newAuthorsGroupNode(n.up)
 		default:
-			p.Tail = p.tailValue(n)
+			p.tail = p.tailValue(n)
 		}
 	}
 	authorship := &authorshipNode{OriginalAuthors: ag, CombinationAuthors: at2}
 	u := &uninomialNode{Word: w, Authorship: authorship}
-	p.AddWarn(o.BotanyAuthorNotSubgenWarn)
-	p.Cardinality = 1
+	p.addWarn(o.BotanyAuthorNotSubgenWarn)
+	p.cardinality = 1
 	return u
 }
 
@@ -332,14 +332,14 @@ func (p *Engine) newSingleName(n *node32) nameData {
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
-		p.AddWarn(o.NameApproxWarn)
+		p.addWarn(o.NameApproxWarn)
 		annot = o.ApproximationAnnot
-		p.Surrogate = &annot
+		p.surrogate = &annot
 		name = p.newApproxNode(n)
 	case ruleNameComp:
-		p.AddWarn(o.NameComparisonWarn)
+		p.addWarn(o.NameComparisonWarn)
 		annot = o.ComparisonAnnot
-		p.Surrogate = &annot
+		p.surrogate = &annot
 		name = p.newComparisonNode(n)
 	case ruleUninomial:
 		name = p.newUninomialNode(n)
@@ -347,7 +347,7 @@ func (p *Engine) newSingleName(n *node32) nameData {
 		if p.botanicalUninomial(n) {
 			return p.newBotanicalUninomialNode(n)
 		}
-		p.AddWarn(o.UninomialComboWarn)
+		p.addWarn(o.UninomialComboWarn)
 		name = p.newUninomialComboNode(n)
 	}
 	return name
@@ -389,7 +389,7 @@ func (p *Engine) newApproxNode(n *node32) *approxNode {
 		Approx:    annot,
 		Ignored:   ign,
 	}
-	p.Cardinality = 0
+	p.cardinality = 0
 	return an
 }
 
@@ -411,12 +411,12 @@ func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
 		switch n.pegRule {
 		case ruleGenusWord:
 			gen = p.newWordNode(n, o.GenusType)
-			p.Cardinality = 1
+			p.cardinality = 1
 		case ruleComparison:
 			comp = p.newWordNode(n, o.ComparisonType)
 		case ruleSpeciesEpithet:
 			spEp = p.newSpeciesEpithetNode(n)
-			p.Cardinality = 2
+			p.cardinality = 2
 		}
 		n = n.next
 	}
@@ -442,7 +442,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 	n = n.up
 	gen := p.newWordNode(n, o.GenusType)
 	if n.up.token32.pegRule == ruleAbbrGenus {
-		p.AddWarn(o.GenusAbbrWarn)
+		p.addWarn(o.GenusAbbrWarn)
 	}
 	n = n.next
 	for n != nil {
@@ -450,12 +450,12 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		case ruleSubGenus:
 			w := p.newWordNode(n.up, o.SubGenusType)
 			if _, ok := dict.Dict.AuthorICN[w.NormValue]; ok {
-				p.AddWarn(o.BotanyAuthorNotSubgenWarn)
+				p.addWarn(o.BotanyAuthorNotSubgenWarn)
 			} else {
 				sg = w
 			}
 		case ruleSubGenusOrSuperspecies:
-			p.AddWarn(o.SuperSpeciesWarn)
+			p.addWarn(o.SuperSpeciesWarn)
 		case ruleSpeciesEpithet:
 			sp = p.newSpeciesEpithetNode(n)
 		case ruleInfraspGroup:
@@ -463,7 +463,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		}
 		n = n.next
 	}
-	p.Cardinality = 2 + len(infs)
+	p.cardinality = 2 + len(infs)
 	sn := speciesNode{
 		Genus:        gen,
 		SubGenus:     sg,
@@ -472,7 +472,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 	}
 	if len(infs) > 0 && infs[0].Rank == nil && sp.Authorship != nil &&
 		sp.Authorship.TerminalFilius {
-		p.AddWarn(o.AuthAmbiguousFiliusWarn)
+		p.addWarn(o.AuthAmbiguousFiliusWarn)
 
 	}
 	return &sn
@@ -515,7 +515,7 @@ func (p *Engine) newInfraspeciesGroup(n *node32) []*infraspEpithetNode {
 		if len(infs) > 0 && inf.Rank == nil {
 			infPrev := infs[len(infs)-1]
 			if infPrev.Authorship != nil && infPrev.Authorship.TerminalFilius {
-				p.AddWarn(o.AuthAmbiguousFiliusWarn)
+				p.addWarn(o.AuthAmbiguousFiliusWarn)
 			}
 		}
 		infs = append(infs, inf)
@@ -573,7 +573,7 @@ func (p *Engine) newRankNode(n *node32) *rankNode {
 	case ruleRankSsp:
 		w.NormValue = "subsp."
 	case ruleRankOtherUncommon:
-		p.AddWarn(o.RankUncommonWarn)
+		p.addWarn(o.RankUncommonWarn)
 	}
 	r := rankNode{Word: w}
 	return &r
@@ -595,7 +595,7 @@ func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 		Word:       w,
 		Authorship: au,
 	}
-	p.Cardinality = 1
+	p.cardinality = 1
 	return &un
 }
 
@@ -637,7 +637,7 @@ func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
 		Rank:       r,
 		Uninomial2: u2,
 	}
-	p.Cardinality = 1
+	p.cardinality = 1
 	return &ucn
 }
 
@@ -681,7 +681,7 @@ func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 		case ruleOriginalAuthorshipComb:
 			on := n.up
 			if on.token32.pegRule == ruleBasionymAuthorshipYearMisformed {
-				p.AddWarn(o.YearOrigMisplacedWarn)
+				p.addWarn(o.YearOrigMisplacedWarn)
 				on = on.up
 				misplacedYear = true
 			} else {
@@ -749,21 +749,21 @@ func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 	}
 	switch n.token32.pegRule {
 	case ruleAuthorEx:
-		p.AddWarn(o.AuthExWarn)
+		p.addWarn(o.AuthExWarn)
 		t2t = teamEx
 		t2wrd = p.newWordNode(n, o.AuthorWordType)
 		ex := strings.TrimSpace(t2wrd.Value)
 		if ex[len(ex)-1] == '.' {
-			p.AddWarn(o.AuthExWithDotWarn)
+			p.addWarn(o.AuthExWithDotWarn)
 		}
 		t2wrd.NormValue = "ex"
 	case ruleAuthorEmend:
-		p.AddWarn(o.AuthEmendWarn)
+		p.addWarn(o.AuthEmendWarn)
 		t2t = teamEmend
 		t2wrd = p.newWordNode(n, o.AuthorWordType)
 		emend := strings.TrimSpace(t2wrd.Value)
 		if emend[len(emend)-1] != '.' {
-			p.AddWarn(o.AuthEmendWithoutDotWarn)
+			p.addWarn(o.AuthEmendWithoutDotWarn)
 		}
 		t2wrd.NormValue = "emend."
 	default:
@@ -847,10 +847,10 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 			w.NormValue = "fil."
 			fil = true
 		case ruleUnknownAuthor:
-			p.AddWarn(o.AuthUnknownWarn)
+			p.addWarn(o.AuthUnknownWarn)
 			w = p.authorWord(n)
 			if w.Value == "?" {
-				p.AddWarn(o.AuthQuestionWarn)
+				p.addWarn(o.AuthQuestionWarn)
 			}
 			w.NormValue = "anon."
 		default:
@@ -862,7 +862,7 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 		n = n.next
 	}
 	if len(rawVal) < 2 {
-		p.AddWarn(o.AuthShortWarn)
+		p.addWarn(o.AuthShortWarn)
 	}
 	au := authorNode{
 		Value:  val,
@@ -883,7 +883,7 @@ func (p *Engine) authorWord(n *node32) *wordNode {
 		}
 		if count > 2 {
 			w.NormValue = str.FixAllCaps(w.NormValue)
-			p.AddWarn(o.AuthUpperCaseWarn)
+			p.addWarn(o.AuthUpperCaseWarn)
 		}
 	}
 	return w
@@ -901,18 +901,18 @@ func (p *Engine) newYearNode(nd *node32) *yearNode {
 	for _, v := range nodes {
 		switch v.token32.pegRule {
 		case ruleYearWithPage:
-			p.AddWarn(o.YearPageWarn)
+			p.addWarn(o.YearPageWarn)
 		case ruleYearRange:
-			p.AddWarn(o.YearRangeWarn)
+			p.addWarn(o.YearRangeWarn)
 			appr = true
 		case ruleYearWithParens:
-			p.AddWarn(o.YearParensWarn)
+			p.addWarn(o.YearParensWarn)
 			appr = true
 		case ruleYearApprox:
-			p.AddWarn(o.YearSqBraketsWarn)
+			p.addWarn(o.YearSqBraketsWarn)
 			appr = true
 		case ruleYearWithChar:
-			p.AddWarn(o.YearCharWarn)
+			p.addWarn(o.YearCharWarn)
 			w = p.newWordNode(v, o.YearType)
 			w.NormValue = w.Value[0 : len(w.Value)-1]
 		case ruleYearNum:
@@ -920,7 +920,7 @@ func (p *Engine) newYearNode(nd *node32) *yearNode {
 				w = p.newWordNode(v, o.YearType)
 			}
 			if w.Value[len(w.Value)-1] == '?' {
-				p.AddWarn(o.YearQuestionWarn)
+				p.addWarn(o.YearQuestionWarn)
 				appr = true
 			}
 		}
@@ -976,17 +976,17 @@ func (p *Engine) newWordNode(n *node32, wt o.WordType) *wordNode {
 				wrd.NormValue = "et al."
 			}
 		case ruleUpperCharExtended, ruleLowerCharExtended:
-			p.AddWarn(o.CharBadWarn)
+			p.addWarn(o.CharBadWarn)
 			_ = wrd.normalize()
 		case ruleWordApostr:
-			p.AddWarn(o.CanonicalApostropheWarn)
+			p.addWarn(o.CanonicalApostropheWarn)
 			canApostrophe = true
 			_ = wrd.normalize()
 		case ruleWordStartsWithDigit:
-			p.AddWarn(o.SpeciesNumericWarn)
+			p.addWarn(o.SpeciesNumericWarn)
 			wrd.normalizeNums()
 		case ruleApostrOther:
-			p.AddWarn(o.ApostrOtherWarn)
+			p.addWarn(o.ApostrOtherWarn)
 			if !canApostrophe {
 				nv, _ := str.ToASCII([]byte(wrd.Value), str.GlobalTransliterations)
 				wrd.NormValue = string(nv)
@@ -995,10 +995,10 @@ func (p *Engine) newWordNode(n *node32, wt o.WordType) *wordNode {
 	}
 	if wt == o.GenusType || wt == o.UninomialType {
 		if val[len(val)-1] == '?' {
-			p.AddWarn(o.CapWordQuestionWarn)
+			p.addWarn(o.CapWordQuestionWarn)
 			wrd.NormValue = wrd.NormValue[0 : len(wrd.NormValue)-1]
 		}
-		if _, ok := p.Warnings[o.GenusUpperCharAfterDash]; ok {
+		if _, ok := p.warnings[o.GenusUpperCharAfterDash]; ok {
 			runes := []rune(wrd.Value)
 			nv := make([]rune, len(runes))
 			var afterDash bool
@@ -1014,7 +1014,7 @@ func (p *Engine) newWordNode(n *node32, wt o.WordType) *wordNode {
 			}
 			wrd.NormValue = string(nv)
 		}
-		p.IsBacteria(wrd.NormValue)
+		p.isBacteria(wrd.NormValue)
 	}
 	return &wrd
 }

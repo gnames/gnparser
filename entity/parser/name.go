@@ -20,18 +20,18 @@ func appendCanonical(c1 *canonical, c2 *canonical, sep string) *canonical {
 	}
 }
 
-func (sn *ScientificNameNode) Pos() []o.Position {
+func (sn *scientificNameNode) Pos() []o.Position {
 	return sn.nameData.pos()
 }
 
-func (sn *ScientificNameNode) Normalized() string {
+func (sn *scientificNameNode) Normalized() string {
 	if sn.nameData == nil {
 		return ""
 	}
 	return sn.nameData.value()
 }
 
-func (sn *ScientificNameNode) Canonical() *o.Canonical {
+func (sn *scientificNameNode) Canonical() *o.Canonical {
 	var res *o.Canonical
 	if sn.nameData == nil {
 		return res
@@ -44,14 +44,14 @@ func (sn *ScientificNameNode) Canonical() *o.Canonical {
 	}
 }
 
-func (sn *ScientificNameNode) Details() o.Details {
+func (sn *scientificNameNode) Details() o.Details {
 	if sn.nameData == nil {
 		return nil
 	}
 	return sn.nameData.details()
 }
 
-func (sn *ScientificNameNode) LastAuthorship(withDetails bool) *o.Authorship {
+func (sn *scientificNameNode) LastAuthorship(withDetails bool) *o.Authorship {
 	var ao *o.Authorship
 	if sn.nameData == nil {
 		return ao
