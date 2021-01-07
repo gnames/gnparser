@@ -62,7 +62,7 @@ var warningMap = map[Warning]string{
 	AuthAmbiguousFiliusWarn:         "Ambiguous f. (filius or forma)",
 	AuthDoubleParensWarn:            "Authorship in double parentheses",
 	AuthExWarn:                      "Ex authors are not required",
-	AuthExWithDotWarn:               "`ex` ends with a dot",
+	AuthExWithDotWarn:               "`ex` ends with a period",
 	AuthEmendWarn:                   "Emend authors are not required",
 	AuthEmendWithoutDotWarn:         "`emend` without a period",
 	AuthMissingOneParensWarn:        "Authorship is missing one parenthesis",
@@ -113,7 +113,7 @@ var warningStrMap = func() map[string]Warning {
 	return res
 }()
 
-var warningQualityMap = map[Warning]int{
+var WarningQualityMap = map[Warning]int{
 	TailWarn:                        4,
 	ApostrOtherWarn:                 3,
 	AuthAmbiguousFiliusWarn:         2,
@@ -172,7 +172,7 @@ func (w Warning) String() string {
 }
 
 func (w Warning) Quality() int {
-	return warningQualityMap[w]
+	return WarningQualityMap[w]
 }
 
 func (w Warning) NewQualityWarning() QualityWarning {

@@ -63,11 +63,6 @@ release: peg asset dockerhub
 	zip -9 /tmp/gnparser-$(VER)-win-64.zip gnparser.exe; \
 	$(GOCLEAN);
 
-.PHONY:pb
-pb:
-	cd pb; \
-	protoc -I . ./gnparser.proto --go_out=plugins=grpc:.;
-
 docker: build
 	docker build -t gnames/gognparser:latest -t gnames/gognparser:$(VERSION) .; \
 	cd gnparser; \
@@ -80,3 +75,7 @@ dockerhub: docker
 clib: peg pb asset
 	cd binding; \
 	$(GOBUILD) -buildmode=c-shared -o libgnparser.so;
+
+quality:
+	cd tools;\
+	$(GOCMD) run quality.go > ../quality.md

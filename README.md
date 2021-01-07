@@ -164,7 +164,7 @@ CSV output has the following fields:
 | CanonicalStem     | Simplest canonical form with removed suffixes   |
 | Authors           | Author string of a name                         |
 | Year              | Year of the name (if given)                     |
-| Quality           | Parsing quality                                 |
+| Quality           | [Parsing quality][quality]                      |
 
 ### Quickly partition names by the type
 
@@ -209,13 +209,14 @@ lowest taxon will do the job. You can also use ``--format csv`` flag for
 ### Figuring out if names are well-formed
 
 If there are problems with parsing a name, parser generates ``qualityWarnings``
-messages and lowers parsing ``quality`` of the name.  Quality values mean the
-following:
+messages and lowers [parsing ``quality``][quality] of the name.  Quality values
+mean the following:
 
 * ``"quality": 1`` - No problems were detected
 * ``"quality": 2`` - There were small problems, normalized result
   should still be good
-* ``"quality": 3`` - There were serious problems with the name, and the
+* ``"quality": 3`` - There are some serious problems with parsing
+* ``"quality": 4`` - There were serious problems with the name, and the
   final result is rather doubtful
 * ``"quality": 0`` - A string could not be recognized as a scientific
   name and parsing fails
@@ -582,6 +583,7 @@ Released under [MIT license]
 [uuid5]: http://globalnames.org/news/2015/05/31/gn-uuid-0-5-0
 [winpath]: https://www.computerhope.com/issues/ch000549.htm
 [gnparser ruby]: https://gitlab.com/gnames/gnparser_rb
+[quality]: https://github.com/gnames/gnparser/quality.md
 [gRPC documentation]: https://grpc.io/docs/quickstart
 [Dmitry Mozzherin]: https://github.com/dimus
 [Geoff Ower]: https://github.com/gdower
