@@ -35,6 +35,7 @@ import (
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/config"
 	"github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/io/web"
 	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -121,10 +122,9 @@ gnparser -j 5 -p 8080
 		cfg := config.NewConfig(opts...)
 
 		if port != 0 {
-			fmt.Println("Running gnparser as a website and REST server:")
-			fmt.Printf("port: %d\n", port)
-			fmt.Printf("jobs: %d\n\n", cfg.JobsNum)
-			// web.Run(port, jn)
+			gnp := gnparser.NewGNParser(cfg)
+			gnps := web.NewGNParserService(gnp, port)
+			web.Run(gnps)
 			os.Exit(0)
 		}
 

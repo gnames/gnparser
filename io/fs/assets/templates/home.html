@@ -1,4 +1,4 @@
-{{ define "content" }}
+{{ define "home" }}
 <section class='parser'>
   <div class='grid'>
     <div class='unit whole'>
@@ -16,7 +16,9 @@
       <h4>Results:</h4>
       {{ range .Parsed }}
       <p>
-        <code>{{ . }}</code>
+        <code class="unit whole" style="margin-bottom: 1em">{{ . }}</code>
+      </p>
+      <p>
       </p>
       {{ end }}
     </div>

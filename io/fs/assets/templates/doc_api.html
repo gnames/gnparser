@@ -1,5 +1,5 @@
-{{ define "content" }}
-<section class="parser api">
+{{ define "doc" }}
+  <section class="parser api">
     <div class="grid">
       <div class="unit whole">
         <h2 id="api">Application Programming Interface (API)</h2>
@@ -10,13 +10,13 @@
         <h3 id="get">GET</h3>
 
         <p>
-          Append a vertical line separated array of strings to your domain url.
-          Make sure that '&amp;' in the names are escaped as '%26',
-          and spaces are escaped as '+'.
+        Append a vertical line separated array of strings to your domain url.
+        Make sure that '&amp;' in the names are escaped as '%26',
+        and spaces are escaped as '+'.
         </p>
 
         <p>
-          <code>/api?q=Aus+bus|Aus+bus+D.+%26+M.,+1870</code>
+        <code>/api/Aus+bus|Aus+bus+D.+%26+M.,+1870</code>
         </p>
 
         <h3 id="post">POST</h3>
@@ -24,7 +24,15 @@
         <p><code>/api</code></p>
 
         <p>
-          with request body of JSON array of strings
+        with request body of JSON array of strings
+        </p>
+
+        <h3> OpenAPI Schema</h3>
+        <p>
+        Read the gnparser's 
+        <a href="https://app.swaggerhub.com/apis-docs/dimus/gnparser/1.0.0">
+          OpenAPI documentation
+        </a> to learn about all options and the output schema.
         </p>
       </div>
     </div>

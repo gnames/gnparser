@@ -6,9 +6,9 @@
   <meta charset='UTF-8'>
   <title>GNParser</title>
   <meta content='width=device-width,initial-scale=1' name='viewport'>
-  <link href='/styles/screen.css' rel='stylesheet'>
-  <link href='/styles/parser.css' rel='stylesheet'>
-  <link href='/images/favicon.ico' rel='icon' type='image/x-icon'>
+  <link href='/static/styles/screen.css' rel='stylesheet'>
+  <link href='/static/styles/parser.css' rel='stylesheet'>
+  <link href='/static/images/favicon.ico' rel='icon' type='image/x-icon'>
 </head>
 
 <body class='wrap'>
@@ -23,7 +23,7 @@
         </li>
         <li>
           <a href='https://github.com/gnames/gnparser/blob/master/README.md'><span class='hide-on-mobiles'>Doc on</span>
-            GitLab</a>
+            GitHub</a>
         </li>
         <li>
           <a href='http://globalnames.org/apps'>Projects</a>
@@ -35,7 +35,7 @@
         <div class='logo'>
           <a href='/doc/api'>
             <span class='sr-only'>GlobalNames</span>
-            <img alt='GNA Logo' src='/images/gna.svg' width='72'>
+            <img alt='GNA Logo' src='/static/images/gna.svg' width='72'>
           </a>
         </div>
       </div>
@@ -49,7 +49,7 @@
           </li>
           <li>
             <a href='https://github.com/gnames/gnparser/blob/master/README.md'><span class='hide-on-mobiles'>Doc on</span>
-              GitLab</a>
+              GitHub</a>
           </li>
           <li>
             <a href='http://globalnames.org/apps'>Projects</a>
@@ -66,7 +66,9 @@
       </div>
     </div>
   </section>
-  {{ template "content" . }}
+
+  {{ if .HomePage }} {{ template "home" . }}
+  {{ else }} {{ template "doc" .}} {{ end }}
 
   <section class='footer'>
     <div class='grid'>

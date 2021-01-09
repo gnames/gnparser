@@ -63,6 +63,9 @@ release: peg asset dockerhub
 	zip -9 /tmp/gnparser-$(VER)-win-64.zip gnparser.exe; \
 	$(GOCLEAN);
 
+dc: build asset
+	docker-compose build;
+
 docker: build
 	docker build -t gnames/gognparser:latest -t gnames/gognparser:$(VERSION) .; \
 	cd gnparser; \
