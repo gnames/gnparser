@@ -40,7 +40,7 @@ func (gnp gnparser) ParseName(s string) output.Parsed {
 	if gnp.cfg.IsTest {
 		ver = "test_version"
 	}
-	sciNameNode := gnp.parser.PreprocessAndParse(s, ver, gnp.cfg.KeepHTMLTags)
+	sciNameNode := gnp.parser.PreprocessAndParse(s, ver, gnp.cfg.IgnoreHTMLTags)
 	res := sciNameNode.ToOutput(gnp.cfg.WithDetails)
 	return res
 }

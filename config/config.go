@@ -22,10 +22,10 @@ type Config struct {
 	// BatchSize sets the maximum number of elements in names-strings slice.
 	BatchSize int
 
-	// KeepHTMLTags can be set to true when it is desirable to clean up names from
+	// IgnoreHTMLTags can be set to true when it is desirable to clean up names from
 	// a few HTML tags often present in names-strings that were planned to be
 	// presented via an HTML page.
-	KeepHTMLTags bool
+	IgnoreHTMLTags bool
 
 	// WithDetails can be set to true when a simplified output is not sufficient
 	// for obtaining a required information.
@@ -44,11 +44,11 @@ type Config struct {
 // of `Opt` functions to modify default configuration settings.
 func NewConfig(opts ...Option) Config {
 	cfg := Config{
-		Format:       format.CSV,
-		JobsNum:      runtime.NumCPU(),
-		BatchSize:    50_000,
-		KeepHTMLTags: false,
-		Port:         8080,
+		Format:         format.CSV,
+		JobsNum:        runtime.NumCPU(),
+		BatchSize:      50_000,
+		IgnoreHTMLTags: false,
+		Port:           8080,
 	}
 	for i := range opts {
 		opts[i](&cfg)
@@ -83,9 +83,9 @@ func OptJobsNum(i int) Option {
 }
 
 // OptKeepHTMLTags sets the RemoveHTML field.
-func OptKeepHTMLTags(b bool) Option {
+func OptIgnoreHTMLTags(b bool) Option {
 	return func(cfg *Config) {
-		cfg.KeepHTMLTags = b
+		cfg.IgnoreHTMLTags = b
 	}
 }
 

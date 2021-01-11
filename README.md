@@ -313,7 +313,7 @@ CSV format returns a header row and the CSV-compatible parsed result.
 ``--jobs -j``
 : number of jobs running concurrently.
 
-``--nocleanup -n``
+``--ignore_tags -i``
 : keeps HTML entities and tags if they are present in a name-string. If your
 data is clean from HTML tags or entities, you can use this flag to increase
 performance.
@@ -352,11 +352,12 @@ gnparser -j 200 names.txt > names_parsed.txt
 # to parse files using pipes
 cat names.txt | gnparser -f csv -j 200 > names_parsed.txt
 
-# to keep html tags and entities during parsing. You gain a bit of performance
-# with this option if your data does not contain HTML tags or entities.
+# to not remove html tags and entities during parsing. You gain a bit of
+# performance with this option if your data does not contain HTML tags or
+# entities.
 gnparser "<i>Pomatomus</i>&nbsp;<i>saltator</i>"
-gnparser -n "<i>Pomatomus</i>&nbsp;<i>saltator</i>"
-gnparser -n "Pomatomus saltator"
+gnparser -i "<i>Pomatomus</i>&nbsp;<i>saltator</i>"
+gnparser -i "Pomatomus saltator"
 ```
 
 To parse a file returning results in the same order as they are given (slower):

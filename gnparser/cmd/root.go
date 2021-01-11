@@ -55,10 +55,10 @@ interfaces. There are 3 possible settings: 'csv', 'compact', 'pretty'.
 # BatchSize to 1.
 # BatchSize 50000
 
-# KeepHTMLTags can be set to true if it is desirable to not try to remove from
+# IgnoreHTMLTags can be set to true if it is desirable to not try to remove from
 # a few HTML tags often present in names-strings that were planned to be
 # presented via an HTML page.
-# KeepHTMLTags false
+# IgnoreHTMLTags false
 
 # WithDetails can be set to true when a simplified output is not sufficient
 # for obtaining a required information.
@@ -77,12 +77,12 @@ var (
 // config purpose is to achieve automatic import of data from the
 // configuration file, if it exists.
 type cfgData struct {
-	Format       string
-	JobsNum      int
-	BatchSize    int
-	KeepHTMLTags bool
-	WithDetails  bool
-	Port         int
+	Format         string
+	JobsNum        int
+	BatchSize      int
+	IgnoreHTMLTags bool
+	WithDetails    bool
+	Port           int
 }
 
 // rootCmd represents the base command when called without any subcommands
@@ -125,7 +125,7 @@ gnparser -j 5 -p 8080
 
 		formatFlag(cmd)
 		jobsNumFlag(cmd)
-		keepHTMLTagsFlag(cmd)
+		ignoreHTMLTagsFlag(cmd)
 		withDetailsFlag(cmd)
 		batchSizeFlag(cmd)
 		port := portFlag(cmd)
@@ -172,8 +172,8 @@ func init() {
 	rootCmd.Flags().IntP("batch_size", "b", 0,
 		"maximum number of names in a batch send for processing.")
 
-	rootCmd.Flags().BoolP("keep_tags", "k", false,
-		"keeps HTML entities and tags when parsing.")
+	rootCmd.Flags().BoolP("ignore_tags", "i", false,
+		"ignore HTML entities and tags when parsing.")
 
 	rootCmd.Flags().BoolP("details", "d", false, "provides more details")
 
@@ -198,7 +198,7 @@ func initConfig() {
 	// config file settings
 	viper.BindEnv("Format", "GNPARSER_FORMAT")
 	viper.BindEnv("JobsNum", "GNPARSER_JOBS_NUM")
-	viper.BindEnv("KeepHTMLTags", "GNPARSER_KEEP_HTML_TAGS")
+	viper.BindEnv("IgnoreHTMLTags", "GNPARSER_IGNORE_HTML_TAGS")
 	viper.BindEnv("WithDetails", "GNPARSER_WITH_DETAILS")
 	viper.BindEnv("Port", "GNPARSER_PORT")
 
@@ -229,8 +229,8 @@ func getOpts() []config.Option {
 	if cfg.BatchSize > 0 {
 		opts = append(opts, config.OptBatchSize(cfg.BatchSize))
 	}
-	if cfg.KeepHTMLTags != false {
-		opts = append(opts, config.OptKeepHTMLTags(cfg.KeepHTMLTags))
+	if cfg.IgnoreHTMLTags != false {
+		opts = append(opts, config.OptIgnoreHTMLTags(cfg.IgnoreHTMLTags))
 	}
 	if cfg.WithDetails != false {
 		opts = append(opts, config.OptWithDetails(cfg.WithDetails))
@@ -299,14 +299,14 @@ func jobsNumFlag(cmd *cobra.Command) {
 	}
 }
 
-func keepHTMLTagsFlag(cmd *cobra.Command) {
-	keepTags, err := cmd.Flags().GetBool("keep_tags")
+func ignoreHTMLTagsFlag(cmd *cobra.Command) {
+	ignoreTags, err := cmd.Flags().GetBool("ignore_tags")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	if keepTags {
-		opts = append(opts, config.OptKeepHTMLTags(true))
+	if ignoreTags {
+		opts = append(opts, config.OptIgnoreHTMLTags(true))
 	}
 }
 

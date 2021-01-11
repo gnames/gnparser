@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Add [#128]: Add more examples to OpenAPI specification.
+- Add [#125]: Describe changes from v0.x to 1.x.
+- Add [#132]: Add context.Context to control lifespan of `go routines`.
+- Add [#115]: Migrate tests from ginkgo to plain tests.
+- Add [#109]: Move `web` packag to `io`.
+- Add [#124]: Document warnings for each quality category.
 - Add [#121]: Convert `package` parser to use interfaces.
 - Add [#120]: CLI app for newly created functionality.
 - Add [#119]: Formatted output for `output.Parsed`.
@@ -19,6 +25,7 @@
 - Add [#103]: Create an output.Parsed object that can be used in Go and as JSON.
 - Add [#101]: Start using gnlib where it makes sense.
 - Add [#99]: Move code to GitHub and change links accordingly.
+- Add [#95]: Remove dependency on gRPC and protobuf.
 
 ## [v.0.14.4]
 

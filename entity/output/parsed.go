@@ -6,7 +6,7 @@ import (
 
 type Parsed struct {
 	Parsed          bool             `json:"parsed"`
-	ParseQuality    int              `json:"parseQuality"`
+	ParseQuality    int              `json:"quality"`
 	QualityWarnings []QualityWarning `json:"qualityWarnings,omitempty"`
 	Verbatim        string           `json:"verbatim"`
 	Normalized      string           `json:"normalized,omitempty"`
