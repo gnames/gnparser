@@ -1,6 +1,7 @@
 package gnparser
 
 import (
+	"context"
 	"sync"
 
 	"github.com/gnames/gnlib/domain/entity/gn"
@@ -48,27 +49,32 @@ func (gnp gnparser) ParseName(s string) output.Parsed {
 func (gnp gnparser) ParseNames(names []string) []output.Parsed {
 	res := make([]output.Parsed, len(names))
 	jobsNum := gnp.cfg.JobsNum
-	chIn := make(chan input.Name)
 	chOut := make(chan output.ParseResult)
 	var wgIn, wgOut sync.WaitGroup
 	wgIn.Add(jobsNum)
 	wgOut.Add(1)
 
-	go func() {
-		for i := range names {
-			chIn <- input.Name{Index: i, NameString: names[i]}
-		}
-		close(chIn)
-	}()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	chIn := loadNames(ctx, names)
 
 	for i := jobsNum; i > 0; i-- {
-		go gnp.parseWorker(chIn, chOut, &wgIn)
+		go gnp.parseWorker(ctx, chIn, chOut, &wgIn)
 	}
 
 	go func() {
 		defer wgOut.Done()
-		for v := range chOut {
-			res[v.Index] = v.Parsed
+		for {
+			select {
+			case <-ctx.Done():
+				return
+			case v, ok := <-chOut:
+				if !ok {
+					return
+				}
+				res[v.Index] = v.Parsed
+			}
 		}
 	}()
 
@@ -95,6 +101,7 @@ func (gnp gnparser) GetVersion() gn.Version {
 }
 
 func (gnp gnparser) parseWorker(
+	ctx context.Context,
 	chIn <-chan input.Name,
 	chOut chan<- output.ParseResult,
 	wgIn *sync.WaitGroup,
@@ -104,6 +111,25 @@ func (gnp gnparser) parseWorker(
 
 	for v := range chIn {
 		parsed := gnp.ParseName(v.NameString)
-		chOut <- output.ParseResult{Index: v.Index, Parsed: parsed}
+		select {
+		case <-ctx.Done():
+			return
+		case chOut <- output.ParseResult{Index: v.Index, Parsed: parsed}:
+		}
 	}
+}
+
+func loadNames(ctx context.Context, names []string) <-chan input.Name {
+	chIn := make(chan input.Name)
+	go func() {
+		defer close(chIn)
+		for i := range names {
+			select {
+			case <-ctx.Done():
+				return
+			case chIn <- input.Name{Index: i, NameString: names[i]}:
+			}
+		}
+	}()
+	return chIn
 }
