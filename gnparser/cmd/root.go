@@ -438,6 +438,9 @@ func processResults(
 	f format.Format,
 ) {
 	defer wg.Done()
+	if f == format.CSV {
+		fmt.Println(output.CSVHeader())
+	}
 	for pr := range out {
 		for i := range pr {
 			fmt.Println(pr[i].Output(f))
