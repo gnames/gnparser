@@ -1,0 +1,761 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/dimus/gnparser/1.0.0
+info:
+  description: |
+    GNparser takes scientific names and parses them
+    into their semantic elements.
+
+    Scientific names can be represented in many different
+    variants. For example "Homo sapiens" exists as
+
+    - Homo sapiens
+    - Homo sapiens Linn.
+    - Homo sapiens L. 1758
+    - Homo sapiens Linnaeus, 1758
+
+    As a result comparing names from different
+    sources is hard. Parsing allows to extract the most
+    conservative element from all these cases - "Homo sapiens".
+
+    Most common use-cases for scientific names parsing are
+
+    - Getting the simplest possible canonical form.
+    - Quickly sort names by their "cardinality" (uninomial, binomial etc.).
+    - Normalize name-string to a "standard" form.
+    - Check if names contain syntactic mistakes.
+    - Find semantic meaning of every word in a name.
+
+    The GNparser code and documentation is
+    located at https://github.com/gnames/gnparser.
+    For more examples see
+    https://github.com/gnames/gnparser/blob/v1.0.0/testdata/test_data.md
+
+  version: "1.0.0"
+  title: Global Names Parser API
+  contact:
+    name: Dmitry Mozzherin
+    email: dmozzherin@gmail.com
+    url: https://github.com/dimus
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+paths:
+  /parse/{names}:
+    get:
+      summary: parses scientific names via HTTP using GET method
+      operationId: parseSciNames
+      description: |
+        Makes it possible to break scientific names into
+        their semantic components.
+      parameters:
+        - in: path
+          name: names
+          description: "Pass scientific names separated by a pipe `|` character"
+          required: true
+          schema:
+            type: string
+            example: |
+              Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a|Bubo bubo
+        - in: query
+          name: with_details
+          description: Returns more detailed parsed data.
+          schema:
+            type: boolean
+            example: false
+        - in: query
+          name: csv
+          description: |
+            Returns data in CSV format. If it is set to
+            true, `with_details` flag is ignored.
+          schema:
+            type: boolean
+            example: false
+
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Parsed"
+                example:
+                  [ { "parsed": true, "quality": 2, "qualityWarnings": [ { "quality": 2, "warning": "Year with latin character" } ], "verbatim": "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a", "normalized": "Pleurosigma vitrea var. kjellmanii H. Peragallo 1891", "canonical": { "stemmed": "Pleurosigma uitre kiellmani", "simple": "Pleurosigma vitrea kjellmanii", "full": "Pleurosigma vitrea var. kjellmanii" }, "cardinality": 3, "authorship": { "verbatim": "H.Peragallo, 1891a", "normalized": "H. Peragallo 1891", "year": "1891", "authors": [ "H. Peragallo" ] }, "id": "f6a5b47b-9917-5a48-b0ff-366bc036ae9c", "parserVersion": "v1.0.0" }, { "parsed": true, "quality": 1, "verbatim": "Bubo bubo", "normalized": "Bubo bubo", "canonical": { "stemmed": "Bubo bub", "simple": "Bubo bubo", "full": "Bubo bubo" }, "cardinality": 2, "id": "4431a0f3-e901-519a-886f-9b97e0c99d8e", "parserVersion": "v1.0.0" } ]
+            text/csv:
+              schema:
+                type: string
+              example: >
+                Id,Verbatim,Cardinality,CanonicalStem,CanonicalSimple,CanonicalFull,Authorship,Year,Quality
+
+                f6a5b47b-9917-5a48-b0ff-366bc036ae9c,"Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a",3,Pleurosigma uitre kiellmani,Pleurosigma vitrea kjellmanii,Pleurosigma vitrea var. kjellmanii,H. Peragallo 1891,1891,2
+
+                4431a0f3-e901-519a-886f-9b97e0c99d8e,Bubo bubo,2,Bubo bub,Bubo bubo,Bubo bubo,,,1
+  /parse:
+    post:
+      summary: Parses scientific names via HTTP using POST method.
+      description: |
+        Makes it possible to break scientific names into
+        their semantic components.
+      requestBody:
+        description: Includes parsing options and a list of names.
+        content:
+          application/json:
+            example:
+              { "names":
+                  [
+                    "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a",
+                    "Bubo bubo"
+                  ],
+                "withDetails": true,
+                "csv": false
+              }
+            schema:
+              $ref: "#/components/schemas/Input"
+      responses:
+        "200":
+          description: Parsed results come in the same order as the input names.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Parsed"
+                example:
+                  [ { "parsed": true, "quality": 2, "qualityWarnings": [ { "quality": 2, "warning": "Year with latin character" } ], "verbatim": "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a", "normalized": "Pleurosigma vitrea var. kjellmanii H. Peragallo 1891", "canonical": { "stemmed": "Pleurosigma uitre kiellmani", "simple": "Pleurosigma vitrea kjellmanii", "full": "Pleurosigma vitrea var. kjellmanii" }, "cardinality": 3, "authorship": { "verbatim": "H.Peragallo, 1891a", "normalized": "H. Peragallo 1891", "year": "1891", "authors": [ "H. Peragallo" ] }, "id": "f6a5b47b-9917-5a48-b0ff-366bc036ae9c", "parserVersion": "v1.0.0" }, { "parsed": true, "quality": 1, "verbatim": "Bubo bubo", "normalized": "Bubo bubo", "canonical": { "stemmed": "Bubo bub", "simple": "Bubo bubo", "full": "Bubo bubo" }, "cardinality": 2, "id": "4431a0f3-e901-519a-886f-9b97e0c99d8e", "parserVersion": "v1.0.0" } ]
+            text/csv:
+              schema:
+                type: string
+              example: >
+                Id,Verbatim,Cardinality,CanonicalStem,CanonicalSimple,CanonicalFull,Authorship,Year,Quality
+
+                f6a5b47b-9917-5a48-b0ff-366bc036ae9c,"Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a",3,Pleurosigma uitre kiellmani,Pleurosigma vitrea kjellmanii,Pleurosigma vitrea var. kjellmanii,H. Peragallo 1891,1891,2
+
+                4431a0f3-e901-519a-886f-9b97e0c99d8e,Bubo bubo,2,Bubo bub,Bubo bubo,Bubo bubo,,,1
+components:
+  schemas:
+    Input:
+      type: object
+      required:
+        - names
+      properties:
+        names:
+          example:
+           -  Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a
+           -  Bubo bubo
+          description: A list of scientific names to parse.
+          type: array
+          items:
+            type: string
+        withDetails:
+          example: false
+          description: When true, parsed responses contain more details
+          type: boolean
+        csv:
+          example: false
+          description: When true returns CSV output, `withDetails` is ignored.
+          type: boolean
+    Parsed:
+      type: object
+      example:
+        {
+          "parsed": true,
+          "quality": 2,
+          "qualityWarnings": [
+            {
+              "quality": 2,
+              "warning": "Year with latin character"
+            }
+          ],
+          "verbatim": "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a",
+          "normalized": "Pleurosigma vitrea var. kjellmanii H. Peragallo 1891",
+          "canonical": {
+            "stemmed": "Pleurosigma uitre kiellmani",
+            "simple": "Pleurosigma vitrea kjellmanii",
+            "full": "Pleurosigma vitrea var. kjellmanii"
+          },
+          "cardinality": 3,
+          "authorship": {
+            "verbatim": "H.Peragallo, 1891a",
+            "normalized": "H. Peragallo 1891",
+            "year": "1891",
+            "authors": [
+              "H. Peragallo"
+            ]
+          },
+          "id": "f6a5b47b-9917-5a48-b0ff-366bc036ae9c",
+          "parserVersion": "v1.0.0"
+        }
+      required:
+        - id
+        - parsed
+        - parseQuality
+        - cardinality
+        - verbatim
+        - parserVersion
+      properties:
+        id:
+          type: string
+          description: |
+            An UUID v5 generated from the input string using "globalnames.org"
+            DNS domain name as a seed. This UUID can be used as
+            a distributed global unique identifier of the string and
+            can be created independently in any popular programming language.
+          format: uuid
+          example: f6a5b47b-9917-5a48-b0ff-366bc036ae9c
+        quality:
+          type: integer
+          description: |
+            Quality of parsing.
+
+            - 0 - name-string is not parseable
+            - 1 - no parsing problems encountered
+            - 2 - small parsing problems
+            - 3 - serious parsing problems
+            - 4 - severe problems, name could not be parsed completely
+
+            The parseQuality is equal to the quality of the most
+            severe warning (see qualityWarnings). If no problems
+            are encountered, and the parsing succeeded, the parseQuality
+            is set to 1. If parsing failed, the parseQuality is 0.
+          enum: [0, 1, 2, 3, 4]
+          example: 2
+        qualityWarnings:
+          description: Contains encountered parsing problems.
+          type: array
+          items:
+            $ref: "#/components/schemas/QualityWarning"
+          example:
+            - quality: 2
+              warning: Year with latin character
+        verbatim:
+          description: Input name-string without modifications.
+          type: string
+          example: Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a
+        normalized:
+          description: A normalized version of the input name-string.
+          type: string
+          example: Pleurosigma vitrea var. kjellmanii H. Peragallo 1891
+        canonical:
+          $ref: "#/components/schemas/Canonical"
+        cardinality:
+          description: |
+            Allows to sort, partition names according to number of elements
+            in their canonical forms.
+
+            0 - cardinality cannot be calculated
+            1 - uninomial
+            2 - binomial
+            3 - trinomial
+            4 - quadrinomial
+          type: integer
+          enum: [0, 1, 2, 3, 4, 5, 6]
+          example: 3
+        authorship:
+          $ref: "#/components/schemas/Authorship"
+        bacteria:
+          description: |
+            The field is provided if a name has a genus
+            that is registered as bacterial. Possible
+            values are
+
+            - maybe - if the genus has homonyms in other groups
+            - yes - if gnparser dictionary does not detect any hompnyms
+
+            The bacterial names often contain strain information which are
+            not parseable and are placed into the "tail" field.
+          type: string
+          enum: ["maybe", "yes"]
+        virus:
+          description: |
+            Is set to true in case if name is not parsed, and probably
+            belongs to a wide variety of sub-cellular entities like
+
+            - viruses
+            - plasmids
+            - prions
+            - RNA
+            - DNA
+
+            Viruses are the vast majority in this group of names,
+            as a result they gave (very unprecise) name to
+            the field.
+
+            We do plan to create a parser for viruses at some point,
+            which will expand this group into more precise categories.
+          type: boolean
+        hybrid:
+          description: |
+            Is given if a name is detected as one of the hybrids
+
+            - a non-categorized hybrid
+            - named hybrid
+            - notho- hybrid
+            - hybrid formula
+          type: string
+          enum: ["HYBRID", "NAMED_HYBRID", "HYBRID_FORMULA", "NOTHO_HYBRID"]
+          example: NAMED_HYBRID
+        surrogate:
+          description: |
+            This is a wide category of names that do not follow
+            nomenclatural rules
+
+            - a non-catogorized surrogates
+            - surrogate names from BOLD project
+            - comparisons (Homo cf. sapiens)
+            - approximations (names for specimen that not fully identified)
+          type: string
+          enum: ["SURROGATE", "COMPARISON", "APPROXIMATION", "BOLD_SURROGATE"]
+          example: APPROXIMATION
+        tail:
+          description: |
+            Unparseable tail of a name. It might contain "junk", annotations,
+            malformed parts of a scientific name,
+            taxonomic concept indications, bacterial strains etc.
+            If there is an unparseable tail, the quality of the name-parsing
+            is set to the worst category.
+          type: string
+        details:
+          description: |
+            Provided only if "with_details=true"
+            Details of a scientific name.
+          oneOf:
+            - $ref: "#/components/schemas/DetailsUninomial"
+            - $ref: "#/components/schemas/DetailsSpecies"
+            - $ref: "#/components/schemas/DetailsInfraSpecies"
+            - $ref: "#/components/schemas/DetailsComparison"
+            - $ref: "#/components/schemas/DetailsApproximation"
+            - $ref: "#/components/schemas/DetailsHybridFormula"
+    QualityWarning:
+      description: |
+        Explains an encountered parsing problem.
+      type: object
+      required:
+        - quality
+        - warning
+      properties:
+        warning:
+          description: |
+            A sentence that describes an encountered
+            parsing problem.
+          type: string
+          example: Year with latin character
+        quality:
+          description: |
+            A parse quality associated with the warning.
+
+            - 0 - name-string is not parseable
+            - 1 - no parsing problems encountered
+            - 2 - small parsing problems
+            - 3 - serious parsing problems
+            - 4 - severe problems, name could not be parsed completely
+          type: integer
+          enum: [0, 1, 2, 3, 4]
+          example: 2
+
+    Canonical:
+      description: |
+        Simplified versions of a name-string more suitable for
+        matching and comparing name-strings than the verbatim version.
+      type: object
+      required:
+        - stemmed
+        - simple
+        - full
+      properties:
+        stemmed:
+          description: |
+            The most "normalized" and simplified version of the name.
+            Species epithets are stripped of suffixes,
+            "j" character converted to "i",
+            "v" character converted to "u" according to
+            "Schinke R, Greengrass M, Robertson AM and Willett P (1996)"
+
+            It is most useful to match names when a variability
+            in suffixes is possible.
+          type: string
+          example: Pleurosigma uitre kiellmani
+        simple:
+          description: |
+            A simplified version of a name where some elements like
+            ranks, or hybrid signs "×" are ommited (hybrid signs are
+            present for hybrid formulas).
+
+            It is most useful to match names in general.
+          type: string
+          example: Pleurosigma vitrea kjellmanii
+        full:
+          description: |
+            A canonical form that keeps hybrid signs "×" for named
+            hybrids and shows infra-specific ranks.
+
+            It is most useful for detection of the best matches from
+            multiple results. It is also recommended for displaying
+            canonical forms of botanical names.
+          type: string
+          example: Pleurosigma vitrea var. kjellmanii
+
+    Authorship:
+      description: |
+        Describes provided metainformation about authors of a name.
+        Sometimes authorship is provided for several elements of a
+        name, for example in
+        "Agalinis purpurea (L.) Briton var. borealis (Berg.) Peterson 1987"
+
+        The authorship provided outside of "details" section belongs to
+        the most fine-grained element of a name ("var. borealis" for
+        the example above).
+      type: object
+      required:
+        - verbatim
+        - normalized
+      properties:
+        verbatim:
+          description: |
+            An authorship string without modifications
+          type: string
+          example: H.Peragallo, 1891a
+        normalized:
+          description: |
+            An authorship string normalized by gnparser
+          type: string
+          example: H. Peragallo 1891
+        year:
+          description: |
+            A string representing a year of original description
+            of the name. The year number is surrounded by parentheses
+            "(1758)", in cases when a year is approximate.
+          type: string
+          example: "1891"
+        authors:
+          description: |
+            List of all authors detected in the authorship
+          example:
+            - H. Peragallo
+          type: array
+          items:
+            type: string
+        original:
+          $ref: "#/components/schemas/AuthorGroup"
+        combination:
+          $ref: "#/components/schemas/AuthorGroup"
+
+    AuthorGroup:
+      description: |
+        Provided only if "with_details=true"
+        Group of authors belogning to a particular nomenclatural event.
+        We distinguish to possible situations when AuthorGroup is used.
+
+        - original - authors of the original description of a name
+        - combination - authors of a new combination, rank etc.
+      type: object
+      required:
+        - authors
+      properties:
+        authors:
+          type: array
+          items:
+            type: string
+          example:
+            - H. Peragallo
+        year:
+          $ref: "#/components/schemas/Year"
+        exAuthors:
+          $ref: "#/components/schemas/Authors"
+        emendAuthors:
+          $ref: "#/components/schemas/Authors"
+
+    Year:
+      description: |
+        Provided only if "with_details=true"
+        Year of publication. If a range of the
+        years provided, the start year is kept,
+        with isApproximate flag set to true.
+      type: object
+      required:
+        - value
+      properties:
+        value:
+          description: a normalized year as a string.
+          type: string
+          example: 1891
+        isApproximate:
+          description: The flag is true when the given year is not certain.
+          type: boolean
+          example: false
+
+    Authors:
+      description: |
+        Provided only if "with_details=true"
+        A "special" group of authors, that sometimes appear in
+        scientific names after "ex" or "emend." qualifiers.
+      type: object
+      required:
+        - authors
+      properties:
+        authors:
+          description: A list of detected authors.
+          type: array
+          items:
+            type: string
+          example:
+            - H. Peragallo
+        year:
+          $ref: "#/components/schemas/Year"
+
+    DetailsUninomial:
+      description: Details for uninomial names
+      type: object
+      example: |
+        "uninomial": {
+          "uninomial": "Tribuloideae",
+          "rank": "subfam.",
+          "parent": "Zygophyllaceae",
+          "authorship": {
+            "verbatim": "D.M.Porter",
+            "normalized": "D. M. Porter",
+            "authors": [
+              "D. M. Porter"
+            ],
+            "originalAuth": {
+              "authors": [
+                "D. M. Porter"
+              ]
+            }
+          }
+        }
+      required:
+        - uninomial
+      properties:
+        uninomial:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              description: uninomial name
+              type: string
+              example: Tribuloideae
+            rank:
+              description: |
+                sometimes uninomial names contain their parent, for example
+                "Zygophyllaceae subfam. Tribuloideae D.M.Porter".
+                This field contains rank depicted in such name-strings
+                "subfam." in the example.
+              type: string
+              example: subfam.
+            parent:
+              description: |
+                sometimes uninomial names contain their parent, for example
+                "Zygophyllaceae subfam. Tribuloideae D.M.Porter".
+                This field contains the parent depicted in such name-strings
+                "Zygophyllaceae" in the example.
+              type: string
+              example: Zygophyllaceae
+            authorship:
+              $ref: "#/components/schemas/Authorship"
+
+    DetailsSpecies:
+      description: Details for binomial names
+      type: object
+      example: |
+        "species": {
+          "genus": "Pycnodonte",
+          "subGenus": "Notostrea",
+          "species": "tarda"
+        }
+      required:
+        - species
+      properties:
+        species:
+          type: object
+          required:
+            - genus
+            - species
+          properties:
+            genus:
+              description: genus in a bionomial name
+              type: string
+              example: Pycnodonte
+            subgenus:
+              description: subgenus in a binomial name
+              type: string
+              example: Notostrea
+            species:
+              description: specific epithet of a binomial name
+              type: string
+              example: tarda
+            authorship:
+              $ref: "#/components/schemas/Authorship"
+
+    DetailsInfraSpecies:
+      description: Details for multinomial names
+      type: object
+      example: |
+        "infraSpecies": {
+          "genus": "Pleurosigma",
+          "species": "vitrea",
+          "infraSpecies": [
+            {
+              "value": "kjellmanii",
+              "rank": "var.",
+              "authorship": {
+                "verbatim": "H.Peragallo, 1891a",
+                "normalized": "H. Peragallo 1891",
+                "year": "1891",
+                "authors": [
+                  "H. Peragallo"
+                ],
+                "originalAuth": {
+                  "authors": [
+                    "H. Peragallo"
+                  ],
+                  "year": {
+                    "year": "1891"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      required:
+        - infraSpecies
+      properties:
+        infraSpecies:
+          type: object
+          required:
+            - genus
+            - species
+          properties:
+            genus:
+              description: Genus in a bionomial name
+              type: string
+              example: Pleurosigma
+            subgenus:
+              description: Subgenus in a binomial name
+              type: string
+            species:
+              description: Specific epithet of a binomial name
+              type: string
+              example: vitrea
+            authorship:
+              $ref: "#/components/schemas/Authorship"
+            infraSpecies:
+              description: Infra-specific epithets
+              type: array
+              items:
+                type: object
+                required:
+                  - value
+                properties:
+                  value:
+                    description: Infra-specific epithet
+                    type: string
+                    example: kjellmanii
+                  rank:
+                    description: Infra-specific rank
+                    type: string
+                    example: var.
+                  authorship:
+                    $ref: "#/components/schemas/Authorship"
+
+    DetailsComparison:
+      description: Details for binomial surrogate names with comparison
+      type: object
+      example: |
+        "comparison": {
+          "genus": "Melanella",
+          "species": "polita",
+          "comparisonMarker": "cf."
+        }
+      required:
+        - comparison
+      properties:
+        comparison:
+          type: object
+          required:
+            - genus
+            - comparisonMarker
+          properties:
+            genus:
+              description: genus in a bionomial name
+              type: string
+              example: Melanella
+            species:
+              description: specific epithet of a binomial name
+              type: string
+              example: polita
+            authorship:
+              $ref: "#/components/schemas/Authorship"
+            comparisonMarker:
+              description: Comparison abbreviation, usually "cf."
+              type: string
+              example: cf.
+
+    DetailsApproximation:
+      description: Details for surrogate names with
+      type: object
+      example: |
+        "approximation": {
+          "genus": "Pleistophora",
+          "approximationMarker": "sp.",
+          "ignored": " 2 CHU"
+        }
+      required:
+        - approximation
+      properties:
+        approximation:
+          type: object
+          required:
+            - genus
+            - approximationMarker
+          properties:
+            genus:
+              description: genus in a bionomial name
+              type: string
+              example: Pleistophora
+            species:
+              description: specific epithet of a binomial name
+              type: string
+            authorship:
+              $ref: "#/components/schemas/Authorship"
+            comparisonMarker:
+              description: Approximation term, for example "sp., spp., aff."
+              type: string
+              example: sp.
+            ignored:
+              description: Ignored part of approximation name.
+              type: string
+              example: " 2 CHU"
+
+    DetailsHybridFormula:
+      description: Details for hybrid formula names
+      type: object
+      example: |
+        "hybridFormula": [
+          {
+            "species": {
+              "genus": "Stanhopea",
+              "species": "tigrina"
+            }
+          },
+          {
+            "species": {
+              "genus": "Stanhopea",
+              "species": "ecornuta"
+            }
+          }
+        ]
+      required:
+        - hybridFormula
+      properties:
+        hybridFormula:
+          type: array
+          items:
+            oneOf:
+              - $ref: "#/components/schemas/DetailsUninomial"
+              - $ref: "#/components/schemas/DetailsSpecies"
+              - $ref: "#/components/schemas/DetailsInfraSpecies"
