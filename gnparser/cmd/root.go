@@ -417,6 +417,8 @@ func parseFile(
 	sc := bufio.NewScanner(f)
 	var i, count int
 	for sc.Scan() {
+		batch[count] = sc.Text()
+		count++
 		if count == batchSize {
 			i++
 			log.Printf("Parsing %d-th line\n", count*i)
@@ -424,8 +426,6 @@ func parseFile(
 			batch = make([]string, batchSize)
 			count = 0
 		}
-		batch[count] = sc.Text()
-		count++
 	}
 	chOut <- gnp.ParseNames(batch[:count])
 	close(chOut)

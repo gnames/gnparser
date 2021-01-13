@@ -26,7 +26,7 @@ func CSVHeader() string {
 }
 
 func (p Parsed) csvOutput() string {
-	var stem, simple, full, authorship string
+	var stem, simple, full, authorship, year string
 	if p.Canonical != nil {
 		stem = p.Canonical.Stemmed
 		simple = p.Canonical.Simple
@@ -35,6 +35,7 @@ func (p Parsed) csvOutput() string {
 
 	if p.Authorship != nil {
 		authorship = p.Authorship.Normalized
+		year = p.Authorship.Year
 	}
 
 	res := []string{
@@ -45,6 +46,7 @@ func (p Parsed) csvOutput() string {
 		simple,
 		full,
 		authorship,
+		year,
 		strconv.Itoa(p.ParseQuality),
 	}
 	return gncsv.ToCSV(res)
