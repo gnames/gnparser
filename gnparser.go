@@ -88,6 +88,13 @@ func (gnp gnparser) Format() format.Format {
 	return gnp.cfg.Format
 }
 
+func (gnp gnparser) ChangeConfig(opts ...config.Option) GNParser {
+	for i := range opts {
+		opts[i](&gnp.cfg)
+	}
+	return gnp
+}
+
 // Version function returns version number of `gnparser`.
 func (gnp gnparser) GetVersion() gn.Version {
 	res := gn.Version{

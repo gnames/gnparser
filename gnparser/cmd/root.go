@@ -133,6 +133,7 @@ gnparser -j 5 -p 8080
 		batchSize = cfg.BatchSize
 
 		if port != 0 {
+			cfg := config.NewConfig(config.OptFormat("compact"))
 			gnp := gnparser.NewGNParser(cfg)
 			gnps := web.NewGNParserService(gnp, port)
 			web.Run(gnps)

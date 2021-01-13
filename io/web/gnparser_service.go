@@ -1,6 +1,8 @@
 package web
 
-import "github.com/gnames/gnparser"
+import (
+	"github.com/gnames/gnparser"
+)
 
 type gnparserService struct {
 	gnparser.GNParser
@@ -12,13 +14,13 @@ func NewGNParserService(gnp gnparser.GNParser, port int) GNParserService {
 		GNParser: gnp,
 		port:     port,
 	}
-	return res
+	return &res
 }
 
-func (gnps gnparserService) Ping() string {
+func (gnps *gnparserService) Ping() string {
 	return "pong"
 }
 
-func (gnps gnparserService) Port() int {
+func (gnps *gnparserService) Port() int {
 	return gnps.port
 }

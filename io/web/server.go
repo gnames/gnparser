@@ -2,21 +2,28 @@ package web
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
 
+	"github.com/gnames/gnlib/format"
+	"github.com/gnames/gnparser/config"
+	"github.com/gnames/gnparser/entity/output"
 	"github.com/gnames/gnparser/io/fs"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
-const withLogs = true
+const withLogs = false
+
+type postParams struct {
+	Names   []string `json:"names"`
+	Details bool     `json:"details"`
+	CSV     bool     `json:"csv"`
+}
 
 func Run(gnps GNParserService) {
-	log.Printf("Starting the HTTP on port %d.", gnps.Port())
 	e := echo.New()
 	e.Renderer = templates()
 	e.Use(middleware.Gzip())
@@ -51,7 +58,7 @@ func info() func(c echo.Context) error {
 	return func(c echo.Context) error {
 		return c.String(
 			http.StatusOK,
-			`OpenAPI for gnparser is described at 
+			`OpenAPI for gnparser is described at
 
 https://app.swaggerhub.com/apis-docs/dimus/gnparser/1.0.0`,
 		)
@@ -75,19 +82,52 @@ func ver(gnps GNParserService) func(echo.Context) error {
 func parseNamesGET(gnps GNParserService) func(echo.Context) error {
 	return func(c echo.Context) error {
 		nameStr, _ := url.QueryUnescape(c.Param("names"))
+		csv := c.QueryParam("csv") != ""
+		det := c.QueryParam("with_details") != ""
+		gnp := gnps.ChangeConfig(opts(c, csv, det)...)
 		names := strings.Split(nameStr, "|")
-		res := gnps.ParseNames(names)
-		return c.JSON(http.StatusOK, res)
+		res := gnp.ParseNames(names)
+		return formatNames(c, res, gnp.Format())
 	}
 }
 
 func parseNamesPOST(gnps GNParserService) func(echo.Context) error {
 	return func(c echo.Context) error {
-		var names []string
-		if err := c.Bind(&names); err != nil {
+		var input postParams
+		if err := c.Bind(&input); err != nil {
 			return err
 		}
-		res := gnps.ParseNames(names)
+		gnp := gnps.ChangeConfig(opts(c, input.CSV, input.Details)...)
+		res := gnp.ParseNames(input.Names)
+		return formatNames(c, res, gnp.Format())
+	}
+}
+
+func formatNames(
+	c echo.Context,
+	res []output.Parsed,
+	f format.Format,
+) error {
+	switch f {
+	case format.CSV:
+		resCSV := make([]string, 0, len(res)+1)
+		resCSV = append(resCSV, output.CSVHeader())
+		for i := range res {
+			resCSV = append(resCSV, res[i].Output(f))
+		}
+		return c.String(http.StatusOK, strings.Join(resCSV, "\n"))
+	default:
 		return c.JSON(http.StatusOK, res)
 	}
+}
+
+func opts(c echo.Context, csv, details bool) []config.Option {
+	if csv {
+		return []config.Option{config.OptFormat("csv")}
+	}
+	var res []config.Option
+	if details {
+		res = []config.Option{config.OptWithDetails(true)}
+	}
+	return res
 }

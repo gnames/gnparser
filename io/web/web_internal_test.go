@@ -27,7 +27,7 @@ func handlerGET(path string) (echo.Context, *httptest.ResponseRecorder) {
 }
 
 func TestHome(t *testing.T) {
-	cfg := config.NewConfig()
+	cfg := config.NewConfig(config.OptFormat("compact"))
 	gnp := gnparser.NewGNParser(cfg)
 	gnps := NewGNParserService(gnp, 0)
 
@@ -58,7 +58,7 @@ func TestInfo(t *testing.T) {
 }
 
 func TestPing(t *testing.T) {
-	cfg := config.NewConfig()
+	cfg := config.NewConfig(config.OptFormat("compact"))
 	gnp := gnparser.NewGNParser(cfg)
 	gnps := NewGNParserService(gnp, 0)
 	c, rec := handlerGET("/ping")
@@ -69,7 +69,7 @@ func TestPing(t *testing.T) {
 }
 
 func TestVer(t *testing.T) {
-	cfg := config.NewConfig()
+	cfg := config.NewConfig(config.OptFormat("compact"))
 	gnp := gnparser.NewGNParser(cfg)
 	gnps := NewGNParserService(gnp, 0)
 	c, rec := handlerGET("/version")
@@ -83,7 +83,7 @@ func TestVer(t *testing.T) {
 }
 
 func TestParseGET(t *testing.T) {
-	cfg := config.NewConfig()
+	cfg := config.NewConfig(config.OptFormat("compact"))
 	gnp := gnparser.NewGNParser(cfg)
 	gnps := NewGNParserService(gnp, 0)
 
@@ -127,7 +127,7 @@ func TestParseGET(t *testing.T) {
 }
 
 func TestParsePOST(t *testing.T) {
-	cfg := config.NewConfig()
+	cfg := config.NewConfig(config.OptFormat("compact"))
 	gnp := gnparser.NewGNParser(cfg)
 	gnps := NewGNParserService(gnp, 0)
 
@@ -139,9 +139,14 @@ func TestParsePOST(t *testing.T) {
 		"A-shaped rods", "Alb. alba",
 		"Pisonia grandis", "Acacia vestita may",
 	}
-	namesJSON, err := encode.GNjson{}.Encode(names)
+	params := postParams{
+		Names:   names,
+		CSV:     false,
+		Details: false,
+	}
+	reqBody, err := encode.GNjson{}.Encode(params)
 	assert.Nil(t, err)
-	r := bytes.NewReader(namesJSON)
+	r := bytes.NewReader(reqBody)
 	req := httptest.NewRequest(http.MethodPost, "/", r)
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
@@ -165,4 +170,18 @@ func TestParsePOST(t *testing.T) {
 			assert.Equal(t, v.Canonical.Simple, "Bubo bubo")
 		}
 	}
+
+	params = postParams{
+		Names:   names,
+		CSV:     true,
+		Details: false,
+	}
+	reqBody, err = encode.GNjson{}.Encode(params)
+	r = bytes.NewReader(reqBody)
+	req = httptest.NewRequest(http.MethodPost, "/", r)
+	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
+	rec = httptest.NewRecorder()
+	c = e.NewContext(req, rec)
+	assert.Nil(t, parseNamesPOST(gnps)(c))
+	assert.True(t, strings.HasPrefix(rec.Body.String(), "Id"))
 }
