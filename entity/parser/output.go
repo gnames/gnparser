@@ -30,7 +30,7 @@ func (sn *scientificNameNode) ToOutput(withDetails bool) o.Parsed {
 	res.Tail = sn.tail
 	if withDetails {
 		res.Details = sn.Details()
-		res.Positions = sn.Pos()
+		res.Words = sn.Words()
 	}
 	return res
 }

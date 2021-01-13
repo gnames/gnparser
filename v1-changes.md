@@ -57,7 +57,7 @@ the domain.
 
     By default, the service will not send data that that most users do not
     need. The `details` field of the parsed data will be omitted, as well as
-    details of a name's authorship. The `positions` list that provides position
+    details of a name's authorship. The `words` list that provides position
     and semantic meaning of every word in a name is excluded as well.
 
     If such details are important, use `with_details=true` parameter.
@@ -150,10 +150,10 @@ the [OpenAPI specification].
     `normalized` authorship strings, a year string, and a list of authors.
 
     `Details` part contains components that often can be ignored. It includes
-    details of authorships, `details` field of a name, `positions` list that
+    details of authorships, `details` field of a name, `words` list that
     includes start, end, and meaning of every parsed word in the name. The
     structure of most components in `details` part do not have a fixed schema
-    so they change depending on input. The `positions` field is an
+    so they change depending on input. The `words` list is an
     exception, its schema does not change.
 
 * `Base` part changes:
@@ -173,6 +173,8 @@ the [OpenAPI specification].
 
   * The `details` field now provides the type of a name, for example
     `uninomial`, `species`, `hybrid`.
+  * The `positions` field is now called `words` and its elements
+    include their word value.
 
 [v1 spec]: https://app.swaggerhub.com/apis-docs/dimus/gnparser/1.0.0
 [OpenAPI specification]: https://www.openapis.org/

@@ -27,20 +27,20 @@ const (
 )
 
 var wordTypeMap = map[WordType]string{
-	UnknownType:          "word",
-	ComparisonType:       "comparisonMarker",
-	ApproxType:           "approximationMarker",
-	AuthorWordType:       "authorWord",
-	AuthorWordFiliusType: "authorWordFilius",
-	GenusType:            "genus",
-	HybridCharType:       "hybridChar",
-	InfraSpEpithetType:   "infraspecificEpithet",
-	RankType:             "rank",
-	SpEpithetType:        "specificEpithet",
-	SubGenusType:         "infragenericEpithet",
-	UninomialType:        "uninomial",
-	YearApproximateType:  "approximateYear",
-	YearType:             "year",
+	UnknownType:          "WORD",
+	ComparisonType:       "COMPARISON_MARKER",
+	ApproxType:           "APPROXIMATION_MARKER",
+	AuthorWordType:       "AUTHOR_WORD",
+	AuthorWordFiliusType: "AUTHOR_WORD_FILIUS",
+	GenusType:            "GENUS",
+	HybridCharType:       "HYBRID_CHAR",
+	InfraSpEpithetType:   "INFRASPECIES",
+	RankType:             "RANK",
+	SpEpithetType:        "SPECIES",
+	SubGenusType:         "INFRA_GENUS",
+	UninomialType:        "UNINOMIAL",
+	YearApproximateType:  "APPROXIMATE_YEAR",
+	YearType:             "YEAR",
 }
 
 var wordTypeStrMap = func() map[string]WordType {

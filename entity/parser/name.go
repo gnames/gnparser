@@ -20,8 +20,8 @@ func appendCanonical(c1 *canonical, c2 *canonical, sep string) *canonical {
 	}
 }
 
-func (sn *scientificNameNode) Pos() []o.Position {
-	return sn.nameData.pos()
+func (sn *scientificNameNode) Words() []o.Word {
+	return sn.nameData.words()
 }
 
 func (sn *scientificNameNode) Normalized() string {
@@ -68,15 +68,15 @@ func (sn *scientificNameNode) LastAuthorship(withDetails bool) *o.Authorship {
 	return res
 }
 
-func (nf *hybridFormulaNode) pos() []o.Position {
-	pos := nf.FirstSpecies.pos()
+func (nf *hybridFormulaNode) words() []o.Word {
+	words := nf.FirstSpecies.words()
 	for _, v := range nf.HybridElements {
-		pos = append(pos, v.HybridChar.Pos)
+		words = append(words, v.HybridChar.Pos)
 		if v.Species != nil {
-			pos = append(pos, v.Species.pos()...)
+			words = append(words, v.Species.words()...)
 		}
 	}
-	return pos
+	return words
 }
 
 func (nf *hybridFormulaNode) value() string {
@@ -122,10 +122,10 @@ func (nf *hybridFormulaNode) details() o.Details {
 	return o.DetailsHybridFormula{HybridFormula: dets}
 }
 
-func (nh *namedGenusHybridNode) pos() []o.Position {
-	pos := []o.Position{nh.Hybrid.Pos}
-	pos = append(pos, nh.nameData.pos()...)
-	return pos
+func (nh *namedGenusHybridNode) words() []o.Word {
+	words := []o.Word{nh.Hybrid.Pos}
+	words = append(words, nh.nameData.words()...)
+	return words
 }
 
 func (nh *namedGenusHybridNode) value() string {
@@ -155,18 +155,25 @@ func (nh *namedGenusHybridNode) lastAuthorship() *authorshipNode {
 	return au
 }
 
-func (nh *namedSpeciesHybridNode) pos() []o.Position {
-	pos := []o.Position{nh.Genus.Pos}
+func (nh *namedSpeciesHybridNode) words() []o.Word {
+	var wrd o.Word
+	wrd = nh.Genus.Pos
+	wrd.Value = nh.Genus.Value
+	words := []o.Word{wrd}
 	if nh.Comparison != nil {
-		pos = append(pos, nh.Comparison.Pos)
+		wrd = nh.Comparison.Pos
+		wrd.Value = nh.Comparison.Value
+		words = append(words, wrd)
 	}
-	pos = append(pos, nh.Hybrid.Pos)
-	pos = append(pos, nh.SpEpithet.pos()...)
+	wrd = nh.Hybrid.Pos
+	wrd.Value = nh.Hybrid.Value
+	words = append(words, wrd)
+	words = append(words, nh.SpEpithet.words()...)
 
 	for _, v := range nh.InfraSpecies {
-		pos = append(pos, v.pos()...)
+		words = append(words, v.words()...)
 	}
-	return pos
+	return words
 }
 
 func (nh *namedSpeciesHybridNode) value() string {
@@ -228,19 +235,24 @@ func (nh *namedSpeciesHybridNode) details() o.Details {
 	return o.DetailsInfraSpecies{InfraSpecies: iso}
 }
 
-func (apr *approxNode) pos() []o.Position {
-	var pos []o.Position
+func (apr *approxNode) words() []o.Word {
+	var words []o.Word
+	var wrd o.Word
 	if apr == nil {
-		return pos
+		return words
 	}
-	pos = append(pos, apr.Genus.Pos)
+	wrd = apr.Genus.Pos
+	wrd.Value = apr.Genus.Value
+	words = append(words, wrd)
 	if apr.SpEpithet != nil {
-		pos = append(pos, apr.SpEpithet.pos()...)
+		words = append(words, apr.SpEpithet.words()...)
 	}
 	if apr.Approx != nil {
-		pos = append(pos, apr.Approx.Pos)
+		wrd = apr.Approx.Pos
+		wrd.Value = apr.Approx.Value
+		words = append(words, wrd)
 	}
-	return pos
+	return words
 }
 
 func (apr *approxNode) value() string {
@@ -295,17 +307,22 @@ func (apr *approxNode) details() o.Details {
 	return o.DetailsApproximation{Approximation: ao}
 }
 
-func (comp *comparisonNode) pos() []o.Position {
-	var pos []o.Position
+func (comp *comparisonNode) words() []o.Word {
+	var words []o.Word
+	var wrd o.Word
 	if comp == nil {
 		return nil
 	}
-	pos = []o.Position{comp.Genus.Pos}
-	pos = append(pos, comp.Comparison.Pos)
+	wrd = comp.Genus.Pos
+	wrd.Value = comp.Genus.Value
+	words = []o.Word{wrd}
+	wrd = comp.Comparison.Pos
+	wrd.Value = comp.Comparison.Value
+	words = append(words, wrd)
 	if comp.SpEpithet != nil {
-		pos = append(pos, comp.SpEpithet.pos()...)
+		words = append(words, comp.SpEpithet.words()...)
 	}
-	return pos
+	return words
 }
 
 func (comp *comparisonNode) value() string {
@@ -360,19 +377,24 @@ func (comp *comparisonNode) details() o.Details {
 	return o.DetailsComparison{Comparison: co}
 }
 
-func (sp *speciesNode) pos() []o.Position {
-	var pos []o.Position
+func (sp *speciesNode) words() []o.Word {
+	var words []o.Word
+	var wrd o.Word
 	if sp.Genus.Pos.End != 0 {
-		pos = append(pos, sp.Genus.Pos)
+		wrd = sp.Genus.Pos
+		wrd.Value = sp.Genus.Value
+		words = append(words, wrd)
 	}
 	if sp.SubGenus != nil {
-		pos = append(pos, sp.SubGenus.Pos)
+		wrd = sp.SubGenus.Pos
+		wrd.Value = sp.SubGenus.Value
+		words = append(words, wrd)
 	}
-	pos = append(pos, sp.SpEpithet.pos()...)
+	words = append(words, sp.SpEpithet.words()...)
 	for _, v := range sp.InfraSpecies {
-		pos = append(pos, v.pos()...)
+		words = append(words, v.words()...)
 	}
-	return pos
+	return words
 }
 
 func (sp *speciesNode) value() string {
@@ -436,10 +458,13 @@ func (sp *speciesNode) details() o.Details {
 	return o.DetailsInfraSpecies{InfraSpecies: sio}
 }
 
-func (sep *spEpithetNode) pos() []o.Position {
-	pos := []o.Position{sep.Word.Pos}
-	pos = append(pos, sep.Authorship.pos()...)
-	return pos
+func (sep *spEpithetNode) words() []o.Word {
+	var wrd o.Word
+	wrd = sep.Word.Pos
+	wrd.Value = sep.Word.Value
+	words := []o.Word{wrd}
+	words = append(words, sep.Authorship.words()...)
+	return words
 }
 
 func (sep *spEpithetNode) value() string {
@@ -453,17 +478,21 @@ func (sep *spEpithetNode) canonical() *canonical {
 	return c
 }
 
-func (inf *infraspEpithetNode) pos() []o.Position {
-	var pos []o.Position
-
+func (inf *infraspEpithetNode) words() []o.Word {
+	var words []o.Word
+	var wrd o.Word
 	if inf.Rank != nil && inf.Rank.Word.Pos.Start != 0 {
-		pos = append(pos, inf.Rank.Word.Pos)
+		wrd = inf.Rank.Word.Pos
+		wrd.Value = inf.Rank.Word.Value
+		words = append(words, wrd)
 	}
-	pos = append(pos, inf.Word.Pos)
+	wrd = inf.Word.Pos
+	wrd.Value = inf.Word.Value
+	words = append(words, wrd)
 	if inf.Authorship != nil {
-		pos = append(pos, inf.Authorship.pos()...)
+		words = append(words, inf.Authorship.words()...)
 	}
-	return pos
+	return words
 }
 
 func (inf *infraspEpithetNode) value() string {
@@ -505,10 +534,13 @@ func (inf *infraspEpithetNode) details() o.InfraSpeciesElem {
 	return res
 }
 
-func (u *uninomialNode) pos() []o.Position {
-	pos := []o.Position{u.Word.Pos}
-	pos = append(pos, u.Authorship.pos()...)
-	return pos
+func (u *uninomialNode) words() []o.Word {
+	var wrd o.Word
+	wrd = u.Word.Pos
+	wrd.Value = u.Word.Value
+	words := []o.Word{wrd}
+	words = append(words, u.Authorship.words()...)
+	return words
 }
 
 func (u *uninomialNode) value() string {
@@ -533,15 +565,22 @@ func (u *uninomialNode) details() o.Details {
 	return uo
 }
 
-func (u *uninomialComboNode) pos() []o.Position {
-	pos := []o.Position{u.Uninomial1.Word.Pos}
-	pos = append(pos, u.Uninomial1.Authorship.pos()...)
+func (u *uninomialComboNode) words() []o.Word {
+	var wrd o.Word
+	wrd = u.Uninomial1.Word.Pos
+	wrd.Value = u.Uninomial1.Word.Value
+	words := []o.Word{wrd}
+	words = append(words, u.Uninomial1.Authorship.words()...)
 	if u.Rank.Word.Pos.Start != 0 {
-		pos = append(pos, u.Rank.Word.Pos)
+		wrd = u.Rank.Word.Pos
+		wrd.Value = u.Rank.Word.Value
+		words = append(words, wrd)
 	}
-	pos = append(pos, u.Uninomial2.Word.Pos)
-	pos = append(pos, u.Uninomial2.Authorship.pos()...)
-	return pos
+	wrd = u.Uninomial2.Word.Pos
+	wrd.Value = u.Uninomial2.Word.Value
+	words = append(words, wrd)
+	words = append(words, u.Uninomial2.Authorship.words()...)
+	return words
 }
 
 func (u *uninomialComboNode) value() string {
@@ -640,13 +679,13 @@ func authGroupDetail(ag *authorsGroupNode) *o.AuthGroup {
 	return &ago
 }
 
-func (a *authorshipNode) pos() []o.Position {
+func (a *authorshipNode) words() []o.Word {
 	if a == nil {
-		var p []o.Position
+		var p []o.Word
 		return p
 	}
-	p := a.OriginalAuthors.pos()
-	return append(p, a.CombinationAuthors.pos()...)
+	p := a.OriginalAuthors.words()
+	return append(p, a.CombinationAuthors.words()...)
 }
 
 func (a *authorshipNode) value() string {
@@ -678,13 +717,13 @@ func (ag *authorsGroupNode) value() string {
 	return v
 }
 
-func (ag *authorsGroupNode) pos() []o.Position {
+func (ag *authorsGroupNode) words() []o.Word {
 	if ag == nil {
-		var p []o.Position
+		var p []o.Word
 		return p
 	}
-	p := ag.Team1.pos()
-	return append(p, ag.Team2.pos()...)
+	p := ag.Team1.words()
+	return append(p, ag.Team2.words()...)
 }
 
 func (aut *authorsTeamNode) value() string {
@@ -733,24 +772,28 @@ func (at *authorsTeamNode) details() ([]string, *o.Year) {
 	return aus, yr
 }
 
-func (aut *authorsTeamNode) pos() []o.Position {
-	var res []o.Position
+func (aut *authorsTeamNode) words() []o.Word {
+	var res []o.Word
 	if aut == nil {
 		return res
 	}
 	for _, v := range aut.Authors {
-		res = append(res, v.pos()...)
+		res = append(res, v.words()...)
 	}
 	if aut.Year != nil {
-		res = append(res, aut.Year.Word.Pos)
+		var wrd o.Word
+		wrd = aut.Year.Word.Pos
+		wrd.Value = aut.Year.Word.Value
+		res = append(res, wrd)
 	}
 	return res
 }
 
-func (aun *authorNode) pos() []o.Position {
-	p := make([]o.Position, len(aun.Words))
+func (aun *authorNode) words() []o.Word {
+	p := make([]o.Word, len(aun.Words))
 	for i, v := range aun.Words {
 		p[i] = v.Pos
+		p[i].Value = v.Value
 	}
 	return p
 }

@@ -15,7 +15,7 @@ type ScientificNameNode interface {
 type nameData interface {
 	valuer
 	canonizer
-	poser
+	worder
 	authorFinder
 	outputter
 }
@@ -34,9 +34,9 @@ type canonizer interface {
 	canonical() *canonical
 }
 
-type poser interface {
-	// pos function returns a meaning of words in a string and their positions
-	pos() []o.Position
+type worder interface {
+	// words function returns a meaning of words in a string and their positions
+	words() []o.Word
 }
 
 type authorFinder interface {

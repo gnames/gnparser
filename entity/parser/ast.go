@@ -607,7 +607,7 @@ func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
 		n := n.next
 		au2 := p.newAuthorshipNode(n)
 		rw := &wordNode{Value: "subgen.", NormValue: "subgen.",
-			Pos: o.Position{Type: o.RankType}}
+			Pos: o.Word{Type: o.RankType}}
 		r = &rankUninomialNode{Word: rw}
 		u2 = &uninomialNode{
 			Word:       u2w,
@@ -941,13 +941,13 @@ func (n *node32) flatChildren() []*node32 {
 type wordNode struct {
 	Value     string
 	NormValue string
-	Pos       o.Position
+	Pos       o.Word
 }
 
 func (p *Engine) newWordNode(n *node32, wt o.WordType) *wordNode {
 	t := n.token32
 	val := p.nodeValue(n)
-	pos := o.Position{Type: wt, Start: int(t.begin), End: int(t.end)}
+	pos := o.Word{Type: wt, Start: int(t.begin), End: int(t.end)}
 	wrd := wordNode{Value: val, NormValue: val, Pos: pos}
 	children := n.flatChildren()
 	var canApostrophe bool

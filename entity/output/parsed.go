@@ -19,7 +19,7 @@ type Parsed struct {
 	Surrogate       *Annotation      `json:"surrogate,omitempty"`
 	Tail            string           `json:"tail,omitempty"`
 	Details         Details          `json:"details,omitempty"`
-	Positions       []Position       `json:"pos,omitempty"`
+	Words           []Word           `json:"words,omitempty"`
 	VerbatimID      string           `json:"id"`
 	ParserVersion   string           `json:"parserVersion"`
 }
@@ -56,7 +56,8 @@ type Year struct {
 	IsApproximate bool   `json:"isApproximate,omitempty"`
 }
 
-type Position struct {
+type Word struct {
+	Value string   `json:"value"`
 	Type  WordType `json:"wordType"`
 	Start int      `json:"start"`
 	End   int      `json:"end"`

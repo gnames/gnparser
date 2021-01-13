@@ -79,7 +79,7 @@ var warningMap = map[Warning]string{
 	GenusUpperCharAfterDash:         "Apparent genus with capital character after hyphen",
 	GreekLetterInRank:               "Deprecated Greek letter enumeration in rank",
 	HTMLTagsEntitiesWarn:            "HTML tags or entities in the name",
-	HybridCharNoSpaceWarn:           "Hybrid char not separated by space",
+	HybridCharNoSpaceWarn:           "Hybrid char is not separated by space",
 	HybridFormulaWarn:               "Hybrid formula",
 	HybridFormulaIncompleteWarn:     "Incomplete hybrid formula",
 	HybridFormulaProbIncompleteWarn: "Probably incomplete hybrid formula",
