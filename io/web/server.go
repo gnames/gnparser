@@ -17,10 +17,10 @@ import (
 
 const withLogs = false
 
-type postParams struct {
-	Names   []string `json:"names"`
-	Details bool     `json:"details"`
-	CSV     bool     `json:"csv"`
+type inputPOST struct {
+	Names       []string `json:"names"`
+	WithDetails bool     `json:"withDetails,omitempty"`
+	CSV         bool     `json:"csv,omitempty"`
 }
 
 func Run(gnps GNParserService) {
@@ -93,11 +93,11 @@ func parseNamesGET(gnps GNParserService) func(echo.Context) error {
 
 func parseNamesPOST(gnps GNParserService) func(echo.Context) error {
 	return func(c echo.Context) error {
-		var input postParams
+		var input inputPOST
 		if err := c.Bind(&input); err != nil {
 			return err
 		}
-		gnp := gnps.ChangeConfig(opts(c, input.CSV, input.Details)...)
+		gnp := gnps.ChangeConfig(opts(c, input.CSV, input.WithDetails)...)
 		res := gnp.ParseNames(input.Names)
 		return formatNames(c, res, gnp.Format())
 	}

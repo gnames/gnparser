@@ -139,10 +139,10 @@ func TestParsePOST(t *testing.T) {
 		"A-shaped rods", "Alb. alba",
 		"Pisonia grandis", "Acacia vestita may",
 	}
-	params := postParams{
-		Names:   names,
-		CSV:     false,
-		Details: false,
+	params := inputPOST{
+		Names:       names,
+		CSV:         false,
+		WithDetails: false,
 	}
 	reqBody, err := encode.GNjson{}.Encode(params)
 	assert.Nil(t, err)
@@ -171,10 +171,10 @@ func TestParsePOST(t *testing.T) {
 		}
 	}
 
-	params = postParams{
-		Names:   names,
-		CSV:     true,
-		Details: false,
+	params = inputPOST{
+		Names:       names,
+		CSV:         true,
+		WithDetails: false,
 	}
 	reqBody, err = encode.GNjson{}.Encode(params)
 	r = bytes.NewReader(reqBody)
