@@ -2,69 +2,69 @@ package main
 
 /*
 	#include "stdlib.h"
-	#include "callback_bridge.h"
 */
 import "C"
 
 import (
-	"fmt"
-	"log"
-	"runtime"
-	"sync"
+	"strings"
 	"unsafe"
 
+	"github.com/gnames/gnlib/encode"
+	"github.com/gnames/gnlib/format"
 	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/config"
 )
 
-// ParseToString function takes a name-string, desired format, and parses
-// the name-string to either JSON, or pipe-separated values, depending on
-// the desired format. Format can take values of 'simple', 'compact', 'pretty'.
-// NOTE: Read callback type as "void (*callback)(char *parsed)"
+// ParseToString function takes a name-string, desired format, a withDetails
+// flag as 0|1 integer. It parses the name-string to either JSON, or a CSV
+// string, depending on the desired format. Format argument can take values of
+// 'csv', 'compact', 'pretty'. If withDetails argument is 0, additional
+// parsed details are ommited, if it is 1 -- they are included.
+// true.
 //export ParseToString
-func ParseToString(name *C.char, format *C.char, callback unsafe.Pointer) {
+
+func ParseToString(
+	name *C.char,
+	f *C.char,
+	details C.int,
+) *C.char {
 	goname := C.GoString(name)
-	opts := []gnparser.Option{gnparser.OptFormat(C.GoString(format))}
-	gnp := gnparser.NewGNparser(opts...)
-	parsed, err := gnp.ParseAndFormat(goname)
-
-	if err != nil {
-		fmt.Println(err)
-		return
+	opts := []config.Option{
+		config.OptFormat(C.GoString(f)),
+		config.OptWithDetails(int(details) > 0),
 	}
+	cfg := config.NewConfig(opts...)
+	gnp := gnparser.NewGNParser(cfg)
+	parsed := gnp.ParseName(goname).Output(gnp.Format())
 
-	p := C.CString(parsed)
-	defer C.free(unsafe.Pointer(p))
-
-	C.callback_bridge(callback, p)
+	return C.CString(parsed)
 }
 
-// ParseAryToStrings function takes an array of names, parsing format and a
-// reference to an output: an empty array of strings to return the the data
-// back. It populates the output array with raw strings of either JSON or
-// pipe-separated parsed values (depending on a given format). Format can take
-// values of 'simple', 'compact', or 'pretty'.
-//export ParseAryToStrings
-func ParseAryToStrings(in **C.char, length C.int, format *C.char, callback unsafe.Pointer) {
+// FreeMemory takes a string pointer and frees its memory.
+//export FreeMemory
+func FreeMemory(p *C.char) {
+	C.free(unsafe.Pointer(p))
+}
+
+// ParseAryToString function takes an array of names, parsing format, and a
+// withDetails flag as 0|1 integer.  Parsed outputs are sent as a string in
+// either CSV or JSON format.  Format argument can take values of 'csv',
+// 'compact', or 'pretty'. For withDetails argument 0 means false, 1 means
+// true.
+//export ParseAryToString
+func ParseAryToString(
+	in **C.char,
+	length C.int,
+	f *C.char,
+	details C.int,
+) *C.char {
 	names := make([]string, int(length))
-	inCh := make(chan string)
-	outCh := make(chan *gnparser.ParseResult)
-	resMap := make(map[string]string)
-	var wg sync.WaitGroup
-	wg.Add(1)
 
-	opts := []gnparser.Option{
-		gnparser.OptFormat(C.GoString(format)),
+	opts := []config.Option{
+		config.OptFormat(C.GoString(f)),
+		// config.OptJobsNum(runtime.NumCPU() * 2),
+		config.OptWithDetails(int(details) > 0),
 	}
-	jobs := runtime.NumCPU()
-	go gnparser.ParseStream(jobs, inCh, outCh, opts...)
-
-	go func() {
-		defer wg.Done()
-		for parsed := range outCh {
-			resMap[parsed.Input] = parsed.Output
-		}
-	}()
-
 	start := unsafe.Pointer(in)
 	pointerSize := unsafe.Sizeof(in)
 
@@ -72,28 +72,25 @@ func ParseAryToStrings(in **C.char, length C.int, format *C.char, callback unsaf
 		// Copy each input string into a Go string and add it to the slice.
 		pointer := (**C.char)(unsafe.Pointer(uintptr(start) + uintptr(i)*pointerSize))
 		name := C.GoString(*pointer)
-		inCh <- name
 		names[i] = name
 	}
 
-	close(inCh)
-	wg.Wait()
+	cfg := config.NewConfig(opts...)
+	gnp := gnparser.NewGNParser(cfg)
 
-	for i := 0; i < int(length); i++ {
-		var parsed_out string
-
-		if parsed, ok := resMap[names[i]]; ok {
-			parsed_out = parsed
-		} else {
-			log.Printf("Cannot find result for %s", names[i])
-			parsed_out = "[]"
+	var res string
+	parsed := gnp.ParseNames(names)
+	if gnp.Format() == format.CSV {
+		csv := make([]string, length)
+		for i := range parsed {
+			csv[i] = parsed[i].Output(format.CSV)
 		}
-
-		p := C.CString(parsed_out)
-		C.callback_bridge(callback, p)
-		// TODO: defer but doing it in a way it happens on each iteration and not when function returns
-		C.free(unsafe.Pointer(p))
+		res = strings.Join(csv, "\n")
+	} else {
+		json, _ := encode.GNjson{}.Encode(parsed)
+		res = string(json)
 	}
+	return C.CString(res)
 }
 
 func main() {}

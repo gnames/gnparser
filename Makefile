@@ -50,7 +50,7 @@ install: peg
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) $(NO_C) $(GOINSTALL)
 
-release: peg dockerhub
+release: peg asset dockerhub
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_LINUX) $(NO_C) $(GOBUILD); \
@@ -75,7 +75,7 @@ dockerhub: docker
 	docker push gnames/gognparser; \
 	docker push gnames/gognparser:$(VERSION)
 
-clib: peg pb asset
+clib: peg
 	cd binding; \
 	$(GOBUILD) -buildmode=c-shared -o libgnparser.so;
 
