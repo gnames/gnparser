@@ -73,7 +73,7 @@ func (gnp gnparser) ParseNames(names []string) []output.Parsed {
 				if !ok {
 					return
 				}
-				res[v.Index] = v.Parsed
+				res[v.Idx] = v.Parsed
 			}
 		}
 	}()
@@ -121,7 +121,7 @@ func (gnp gnparser) parseWorker(
 		select {
 		case <-ctx.Done():
 			return
-		case chOut <- output.ParseResult{Index: v.Index, Parsed: parsed}:
+		case chOut <- output.ParseResult{Idx: v.Index, Parsed: parsed}:
 		}
 	}
 }

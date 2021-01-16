@@ -111,7 +111,7 @@ func formatNames(
 	switch f {
 	case format.CSV:
 		resCSV := make([]string, 0, len(res)+1)
-		resCSV = append(resCSV, output.CSVHeader())
+		resCSV = append(resCSV, output.HeaderCSV())
 		for i := range res {
 			resCSV = append(resCSV, res[i].Output(f))
 		}

@@ -21,7 +21,7 @@ func (p Parsed) Output(f format.Format) string {
 	}
 }
 
-func CSVHeader() string {
+func HeaderCSV() string {
 	return "Id,Verbatim,Cardinality,CanonicalStem,CanonicalSimple,CanonicalFull,Authorship,Year,Quality"
 }
 

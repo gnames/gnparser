@@ -22,6 +22,10 @@ type Config struct {
 	// BatchSize sets the maximum number of elements in names-strings slice.
 	BatchSize int
 
+	// WithStream changes from parsing a batch by batch, to parsing one name
+	// at a time. When WithStream is true, BatchSize setting is ignored.
+	WithStream bool
+
 	// IgnoreHTMLTags can be set to true when it is desirable to clean up names from
 	// a few HTML tags often present in names-strings that were planned to be
 	// presented via an HTML page.
@@ -104,6 +108,13 @@ func OptBatchSize(i int) Option {
 			return
 		}
 		cfg.BatchSize = i
+	}
+}
+
+// OptWithDetails sets the WithDetails field.
+func OptWithStream(b bool) Option {
+	return func(cfg *Config) {
+		cfg.WithStream = b
 	}
 }
 
