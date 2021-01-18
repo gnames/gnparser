@@ -4,14 +4,22 @@ import (
 	o "github.com/gnames/gnparser/entity/output"
 )
 
+// Parser is an interface that is responsible for parsing of a scientific
+// name and creation of the Abstract Syntax Tree of the name-string.
 type Parser interface {
-	PreprocessAndParse(name, verstion string, keepHTML bool) ScientificNameNode
+	// PreprocessAndParse takes a scientific name and returns back Abstract
+	// Syntax Tree of the name-string.
+	PreprocessAndParse(name, version string, keepHTML bool) ScientificNameNode
 }
 
+// ScientificNameNode is the Abstract Syntax Tree of a name-string.
+// It contains a method to convert AST into final output.
 type ScientificNameNode interface {
+	// ToOutput converts AST into final output object.
 	ToOutput(withDetails bool) o.Parsed
 }
 
+// nameData is the interface for converting AST to output elements.
 type nameData interface {
 	valuer
 	canonizer

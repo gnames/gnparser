@@ -46,6 +46,7 @@ func TestJSONAnnot(t *testing.T) {
 		assert.Nil(t, err)
 		assert.Equal(t, string(res), data[i].res)
 		err = enc.Decode(res, &dob)
+		assert.Nil(t, err)
 		assert.Equal(t, dob.Annot, data[i].dob.Annot)
 	}
 }

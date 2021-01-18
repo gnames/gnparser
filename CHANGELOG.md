@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Add [#127]: Update documentation to v1.0.0.
+- Add [#122]: Implement parsing as a stream in addition to batch parsing.
+- Add [#126]: Update c-binging to v1.0.0.
+- Add [#131]: Add parameters "with_details" and "csv" to REST API.
+- Add [#134]: Transofrm "positions" section to "words" section.
 - Add [#128]: Add more examples to OpenAPI specification.
 - Add [#125]: Describe changes from v0.x to 1.x.
 - Add [#132]: Add context.Context to control lifespan of `go routines`.

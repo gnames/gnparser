@@ -9,15 +9,18 @@ import (
 )
 
 var tags = map[string]struct{}{
-	"i":     struct{}{},
-	"small": struct{}{},
-	"br":    struct{}{},
-	"em":    struct{}{},
-	"b":     struct{}{},
+	"i":     {},
+	"small": {},
+	"br":    {},
+	"em":    {},
+	"b":     {},
 }
 
+// CleanupResult keeps results of removal of some HTML tags.
 type CleanupResult struct {
-	Input  string
+	// Input is the original name.
+	Input string
+	// Output is the name after the tag removal.
 	Output string
 }
 

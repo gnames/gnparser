@@ -1,6 +1,10 @@
 package gnparser
 
 var (
-	Version = "v0.14.4+"
-	Build   string
+	// Version is the version of the gnparser package. When Makefile is
+	// used, the version is calculated out of Git tags.
+	Version = "v1.0.0+"
+	// Build is a timestamp of when Makefile was used to compile
+	// the gnparser code. If go build was used, Build stays empty.
+	Build string
 )

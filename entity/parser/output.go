@@ -6,6 +6,8 @@ import (
 	o "github.com/gnames/gnparser/entity/output"
 )
 
+// ToOutput converts Abstract Syntax Tree of scientific name to a
+// final output object.
 func (sn *scientificNameNode) ToOutput(withDetails bool) o.Parsed {
 	res := o.Parsed{
 		Verbatim:      sn.verbatim,

@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+// Warning is a type to represent warnings found during parsing of a
+// scientific name.
 type Warning int
 
 const (
@@ -53,7 +55,7 @@ const (
 	YearParensWarn
 	YearQuestionWarn
 	YearRangeWarn
-	YearSqBraketsWarn
+	YearSqBracketsWarn
 )
 
 var warningMap = map[Warning]string{
@@ -102,7 +104,7 @@ var warningMap = map[Warning]string{
 	YearParensWarn:                  "Year with parentheses",
 	YearQuestionWarn:                "Year with question mark",
 	YearRangeWarn:                   "Years range",
-	YearSqBraketsWarn:               "Year with square brakets",
+	YearSqBracketsWarn:              "Year with square brackets",
 }
 
 var warningStrMap = func() map[string]Warning {
@@ -113,6 +115,7 @@ var warningStrMap = func() map[string]Warning {
 	return res
 }()
 
+// WarningQualityMap assigns quality of parsing for each warning type.
 var WarningQualityMap = map[Warning]int{
 	TailWarn:                        4,
 	ApostrOtherWarn:                 3,
@@ -159,22 +162,28 @@ var WarningQualityMap = map[Warning]int{
 	YearParensWarn:                  2,
 	YearQuestionWarn:                2,
 	YearRangeWarn:                   3,
-	YearSqBraketsWarn:               3,
+	YearSqBracketsWarn:              3,
 }
 
+// QualityWarning is and object that contains the warning and its
+// corresponding quality.
 type QualityWarning struct {
 	Quality int     `json:"quality"`
 	Warning Warning `json:"warning"`
 }
 
+// String implements fmt.Stringer interface.
 func (w Warning) String() string {
 	return warningMap[w]
 }
 
+// Quality returns parsing quality number that corresponds to a
+// particular warning.
 func (w Warning) Quality() int {
 	return WarningQualityMap[w]
 }
 
+// NewQualityWarning creates new QualityWarning object.
 func (w Warning) NewQualityWarning() QualityWarning {
 	return QualityWarning{
 		Quality: w.Quality(),
@@ -182,6 +191,7 @@ func (w Warning) NewQualityWarning() QualityWarning {
 	}
 }
 
+// Map converts slice of warnings to a slice of QualityWarning structures.
 func Map(ws []Warning) []QualityWarning {
 	res := make([]QualityWarning, len(ws))
 	for i, v := range ws {

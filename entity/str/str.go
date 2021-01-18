@@ -44,6 +44,7 @@ func JoinStrings(s1 string, s2 string, sep string) string {
 	return fmt.Sprintf("%s%s%s", s1, sep, s2)
 }
 
+// FixAllCaps converts all-caps authors names to capitalized version.
 func FixAllCaps(s string) string {
 	rs := []rune(s)
 	res := make([]rune, len(rs))
@@ -60,6 +61,8 @@ func FixAllCaps(s string) string {
 	return string(res)
 }
 
+// NumToString converts numbers in old-style species names to their
+// word equivalents.
 func NumToStr(num string) string {
 	if v, ok := nameNums[num]; ok {
 		return v
@@ -67,6 +70,8 @@ func NumToStr(num string) string {
 	return num
 }
 
+// Transliteration table is used to convert diacritical characters to their
+// latin letter equivalents.
 var Transliterations = map[rune]string{
 
 	'À': "A", 'Â': "A", 'Ã': "A", 'Á': "A", 'Ç': "C", 'Č': "C", 'Ð': "D",
@@ -83,6 +88,8 @@ var Transliterations = map[rune]string{
 	'ö': "oe", 'þ': "th", 'Œ': "Oe", 'œ': "oe", 'ü': "ue",
 }
 
+// GlobalTransliterations are applied not only to scientific names, but
+// to the whole name-string.
 var GlobalTransliterations = map[rune]string{
 	'‘': "'", '’': "'",
 }

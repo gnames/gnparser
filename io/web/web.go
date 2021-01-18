@@ -14,11 +14,13 @@ import (
 	"github.com/shurcooL/httpfs/html/vfstemplate"
 )
 
-type Template struct {
+// echoTempl implements echo.Renderer interface.
+type echoTempl struct {
 	templates *template.Template
 }
 
-func (t *Template) Render(
+// Render implements echo.Renderer interface.
+func (t *echoTempl) Render(
 	w io.Writer,
 	name string,
 	data interface{},
@@ -27,15 +29,16 @@ func (t *Template) Render(
 	return t.templates.ExecuteTemplate(w, name, data)
 }
 
-func templates() *Template {
+func templates() *echoTempl {
 	var t *template.Template
-	return &Template{
+	return &echoTempl{
 		templates: template.Must(
 			vfstemplate.ParseGlob(fs.Files, t, "/templates/*.html"),
 		),
 	}
 }
 
+// Data contains information required to render web-pages.
 type Data struct {
 	Input    string
 	Parsed   []string
@@ -43,6 +46,7 @@ type Data struct {
 	Version  string
 }
 
+// NewData creates new Data for web-page templates.
 func NewData() *Data {
 	return &Data{Version: gnparser.Version}
 }

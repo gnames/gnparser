@@ -44,7 +44,7 @@ Parsing finished without detecting any problems.
 - Not an ASCII apostrophe
 - Numeric prefix
 - Uncommon rank
-- Year with square brakets
+- Year with square brackets
 - Years range
 - `emend` without a period
 - `ex` ends with a period

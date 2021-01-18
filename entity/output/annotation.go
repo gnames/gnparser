@@ -5,17 +5,27 @@ import (
 	"strings"
 )
 
+// Annotations are additional descriptions of a name type.
 type Annotation int
 
 const (
+	// NoAnnot is absence of additional descriptions.
 	NoAnnot Annotation = iota
+	// SurrogateAnnot is a miscellaneous informal name.
 	SurrogateAnnot
+	// ComparisonAnnot name with comparison marker (cf.).
 	ComparisonAnnot
+	// ApproximationAnnot is a name with approximation annotation (sp., spp etc.)
 	ApproximationAnnot
+	// BOLDAnnot is a surrogate name created by BOLD project.
 	BOLDAnnot
+	// HybridAnnot is a miscellaneous hybrid name.
 	HybridAnnot
+	// NameHybridAnnot is a stable hybrid in botany with registered name.
 	NamedHybridAnnot
+	// HybridFormulaAnnot is a hybrid created by combination of 2 or more names.
 	HybridFormulaAnnot
+	// NothoHybridAnnot is a hybrid with notho- 'ranks'.
 	NothoHybridAnnot
 )
 
@@ -39,6 +49,7 @@ var annotStrMap = func() map[string]Annotation {
 	return res
 }()
 
+// String is an implementation of fmt.Stringer interface.
 func (a Annotation) String() string {
 	return annotMap[a]
 }

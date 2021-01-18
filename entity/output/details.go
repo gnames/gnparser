@@ -1,77 +1,124 @@
 package output
 
+// Uninomial are details for names with cardinality 1.
 type Uninomial struct {
-	Value      string      `json:"uninomial"`
-	Rank       string      `json:"rank,omitempty"`
-	Parent     string      `json:"parent,omitempty"`
+	// Value is the uninomial name.
+	Value string `json:"uninomial"`
+	// Rank of the uninomial in a combination name, for example
+	// "Pereskia subg. Maihuenia Philippi ex F.A.C.Weber, 1898"
+	Rank string `json:"rank,omitempty"`
+	// Parent of a uninomial in a combination name.
+	Parent string `json:"parent,omitempty"`
+	// Authorship of the uninomial.
 	Authorship *Authorship `json:"authorship,omitempty"`
 }
 
+// Species are details for binomial names with cardinality 2.
 type Species struct {
-	Genus      string      `json:"genus"`
-	SubGenus   string      `json:"subGenus,omitempty"`
-	Species    string      `json:"species"`
+	// Genus is a value of a genus of a binomial.
+	Genus string `json:"genus"`
+	// Subgenus is a value of subgenus of binomial.
+	SubGenus string `json:"subGenus,omitempty"`
+	// Species is a value of a specific epithet.
+	Species string `json:"species"`
+	// Authorship of the binomial.
 	Authorship *Authorship `json:"authorship,omitempty"`
 }
 
+// InfraSpecies are details for names with cardinality higher than 2.
 type InfraSpecies struct {
+	// Species are details for the binomial part of a name.
 	Species
+	// InfraSpecies is a slice of infraspecific epithets of a name.
 	InfraSpecies []InfraSpeciesElem `json:"infraSpecies,omitempty"`
 }
 
+// InfraSpeciesElem are details for an infraspecific epithet of an
+// InfraSpecies name.
 type InfraSpeciesElem struct {
-	Value      string      `json:"value"`
-	Rank       string      `json:"rank,omitempty"`
+	// Value of an infraspecific epithet.
+	Value string `json:"value"`
+	// Rank of the infraspecific epithet.
+	Rank string `json:"rank,omitempty"`
+	// Authorship of the infraspecific epithet.
 	Authorship *Authorship `json:"authorship,omitempty"`
 }
 
+// Comparison are details for a surrogate comparison name.
 type Comparison struct {
-	Genus             string      `json:"genus"`
-	Species           string      `json:"species,omitempty"`
+	// Genus is the genus of a name.
+	Genus string `json:"genus"`
+	// Species is a specific epithet of a name.
+	Species string `json:"species,omitempty"`
+	// SpeciesAuthorship the authorship of Species.
 	SpeciesAuthorship *Authorship `json:"authorship,omitempty"`
-	CompMarker        string      `json:"comparisonMarker"`
+	// CompMarker, usually "cf.".
+	CompMarker string `json:"comparisonMarker"`
 }
 
+// Approximation are details for a surrogate approximation name.
 type Approximation struct {
-	Genus             string      `json:"genus"`
-	Species           string      `json:"species,omitempty"`
+	// Genus is the genus of a name.
+	Genus string `json:"genus"`
+	// Species is a specific epithet of a name.
+	Species string `json:"species,omitempty"`
+	// SpeciesAuthorship the authorship of Species.
 	SpeciesAuthorship *Authorship `json:"authorship,omitempty"`
-	ApproxMarker      string      `json:"approximationMarker,omitempty"`
-	Ignored           string      `json:"ignored,omitempty"`
+	// ApproxMarker describes what kind of approximation it is (sp., spp. etc.).
+	ApproxMarker string `json:"approximationMarker,omitempty"`
+	// Part of a name after ApproxMarker.
+	Ignored string `json:"ignored,omitempty"`
 }
 
+// DetailsHybridFormula are details for a hybrid formula names.
 type DetailsHybridFormula struct {
 	HybridFormula []Details `json:"hybridFormula"`
 }
 
+// isDetails implements Details interface.
 func (DetailsHybridFormula) isDetails() {}
 
+// DetailsUninomial are Uninomial details.
 type DetailsUninomial struct {
+	// Uninomial details.
 	Uninomial Uninomial `json:"uninomial"`
 }
 
+// isDetails implements Details interface.
 func (DetailsUninomial) isDetails() {}
 
+// DetailsSpecies are binomial details.
 type DetailsSpecies struct {
+	// Species is details for binomial names.
 	Species Species `json:"species"`
 }
 
+// isDetails implements Details interface.
 func (DetailsSpecies) isDetails() {}
 
+// DetailsInfraSpecies are multinomial details.
 type DetailsInfraSpecies struct {
+	// InfraSpecies details.
 	InfraSpecies InfraSpecies `json:"infraSpecies"`
 }
 
+// isDetails implements Details interface.
 func (DetailsInfraSpecies) isDetails() {}
 
+// DetailsComparison are details for comparison surrogate names.
 type DetailsComparison struct {
+	// Comparison details.
 	Comparison Comparison `json:"comparison"`
 }
 
+// isDetails implements Details interface.
 func (DetailsComparison) isDetails() {}
 
+// DetailsApproximation are details for approximation surrogate names.
 type DetailsApproximation struct {
+	// Approximation details.
 	Approximation Approximation `json:"approximation"`
 }
 
+// isDetails implements Details interface.
 func (DetailsApproximation) isDetails() {}

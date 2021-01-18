@@ -43,6 +43,7 @@ func TestJSONWarn(t *testing.T) {
 		assert.Nil(t, err)
 		assert.Equal(t, string(res), data[i].res)
 		err = enc.Decode(res, &dob)
+		assert.Nil(t, err)
 		assert.Equal(t, dob.Warn, data[i].dob.Warn)
 	}
 }

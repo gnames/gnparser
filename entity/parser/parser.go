@@ -6,6 +6,9 @@ import (
 	"github.com/gnames/gnparser/entity/str"
 )
 
+// PreprocessAndParse takes a string and returns back the Abstract
+// Syntax Tree of the scientific names. The AST is later used to
+// create the final output.
 func (p *Engine) PreprocessAndParse(
 	s, ver string,
 	keepHTML bool,

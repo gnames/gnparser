@@ -3,7 +3,7 @@ package output
 import "fmt"
 
 // ParseResult structure contains parsing output, its place in the
-// slice, and an unexpected error, if it happened durin the parsing.
+// slice, and an unexpected error, if it happened during the parsing.
 type ParseResult struct {
 	Idx    int
 	Parsed Parsed

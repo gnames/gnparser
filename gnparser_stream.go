@@ -11,6 +11,9 @@ import (
 	"github.com/gnames/gnparser/entity/parser"
 )
 
+// ParseNameStream takes an input channel of input.Name and
+// returns back a stream of parsed data following the same order as
+// the input.
 func (gnp gnparser) ParseNameStream(
 	ctx context.Context,
 	chIn <-chan input.Name,

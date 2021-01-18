@@ -84,7 +84,52 @@ paths:
                 items:
                   $ref: "#/components/schemas/Parsed"
                 example:
-                  [ { "parsed": true, "quality": 2, "qualityWarnings": [ { "quality": 2, "warning": "Year with latin character" } ], "verbatim": "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a", "normalized": "Pleurosigma vitrea var. kjellmanii H. Peragallo 1891", "canonical": { "stemmed": "Pleurosigma uitre kiellmani", "simple": "Pleurosigma vitrea kjellmanii", "full": "Pleurosigma vitrea var. kjellmanii" }, "cardinality": 3, "authorship": { "verbatim": "H.Peragallo, 1891a", "normalized": "H. Peragallo 1891", "year": "1891", "authors": [ "H. Peragallo" ] }, "id": "f6a5b47b-9917-5a48-b0ff-366bc036ae9c", "parserVersion": "v1.0.0" }, { "parsed": true, "quality": 1, "verbatim": "Bubo bubo", "normalized": "Bubo bubo", "canonical": { "stemmed": "Bubo bub", "simple": "Bubo bubo", "full": "Bubo bubo" }, "cardinality": 2, "id": "4431a0f3-e901-519a-886f-9b97e0c99d8e", "parserVersion": "v1.0.0" } ]
+                  [
+                    {
+                      "parsed": true,
+                      "quality": 2,
+                      "qualityWarnings":
+                        [
+                          {
+                            "quality": 2,
+                            "warning": "Year with latin character",
+                          },
+                        ],
+                      "verbatim": "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a",
+                      "normalized": "Pleurosigma vitrea var. kjellmanii H. Peragallo 1891",
+                      "canonical":
+                        {
+                          "stemmed": "Pleurosigma uitre kiellmani",
+                          "simple": "Pleurosigma vitrea kjellmanii",
+                          "full": "Pleurosigma vitrea var. kjellmanii",
+                        },
+                      "cardinality": 3,
+                      "authorship":
+                        {
+                          "verbatim": "H.Peragallo, 1891a",
+                          "normalized": "H. Peragallo 1891",
+                          "year": "1891",
+                          "authors": ["H. Peragallo"],
+                        },
+                      "id": "f6a5b47b-9917-5a48-b0ff-366bc036ae9c",
+                      "parserVersion": "v1.0.0",
+                    },
+                    {
+                      "parsed": true,
+                      "quality": 1,
+                      "verbatim": "Bubo bubo",
+                      "normalized": "Bubo bubo",
+                      "canonical":
+                        {
+                          "stemmed": "Bubo bub",
+                          "simple": "Bubo bubo",
+                          "full": "Bubo bubo",
+                        },
+                      "cardinality": 2,
+                      "id": "4431a0f3-e901-519a-886f-9b97e0c99d8e",
+                      "parserVersion": "v1.0.0",
+                    },
+                  ]
             text/csv:
               schema:
                 type: string
@@ -105,13 +150,14 @@ paths:
         content:
           application/json:
             example:
-              { "names":
+              {
+                "names":
                   [
                     "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a",
-                    "Bubo bubo"
+                    "Bubo bubo",
                   ],
                 "withDetails": true,
-                "csv": false
+                "csv": false,
               }
             schema:
               $ref: "#/components/schemas/Input"
@@ -125,7 +171,52 @@ paths:
                 items:
                   $ref: "#/components/schemas/Parsed"
                 example:
-                  [ { "parsed": true, "quality": 2, "qualityWarnings": [ { "quality": 2, "warning": "Year with latin character" } ], "verbatim": "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a", "normalized": "Pleurosigma vitrea var. kjellmanii H. Peragallo 1891", "canonical": { "stemmed": "Pleurosigma uitre kiellmani", "simple": "Pleurosigma vitrea kjellmanii", "full": "Pleurosigma vitrea var. kjellmanii" }, "cardinality": 3, "authorship": { "verbatim": "H.Peragallo, 1891a", "normalized": "H. Peragallo 1891", "year": "1891", "authors": [ "H. Peragallo" ] }, "id": "f6a5b47b-9917-5a48-b0ff-366bc036ae9c", "parserVersion": "v1.0.0" }, { "parsed": true, "quality": 1, "verbatim": "Bubo bubo", "normalized": "Bubo bubo", "canonical": { "stemmed": "Bubo bub", "simple": "Bubo bubo", "full": "Bubo bubo" }, "cardinality": 2, "id": "4431a0f3-e901-519a-886f-9b97e0c99d8e", "parserVersion": "v1.0.0" } ]
+                  [
+                    {
+                      "parsed": true,
+                      "quality": 2,
+                      "qualityWarnings":
+                        [
+                          {
+                            "quality": 2,
+                            "warning": "Year with latin character",
+                          },
+                        ],
+                      "verbatim": "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a",
+                      "normalized": "Pleurosigma vitrea var. kjellmanii H. Peragallo 1891",
+                      "canonical":
+                        {
+                          "stemmed": "Pleurosigma uitre kiellmani",
+                          "simple": "Pleurosigma vitrea kjellmanii",
+                          "full": "Pleurosigma vitrea var. kjellmanii",
+                        },
+                      "cardinality": 3,
+                      "authorship":
+                        {
+                          "verbatim": "H.Peragallo, 1891a",
+                          "normalized": "H. Peragallo 1891",
+                          "year": "1891",
+                          "authors": ["H. Peragallo"],
+                        },
+                      "id": "f6a5b47b-9917-5a48-b0ff-366bc036ae9c",
+                      "parserVersion": "v1.0.0",
+                    },
+                    {
+                      "parsed": true,
+                      "quality": 1,
+                      "verbatim": "Bubo bubo",
+                      "normalized": "Bubo bubo",
+                      "canonical":
+                        {
+                          "stemmed": "Bubo bub",
+                          "simple": "Bubo bubo",
+                          "full": "Bubo bubo",
+                        },
+                      "cardinality": 2,
+                      "id": "4431a0f3-e901-519a-886f-9b97e0c99d8e",
+                      "parserVersion": "v1.0.0",
+                    },
+                  ]
             text/csv:
               schema:
                 type: string
@@ -144,8 +235,8 @@ components:
       properties:
         names:
           example:
-           -  Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a
-           -  Bubo bubo
+            - Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a
+            - Bubo bubo
           description: A list of scientific names to parse.
           type: array
           items:
@@ -164,30 +255,26 @@ components:
         {
           "parsed": true,
           "quality": 2,
-          "qualityWarnings": [
-            {
-              "quality": 2,
-              "warning": "Year with latin character"
-            }
-          ],
+          "qualityWarnings":
+            [{ "quality": 2, "warning": "Year with latin character" }],
           "verbatim": "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a",
           "normalized": "Pleurosigma vitrea var. kjellmanii H. Peragallo 1891",
-          "canonical": {
-            "stemmed": "Pleurosigma uitre kiellmani",
-            "simple": "Pleurosigma vitrea kjellmanii",
-            "full": "Pleurosigma vitrea var. kjellmanii"
-          },
+          "canonical":
+            {
+              "stemmed": "Pleurosigma uitre kiellmani",
+              "simple": "Pleurosigma vitrea kjellmanii",
+              "full": "Pleurosigma vitrea var. kjellmanii",
+            },
           "cardinality": 3,
-          "authorship": {
-            "verbatim": "H.Peragallo, 1891a",
-            "normalized": "H. Peragallo 1891",
-            "year": "1891",
-            "authors": [
-              "H. Peragallo"
-            ]
-          },
+          "authorship":
+            {
+              "verbatim": "H.Peragallo, 1891a",
+              "normalized": "H. Peragallo 1891",
+              "year": "1891",
+              "authors": ["H. Peragallo"],
+            },
           "id": "f6a5b47b-9917-5a48-b0ff-366bc036ae9c",
-          "parserVersion": "v1.0.0"
+          "parserVersion": "v1.0.0",
         }
       required:
         - id
@@ -197,15 +284,10 @@ components:
         - verbatim
         - parserVersion
       properties:
-        id:
-          type: string
-          description: |
-            An UUID v5 generated from the input string using "globalnames.org"
-            DNS domain name as a seed. This UUID can be used as
-            a distributed global unique identifier of the string and
-            can be created independently in any popular programming language.
-          format: uuid
-          example: f6a5b47b-9917-5a48-b0ff-366bc036ae9c
+        parsed:
+          type: boolean
+          description: If true, parsing did succeed.
+          example: true
         quality:
           type: integer
           description: |
@@ -217,7 +299,7 @@ components:
             - 3 - serious parsing problems
             - 4 - severe problems, name could not be parsed completely
 
-            The parseQuality is equal to the quality of the most
+            The quality is equal to the quality of the most
             severe warning (see qualityWarnings). If no problems
             are encountered, and the parsing succeeded, the parseQuality
             is set to 1. If parsing failed, the parseQuality is 0.
@@ -263,7 +345,7 @@ components:
             values are
 
             - maybe - if the genus has homonyms in other groups
-            - yes - if gnparser dictionary does not detect any hompnyms
+            - yes - if GNparser dictionary does not detect any homonyms
 
             The bacterial names often contain strain information which are
             not parseable and are placed into the "tail" field.
@@ -281,7 +363,7 @@ components:
             - DNA
 
             Viruses are the vast majority in this group of names,
-            as a result they gave (very unprecise) name to
+            as a result they gave (very imprecise) name to
             the field.
 
             We do plan to create a parser for viruses at some point,
@@ -329,6 +411,24 @@ components:
             - $ref: "#/components/schemas/DetailsComparison"
             - $ref: "#/components/schemas/DetailsApproximation"
             - $ref: "#/components/schemas/DetailsHybridFormula"
+        words:
+          description: meaning and position of every parsed word.
+          type: array
+          items:
+            - $ref: "#/components/schemas/Word"
+        id:
+          type: string
+          description: |
+            An UUID v5 generated from the input string using "globalnames.org"
+            DNS domain name as a seed. This UUID can be used as
+            a distributed global unique identifier of the string and
+            can be created independently in any popular programming language.
+          format: uuid
+          example: f6a5b47b-9917-5a48-b0ff-366bc036ae9c
+        version:
+          type: string
+          description: version of GNParser
+          example: "v1.0.0"
     QualityWarning:
       description: |
         Explains an encountered parsing problem.
@@ -598,8 +698,7 @@ components:
         "infraSpecies": {
           "genus": "Pleurosigma",
           "species": "vitrea",
-          "infraSpecies": [
-            {
+          "infraSpecies": [ {
               "value": "kjellmanii",
               "rank": "var.",
               "authorship": {
@@ -759,3 +858,57 @@ components:
               - $ref: "#/components/schemas/DetailsUninomial"
               - $ref: "#/components/schemas/DetailsSpecies"
               - $ref: "#/components/schemas/DetailsInfraSpecies"
+
+    Word:
+      description: Semantic meaning and a position of a word in a name.
+      type: object
+      example: |
+        {
+          "verbatim": "var",
+          "normalized": "var.",
+          "wordType": "RANK",
+          "start": 19,
+          "end": 22
+        }
+      required:
+        - verbatim
+        - normalized
+        - wordType
+        - start
+        - end
+      properties:
+        verbatim:
+          description: The value of the word unchanged.
+          type: string
+          example: var
+        normalized:
+          description: The value of the word normalized by parser.
+          type: string
+          example: var.
+        wordType:
+          description: Semantic meaning of the word.
+          type: string
+          enum:
+            - APPROXIMATE_YEAR
+            - APPROXIMATION_MARKER
+            - AUTHOR_WORD
+            - AUTHOR_WORD_FILIUS
+            - COMPARISON_MARKER
+            - GENUS
+            - HYBRID_CHAR
+            - INFRASPECIES
+            - INFRA_GENUS
+            - RANK
+            - SPECIES
+            - UNINOMIAL
+            - WORD
+            - YEAR
+          example: RANK
+        start:
+          description: The index of the first UTF-8 character of the word.
+          type: integer
+          example: 19
+        end:
+          description: The index of the end of the word.
+          type: integer
+          example: 22

@@ -20,6 +20,7 @@ type baseEngine struct {
 	tail        string
 }
 
+// NewParser creates implementation of Parser interface.
 func NewParser() Parser {
 	p := Engine{}
 	p.Init()
@@ -60,6 +61,7 @@ func (p *Engine) isBacteria(gen string) {
 	}
 }
 
+// OutputAST assembles PEG nodes AST structure.
 func (p *Engine) OutputAST() {
 	type element struct {
 		node *node32
@@ -88,6 +90,8 @@ func stackNodeIsWithin(n *node32, t token32) bool {
 	return n.token32.begin >= t.begin && n.token32.end <= t.end
 }
 
+// PrintOutputSyntaxTree outputs a simplified version of a nodes
+// Abstract Syntax Tree. This method can be used for debugging purposes.
 func (p *Engine) PrintOutputSyntaxTree(w io.Writer) {
 	if p.root == nil || p.root.pegRule != ruleSciName {
 		return
@@ -137,6 +141,8 @@ func (p *Engine) nodeValue(n *node32) string {
 	return v
 }
 
+// ParseName returns the name the nodes. In case of parsing errors
+// returns string 'noparse'.
 func (p *Engine) ParsedName() string {
 	if p.error != nil {
 		return "noparse"

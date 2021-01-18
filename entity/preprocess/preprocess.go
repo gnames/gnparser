@@ -36,6 +36,7 @@ var stopWordsRe = regexp.MustCompile(
 	`\s+(of[\W_]|\(?ht\.?\W|\(?hort\.?\W|spec\.|nov\s+spec|cv\.?\W).*$`,
 )
 
+// Preprocessor structure keeps state of the preprocessor results.
 type Preprocessor struct {
 	Virus       bool
 	Underscore  bool
@@ -85,7 +86,7 @@ func Preprocess(bs []byte) *Preprocessor {
 }
 
 // LikeVirus takes a string and checks it against known species that can
-// easily be misparsed as viruses. If the string belongs to one of such species
+// easily be mistaken for viruses. If the string belongs to one of such species
 // returns true.
 // The following names are covered:
 //    Aspilota vector Belokobylskij, 2007
@@ -103,7 +104,6 @@ func Preprocess(bs []byte) *Preprocessor {
 //    Ophion virus Gauld & Mitchell, 1981
 //    Psenulus trevirus Leclercq, 1961
 //    Tidabius vector Chamberlin, 1931
-
 func VirusLikeName(name string) bool {
 	names := map[string]string{
 		"Aspilota":      "vector",

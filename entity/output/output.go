@@ -8,6 +8,7 @@ import (
 	"github.com/gnames/gnlib/format"
 )
 
+// Output creates a JSON or CSV representation of Parsed results.
 func (p Parsed) Output(f format.Format) string {
 	switch f {
 	case format.CSV:
@@ -21,6 +22,7 @@ func (p Parsed) Output(f format.Format) string {
 	}
 }
 
+// HeadersCSV returns the CSV header for parsing output.
 func HeaderCSV() string {
 	return "Id,Verbatim,Cardinality,CanonicalStem,CanonicalSimple,CanonicalFull,Authorship,Year,Quality"
 }

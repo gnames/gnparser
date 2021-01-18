@@ -10,8 +10,8 @@ type WordType int
 
 const (
 	UnknownType WordType = iota
-	ComparisonType
-	ApproxType
+	ComparisonMarkerType
+	ApproxMarkerType
 	AuthorWordType
 	AuthorWordFiliusType
 	GenusType
@@ -28,8 +28,8 @@ const (
 
 var wordTypeMap = map[WordType]string{
 	UnknownType:          "WORD",
-	ComparisonType:       "COMPARISON_MARKER",
-	ApproxType:           "APPROXIMATION_MARKER",
+	ComparisonMarkerType: "COMPARISON_MARKER",
+	ApproxMarkerType:     "APPROXIMATION_MARKER",
 	AuthorWordType:       "AUTHOR_WORD",
 	AuthorWordFiliusType: "AUTHOR_WORD_FILIUS",
 	GenusType:            "GENUS",
@@ -51,6 +51,7 @@ var wordTypeStrMap = func() map[string]WordType {
 	return res
 }()
 
+// String is an implementation of fmt.Stringer interface.
 func (wt WordType) String() string {
 	return wordTypeMap[wt]
 }

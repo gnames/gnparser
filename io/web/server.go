@@ -23,6 +23,8 @@ type inputPOST struct {
 	CSV         bool     `json:"csv,omitempty"`
 }
 
+// Run starts the GNParser web service and servies both RESTful API and
+// a website.
 func Run(gnps GNParserService) {
 	e := echo.New()
 	e.Renderer = templates()

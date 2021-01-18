@@ -13,27 +13,26 @@ import (
 	"github.com/gnames/gnparser/entity/parser"
 )
 
-// GNparser is responsible for parsing operations.
+// gnparser is an implementation of GNParser interface.
+// It is responsible for main parsing operations.
 type gnparser struct {
 	// cfg keeps gnparser settings.
 	cfg config.Config
-
-	// nameString keeps parsed string
-	nameString string
 
 	// parser keeps parsing engine
 	parser parser.Parser
 }
 
-// NewGNparser constructor function takes options and returns
-// configured GNparser.
+// NewGNParser constructor function takes options organized into a
+// configuration struct and returns an object that implements GNParser
+// interface.
 func NewGNParser(cfg config.Config) GNParser {
 	gnp := gnparser{cfg: cfg}
 	gnp.parser = parser.NewParser()
 	return gnp
 }
 
-// Parse function parses input string according to configuraions.
+// Parse function parses input string according to configurations.
 // It takes a string and returns an output.Parsed object.
 func (gnp gnparser) ParseName(s string) output.Parsed {
 	ver := Version
@@ -84,10 +83,13 @@ func (gnp gnparser) ParseNames(names []string) []output.Parsed {
 	return res
 }
 
+// Format returns the configured output format value.
 func (gnp gnparser) Format() format.Format {
 	return gnp.cfg.Format
 }
 
+// ChangeConfig allows change configuration of already created
+// GNParser object.
 func (gnp gnparser) ChangeConfig(opts ...config.Option) GNParser {
 	for i := range opts {
 		opts[i](&gnp.cfg)
@@ -95,7 +97,8 @@ func (gnp gnparser) ChangeConfig(opts ...config.Option) GNParser {
 	return gnp
 }
 
-// Version function returns version number of `gnparser`.
+// Version function returns version number of `gnparser` and the timestamp
+// of its build.
 func (gnp gnparser) GetVersion() gn.Version {
 	res := gn.Version{
 		Version: Version,

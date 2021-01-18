@@ -10,4 +10,4 @@ COPY ./gnparser/gnparser /bin
 
 ENTRYPOINT [ "gnparser" ]
 
-CMD ["-g", "8778"]
+CMD ["-p", "8778"]

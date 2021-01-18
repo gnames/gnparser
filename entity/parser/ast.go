@@ -23,7 +23,6 @@ type scientificNameNode struct {
 	hybrid        *o.Annotation
 	surrogate     *o.Annotation
 	bacteria      *tb.Tribool
-	annotation    *o.Annotation
 	tail          string
 	parserVersion string
 	warnings      map[o.Warning]struct{}
@@ -233,7 +232,7 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 		case ruleGenusWord:
 			gen = p.newWordNode(n, o.GenusType)
 		case ruleComparison:
-			cf = p.newWordNode(n, o.ComparisonType)
+			cf = p.newWordNode(n, o.ComparisonMarkerType)
 			annot = o.ComparisonAnnot
 			p.surrogate = &annot
 			p.addWarn(o.NameComparisonWarn)
@@ -359,7 +358,7 @@ func (p *Engine) newApproxNode(n *node32) *approxNode {
 		case ruleSpeciesEpithet:
 			spEp = p.newSpeciesEpithetNode(n)
 		case ruleApproximation:
-			appr = p.newWordNode(n, o.ApproxType)
+			appr = p.newWordNode(n, o.ApproxMarkerType)
 		case ruleApproxNameIgnored:
 			ign = p.nodeValue(n)
 		}
@@ -395,7 +394,7 @@ func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
 			gen = p.newWordNode(n, o.GenusType)
 			p.cardinality = 1
 		case ruleComparison:
-			comp = p.newWordNode(n, o.ComparisonType)
+			comp = p.newWordNode(n, o.ComparisonMarkerType)
 		case ruleSpeciesEpithet:
 			spEp = p.newSpeciesEpithetNode(n)
 			p.cardinality = 2
@@ -891,7 +890,7 @@ func (p *Engine) newYearNode(nd *node32) *yearNode {
 			p.addWarn(o.YearParensWarn)
 			appr = true
 		case ruleYearApprox:
-			p.addWarn(o.YearSqBraketsWarn)
+			p.addWarn(o.YearSqBracketsWarn)
 			appr = true
 		case ruleYearWithChar:
 			p.addWarn(o.YearCharWarn)

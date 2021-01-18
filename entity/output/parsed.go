@@ -4,61 +4,208 @@ import (
 	tb "github.com/gnames/gnlib/tribool"
 )
 
+// Parsed is the result of a scientific name-string parsing. It can
+// be converted into JSON or CSV formats.
 type Parsed struct {
-	Parsed          bool             `json:"parsed"`
-	ParseQuality    int              `json:"quality"`
+	// Parsed is false if parsing did not succeed.
+	Parsed bool `json:"parsed"`
+	// ParseQuality is a number that represents the quality of the
+	// parsing.
+	//
+	//  0 - name-string is not parseable
+	//  1 - no parsing problems encountered
+	//  2 - small parsing problems
+	//  3 - serious parsing problems
+	//  4 - severe problems, name could not be parsed completely
+	//
+	// The ParseQuality is equal to the quality of the most
+	// severe warning (see qualityWarnings). If no problems
+	// are encountered, and the parsing succeeded, the parseQuality
+	// is set to 1. If parsing failed, the parseQuality is 0.
+	ParseQuality int `json:"quality"`
+	// QualityWarnings contains encountered parsing problems.
 	QualityWarnings []QualityWarning `json:"qualityWarnings,omitempty"`
-	Verbatim        string           `json:"verbatim"`
-	Normalized      string           `json:"normalized,omitempty"`
-	Canonical       *Canonical       `json:"canonical,omitempty"`
-	Cardinality     int              `json:"cardinality"`
-	Authorship      *Authorship      `json:"authorship,omitempty"`
-	Bacteria        *tb.Tribool      `json:"bacteria,omitempty"`
-	Virus           bool             `json:"virus,omitempty"`
-	Hybrid          *Annotation      `json:"hybrid,omitempty"`
-	Surrogate       *Annotation      `json:"surrogate,omitempty"`
-	Tail            string           `json:"tail,omitempty"`
-	Details         Details          `json:"details,omitempty"`
-	Words           []Word           `json:"words,omitempty"`
-	VerbatimID      string           `json:"id"`
-	ParserVersion   string           `json:"parserVersion"`
+	// Verbatim is input name-string without modifications.
+	Verbatim string `json:"verbatim"`
+	// Normalized is a normalized version of the input name-string.
+	Normalized string `json:"normalized,omitempty"`
+	// Canonical are simplified versions of a name-string more suitable for
+	// matching and comparing name-strings than the verbatim version.
+	Canonical *Canonical `json:"canonical,omitempty"`
+	// Cardinality allows to sort, partition names according to number of
+	// elements in their canonical forms.
+	//
+	// 0 - cardinality cannot be calculated
+	// 1 - uninomial
+	// 2 - binomial
+	// 3 - trinomial
+	// 4 - quadrinomial
+	Cardinality int `json:"cardinality"`
+	// Authorship describes provided metainformation about authors of a name.
+	// This authorship provided outside of Details belongs to
+	// the most fine-grained element of a name.
+	Authorship *Authorship `json:"authorship,omitempty"`
+	// Bacteria is not nil if the input name has a genus
+	// that is registered as bacterial. Possible
+	// values are "maybe" - if the genus has homonyms in other groups
+	// and "yes" if GNparser dictionary does not detect any homonyms
+	//
+	// The bacterial names often contain strain information which are
+	// not parseable and are placed into the "tail" field.
+	Bacteria *tb.Tribool `json:"bacteria,omitempty"`
+	// Virus is set to true in case if name is not parsed, and probably
+	// belongs to a wide variety of sub-cellular entities like
+	//
+	// - viruses
+	// - plasmids
+	// - prions
+	// - RNA
+	// - DNA
+	//
+	// Viruses are the vast majority in this group of names,
+	// as a result they gave (very imprecise) name to
+	// the field.
+	//
+	// We do plan to create a parser for viruses at some point,
+	// which will expand this group into more precise categories.
+	Virus bool `json:"virus,omitempty"`
+	// Hybrid is not nil if a name is detected as one of the hybrids
+	//
+	// - a non-categorized hybrid
+	// - named hybrid
+	// - notho- hybrid
+	// - hybrid formula
+	Hybrid *Annotation `json:"hybrid,omitempty"`
+	// Surrogate is a wide category of names that do not follow
+	// nomenclatural rules
+
+	// - a non-categorized surrogates
+	// - surrogate names from BOLD project
+	// - comparisons (Homo cf. sapiens)
+	// - approximations (names for specimen that not fully identified)
+	Surrogate *Annotation `json:"surrogate,omitempty"`
+
+	// Tail is an unparseable tail of a name. It might contain "junk",
+	// annotations, malformed parts of a scientific name, taxonomic concept
+	// indications, bacterial strains etc.  If there is an unparseable tail, the
+	// quality of the name-parsing is set to the worst category.
+	Tail string `json:"tail,omitempty"`
+	// Details contain more fine-grained information about parsed name.
+	Details Details `json:"details,omitempty"`
+	// Words contain description of every parsed word of a name.
+	Words []Word `json:"words,omitempty"`
+	// VerbatimID is a UUID v5 generated from the verbatim value of the
+	// input name-string. Every unique string always generates the same
+	// UUID.
+	VerbatimID string `json:"id"`
+	// ParserVersion is the version number of the GNparser.
+	ParserVersion string `json:"parserVersion"`
 }
 
+// Canonical are simplified forms of a name-string more suitable for
+// matching and comparing name-strings than the verbatim version.
 type Canonical struct {
+	// Stemmed is the most "normalized" and simplified version of the name.
+	// Species epithets are stripped of suffixes, "j" character converted to "i",
+	// "v" character converted to "u" according to "Schinke R, Greengrass M,
+	// Robertson AM and Willett P (1996)"
+	//
+	// It is most useful to match names when a variability in suffixes is
+	// possible.
 	Stemmed string `json:"stemmed"`
-	Simple  string `json:"simple"`
-	Full    string `json:"full"`
+	// Simple is a simplified version of a name where some elements like ranks,
+	// or hybrid signs "×" are omitted (hybrid signs are present for hybrid
+	// formulas).
+	//
+	// It is most useful to match names in general.
+	Simple string `json:"simple"`
+	// Full is a canonical form that keeps hybrid signs "×" for named
+	// hybrids and shows infra-specific ranks.
+	//
+	// It is most useful for detection of the best matches from
+	// multiple results. It is also recommended for displaying
+	// canonical forms of botanical names.
+	Full string `json:"full"`
 }
 
+// Authorship describes provided metainformation about authors of a name.
+// Sometimes authorship is provided for several elements of a name, for example
+// in "Agalinis purpurea (L.) Briton var. borealis (Berg.) Peterson 1987"
+//
+// The authorship provided outside of "details" section belongs to the most
+// fine-grained element of a name ("var. borealis" for the example above).
 type Authorship struct {
-	Verbatim    string     `json:"verbatim"`
-	Normalized  string     `json:"normalized"`
-	Year        string     `json:"year,omitempty"`
-	Authors     []string   `json:"authors,omitempty"`
-	Original    *AuthGroup `json:"originalAuth,omitempty"`
+	// Verbatim is an authorship string without modifications.
+	Verbatim string `json:"verbatim"`
+	// Normalized is a normalized value of the authorship.
+	Normalized string `json:"normalized"`
+	// Year is a string representing a year of original description of the name.
+	// The year number is surrounded by parentheses "(1758)", in cases when a
+	// year is approximate.
+	Year string `json:"year,omitempty"`
+	// Authors is a slice containing each author as an element.
+	Authors []string `json:"authors,omitempty"`
+	// Original is an AuthGroup that contains authors of the original
+	// description of a name.
+	Original *AuthGroup `json:"originalAuth,omitempty"`
+	// Combination is an AuthGroup that contains authors of new combination,
+	// rank etc.
 	Combination *AuthGroup `json:"combinationAuth,omitempty"`
 }
 
+// AuthGroup are provided only if config.WithDetails is true. Group of
+// authors belonging to a particular nomenclatural event.  We distinguish two
+// possible situations when AuthGroup is used:
+//
+// - original - authors of the original description of a name:w
+// - combination - authors of a new combination, rank etc.
 type AuthGroup struct {
-	Authors      []string `json:"authors"`
-	Year         *Year    `json:"year,omitempty"`
-	ExAuthors    *Authors `json:"exAuthors,omitempty"`
+	// Authors is a slice of strings containing found outhors
+	Authors []string `json:"authors"`
+	// Year provided only if "with_details=true" Year of the original
+	// publication. If a range of the years provided, the start year is kept,
+	// with isApproximate flag set to true.
+	Year *Year `json:"year,omitempty"`
+	// ExAuthors provided only if "with_details=true" A "special" group of
+	// authors, that sometimes appear in scientific names after "ex"
+	// qualifier.
+	ExAuthors *Authors `json:"exAuthors,omitempty"`
+	// ExAuthors provided only if "with_details=true" A "special" group of
+	// authors, that sometimes appear in scientific names after "emend."
+	// qualifier.
 	EmendAuthors *Authors `json:"emendAuthors,omitempty"`
 }
 
+// Authors contains information about authors and a year of publication.
 type Authors struct {
+	// Authors is a slice of strings containing found outhors of an AuthGroup
 	Authors []string `json:"authors"`
-	Year    *Year    `json:"year,omitempty"`
+	// Year of publication by the AuthGroup.
+	Year *Year `json:"year,omitempty"`
 }
 
+// Year provided only if "with_details=true" Year of the original
+// publication. If a range of the years provided, the start year is kept,
+// with isApproximate flag set to true.
 type Year struct {
-	Value         string `json:"year"`
-	IsApproximate bool   `json:"isApproximate,omitempty"`
+	// Value is a string value of a year.
+	Value string `json:"year"`
+	// IsApproximate is indication if the year was written as approximate.
+	// Approximate year might be represented by a range of years, by
+	// a question mark "188?", by parentheses "(1888)".
+	IsApproximate bool `json:"isApproximate,omitempty"`
 }
 
+// Word represents a parsed word and its meaning in the name-string.
 type Word struct {
-	Value string   `json:"value"`
-	Type  WordType `json:"wordType"`
-	Start int      `json:"start"`
-	End   int      `json:"end"`
+	// Verbatim is unmodified value of a word.
+	Verbatim string `json:"verbatim"`
+	// Normalized is normalized value of a word.
+	Normalized string `json:"normalized"`
+	// Type is a semantic meaning of a word.
+	Type WordType `json:"wordType"`
+	// Start is the index of the first letter of a word.
+	Start int `json:"start"`
+	// End is the index of the end of a word.
+	End int `json:"end"`
 }

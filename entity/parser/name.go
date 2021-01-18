@@ -20,10 +20,14 @@ func appendCanonical(c1 *canonical, c2 *canonical, sep string) *canonical {
 	}
 }
 
+// Words returns a slice of output.Word objects, where each element
+// contains the value of the word, its semantic meaning and its
+// position in the string.
 func (sn *scientificNameNode) Words() []o.Word {
 	return sn.nameData.words()
 }
 
+// Normalized returns a normalized version of a scientific name.
 func (sn *scientificNameNode) Normalized() string {
 	if sn.nameData == nil {
 		return ""
@@ -31,6 +35,9 @@ func (sn *scientificNameNode) Normalized() string {
 	return sn.nameData.value()
 }
 
+// Canonical returns canonical forms of scientific name. There are
+// three forms: Stemmed, the most normalized, Simple, and Full (the least
+// normalized).
 func (sn *scientificNameNode) Canonical() *o.Canonical {
 	var res *o.Canonical
 	if sn.nameData == nil {
@@ -44,6 +51,8 @@ func (sn *scientificNameNode) Canonical() *o.Canonical {
 	}
 }
 
+// Details returns additional details of about a scientific names.
+// This function is called only if config.Config.WithDetails is true.
 func (sn *scientificNameNode) Details() o.Details {
 	if sn.nameData == nil {
 		return nil
@@ -51,6 +60,9 @@ func (sn *scientificNameNode) Details() o.Details {
 	return sn.nameData.details()
 }
 
+// LastAuthorship returns the authorshop of the smallest element of a name.
+// For example for a variation, it returns the authors of the variation, and
+// ignores authors of genus, species etc.
 func (sn *scientificNameNode) LastAuthorship(withDetails bool) *o.Authorship {
 	var ao *o.Authorship
 	if sn.nameData == nil {
@@ -158,15 +170,18 @@ func (nh *namedGenusHybridNode) lastAuthorship() *authorshipNode {
 func (nh *namedSpeciesHybridNode) words() []o.Word {
 	var wrd o.Word
 	wrd = nh.Genus.Pos
-	wrd.Value = nh.Genus.Value
+	wrd.Verbatim = nh.Genus.Value
+	wrd.Normalized = nh.Genus.NormValue
 	words := []o.Word{wrd}
 	if nh.Comparison != nil {
 		wrd = nh.Comparison.Pos
-		wrd.Value = nh.Comparison.Value
+		wrd.Verbatim = nh.Comparison.Value
+		wrd.Normalized = nh.Comparison.NormValue
 		words = append(words, wrd)
 	}
 	wrd = nh.Hybrid.Pos
-	wrd.Value = nh.Hybrid.Value
+	wrd.Verbatim = nh.Hybrid.Value
+	wrd.Normalized = nh.Hybrid.NormValue
 	words = append(words, wrd)
 	words = append(words, nh.SpEpithet.words()...)
 
@@ -242,14 +257,16 @@ func (apr *approxNode) words() []o.Word {
 		return words
 	}
 	wrd = apr.Genus.Pos
-	wrd.Value = apr.Genus.Value
+	wrd.Verbatim = apr.Genus.Value
+	wrd.Normalized = apr.Genus.NormValue
 	words = append(words, wrd)
 	if apr.SpEpithet != nil {
 		words = append(words, apr.SpEpithet.words()...)
 	}
 	if apr.Approx != nil {
 		wrd = apr.Approx.Pos
-		wrd.Value = apr.Approx.Value
+		wrd.Verbatim = apr.Approx.Value
+		wrd.Normalized = apr.Approx.NormValue
 		words = append(words, wrd)
 	}
 	return words
@@ -314,10 +331,12 @@ func (comp *comparisonNode) words() []o.Word {
 		return nil
 	}
 	wrd = comp.Genus.Pos
-	wrd.Value = comp.Genus.Value
+	wrd.Verbatim = comp.Genus.Value
+	wrd.Normalized = comp.Genus.NormValue
 	words = []o.Word{wrd}
 	wrd = comp.Comparison.Pos
-	wrd.Value = comp.Comparison.Value
+	wrd.Verbatim = comp.Comparison.Value
+	wrd.Normalized = comp.Comparison.NormValue
 	words = append(words, wrd)
 	if comp.SpEpithet != nil {
 		words = append(words, comp.SpEpithet.words()...)
@@ -382,12 +401,14 @@ func (sp *speciesNode) words() []o.Word {
 	var wrd o.Word
 	if sp.Genus.Pos.End != 0 {
 		wrd = sp.Genus.Pos
-		wrd.Value = sp.Genus.Value
+		wrd.Verbatim = sp.Genus.Value
+		wrd.Normalized = sp.Genus.NormValue
 		words = append(words, wrd)
 	}
 	if sp.SubGenus != nil {
 		wrd = sp.SubGenus.Pos
-		wrd.Value = sp.SubGenus.Value
+		wrd.Verbatim = sp.SubGenus.Value
+		wrd.Normalized = sp.SubGenus.NormValue
 		words = append(words, wrd)
 	}
 	words = append(words, sp.SpEpithet.words()...)
@@ -459,9 +480,9 @@ func (sp *speciesNode) details() o.Details {
 }
 
 func (sep *spEpithetNode) words() []o.Word {
-	var wrd o.Word
-	wrd = sep.Word.Pos
-	wrd.Value = sep.Word.Value
+	wrd := sep.Word.Pos
+	wrd.Verbatim = sep.Word.Value
+	wrd.Normalized = sep.Word.NormValue
 	words := []o.Word{wrd}
 	words = append(words, sep.Authorship.words()...)
 	return words
@@ -483,11 +504,13 @@ func (inf *infraspEpithetNode) words() []o.Word {
 	var wrd o.Word
 	if inf.Rank != nil && inf.Rank.Word.Pos.Start != 0 {
 		wrd = inf.Rank.Word.Pos
-		wrd.Value = inf.Rank.Word.Value
+		wrd.Verbatim = inf.Rank.Word.Value
+		wrd.Normalized = inf.Rank.Word.NormValue
 		words = append(words, wrd)
 	}
 	wrd = inf.Word.Pos
-	wrd.Value = inf.Word.Value
+	wrd.Verbatim = inf.Word.Value
+	wrd.Normalized = inf.Word.NormValue
 	words = append(words, wrd)
 	if inf.Authorship != nil {
 		words = append(words, inf.Authorship.words()...)
@@ -535,9 +558,9 @@ func (inf *infraspEpithetNode) details() o.InfraSpeciesElem {
 }
 
 func (u *uninomialNode) words() []o.Word {
-	var wrd o.Word
-	wrd = u.Word.Pos
-	wrd.Value = u.Word.Value
+	wrd := u.Word.Pos
+	wrd.Verbatim = u.Word.Value
+	wrd.Normalized = u.Word.NormValue
 	words := []o.Word{wrd}
 	words = append(words, u.Authorship.words()...)
 	return words
@@ -568,16 +591,19 @@ func (u *uninomialNode) details() o.Details {
 func (u *uninomialComboNode) words() []o.Word {
 	var wrd o.Word
 	wrd = u.Uninomial1.Word.Pos
-	wrd.Value = u.Uninomial1.Word.Value
+	wrd.Verbatim = u.Uninomial1.Word.Value
+	wrd.Normalized = u.Uninomial1.Word.NormValue
 	words := []o.Word{wrd}
 	words = append(words, u.Uninomial1.Authorship.words()...)
 	if u.Rank.Word.Pos.Start != 0 {
 		wrd = u.Rank.Word.Pos
-		wrd.Value = u.Rank.Word.Value
+		wrd.Verbatim = u.Rank.Word.Value
+		wrd.Normalized = u.Rank.Word.NormValue
 		words = append(words, wrd)
 	}
 	wrd = u.Uninomial2.Word.Pos
-	wrd.Value = u.Uninomial2.Word.Value
+	wrd.Verbatim = u.Uninomial2.Word.Value
+	wrd.Normalized = u.Uninomial2.Word.NormValue
 	words = append(words, wrd)
 	words = append(words, u.Uninomial2.Authorship.words()...)
 	return words
@@ -781,9 +807,9 @@ func (aut *authorsTeamNode) words() []o.Word {
 		res = append(res, v.words()...)
 	}
 	if aut.Year != nil {
-		var wrd o.Word
-		wrd = aut.Year.Word.Pos
-		wrd.Value = aut.Year.Word.Value
+		wrd := aut.Year.Word.Pos
+		wrd.Verbatim = aut.Year.Word.Value
+		wrd.Normalized = aut.Year.Word.NormValue
 		res = append(res, wrd)
 	}
 	return res
@@ -793,7 +819,8 @@ func (aun *authorNode) words() []o.Word {
 	p := make([]o.Word, len(aun.Words))
 	for i, v := range aun.Words {
 		p[i] = v.Pos
-		p[i].Value = v.Value
+		p[i].Verbatim = v.Value
+		p[i].Normalized = v.NormValue
 	}
 	return p
 }
