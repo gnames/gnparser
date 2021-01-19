@@ -2,18 +2,21 @@
 
 ## Unreleased
 
+- Add [#100]: Switch continuous integration to use GitHub Actions.
+- Add [#129]: Make c-binding usable for biodiversity parser.
+
 ## [v1.0.0]
 
 - Add [#127]: Update documentation to v1.0.0.
 - Add [#122]: Implement parsing as a stream in addition to batch parsing.
-- Add [#126]: Update c-binging to v1.0.0.
+- Add [#126]: Update c-binding to v1.0.0.
 - Add [#131]: Add parameters "with_details" and "csv" to REST API.
-- Add [#134]: Transofrm "positions" section to "words" section.
+- Add [#134]: Transoform "positions" section to "words" section.
 - Add [#128]: Add more examples to OpenAPI specification.
 - Add [#125]: Describe changes from v0.x to 1.x.
 - Add [#132]: Add context.Context to control lifespan of `go routines`.
 - Add [#115]: Migrate tests from ginkgo to plain tests.
-- Add [#109]: Move `web` packag to `io`.
+- Add [#109]: Move `web` package to `io`.
 - Add [#124]: Document warnings for each quality category.
 - Add [#121]: Convert `package` parser to use interfaces.
 - Add [#120]: CLI app for newly created functionality.
@@ -41,7 +44,7 @@
 
 ## [v0.14.3]
 
-- Add [#95]: Remove make depenency on gRPC tooling.
+- Add [#95]: Remove make dependency on gRPC tooling.
 - Add [#94]: Do not parse names with "bacterium" "epithet.
 
 ## [v0.14.2]
@@ -75,7 +78,7 @@
 
 ## [v0.12.0]
 
-- Add [#71]: do not parse 'Unamed clade...'.
+- Add [#71]: do not parse 'Unnamed clade...'.
 - Add [#69]: gnparser as a shared C library.
 - Add: Make dynamic version using ldflags.
 - Fix [#70]: parse 'Remera cvancarai' correctly.
@@ -90,7 +93,7 @@
 - Add [#67]: field `authorship` of the name for JSON output
 - Add [#66]: remove HTML tags during parsing instead of a separate step.
 - Add [#61]: handle authors that end with a word "bis".
-- Add [#60]: handle correctly deprecated ranks with greek letters.
+- Add [#60]: handle correctly deprecated ranks with Greek letters.
 - Fix [#62]: parser breaks on ``Drepanolejeunea (Spruce) (Steph.)``.
 
 ## [v0.9.0]
@@ -111,7 +114,7 @@ array of names instead of a stream.
 
 ## [v0.7.5]
 
-- Add [#59]: method `ParseToObject` to avoid json in Go programs.
+- Add [#59]: method `ParseToObject` to avoid JSON in Go programs.
 - Add [#58]: parse `Aus (Bus)` as `Uninomial (Author)` to prevent botanical
              authors appear as subgenera. We need a better solution for this.
 - Add [#57]: warning in cases of an ambiguous `filius`.
@@ -139,7 +142,7 @@ array of names instead of a stream.
 ## [v0.7.1]
 
 - Add [#40]: add names with missing parenthesis for combination authors.
-- Fix: remove typo for Scala parser URL on the parser webpage.
+- Fix: remove typo for Scala parser URL on the parser web-page.
 
 ## [v0.7.0]
 
