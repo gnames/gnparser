@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [v.1.0.0]
+
 - Add [#127]: Update documentation to v1.0.0.
 - Add [#122]: Implement parsing as a stream in addition to batch parsing.
 - Add [#126]: Update c-binging to v1.0.0.
@@ -177,6 +179,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.0.0]: https://github.com/gnames/gnparser/compare/v0.14.4...v1.0.0
 [v0.14.4]: https://github.com/gnames/gnparser/compare/v0.14.3...v0.14.4
 [v0.14.3]: https://github.com/gnames/gnparser/compare/v0.14.2...v0.14.3
 [v0.14.2]: https://github.com/gnames/gnparser/compare/v0.14.1...v0.14.2
@@ -198,6 +201,36 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
 
+[#130]: https://github.com/gnames/gnparser/issues/130
+[#129]: https://github.com/gnames/gnparser/issues/129
+[#128]: https://github.com/gnames/gnparser/issues/128
+[#127]: https://github.com/gnames/gnparser/issues/127
+[#126]: https://github.com/gnames/gnparser/issues/126
+[#125]: https://github.com/gnames/gnparser/issues/125
+[#124]: https://github.com/gnames/gnparser/issues/124
+[#123]: https://github.com/gnames/gnparser/issues/123
+[#122]: https://github.com/gnames/gnparser/issues/122
+[#121]: https://github.com/gnames/gnparser/issues/121
+[#120]: https://github.com/gnames/gnparser/issues/120
+[#119]: https://github.com/gnames/gnparser/issues/119
+[#118]: https://github.com/gnames/gnparser/issues/118
+[#117]: https://github.com/gnames/gnparser/issues/117
+[#116]: https://github.com/gnames/gnparser/issues/116
+[#115]: https://github.com/gnames/gnparser/issues/115
+[#114]: https://github.com/gnames/gnparser/issues/114
+[#113]: https://github.com/gnames/gnparser/issues/113
+[#112]: https://github.com/gnames/gnparser/issues/112
+[#111]: https://github.com/gnames/gnparser/issues/111
+[#110]: https://github.com/gnames/gnparser/issues/110
+[#109]: https://github.com/gnames/gnparser/issues/109
+[#108]: https://github.com/gnames/gnparser/issues/108
+[#107]: https://github.com/gnames/gnparser/issues/107
+[#106]: https://github.com/gnames/gnparser/issues/106
+[#105]: https://github.com/gnames/gnparser/issues/105
+[#104]: https://github.com/gnames/gnparser/issues/104
+[#103]: https://github.com/gnames/gnparser/issues/103
+[#102]: https://github.com/gnames/gnparser/issues/102
+[#101]: https://github.com/gnames/gnparser/issues/101
 [#100]: https://github.com/gnames/gnparser/issues/100
 [#99]: https://github.com/gnames/gnparser/issues/99
 [#98]: https://github.com/gnames/gnparser/issues/98

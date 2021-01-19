@@ -50,7 +50,7 @@ install: peg
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) $(NO_C) $(GOINSTALL)
 
-release: peg asset dockerhub
+release: peg dockerhub
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_LINUX) $(NO_C) $(GOBUILD); \
