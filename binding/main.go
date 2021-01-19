@@ -22,7 +22,6 @@ import (
 // parsed details are ommited, if it is 1 -- they are included.
 // true.
 //export ParseToString
-
 func ParseToString(
 	name *C.char,
 	f *C.char,
