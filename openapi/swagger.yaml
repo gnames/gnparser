@@ -5,8 +5,8 @@ servers:
     url: https://virtserver.swaggerhub.com/dimus/gnparser/1.0.0
 info:
   description: |
-    GNparser takes scientific names and parses them
-    into their semantic elements.
+    GNparser takes a scientific name and splits it into
+    structural elements.
 
     Scientific names can be represented in many different
     variants. For example "Homo sapiens" exists as
@@ -255,26 +255,117 @@ components:
         {
           "parsed": true,
           "quality": 2,
-          "qualityWarnings":
-            [{ "quality": 2, "warning": "Year with latin character" }],
+          "qualityWarnings": [
+            {
+              "quality": 2,
+              "warning": "Year with latin character"
+            }
+          ],
           "verbatim": "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891a",
           "normalized": "Pleurosigma vitrea var. kjellmanii H. Peragallo 1891",
-          "canonical":
-            {
-              "stemmed": "Pleurosigma uitre kiellmani",
-              "simple": "Pleurosigma vitrea kjellmanii",
-              "full": "Pleurosigma vitrea var. kjellmanii",
-            },
+          "canonical": {
+            "stemmed": "Pleurosigma uitre kiellmani",
+            "simple": "Pleurosigma vitrea kjellmanii",
+            "full": "Pleurosigma vitrea var. kjellmanii"
+          },
           "cardinality": 3,
-          "authorship":
+          "authorship": {
+            "verbatim": "H.Peragallo, 1891a",
+            "normalized": "H. Peragallo 1891",
+            "year": "1891",
+            "authors": [
+              "H. Peragallo"
+            ],
+            "originalAuth": {
+              "authors": [
+                "H. Peragallo"
+              ],
+              "year": {
+                "year": "1891"
+              }
+            }
+          },
+          "details": {
+            "infraSpecies": {
+              "genus": "Pleurosigma",
+              "species": "vitrea",
+              "infraSpecies": [
+                {
+                  "value": "kjellmanii",
+                  "rank": "var.",
+                  "authorship": {
+                    "verbatim": "H.Peragallo, 1891a",
+                    "normalized": "H. Peragallo 1891",
+                    "year": "1891",
+                    "authors": [
+                      "H. Peragallo"
+                    ],
+                    "originalAuth": {
+                      "authors": [
+                        "H. Peragallo"
+                      ],
+                      "year": {
+                        "year": "1891"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "words": [
             {
-              "verbatim": "H.Peragallo, 1891a",
-              "normalized": "H. Peragallo 1891",
-              "year": "1891",
-              "authors": ["H. Peragallo"],
+              "verbatim": "Pleurosigma",
+              "normalized": "Pleurosigma",
+              "wordType": "GENUS",
+              "start": 0,
+              "end": 11
             },
+            {
+              "verbatim": "vitrea",
+              "normalized": "vitrea",
+              "wordType": "SPECIES",
+              "start": 12,
+              "end": 18
+            },
+            {
+              "verbatim": "var.",
+              "normalized": "var.",
+              "wordType": "RANK",
+              "start": 19,
+              "end": 23
+            },
+            {
+              "verbatim": "kjellmanii",
+              "normalized": "kjellmanii",
+              "wordType": "INFRASPECIES",
+              "start": 24,
+              "end": 34
+            },
+            {
+              "verbatim": "H.",
+              "normalized": "H.",
+              "wordType": "AUTHOR_WORD",
+              "start": 35,
+              "end": 37
+            },
+            {
+              "verbatim": "Peragallo",
+              "normalized": "Peragallo",
+              "wordType": "AUTHOR_WORD",
+              "start": 37,
+              "end": 46
+            },
+            {
+              "verbatim": "1891a",
+              "normalized": "1891",
+              "wordType": "YEAR",
+              "start": 48,
+              "end": 53
+            }
+          ],
           "id": "f6a5b47b-9917-5a48-b0ff-366bc036ae9c",
-          "parserVersion": "v1.0.0",
+          "parserVersion": "v0.14.4-37-g5eb244b"
         }
       required:
         - id
@@ -415,7 +506,7 @@ components:
           description: meaning and position of every parsed word.
           type: array
           items:
-            - $ref: "#/components/schemas/Word"
+            $ref: "#/components/schemas/Word"
         id:
           type: string
           description: |
@@ -455,7 +546,7 @@ components:
           type: integer
           enum: [0, 1, 2, 3, 4]
           example: 2
-
+          
     Canonical:
       description: |
         Simplified versions of a name-string more suitable for
