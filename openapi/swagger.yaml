@@ -286,10 +286,10 @@ components:
             }
           },
           "details": {
-            "infraSpecies": {
+            "infraspecies": {
               "genus": "Pleurosigma",
               "species": "vitrea",
-              "infraSpecies": [
+              "infraspecies": [
                 {
                   "value": "kjellmanii",
                   "rank": "var.",
@@ -498,7 +498,7 @@ components:
           oneOf:
             - $ref: "#/components/schemas/DetailsUninomial"
             - $ref: "#/components/schemas/DetailsSpecies"
-            - $ref: "#/components/schemas/DetailsInfraSpecies"
+            - $ref: "#/components/schemas/DetailsInfraspecies"
             - $ref: "#/components/schemas/DetailsComparison"
             - $ref: "#/components/schemas/DetailsApproximation"
             - $ref: "#/components/schemas/DetailsHybridFormula"
@@ -755,7 +755,7 @@ components:
       example: |
         "species": {
           "genus": "Pycnodonte",
-          "subGenus": "Notostrea",
+          "subgenus": "Notostrea",
           "species": "tarda"
         }
       required:
@@ -782,14 +782,14 @@ components:
             authorship:
               $ref: "#/components/schemas/Authorship"
 
-    DetailsInfraSpecies:
+    DetailsInfraspecies:
       description: Details for multinomial names
       type: object
       example: |
-        "infraSpecies": {
+        "infraspecies": {
           "genus": "Pleurosigma",
           "species": "vitrea",
-          "infraSpecies": [ {
+          "infraspecies": [ {
               "value": "kjellmanii",
               "rank": "var.",
               "authorship": {
@@ -812,9 +812,9 @@ components:
           ]
         }
       required:
-        - infraSpecies
+        - infraspecies
       properties:
-        infraSpecies:
+        infraspecies:
           type: object
           required:
             - genus
@@ -833,7 +833,7 @@ components:
               example: vitrea
             authorship:
               $ref: "#/components/schemas/Authorship"
-            infraSpecies:
+            infraspecies:
               description: Infra-specific epithets
               type: array
               items:
@@ -948,7 +948,7 @@ components:
             oneOf:
               - $ref: "#/components/schemas/DetailsUninomial"
               - $ref: "#/components/schemas/DetailsSpecies"
-              - $ref: "#/components/schemas/DetailsInfraSpecies"
+              - $ref: "#/components/schemas/DetailsInfraspecies"
 
     Word:
       description: Semantic meaning and a position of a word in a name.

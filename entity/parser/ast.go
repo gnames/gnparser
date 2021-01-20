@@ -217,7 +217,7 @@ type namedSpeciesHybridNode struct {
 	Comparison   *wordNode
 	Hybrid       *wordNode
 	SpEpithet    *spEpithetNode
-	InfraSpecies []*infraspEpithetNode
+	Infraspecies []*infraspEpithetNode
 }
 
 func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
@@ -256,7 +256,7 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 		Comparison:   cf,
 		Hybrid:       hybrid,
 		SpEpithet:    sp,
-		InfraSpecies: infs,
+		Infraspecies: infs,
 	}
 	return nhl
 }
@@ -411,9 +411,9 @@ func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
 
 type speciesNode struct {
 	Genus        *wordNode
-	SubGenus     *wordNode
+	Subgenus     *wordNode
 	SpEpithet    *spEpithetNode
-	InfraSpecies []*infraspEpithetNode
+	Infraspecies []*infraspEpithetNode
 }
 
 func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
@@ -428,15 +428,15 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 	n = n.next
 	for n != nil {
 		switch n.token32.pegRule {
-		case ruleSubGenus:
-			w := p.newWordNode(n.up, o.SubGenusType)
+		case ruleSubgenus:
+			w := p.newWordNode(n.up, o.SubgenusType)
 			if _, ok := dict.Dict.AuthorICN[w.NormValue]; ok {
 				p.addWarn(o.BotanyAuthorNotSubgenWarn)
 			} else {
 				sg = w
 			}
-		case ruleSubGenusOrSuperspecies:
-			p.addWarn(o.SuperSpeciesWarn)
+		case ruleSubgenusOrSuperspecies:
+			p.addWarn(o.SuperspeciesWarn)
 		case ruleSpeciesEpithet:
 			sp = p.newSpeciesEpithetNode(n)
 		case ruleInfraspGroup:
@@ -447,9 +447,9 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 	p.cardinality = 2 + len(infs)
 	sn := speciesNode{
 		Genus:        gen,
-		SubGenus:     sg,
+		Subgenus:     sg,
 		SpEpithet:    sp,
-		InfraSpecies: infs,
+		Infraspecies: infs,
 	}
 	if len(infs) > 0 && infs[0].Rank == nil && sp.Authorship != nil &&
 		sp.Authorship.TerminalFilius {
@@ -518,7 +518,7 @@ func (p *Engine) newInfraspEpithetNode(n *node32) *infraspEpithetNode {
 	for n != nil {
 		switch n.token32.pegRule {
 		case ruleWord:
-			w = p.newWordNode(n, o.InfraSpEpithetType)
+			w = p.newWordNode(n, o.InfraspEpithetType)
 		case ruleRank:
 			r = p.newRankNode(n)
 		case ruleAuthorship:

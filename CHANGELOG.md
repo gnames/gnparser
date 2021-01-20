@@ -5,6 +5,8 @@
 - Add [#100]: Switch continuous integration to use GitHub Actions.
 - Add [#129]: Make c-binding usable for biodiversity parser.
 
+- Fix [#135]: Changes: SubGenus->Subgenus, InfraSpecies->Infraspecies
+
 ## [v1.0.0]
 
 - Add [#127]: Update documentation to v1.0.0.

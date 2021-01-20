@@ -185,7 +185,7 @@ func (nh *namedSpeciesHybridNode) words() []o.Word {
 	words = append(words, wrd)
 	words = append(words, nh.SpEpithet.words()...)
 
-	for _, v := range nh.InfraSpecies {
+	for _, v := range nh.Infraspecies {
 		words = append(words, v.words()...)
 	}
 	return words
@@ -194,7 +194,7 @@ func (nh *namedSpeciesHybridNode) words() []o.Word {
 func (nh *namedSpeciesHybridNode) value() string {
 	res := nh.Genus.NormValue
 	res = res + " × " + nh.SpEpithet.value()
-	for _, v := range nh.InfraSpecies {
+	for _, v := range nh.Infraspecies {
 		res = str.JoinStrings(res, v.value(), " ")
 	}
 	return res
@@ -208,7 +208,7 @@ func (nh *namedSpeciesHybridNode) canonical() *canonical {
 	cSp := nh.SpEpithet.canonical()
 	c = appendCanonical(c, cSp, " ")
 
-	for _, v := range nh.InfraSpecies {
+	for _, v := range nh.Infraspecies {
 		c1 := v.canonical()
 		c = appendCanonical(c, c1, " ")
 	}
@@ -216,10 +216,10 @@ func (nh *namedSpeciesHybridNode) canonical() *canonical {
 }
 
 func (nh *namedSpeciesHybridNode) lastAuthorship() *authorshipNode {
-	if len(nh.InfraSpecies) == 0 {
+	if len(nh.Infraspecies) == 0 {
 		return nh.SpEpithet.Authorship
 	}
-	return nh.InfraSpecies[len(nh.InfraSpecies)-1].Authorship
+	return nh.Infraspecies[len(nh.Infraspecies)-1].Authorship
 }
 
 func (nh *namedSpeciesHybridNode) details() o.Details {
@@ -232,22 +232,22 @@ func (nh *namedSpeciesHybridNode) details() o.Details {
 		so.Authorship = nh.SpEpithet.Authorship.details()
 	}
 
-	if len(nh.InfraSpecies) == 0 {
+	if len(nh.Infraspecies) == 0 {
 		return o.DetailsSpecies{Species: so}
 	}
-	infs := make([]o.InfraSpeciesElem, 0, len(nh.InfraSpecies))
-	for _, v := range nh.InfraSpecies {
+	infs := make([]o.InfraspeciesElem, 0, len(nh.Infraspecies))
+	for _, v := range nh.Infraspecies {
 		if v == nil {
 			continue
 		}
 		infs = append(infs, v.details())
 	}
-	iso := o.InfraSpecies{
+	iso := o.Infraspecies{
 		Species:      so,
-		InfraSpecies: infs,
+		Infraspecies: infs,
 	}
 
-	return o.DetailsInfraSpecies{InfraSpecies: iso}
+	return o.DetailsInfraspecies{Infraspecies: iso}
 }
 
 func (apr *approxNode) words() []o.Word {
@@ -405,14 +405,14 @@ func (sp *speciesNode) words() []o.Word {
 		wrd.Normalized = sp.Genus.NormValue
 		words = append(words, wrd)
 	}
-	if sp.SubGenus != nil {
-		wrd = sp.SubGenus.Pos
-		wrd.Verbatim = sp.SubGenus.Value
-		wrd.Normalized = sp.SubGenus.NormValue
+	if sp.Subgenus != nil {
+		wrd = sp.Subgenus.Pos
+		wrd.Verbatim = sp.Subgenus.Value
+		wrd.Normalized = sp.Subgenus.NormValue
 		words = append(words, wrd)
 	}
 	words = append(words, sp.SpEpithet.words()...)
-	for _, v := range sp.InfraSpecies {
+	for _, v := range sp.Infraspecies {
 		words = append(words, v.words()...)
 	}
 	return words
@@ -421,12 +421,12 @@ func (sp *speciesNode) words() []o.Word {
 func (sp *speciesNode) value() string {
 	gen := sp.Genus.NormValue
 	sgen := ""
-	if sp.SubGenus != nil {
-		sgen = "(" + sp.SubGenus.NormValue + ")"
+	if sp.Subgenus != nil {
+		sgen = "(" + sp.Subgenus.NormValue + ")"
 	}
 	res := str.JoinStrings(gen, sgen, " ")
 	res = str.JoinStrings(res, sp.SpEpithet.value(), " ")
-	for _, v := range sp.InfraSpecies {
+	for _, v := range sp.Infraspecies {
 		res = str.JoinStrings(res, v.value(), " ")
 	}
 	return res
@@ -435,7 +435,7 @@ func (sp *speciesNode) value() string {
 func (sp *speciesNode) canonical() *canonical {
 	spPart := str.JoinStrings(sp.Genus.NormValue, sp.SpEpithet.Word.NormValue, " ")
 	c := &canonical{Value: spPart, ValueRanked: spPart}
-	for _, v := range sp.InfraSpecies {
+	for _, v := range sp.Infraspecies {
 		c1 := v.canonical()
 		c = appendCanonical(c, c1, " ")
 	}
@@ -443,10 +443,10 @@ func (sp *speciesNode) canonical() *canonical {
 }
 
 func (sp *speciesNode) lastAuthorship() *authorshipNode {
-	if len(sp.InfraSpecies) == 0 {
+	if len(sp.Infraspecies) == 0 {
 		return sp.SpEpithet.Authorship
 	}
-	return sp.InfraSpecies[len(sp.InfraSpecies)-1].Authorship
+	return sp.Infraspecies[len(sp.Infraspecies)-1].Authorship
 }
 
 func (sp *speciesNode) details() o.Details {
@@ -458,25 +458,25 @@ func (sp *speciesNode) details() o.Details {
 		so.Authorship = sp.SpEpithet.Authorship.details()
 	}
 
-	if sp.SubGenus != nil {
-		so.SubGenus = sp.SubGenus.NormValue
+	if sp.Subgenus != nil {
+		so.Subgenus = sp.Subgenus.NormValue
 	}
-	if len(sp.InfraSpecies) == 0 {
+	if len(sp.Infraspecies) == 0 {
 		return o.DetailsSpecies{Species: so}
 	}
-	infs := make([]o.InfraSpeciesElem, 0, len(sp.InfraSpecies))
-	for _, v := range sp.InfraSpecies {
+	infs := make([]o.InfraspeciesElem, 0, len(sp.Infraspecies))
+	for _, v := range sp.Infraspecies {
 		if v == nil {
 			continue
 		}
 		infs = append(infs, v.details())
 	}
-	sio := o.InfraSpecies{
+	sio := o.Infraspecies{
 		Species:      so,
-		InfraSpecies: infs,
+		Infraspecies: infs,
 	}
 
-	return o.DetailsInfraSpecies{InfraSpecies: sio}
+	return o.DetailsInfraspecies{Infraspecies: sio}
 }
 
 func (sep *spEpithetNode) words() []o.Word {
@@ -544,12 +544,12 @@ func (inf *infraspEpithetNode) canonical() *canonical {
 	return &c
 }
 
-func (inf *infraspEpithetNode) details() o.InfraSpeciesElem {
+func (inf *infraspEpithetNode) details() o.InfraspeciesElem {
 	rank := ""
 	if inf.Rank != nil && inf.Rank.Word != nil {
 		rank = inf.Rank.Word.NormValue
 	}
-	res := o.InfraSpeciesElem{
+	res := o.InfraspeciesElem{
 		Value:      inf.Word.NormValue,
 		Rank:       rank,
 		Authorship: inf.Authorship.details(),

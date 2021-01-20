@@ -44,8 +44,8 @@ const (
 	ruleRankForma
 	ruleRankSsp
 	ruleRankAgamo
-	ruleSubGenusOrSuperspecies
-	ruleSubGenus
+	ruleSubgenusOrSuperspecies
+	ruleSubgenus
 	ruleUninomialCombo
 	ruleUninomialCombo1
 	ruleUninomialCombo2
@@ -170,8 +170,8 @@ var rul3s = [...]string{
 	"RankForma",
 	"RankSsp",
 	"RankAgamo",
-	"SubGenusOrSuperspecies",
-	"SubGenus",
+	"SubgenusOrSuperspecies",
+	"Subgenus",
 	"UninomialCombo",
 	"UninomialCombo1",
 	"UninomialCombo2",
@@ -810,7 +810,7 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 			position, tokenIndex = position35, tokenIndex35
 			return false
 		},
-		/* 7 NamedSpeciesHybrid <- <(GenusWord (_ SubGenus)? (_ Comparison)? _ HybridChar _? SpeciesEpithet (_ InfraspGroup)?)> */
+		/* 7 NamedSpeciesHybrid <- <(GenusWord (_ Subgenus)? (_ Comparison)? _ HybridChar _? SpeciesEpithet (_ InfraspGroup)?)> */
 		func() bool {
 			position39, tokenIndex39 := position, tokenIndex
 			{
@@ -823,7 +823,7 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 					if !_rules[rule_]() {
 						goto l41
 					}
-					if !_rules[ruleSubGenus]() {
+					if !_rules[ruleSubgenus]() {
 						goto l41
 					}
 					goto l42
@@ -1044,7 +1044,7 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 			position, tokenIndex = position67, tokenIndex67
 			return false
 		},
-		/* 13 NameSpecies <- <(GenusWord (_? (SubGenus / SubGenusOrSuperspecies))? _ SpeciesEpithet (_ InfraspGroup)?)> */
+		/* 13 NameSpecies <- <(GenusWord (_? (Subgenus / SubgenusOrSuperspecies))? _ SpeciesEpithet (_ InfraspGroup)?)> */
 		func() bool {
 			position71, tokenIndex71 := position, tokenIndex
 			{
@@ -1066,13 +1066,13 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 				l76:
 					{
 						position77, tokenIndex77 := position, tokenIndex
-						if !_rules[ruleSubGenus]() {
+						if !_rules[ruleSubgenus]() {
 							goto l78
 						}
 						goto l77
 					l78:
 						position, tokenIndex = position77, tokenIndex77
-						if !_rules[ruleSubGenusOrSuperspecies]() {
+						if !_rules[ruleSubgenusOrSuperspecies]() {
 							goto l73
 						}
 					}
@@ -2648,7 +2648,7 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 			position, tokenIndex = position216, tokenIndex216
 			return false
 		},
-		/* 27 SubGenusOrSuperspecies <- <('(' _? NameLowerChar+ _? ')')> */
+		/* 27 SubgenusOrSuperspecies <- <('(' _? NameLowerChar+ _? ')')> */
 		func() bool {
 			position224, tokenIndex224 := position, tokenIndex
 			{
@@ -2694,14 +2694,14 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 					goto l224
 				}
 				position++
-				add(ruleSubGenusOrSuperspecies, position225)
+				add(ruleSubgenusOrSuperspecies, position225)
 			}
 			return true
 		l224:
 			position, tokenIndex = position224, tokenIndex224
 			return false
 		},
-		/* 28 SubGenus <- <('(' _? UninomialWord _? ')')> */
+		/* 28 Subgenus <- <('(' _? UninomialWord _? ')')> */
 		func() bool {
 			position232, tokenIndex232 := position, tokenIndex
 			{
@@ -2737,7 +2737,7 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 					goto l232
 				}
 				position++
-				add(ruleSubGenus, position233)
+				add(ruleSubgenus, position233)
 			}
 			return true
 		l232:
@@ -2769,7 +2769,7 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 			position, tokenIndex = position238, tokenIndex238
 			return false
 		},
-		/* 30 UninomialCombo1 <- <(UninomialWord _? SubGenus (_? Authorship)?)> */
+		/* 30 UninomialCombo1 <- <(UninomialWord _? Subgenus (_? Authorship)?)> */
 		func() bool {
 			position242, tokenIndex242 := position, tokenIndex
 			{
@@ -2787,7 +2787,7 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 					position, tokenIndex = position244, tokenIndex244
 				}
 			l245:
-				if !_rules[ruleSubGenus]() {
+				if !_rules[ruleSubgenus]() {
 					goto l242
 				}
 				{

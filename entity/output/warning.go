@@ -44,7 +44,7 @@ const (
 	SpaceNonStandardWarn
 	SpanishAndAsSeparator
 	SpeciesNumericWarn
-	SuperSpeciesWarn
+	SuperspeciesWarn
 	UTF8ConvBadWarn
 	UninomialComboWarn
 	WhiteSpaceTrailWarn
@@ -93,7 +93,7 @@ var warningMap = map[Warning]string{
 	SpaceNonStandardWarn:            "Non-standard space characters",
 	SpanishAndAsSeparator:           "Spanish 'y' is used instead of '&'",
 	SpeciesNumericWarn:              "Numeric prefix",
-	SuperSpeciesWarn:                "Ambiguity: subgenus or superspecies found",
+	SuperspeciesWarn:                "Ambiguity: subgenus or superspecies found",
 	UTF8ConvBadWarn:                 "Incorrect conversion to UTF-8",
 	UninomialComboWarn:              "Combination of two uninomials",
 	WhiteSpaceTrailWarn:             "Trailing whitespace",
@@ -151,7 +151,7 @@ var WarningQualityMap = map[Warning]int{
 	SpaceNonStandardWarn:            2,
 	SpanishAndAsSeparator:           2,
 	SpeciesNumericWarn:              3,
-	SuperSpeciesWarn:                2,
+	SuperspeciesWarn:                2,
 	UTF8ConvBadWarn:                 4,
 	UninomialComboWarn:              2,
 	WhiteSpaceTrailWarn:             2,

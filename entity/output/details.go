@@ -18,24 +18,24 @@ type Species struct {
 	// Genus is a value of a genus of a binomial.
 	Genus string `json:"genus"`
 	// Subgenus is a value of subgenus of binomial.
-	SubGenus string `json:"subGenus,omitempty"`
+	Subgenus string `json:"subgenus,omitempty"`
 	// Species is a value of a specific epithet.
 	Species string `json:"species"`
 	// Authorship of the binomial.
 	Authorship *Authorship `json:"authorship,omitempty"`
 }
 
-// InfraSpecies are details for names with cardinality higher than 2.
-type InfraSpecies struct {
+// Infraspecies are details for names with cardinality higher than 2.
+type Infraspecies struct {
 	// Species are details for the binomial part of a name.
 	Species
-	// InfraSpecies is a slice of infraspecific epithets of a name.
-	InfraSpecies []InfraSpeciesElem `json:"infraSpecies,omitempty"`
+	// Infraspecies is a slice of infraspecific epithets of a name.
+	Infraspecies []InfraspeciesElem `json:"infraspecies,omitempty"`
 }
 
-// InfraSpeciesElem are details for an infraspecific epithet of an
-// InfraSpecies name.
-type InfraSpeciesElem struct {
+// InfraspeciesElem are details for an infraspecific epithet of an
+// Infraspecies name.
+type InfraspeciesElem struct {
 	// Value of an infraspecific epithet.
 	Value string `json:"value"`
 	// Rank of the infraspecific epithet.
@@ -96,14 +96,14 @@ type DetailsSpecies struct {
 // isDetails implements Details interface.
 func (DetailsSpecies) isDetails() {}
 
-// DetailsInfraSpecies are multinomial details.
-type DetailsInfraSpecies struct {
-	// InfraSpecies details.
-	InfraSpecies InfraSpecies `json:"infraSpecies"`
+// DetailsInfraspecies are multinomial details.
+type DetailsInfraspecies struct {
+	// Infraspecies details.
+	Infraspecies Infraspecies `json:"infraspecies"`
 }
 
 // isDetails implements Details interface.
-func (DetailsInfraSpecies) isDetails() {}
+func (DetailsInfraspecies) isDetails() {}
 
 // DetailsComparison are details for comparison surrogate names.
 type DetailsComparison struct {

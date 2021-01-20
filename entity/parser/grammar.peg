@@ -18,7 +18,7 @@ HybridFormulaPart <- HybridChar _ SpeciesEpithet (_ InfraspGroup)?
 
 NamedHybrid <- NamedGenusHybrid / NamedSpeciesHybrid
 
-NamedSpeciesHybrid <- GenusWord (_ SubGenus)? (_ Comparison)? _ HybridChar _?
+NamedSpeciesHybrid <- GenusWord (_ Subgenus)? (_ Comparison)? _ HybridChar _?
   SpeciesEpithet (_ InfraspGroup)?
 
 NamedGenusHybrid <- HybridChar _? SingleName
@@ -31,7 +31,7 @@ NameApprox <- GenusWord (_ SpeciesEpithet)? _ Approximation ApproxNameIgnored
 
 NameComp <- GenusWord _ Comparison (_ SpeciesEpithet)?
 
-NameSpecies <- GenusWord (_? (SubGenus / SubGenusOrSuperspecies))?
+NameSpecies <- GenusWord (_? (Subgenus / SubgenusOrSuperspecies))?
                _ SpeciesEpithet (_ InfraspGroup)?
 
 GenusWord <- (AbbrGenus / UninomialWord) !(_ AuthorWord)
@@ -67,12 +67,12 @@ RankSsp <- ('ssp' / 'subspec' / 'subsp') ('.' / &(SpaceCharEOI))
 
 RankAgamo <- ('agamosp' / 'agamossp' / 'agamovar') ('.' / &(SpaceCharEOI))
 
-SubGenusOrSuperspecies <- '(' _? NameLowerChar+ _? ')'
+SubgenusOrSuperspecies <- '(' _? NameLowerChar+ _? ')'
 
-SubGenus <- '(' _? UninomialWord _? ')'
+Subgenus <- '(' _? UninomialWord _? ')'
 
 UninomialCombo <- UninomialCombo1 / UninomialCombo2
-UninomialCombo1 <- UninomialWord _? SubGenus (_? Authorship)?
+UninomialCombo1 <- UninomialWord _? Subgenus (_? Authorship)?
 UninomialCombo2 <- Uninomial _ RankUninomial _ Uninomial
 
 RankUninomial <- RankUninomialPlain / RankUninomialNotho

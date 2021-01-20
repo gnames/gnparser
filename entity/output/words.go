@@ -15,12 +15,12 @@ const (
 	AuthorWordType
 	AuthorWordFiliusType
 	GenusType
-	InfraSpEpithetType
+	InfraspEpithetType
 	HybridCharType
 	RankType
 	SpEpithetType
-	SubGenusType
-	SuperSpType
+	SubgenusType
+	SuperspType
 	UninomialType
 	YearApproximateType
 	YearType
@@ -34,10 +34,10 @@ var wordTypeMap = map[WordType]string{
 	AuthorWordFiliusType: "AUTHOR_WORD_FILIUS",
 	GenusType:            "GENUS",
 	HybridCharType:       "HYBRID_CHAR",
-	InfraSpEpithetType:   "INFRASPECIES",
+	InfraspEpithetType:   "INFRASPECIES",
 	RankType:             "RANK",
 	SpEpithetType:        "SPECIES",
-	SubGenusType:         "INFRA_GENUS",
+	SubgenusType:         "INFRA_GENUS",
 	UninomialType:        "UNINOMIAL",
 	YearApproximateType:  "APPROXIMATE_YEAR",
 	YearType:             "YEAR",
