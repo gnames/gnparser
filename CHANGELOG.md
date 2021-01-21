@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v1.0.1]
+
+- Add [#136]: Man page
 - Add [#100]: Switch continuous integration to use GitHub Actions.
 - Add [#129]: Make c-binding usable for biodiversity parser.
 
@@ -184,6 +187,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.0.1]: https://github.com/gnames/gnparser/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/gnames/gnparser/compare/v0.14.4...v1.0.0
 [v0.14.4]: https://github.com/gnames/gnparser/compare/v0.14.3...v0.14.4
 [v0.14.3]: https://github.com/gnames/gnparser/compare/v0.14.2...v0.14.3
@@ -206,6 +210,16 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
 
+[#140]: https://github.com/gnames/gnparser/issues/140
+[#139]: https://github.com/gnames/gnparser/issues/139
+[#138]: https://github.com/gnames/gnparser/issues/138
+[#137]: https://github.com/gnames/gnparser/issues/137
+[#136]: https://github.com/gnames/gnparser/issues/136
+[#135]: https://github.com/gnames/gnparser/issues/135
+[#134]: https://github.com/gnames/gnparser/issues/134
+[#133]: https://github.com/gnames/gnparser/issues/133
+[#132]: https://github.com/gnames/gnparser/issues/132
+[#131]: https://github.com/gnames/gnparser/issues/131
 [#130]: https://github.com/gnames/gnparser/issues/130
 [#129]: https://github.com/gnames/gnparser/issues/129
 [#128]: https://github.com/gnames/gnparser/issues/128

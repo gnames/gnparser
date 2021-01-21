@@ -384,7 +384,7 @@ gnparser names.txt -d -f compact > names_parsed.txt
 # to parse files using pipes
 cat names.txt | gnparser -f csv -j 200 > names_parsed.csv
 
-# to parse using stream method instead of match method.
+# to parse using `stream` method instead of `batch` method.
 cat names.txt | gnparser -s > names_parsed.csv
 
 # to not remove html tags and entities during parsing. You gain a bit of

@@ -1,0 +1,151 @@
+# gnparser -- parse biodiversity scientific names
+
+## SYNOPSIS
+
+**gnparser** [OPTION...] [TERM/FILE]
+
+## DESCRIPTION
+
+**GNparser** breaks biodiversity scientific names into their structural
+elements. For example it finds that a genus in *Homo sapiens* is *Homo*.
+
+It can be used for one name, or for many names in a file (one name per line).
+
+## USAGE
+
+### Usage for a one name
+
+    gnparser "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891"
+
+    # CSV output (default)
+    gnparser "Parus major Linnaeus, 1788"
+    # or
+    gnparser -f csv "Parus major Linnaeus, 1788"
+
+    # JSON compact format
+    gnparser "Parus major Linnaeus, 1788" -f compact
+
+    # pretty format
+    gnparser -f pretty "Parus major Linnaeus, 1788"
+
+    # to parse a name from the standard input
+    echo "Parus major Linnaeus, 1788" | gnparser
+
+### Usage for many names in a file
+
+There is no flag for parsing a file. If parser finds the given file path on
+your computer, it will parse the content of the file, assuming that every line
+is a new scientific name. If the file path is not found, gnparser will try to
+parse the "path" as a scientific name.
+
+Parsed results will stream to STDOUT, while progress of the parsing will be
+directed to STDERR.
+
+    # to parse with 200 parallel processes
+    gnparser -j 200 names.txt > names_parsed.csv
+    
+    # to parse file with more detailed output
+    gnparser names.txt -d -f compact > names_parsed.txt
+    
+    # to parse files using pipes
+    cat names.txt | gnparser -f csv -j 200 > names_parsed.csv
+    
+    # to parse using stream method instead of batch method.
+    cat names.txt | gnparser -s > names_parsed.csv
+    
+    # to not remove html tags and entities during parsing. You gain a bit of
+    # performance with this option if your data does not contain HTML tags or
+    # entities.
+    gnparser "<i>Pomatomus</i>&nbsp;<i>saltator</i>"
+    gnparser -i "<i>Pomatomus</i>&nbsp;<i>saltator</i>"
+    gnparser -i "Pomatomus saltator"
+
+## GNPARSER SETTINGS
+
+### -h, --help
+
+Prints help information:
+
+    gnparser -h
+
+### -b, --batch_size (values: positive integers, default 50,000)
+
+Sets a maximum number of names collected into a batch before processing.
+This flag is ignored, if parsing is applied to only one name or
+if parsing mode is set to streaming with -s flag:
+
+   gnparser -b 100 names.txt
+
+### -d, --details
+
+Return more details for a parsed name. This flag is ignored for CSV formatting:
+
+    gnparser "Pardosa moesta Banks, 1982" -d -f pretty
+
+### -f, --format
+
+Determines an output format. Can be `compact`, `pretty`, `csv`.
+Default is `csv`.
+
+The default `csv` format returns a header row and the CSV-compatible
+parsed result:
+
+    gnparser "Pardosa moesta"
+
+The `compact` format returns a JSON-encoded result without indentations and
+new lines:
+
+    gnparser "Pardosa moesta" -f compact
+
+The `pretty` format returns a JSON-encoded result in a more human-readable
+form:
+
+    gnparser "Pardosa moesta" -f pretty
+
+### -j, --jobs (positive integer, default is a number of CPUs on a machine)
+
+The number of jobs running concurrently. This flag is ignored when parsing
+one name:
+
+    gnparser -j 200 names.txt
+
+### -i, --ignore_tags
+
+By default `gnparser` scans names for HTML tags and removes them before
+parsing. It slows the process slightly. If there are no HTML tags in names
+(no names are like `<i>Aus bus<i> L.`, this flag allows to skip HTML removal
+step, increasing performance slightly:
+
+    gnparser -i plain-text-names.txt
+
+### -p, --port (port number)
+
+Set a port to run web-interface and RESTful API and starts an HTTP service on
+this port:
+
+    gnparser -p 80
+
+### -s, --stream
+
+Changes parsing method for large number of names from `batch` to `stream`.
+If this flag is set, gnparser can be used from any language application
+using pipe-in/pipe-out methods. Such an approach requires sending 1 name
+at a time to gnparser instead of sending names in batches. Streaming allows
+to achieve that, but there is a slight decrease in performance:
+
+    gnparser -s names.json
+
+### -V, --version
+
+Shows the version number of gnparser.
+
+
+## COPYRIGHT
+
+The MIT License (MIT)
+
+Copyright (c) 2018-2021 Dmitry Mozzherin
+
+## Contributors
+
+Geoffrey Ower, Hernan Lucas Pereira

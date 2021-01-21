@@ -82,3 +82,12 @@ clib: peg
 quality:
 	cd tools;\
 	$(GOCMD) run quality.go > ../quality.md
+
+
+.PHONY: man
+man: ronn
+	@ronn ./man/gnparser.1.ronn --style=dark
+
+.PHONY: ronn
+ronn:
+	@which ronn > /dev/null || gem install ronn
