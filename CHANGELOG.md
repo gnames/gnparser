@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [v1.0.2]
+
 - Fix [#137]: add correct VerbatimID for HTML-containing names.
 
 ## [v1.0.1]
@@ -189,6 +191,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.0.2]: https://github.com/gnames/gnparser/compare/v1.0.1...v1.0.2
 [v1.0.1]: https://github.com/gnames/gnparser/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/gnames/gnparser/compare/v0.14.4...v1.0.0
 [v0.14.4]: https://github.com/gnames/gnparser/compare/v0.14.3...v0.14.4
