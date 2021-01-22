@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix [#137]: add correct VerbatimID for HTML-containing names.
+
 ## [v1.0.1]
 
 - Add [#136]: Man page
