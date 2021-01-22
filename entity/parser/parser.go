@@ -14,11 +14,11 @@ func (p *Engine) PreprocessAndParse(
 	keepHTML bool,
 ) ScientificNameNode {
 
+	originalString := s
 	tagsOrEntities := false
 	if !keepHTML {
-		orig := s
 		s = preprocess.StripTags(s)
-		if orig != s {
+		if originalString != s {
 			tagsOrEntities = true
 		}
 	}
@@ -37,7 +37,7 @@ func (p *Engine) PreprocessAndParse(
 			}
 		}
 		p.sn.warnings = p.warnings
-		p.sn.addVerbatim(s)
+		p.sn.addVerbatim(originalString)
 		p.sn.parserVersion = ver
 	}()
 
