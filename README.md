@@ -51,6 +51,7 @@ gnparser -h
   * [Assembling canonical forms etc. from original spelling](#assembling-canonical-forms-etc-from-original-spelling)
 * [Tutorial](#tutorial)
 * [Installation](#installation)
+  * [Install with Homebrew](#install-with-homebrew)
   * [Linux or OS X](#linux-or-os-x)
   * [Windows](#windows)
   * [Install with Go](#install-with-go)
@@ -261,6 +262,20 @@ Compiled programs in Go are self-sufficient and small (``gnparser`` is only a
 few megabytes). As a result the binary file of ``gnparser`` is all you need to
 make it work. You can install it by downloading the [latest version of the
 binary][releases] for your operating system, and placing it in your ``PATH``.
+
+### Install with Homebrew
+
+[Homebrew] is a packaging system originally made for Mac OS X. You can use it
+now for Mac, Linux, or Windows X WSL (Windows susbsystem for Linux).
+
+1. Install Homebrew according to their [instructions][Homebrew].
+
+2. Install `gnparser` with:
+
+    ```bash
+    brew tap gnames/gn
+    brew install gnparser
+    ```
 
 ### Linux or OS X
 
@@ -563,6 +578,7 @@ Released under [MIT license]
 [Dmitry Mozzherin]: https://github.com/dimus
 [Geoff Ower]: https://github.com/gdower
 [Hernan Lucas Pereira]: https://github.com/LocoDelAssembly
+[Homebrew]: https://brew.sh/
 [IRMNG]: http://www.irmng.org
 [MIT license]: https://github.com/gnames/gnparser/raw/master/LICENSE
 [Schinke R et al (1996)]: https://caio.ueberalles.net/a_stemming_algorithm_for_latin_text_databases-schinke_et_al.pdf
