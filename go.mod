@@ -3,7 +3,7 @@ module github.com/gnames/gnparser
 go 1.15
 
 require (
-	github.com/gnames/gnlib v0.1.8
+	github.com/gnames/gnlib v0.1.9
 	github.com/labstack/echo/v4 v4.1.17
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/rendon/testcli v1.0.0

@@ -33,7 +33,7 @@ type gnparser struct {
 // interface.
 func New(cfg config.Config) GNparser {
 	gnp := gnparser{cfg: cfg}
-	gnp.parser = parser.NewParser()
+	gnp.parser = parser.New()
 	return gnp
 }
 
@@ -122,7 +122,7 @@ func (gnp gnparser) parseWorker(
 	wgIn *sync.WaitGroup,
 ) {
 	defer wgIn.Done()
-	gnp.parser = parser.NewParser()
+	gnp.parser = parser.New()
 
 	for v := range chIn {
 		parseRes := gnp.ParseName(v.NameString)

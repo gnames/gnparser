@@ -46,7 +46,7 @@ func (gnp gnparser) parseStreamWorker(
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
-	gnp.parser = parser.NewParser()
+	gnp.parser = parser.New()
 	for v := range chIn {
 		parseRes := gnp.ParseName(v.NameString)
 		select {

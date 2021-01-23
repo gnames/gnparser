@@ -10,7 +10,7 @@ import (
 )
 
 func TestNew(t *testing.T) {
-	cfg := config.NewConfig()
+	cfg := config.New()
 	deflt := config.Config{
 		Format:         format.CSV,
 		JobsNum:        runtime.NumCPU(),
@@ -25,7 +25,7 @@ func TestNew(t *testing.T) {
 
 func TestNewOpts(t *testing.T) {
 	opts := opts()
-	cnf := config.NewConfig(opts...)
+	cnf := config.New(opts...)
 	updt := config.Config{
 		Format:         format.CompactJSON,
 		JobsNum:        161,

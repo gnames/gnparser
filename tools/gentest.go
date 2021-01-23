@@ -34,7 +34,7 @@ func genTestData() error {
 
 	sc := bufio.NewScanner(f)
 	opts := []config.Option{config.OptIsTest(true), config.OptWithDetails(true)}
-	cfg := config.NewConfig(opts...)
+	cfg := config.New(opts...)
 	gnp := gnparser.New(cfg)
 	var res parsed.Parsed
 	isName := false

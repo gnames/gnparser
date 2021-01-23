@@ -20,7 +20,7 @@ type testData struct {
 }
 
 func TestParseName(t *testing.T) {
-	cfg := config.NewConfig(
+	cfg := config.New(
 		config.OptWithDetails(true),
 		config.OptFormat("compact"),
 		config.OptIsTest(true),
@@ -68,7 +68,7 @@ func getTestData(t *testing.T) []testData {
 
 func Example() {
 	names := []string{"Pardosa moesta Banks, 1892", "Bubo bubo"}
-	cfg := config.NewConfig()
+	cfg := config.New()
 	gnp := gnparser.New(cfg)
 	parsed := gnp.ParseNames(names)
 	fmt.Println(parsed[0].Authorship.Normalized)
@@ -86,11 +86,11 @@ func BenchmarkParse(b *testing.B) {
 	path := filepath.Join("testdata", "200k-lines.txt")
 	count := 1000
 	test := make([]string, count)
-	cfgJSON := config.NewConfig(config.OptFormat("compact"))
+	cfgJSON := config.New(config.OptFormat("compact"))
 	gnpJSON := gnparser.New(cfgJSON)
-	cfgDet := config.NewConfig(config.OptFormat("compact"), config.OptWithDetails(true))
+	cfgDet := config.New(config.OptFormat("compact"), config.OptWithDetails(true))
 	gnpDet := gnparser.New(cfgDet)
-	cfgCSV := config.NewConfig(config.OptFormat("csv"))
+	cfgCSV := config.New(config.OptFormat("csv"))
 	gnpCSV := gnparser.New(cfgCSV)
 	f, err := os.Open(path)
 

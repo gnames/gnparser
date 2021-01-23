@@ -44,9 +44,9 @@ type Config struct {
 	IsTest bool
 }
 
-// NewConfig generates a new Config object. It can take an arbitrary number
+// New generates a new Config object. It can take an arbitrary number
 // of `Opt` functions to modify default configuration settings.
-func NewConfig(opts ...Option) Config {
+func New(opts ...Option) Config {
 	cfg := Config{
 		Format:         format.CSV,
 		JobsNum:        runtime.NumCPU(),
@@ -70,7 +70,7 @@ type Option func(*Config)
 // warning.
 func OptFormat(s string) Option {
 	return func(cfg *Config) {
-		f, err := format.NewFormat(s)
+		f, err := format.New(s)
 		if err != nil {
 			f = format.CSV
 			log.Printf("Set default CSV format due to error: %s.", err)

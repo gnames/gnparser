@@ -502,7 +502,7 @@ import (
 
 func Example() {
 	names := []string{"Pardosa moesta Banks, 1892", "Bubo bubo"}
-	cfg := config.NewConfig()
+	cfg := config.New()
 	gnp := gnparser.New(cfg)
 	parsed := gnp.ParseNames(names)
 	fmt.Println(parsed[0].Authorship.Normalized)

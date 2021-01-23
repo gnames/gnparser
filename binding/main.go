@@ -32,7 +32,7 @@ func ParseToString(
 		config.OptFormat(C.GoString(f)),
 		config.OptWithDetails(int(details) > 0),
 	}
-	cfg := config.NewConfig(opts...)
+	cfg := config.New(opts...)
 	gnp := gnparser.New(cfg)
 	parsed := gnp.ParseName(goname).Output(gnp.Format())
 
@@ -74,7 +74,7 @@ func ParseAryToString(
 		names[i] = name
 	}
 
-	cfg := config.NewConfig(opts...)
+	cfg := config.New(opts...)
 	gnp := gnparser.New(cfg)
 
 	var res string

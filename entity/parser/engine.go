@@ -3,7 +3,7 @@ package parser
 import (
 	"io"
 
-	tb "github.com/gnames/gnlib/tribool"
+	"github.com/gnames/gnlib/tribool"
 	"github.com/gnames/gnparser/entity/parsed"
 	"github.com/gnames/gnparser/io/dict"
 )
@@ -15,13 +15,13 @@ type baseEngine struct {
 	error       error
 	hybrid      *parsed.Annotation
 	surrogate   *parsed.Annotation
-	bacteria    *tb.Tribool
+	bacteria    *tribool.Tribool
 	warnings    map[parsed.Warning]struct{}
 	tail        string
 }
 
-// NewParser creates implementation of Parser interface.
-func NewParser() Parser {
+// New creates implementation of Parser interface.
+func New() Parser {
 	p := Engine{}
 	p.Init()
 	return &p
@@ -52,10 +52,10 @@ func (p *Engine) isBacteria(gen string) {
 	if hom, ok := dict.Dict.Bacteria[gen]; ok {
 		if hom {
 			p.addWarn(parsed.BacteriaMaybeWarn)
-			bac := tb.NewTribool(0)
+			bac := tribool.New(0)
 			p.bacteria = &bac
 		} else {
-			bac := tb.NewTribool(1)
+			bac := tribool.New(1)
 			p.bacteria = &bac
 		}
 	}
