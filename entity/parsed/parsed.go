@@ -1,4 +1,6 @@
-package output
+// Package parsed provides a user-friendly output of parsing result, as well
+// as functions to convert the result to CSV or JSON-encoded strings.
+package parsed
 
 import (
 	tb "github.com/gnames/gnlib/tribool"

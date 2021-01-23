@@ -10,7 +10,7 @@ import (
 
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/config"
-	output "github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -25,7 +25,7 @@ func TestParseName(t *testing.T) {
 		config.OptFormat("compact"),
 		config.OptIsTest(true),
 	)
-	gnp := gnparser.NewGNParser(cfg)
+	gnp := gnparser.New(cfg)
 	data := getTestData(t)
 	for _, v := range data {
 		parsed := gnp.ParseName(v.name)
@@ -69,7 +69,7 @@ func getTestData(t *testing.T) []testData {
 func Example() {
 	names := []string{"Pardosa moesta Banks, 1892", "Bubo bubo"}
 	cfg := config.NewConfig()
-	gnp := gnparser.NewGNParser(cfg)
+	gnp := gnparser.New(cfg)
 	parsed := gnp.ParseNames(names)
 	fmt.Println(parsed[0].Authorship.Normalized)
 	fmt.Println(parsed[1].Canonical.Simple)
@@ -87,11 +87,11 @@ func BenchmarkParse(b *testing.B) {
 	count := 1000
 	test := make([]string, count)
 	cfgJSON := config.NewConfig(config.OptFormat("compact"))
-	gnpJSON := gnparser.NewGNParser(cfgJSON)
+	gnpJSON := gnparser.New(cfgJSON)
 	cfgDet := config.NewConfig(config.OptFormat("compact"), config.OptWithDetails(true))
-	gnpDet := gnparser.NewGNParser(cfgDet)
+	gnpDet := gnparser.New(cfgDet)
 	cfgCSV := config.NewConfig(config.OptFormat("csv"))
-	gnpCSV := gnparser.NewGNParser(cfgCSV)
+	gnpCSV := gnparser.New(cfgCSV)
 	f, err := os.Open(path)
 
 	if err != nil {
@@ -107,22 +107,22 @@ func BenchmarkParse(b *testing.B) {
 		count--
 	}
 	b.Run("Parse to object once", func(b *testing.B) {
-		var p output.Parsed
+		var p parsed.Parsed
 		for i := 0; i < b.N; i++ {
 			p = gnpCSV.ParseName("Abarema clypearia (Jack) Kosterm., p.p.")
 		}
 		_ = fmt.Sprintf("%v", p.Parsed)
 	})
 	b.Run("Parse to object once with Init", func(b *testing.B) {
-		var p output.Parsed
+		var p parsed.Parsed
 		for i := 0; i < b.N; i++ {
-			gnp := gnparser.NewGNParser(cfgCSV)
+			gnp := gnparser.New(cfgCSV)
 			p = gnp.ParseName("Abarema clypearia (Jack) Kosterm., p.p.")
 		}
 		_ = fmt.Sprintf("%v", p.Parsed)
 	})
 	b.Run("Parse to object", func(b *testing.B) {
-		var p output.Parsed
+		var p parsed.Parsed
 		for i := 0; i < b.N; i++ {
 			for _, v := range test {
 				p = gnpCSV.ParseName(v)

@@ -1,3 +1,4 @@
+// Package str provides string functions for parsing scientific names.
 package str
 
 import (

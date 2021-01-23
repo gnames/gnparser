@@ -1,23 +1,4 @@
-// Copyright © 2019 Dmitry Mozzherin <dmozzherin@gmail.com>
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-
+// Package cmd creates a command line application for parsing scientific names.
 package cmd
 
 import (
@@ -31,7 +12,7 @@ import (
 	"github.com/gnames/gnlib/sys"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/config"
-	"github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 	"github.com/gnames/gnparser/io/web"
 	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
@@ -137,8 +118,8 @@ gnparser -j 5 -p 8080
 
 		if port != 0 {
 			cfg := config.NewConfig(config.OptFormat("compact"))
-			gnp := gnparser.NewGNParser(cfg)
-			gnps := web.NewGNParserService(gnp, port)
+			gnp := gnparser.New(cfg)
+			gnps := web.NewGNparserService(gnp, port)
 			web.Run(gnps)
 			os.Exit(0)
 		}
@@ -371,7 +352,7 @@ func processStdin(cmd *cobra.Command, cfg config.Config) {
 		_ = cmd.Help()
 		return
 	}
-	gnp := gnparser.NewGNParser(cfg)
+	gnp := gnparser.New(cfg)
 	parseBatch(gnp, os.Stdin)
 }
 
@@ -400,7 +381,7 @@ func parse(
 	data string,
 	cfg config.Config,
 ) {
-	gnp := gnparser.NewGNParser(cfg)
+	gnp := gnparser.New(cfg)
 
 	path := string(data)
 	if fileExists(path) {
@@ -429,11 +410,11 @@ func fileExists(path string) bool {
 	return false
 }
 
-func parseString(gnp gnparser.GNParser, name string) {
+func parseString(gnp gnparser.GNparser, name string) {
 	res := gnp.ParseName(name)
 	f := gnp.Format()
 	if f == format.CSV {
-		fmt.Println(output.HeaderCSV())
+		fmt.Println(parsed.HeaderCSV())
 	}
 	fmt.Println(res.Output(f))
 }

@@ -4,7 +4,7 @@ import (
 	"io"
 
 	tb "github.com/gnames/gnlib/tribool"
-	o "github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 	"github.com/gnames/gnparser/io/dict"
 )
 
@@ -13,10 +13,10 @@ type baseEngine struct {
 	root        *node32
 	cardinality int
 	error       error
-	hybrid      *o.Annotation
-	surrogate   *o.Annotation
+	hybrid      *parsed.Annotation
+	surrogate   *parsed.Annotation
 	bacteria    *tb.Tribool
-	warnings    map[o.Warning]struct{}
+	warnings    map[parsed.Warning]struct{}
 	tail        string
 }
 
@@ -33,15 +33,15 @@ func (p *Engine) fullReset() {
 	p.hybrid = nil
 	p.surrogate = nil
 	p.bacteria = nil
-	var warnReset map[o.Warning]struct{}
+	var warnReset map[parsed.Warning]struct{}
 	p.warnings = warnReset
 	p.tail = ""
 	p.Reset()
 }
 
-func (p *Engine) addWarn(w o.Warning) {
+func (p *Engine) addWarn(w parsed.Warning) {
 	if p.warnings == nil {
-		p.warnings = make(map[o.Warning]struct{})
+		p.warnings = make(map[parsed.Warning]struct{})
 	}
 	if _, ok := p.warnings[w]; !ok {
 		p.warnings[w] = struct{}{}
@@ -51,7 +51,7 @@ func (p *Engine) addWarn(w o.Warning) {
 func (p *Engine) isBacteria(gen string) {
 	if hom, ok := dict.Dict.Bacteria[gen]; ok {
 		if hom {
-			p.addWarn(o.BacteriaMaybeWarn)
+			p.addWarn(parsed.BacteriaMaybeWarn)
 			bac := tb.NewTribool(0)
 			p.bacteria = &bac
 		} else {
@@ -101,31 +101,31 @@ func (p *Engine) PrintOutputSyntaxTree(w io.Writer) {
 
 func (p *Engine) newNode(t token32) (*node32, bool) {
 	var node *node32
-	var annot o.Annotation
+	var annot parsed.Annotation
 	switch t.pegRule {
 	case ruleHybridChar:
-		annot = o.HybridAnnot
+		annot = parsed.HybridAnnot
 		p.hybrid = &annot
 	case ruleRankNotho, ruleRankUninomialNotho:
-		annot = o.NothoHybridAnnot
+		annot = parsed.NothoHybridAnnot
 		p.hybrid = &annot
-		p.addWarn(o.HybridNamedWarn)
+		p.addWarn(parsed.HybridNamedWarn)
 	case ruleOtherSpace:
-		p.addWarn(o.SpaceNonStandardWarn)
+		p.addWarn(parsed.SpaceNonStandardWarn)
 	case ruleMultipleSpace:
-		p.addWarn(o.SpaceMultipleWarn)
+		p.addWarn(parsed.SpaceMultipleWarn)
 	case ruleMiscodedChar:
-		p.addWarn(o.UTF8ConvBadWarn)
+		p.addWarn(parsed.UTF8ConvBadWarn)
 	case ruleBasionymAuthorship2Parens:
-		p.addWarn(o.AuthDoubleParensWarn)
+		p.addWarn(parsed.AuthDoubleParensWarn)
 	case ruleBasionymAuthorshipMissingParens:
-		p.addWarn(o.AuthMissingOneParensWarn)
+		p.addWarn(parsed.AuthMissingOneParensWarn)
 	case ruleUpperAfterDash:
-		p.addWarn(o.GenusUpperCharAfterDash)
+		p.addWarn(parsed.GenusUpperCharAfterDash)
 	case ruleLowerGreek:
-		p.addWarn(o.GreekLetterInRank)
+		p.addWarn(parsed.GreekLetterInRank)
 	case ruleAuthorSepSpanish:
-		p.addWarn(o.SpanishAndAsSeparator)
+		p.addWarn(parsed.SpanishAndAsSeparator)
 	}
 	if _, ok := nodeRules[t.pegRule]; ok {
 		node := &node32{token32: t}

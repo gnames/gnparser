@@ -14,7 +14,7 @@ import (
 	"github.com/gnames/gnlib/encode"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/config"
-	"github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 )
 
 func genTestData() error {
@@ -35,8 +35,8 @@ func genTestData() error {
 	sc := bufio.NewScanner(f)
 	opts := []config.Option{config.OptIsTest(true), config.OptWithDetails(true)}
 	cfg := config.NewConfig(opts...)
-	gnp := gnparser.NewGNParser(cfg)
-	var res output.Parsed
+	gnp := gnparser.New(cfg)
+	var res parsed.Parsed
 	isName := false
 	var count int
 	var can, au, nameString string

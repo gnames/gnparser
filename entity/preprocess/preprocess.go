@@ -1,3 +1,5 @@
+// Package preprocess performs preparsing filtering and modification of a
+// scientific-name.
 package preprocess
 
 import (

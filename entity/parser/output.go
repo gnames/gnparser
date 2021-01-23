@@ -3,13 +3,13 @@ package parser
 import (
 	"sort"
 
-	o "github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 )
 
 // ToOutput converts Abstract Syntax Tree of scientific name to a
 // final output object.
-func (sn *scientificNameNode) ToOutput(withDetails bool) o.Parsed {
-	res := o.Parsed{
+func (sn *scientificNameNode) ToOutput(withDetails bool) parsed.Parsed {
+	res := parsed.Parsed{
 		Verbatim:      sn.verbatim,
 		Canonical:     sn.Canonical(),
 		Virus:         sn.virus,
@@ -37,7 +37,7 @@ func (sn *scientificNameNode) ToOutput(withDetails bool) o.Parsed {
 	return res
 }
 
-func qualityWarnings(ws map[o.Warning]struct{}) (int, []o.QualityWarning) {
+func qualityWarnings(ws map[parsed.Warning]struct{}) (int, []parsed.QualityWarning) {
 	warns := prepareWarnings(ws)
 	quality := 1
 	if len(warns) > 0 {
@@ -46,8 +46,8 @@ func qualityWarnings(ws map[o.Warning]struct{}) (int, []o.QualityWarning) {
 	return quality, warns
 }
 
-func prepareWarnings(ws map[o.Warning]struct{}) []o.QualityWarning {
-	res := make([]o.QualityWarning, len(ws))
+func prepareWarnings(ws map[parsed.Warning]struct{}) []parsed.QualityWarning {
+	res := make([]parsed.QualityWarning, len(ws))
 	var i int
 	for k := range ws {
 		res[i] = k.NewQualityWarning()

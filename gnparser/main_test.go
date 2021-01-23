@@ -1,8 +1,10 @@
 package main
 
 import (
+	"strings"
 	"testing"
 
+	"github.com/rendon/testcli"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -10,73 +12,61 @@ func TestTMP(t *testing.T) {
 	assert.True(t, true)
 }
 
-// import (
-// 	"strings"
-//
-// 	. "github.com/onsi/ginkgo"
-// 	. "github.com/onsi/gomega"
-// 	"github.com/rendon/testcli"
-// )
-//
-// // Run make install before these tests to get meaningful
-// // results.
-//
-// var _ = Describe("Main", func() {
-// 	Describe("--version flag", func() {
-// 		It("returns version", func() {
-// 			c := testcli.Command("gnparser", "-v")
-// 			c.Run()
-// 			Expect(c.Success()).To(BeTrue())
-// 			Expect(c.Stdout()).To(ContainSubstring("version:"))
-// 		})
-//
-// 		It("ignores other flags returning version", func() {
-// 			c := testcli.Command("gnparser", "-v", "-f", "simple",
-// 				"-j", "200", "-w", "8000")
-// 			c.Run()
-// 			Expect(c.Success()).To(BeTrue())
-// 			Expect(c.Stdout()).To(ContainSubstring("version:"))
-// 		})
-// 	})
-//
-// 	Describe("-format flag", func() {
-// 		It("formats output", func() {
-// 			c := testcli.Command("gnparser", "Homo sapiens", "-f", "simple")
-// 			c.Run()
-// 			Expect(c.Success()).To(BeTrue())
-// 			Expect(c.Stdout()).To(ContainSubstring(",Homo sapiens,"))
-// 		})
-// 		It("is ignored with --version", func() {
-// 			c := testcli.Command("gnparser", "Homo sapiens", "-f", "simple", "--version")
-// 			c.Run()
-// 			Expect(c.Success()).To(BeTrue())
-// 			Expect(c.Stdout()).ToNot(ContainSubstring(",Homo sapiens,"))
-// 			Expect(c.Stdout()).To(ContainSubstring("version:"))
-// 		})
-// 		It("is set to default format if -f value is unknown",
-// 			func() {
-// 				c := testcli.Command("gnparser", "Homo sapiens", "-f", ":)")
-// 				c.Run()
-// 				Expect(c.Success()).To(BeTrue())
-// 				Expect(c.Stdout()).
-// 					To(HavePrefix(`Id,Verbatim,Cardinality,CanonicalFull`))
-// 			})
-// 	})
-// 	Describe("Stdin", func() {
-// 		It("takes data from Stdin", func() {
-// 			c := testcli.Command("gnparser", "-f", "simple")
-// 			c.SetStdin(strings.NewReader("Homo sapiens"))
-// 			c.Run()
-// 			Expect(c.Success()).To(BeTrue())
-// 			Expect(c.Stdout()).To(ContainSubstring(",Homo sapiens,"))
-// 		})
-// 		It("takes multiple names from Stdin", func() {
-// 			c := testcli.Command("gnparser", "-f", "simple")
-// 			c.SetStdin(strings.NewReader("Plantago\nBubo L.\n"))
-// 			c.Run()
-// 			Expect(c.Success()).To(BeTrue())
-// 			Expect(c.Stdout()).To(ContainSubstring(",Plantago,"))
-// 			Expect(c.Stdout()).To(ContainSubstring(",Bubo,"))
-// 		})
-// 	})
-// })
+// Run make install before these tests to get meaningful
+// results.
+
+func TestVersion(t *testing.T) {
+	c := testcli.Command("gnparser", "-V")
+	c.Run()
+	assert.True(t, c.Success())
+	assert.Contains(t, c.Stdout(), "version:")
+
+	c = testcli.Command("gnparser", "-V", "-f", "simple",
+		"-j", "200", "-p", "8000")
+	c.Run()
+	assert.True(t, c.Success())
+	assert.Contains(t, c.Stdout(), "version:")
+}
+
+func TestFormat(t *testing.T) {
+	t.Run("runs csv format", func(t *testing.T) {
+		c := testcli.Command("gnparser", "Homo sapiens", "-f", "csv")
+		c.Run()
+		assert.True(t, c.Success())
+		assert.Contains(t, c.Stdout(), ",Homo sapiens,2")
+	})
+
+	t.Run("ignores parsing with --version", func(t *testing.T) {
+		c := testcli.Command("gnparser", "Homo sapiens", "-f", "simple", "--version")
+		c.Run()
+		assert.True(t, c.Success())
+		assert.NotContains(t, c.Stdout(), ",Homo sapiens,")
+		assert.Contains(t, c.Stdout(), "version:")
+	})
+
+	t.Run("sets format to default if -f value is unknown", func(t *testing.T) {
+		c := testcli.Command("gnparser", "Homo sapiens", "-f", ":)")
+		c.Run()
+		assert.True(t, c.Success())
+		assert.Contains(t, c.Stdout(), `Id,Verbatim,Cardinality,`)
+	})
+}
+
+func TestStdin(t *testing.T) {
+	t.Run("takes data from Stdin", func(t *testing.T) {
+		c := testcli.Command("gnparser", "-f", "simple")
+		c.SetStdin(strings.NewReader("Homo sapiens"))
+		c.Run()
+		assert.True(t, c.Success())
+		assert.Contains(t, c.Stdout(), ",Homo sapiens,")
+	})
+
+	t.Run("takes multiple names from Stdin", func(t *testing.T) {
+		c := testcli.Command("gnparser", "-f", "simple")
+		c.SetStdin(strings.NewReader("Plantago\nBubo L.\n"))
+		c.Run()
+		assert.True(t, c.Success())
+		assert.Contains(t, c.Stdout(), ",Plantago,")
+		assert.Contains(t, c.Stdout(), ",Bubo,")
+	})
+}

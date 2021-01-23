@@ -1,20 +1,20 @@
-package output
+package parsed
 
 import "fmt"
 
-// ParseResult structure contains parsing output, its place in the
+// ParsedWithIdx structure contains parsing output, its place in the
 // slice, and an unexpected error, if it happened during the parsing.
-type ParseResult struct {
+type ParsedWithIdx struct {
 	Idx    int
 	Parsed Parsed
 	Error  error
 }
 
-func (pr ParseResult) Index() int {
+func (pr ParsedWithIdx) Index() int {
 	return pr.Idx
 }
 
-func (pr ParseResult) Unpack(v interface{}) error {
+func (pr ParsedWithIdx) Unpack(v interface{}) error {
 	if pr.Error != nil {
 		return pr.Error
 	}

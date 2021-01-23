@@ -6,8 +6,8 @@ import (
 	"sync"
 
 	"github.com/gnames/gnlib/organizer"
-	"github.com/gnames/gnparser/entity/input"
-	"github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/nameidx"
+	"github.com/gnames/gnparser/entity/parsed"
 	"github.com/gnames/gnparser/entity/parser"
 )
 
@@ -16,8 +16,8 @@ import (
 // the input.
 func (gnp gnparser) ParseNameStream(
 	ctx context.Context,
-	chIn <-chan input.Name,
-	chOut chan<- output.Parsed,
+	chIn <-chan nameidx.NameIdx,
+	chOut chan<- parsed.Parsed,
 ) {
 	chToOrder := make(chan organizer.Ordered)
 	chOrdered := make(chan organizer.Ordered)
@@ -41,18 +41,18 @@ func (gnp gnparser) ParseNameStream(
 
 func (gnp gnparser) parseStreamWorker(
 	ctx context.Context,
-	chIn <-chan input.Name,
+	chIn <-chan nameidx.NameIdx,
 	chOut chan<- organizer.Ordered,
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
 	gnp.parser = parser.NewParser()
 	for v := range chIn {
-		parsed := gnp.ParseName(v.NameString)
+		parseRes := gnp.ParseName(v.NameString)
 		select {
 		case <-ctx.Done():
 			return
-		case chOut <- output.ParseResult{Parsed: parsed, Error: nil, Idx: v.Index}:
+		case chOut <- parsed.ParsedWithIdx{Parsed: parseRes, Error: nil, Idx: v.Index}:
 		}
 	}
 }
@@ -60,12 +60,12 @@ func (gnp gnparser) parseStreamWorker(
 func sendOrdered(
 	ctx context.Context,
 	chOrdered <-chan organizer.Ordered,
-	chOut chan<- output.Parsed,
+	chOut chan<- parsed.Parsed,
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
 	for v := range chOrdered {
-		var p output.Parsed
+		var p parsed.Parsed
 		err := v.Unpack(&p)
 		if err != nil {
 			log.Panic(err)

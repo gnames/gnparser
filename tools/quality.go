@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 	"sort"
 )
 
@@ -22,7 +22,7 @@ Parsing finished without detecting any problems.`
 
 func main() {
 	warnsMap := make(map[int][]string)
-	for k, v := range output.WarningQualityMap {
+	for k, v := range parsed.WarningQualityMap {
 		warnsMap[v] = append(warnsMap[v], k.String())
 	}
 

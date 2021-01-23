@@ -3,7 +3,7 @@ package parser
 import (
 	"fmt"
 
-	o "github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 	"github.com/gnames/gnparser/entity/stemmer"
 	"github.com/gnames/gnparser/entity/str"
 )
@@ -23,7 +23,7 @@ func appendCanonical(c1 *canonical, c2 *canonical, sep string) *canonical {
 // Words returns a slice of output.Word objects, where each element
 // contains the value of the word, its semantic meaning and its
 // position in the string.
-func (sn *scientificNameNode) Words() []o.Word {
+func (sn *scientificNameNode) Words() []parsed.Word {
 	return sn.nameData.words()
 }
 
@@ -38,13 +38,13 @@ func (sn *scientificNameNode) Normalized() string {
 // Canonical returns canonical forms of scientific name. There are
 // three forms: Stemmed, the most normalized, Simple, and Full (the least
 // normalized).
-func (sn *scientificNameNode) Canonical() *o.Canonical {
-	var res *o.Canonical
+func (sn *scientificNameNode) Canonical() *parsed.Canonical {
+	var res *parsed.Canonical
 	if sn.nameData == nil {
 		return res
 	}
 	c := sn.nameData.canonical()
-	return &o.Canonical{
+	return &parsed.Canonical{
 		Stemmed: stemmer.StemCanonical(c.Value),
 		Simple:  c.Value,
 		Full:    c.ValueRanked,
@@ -53,7 +53,7 @@ func (sn *scientificNameNode) Canonical() *o.Canonical {
 
 // Details returns additional details of about a scientific names.
 // This function is called only if config.Config.WithDetails is true.
-func (sn *scientificNameNode) Details() o.Details {
+func (sn *scientificNameNode) Details() parsed.Details {
 	if sn.nameData == nil {
 		return nil
 	}
@@ -63,8 +63,8 @@ func (sn *scientificNameNode) Details() o.Details {
 // LastAuthorship returns the authorshop of the smallest element of a name.
 // For example for a variation, it returns the authors of the variation, and
 // ignores authors of genus, species etc.
-func (sn *scientificNameNode) LastAuthorship(withDetails bool) *o.Authorship {
-	var ao *o.Authorship
+func (sn *scientificNameNode) LastAuthorship(withDetails bool) *parsed.Authorship {
+	var ao *parsed.Authorship
 	if sn.nameData == nil {
 		return ao
 	}
@@ -80,7 +80,7 @@ func (sn *scientificNameNode) LastAuthorship(withDetails bool) *o.Authorship {
 	return res
 }
 
-func (nf *hybridFormulaNode) words() []o.Word {
+func (nf *hybridFormulaNode) words() []parsed.Word {
 	words := nf.FirstSpecies.words()
 	for _, v := range nf.HybridElements {
 		words = append(words, v.HybridChar.Pos)
@@ -123,19 +123,19 @@ func (nf *hybridFormulaNode) lastAuthorship() *authorshipNode {
 	return au
 }
 
-func (nf *hybridFormulaNode) details() o.Details {
-	dets := make([]o.Details, 0, len(nf.HybridElements)+1)
+func (nf *hybridFormulaNode) details() parsed.Details {
+	dets := make([]parsed.Details, 0, len(nf.HybridElements)+1)
 	dets = append(dets, nf.FirstSpecies.details())
 	for _, v := range nf.HybridElements {
 		if v.Species != nil {
 			dets = append(dets, v.Species.details())
 		}
 	}
-	return o.DetailsHybridFormula{HybridFormula: dets}
+	return parsed.DetailsHybridFormula{HybridFormula: dets}
 }
 
-func (nh *namedGenusHybridNode) words() []o.Word {
-	words := []o.Word{nh.Hybrid.Pos}
+func (nh *namedGenusHybridNode) words() []parsed.Word {
+	words := []parsed.Word{nh.Hybrid.Pos}
 	words = append(words, nh.nameData.words()...)
 	return words
 }
@@ -157,7 +157,7 @@ func (nh *namedGenusHybridNode) canonical() *canonical {
 	return c
 }
 
-func (nh *namedGenusHybridNode) details() o.Details {
+func (nh *namedGenusHybridNode) details() parsed.Details {
 	d := nh.nameData.details()
 	return d
 }
@@ -167,12 +167,12 @@ func (nh *namedGenusHybridNode) lastAuthorship() *authorshipNode {
 	return au
 }
 
-func (nh *namedSpeciesHybridNode) words() []o.Word {
-	var wrd o.Word
+func (nh *namedSpeciesHybridNode) words() []parsed.Word {
+	var wrd parsed.Word
 	wrd = nh.Genus.Pos
 	wrd.Verbatim = nh.Genus.Value
 	wrd.Normalized = nh.Genus.NormValue
-	words := []o.Word{wrd}
+	words := []parsed.Word{wrd}
 	if nh.Comparison != nil {
 		wrd = nh.Comparison.Pos
 		wrd.Verbatim = nh.Comparison.Value
@@ -222,9 +222,9 @@ func (nh *namedSpeciesHybridNode) lastAuthorship() *authorshipNode {
 	return nh.Infraspecies[len(nh.Infraspecies)-1].Authorship
 }
 
-func (nh *namedSpeciesHybridNode) details() o.Details {
+func (nh *namedSpeciesHybridNode) details() parsed.Details {
 	g := nh.Genus.NormValue
-	so := o.Species{
+	so := parsed.Species{
 		Genus:   g,
 		Species: nh.SpEpithet.value(),
 	}
@@ -233,26 +233,26 @@ func (nh *namedSpeciesHybridNode) details() o.Details {
 	}
 
 	if len(nh.Infraspecies) == 0 {
-		return o.DetailsSpecies{Species: so}
+		return parsed.DetailsSpecies{Species: so}
 	}
-	infs := make([]o.InfraspeciesElem, 0, len(nh.Infraspecies))
+	infs := make([]parsed.InfraspeciesElem, 0, len(nh.Infraspecies))
 	for _, v := range nh.Infraspecies {
 		if v == nil {
 			continue
 		}
 		infs = append(infs, v.details())
 	}
-	iso := o.Infraspecies{
+	iso := parsed.Infraspecies{
 		Species:      so,
 		Infraspecies: infs,
 	}
 
-	return o.DetailsInfraspecies{Infraspecies: iso}
+	return parsed.DetailsInfraspecies{Infraspecies: iso}
 }
 
-func (apr *approxNode) words() []o.Word {
-	var words []o.Word
-	var wrd o.Word
+func (apr *approxNode) words() []parsed.Word {
+	var words []parsed.Word
+	var wrd parsed.Word
 	if apr == nil {
 		return words
 	}
@@ -304,36 +304,36 @@ func (apr *approxNode) lastAuthorship() *authorshipNode {
 	return apr.SpEpithet.Authorship
 }
 
-func (apr *approxNode) details() o.Details {
+func (apr *approxNode) details() parsed.Details {
 	if apr == nil {
 		return nil
 	}
-	ao := o.Approximation{
+	ao := parsed.Approximation{
 		Genus:        apr.Genus.NormValue,
 		ApproxMarker: apr.Approx.NormValue,
 		Ignored:      apr.Ignored,
 	}
 	if apr.SpEpithet == nil {
-		return o.DetailsApproximation{Approximation: ao}
+		return parsed.DetailsApproximation{Approximation: ao}
 	}
 	ao.Species = apr.SpEpithet.Word.NormValue
 
 	if apr.SpEpithet.Authorship != nil {
 		ao.SpeciesAuthorship = apr.SpEpithet.Authorship.details()
 	}
-	return o.DetailsApproximation{Approximation: ao}
+	return parsed.DetailsApproximation{Approximation: ao}
 }
 
-func (comp *comparisonNode) words() []o.Word {
-	var words []o.Word
-	var wrd o.Word
+func (comp *comparisonNode) words() []parsed.Word {
+	var words []parsed.Word
+	var wrd parsed.Word
 	if comp == nil {
 		return nil
 	}
 	wrd = comp.Genus.Pos
 	wrd.Verbatim = comp.Genus.Value
 	wrd.Normalized = comp.Genus.NormValue
-	words = []o.Word{wrd}
+	words = []parsed.Word{wrd}
 	wrd = comp.Comparison.Pos
 	wrd.Verbatim = comp.Comparison.Value
 	wrd.Normalized = comp.Comparison.NormValue
@@ -377,28 +377,28 @@ func (comp *comparisonNode) lastAuthorship() *authorshipNode {
 	return comp.SpEpithet.Authorship
 }
 
-func (comp *comparisonNode) details() o.Details {
+func (comp *comparisonNode) details() parsed.Details {
 	if comp == nil {
 		return nil
 	}
-	co := o.Comparison{
+	co := parsed.Comparison{
 		Genus:      comp.Genus.NormValue,
 		CompMarker: comp.Comparison.NormValue,
 	}
 	if comp.SpEpithet == nil {
-		return o.DetailsComparison{Comparison: co}
+		return parsed.DetailsComparison{Comparison: co}
 	}
 
 	co.Species = comp.SpEpithet.value()
 	if comp.SpEpithet.Authorship != nil {
 		co.SpeciesAuthorship = comp.SpEpithet.Authorship.details()
 	}
-	return o.DetailsComparison{Comparison: co}
+	return parsed.DetailsComparison{Comparison: co}
 }
 
-func (sp *speciesNode) words() []o.Word {
-	var words []o.Word
-	var wrd o.Word
+func (sp *speciesNode) words() []parsed.Word {
+	var words []parsed.Word
+	var wrd parsed.Word
 	if sp.Genus.Pos.End != 0 {
 		wrd = sp.Genus.Pos
 		wrd.Verbatim = sp.Genus.Value
@@ -449,8 +449,8 @@ func (sp *speciesNode) lastAuthorship() *authorshipNode {
 	return sp.Infraspecies[len(sp.Infraspecies)-1].Authorship
 }
 
-func (sp *speciesNode) details() o.Details {
-	so := o.Species{
+func (sp *speciesNode) details() parsed.Details {
+	so := parsed.Species{
 		Genus:   sp.Genus.NormValue,
 		Species: sp.SpEpithet.Word.NormValue,
 	}
@@ -462,28 +462,28 @@ func (sp *speciesNode) details() o.Details {
 		so.Subgenus = sp.Subgenus.NormValue
 	}
 	if len(sp.Infraspecies) == 0 {
-		return o.DetailsSpecies{Species: so}
+		return parsed.DetailsSpecies{Species: so}
 	}
-	infs := make([]o.InfraspeciesElem, 0, len(sp.Infraspecies))
+	infs := make([]parsed.InfraspeciesElem, 0, len(sp.Infraspecies))
 	for _, v := range sp.Infraspecies {
 		if v == nil {
 			continue
 		}
 		infs = append(infs, v.details())
 	}
-	sio := o.Infraspecies{
+	sio := parsed.Infraspecies{
 		Species:      so,
 		Infraspecies: infs,
 	}
 
-	return o.DetailsInfraspecies{Infraspecies: sio}
+	return parsed.DetailsInfraspecies{Infraspecies: sio}
 }
 
-func (sep *spEpithetNode) words() []o.Word {
+func (sep *spEpithetNode) words() []parsed.Word {
 	wrd := sep.Word.Pos
 	wrd.Verbatim = sep.Word.Value
 	wrd.Normalized = sep.Word.NormValue
-	words := []o.Word{wrd}
+	words := []parsed.Word{wrd}
 	words = append(words, sep.Authorship.words()...)
 	return words
 }
@@ -499,9 +499,9 @@ func (sep *spEpithetNode) canonical() *canonical {
 	return c
 }
 
-func (inf *infraspEpithetNode) words() []o.Word {
-	var words []o.Word
-	var wrd o.Word
+func (inf *infraspEpithetNode) words() []parsed.Word {
+	var words []parsed.Word
+	var wrd parsed.Word
 	if inf.Rank != nil && inf.Rank.Word.Pos.Start != 0 {
 		wrd = inf.Rank.Word.Pos
 		wrd.Verbatim = inf.Rank.Word.Value
@@ -544,12 +544,12 @@ func (inf *infraspEpithetNode) canonical() *canonical {
 	return &c
 }
 
-func (inf *infraspEpithetNode) details() o.InfraspeciesElem {
+func (inf *infraspEpithetNode) details() parsed.InfraspeciesElem {
 	rank := ""
 	if inf.Rank != nil && inf.Rank.Word != nil {
 		rank = inf.Rank.Word.NormValue
 	}
-	res := o.InfraspeciesElem{
+	res := parsed.InfraspeciesElem{
 		Value:      inf.Word.NormValue,
 		Rank:       rank,
 		Authorship: inf.Authorship.details(),
@@ -557,11 +557,11 @@ func (inf *infraspEpithetNode) details() o.InfraspeciesElem {
 	return res
 }
 
-func (u *uninomialNode) words() []o.Word {
+func (u *uninomialNode) words() []parsed.Word {
 	wrd := u.Word.Pos
 	wrd.Verbatim = u.Word.Value
 	wrd.Normalized = u.Word.NormValue
-	words := []o.Word{wrd}
+	words := []parsed.Word{wrd}
 	words = append(words, u.Authorship.words()...)
 	return words
 }
@@ -579,21 +579,21 @@ func (u *uninomialNode) lastAuthorship() *authorshipNode {
 	return u.Authorship
 }
 
-func (u *uninomialNode) details() o.Details {
-	ud := o.Uninomial{Value: u.Word.NormValue}
+func (u *uninomialNode) details() parsed.Details {
+	ud := parsed.Uninomial{Value: u.Word.NormValue}
 	if u.Authorship != nil {
 		ud.Authorship = u.Authorship.details()
 	}
-	uo := o.DetailsUninomial{Uninomial: ud}
+	uo := parsed.DetailsUninomial{Uninomial: ud}
 	return uo
 }
 
-func (u *uninomialComboNode) words() []o.Word {
-	var wrd o.Word
+func (u *uninomialComboNode) words() []parsed.Word {
+	var wrd parsed.Word
 	wrd = u.Uninomial1.Word.Pos
 	wrd.Verbatim = u.Uninomial1.Word.Value
 	wrd.Normalized = u.Uninomial1.Word.NormValue
-	words := []o.Word{wrd}
+	words := []parsed.Word{wrd}
 	words = append(words, u.Uninomial1.Authorship.words()...)
 	if u.Rank.Word.Pos.Start != 0 {
 		wrd = u.Rank.Word.Pos
@@ -631,8 +631,8 @@ func (u *uninomialComboNode) lastAuthorship() *authorshipNode {
 	return u.Uninomial2.Authorship
 }
 
-func (u *uninomialComboNode) details() o.Details {
-	ud := o.Uninomial{
+func (u *uninomialComboNode) details() parsed.Details {
+	ud := parsed.Uninomial{
 		Value:  u.Uninomial2.Word.NormValue,
 		Rank:   u.Rank.Word.NormValue,
 		Parent: u.Uninomial1.Word.NormValue,
@@ -640,16 +640,16 @@ func (u *uninomialComboNode) details() o.Details {
 	if u.Uninomial2.Authorship != nil {
 		ud.Authorship = u.Uninomial2.Authorship.details()
 	}
-	uo := o.DetailsUninomial{Uninomial: ud}
+	uo := parsed.DetailsUninomial{Uninomial: ud}
 	return uo
 }
 
-func (au *authorshipNode) details() *o.Authorship {
+func (au *authorshipNode) details() *parsed.Authorship {
 	if au == nil {
-		var ao *o.Authorship
+		var ao *parsed.Authorship
 		return ao
 	}
-	ao := o.Authorship{Verbatim: au.Verbatim, Normalized: au.value()}
+	ao := parsed.Authorship{Verbatim: au.Verbatim, Normalized: au.value()}
 	ao.Original = authGroupDetail(au.OriginalAuthors)
 
 	if au.CombinationAuthors != nil {
@@ -674,13 +674,13 @@ func (au *authorshipNode) details() *o.Authorship {
 	return &ao
 }
 
-func authGroupDetail(ag *authorsGroupNode) *o.AuthGroup {
-	var ago o.AuthGroup
+func authGroupDetail(ag *authorsGroupNode) *parsed.AuthGroup {
+	var ago parsed.AuthGroup
 	if ag == nil {
 		return &ago
 	}
 	aus, yr := ag.Team1.details()
-	ago = o.AuthGroup{
+	ago = parsed.AuthGroup{
 		Authors: aus,
 		Year:    yr,
 	}
@@ -690,13 +690,13 @@ func authGroupDetail(ag *authorsGroupNode) *o.AuthGroup {
 	aus, yr = ag.Team2.details()
 	switch ag.Team2Type {
 	case teamEx:
-		eao := o.Authors{
+		eao := parsed.Authors{
 			Authors: aus,
 			Year:    yr,
 		}
 		ago.ExAuthors = &eao
 	case teamEmend:
-		eao := o.Authors{
+		eao := parsed.Authors{
 			Authors: aus,
 			Year:    yr,
 		}
@@ -705,9 +705,9 @@ func authGroupDetail(ag *authorsGroupNode) *o.AuthGroup {
 	return &ago
 }
 
-func (a *authorshipNode) words() []o.Word {
+func (a *authorshipNode) words() []parsed.Word {
 	if a == nil {
-		var p []o.Word
+		var p []parsed.Word
 		return p
 	}
 	p := a.OriginalAuthors.words()
@@ -743,9 +743,9 @@ func (ag *authorsGroupNode) value() string {
 	return v
 }
 
-func (ag *authorsGroupNode) words() []o.Word {
+func (ag *authorsGroupNode) words() []parsed.Word {
 	if ag == nil {
-		var p []o.Word
+		var p []parsed.Word
 		return p
 	}
 	p := ag.Team1.words()
@@ -778,8 +778,8 @@ func (aut *authorsTeamNode) value() string {
 	return value
 }
 
-func (at *authorsTeamNode) details() ([]string, *o.Year) {
-	var yr *o.Year
+func (at *authorsTeamNode) details() ([]string, *parsed.Year) {
+	var yr *parsed.Year
 	var aus []string
 	if at == nil {
 		return aus, yr
@@ -791,15 +791,15 @@ func (at *authorsTeamNode) details() ([]string, *o.Year) {
 	if at.Year == nil {
 		return aus, yr
 	}
-	yr = &o.Year{
+	yr = &parsed.Year{
 		Value:         at.Year.Word.NormValue,
 		IsApproximate: at.Year.Approximate,
 	}
 	return aus, yr
 }
 
-func (aut *authorsTeamNode) words() []o.Word {
-	var res []o.Word
+func (aut *authorsTeamNode) words() []parsed.Word {
+	var res []parsed.Word
 	if aut == nil {
 		return res
 	}
@@ -815,8 +815,8 @@ func (aut *authorsTeamNode) words() []o.Word {
 	return res
 }
 
-func (aun *authorNode) words() []o.Word {
-	p := make([]o.Word, len(aun.Words))
+func (aun *authorNode) words() []parsed.Word {
+	p := make([]parsed.Word, len(aun.Words))
 	for i, v := range aun.Words {
 		p[i] = v.Pos
 		p[i].Verbatim = v.Value

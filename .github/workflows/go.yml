@@ -19,7 +19,7 @@ jobs:
         go-version: 1.15
 
     - name: Build
-      run: go build -v ./...
+      run: go install -v ./gnparser
 
     - name: Test
       run: go test -v ./...

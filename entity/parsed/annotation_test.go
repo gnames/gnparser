@@ -1,22 +1,22 @@
-package output_test
+package parsed_test
 
 import (
 	"testing"
 
 	"github.com/gnames/gnlib/encode"
-	out "github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestStringAnnot(t *testing.T) {
 	data := []struct {
-		annot out.Annotation
+		annot parsed.Annotation
 		res   string
 	}{
-		{out.NoAnnot, ""},
-		{out.ComparisonAnnot, "COMPARISON"},
-		{out.ApproximationAnnot, "APPROXIMATION"},
-		{out.SurrogateAnnot, "SURROGATE"},
+		{parsed.NoAnnot, ""},
+		{parsed.ComparisonAnnot, "COMPARISON"},
+		{parsed.ApproximationAnnot, "APPROXIMATION"},
+		{parsed.SurrogateAnnot, "SURROGATE"},
 	}
 
 	for i := range data {
@@ -26,17 +26,17 @@ func TestStringAnnot(t *testing.T) {
 
 func TestJSONAnnot(t *testing.T) {
 	type dataOb struct {
-		Field1 string         `json:"f1"`
-		Annot  out.Annotation `json:"annot"`
-		Field2 []int          `json:"f2"`
+		Field1 string            `json:"f1"`
+		Annot  parsed.Annotation `json:"annot"`
+		Field2 []int             `json:"f2"`
 	}
 	data := []struct {
 		dob dataOb
 		res string
 	}{
-		{dataOb{"None", out.NoAnnot, []int{}},
+		{dataOb{"None", parsed.NoAnnot, []int{}},
 			`{"f1":"None","annot":"","f2":[]}`},
-		{dataOb{"Comparison", out.ComparisonAnnot, []int{2, 3, 4}},
+		{dataOb{"Comparison", parsed.ComparisonAnnot, []int{2, 3, 4}},
 			`{"f1":"Comparison","annot":"COMPARISON","f2":[2,3,4]}`},
 	}
 	enc := encode.GNjson{}

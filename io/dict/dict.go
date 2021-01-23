@@ -1,3 +1,4 @@
+// Package dict provides lookup data for gnparser.
 package dict
 
 import (

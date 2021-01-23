@@ -12,7 +12,7 @@ import (
 	"github.com/gnames/gnlib/encode"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/config"
-	"github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 )
@@ -28,8 +28,8 @@ func handlerGET(path string) (echo.Context, *httptest.ResponseRecorder) {
 
 func TestHome(t *testing.T) {
 	cfg := config.NewConfig(config.OptFormat("compact"))
-	gnp := gnparser.NewGNParser(cfg)
-	gnps := NewGNParserService(gnp, 0)
+	gnp := gnparser.New(cfg)
+	gnps := NewGNparserService(gnp, 0)
 
 	req := httptest.NewRequest(http.MethodGet, "/", nil)
 	rec := httptest.NewRecorder()
@@ -59,8 +59,8 @@ func TestInfo(t *testing.T) {
 
 func TestPing(t *testing.T) {
 	cfg := config.NewConfig(config.OptFormat("compact"))
-	gnp := gnparser.NewGNParser(cfg)
-	gnps := NewGNParserService(gnp, 0)
+	gnp := gnparser.New(cfg)
+	gnps := NewGNparserService(gnp, 0)
 	c, rec := handlerGET("/ping")
 
 	assert.Nil(t, ping(gnps)(c))
@@ -70,8 +70,8 @@ func TestPing(t *testing.T) {
 
 func TestVer(t *testing.T) {
 	cfg := config.NewConfig(config.OptFormat("compact"))
-	gnp := gnparser.NewGNParser(cfg)
-	gnps := NewGNParserService(gnp, 0)
+	gnp := gnparser.New(cfg)
+	gnps := NewGNparserService(gnp, 0)
 	c, rec := handlerGET("/version")
 
 	assert.Nil(t, ver(gnps)(c))
@@ -84,10 +84,10 @@ func TestVer(t *testing.T) {
 
 func TestParseGET(t *testing.T) {
 	cfg := config.NewConfig(config.OptFormat("compact"))
-	gnp := gnparser.NewGNParser(cfg)
-	gnps := NewGNParserService(gnp, 0)
+	gnp := gnparser.New(cfg)
+	gnps := NewGNparserService(gnp, 0)
 
-	var response []output.Parsed
+	var response []parsed.Parsed
 	names := []string{
 		"Not name", "Bubo bubo", "Pomatomus",
 		"Pardosa moesta", "Plantago major var major",
@@ -128,10 +128,10 @@ func TestParseGET(t *testing.T) {
 
 func TestParsePOST(t *testing.T) {
 	cfg := config.NewConfig(config.OptFormat("compact"))
-	gnp := gnparser.NewGNParser(cfg)
-	gnps := NewGNParserService(gnp, 0)
+	gnp := gnparser.New(cfg)
+	gnps := NewGNparserService(gnp, 0)
 
-	var response []output.Parsed
+	var response []parsed.Parsed
 	names := []string{
 		"Not name", "Bubo bubo", "Pomatomus",
 		"Pardosa moesta", "Plantago major var major",

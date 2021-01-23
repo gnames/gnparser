@@ -9,15 +9,15 @@ import (
 
 	"github.com/gnames/gnlib/format"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 )
 
 func parseBatch(
-	gnp gnparser.GNParser,
+	gnp gnparser.GNparser,
 	f io.Reader,
 ) {
 	batch := make([]string, batchSize)
-	chOut := make(chan []output.Parsed)
+	chOut := make(chan []parsed.Parsed)
 	var wg sync.WaitGroup
 
 	wg.Add(1)
@@ -45,13 +45,13 @@ func parseBatch(
 }
 
 func processResults(
-	out <-chan []output.Parsed,
+	out <-chan []parsed.Parsed,
 	wg *sync.WaitGroup,
 	f format.Format,
 ) {
 	defer wg.Done()
 	if f == format.CSV {
-		fmt.Println(output.HeaderCSV())
+		fmt.Println(parsed.HeaderCSV())
 	}
 	for pr := range out {
 		for i := range pr {

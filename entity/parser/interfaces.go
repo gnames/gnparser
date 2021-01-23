@@ -1,7 +1,7 @@
 package parser
 
 import (
-	o "github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 )
 
 // Parser is an interface that is responsible for parsing of a scientific
@@ -16,7 +16,7 @@ type Parser interface {
 // It contains a method to convert AST into final output.
 type ScientificNameNode interface {
 	// ToOutput converts AST into final output object.
-	ToOutput(withDetails bool) o.Parsed
+	ToOutput(withDetails bool) parsed.Parsed
 }
 
 // nameData is the interface for converting AST to output elements.
@@ -44,7 +44,7 @@ type canonizer interface {
 
 type worder interface {
 	// words function returns a meaning of words in a string and their positions
-	words() []o.Word
+	words() []parsed.Word
 }
 
 type authorFinder interface {
@@ -53,5 +53,5 @@ type authorFinder interface {
 
 type outputter interface {
 	// details creates a details structure for JSON-based outputs
-	details() o.Details
+	details() parsed.Details
 }

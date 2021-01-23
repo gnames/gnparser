@@ -10,15 +10,15 @@ import (
 
 	"github.com/gnames/gnlib/format"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/entity/input"
-	"github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/nameidx"
+	"github.com/gnames/gnparser/entity/parsed"
 )
 
 func getNames(
 	ctx context.Context,
 	f io.Reader,
-) <-chan input.Name {
-	chIn := make(chan input.Name)
+) <-chan nameidx.NameIdx {
+	chIn := make(chan nameidx.NameIdx)
 	sc := bufio.NewScanner(f)
 
 	go func() {
@@ -29,7 +29,7 @@ func getNames(
 			select {
 			case <-ctx.Done():
 				return
-			case chIn <- input.Name{Index: count, NameString: nameString}:
+			case chIn <- nameidx.NameIdx{Index: count, NameString: nameString}:
 			}
 			count++
 		}
@@ -41,18 +41,18 @@ func getNames(
 }
 
 func parseStream(
-	gnp gnparser.GNParser,
+	gnp gnparser.GNparser,
 	f io.Reader,
 ) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	chIn := getNames(ctx, f)
-	chOut := make(chan output.Parsed)
+	chOut := make(chan parsed.Parsed)
 	var wg sync.WaitGroup
 	wg.Add(1)
 
 	if gnp.Format() == format.CSV {
-		output.HeaderCSV()
+		parsed.HeaderCSV()
 	}
 
 	go gnp.ParseNameStream(ctx, chIn, chOut)

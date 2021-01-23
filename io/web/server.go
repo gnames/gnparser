@@ -9,7 +9,7 @@ import (
 
 	"github.com/gnames/gnlib/format"
 	"github.com/gnames/gnparser/config"
-	"github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 	"github.com/gnames/gnparser/io/fs"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -23,9 +23,9 @@ type inputPOST struct {
 	CSV         bool     `json:"csv,omitempty"`
 }
 
-// Run starts the GNParser web service and servies both RESTful API and
+// Run starts the GNparser web service and servies both RESTful API and
 // a website.
-func Run(gnps GNParserService) {
+func Run(gnps GNparserService) {
 	e := echo.New()
 	e.Renderer = templates()
 	e.Use(middleware.Gzip())
@@ -67,21 +67,21 @@ https://app.swaggerhub.com/apis-docs/dimus/gnparser/1.0.0`,
 	}
 }
 
-func ping(gnps GNParserService) func(echo.Context) error {
+func ping(gnps GNparserService) func(echo.Context) error {
 	return func(c echo.Context) error {
 		result := gnps.Ping()
 		return c.String(http.StatusOK, result)
 	}
 }
 
-func ver(gnps GNParserService) func(echo.Context) error {
+func ver(gnps GNparserService) func(echo.Context) error {
 	return func(c echo.Context) error {
 		result := gnps.GetVersion()
 		return c.JSON(http.StatusOK, result)
 	}
 }
 
-func parseNamesGET(gnps GNParserService) func(echo.Context) error {
+func parseNamesGET(gnps GNparserService) func(echo.Context) error {
 	return func(c echo.Context) error {
 		nameStr, _ := url.QueryUnescape(c.Param("names"))
 		csv := c.QueryParam("csv") != ""
@@ -93,7 +93,7 @@ func parseNamesGET(gnps GNParserService) func(echo.Context) error {
 	}
 }
 
-func parseNamesPOST(gnps GNParserService) func(echo.Context) error {
+func parseNamesPOST(gnps GNparserService) func(echo.Context) error {
 	return func(c echo.Context) error {
 		var input inputPOST
 		if err := c.Bind(&input); err != nil {
@@ -107,13 +107,13 @@ func parseNamesPOST(gnps GNParserService) func(echo.Context) error {
 
 func formatNames(
 	c echo.Context,
-	res []output.Parsed,
+	res []parsed.Parsed,
 	f format.Format,
 ) error {
 	switch f {
 	case format.CSV:
 		resCSV := make([]string, 0, len(res)+1)
-		resCSV = append(resCSV, output.HeaderCSV())
+		resCSV = append(resCSV, parsed.HeaderCSV())
 		for i := range res {
 			resCSV = append(resCSV, res[i].Output(f))
 		}

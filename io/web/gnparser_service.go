@@ -5,15 +5,15 @@ import (
 )
 
 type gnparserService struct {
-	gnparser.GNParser
+	gnparser.GNparser
 	port int
 }
 
-// NewGNParserService creates a new object that implements GNParserService
+// NewGNparserService creates a new object that implements GNparserService
 // interface.
-func NewGNParserService(gnp gnparser.GNParser, port int) GNParserService {
+func NewGNparserService(gnp gnparser.GNparser, port int) GNparserService {
 	res := gnparserService{
-		GNParser: gnp,
+		GNparser: gnp,
 		port:     port,
 	}
 	return &res

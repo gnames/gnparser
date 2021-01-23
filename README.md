@@ -503,7 +503,7 @@ import (
 func Example() {
 	names := []string{"Pardosa moesta Banks, 1892", "Bubo bubo"}
 	cfg := config.NewConfig()
-	gnp := gnparser.NewGNParser(cfg)
+	gnp := gnparser.New(cfg)
 	parsed := gnp.ParseNames(names)
 	fmt.Println(parsed[0].Authorship.Normalized)
 	fmt.Println(parsed[1].Canonical.Simple)

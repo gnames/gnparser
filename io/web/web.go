@@ -1,3 +1,4 @@
+// Package web provides RESTful API service and a website for gnparser.
 package web
 
 import (
@@ -51,7 +52,7 @@ func NewData() *Data {
 	return &Data{Version: gnparser.Version}
 }
 
-func home(gnps GNParserService) func(echo.Context) error {
+func home(gnps GNparserService) func(echo.Context) error {
 	return func(c echo.Context) error {
 		var parsed []string
 		data := NewData()

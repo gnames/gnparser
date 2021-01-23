@@ -1,4 +1,4 @@
-package output
+package parsed
 
 // Uninomial are details for names with cardinality 1.
 type Uninomial struct {

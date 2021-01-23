@@ -1,3 +1,8 @@
+// Package gnparser implements the main use-case of the project -- parsing
+// scientific names. There are methods to parse one name at a time,
+// a slice of names, or a stream of names. All methods return results in the
+// same order as input. It is achieved by restoring the order after concurrent
+// execution of the parsing process.
 package gnparser
 
 import (
@@ -8,12 +13,12 @@ import (
 	"github.com/gnames/gnlib/format"
 	"github.com/gnames/gnparser/config"
 
-	"github.com/gnames/gnparser/entity/input"
-	output "github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/nameidx"
+	"github.com/gnames/gnparser/entity/parsed"
 	"github.com/gnames/gnparser/entity/parser"
 )
 
-// gnparser is an implementation of GNParser interface.
+// gnparser is an implementation of GNparser interface.
 // It is responsible for main parsing operations.
 type gnparser struct {
 	// cfg keeps gnparser settings.
@@ -23,18 +28,18 @@ type gnparser struct {
 	parser parser.Parser
 }
 
-// NewGNParser constructor function takes options organized into a
-// configuration struct and returns an object that implements GNParser
+// New constructor function takes options organized into a
+// configuration struct and returns an object that implements GNparser
 // interface.
-func NewGNParser(cfg config.Config) GNParser {
+func New(cfg config.Config) GNparser {
 	gnp := gnparser{cfg: cfg}
 	gnp.parser = parser.NewParser()
 	return gnp
 }
 
 // Parse function parses input string according to configurations.
-// It takes a string and returns an output.Parsed object.
-func (gnp gnparser) ParseName(s string) output.Parsed {
+// It takes a string and returns an parsed.Parsed object.
+func (gnp gnparser) ParseName(s string) parsed.Parsed {
 	ver := Version
 	if gnp.cfg.IsTest {
 		ver = "test_version"
@@ -45,10 +50,10 @@ func (gnp gnparser) ParseName(s string) output.Parsed {
 }
 
 // ParseNames function takes input names and returns parsed results.
-func (gnp gnparser) ParseNames(names []string) []output.Parsed {
-	res := make([]output.Parsed, len(names))
+func (gnp gnparser) ParseNames(names []string) []parsed.Parsed {
+	res := make([]parsed.Parsed, len(names))
 	jobsNum := gnp.cfg.JobsNum
-	chOut := make(chan output.ParseResult)
+	chOut := make(chan parsed.ParsedWithIdx)
 	var wgIn, wgOut sync.WaitGroup
 	wgIn.Add(jobsNum)
 	wgOut.Add(1)
@@ -89,8 +94,8 @@ func (gnp gnparser) Format() format.Format {
 }
 
 // ChangeConfig allows change configuration of already created
-// GNParser object.
-func (gnp gnparser) ChangeConfig(opts ...config.Option) GNParser {
+// GNparser object.
+func (gnp gnparser) ChangeConfig(opts ...config.Option) GNparser {
 	for i := range opts {
 		opts[i](&gnp.cfg)
 	}
@@ -112,32 +117,32 @@ func (gnp gnparser) GetVersion() gn.Version {
 
 func (gnp gnparser) parseWorker(
 	ctx context.Context,
-	chIn <-chan input.Name,
-	chOut chan<- output.ParseResult,
+	chIn <-chan nameidx.NameIdx,
+	chOut chan<- parsed.ParsedWithIdx,
 	wgIn *sync.WaitGroup,
 ) {
 	defer wgIn.Done()
 	gnp.parser = parser.NewParser()
 
 	for v := range chIn {
-		parsed := gnp.ParseName(v.NameString)
+		parseRes := gnp.ParseName(v.NameString)
 		select {
 		case <-ctx.Done():
 			return
-		case chOut <- output.ParseResult{Idx: v.Index, Parsed: parsed}:
+		case chOut <- parsed.ParsedWithIdx{Idx: v.Index, Parsed: parseRes}:
 		}
 	}
 }
 
-func loadNames(ctx context.Context, names []string) <-chan input.Name {
-	chIn := make(chan input.Name)
+func loadNames(ctx context.Context, names []string) <-chan nameidx.NameIdx {
+	chIn := make(chan nameidx.NameIdx)
 	go func() {
 		defer close(chIn)
 		for i := range names {
 			select {
 			case <-ctx.Done():
 				return
-			case chIn <- input.Name{Index: i, NameString: names[i]}:
+			case chIn <- nameidx.NameIdx{Index: i, NameString: names[i]}:
 			}
 		}
 	}()

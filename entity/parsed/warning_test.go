@@ -1,19 +1,19 @@
-package output_test
+package parsed_test
 
 import (
 	"testing"
 
 	"github.com/gnames/gnlib/encode"
-	out "github.com/gnames/gnparser/entity/output"
+	"github.com/gnames/gnparser/entity/parsed"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestStringWarn(t *testing.T) {
 	data := []struct {
-		annot out.Warning
+		annot parsed.Warning
 		res   string
 	}{
-		{out.TailWarn, "Unparsed tail"},
+		{parsed.TailWarn, "Unparsed tail"},
 	}
 
 	for i := range data {
@@ -23,17 +23,17 @@ func TestStringWarn(t *testing.T) {
 
 func TestJSONWarn(t *testing.T) {
 	type dataOb struct {
-		Field1 string      `json:"f1"`
-		Warn   out.Warning `json:"warning"`
-		Field2 []int       `json:"f2"`
+		Field1 string         `json:"f1"`
+		Warn   parsed.Warning `json:"warning"`
+		Field2 []int          `json:"f2"`
 	}
 	data := []struct {
 		dob dataOb
 		res string
 	}{
-		{dataOb{"Tail", out.TailWarn, []int{}},
+		{dataOb{"Tail", parsed.TailWarn, []int{}},
 			`{"f1":"Tail","warning":"Unparsed tail","f2":[]}`},
-		{dataOb{"AuthEx", out.AuthExWarn, []int{2, 3, 4}},
+		{dataOb{"AuthEx", parsed.AuthExWarn, []int{2, 3, 4}},
 			`{"f1":"AuthEx","warning":"Ex authors are not required","f2":[2,3,4]}`},
 	}
 	enc := encode.GNjson{}

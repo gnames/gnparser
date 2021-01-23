@@ -63,7 +63,7 @@ release: peg dockerhub
 	zip -9 /tmp/gnparser-$(VER)-win-64.zip gnparser.exe; \
 	$(GOCLEAN);
 
-dc: build asset
+dc: asset build
 	docker-compose build;
 
 docker: build
