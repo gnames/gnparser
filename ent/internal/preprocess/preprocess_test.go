@@ -3,7 +3,7 @@ package preprocess_test
 import (
 	"testing"
 
-	ppr "github.com/gnames/gnparser/entity/preprocess"
+	ppr "github.com/gnames/gnparser/ent/internal/preprocess"
 	"github.com/stretchr/testify/assert"
 )
 

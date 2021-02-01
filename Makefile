@@ -27,12 +27,12 @@ deps:
 	$(GOCMD) mod download;
 
 peg:
-	cd entity/parser; \
+	cd ent/parser; \
 	peg grammar.peg; \
 	goimports -w grammar.peg.go; \
 
 ragel:
-	cd entity/preprocess; \
+	cd ent/preprocess; \
 	ragel -Z -G2 virus.rl; \
 	ragel -Z -G2 noparse.rl
 

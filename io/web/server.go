@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/gnames/gnlib/format"
-	"github.com/gnames/gnparser/config"
-	"github.com/gnames/gnparser/entity/parsed"
+	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/fs"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -123,13 +123,13 @@ func formatNames(
 	}
 }
 
-func opts(c echo.Context, csv, details bool) []config.Option {
+func opts(c echo.Context, csv, details bool) []gnparser.Option {
 	if csv {
-		return []config.Option{config.OptFormat("csv")}
+		return []gnparser.Option{gnparser.OptFormat("csv")}
 	}
-	var res []config.Option
+	var res []gnparser.Option
 	if details {
-		res = []config.Option{config.OptWithDetails(true)}
+		res = []gnparser.Option{gnparser.OptWithDetails(true)}
 	}
 	return res
 }

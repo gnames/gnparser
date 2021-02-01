@@ -9,8 +9,7 @@ import (
 	"testing"
 
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/config"
-	"github.com/gnames/gnparser/entity/parsed"
+	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -20,10 +19,10 @@ type testData struct {
 }
 
 func TestParseName(t *testing.T) {
-	cfg := config.New(
-		config.OptWithDetails(true),
-		config.OptFormat("compact"),
-		config.OptIsTest(true),
+	cfg := gnparser.NewConfig(
+		gnparser.OptWithDetails(true),
+		gnparser.OptFormat("compact"),
+		gnparser.OptIsTest(true),
 	)
 	gnp := gnparser.New(cfg)
 	data := getTestData(t)
@@ -68,7 +67,7 @@ func getTestData(t *testing.T) []testData {
 
 func Example() {
 	names := []string{"Pardosa moesta Banks, 1892", "Bubo bubo"}
-	cfg := config.New()
+	cfg := gnparser.NewConfig()
 	gnp := gnparser.New(cfg)
 	parsed := gnp.ParseNames(names)
 	fmt.Println(parsed[0].Authorship.Normalized)
@@ -86,11 +85,11 @@ func BenchmarkParse(b *testing.B) {
 	path := filepath.Join("testdata", "200k-lines.txt")
 	count := 1000
 	test := make([]string, count)
-	cfgJSON := config.New(config.OptFormat("compact"))
+	cfgJSON := gnparser.NewConfig(gnparser.OptFormat("compact"))
 	gnpJSON := gnparser.New(cfgJSON)
-	cfgDet := config.New(config.OptFormat("compact"), config.OptWithDetails(true))
+	cfgDet := gnparser.NewConfig(gnparser.OptFormat("compact"), gnparser.OptWithDetails(true))
 	gnpDet := gnparser.New(cfgDet)
-	cfgCSV := config.New(config.OptFormat("csv"))
+	cfgCSV := gnparser.NewConfig(gnparser.OptFormat("csv"))
 	gnpCSV := gnparser.New(cfgCSV)
 	f, err := os.Open(path)
 

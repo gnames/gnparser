@@ -11,18 +11,17 @@ import (
 
 	"github.com/gnames/gnlib/domain/entity/gn"
 	"github.com/gnames/gnlib/format"
-	"github.com/gnames/gnparser/config"
 
-	"github.com/gnames/gnparser/entity/nameidx"
-	"github.com/gnames/gnparser/entity/parsed"
-	"github.com/gnames/gnparser/entity/parser"
+	"github.com/gnames/gnparser/ent/nameidx"
+	"github.com/gnames/gnparser/ent/parsed"
+	"github.com/gnames/gnparser/ent/parser"
 )
 
 // gnparser is an implementation of GNparser interface.
 // It is responsible for main parsing operations.
 type gnparser struct {
 	// cfg keeps gnparser settings.
-	cfg config.Config
+	cfg Config
 
 	// parser keeps parsing engine
 	parser parser.Parser
@@ -31,7 +30,7 @@ type gnparser struct {
 // New constructor function takes options organized into a
 // configuration struct and returns an object that implements GNparser
 // interface.
-func New(cfg config.Config) GNparser {
+func New(cfg Config) GNparser {
 	gnp := gnparser{cfg: cfg}
 	gnp.parser = parser.New()
 	return gnp
@@ -95,7 +94,7 @@ func (gnp gnparser) Format() format.Format {
 
 // ChangeConfig allows change configuration of already created
 // GNparser object.
-func (gnp gnparser) ChangeConfig(opts ...config.Option) GNparser {
+func (gnp gnparser) ChangeConfig(opts ...Option) GNparser {
 	for i := range opts {
 		opts[i](&gnp.cfg)
 	}

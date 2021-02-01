@@ -12,7 +12,6 @@ import (
 	"github.com/gnames/gnlib/encode"
 	"github.com/gnames/gnlib/format"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/config"
 )
 
 // ParseToString function takes a name-string, desired format, a withDetails
@@ -28,11 +27,11 @@ func ParseToString(
 	details C.int,
 ) *C.char {
 	goname := C.GoString(name)
-	opts := []config.Option{
-		config.OptFormat(C.GoString(f)),
-		config.OptWithDetails(int(details) > 0),
+	opts := []gnparser.Option{
+		gnparser.OptFormat(C.GoString(f)),
+		gnparser.OptWithDetails(int(details) > 0),
 	}
-	cfg := config.New(opts...)
+	cfg := gnparser.NewConfig(opts...)
 	gnp := gnparser.New(cfg)
 	parsed := gnp.ParseName(goname).Output(gnp.Format())
 
@@ -59,10 +58,9 @@ func ParseAryToString(
 ) *C.char {
 	names := make([]string, int(length))
 
-	opts := []config.Option{
-		config.OptFormat(C.GoString(f)),
-		// config.OptJobsNum(runtime.NumCPU() * 2),
-		config.OptWithDetails(int(details) > 0),
+	opts := []gnparser.Option{
+		gnparser.OptFormat(C.GoString(f)),
+		gnparser.OptWithDetails(int(details) > 0),
 	}
 	start := unsafe.Pointer(in)
 	pointerSize := unsafe.Sizeof(in)
@@ -74,7 +72,7 @@ func ParseAryToString(
 		names[i] = name
 	}
 
-	cfg := config.New(opts...)
+	cfg := gnparser.NewConfig(opts...)
 	gnp := gnparser.New(cfg)
 
 	var res string

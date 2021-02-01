@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/gnames/gnlib/encode"
-	"github.com/gnames/gnparser/entity/parsed"
+	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -3,7 +3,7 @@ package str_test
 import (
 	"testing"
 
-	"github.com/gnames/gnparser/entity/str"
+	"github.com/gnames/gnparser/ent/internal/str"
 	"github.com/stretchr/testify/assert"
 )
 

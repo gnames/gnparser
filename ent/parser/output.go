@@ -3,7 +3,7 @@ package parser
 import (
 	"sort"
 
-	"github.com/gnames/gnparser/entity/parsed"
+	"github.com/gnames/gnparser/ent/parsed"
 )
 
 // ToOutput converts Abstract Syntax Tree of scientific name to a

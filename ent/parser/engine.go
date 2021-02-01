@@ -4,7 +4,7 @@ import (
 	"io"
 
 	"github.com/gnames/gnlib/tribool"
-	"github.com/gnames/gnparser/entity/parsed"
+	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/dict"
 )
 

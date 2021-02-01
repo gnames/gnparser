@@ -2,7 +2,9 @@
 
 ## Unreleased
 
-## [v1.0.3]
+- Add [#140]: remove config package.
+
+## [v1.0.4]
 
 - Add: cleanup constructor methods names.
 
@@ -199,6 +201,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.0.5]: https://github.com/gnames/gnparser/compare/v1.0.4...v1.0.5
 [v1.0.4]: https://github.com/gnames/gnparser/compare/v1.0.3...v1.0.4
 [v1.0.3]: https://github.com/gnames/gnparser/compare/v1.0.2...v1.0.3
 [v1.0.2]: https://github.com/gnames/gnparser/compare/v1.0.1...v1.0.2
@@ -225,6 +228,16 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
 
+[#150]: https://github.com/gnames/gnparser/issues/150
+[#149]: https://github.com/gnames/gnparser/issues/149
+[#148]: https://github.com/gnames/gnparser/issues/148
+[#147]: https://github.com/gnames/gnparser/issues/147
+[#146]: https://github.com/gnames/gnparser/issues/146
+[#145]: https://github.com/gnames/gnparser/issues/145
+[#144]: https://github.com/gnames/gnparser/issues/144
+[#143]: https://github.com/gnames/gnparser/issues/143
+[#142]: https://github.com/gnames/gnparser/issues/142
+[#141]: https://github.com/gnames/gnparser/issues/141
 [#140]: https://github.com/gnames/gnparser/issues/140
 [#139]: https://github.com/gnames/gnparser/issues/139
 [#138]: https://github.com/gnames/gnparser/issues/138

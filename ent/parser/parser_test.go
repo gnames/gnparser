@@ -3,7 +3,7 @@ package parser_test
 import (
 	"testing"
 
-	"github.com/gnames/gnparser/entity/parser"
+	"github.com/gnames/gnparser/ent/parser"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/gnames/gnparser/entity/parsed"
+	"github.com/gnames/gnparser/ent/parsed"
 	"sort"
 )
 

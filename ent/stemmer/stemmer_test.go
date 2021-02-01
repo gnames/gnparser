@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gnames/gnparser/entity/stemmer"
+	"github.com/gnames/gnparser/ent/stemmer"
 	"github.com/stretchr/testify/assert"
 )
 

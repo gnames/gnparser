@@ -5,9 +5,8 @@ import (
 
 	"github.com/gnames/gnlib/domain/entity/gn"
 	"github.com/gnames/gnlib/format"
-	"github.com/gnames/gnparser/config"
-	"github.com/gnames/gnparser/entity/nameidx"
-	"github.com/gnames/gnparser/entity/parsed"
+	"github.com/gnames/gnparser/ent/nameidx"
+	"github.com/gnames/gnparser/ent/parsed"
 )
 
 // GNparser is the main use-case interface. It provides methods required
@@ -29,5 +28,5 @@ type GNparser interface {
 	Format() format.Format
 	// ChangeConfig allows to modify settings of GNparser. Changing settings
 	// might modify parsing process, and the final output of results.
-	ChangeConfig(opts ...config.Option) GNparser
+	ChangeConfig(opts ...Option) GNparser
 }

@@ -11,8 +11,7 @@ import (
 	"github.com/gnames/gnlib/format"
 	"github.com/gnames/gnlib/sys"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/config"
-	"github.com/gnames/gnparser/entity/parsed"
+	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/web"
 	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
@@ -52,7 +51,7 @@ interfaces. There are 3 possible settings: 'csv', 'compact', 'pretty'.
 )
 
 var (
-	opts      []config.Option
+	opts      []gnparser.Option
 	batchSize int
 )
 
@@ -113,11 +112,11 @@ gnparser -j 5 -p 8080
 		withStreamFlag(cmd)
 		batchSizeFlag(cmd)
 		port := portFlag(cmd)
-		cfg := config.New(opts...)
+		cfg := gnparser.NewConfig(opts...)
 		batchSize = cfg.BatchSize
 
 		if port != 0 {
-			cfg := config.New(config.OptFormat("compact"))
+			cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
 			gnp := gnparser.New(cfg)
 			gnps := web.NewGNparserService(gnp, port)
 			web.Run(gnps)
@@ -203,32 +202,32 @@ func initConfig() {
 	getOpts()
 }
 
-func getOpts() []config.Option {
+func getOpts() []gnparser.Option {
 	cfg := &cfgData{}
 	err := viper.Unmarshal(cfg)
 	if err != nil {
 		log.Fatalf("Cannot deserialize config data: %s.", err)
 	}
 	if cfg.Format != "" {
-		opts = append(opts, config.OptFormat(cfg.Format))
+		opts = append(opts, gnparser.OptFormat(cfg.Format))
 	}
 	if cfg.JobsNum != 0 {
-		opts = append(opts, config.OptJobsNum(cfg.JobsNum))
+		opts = append(opts, gnparser.OptJobsNum(cfg.JobsNum))
 	}
 	if cfg.BatchSize > 0 {
-		opts = append(opts, config.OptBatchSize(cfg.BatchSize))
+		opts = append(opts, gnparser.OptBatchSize(cfg.BatchSize))
 	}
 	if cfg.WithStream {
-		opts = append(opts, config.OptWithStream(cfg.WithStream))
+		opts = append(opts, gnparser.OptWithStream(cfg.WithStream))
 	}
 	if cfg.IgnoreHTMLTags {
-		opts = append(opts, config.OptIgnoreHTMLTags(cfg.IgnoreHTMLTags))
+		opts = append(opts, gnparser.OptIgnoreHTMLTags(cfg.IgnoreHTMLTags))
 	}
 	if cfg.WithDetails {
-		opts = append(opts, config.OptWithDetails(cfg.WithDetails))
+		opts = append(opts, gnparser.OptWithDetails(cfg.WithDetails))
 	}
 	if cfg.Port != 0 {
-		opts = append(opts, config.OptPort(cfg.Port))
+		opts = append(opts, gnparser.OptPort(cfg.Port))
 	}
 
 	return opts
@@ -276,7 +275,7 @@ func formatFlag(cmd *cobra.Command) {
 		os.Exit(1)
 	}
 	if f != "" {
-		opts = append(opts, config.OptFormat(f))
+		opts = append(opts, gnparser.OptFormat(f))
 	}
 }
 
@@ -287,7 +286,7 @@ func jobsNumFlag(cmd *cobra.Command) {
 		os.Exit(1)
 	}
 	if jn > 0 {
-		opts = append(opts, config.OptJobsNum(jn))
+		opts = append(opts, gnparser.OptJobsNum(jn))
 	}
 }
 
@@ -298,7 +297,7 @@ func ignoreHTMLTagsFlag(cmd *cobra.Command) {
 		os.Exit(1)
 	}
 	if ignoreTags {
-		opts = append(opts, config.OptIgnoreHTMLTags(true))
+		opts = append(opts, gnparser.OptIgnoreHTMLTags(true))
 	}
 }
 
@@ -309,7 +308,7 @@ func withDetailsFlag(cmd *cobra.Command) {
 		os.Exit(1)
 	}
 	if withDet {
-		opts = append(opts, config.OptWithDetails(true))
+		opts = append(opts, gnparser.OptWithDetails(true))
 	}
 }
 
@@ -320,7 +319,7 @@ func withStreamFlag(cmd *cobra.Command) {
 		os.Exit(1)
 	}
 	if withDet {
-		opts = append(opts, config.OptWithStream(true))
+		opts = append(opts, gnparser.OptWithStream(true))
 	}
 }
 
@@ -331,7 +330,7 @@ func batchSizeFlag(cmd *cobra.Command) {
 		os.Exit(1)
 	}
 	if bs > 0 {
-		opts = append(opts, config.OptBatchSize(bs))
+		opts = append(opts, gnparser.OptBatchSize(bs))
 	}
 }
 
@@ -342,12 +341,12 @@ func portFlag(cmd *cobra.Command) int {
 		os.Exit(1)
 	}
 	if webPort > 0 {
-		opts = append(opts, config.OptPort(webPort))
+		opts = append(opts, gnparser.OptPort(webPort))
 	}
 	return webPort
 }
 
-func processStdin(cmd *cobra.Command, cfg config.Config) {
+func processStdin(cmd *cobra.Command, cfg gnparser.Config) {
 	if !checkStdin() {
 		_ = cmd.Help()
 		return
@@ -379,7 +378,7 @@ func getInput(cmd *cobra.Command, args []string) string {
 
 func parse(
 	data string,
-	cfg config.Config,
+	cfg gnparser.Config,
 ) {
 	gnp := gnparser.New(cfg)
 

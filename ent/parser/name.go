@@ -3,9 +3,9 @@ package parser
 import (
 	"fmt"
 
-	"github.com/gnames/gnparser/entity/parsed"
-	"github.com/gnames/gnparser/entity/stemmer"
-	"github.com/gnames/gnparser/entity/str"
+	"github.com/gnames/gnparser/ent/internal/str"
+	"github.com/gnames/gnparser/ent/parsed"
+	"github.com/gnames/gnparser/ent/stemmer"
 )
 
 type canonical struct {

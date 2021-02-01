@@ -497,21 +497,20 @@ import (
   "fmt"
 
   "github.com/gnames/gnparser"
-  "github.com/gnames/gnparser/config"
 )
 
 func Example() {
-	names := []string{"Pardosa moesta Banks, 1892", "Bubo bubo"}
-	cfg := config.New()
-	gnp := gnparser.New(cfg)
-	parsed := gnp.ParseNames(names)
-	fmt.Println(parsed[0].Authorship.Normalized)
-	fmt.Println(parsed[1].Canonical.Simple)
-	fmt.Println(parsed[0].Output(gnp.Format()))
-	// Output:
-	// Banks 1892
-	// Bubo bubo
-	// e2fdf10b-6a36-5cc7-b6ca-be4d3b34b21f,"Pardosa moesta Banks, 1892",2,Pardosa moest,Pardosa moesta,Pardosa moesta,Banks 1892,1892,1
+  names := []string{"Pardosa moesta Banks, 1892", "Bubo bubo"}
+  cfg := gnparser.NewConfig()
+  gnp := gnparser.New(cfg)
+  parsed := gnp.ParseNames(names)
+  fmt.Println(parsed[0].Authorship.Normalized)
+  fmt.Println(parsed[1].Canonical.Simple)
+  fmt.Println(parsed[0].Output(gnp.Format()))
+  // Output:
+  // Banks 1892
+  // Bubo bubo
+  // e2fdf10b-6a36-5cc7-b6ca-be4d3b34b21f,"Pardosa moesta Banks, 1892",2,Pardosa moest,Pardosa moesta,Pardosa moesta,Banks 1892,1892,1
 }
 ```
 

@@ -2,7 +2,6 @@
 package web
 
 import (
-	"fmt"
 	"html/template"
 	"io"
 	"net/http"
@@ -59,7 +58,6 @@ func home(gnps GNparserService) func(echo.Context) error {
 		data.HomePage = true
 		data.Input = c.QueryParam("q")
 		names := strings.Split(data.Input, "\n")
-		fmt.Println(len(names))
 		for i := range names {
 			if len(names[i]) == 0 {
 				continue

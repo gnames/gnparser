@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"github.com/gnames/gnparser/entity/parsed"
+	"github.com/gnames/gnparser/ent/parsed"
 )
 
 // Parser is an interface that is responsible for parsing of a scientific

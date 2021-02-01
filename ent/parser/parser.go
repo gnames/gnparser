@@ -3,9 +3,9 @@
 package parser
 
 import (
-	"github.com/gnames/gnparser/entity/parsed"
-	"github.com/gnames/gnparser/entity/preprocess"
-	"github.com/gnames/gnparser/entity/str"
+	"github.com/gnames/gnparser/ent/internal/preprocess"
+	"github.com/gnames/gnparser/ent/internal/str"
+	"github.com/gnames/gnparser/ent/parsed"
 )
 
 // PreprocessAndParse takes a string and returns back the Abstract

@@ -10,8 +10,8 @@ import (
 
 	"github.com/gnames/gnlib/format"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/entity/nameidx"
-	"github.com/gnames/gnparser/entity/parsed"
+	"github.com/gnames/gnparser/ent/nameidx"
+	"github.com/gnames/gnparser/ent/parsed"
 )
 
 func getNames(

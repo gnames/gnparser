@@ -1,4 +1,4 @@
-package config
+package gnparser
 
 import (
 	"log"
@@ -44,9 +44,9 @@ type Config struct {
 	IsTest bool
 }
 
-// New generates a new Config object. It can take an arbitrary number
+// NewConfig generates a new Config object. It can take an arbitrary number
 // of `Opt` functions to modify default configuration settings.
-func New(opts ...Option) Config {
+func NewConfig(opts ...Option) Config {
 	cfg := Config{
 		Format:         format.CSV,
 		JobsNum:        runtime.NumCPU(),

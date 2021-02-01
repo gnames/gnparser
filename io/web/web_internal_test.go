@@ -11,8 +11,7 @@ import (
 	"github.com/gnames/gnlib/domain/entity/gn"
 	"github.com/gnames/gnlib/encode"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/config"
-	"github.com/gnames/gnparser/entity/parsed"
+	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 )
@@ -27,7 +26,7 @@ func handlerGET(path string) (echo.Context, *httptest.ResponseRecorder) {
 }
 
 func TestHome(t *testing.T) {
-	cfg := config.New(config.OptFormat("compact"))
+	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
 
@@ -58,7 +57,7 @@ func TestInfo(t *testing.T) {
 }
 
 func TestPing(t *testing.T) {
-	cfg := config.New(config.OptFormat("compact"))
+	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
 	c, rec := handlerGET("/ping")
@@ -69,7 +68,7 @@ func TestPing(t *testing.T) {
 }
 
 func TestVer(t *testing.T) {
-	cfg := config.New(config.OptFormat("compact"))
+	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
 	c, rec := handlerGET("/version")
@@ -83,7 +82,7 @@ func TestVer(t *testing.T) {
 }
 
 func TestParseGET(t *testing.T) {
-	cfg := config.New(config.OptFormat("compact"))
+	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
 
@@ -127,7 +126,7 @@ func TestParseGET(t *testing.T) {
 }
 
 func TestParsePOST(t *testing.T) {
-	cfg := config.New(config.OptFormat("compact"))
+	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
 
