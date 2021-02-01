@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/gnames/gnfmt v0.1.0
 	github.com/gnames/gnsys v0.1.0
-	github.com/gnames/gnuuid v0.1.0
+	github.com/gnames/gnuuid v0.1.1
 	github.com/gnames/organizer v0.1.1
 	github.com/gnames/tribool v0.1.0
 	github.com/google/uuid v1.1.2 // indirect
