@@ -9,9 +9,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/gnames/gnlib/domain/entity/gn"
-	"github.com/gnames/gnlib/format"
-
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser/ent/nameidx"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/ent/parser"
@@ -88,7 +86,7 @@ func (gnp gnparser) ParseNames(names []string) []parsed.Parsed {
 }
 
 // Format returns the configured output format value.
-func (gnp gnparser) Format() format.Format {
+func (gnp gnparser) Format() gnfmt.Format {
 	return gnp.cfg.Format
 }
 
@@ -103,15 +101,13 @@ func (gnp gnparser) ChangeConfig(opts ...Option) GNparser {
 
 // Version function returns version number of `gnparser` and the timestamp
 // of its build.
-func (gnp gnparser) GetVersion() gn.Version {
-	res := gn.Version{
-		Version: Version,
-		Build:   Build,
-	}
+func (gnp gnparser) GetVersion() (version, build string) {
+	version = Version
+	build = Build
 	if gnp.cfg.IsTest {
-		res.Version = "test_version"
+		version = "test_version"
 	}
-	return res
+	return version, build
 }
 
 func (gnp gnparser) parseWorker(

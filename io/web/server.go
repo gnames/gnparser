@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gnames/gnlib/format"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/fs"
@@ -76,8 +76,8 @@ func ping(gnps GNparserService) func(echo.Context) error {
 
 func ver(gnps GNparserService) func(echo.Context) error {
 	return func(c echo.Context) error {
-		result := gnps.GetVersion()
-		return c.JSON(http.StatusOK, result)
+		version, build := gnps.GetVersion()
+		return c.JSON(http.StatusOK, Version{Version: version, Build: build})
 	}
 }
 
@@ -108,10 +108,10 @@ func parseNamesPOST(gnps GNparserService) func(echo.Context) error {
 func formatNames(
 	c echo.Context,
 	res []parsed.Parsed,
-	f format.Format,
+	f gnfmt.Format,
 ) error {
 	switch f {
-	case format.CSV:
+	case gnfmt.CSV:
 		resCSV := make([]string, 0, len(res)+1)
 		resCSV = append(resCSV, parsed.HeaderCSV())
 		for i := range res {

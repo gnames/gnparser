@@ -11,13 +11,13 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/gnames/gnlib/encode"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
 )
 
 func genTestData() error {
-	enc := encode.GNjson{}
+	enc := gnfmt.GNjson{}
 	path := filepath.Join("..", "testdata", "test_data.md")
 	outPath := filepath.Join("..", "testdata", "test_data_new.md")
 	f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)

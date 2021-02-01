@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gnames/gnlib/format"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/io/fs"
 	"github.com/labstack/echo/v4"
@@ -38,6 +38,11 @@ func templates() *echoTempl {
 	}
 }
 
+type Version struct {
+	Version string `json:"version"`
+	Build   string `json:"build"`
+}
+
 // Data contains information required to render web-pages.
 type Data struct {
 	Input    string
@@ -62,7 +67,7 @@ func home(gnps GNparserService) func(echo.Context) error {
 			if len(names[i]) == 0 {
 				continue
 			}
-			p := gnps.ParseName(names[i]).Output(format.PrettyJSON)
+			p := gnps.ParseName(names[i]).Output(gnfmt.PrettyJSON)
 			parsed = append(parsed, p)
 		}
 		data.Parsed = parsed

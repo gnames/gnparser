@@ -3,8 +3,7 @@ package gnparser
 import (
 	"context"
 
-	"github.com/gnames/gnlib/domain/entity/gn"
-	"github.com/gnames/gnlib/format"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser/ent/nameidx"
 	"github.com/gnames/gnparser/ent/parsed"
 )
@@ -12,8 +11,8 @@ import (
 // GNparser is the main use-case interface. It provides methods required
 // for parsing scientific names.
 type GNparser interface {
-	// Versioner provides a version and a build timestamp of gnparser.
-	gn.Versioner
+	// Version provides a version and a build timestamp of gnparser.
+	GetVersion() (version, build string)
 	// Parse name takes a name-string, and returns parsed results for the name.
 	ParseName(string) parsed.Parsed
 	// Parse names takes a slice of name-strings, and returns a slice of
@@ -25,7 +24,7 @@ type GNparser interface {
 	ParseNameStream(context.Context, <-chan nameidx.NameIdx, chan<- parsed.Parsed)
 	// Format returns currently chosen desired output format of a JSON or
 	// CSV output.
-	Format() format.Format
+	Format() gnfmt.Format
 	// ChangeConfig allows to modify settings of GNparser. Changing settings
 	// might modify parsing process, and the final output of results.
 	ChangeConfig(opts ...Option) GNparser

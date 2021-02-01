@@ -8,11 +8,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/gnames/gnlib/format"
-	"github.com/gnames/gnlib/sys"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/web"
+	"github.com/gnames/gnsys"
 	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -235,7 +235,7 @@ func getOpts() []gnparser.Option {
 
 // touchConfigFile checks if config file exists, and if not, it gets created.
 func touchConfigFile(configPath string, configFile string) {
-	if sys.FileExists(configPath) {
+	if exists, _ := gnsys.FileExists(configPath); exists {
 		return
 	}
 
@@ -245,7 +245,7 @@ func touchConfigFile(configPath string, configFile string) {
 
 // createConfig creates config file.
 func createConfig(path string, file string) {
-	err := sys.MakeDir(filepath.Dir(path))
+	err := gnsys.MakeDir(filepath.Dir(path))
 	if err != nil {
 		log.Fatalf("Cannot create dir %s: %s.", path, err)
 	}
@@ -412,7 +412,7 @@ func fileExists(path string) bool {
 func parseString(gnp gnparser.GNparser, name string) {
 	res := gnp.ParseName(name)
 	f := gnp.Format()
-	if f == format.CSV {
+	if f == gnfmt.CSV {
 		fmt.Println(parsed.HeaderCSV())
 	}
 	fmt.Println(res.Output(f))

@@ -8,7 +8,7 @@ import (
 	"log"
 	"sync"
 
-	"github.com/gnames/gnlib/format"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/nameidx"
 	"github.com/gnames/gnparser/ent/parsed"
@@ -51,7 +51,7 @@ func parseStream(
 	var wg sync.WaitGroup
 	wg.Add(1)
 
-	if gnp.Format() == format.CSV {
+	if gnp.Format() == gnfmt.CSV {
 		parsed.HeaderCSV()
 	}
 

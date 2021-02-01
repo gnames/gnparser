@@ -3,7 +3,7 @@
 package parsed
 
 import (
-	tb "github.com/gnames/gnlib/tribool"
+	tb "github.com/gnames/tribool"
 )
 
 // Parsed is the result of a scientific name-string parsing. It can

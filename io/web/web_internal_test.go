@@ -8,8 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gnames/gnlib/domain/entity/gn"
-	"github.com/gnames/gnlib/encode"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/labstack/echo/v4"
@@ -74,8 +73,8 @@ func TestVer(t *testing.T) {
 	c, rec := handlerGET("/version")
 
 	assert.Nil(t, ver(gnps)(c))
-	enc := encode.GNjson{}
-	var response gn.Version
+	enc := gnfmt.GNjson{}
+	var response Version
 	err := enc.Decode(rec.Body.Bytes(), &response)
 	assert.Nil(t, err)
 	assert.Regexp(t, `^v\d+\.\d+\.\d+`, response.Version)
@@ -108,7 +107,7 @@ func TestParseGET(t *testing.T) {
 
 	assert.Nil(t, parseNamesGET(gnps)(c))
 
-	enc := encode.GNjson{}
+	enc := gnfmt.GNjson{}
 	err := enc.Decode(rec.Body.Bytes(), &response)
 	assert.Nil(t, err)
 
@@ -143,7 +142,7 @@ func TestParsePOST(t *testing.T) {
 		CSV:         false,
 		WithDetails: false,
 	}
-	reqBody, err := encode.GNjson{}.Encode(params)
+	reqBody, err := gnfmt.GNjson{}.Encode(params)
 	assert.Nil(t, err)
 	r := bytes.NewReader(reqBody)
 	req := httptest.NewRequest(http.MethodPost, "/", r)
@@ -154,7 +153,7 @@ func TestParsePOST(t *testing.T) {
 
 	assert.Nil(t, parseNamesPOST(gnps)(c))
 
-	enc := encode.GNjson{}
+	enc := gnfmt.GNjson{}
 	err = enc.Decode(rec.Body.Bytes(), &response)
 	assert.Nil(t, err)
 
@@ -175,7 +174,7 @@ func TestParsePOST(t *testing.T) {
 		CSV:         true,
 		WithDetails: false,
 	}
-	reqBody, err = encode.GNjson{}.Encode(params)
+	reqBody, err = gnfmt.GNjson{}.Encode(params)
 	r = bytes.NewReader(reqBody)
 	req = httptest.NewRequest(http.MethodPost, "/", r)
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)

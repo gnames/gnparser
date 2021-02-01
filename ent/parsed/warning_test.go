@@ -3,7 +3,7 @@ package parsed_test
 import (
 	"testing"
 
-	"github.com/gnames/gnlib/encode"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/stretchr/testify/assert"
 )
@@ -36,7 +36,7 @@ func TestJSONWarn(t *testing.T) {
 		{dataOb{"AuthEx", parsed.AuthExWarn, []int{2, 3, 4}},
 			`{"f1":"AuthEx","warning":"Ex authors are not required","f2":[2,3,4]}`},
 	}
-	enc := encode.GNjson{}
+	enc := gnfmt.GNjson{}
 	var dob dataOb
 	for i := range data {
 		res, err := enc.Encode(data[i].dob)

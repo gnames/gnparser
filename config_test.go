@@ -4,7 +4,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/gnames/gnlib/format"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/stretchr/testify/assert"
 )
@@ -12,7 +12,7 @@ import (
 func TestNew(t *testing.T) {
 	cfg := gnparser.NewConfig()
 	deflt := gnparser.Config{
-		Format:         format.CSV,
+		Format:         gnfmt.CSV,
 		JobsNum:        runtime.NumCPU(),
 		BatchSize:      50_000,
 		IgnoreHTMLTags: false,
@@ -27,7 +27,7 @@ func TestNewOpts(t *testing.T) {
 	opts := opts()
 	cnf := gnparser.NewConfig(opts...)
 	updt := gnparser.Config{
-		Format:         format.CompactJSON,
+		Format:         gnfmt.CompactJSON,
 		JobsNum:        161,
 		BatchSize:      1,
 		IgnoreHTMLTags: true,

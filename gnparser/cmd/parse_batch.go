@@ -7,7 +7,7 @@ import (
 	"log"
 	"sync"
 
-	"github.com/gnames/gnlib/format"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
 )
@@ -47,10 +47,10 @@ func parseBatch(
 func processResults(
 	out <-chan []parsed.Parsed,
 	wg *sync.WaitGroup,
-	f format.Format,
+	f gnfmt.Format,
 ) {
 	defer wg.Done()
-	if f == format.CSV {
+	if f == gnfmt.CSV {
 		fmt.Println(parsed.HeaderCSV())
 	}
 	for pr := range out {

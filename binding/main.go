@@ -9,8 +9,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/gnames/gnlib/encode"
-	"github.com/gnames/gnlib/format"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 )
 
@@ -77,14 +76,14 @@ func ParseAryToString(
 
 	var res string
 	parsed := gnp.ParseNames(names)
-	if gnp.Format() == format.CSV {
+	if gnp.Format() == gnfmt.CSV {
 		csv := make([]string, length)
 		for i := range parsed {
-			csv[i] = parsed[i].Output(format.CSV)
+			csv[i] = parsed[i].Output(gnfmt.CSV)
 		}
 		res = strings.Join(csv, "\n")
 	} else {
-		json, _ := encode.GNjson{}.Encode(parsed)
+		json, _ := gnfmt.GNjson{}.Encode(parsed)
 		res = string(json)
 	}
 	return C.CString(res)

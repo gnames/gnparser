@@ -3,19 +3,18 @@ package parsed
 import (
 	"strconv"
 
-	gncsv "github.com/gnames/gnlib/csv"
-	"github.com/gnames/gnlib/encode"
-	"github.com/gnames/gnlib/format"
+	"github.com/gnames/gnfmt"
+	gncsv "github.com/gnames/gnfmt"
 )
 
 // Output creates a JSON or CSV representation of Parsed results.
-func (p Parsed) Output(f format.Format) string {
+func (p Parsed) Output(f gnfmt.Format) string {
 	switch f {
-	case format.CSV:
+	case gnfmt.CSV:
 		return p.csvOutput()
-	case format.CompactJSON:
+	case gnfmt.CompactJSON:
 		return p.jsonOutput(false)
-	case format.PrettyJSON:
+	case gnfmt.PrettyJSON:
 		return p.jsonOutput(true)
 	default:
 		return "N/A"
@@ -55,7 +54,7 @@ func (p Parsed) csvOutput() string {
 }
 
 func (p Parsed) jsonOutput(pretty bool) string {
-	enc := encode.GNjson{Pretty: pretty}
+	enc := gnfmt.GNjson{Pretty: pretty}
 	res, _ := enc.Encode(p)
 	return string(res)
 }

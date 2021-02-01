@@ -7,11 +7,11 @@ import (
 
 	"github.com/gnames/gnparser/ent/internal/preprocess"
 
-	"github.com/gnames/gnlib/gnuuid"
-	tb "github.com/gnames/gnlib/tribool"
 	"github.com/gnames/gnparser/ent/internal/str"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/dict"
+	"github.com/gnames/gnuuid"
+	tb "github.com/gnames/tribool"
 )
 
 type scientificNameNode struct {

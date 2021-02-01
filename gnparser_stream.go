@@ -5,10 +5,10 @@ import (
 	"log"
 	"sync"
 
-	"github.com/gnames/gnlib/organizer"
 	"github.com/gnames/gnparser/ent/nameidx"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/ent/parser"
+	"github.com/gnames/organizer"
 )
 
 // ParseNameStream takes an input channel of input.Name and

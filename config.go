@@ -4,7 +4,7 @@ import (
 	"log"
 	"runtime"
 
-	"github.com/gnames/gnlib/format"
+	"github.com/gnames/gnfmt"
 )
 
 // Config keeps settings that might affect how parsing is done,
@@ -13,7 +13,7 @@ type Config struct {
 	// Format sets the output format for CLI and Web interfaces.
 	// There are 3 formats available: 'CSV', 'CompactJSON' and
 	// 'PrettyJSON'.
-	Format format.Format
+	Format gnfmt.Format
 
 	// JobsNum sets a level of parallelism used during parsing of
 	// a stream of name-strings.
@@ -48,7 +48,7 @@ type Config struct {
 // of `Opt` functions to modify default configuration settings.
 func NewConfig(opts ...Option) Config {
 	cfg := Config{
-		Format:         format.CSV,
+		Format:         gnfmt.CSV,
 		JobsNum:        runtime.NumCPU(),
 		BatchSize:      50_000,
 		IgnoreHTMLTags: false,
@@ -70,9 +70,9 @@ type Option func(*Config)
 // warning.
 func OptFormat(s string) Option {
 	return func(cfg *Config) {
-		f, err := format.New(s)
+		f, err := gnfmt.NewFormat(s)
 		if err != nil {
-			f = format.CSV
+			f = gnfmt.CSV
 			log.Printf("Set default CSV format due to error: %s.", err)
 		}
 		cfg.Format = f

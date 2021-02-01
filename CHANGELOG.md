@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v1.0.5]
+
+- Add: remove gnlib package.
 - Add [#140]: remove config package.
 
 ## [v1.0.4]
