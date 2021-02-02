@@ -45,7 +45,7 @@ type Config struct {
 }
 
 // NewConfig generates a new Config object. It can take an arbitrary number
-// of `Opt` functions to modify default configuration settings.
+// of `Option` functions to modify default configuration settings.
 func NewConfig(opts ...Option) Config {
 	cfg := Config{
 		Format:         gnfmt.CSV,
@@ -86,7 +86,9 @@ func OptJobsNum(i int) Option {
 	}
 }
 
-// OptKeepHTMLTags sets the RemoveHTML field.
+// OptKeepHTMLTags sets the KeepHTMLTags field. This option is useful if
+// names with HTML tags shold not be parsed, or they are absent in input
+// data.
 func OptIgnoreHTMLTags(b bool) Option {
 	return func(cfg *Config) {
 		cfg.IgnoreHTMLTags = b

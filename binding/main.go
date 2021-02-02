@@ -1,3 +1,5 @@
+// Package main provides C-binding functionality to use parser in
+// other languages.
 package main
 
 /*

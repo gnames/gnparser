@@ -11,14 +11,14 @@ import (
 // GNparser is the main use-case interface. It provides methods required
 // for parsing scientific names.
 type GNparser interface {
-	// Version provides a version and a build timestamp of gnparser.
+	// GetVersion provides a version and a build timestamp of gnparser.
 	GetVersion() (version, build string)
-	// Parse name takes a name-string, and returns parsed results for the name.
+	// ParseName takes a name-string, and returns parsed results for the name.
 	ParseName(string) parsed.Parsed
-	// Parse names takes a slice of name-strings, and returns a slice of
+	// ParseNames takes a slice of name-strings, and returns a slice of
 	// parsed results in the same order as the input.
 	ParseNames([]string) []parsed.Parsed
-	// ParseNameString takes a context, an input channel that takes a
+	// ParseNameStream takes a context, an input channel that takes a
 	// a name-string and its position in the input. It returns parsed results
 	// that come in the same order as the input.
 	ParseNameStream(context.Context, <-chan nameidx.NameIdx, chan<- parsed.Parsed)
