@@ -602,7 +602,7 @@ Released under [MIT license]
 [quality]: https://github.com/gnames/gnparser/quality.md
 [releases]: https://github.com/gnames/gnparser/releases/latest
 [ruby_ffi_go_usage]: https://stackoverflow.com/questions/58866962/how-to-pass-an-array-of-strings-and-get-an-array-of-strings-in-ruby-using-go-sha
-[tutorial]:Parsing scientific names
+[tutorial]: https://www.datafix.com.au/BASHing/2019-01-20.html
 [test file]:  https://github.com/gnames/gnparser/blob/master/testdata/test_data.md
 [uuid5]: http://globalnames.org/news/2015/05/31/gn-uuid-0-5-0
 [winpath]: https://www.computerhope.com/issues/ch000549.htm
