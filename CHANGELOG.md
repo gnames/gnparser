@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix[#141]: config file is not created.
+
 ## [v1.0.6]
 
 - Add: update version handling, readme.

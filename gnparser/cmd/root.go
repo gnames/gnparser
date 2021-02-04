@@ -13,37 +13,35 @@ import (
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/web"
 	"github.com/gnames/gnsys"
-	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
 const (
 	configText = `# Format sets the output format for CLI and Web
-interfaces. There are 3 possible settings: 'csv', 'compact', 'pretty'.
-# Format csv
+# interfaces. There are 3 possible settings: 'csv', 'compact', 'pretty'.
+# Format: csv
 
 # JobsNum sets the level of parallelism used during parsing of a stream
-# of name-strings.
-# JobsNum 4
+# of name-strings. Number of CPU on the computer is the default value.
+# JobsNum: 4
 
 # BatchSize determines maximum number of name-strings sent simultaneously
-# for parsing. When it is important to have no delay in parsing, set the
-# BatchSize to 1.
-# BatchSize 50000
+# for parsing.
+# BatchSize: 50000
 
 # WithStream switches parsing of a large number of name-strings to a
 # one-at-a-time stream. When WithStream is true, BatchSize is ignored.
-# WithStream false
+# WithStream: false
 
 # IgnoreHTMLTags can be set to true if it is desirable to not try to remove from
 # a few HTML tags often present in names-strings that were planned to be
 # presented via an HTML page.
-# IgnoreHTMLTags false
+# IgnoreHTMLTags: false
 
 # WithDetails can be set to true when a simplified output is not sufficient
 # for obtaining a required information.
-# WithDetails false
+# WithDetails: false
 
 # Port is a port for the gnames service
 # Port: 8080
@@ -143,6 +141,8 @@ func Execute() {
 }
 
 func init() {
+	cobra.OnInitialize(initConfig)
+
 	rootCmd.PersistentFlags().BoolP("version", "V", false,
 		"shows build version and date, ignores other flags.")
 
@@ -171,14 +171,14 @@ func init() {
 // initConfig reads in config file and ENV variables if set.
 func initConfig() {
 	configFile := "gnparser"
-	home, err := homedir.Dir()
+
+	homeConfig, err := os.UserConfigDir()
 	if err != nil {
-		log.Fatalf("Cannot find home directory: %s.", err)
+		log.Fatalf("Cannot find home config directory: %s.", err)
 	}
-	home = filepath.Join(home, ".config")
 
 	// Search config in home directory with name ".gnames" (without extension).
-	viper.AddConfigPath(home)
+	viper.AddConfigPath(homeConfig)
 	viper.SetConfigName(configFile)
 
 	// Set environment variables to override
@@ -192,7 +192,7 @@ func initConfig() {
 
 	viper.AutomaticEnv() // read in environment variables that match
 
-	configPath := filepath.Join(home, fmt.Sprintf("%s.yaml", configFile))
+	configPath := filepath.Join(homeConfig, fmt.Sprintf("%s.yaml", configFile))
 	touchConfigFile(configPath, configFile)
 
 	// If a config file is found, read it in.
@@ -235,7 +235,11 @@ func getOpts() []gnparser.Option {
 
 // touchConfigFile checks if config file exists, and if not, it gets created.
 func touchConfigFile(configPath string, configFile string) {
-	if exists, _ := gnsys.FileExists(configPath); exists {
+	exists, err := gnsys.FileExists(configPath)
+	if err != nil {
+		log.Printf("Cannot use '%s' as config file: %v\n", configPath, err)
+	}
+	if exists {
 		return
 	}
 
