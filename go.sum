@@ -47,6 +47,8 @@ github.com/fsnotify/fsnotify v1.4.9/go.mod h1:znqG4EE+3YCdAaPaxE2ZRY/06pZUdp0tY4
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/gnames/gnfmt v0.1.0 h1:OFCOodo9ivtLkePgdMYRVDWn4DRYGTkWIuEu8BcWWLU=
 github.com/gnames/gnfmt v0.1.0/go.mod h1:WG9c3CoiVrGc1SDsxLk7zjmv2B4UIzI00m4K5Khc/d0=
+github.com/gnames/gnlib v0.2.1 h1:GxctzP7NKurCnfXmqpJnw6+Ea6Ae5Shpczs1fNbSFUM=
+github.com/gnames/gnlib v0.2.1/go.mod h1:RZs+/sQHGlyMsHK7pgbd0Zt3QlYQXFPURc+yKuO2ckY=
 github.com/gnames/gnsys v0.1.0 h1:k3QZkualrB3g+qTYfgbZdbY02xodf7Jjn9rFrTzYkiY=
 github.com/gnames/gnsys v0.1.0/go.mod h1:79rnsvCXLAavIfeFsrs+Xj803gdcYKVa59IA+GlA5ew=
 github.com/gnames/gnuuid v0.1.1 h1:UMRHYUSlD19qo8oVz1JyU57kg4yu+SJ/b+yvWYeqRiA=

@@ -10,6 +10,7 @@ import (
 	"sync"
 
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnlib/ent/gnvers"
 	"github.com/gnames/gnparser/ent/nameidx"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/ent/parser"
@@ -101,13 +102,13 @@ func (gnp gnparser) ChangeConfig(opts ...Option) GNparser {
 
 // Version function returns version number of `gnparser` and the timestamp
 // of its build.
-func (gnp gnparser) GetVersion() (version, build string) {
-	version = Version
-	build = Build
+func (gnp gnparser) GetVersion() gnvers.Version {
+	version := Version
+	build := Build
 	if gnp.cfg.IsTest {
 		version = "test_version"
 	}
-	return version, build
+	return gnvers.Version{Version: version, Build: build}
 }
 
 func (gnp gnparser) parseWorker(

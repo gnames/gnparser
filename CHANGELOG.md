@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.0.6]
+
+- Add: update version handling, readme.
+
 ## [v1.0.5]
 
 - Add: remove gnlib package.

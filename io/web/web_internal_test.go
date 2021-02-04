@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnlib/ent/gnvers"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/labstack/echo/v4"
@@ -74,7 +75,7 @@ func TestVer(t *testing.T) {
 
 	assert.Nil(t, ver(gnps)(c))
 	enc := gnfmt.GNjson{}
-	var response Version
+	var response gnvers.Version
 	err := enc.Decode(rec.Body.Bytes(), &response)
 	assert.Nil(t, err)
 	assert.Regexp(t, `^v\d+\.\d+\.\d+`, response.Version)

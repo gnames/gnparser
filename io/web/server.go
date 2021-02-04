@@ -76,8 +76,8 @@ func ping(gnps GNparserService) func(echo.Context) error {
 
 func ver(gnps GNparserService) func(echo.Context) error {
 	return func(c echo.Context) error {
-		version, build := gnps.GetVersion()
-		return c.JSON(http.StatusOK, Version{Version: version, Build: build})
+		version := gnps.GetVersion()
+		return c.JSON(http.StatusOK, version)
 	}
 }
 

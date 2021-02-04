@@ -568,9 +568,15 @@ If you want to submit a bug or add a feature read
 
 ## References
 
+Mozzherin, D.Y., Myltsev, A.A. & Patterson, D.J. “gnparser”: a powerful parser
+for scientific names based on Parsing Expression Grammar. BMC Bioinformatics
+  18, 279 (2017).[https://doi.org/10.1186/s12859-017-1663-3][gnparser paper]
+
 Rees, T. (compiler) (2019). The Interim Register of Marine and Nonmarine
 Genera. Available from `http://www.irmng.org` at VLIZ.
 Accessed 2019-04-10
+
+Mesibov, R. (2019) [Parsing Scientific names][tutorial]
 
 ## License
 
@@ -596,8 +602,9 @@ Released under [MIT license]
 [quality]: https://github.com/gnames/gnparser/quality.md
 [releases]: https://github.com/gnames/gnparser/releases/latest
 [ruby_ffi_go_usage]: https://stackoverflow.com/questions/58866962/how-to-pass-an-array-of-strings-and-get-an-array-of-strings-in-ruby-using-go-sha
-[tutorial]: https://www.datafix.com.au/BASHing/2019-01-20.html
+[tutorial]:Parsing scientific names
 [test file]:  https://github.com/gnames/gnparser/blob/master/testdata/test_data.md
 [uuid5]: http://globalnames.org/news/2015/05/31/gn-uuid-0-5-0
 [winpath]: https://www.computerhope.com/issues/ch000549.htm
 [wsl]: https://docs.microsoft.com/en-us/windows/wsl/
+[gnparser paper]: https://doi.org/10.1186/s12859-017-1663-3

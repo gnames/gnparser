@@ -5,6 +5,7 @@ go 1.15
 require (
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gnames/gnfmt v0.1.0
+	github.com/gnames/gnlib v0.2.1
 	github.com/gnames/gnsys v0.1.0
 	github.com/gnames/gnuuid v0.1.1
 	github.com/gnames/organizer v0.1.1

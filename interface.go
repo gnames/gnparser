@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnlib/ent/gnvers"
 	"github.com/gnames/gnparser/ent/nameidx"
 	"github.com/gnames/gnparser/ent/parsed"
 )
@@ -12,7 +13,7 @@ import (
 // for parsing scientific names.
 type GNparser interface {
 	// GetVersion provides a version and a build timestamp of gnparser.
-	GetVersion() (version, build string)
+	GetVersion() gnvers.Version
 	// ParseName takes a name-string, and returns parsed results for the name.
 	ParseName(string) parsed.Parsed
 	// ParseNames takes a slice of name-strings, and returns a slice of

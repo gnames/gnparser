@@ -38,11 +38,6 @@ func templates() *echoTempl {
 	}
 }
 
-type Version struct {
-	Version string `json:"version"`
-	Build   string `json:"build"`
-}
-
 // Data contains information required to render web-pages.
 type Data struct {
 	Input    string
