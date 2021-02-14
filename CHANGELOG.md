@@ -2,7 +2,10 @@
 
 ## Unreleased
 
-- Fix[#141]: config file is not created.
+- Add [#143]: `quiet` flag to suppress showing progress output.
+
+- Fix [#142]: stream waits until certain names number is equal the batch size.
+- Fix [#141]: config file is not created.
 
 ## [v1.0.6]
 
