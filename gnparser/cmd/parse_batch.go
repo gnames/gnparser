@@ -15,6 +15,7 @@ import (
 func parseBatch(
 	gnp gnparser.GNparser,
 	f io.Reader,
+	quiet bool,
 ) {
 	batch := make([]string, batchSize)
 	chOut := make(chan []parsed.Parsed)
@@ -30,7 +31,9 @@ func parseBatch(
 		count++
 		if count == batchSize {
 			i++
-			log.Printf("Parsing %d-th line\n", count*i)
+			if !quiet {
+				log.Printf("Parsing %d-th line\n", count*i)
+			}
 			chOut <- gnp.ParseNames(batch)
 			batch = make([]string, batchSize)
 			count = 0

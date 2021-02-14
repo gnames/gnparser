@@ -43,6 +43,7 @@ func getNames(
 func parseStream(
 	gnp gnparser.GNparser,
 	f io.Reader,
+	quiet bool,
 ) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -63,7 +64,7 @@ func parseStream(
 		var count int
 		for {
 			count++
-			if count%50_000 == 0 {
+			if count%50_000 == 0 && !quiet {
 				log.Printf("Processing %d-th name", count)
 			}
 			select {

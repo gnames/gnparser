@@ -121,12 +121,14 @@ gnparser -j 5 -p 8080
 			os.Exit(0)
 		}
 
+		quiet, _ := cmd.Flags().GetBool("quiet")
+
 		if len(args) == 0 {
-			processStdin(cmd, cfg)
+			processStdin(cmd, cfg, quiet)
 			os.Exit(0)
 		}
 		data := getInput(cmd, args)
-		parse(data, cfg)
+		parse(data, cfg, quiet)
 	},
 }
 
@@ -163,6 +165,7 @@ func init() {
 		"ignore HTML entities and tags when parsing.")
 
 	rootCmd.Flags().BoolP("details", "d", false, "provides more details")
+	rootCmd.Flags().BoolP("quiet", "q", false, "do not show progress")
 
 	rootCmd.Flags().IntP("port", "p", 0,
 		"starts web site and REST server on the port.")
@@ -350,13 +353,13 @@ func portFlag(cmd *cobra.Command) int {
 	return webPort
 }
 
-func processStdin(cmd *cobra.Command, cfg gnparser.Config) {
+func processStdin(cmd *cobra.Command, cfg gnparser.Config, quiet bool) {
 	if !checkStdin() {
 		_ = cmd.Help()
 		return
 	}
 	gnp := gnparser.New(cfg)
-	parseBatch(gnp, os.Stdin)
+	parseBatch(gnp, os.Stdin, quiet)
 }
 
 func checkStdin() bool {
@@ -383,6 +386,7 @@ func getInput(cmd *cobra.Command, args []string) string {
 func parse(
 	data string,
 	cfg gnparser.Config,
+	quiet bool,
 ) {
 	gnp := gnparser.New(cfg)
 
@@ -394,9 +398,9 @@ func parse(
 			os.Exit(1)
 		}
 		if cfg.WithStream {
-			parseStream(gnp, f)
+			parseStream(gnp, f, quiet)
 		} else {
-			parseBatch(gnp, f)
+			parseBatch(gnp, f, quiet)
 		}
 		f.Close()
 	} else {
