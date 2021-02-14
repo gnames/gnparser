@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [v1.0.7]
+
 - Add [#143]: `quiet` flag to suppress showing progress output.
 
 - Fix [#142]: stream waits until certain names number is equal the batch size.
@@ -213,6 +215,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.0.7]: https://github.com/gnames/gnparser/compare/v1.0.6...v1.0.7
 [v1.0.6]: https://github.com/gnames/gnparser/compare/v1.0.5...v1.0.6
 [v1.0.5]: https://github.com/gnames/gnparser/compare/v1.0.4...v1.0.5
 [v1.0.4]: https://github.com/gnames/gnparser/compare/v1.0.3...v1.0.4
