@@ -441,6 +441,7 @@ def self.start_gnparser
   end
 end
 ```
+
 Note that you have to use `--stream -s` flag for this approach to work.
 
 ### Usage as a REST API Interface
