@@ -3,10 +3,8 @@ package cmd
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
-	"path/filepath"
 
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
@@ -14,56 +12,12 @@ import (
 	"github.com/gnames/gnparser/io/web"
 	"github.com/gnames/gnsys"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
-)
-
-const (
-	configText = `# Format sets the output format for CLI and Web
-# interfaces. There are 3 possible settings: 'csv', 'compact', 'pretty'.
-# Format: csv
-
-# JobsNum sets the level of parallelism used during parsing of a stream
-# of name-strings. Number of CPU on the computer is the default value.
-# JobsNum: 4
-
-# BatchSize determines maximum number of name-strings sent simultaneously
-# for parsing.
-# BatchSize: 50000
-
-# WithStream switches parsing of a large number of name-strings to a
-# one-at-a-time stream. When WithStream is true, BatchSize is ignored.
-# WithStream: false
-
-# IgnoreHTMLTags can be set to true if it is desirable to not try to remove from
-# a few HTML tags often present in names-strings that were planned to be
-# presented via an HTML page.
-# IgnoreHTMLTags: false
-
-# WithDetails can be set to true when a simplified output is not sufficient
-# for obtaining a required information.
-# WithDetails: false
-
-# Port is a port for the gnames service
-# Port: 8080
-`
 )
 
 var (
 	opts      []gnparser.Option
 	batchSize int
 )
-
-// config purpose is to achieve automatic import of data from the
-// configuration file, if it exists.
-type cfgData struct {
-	Format         string
-	JobsNum        int
-	BatchSize      int
-	IgnoreHTMLTags bool
-	WithStream     bool
-	WithDetails    bool
-	Port           int
-}
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -143,8 +97,6 @@ func Execute() {
 }
 
 func init() {
-	cobra.OnInitialize(initConfig)
-
 	rootCmd.PersistentFlags().BoolP("version", "V", false,
 		"shows build version and date, ignores other flags.")
 
@@ -171,95 +123,6 @@ func init() {
 		"starts web site and REST server on the port.")
 }
 
-// initConfig reads in config file and ENV variables if set.
-func initConfig() {
-	configFile := "gnparser"
-
-	homeConfig, err := os.UserConfigDir()
-	if err != nil {
-		log.Fatalf("Cannot find home config directory: %s.", err)
-	}
-
-	// Search config in home directory with name ".gnames" (without extension).
-	viper.AddConfigPath(homeConfig)
-	viper.SetConfigName(configFile)
-
-	// Set environment variables to override
-	// config file settings
-	viper.BindEnv("Format", "GNPARSER_FORMAT")
-	viper.BindEnv("JobsNum", "GNPARSER_JOBS_NUM")
-	viper.BindEnv("WithStream", "GNPARSER_WITH_STREAM")
-	viper.BindEnv("IgnoreHTMLTags", "GNPARSER_IGNORE_HTML_TAGS")
-	viper.BindEnv("WithDetails", "GNPARSER_WITH_DETAILS")
-	viper.BindEnv("Port", "GNPARSER_PORT")
-
-	viper.AutomaticEnv() // read in environment variables that match
-
-	configPath := filepath.Join(homeConfig, fmt.Sprintf("%s.yaml", configFile))
-	touchConfigFile(configPath, configFile)
-
-	// If a config file is found, read it in.
-	_ = viper.ReadInConfig()
-	getOpts()
-}
-
-func getOpts() []gnparser.Option {
-	cfg := &cfgData{}
-	err := viper.Unmarshal(cfg)
-	if err != nil {
-		log.Fatalf("Cannot deserialize config data: %s.", err)
-	}
-	if cfg.Format != "" {
-		opts = append(opts, gnparser.OptFormat(cfg.Format))
-	}
-	if cfg.JobsNum != 0 {
-		opts = append(opts, gnparser.OptJobsNum(cfg.JobsNum))
-	}
-	if cfg.BatchSize > 0 {
-		opts = append(opts, gnparser.OptBatchSize(cfg.BatchSize))
-	}
-	if cfg.WithStream {
-		opts = append(opts, gnparser.OptWithStream(cfg.WithStream))
-	}
-	if cfg.IgnoreHTMLTags {
-		opts = append(opts, gnparser.OptIgnoreHTMLTags(cfg.IgnoreHTMLTags))
-	}
-	if cfg.WithDetails {
-		opts = append(opts, gnparser.OptWithDetails(cfg.WithDetails))
-	}
-	if cfg.Port != 0 {
-		opts = append(opts, gnparser.OptPort(cfg.Port))
-	}
-
-	return opts
-}
-
-// touchConfigFile checks if config file exists, and if not, it gets created.
-func touchConfigFile(configPath string, configFile string) {
-	exists, err := gnsys.FileExists(configPath)
-	if err != nil {
-		log.Printf("Cannot use '%s' as config file: %v\n", configPath, err)
-	}
-	if exists {
-		return
-	}
-
-	log.Printf("Creating config file: %s.", configPath)
-	createConfig(configPath, configFile)
-}
-
-// createConfig creates config file.
-func createConfig(path string, file string) {
-	err := gnsys.MakeDir(filepath.Dir(path))
-	if err != nil {
-		log.Fatalf("Cannot create dir %s: %s.", path, err)
-	}
-
-	err = ioutil.WriteFile(path, []byte(configText), 0644)
-	if err != nil {
-		log.Fatalf("Cannot write to file %s: %s.", path, err)
-	}
-}
 func processStdin(cmd *cobra.Command, cfg gnparser.Config, quiet bool) {
 	if !checkStdin() {
 		_ = cmd.Help()
