@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add: ldflags `-s -w` to decrease binary size.
+
 ## [v1.0.7]
 
 - Add [#143]: `quiet` flag to suppress showing progress output.
