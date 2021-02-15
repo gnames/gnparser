@@ -8,7 +8,7 @@ NO_C = CGO_ENABLED=0
 FLAGS_LINUX = $(FLAGS_SHARED) GOOS=linux
 FLAGS_MAC = $(FLAGS_SHARED) GOOS=darwin
 FLAGS_WIN = $(FLAGS_SHARED) GOOS=windows
-FLAGS_LD=-ldflags "-X github.com/gnames/gnparser.Build=${DATE} \
+FLAGS_LD=-ldflags "-s -w -X github.com/gnames/gnparser.Build=${DATE} \
                   -X github.com/gnames/gnparser.Version=${VERSION}"
 GOCMD = go
 GOBUILD = $(GOCMD) build $(FLAGS_LD)
