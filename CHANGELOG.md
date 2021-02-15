@@ -2,7 +2,11 @@
 
 ## Unreleased
 
+## [v1.0.8]
+
+- Add: remove config message for CLI app.
 - Add: ldflags `-s -w` to decrease binary size.
+- Fix: header does not show in CSV format for stream.
 
 ## [v1.0.7]
 
@@ -217,6 +221,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.0.8]: https://github.com/gnames/gnparser/compare/v1.0.7...v1.0.8
 [v1.0.7]: https://github.com/gnames/gnparser/compare/v1.0.6...v1.0.7
 [v1.0.6]: https://github.com/gnames/gnparser/compare/v1.0.5...v1.0.6
 [v1.0.5]: https://github.com/gnames/gnparser/compare/v1.0.4...v1.0.5
