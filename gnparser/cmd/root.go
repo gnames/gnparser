@@ -199,9 +199,7 @@ func initConfig() {
 	touchConfigFile(configPath, configFile)
 
 	// If a config file is found, read it in.
-	if err := viper.ReadInConfig(); err == nil {
-		log.Printf("Using config file: %s.", viper.ConfigFileUsed())
-	}
+	_ = viper.ReadInConfig()
 	getOpts()
 }
 
@@ -305,7 +303,8 @@ func parse(
 	gnp := gnparser.New(cfg)
 
 	path := string(data)
-	if fileExists(path) {
+	exists, _ := gnsys.FileExists(path)
+	if exists {
 		f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
 		if err != nil {
 			log.Fatal(err)
@@ -320,15 +319,6 @@ func parse(
 	} else {
 		parseString(gnp, data)
 	}
-}
-
-func fileExists(path string) bool {
-	if fi, err := os.Stat(path); err == nil {
-		if fi.Mode().IsRegular() {
-			return true
-		}
-	}
-	return false
 }
 
 func parseString(gnp gnparser.GNparser, name string) {

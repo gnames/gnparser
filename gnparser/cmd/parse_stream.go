@@ -58,9 +58,13 @@ func parseStream(
 
 	go gnp.ParseNameStream(ctx, chIn, chOut)
 
+	// process parsing results
 	go func() {
 		defer cancel()
 		defer wg.Done()
+		if gnp.Format() == gnfmt.CSV {
+			fmt.Println(parsed.HeaderCSV())
+		}
 		var count int
 		for {
 			count++
