@@ -16,10 +16,14 @@ GOINSTALL = $(GOCMD) install $(FLAGS_LD)
 GOCLEAN = $(GOCMD) clean
 GOGET = $(GOCMD) get
 
+RELEASE_DIR ?= "../build/release"
+BUILD_DIR ?= "."
+CLIB_DIR ?= "."
+
 all: install
 
 test: deps install
-	$(FLAG_MODULE) go test ./...
+	$(FLAG_MODULE) go test -race ./...
 
 test-build: deps build
 
@@ -43,7 +47,7 @@ asset:
 build: peg
 	cd gnparser; \
 	$(GOCLEAN); \
-	$(FLAGS_SHARED) $(NO_C) $(GOBUILD)
+	$(FLAGS_SHARED) $(NO_C) $(GOBUILD) -o $(BUILD_DIR) 
 
 install: peg
 	cd gnparser; \
@@ -54,13 +58,26 @@ release: peg dockerhub
 	cd gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_LINUX) $(NO_C) $(GOBUILD); \
-	tar zcf /tmp/gnparser-$(VER)-linux.tar.gz gnparser; \
+	tar zcf $(RELEASE_DIR)/gnparser-$(VER)-linux.tar.gz gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_MAC) $(NO_C) $(GOBUILD); \
-	tar zcf /tmp/gnparser-$(VER)-mac.tar.gz gnparser; \
+	tar zcf $(RELEASE_DIR)/gnparser-$(VER)-mac.tar.gz gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_WIN) $(NO_C) $(GOBUILD); \
-	zip -9 /tmp/gnparser-$(VER)-win-64.zip gnparser.exe; \
+	zip -9 $(RELEASE_DIR)/gnparser-$(VER)-win-64.zip gnparser.exe; \
+	$(GOCLEAN);
+
+nightly: peg
+	cd gnparser; \
+	$(GOCLEAN); \
+	$(FLAGS_LINUX) $(NO_C) $(GOBUILD); \
+	tar zcf $(RELEASE_DIR)/gnparser-linux.tar.gz gnparser; \
+	$(GOCLEAN); \
+	$(FLAGS_MAC) $(NO_C) $(GOBUILD); \
+	tar zcf $(RELEASE_DIR)/gnparser-mac.tar.gz gnparser; \
+	$(GOCLEAN); \
+	$(FLAGS_WIN) $(NO_C) $(GOBUILD); \
+	zip -9 $(RELEASE_DIR)/gnparser-win-64.zip gnparser.exe; \
 	$(GOCLEAN);
 
 dc: asset build
@@ -77,7 +94,7 @@ dockerhub: docker
 
 clib: peg
 	cd binding; \
-	$(GOBUILD) -buildmode=c-shared -o libgnparser.so;
+	$(GOBUILD) -buildmode=c-shared -o $(CLIB_DIR)/libgnparser.so;
 
 quality:
 	cd tools;\

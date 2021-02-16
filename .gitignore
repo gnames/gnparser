@@ -9,4 +9,5 @@ gnparser/gnparser
 bench*.txt
 binding/libgnparser.h
 binding/*.so
+build/**
 

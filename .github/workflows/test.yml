@@ -1,4 +1,4 @@
-name: Go
+name: Tests
 
 on:
   push:
@@ -44,14 +44,9 @@ jobs:
     - name: Build C lib
       run: make clib
 
-    - name: Store binary
-      uses: actions/upload-artifact@v2
-      with:
-        name: ${{ matrix.os }}-bin
-        path: gnparser/gnparser*
-
     - name: Store C library
       uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.os }}-clib
-        path: binding
+        path: binding/lib*
+        retention-days: 1
