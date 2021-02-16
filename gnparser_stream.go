@@ -19,24 +19,28 @@ func (gnp gnparser) ParseNameStream(
 	chIn <-chan nameidx.NameIdx,
 	chOut chan<- parsed.Parsed,
 ) {
-	chToOrder := make(chan organizer.Ordered)
+	chUnordered := make(chan organizer.Ordered)
 	chOrdered := make(chan organizer.Ordered)
-	var wgWorker, wgOrd sync.WaitGroup
+	var wgWorker, wgOutput sync.WaitGroup
 	jobs := gnp.cfg.JobsNum
 	wgWorker.Add(jobs)
-	wgOrd.Add(1)
+	wgOutput.Add(1)
 
 	for i := jobs; i > 0; i-- {
-		go gnp.parseStreamWorker(ctx, chIn, chToOrder, &wgWorker)
+		go gnp.parseStreamWorker(ctx, chIn, chUnordered, &wgWorker)
 	}
 
-	go organizer.Organize(ctx, chToOrder, chOrdered)
-
-	go sendOrdered(ctx, chOrdered, chOut, &wgOrd)
+	if gnp.cfg.WithNoOrder {
+		close(chOrdered)
+		go sendUnordered(ctx, chUnordered, chOut, &wgOutput)
+	} else {
+		go organizer.Organize(ctx, chUnordered, chOrdered)
+		go sendOrdered(ctx, chOrdered, chOut, &wgOutput)
+	}
 
 	wgWorker.Wait()
-	close(chToOrder)
-	wgOrd.Wait()
+	close(chUnordered)
+	wgOutput.Wait()
 }
 
 func (gnp gnparser) parseStreamWorker(
@@ -65,6 +69,28 @@ func sendOrdered(
 ) {
 	defer wg.Done()
 	for v := range chOrdered {
+		var p parsed.Parsed
+		err := v.Unpack(&p)
+		if err != nil {
+			log.Panic(err)
+		}
+		select {
+		case <-ctx.Done():
+			return
+		case chOut <- p:
+		}
+	}
+	close(chOut)
+}
+
+func sendUnordered(
+	ctx context.Context,
+	chUnordered <-chan organizer.Ordered,
+	chOut chan<- parsed.Parsed,
+	wg *sync.WaitGroup,
+) {
+	defer wg.Done()
+	for v := range chUnordered {
 		var p parsed.Parsed
 		err := v.Unpack(&p)
 		if err != nil {

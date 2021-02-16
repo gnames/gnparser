@@ -66,6 +66,17 @@ func withDetailsFlag(cmd *cobra.Command) {
 	}
 }
 
+func withNoOrderFlag(cmd *cobra.Command) {
+	withOrd, err := cmd.Flags().GetBool("unordered")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	if withOrd {
+		opts = append(opts, gnparser.OptWithNoOrder(true))
+	}
+}
+
 func withStreamFlag(cmd *cobra.Command) {
 	withDet, err := cmd.Flags().GetBool("stream")
 	if err != nil {

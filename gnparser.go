@@ -67,6 +67,7 @@ func (gnp gnparser) ParseNames(names []string) []parsed.Parsed {
 
 	go func() {
 		defer wgOut.Done()
+		var count int
 		for {
 			select {
 			case <-ctx.Done():
@@ -75,7 +76,12 @@ func (gnp gnparser) ParseNames(names []string) []parsed.Parsed {
 				if !ok {
 					return
 				}
-				res[v.Idx] = v.Parsed
+				if gnp.cfg.WithNoOrder {
+					res[count] = v.Parsed
+					count++
+				} else {
+					res[v.Idx] = v.Parsed
+				}
 			}
 		}
 	}()

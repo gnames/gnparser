@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- Add: better CI/build actions made by @LocoDelAssembly.
+- Add [#146]: unordered flag.
+- Add [#145]: better CI/build actions, add nightly binaries.
 - Fix [#144]: remove configuration file as it creates more problems than solves.
 
 ## [v1.0.8]
@@ -254,6 +255,16 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
 
+[#160]: https://github.com/gnames/gnparser/issues/160
+[#159]: https://github.com/gnames/gnparser/issues/159
+[#158]: https://github.com/gnames/gnparser/issues/158
+[#157]: https://github.com/gnames/gnparser/issues/157
+[#156]: https://github.com/gnames/gnparser/issues/156
+[#155]: https://github.com/gnames/gnparser/issues/155
+[#154]: https://github.com/gnames/gnparser/issues/154
+[#153]: https://github.com/gnames/gnparser/issues/153
+[#152]: https://github.com/gnames/gnparser/issues/152
+[#151]: https://github.com/gnames/gnparser/issues/151
 [#150]: https://github.com/gnames/gnparser/issues/150
 [#149]: https://github.com/gnames/gnparser/issues/149
 [#148]: https://github.com/gnames/gnparser/issues/148

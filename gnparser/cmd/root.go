@@ -62,6 +62,7 @@ gnparser -j 5 -p 8080
 		ignoreHTMLTagsFlag(cmd)
 		withDetailsFlag(cmd)
 		withStreamFlag(cmd)
+		withNoOrderFlag(cmd)
 		batchSizeFlag(cmd)
 		port := portFlag(cmd)
 		cfg := gnparser.NewConfig(opts...)
@@ -100,27 +101,31 @@ func init() {
 	rootCmd.PersistentFlags().BoolP("version", "V", false,
 		"shows build version and date, ignores other flags.")
 
+	rootCmd.Flags().IntP("batch_size", "b", 0,
+		"maximum number of names in a batch send for processing.")
+
+	rootCmd.Flags().BoolP("details", "d", false, "provides more details")
+
 	formatHelp := "sets output format. Can be one of:\n  " +
 		"'csv', 'compact', 'pretty'"
 	rootCmd.Flags().StringP("format", "f", "", formatHelp)
 
+	rootCmd.Flags().BoolP("ignore_tags", "i", false,
+		"ignore HTML entities and tags when parsing.")
+
 	rootCmd.Flags().IntP("jobs", "j", 0,
 		"nubmer of threads to run. CPU's threads number is the default.")
 
-	rootCmd.Flags().IntP("batch_size", "b", 0,
-		"maximum number of names in a batch send for processing.")
+	rootCmd.Flags().IntP("port", "p", 0,
+		"starts web site and REST server on the port.")
+
+	rootCmd.Flags().BoolP("quiet", "q", false, "do not show progress")
 
 	rootCmd.Flags().BoolP("stream", "s", false,
 		"parse one name at a time in a stream instead of a batch parsing")
 
-	rootCmd.Flags().BoolP("ignore_tags", "i", false,
-		"ignore HTML entities and tags when parsing.")
-
-	rootCmd.Flags().BoolP("details", "d", false, "provides more details")
-	rootCmd.Flags().BoolP("quiet", "q", false, "do not show progress")
-
-	rootCmd.Flags().IntP("port", "p", 0,
-		"starts web site and REST server on the port.")
+	rootCmd.Flags().BoolP("unordered", "u", false,
+		"output and input are in different order")
 }
 
 func processStdin(cmd *cobra.Command, cfg gnparser.Config, quiet bool) {

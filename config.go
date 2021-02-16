@@ -26,14 +26,17 @@ type Config struct {
 	// at a time. When WithStream is true, BatchSize setting is ignored.
 	WithStream bool
 
-	// IgnoreHTMLTags can be set to true when it is desirable to clean up names from
-	// a few HTML tags often present in names-strings that were planned to be
-	// presented via an HTML page.
+	// IgnoreHTMLTags can be set to true when it is desirable to clean up names
+	// from a few HTML tags often present in names-strings that were planned to
+	// be presented via an HTML page.
 	IgnoreHTMLTags bool
 
 	// WithDetails can be set to true when a simplified output is not sufficient
 	// for obtaining a required information.
 	WithDetails bool
+
+	// WithNoOrder flag, when true, output and input are in different order.
+	WithNoOrder bool
 
 	// Port to run wer-service.
 	Port int
@@ -117,6 +120,13 @@ func OptBatchSize(i int) Option {
 func OptWithStream(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithStream = b
+	}
+}
+
+// OptWithNoOrder sets the WithNoOrder field.
+func OptWithNoOrder(b bool) Option {
+	return func(cfg *Config) {
+		cfg.WithNoOrder = b
 	}
 }
 

@@ -239,9 +239,9 @@ combinations using the original verbatim spelling of the words. Each element
 in ``words`` contains 3 parts:
 
 1. verbatim value of a word
-1. semantic meaning of the word
-2. start position of the word
-3. end position of the word
+2. semantic meaning of the word
+3. start position of the word
+4. end position of the word
 
 The ``words`` section belongs to additional details. To use it enable
 ``--details`` flag for the command line application.
@@ -254,7 +254,6 @@ gnparser -d "Pardosa moesta Banks, 1892"
 
 Robert Mesibov published an advanced [tutorial] on using
 ``gnparser`` together with `awk` and pipes in Unix-like environments.
-
 
 ## Installation
 
@@ -327,7 +326,7 @@ Relevant flags:
 ``--help -h``
 : help information about flags.
 
-``--batch_size b``
+``--batch_size -b``
 : Sets a maximum number of names collected into a batch before processing.
 This flag is ignored if parsing mode is set to streaming with ``-s`` flag.
 
@@ -357,6 +356,9 @@ performance.
 command line application. This approach requires sending 1 name at a time
 to ``gnparser`` instead of sending names in batches. Streaming allows to
 achieve that.
+
+``--unordered -s``
+: does not restore the order of output according to the order of input.
 
 ``--version -V``
 : shows the version number of ``gnparser``.
