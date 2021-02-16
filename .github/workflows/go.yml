@@ -9,17 +9,49 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
+    name: Build
+    runs-on: ${{ matrix.os }}
 
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
     - name: Set up Go
       uses: actions/setup-go@v2
       with:
         go-version: 1.15
 
-    - name: Build
-      run: go install -v ./gnparser
+    - name: Install peg
+      run: go get -u github.com/pointlander/peg
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+    - run: git fetch --prune --unshallow
+
+    - name: Install goimports
+      run: go get golang.org/x/tools/cmd/goimports
+
+    - name: Get dependencies
+      run: make deps
 
     - name: Test
-      run: go test -v ./...
+      run: make test
+
+    - name: Build
+      run: make build
+
+    - name: Build C lib
+      run: make clib
+
+    - name: Store binary
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.os }}-bin
+        path: gnparser/gnparser*
+
+    - name: Store C library
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.os }}-clib
+        path: binding

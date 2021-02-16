@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add: better CI/build actions made by @LocoDelAssembly.
 - Fix [#144]: remove configuration file as it creates more problems than solves.
 
 ## [v1.0.8]
