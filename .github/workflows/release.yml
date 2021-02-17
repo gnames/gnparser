@@ -80,7 +80,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.TAG_NAME }}
-          name: ${{ needs.binaries.outputs.release }}
+          name: Nightly build
           prerelease: ${{ env.TAG_NAME == 'nightly' }}
           commitish: ${{ github.sha }}
           gzip: false
