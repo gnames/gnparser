@@ -16,7 +16,7 @@ GOINSTALL = $(GOCMD) install $(FLAGS_LD)
 GOCLEAN = $(GOCMD) clean
 GOGET = $(GOCMD) get
 
-RELEASE_DIR ?= "../build/release"
+RELEASE_DIR ?= "/tmp"
 BUILD_DIR ?= "."
 CLIB_DIR ?= "."
 
