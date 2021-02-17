@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [v1.0.9]
+
 - Add [#146]: unordered flag.
 - Add [#145]: better CI/build actions, add nightly binaries.
 - Fix [#144]: remove configuration file as it creates more problems than solves.
