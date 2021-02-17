@@ -602,7 +602,7 @@ Released under [MIT license]
 [gnparser.proto]: https://github.com/gnames/gnparser/blob/master/pb/gnparser.proto
 [parser-web]: https://parser.globalnames.org
 [peg]: https://github.com/pointlander/peg
-[quality]: https://github.com/gnames/gnparser/quality.md
+[quality]: https://github.com/gnames/gnparser/blob/master/quality.md
 [releases]: https://github.com/gnames/gnparser/releases/latest
 [ruby_ffi_go_usage]: https://stackoverflow.com/questions/58866962/how-to-pass-an-array-of-strings-and-get-an-array-of-strings-in-ruby-using-go-sha
 [tutorial]: https://www.datafix.com.au/BASHing/2019-01-20.html
