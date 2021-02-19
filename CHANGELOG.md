@@ -2,7 +2,10 @@
 
 ## Unreleased
 
-- Add [#149]: support abbreviated subgenus (`Aus (B.) cus`)
+- Add [#152]: change auto-prereleases from nightly to on master submit.
+- Add [#151]: do not parse names with `(endo|ecto)?symbiont`.
+- Add [#150]: ignore serovar/serotype in bacerital names.
+- Add [#149]: support abbreviated subgenus (`Aus (B.) cus`).
 
 ## [v1.0.9]
 
