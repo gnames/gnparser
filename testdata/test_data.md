@@ -1,6 +1,5 @@
 # Global Names Parser Test
 
-
 <!-- vim-markdown-toc GFM -->
 
 * [Introduction](#introduction)
@@ -13,91 +12,7 @@
   * [Binomials without authorship](#binomials-without-authorship)
   * [Binomials with authorship](#binomials-with-authorship)
   * [Binomials with an abbreviated genus](#binomials-with-an-abbreviated-genus)
-  * [Binomials with several authours](#binomials-with-several-authours)
-  * [Binomials with several authors and a year](#binomials-with-several-authors-and-a-year)
-  * [Binomials with basionym and combination authors](#binomials-with-basionym-and-combination-authors)
-  * [Infraspecies without rank (ICZN)](#infraspecies-without-rank-iczn)
-  * [Legacy ICZN names with rank](#legacy-iczn-names-with-rank)
-  * [Infraspecies with rank (ICN)](#infraspecies-with-rank-icn)
-  * [Infraspecies multiple (ICN)](#infraspecies-multiple-icn)
-  * [Infraspecies with greek letters (ICN)](#infraspecies-with-greek-letters-icn)
-  * [Hybrids with notho- ranks](#hybrids-with-notho--ranks)
-  * [Named hybrids](#named-hybrids)
-  * [Hybrid formulae](#hybrid-formulae)
-  * [Genus with hyphen (allowed by ICN)](#genus-with-hyphen-allowed-by-icn)
-  * [Misspeled name](#misspeled-name)
-  * [A 'basionym' author in parenthesis (basionym is an ICN term)](#a-basionym-author-in-parenthesis-basionym-is-an-icn-term)
-  * [Infrageneric epithets (ICZN)](#infrageneric-epithets-iczn)
-  * [Names with multiple dashes in specific epithet](#names-with-multiple-dashes-in-specific-epithet)
-  * [Genus with question mark](#genus-with-question-mark)
-  * [Epithets starting with authors' prefixes (de, di, la, von etc.)](#epithets-starting-with-authors-prefixes-de-di-la-von-etc)
-  * [Authorship missing one parenthesis](#authorship-missing-one-parenthesis)
-  * [Unknown authorship](#unknown-authorship)
-  * [Treating apud (with)](#treating-apud-with)
-  * [Names with ex authors (we follow ICZN convention)](#names-with-ex-authors-we-follow-iczn-convention)
-  * [Empty spaces](#empty-spaces)
-  * [Names with a dash](#names-with-a-dash)
-  * [Authorship with filius (son of)](#authorship-with-filius-son-of)
-  * [Names with emend (rectified by) authorship](#names-with-emend-rectified-by-authorship)
-  * ["Tail" annotations](#tail-annotations)
-  * [Abbreviated words after a name](#abbreviated-words-after-a-name)
-  * [Epithets starting with numeric value (not allowed anymore)](#epithets-starting-with-numeric-value-not-allowed-anymore)
-  * [Non-ASCII UTF-8 characters in a name](#non-ascii-utf-8-characters-in-a-name)
-  * [Epithets with an apostrophe](#epithets-with-an-apostrophe)
-  * [Digraph unicode characters](#digraph-unicode-characters)
-  * [Old style s (ſ)](#old-style-s-)
-  * [Miscellaneous diacritics](#miscellaneous-diacritics)
-  * [Open Nomenclature ('approximate' names)](#open-nomenclature-approximate-names)
-  * [Surrogate Name-Strings](#surrogate-name-strings)
-  * [Virus-like "normal" names](#virus-like-normal-names)
-  * [Viruses, plasmids, prions etc.](#viruses-plasmids-prions-etc)
-  * [Name-strings with RNA](#name-strings-with-rna)
-  * [Epithet prioni is not a prion](#epithet-prioni-is-not-a-prion)
-  * [Names with "satellite" as a substring](#names-with-satellite-as-a-substring)
-  * [Bacterial genus](#bacterial-genus)
-  * [Bacteria genus homonym](#bacteria-genus-homonym)
-  * [Bacteria with pathovar rank](#bacteria-with-pathovar-rank)
-  * ["Stray" ex is not parsed as species](#stray-ex-is-not-parsed-as-species)
-  * [Authoship in upper case](#authoship-in-upper-case)
-  * [Numbers and letters separated with '-' are not parsed as authors](#numbers-and-letters-separated-with---are-not-parsed-as-authors)
-  * [Double parenthesis](#double-parenthesis)
-  * [Numbers at the start/middle of names](#numbers-at-the-startmiddle-of-names)
-  * [Year without authorship](#year-without-authorship)
-  * [Year range](#year-range)
-  * [Year with page number](#year-with-page-number)
-  * [Year in square brackets](#year-in-square-brackets)
-  * [Names with broken conversion between encodings](#names-with-broken-conversion-between-encodings)
-  * [UTF-8 0xA0 character (NO_BREAK_SPACE)](#utf-8-0xa0-character-no_break_space)
-  * [UTF-8 0x3000 character (IDEOGRAPHIC_SPACE)](#utf-8-0x3000-character-ideographic_space)
-  * [Punctuation in the end](#punctuation-in-the-end)
-  * [Names with 'ex' as sp. epithet](#names-with-ex-as-sp-epithet)
-  * [Names with Spanish 'y' instead of '&'](#names-with-spanish-y-instead-of-)
-  * [Names with unparsed "tail" at the end](#names-with-unparsed-tail-at-the-end)
-  * [Discard apostrophes at the start and end of words](#discard-apostrophes-at-the-start-and-end-of-words)
-  * [Discard apostrophe with dash (rare, needs further investigation)](#discard-apostrophe-with-dash-rare-needs-further-investigation)
-  * [Possible canonical](#possible-canonical)
-  * [Treating `& al.` as `et al.`](#treating--al-as-et-al)
-  * [Authors do not start with apostrophe](#authors-do-not-start-with-apostrophe)
-  * [Epithets do not start or end with a dash](#epithets-do-not-start-or-end-with-a-dash)
-  * [names that contain "of"](#names-that-contain-of)
-  * [Names that contain "cv" (cultivar)](#names-that-contain-cv-cultivar)
-  * ["Open taxonomy" with ranks unfinished](#open-taxonomy-with-ranks-unfinished)
-  * [Ignoring sensu sec](#ignoring-sensu-sec)
-  * [Unparseable hort. annotations](#unparseable-hort-annotations)
-  * [Removing nomenclatural annotations](#removing-nomenclatural-annotations)
-  * [Misc annotations](#misc-annotations)
-  * [Horticultural annotation](#horticultural-annotation)
-  * [Not parsed OCR errors to get better precision/recall ratio](#not-parsed-ocr-errors-to-get-better-precisionrecall-ratio)
-  * [No parsing -- Genera abbreviated to 3 letters (too rare)](#no-parsing----genera-abbreviated-to-3-letters-too-rare)
-  * [No parsing -- incertae sedis](#no-parsing----incertae-sedis)
-  * [No parsing -- bacterium, Candidatus](#no-parsing----bacterium-candidatus)
-  * [No parsing -- 'Not', 'None', 'Unidentified'  phrases](#no-parsing----not-none-unidentified--phrases)
-  * [No parsing -- genus with apostrophe](#no-parsing----genus-with-apostrophe)
-  * [No parsing -- CamelCase 'genus' word](#no-parsing----camelcase-genus-word)
-  * [No parsing -- phytoplasma](#no-parsing----phytoplasma)
-  * [Names with spec., nov spec](#names-with-spec-nov-spec)
-  * [HTML tags and entities](#html-tags-and-entities)
-  * [Underscores instead of spaces](#underscores-instead-of-spaces)
+  * [Binomials with abbreviated subgenus](#binomials-with-abbreviated-subgenus)
 
 <!-- vim-markdown-toc -->
 
@@ -1165,6 +1080,47 @@ Authorship: (Osbeck 1778)
 
 ```json
 {"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Abbreviated uninomial word"}],"verbatim":"Mo. alpium (Osbeck, 1778)","normalized":"Mo. alpium (Osbeck 1778)","canonical":{"stemmed":"Mo. alpi","simple":"Mo. alpium","full":"Mo. alpium"},"cardinality":2,"authorship":{"verbatim":"(Osbeck, 1778)","normalized":"(Osbeck 1778)","year":"1778","authors":["Osbeck"],"originalAuth":{"authors":["Osbeck"],"year":{"year":"1778"}}},"details":{"species":{"genus":"Mo.","species":"alpium","authorship":{"verbatim":"(Osbeck, 1778)","normalized":"(Osbeck 1778)","year":"1778","authors":["Osbeck"],"originalAuth":{"authors":["Osbeck"],"year":{"year":"1778"}}}}},"words":[{"verbatim":"Mo.","normalized":"Mo.","wordType":"GENUS","start":0,"end":3},{"verbatim":"alpium","normalized":"alpium","wordType":"SPECIES","start":4,"end":10},{"verbatim":"Osbeck","normalized":"Osbeck","wordType":"AUTHOR_WORD","start":12,"end":18},{"verbatim":"1778","normalized":"1778","wordType":"YEAR","start":20,"end":24}],"id":"1e9437b7-bf45-5b12-8da0-8966c6ea1c5c","parserVersion":"test_version"}
+```
+
+### Binomials with abbreviated subgenus
+
+Name: Phalaena (Tin.) guttella Fab.
+
+Canonical: Phalaena guttella
+
+Authorship: Fab.
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Abbreviated subgenus"}],"verbatim":"Phalaena (Tin.) guttella Fab.","normalized":"Phalaena (Tin.) guttella Fab.","canonical":{"stemmed":"Phalaena guttell","simple":"Phalaena guttella","full":"Phalaena guttella"},"cardinality":2,"authorship":{"verbatim":"Fab.","normalized":"Fab.","authors":["Fab."],"originalAuth":{"authors":["Fab."]}},"details":{"species":{"genus":"Phalaena","subgenus":"Tin.","species":"guttella","authorship":{"verbatim":"Fab.","normalized":"Fab.","authors":["Fab."],"originalAuth":{"authors":["Fab."]}}}},"words":[{"verbatim":"Phalaena","normalized":"Phalaena","wordType":"GENUS","start":0,"end":8},{"verbatim":"Tin.","normalized":"Tin.","wordType":"INFRA_GENUS","start":10,"end":14},{"verbatim":"guttella","normalized":"guttella","wordType":"SPECIES","start":16,"end":24},{"verbatim":"Fab.","normalized":"Fab.","wordType":"AUTHOR_WORD","start":25,"end":29}],"id":"da5f9d5b-abdf-5451-8dec-53830e05e43c","parserVersion":"test_version"}
+```
+
+Name: Gahrliepia (G.) tessellata Traub & Morrow 1955
+
+Canonical: Gahrliepia tessellata
+
+Authorship: Traub & Morrow 1955
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Abbreviated subgenus"}],"verbatim":"Gahrliepia (G.) tessellata Traub \u0026 Morrow 1955","normalized":"Gahrliepia (G.) tessellata Traub \u0026 Morrow 1955","canonical":{"stemmed":"Gahrliepia tessellat","simple":"Gahrliepia tessellata","full":"Gahrliepia tessellata"},"cardinality":2,"authorship":{"verbatim":"Traub \u0026 Morrow 1955","normalized":"Traub \u0026 Morrow 1955","year":"1955","authors":["Traub","Morrow"],"originalAuth":{"authors":["Traub","Morrow"],"year":{"year":"1955"}}},"details":{"species":{"genus":"Gahrliepia","subgenus":"G.","species":"tessellata","authorship":{"verbatim":"Traub \u0026 Morrow 1955","normalized":"Traub \u0026 Morrow 1955","year":"1955","authors":["Traub","Morrow"],"originalAuth":{"authors":["Traub","Morrow"],"year":{"year":"1955"}}}}},"words":[{"verbatim":"Gahrliepia","normalized":"Gahrliepia","wordType":"GENUS","start":0,"end":10},{"verbatim":"G.","normalized":"G.","wordType":"INFRA_GENUS","start":12,"end":14},{"verbatim":"tessellata","normalized":"tessellata","wordType":"SPECIES","start":16,"end":26},{"verbatim":"Traub","normalized":"Traub","wordType":"AUTHOR_WORD","start":27,"end":32},{"verbatim":"Morrow","normalized":"Morrow","wordType":"AUTHOR_WORD","start":35,"end":41},{"verbatim":"1955","normalized":"1955","wordType":"YEAR","start":42,"end":46}],"id":"776bb155-0d31-5a3d-9e87-e10ebf61a746","parserVersion":"test_version"}
+
+Name: Bosmina (Eubosmina) coregoni x B. (E.) longispina
+
+Canonical: Bosmina coregoni × Bosmina longispina
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Abbreviated uninomial word"},{"quality":2,"warning":"Hybrid formula"},{"quality":2,"warning":"Abbreviated subgenus"}],"verbatim":"Bosmina (Eubosmina) coregoni x B. (E.) longispina","normalized":"Bosmina (Eubosmina) coregoni × Bosmina (E.) longispina","canonical":{"stemmed":"Bosmina coregon × Bosmin longispin","simple":"Bosmina coregoni × Bosmina longispina","full":"Bosmina coregoni × Bosmina longispina"},"cardinality":0,"hybrid":"HYBRID_FORMULA","details":{"hybridFormula":[{"species":{"genus":"Bosmina","subgenus":"Eubosmina","species":"coregoni"}},{"species":{"genus":"Bosmina","subgenus":"E.","species":"longispina"}}]},"words":[{"verbatim":"Bosmina","normalized":"Bosmina","wordType":"GENUS","start":0,"end":7},{"verbatim":"Eubosmina","normalized":"Eubosmina","wordType":"INFRA_GENUS","start":9,"end":18},{"verbatim":"coregoni","normalized":"coregoni","wordType":"SPECIES","start":20,"end":28},{"verbatim":"","normalized":"","wordType":"HYBRID_CHAR","start":29,"end":30},{"verbatim":"B.","normalized":"Bosmina","wordType":"GENUS","start":31,"end":33},{"verbatim":"E.","normalized":"E.","wordType":"INFRA_GENUS","start":35,"end":37},{"verbatim":"longispina","normalized":"longispina","wordType":"SPECIES","start":39,"end":49}],"id":"71c160bf-428b-5b51-9d97-0965686033bc","parserVersion":"test_version"}
+```
+
+Name: Simia (Cercop.) nasuus Kerr 1792
+
+Canonical: Simia nasuus
+
+Authorship: Kerr 1792
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Abbreviated subgenus"}],"verbatim":"Simia (Cercop.) nasuus Kerr 1792","normalized":"Simia (Cercop.) nasuus Kerr 1792","canonical":{"stemmed":"Simia nasu","simple":"Simia nasuus","full":"Simia nasuus"},"cardinality":2,"authorship":{"verbatim":"Kerr 1792","normalized":"Kerr 1792","year":"1792","authors":["Kerr"],"originalAuth":{"authors":["Kerr"],"year":{"year":"1792"}}},"details":{"species":{"genus":"Simia","subgenus":"Cercop.","species":"nasuus","authorship":{"verbatim":"Kerr 1792","normalized":"Kerr 1792","year":"1792","authors":["Kerr"],"originalAuth":{"authors":["Kerr"],"year":{"year":"1792"}}}}},"words":[{"verbatim":"Simia","normalized":"Simia","wordType":"GENUS","start":0,"end":5},{"verbatim":"Cercop.","normalized":"Cercop.","wordType":"INFRA_GENUS","start":7,"end":14},{"verbatim":"nasuus","normalized":"nasuus","wordType":"SPECIES","start":16,"end":22},{"verbatim":"Kerr","normalized":"Kerr","wordType":"AUTHOR_WORD","start":23,"end":27},{"verbatim":"1792","normalized":"1792","wordType":"YEAR","start":28,"end":32}],"id":"2f54aece-f7e0-5ed2-8744-f135ceab1c7f","parserVersion":"test_version"}
 ```
 
 ### Binomials with several authours

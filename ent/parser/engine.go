@@ -116,6 +116,8 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 		p.addWarn(parsed.SpaceMultipleWarn)
 	case ruleMiscodedChar:
 		p.addWarn(parsed.UTF8ConvBadWarn)
+	case ruleAbbrSubgenus:
+		p.addWarn(parsed.SubgenusAbbrWarn)
 	case ruleBasionymAuthorship2Parens:
 		p.addWarn(parsed.AuthDoubleParensWarn)
 	case ruleBasionymAuthorshipMissingParens:
@@ -184,6 +186,7 @@ var nodeRules = map[pegRule]struct{}{
 	ruleUninomial:                       {},
 	ruleUninomialWord:                   {},
 	ruleAbbrGenus:                       {},
+	ruleAbbrSubgenus:                    {},
 	ruleWord:                            {},
 	ruleWordApostr:                      {},
 	ruleWordStartsWithDigit:             {},

@@ -4,7 +4,7 @@ type Engine Peg {
   baseEngine
 }
 
-SciName <- _? Name Tail !.
+SciName <- _? Name Tail END
 
 Tail <- ((_ / ';' / ',') .*)?
 
@@ -31,7 +31,7 @@ NameApprox <- GenusWord (_ SpeciesEpithet)? _ Approximation ApproxNameIgnored
 
 NameComp <- GenusWord _ Comparison (_ SpeciesEpithet)?
 
-NameSpecies <- GenusWord (_? (Subgenus / SubgenusOrSuperspecies))?
+NameSpecies <- GenusWord (_? ( Subgenus / SubgenusOrSuperspecies))?
                _ SpeciesEpithet (_ InfraspGroup)?
 
 GenusWord <- (AbbrGenus / UninomialWord) !(_ AuthorWord)
@@ -69,7 +69,11 @@ RankAgamo <- ('agamosp' / 'agamossp' / 'agamovar') ('.' / &(SpaceCharEOI))
 
 SubgenusOrSuperspecies <- '(' _? NameLowerChar+ _? ')'
 
-Subgenus <- '(' _? UninomialWord _? ')'
+Subgenus <- Subgenus2 / Subgenus1
+
+Subgenus2 <- '(' _? AbbrSubgenus _? ')' !(_? NameUpperChar)
+
+Subgenus1 <- '(' _? UninomialWord _? ')'
 
 UninomialCombo <- UninomialCombo1 / UninomialCombo2
 UninomialCombo1 <- UninomialWord _? Subgenus (_? Authorship)?
@@ -85,9 +89,12 @@ RankUninomialNotho <- ('notho' _? ('sect' / 'gen' / 'ser' / 'subgeen' /
   'subgen' / 'subg' / 'subsect' / 'subtrib')) ('.' / &(SpaceCharEOI))
 
 
-Uninomial <- UninomialWord (_ Authorship)?
+Uninomial <- UninomialWord (_ Authorship
+  !(_ LowerCharExtended LowerCharExtended LowerCharExtended))?
 
 UninomialWord <- CapWord / TwoLetterGenus
+
+AbbrSubgenus <- UpperChar LowerChar* '.'
 
 AbbrGenus <- UpperChar LowerChar? '.'
 
@@ -274,3 +281,5 @@ MultipleSpace <- SingleSpace SingleSpace+
 SingleSpace <- ' ' / OtherSpace
 
 OtherSpace <- [　 \t\r\n\f\v]
+
+END <- !.

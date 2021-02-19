@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#149]: support abbreviated subgenus (`Aus (B.) cus`)
+
 ## [v1.0.9]
 
 - Add [#146]: unordered flag.
