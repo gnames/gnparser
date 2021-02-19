@@ -36,7 +36,7 @@ peg:
 	goimports -w grammar.peg.go; \
 
 ragel:
-	cd ent/preprocess; \
+	cd ent/internal/preprocess; \
 	ragel -Z -G2 virus.rl; \
 	ragel -Z -G2 noparse.rl
 

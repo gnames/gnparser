@@ -10,6 +10,7 @@ Parsing finished without detecting any problems.
 
 ## Quality 2
 
+- Abbreviated subgenus
 - Ambiguity: subgenus or superspecies found
 - Ambiguous f. (filius or forma)
 - Apparent genus with capital character after hyphen
@@ -40,7 +41,7 @@ Parsing finished without detecting any problems.
 - Apostrophe is not allowed in canonical
 - Author is too short
 - HTML tags or entities in the name
-- Hybrid char not separated by space
+- Hybrid char is not separated by space
 - Not an ASCII apostrophe
 - Numeric prefix
 - Uncommon rank

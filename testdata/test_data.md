@@ -13,6 +13,92 @@
   * [Binomials with authorship](#binomials-with-authorship)
   * [Binomials with an abbreviated genus](#binomials-with-an-abbreviated-genus)
   * [Binomials with abbreviated subgenus](#binomials-with-abbreviated-subgenus)
+  * [Binomials with several authours](#binomials-with-several-authours)
+  * [Binomials with several authors and a year](#binomials-with-several-authors-and-a-year)
+  * [Binomials with basionym and combination authors](#binomials-with-basionym-and-combination-authors)
+  * [Infraspecies without rank (ICZN)](#infraspecies-without-rank-iczn)
+  * [Legacy ICZN names with rank](#legacy-iczn-names-with-rank)
+  * [Infraspecies with rank (ICN)](#infraspecies-with-rank-icn)
+  * [Infraspecies multiple (ICN)](#infraspecies-multiple-icn)
+  * [Infraspecies with greek letters (ICN)](#infraspecies-with-greek-letters-icn)
+  * [Hybrids with notho- ranks](#hybrids-with-notho--ranks)
+  * [Named hybrids](#named-hybrids)
+  * [Hybrid formulae](#hybrid-formulae)
+  * [Genus with hyphen (allowed by ICN)](#genus-with-hyphen-allowed-by-icn)
+  * [Misspeled name](#misspeled-name)
+  * [A 'basionym' author in parenthesis (basionym is an ICN term)](#a-basionym-author-in-parenthesis-basionym-is-an-icn-term)
+  * [Infrageneric epithets (ICZN)](#infrageneric-epithets-iczn)
+  * [Names with multiple dashes in specific epithet](#names-with-multiple-dashes-in-specific-epithet)
+  * [Genus with question mark](#genus-with-question-mark)
+  * [Epithets starting with authors' prefixes (de, di, la, von etc.)](#epithets-starting-with-authors-prefixes-de-di-la-von-etc)
+  * [Authorship missing one parenthesis](#authorship-missing-one-parenthesis)
+  * [Unknown authorship](#unknown-authorship)
+  * [Treating apud (with)](#treating-apud-with)
+  * [Names with ex authors (we follow ICZN convention)](#names-with-ex-authors-we-follow-iczn-convention)
+  * [Empty spaces](#empty-spaces)
+  * [Names with a dash](#names-with-a-dash)
+  * [Authorship with filius (son of)](#authorship-with-filius-son-of)
+  * [Names with emend (rectified by) authorship](#names-with-emend-rectified-by-authorship)
+  * ["Tail" annotations](#tail-annotations)
+  * [Abbreviated words after a name](#abbreviated-words-after-a-name)
+  * [Epithets starting with numeric value (not allowed anymore)](#epithets-starting-with-numeric-value-not-allowed-anymore)
+  * [Non-ASCII UTF-8 characters in a name](#non-ascii-utf-8-characters-in-a-name)
+  * [Epithets with an apostrophe](#epithets-with-an-apostrophe)
+  * [Digraph unicode characters](#digraph-unicode-characters)
+  * [Old style s (ſ)](#old-style-s-)
+  * [Miscellaneous diacritics](#miscellaneous-diacritics)
+  * [Open Nomenclature ('approximate' names)](#open-nomenclature-approximate-names)
+  * [Surrogate Name-Strings](#surrogate-name-strings)
+  * [Virus-like "normal" names](#virus-like-normal-names)
+  * [Viruses, plasmids, prions etc.](#viruses-plasmids-prions-etc)
+  * [Name-strings with RNA](#name-strings-with-rna)
+  * [Epithet prioni is not a prion](#epithet-prioni-is-not-a-prion)
+  * [Names with "satellite" as a substring](#names-with-satellite-as-a-substring)
+  * [Bacterial genus](#bacterial-genus)
+  * [Bacteria genus homonym](#bacteria-genus-homonym)
+  * [Bacteria with pathovar rank](#bacteria-with-pathovar-rank)
+  * ["Stray" ex is not parsed as species](#stray-ex-is-not-parsed-as-species)
+  * [Authoship in upper case](#authoship-in-upper-case)
+  * [Numbers and letters separated with '-' are not parsed as authors](#numbers-and-letters-separated-with---are-not-parsed-as-authors)
+  * [Double parenthesis](#double-parenthesis)
+  * [Numbers at the start/middle of names](#numbers-at-the-startmiddle-of-names)
+  * [Year without authorship](#year-without-authorship)
+  * [Year range](#year-range)
+  * [Year with page number](#year-with-page-number)
+  * [Year in square brackets](#year-in-square-brackets)
+  * [Names with broken conversion between encodings](#names-with-broken-conversion-between-encodings)
+  * [UTF-8 0xA0 character (NO_BREAK_SPACE)](#utf-8-0xa0-character-no_break_space)
+  * [UTF-8 0x3000 character (IDEOGRAPHIC_SPACE)](#utf-8-0x3000-character-ideographic_space)
+  * [Punctuation in the end](#punctuation-in-the-end)
+  * [Names with 'ex' as sp. epithet](#names-with-ex-as-sp-epithet)
+  * [Names with Spanish 'y' instead of '&'](#names-with-spanish-y-instead-of-)
+  * [Names with unparsed "tail" at the end](#names-with-unparsed-tail-at-the-end)
+  * [Discard apostrophes at the start and end of words](#discard-apostrophes-at-the-start-and-end-of-words)
+  * [Discard apostrophe with dash (rare, needs further investigation)](#discard-apostrophe-with-dash-rare-needs-further-investigation)
+  * [Possible canonical](#possible-canonical)
+  * [Treating `& al.` as `et al.`](#treating--al-as-et-al)
+  * [Authors do not start with apostrophe](#authors-do-not-start-with-apostrophe)
+  * [Epithets do not start or end with a dash](#epithets-do-not-start-or-end-with-a-dash)
+  * [names that contain "of"](#names-that-contain-of)
+  * [Names that contain "cv" (cultivar)](#names-that-contain-cv-cultivar)
+  * ["Open taxonomy" with ranks unfinished](#open-taxonomy-with-ranks-unfinished)
+  * [Ignoring sensu sec](#ignoring-sensu-sec)
+  * [Unparseable hort. annotations](#unparseable-hort-annotations)
+  * [Removing nomenclatural annotations](#removing-nomenclatural-annotations)
+  * [Misc annotations](#misc-annotations)
+  * [Horticultural annotation](#horticultural-annotation)
+  * [Not parsed OCR errors to get better precision/recall ratio](#not-parsed-ocr-errors-to-get-better-precisionrecall-ratio)
+  * [No parsing -- Genera abbreviated to 3 letters (too rare)](#no-parsing----genera-abbreviated-to-3-letters-too-rare)
+  * [No parsing -- incertae sedis](#no-parsing----incertae-sedis)
+  * [No parsing -- bacterium, Candidatus](#no-parsing----bacterium-candidatus)
+  * [No parsing -- 'Not', 'None', 'Unidentified'  phrases](#no-parsing----not-none-unidentified--phrases)
+  * [No parsing -- genus with apostrophe](#no-parsing----genus-with-apostrophe)
+  * [No parsing -- CamelCase 'genus' word](#no-parsing----camelcase-genus-word)
+  * [No parsing -- phytoplasma](#no-parsing----phytoplasma)
+  * [No parsing symbiont](#no-parsing-symbiont)
+  * [Names with spec., nov spec](#names-with-spec-nov-spec)
+  * [HTML tags and entities](#html-tags-and-entities)
+  * [Underscores instead of spaces](#underscores-instead-of-spaces)
 
 <!-- vim-markdown-toc -->
 
@@ -1102,6 +1188,7 @@ Authorship: Traub & Morrow 1955
 
 ```json
 {"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Abbreviated subgenus"}],"verbatim":"Gahrliepia (G.) tessellata Traub \u0026 Morrow 1955","normalized":"Gahrliepia (G.) tessellata Traub \u0026 Morrow 1955","canonical":{"stemmed":"Gahrliepia tessellat","simple":"Gahrliepia tessellata","full":"Gahrliepia tessellata"},"cardinality":2,"authorship":{"verbatim":"Traub \u0026 Morrow 1955","normalized":"Traub \u0026 Morrow 1955","year":"1955","authors":["Traub","Morrow"],"originalAuth":{"authors":["Traub","Morrow"],"year":{"year":"1955"}}},"details":{"species":{"genus":"Gahrliepia","subgenus":"G.","species":"tessellata","authorship":{"verbatim":"Traub \u0026 Morrow 1955","normalized":"Traub \u0026 Morrow 1955","year":"1955","authors":["Traub","Morrow"],"originalAuth":{"authors":["Traub","Morrow"],"year":{"year":"1955"}}}}},"words":[{"verbatim":"Gahrliepia","normalized":"Gahrliepia","wordType":"GENUS","start":0,"end":10},{"verbatim":"G.","normalized":"G.","wordType":"INFRA_GENUS","start":12,"end":14},{"verbatim":"tessellata","normalized":"tessellata","wordType":"SPECIES","start":16,"end":26},{"verbatim":"Traub","normalized":"Traub","wordType":"AUTHOR_WORD","start":27,"end":32},{"verbatim":"Morrow","normalized":"Morrow","wordType":"AUTHOR_WORD","start":35,"end":41},{"verbatim":"1955","normalized":"1955","wordType":"YEAR","start":42,"end":46}],"id":"776bb155-0d31-5a3d-9e87-e10ebf61a746","parserVersion":"test_version"}
+```
 
 Name: Bosmina (Eubosmina) coregoni x B. (E.) longispina
 
@@ -5147,16 +5234,6 @@ Authorship: Reeve
 {"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Neritina chemmoi Reeve var of cornea Linn","normalized":"Neritina chemmoi Reeve","canonical":{"stemmed":"Neritina chemmo","simple":"Neritina chemmoi","full":"Neritina chemmoi"},"cardinality":2,"authorship":{"verbatim":"Reeve","normalized":"Reeve","authors":["Reeve"],"originalAuth":{"authors":["Reeve"]}},"tail":" var of cornea Linn","details":{"species":{"genus":"Neritina","species":"chemmoi","authorship":{"verbatim":"Reeve","normalized":"Reeve","authors":["Reeve"],"originalAuth":{"authors":["Reeve"]}}}},"words":[{"verbatim":"Neritina","normalized":"Neritina","wordType":"GENUS","start":0,"end":8},{"verbatim":"chemmoi","normalized":"chemmoi","wordType":"SPECIES","start":9,"end":16},{"verbatim":"Reeve","normalized":"Reeve","wordType":"AUTHOR_WORD","start":17,"end":22}],"id":"d6cbded0-dc9b-5da2-8fb9-8d8b124cc5b4","parserVersion":"test_version"}
 ```
 
-Name: Wolbachia endosymbiont of Leptogenys gracilis
-
-Canonical: Wolbachia endosymbiont
-
-Authorship:
-
-```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Wolbachia endosymbiont of Leptogenys gracilis","normalized":"Wolbachia endosymbiont","canonical":{"stemmed":"Wolbachia endosymbio","simple":"Wolbachia endosymbiont","full":"Wolbachia endosymbiont"},"cardinality":2,"bacteria":"yes","tail":" of Leptogenys gracilis","details":{"species":{"genus":"Wolbachia","species":"endosymbiont"}},"words":[{"verbatim":"Wolbachia","normalized":"Wolbachia","wordType":"GENUS","start":0,"end":9},{"verbatim":"endosymbiont","normalized":"endosymbiont","wordType":"SPECIES","start":10,"end":22}],"id":"ed4bbf5e-068a-518a-8eb3-42ead52b941b","parserVersion":"test_version"}
-```
-
 ### Names that contain "cv" (cultivar)
 
 Name: Phyllostachys vivax cv aureocaulis
@@ -6248,6 +6325,68 @@ Authorship:
 
 ```json
 {"parsed":false,"quality":0,"verbatim":"Alstroemeria sp. phytoplasma","cardinality":0,"id":"5348845f-c94a-5c7e-bba1-307e4c07a42d","parserVersion":"test_version"}
+```
+
+### No parsing symbiont
+
+Name: Alvinella pompejana symbiont
+
+Canonical:
+
+Authorship:
+
+```json
+{"parsed":false,"quality":0,"verbatim":"Alvinella pompejana symbiont","cardinality":0,"id":"9bbe5639-7f50-5abd-a2df-78674e0cf583","parserVersion":"test_version"}
+```
+
+Name: Acyrthosiphon kondoi endosymbiont
+
+Canonical:
+
+Authorship:
+
+```json
+{"parsed":false,"quality":0,"verbatim":"Acyrthosiphon kondoi endosymbiont","cardinality":0,"id":"fc3764e6-3154-5e7f-8925-fccaca0dc8f0","parserVersion":"test_version"}
+```
+
+Name: Burkholderia sp. (Gigaspora margarita endosymbiont)
+
+Canonical:
+
+Authorship:
+
+```json
+{"parsed":false,"quality":0,"verbatim":"Burkholderia sp. (Gigaspora margarita endosymbiont)","cardinality":0,"id":"f6d482de-0884-54e0-95a4-d52bc26870a0","parserVersion":"test_version"}
+```
+
+Name: Dictyochloropsis symbiontica Tschermak-Woess
+
+Canonical: Dictyochloropsis symbiontica
+
+Authorship: Tschermak-Woess
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Dictyochloropsis symbiontica Tschermak-Woess","normalized":"Dictyochloropsis symbiontica Tschermak-Woess","canonical":{"stemmed":"Dictyochloropsis symbiontic","simple":"Dictyochloropsis symbiontica","full":"Dictyochloropsis symbiontica"},"cardinality":2,"authorship":{"verbatim":"Tschermak-Woess","normalized":"Tschermak-Woess","authors":["Tschermak-Woess"],"originalAuth":{"authors":["Tschermak-Woess"]}},"details":{"species":{"genus":"Dictyochloropsis","species":"symbiontica","authorship":{"verbatim":"Tschermak-Woess","normalized":"Tschermak-Woess","authors":["Tschermak-Woess"],"originalAuth":{"authors":["Tschermak-Woess"]}}}},"words":[{"verbatim":"Dictyochloropsis","normalized":"Dictyochloropsis","wordType":"GENUS","start":0,"end":16},{"verbatim":"symbiontica","normalized":"symbiontica","wordType":"SPECIES","start":17,"end":28},{"verbatim":"Tschermak-Woess","normalized":"Tschermak-Woess","wordType":"AUTHOR_WORD","start":29,"end":44}],"id":"a8c3f410-92d4-5cd5-a659-b3e078c21947","parserVersion":"test_version"}
+```
+
+Name: Dylakosoma symbionticum var. valens Skuja
+
+Canonical: Dylakosoma symbionticum var. valens
+
+Authorship: Skuja
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Dylakosoma symbionticum var. valens Skuja","normalized":"Dylakosoma symbionticum var. valens Skuja","canonical":{"stemmed":"Dylakosoma symbiontic ualens","simple":"Dylakosoma symbionticum valens","full":"Dylakosoma symbionticum var. valens"},"cardinality":3,"authorship":{"verbatim":"Skuja","normalized":"Skuja","authors":["Skuja"],"originalAuth":{"authors":["Skuja"]}},"details":{"infraspecies":{"genus":"Dylakosoma","species":"symbionticum","infraspecies":[{"value":"valens","rank":"var.","authorship":{"verbatim":"Skuja","normalized":"Skuja","authors":["Skuja"],"originalAuth":{"authors":["Skuja"]}}}]}},"words":[{"verbatim":"Dylakosoma","normalized":"Dylakosoma","wordType":"GENUS","start":0,"end":10},{"verbatim":"symbionticum","normalized":"symbionticum","wordType":"SPECIES","start":11,"end":23},{"verbatim":"var.","normalized":"var.","wordType":"RANK","start":24,"end":28},{"verbatim":"valens","normalized":"valens","wordType":"INFRASPECIES","start":29,"end":35},{"verbatim":"Skuja","normalized":"Skuja","wordType":"AUTHOR_WORD","start":36,"end":41}],"id":"845f2025-acea-54b5-a974-3c9ad13065a9","parserVersion":"test_version"}
+```
+
+Name: Wolbachia endosymbiont of Leptogenys gracilis
+
+Canonical:
+
+Authorship:
+
+```json
+{"parsed":false,"quality":0,"verbatim":"Wolbachia endosymbiont of Leptogenys gracilis","cardinality":0,"id":"ed4bbf5e-068a-518a-8eb3-42ead52b941b","parserVersion":"test_version"}
 ```
 
 ### Names with spec., nov spec

@@ -21,7 +21,7 @@ func NoParse(data []byte) bool {
 
     noparse1 = ("Candidatus" | "Not" | "None" | "Un" ("n"? "amed" | "identified"));
     noparse2 = any* [Ii] "nc" ("." | "ertae") space* [Ss] "ed" ("." | "is");
-    noparse3 = any* ("phytoplasma" | space "bacterium"| "plasmid" "s"? | [^A-Z] "RNA" [^A-Z]*);
+    noparse3 = any* (("endo" | "ecto")? "symbiont" | "phytoplasma" | space "bacterium"| "plasmid" "s"? | [^A-Z] "RNA" [^A-Z]*);
 
 
     main := (noparse1 | noparse2 | noparse3) %/setMatch
