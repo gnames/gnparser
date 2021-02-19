@@ -17,7 +17,7 @@ var notesRe = regexp.MustCompile(
 	`(?i)\s+(species\s+group|species\s+complex|group|author)\b.*$`,
 )
 var taxonConceptsRe1 = regexp.MustCompile(
-	`(?i)\s+(sensu|auct|sec|near|str)\.?\b.*$`,
+	`(?i)\s+(sero(var|type)|sensu|auct|sec|near|str)\.?\b.*$`,
 )
 var taxonConceptsRe2 = regexp.MustCompile(
 	`(,\s*|\s+)(\(?s\.\s?s\.|\(?s\.\s?l\.|\(?s\.\s?str\.|\(?s\.\s?lat\.).*$`,

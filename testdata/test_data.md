@@ -82,6 +82,7 @@
   * [names that contain "of"](#names-that-contain-of)
   * [Names that contain "cv" (cultivar)](#names-that-contain-cv-cultivar)
   * ["Open taxonomy" with ranks unfinished](#open-taxonomy-with-ranks-unfinished)
+  * [Ignoring serovar/serotype](#ignoring-serovarserotype)
   * [Ignoring sensu sec](#ignoring-sensu-sec)
   * [Unparseable hort. annotations](#unparseable-hort-annotations)
   * [Removing nomenclatural annotations](#removing-nomenclatural-annotations)
@@ -5388,6 +5389,58 @@ Authorship:
 
 ```json
 {"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name is approximate"}],"verbatim":"Acastoides spp.","normalized":"Acastoides","canonical":{"stemmed":"Acastoides","simple":"Acastoides","full":"Acastoides"},"cardinality":0,"surrogate":"APPROXIMATION","details":{"approximation":{"genus":"Acastoides","approximationMarker":"spp."}},"words":[{"verbatim":"Acastoides","normalized":"Acastoides","wordType":"GENUS","start":0,"end":10},{"verbatim":"spp.","normalized":"spp.","wordType":"APPROXIMATION_MARKER","start":11,"end":15}],"id":"9853f0a4-6324-5a7d-8108-e910578e612b","parserVersion":"test_version"}
+```
+
+### Ignoring serovar/serotype
+
+Name: Aggregatibacter actinomycetemcomitans serotype d str. SA508
+
+Canonical: Aggregatibacter actinomycetemcomitans
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Aggregatibacter actinomycetemcomitans serotype d str. SA508","normalized":"Aggregatibacter actinomycetemcomitans","canonical":{"stemmed":"Aggregatibacter actinomycetemcomitans","simple":"Aggregatibacter actinomycetemcomitans","full":"Aggregatibacter actinomycetemcomitans"},"cardinality":2,"bacteria":"yes","tail":" serotype d str. SA508","details":{"species":{"genus":"Aggregatibacter","species":"actinomycetemcomitans"}},"words":[{"verbatim":"Aggregatibacter","normalized":"Aggregatibacter","wordType":"GENUS","start":0,"end":15},{"verbatim":"actinomycetemcomitans","normalized":"actinomycetemcomitans","wordType":"SPECIES","start":16,"end":37}],"id":"6f5d556a-6225-5412-8aa6-bebca2d9bfd5","parserVersion":"test_version"}
+```
+
+Name: Bacterium sp. (serotype) aboney Dräger 1951
+
+Canonical: Bacterium
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name is approximate"}],"verbatim":"Bacterium sp. (serotype) aboney Dräger 1951","normalized":"Bacterium","canonical":{"stemmed":"Bacterium","simple":"Bacterium","full":"Bacterium"},"cardinality":0,"bacteria":"yes","surrogate":"APPROXIMATION","details":{"approximation":{"genus":"Bacterium","approximationMarker":"sp.","ignored":" (serotype) aboney Dräger 1951"}},"words":[{"verbatim":"Bacterium","normalized":"Bacterium","wordType":"GENUS","start":0,"end":9},{"verbatim":"sp.","normalized":"sp.","wordType":"APPROXIMATION_MARKER","start":10,"end":13}],"id":"abe2f30e-d76a-5bdd-be47-a01c6572561a","parserVersion":"test_version"}
+```
+
+Name: Streptococcus pyogenes (serotype M18)
+
+Canonical: Streptococcus pyogenes
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Streptococcus pyogenes (serotype M18)","normalized":"Streptococcus pyogenes","canonical":{"stemmed":"Streptococcus pyogen","simple":"Streptococcus pyogenes","full":"Streptococcus pyogenes"},"cardinality":2,"bacteria":"yes","tail":" (serotype M18)","details":{"species":{"genus":"Streptococcus","species":"pyogenes"}},"words":[{"verbatim":"Streptococcus","normalized":"Streptococcus","wordType":"GENUS","start":0,"end":13},{"verbatim":"pyogenes","normalized":"pyogenes","wordType":"SPECIES","start":14,"end":22}],"id":"cd677118-8336-56de-bfa6-fd849c6f7679","parserVersion":"test_version"}
+```
+
+Name: Actinobacillus pleuropneumoniae serovar 2 strain S1536
+
+Canonical: Actinobacillus pleuropneumoniae
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Actinobacillus pleuropneumoniae serovar 2 strain S1536","normalized":"Actinobacillus pleuropneumoniae","canonical":{"stemmed":"Actinobacillus pleuropneumoni","simple":"Actinobacillus pleuropneumoniae","full":"Actinobacillus pleuropneumoniae"},"cardinality":2,"bacteria":"yes","tail":" serovar 2 strain S1536","details":{"species":{"genus":"Actinobacillus","species":"pleuropneumoniae"}},"words":[{"verbatim":"Actinobacillus","normalized":"Actinobacillus","wordType":"GENUS","start":0,"end":14},{"verbatim":"pleuropneumoniae","normalized":"pleuropneumoniae","wordType":"SPECIES","start":15,"end":31}],"id":"fc0e4082-e830-5082-959c-02b69ea08f82","parserVersion":"test_version"}
+```
+
+Name: Leptospira interrogans serovar Fugis
+
+Canonical: Leptospira interrogans
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Leptospira interrogans serovar Fugis","normalized":"Leptospira interrogans","canonical":{"stemmed":"Leptospira interrogans","simple":"Leptospira interrogans","full":"Leptospira interrogans"},"cardinality":2,"bacteria":"yes","tail":" serovar Fugis","details":{"species":{"genus":"Leptospira","species":"interrogans"}},"words":[{"verbatim":"Leptospira","normalized":"Leptospira","wordType":"GENUS","start":0,"end":10},{"verbatim":"interrogans","normalized":"interrogans","wordType":"SPECIES","start":11,"end":22}],"id":"026a23f1-dea7-5c57-8958-1efbe712a363","parserVersion":"test_version"}
 ```
 
 ### Ignoring sensu sec
