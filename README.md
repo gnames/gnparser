@@ -7,7 +7,7 @@ IMPORTANT: We are releasing gnparser v1.0.0, it means that from v1.x forward
 gnparser command line app, functions and output format will be stable and
 backward compatible for several years. There are several backward incompatible
 changes with versions v0.x that are documented at
-[this wiki page](https://github.com/gnames/gnparser/wiki/Changes-in-v1.0.0)
+https://github.com/gnames/gnparser/wiki/Changes-in-v1.0.0
 ```
 
 ``GNparser`` splits scientific names into their semantic elements with an
