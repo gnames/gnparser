@@ -81,10 +81,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.TAG_NAME }}
           name: Nightly build
-          prerelease: ${{ env.TAG_NAME == 'nightly' }}
+          prerelease: true
           commitish: ${{ github.sha }}
           gzip: false
-          allow_override: ${{ env.TAG_NAME == 'nightly' }}
+          allow_override: true
           files: |
             gnparser-linux.tar.gz:./gnparser/gnparser-linux.tar.gz
             gnparser-mac.tar.gz:./gnparser/gnparser-mac.tar.gz
