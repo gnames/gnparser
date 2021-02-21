@@ -76,7 +76,9 @@ Subgenus2 <- '(' _? AbbrSubgenus _? ')' !(_? NameUpperChar)
 Subgenus1 <- '(' _? UninomialWord _? ')'
 
 UninomialCombo <- UninomialCombo1 / UninomialCombo2
+
 UninomialCombo1 <- UninomialWord _? Subgenus (_? Authorship)?
+
 UninomialCombo2 <- Uninomial _ RankUninomial _ Uninomial
 
 RankUninomial <- RankUninomialPlain / RankUninomialNotho
@@ -87,7 +89,6 @@ RankUninomialPlain <- ('sect' / 'subsect' / 'trib' / 'subtrib' / 'subser' /
 
 RankUninomialNotho <- ('notho' _? ('sect' / 'gen' / 'ser' / 'subgeen' /
   'subgen' / 'subg' / 'subsect' / 'subtrib')) ('.' / &(SpaceCharEOI))
-
 
 Uninomial <- UninomialWord (_ Authorship
   !(_ LowerCharExtended LowerCharExtended LowerCharExtended))?
@@ -108,12 +109,11 @@ UpperAfterDash <- CapWord1
 
 LowerAfterDash <- Word1
 
-
-
 TwoLetterGenus <- ('Ca' / 'Ea' / 'Ge' / 'Ia' / 'Io' / 'Ix' / 'Lo' / 'Oa' /
   'Ra' / 'Ty' / 'Ua' / 'Aa' / 'Ja' / 'Zu' / 'La' / 'Qu' / 'As' / 'Ba')
 
-Word <- !((AuthorPrefix / RankUninomial / Approximation / Word4) SpaceCharEOI)
+Word <- !(('ex' / 'et' / 'and' / 'apud' / 'pro' / AuthorPrefix /
+      RankUninomial / Approximation / Word4) SpaceCharEOI)
       (WordApostr / WordStartsWithDigit / MultiDashedWord /
        Word2 / Word1) &(SpaceCharEOI / '(')
 
@@ -180,15 +180,17 @@ AuthorEx <- ('ex' '.'? / 'in') _
 
 AuthorEmend <- 'emend' '.'? _
 
-Author <- (Author1 / Author2 / UnknownAuthor)
+Author <- (Author0 / Author1 / Author2 / UnknownAuthor) (_ AuthorEtAl)?
 
-Author1 <- Author2 _? (Filius/AuthorSuffix)
+Author0 <- Author2 FiliusFNoSpace
+
+Author1 <- Author2 _? (Filius / AuthorSuffix)
 
 Author2 <- AuthorWord (_? AuthorWord)*
 
 UnknownAuthor <- '?' / (('auct' / 'anon') (&(SpaceCharEOI) / '.'))
 
-AuthorWord <- !("bold:") (AuthorEtAl /AuthorWord2 / AuthorWord3 / AuthorPrefix)
+AuthorWord <- !("bold:") (AuthorWord2 / AuthorWord3 / AuthorPrefix)
 
 AuthorEtAl <- 'arg.' / 'et al.{?}' / ('et' / '&') ' al' '.'?
 
@@ -203,7 +205,11 @@ CapAuthorWord <- AuthorUpperChar AuthorLowerChar*
 
 AllCapsAuthorWord <- AuthorUpperChar AuthorUpperChar+
 
-Filius <- 'f.' / 'fil.' / 'filius'
+Filius <- FiliusF / 'fil.' / 'filius'
+
+FiliusF <- 'f.' !(_ Word)
+
+FiliusFNoSpace <- 'f.'
 
 AuthorSuffix <- 'bis'
 

@@ -211,6 +211,7 @@ var nodeRules = map[pegRule]struct{}{
 	ruleAuthorEtAl:                      {},
 	ruleAllCapsAuthorWord:               {},
 	ruleFilius:                          {},
+	ruleFiliusFNoSpace:                  {},
 	ruleAuthorPrefix:                    {},
 	ruleYear:                            {},
 	ruleYearRange:                       {},

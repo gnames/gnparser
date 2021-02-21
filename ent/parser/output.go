@@ -2,6 +2,7 @@ package parser
 
 import (
 	"sort"
+	"strings"
 
 	"github.com/gnames/gnparser/ent/parsed"
 )
@@ -22,7 +23,7 @@ func (sn *scientificNameNode) ToOutput(withDetails bool) parsed.Parsed {
 	}
 
 	res.Parsed = true
-	res.ParseQuality, res.QualityWarnings = qualityWarnings(sn.warnings)
+	res.ParseQuality, res.QualityWarnings = sn.qualityWarnings()
 	res.Normalized = sn.Normalized()
 	res.Cardinality = sn.cardinality
 	res.Authorship = sn.LastAuthorship(withDetails)
@@ -37,13 +38,41 @@ func (sn *scientificNameNode) ToOutput(withDetails bool) parsed.Parsed {
 	return res
 }
 
-func qualityWarnings(ws map[parsed.Warning]struct{}) (int, []parsed.QualityWarning) {
-	warns := prepareWarnings(ws)
+func (sn *scientificNameNode) qualityWarnings() (int, []parsed.QualityWarning) {
+	if sn.cardinality > 2 && sn.maybeFilius() {
+		if sn.warnings == nil {
+			sn.warnings = make(map[parsed.Warning]struct{})
+		}
+		sn.warnings[parsed.AuthAmbiguousFiliusWarn] = struct{}{}
+	}
+
+	warns := prepareWarnings(sn.warnings)
 	quality := 1
 	if len(warns) > 0 {
 		quality = warns[0].Quality
 	}
 	return quality, warns
+}
+
+func (sn *scientificNameNode) maybeFilius() bool {
+	words := sn.Words()
+	for i := range words {
+		if words[i].Verbatim != "f." {
+			continue
+		}
+		if i == 0 || i == len(words)-1 {
+			continue
+		}
+
+		betweenChars := sn.verbatim[words[i-1].End:words[i+1].Start]
+
+		if words[i-1].Type == parsed.AuthorWordType &&
+			words[i+1].Type == parsed.InfraspEpithetType &&
+			!strings.Contains(betweenChars, ")") {
+			return true
+		}
+	}
+	return false
 }
 
 func prepareWarnings(ws map[parsed.Warning]struct{}) []parsed.QualityWarning {

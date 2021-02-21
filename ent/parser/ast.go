@@ -823,7 +823,7 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 	n = n.up
 	for n != nil {
 		switch n.token32.pegRule {
-		case ruleFilius:
+		case ruleFilius, ruleFiliusFNoSpace:
 			w = p.newWordNode(n, parsed.AuthorWordFiliusType)
 			w.NormValue = "fil."
 			fil = true
@@ -834,6 +834,11 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 				p.addWarn(parsed.AuthQuestionWarn)
 			}
 			w.NormValue = "anon."
+		case ruleAuthorEtAl:
+			w = p.newWordNode(n, parsed.AuthorWordType)
+			if strings.Contains(w.NormValue, "&") {
+				w.NormValue = "et al."
+			}
 		default:
 			w = p.authorWord(n)
 		}
@@ -952,10 +957,6 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *wordNode {
 	var canApostrophe bool
 	for _, v := range children {
 		switch v.token32.pegRule {
-		case ruleAuthorEtAl:
-			if strings.Contains(wrd.NormValue, "&") {
-				wrd.NormValue = "et al."
-			}
 		case ruleUpperCharExtended, ruleLowerCharExtended:
 			p.addWarn(parsed.CharBadWarn)
 			_ = wrd.normalize()
