@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## [v1.0.11]
+
+- Fix [#153]: flags `csv=false` and `with_details=false` trigger opposite
+              behavior.
+
+## [v1.0.10]
+
 - Add [#152]: change auto-prereleases from nightly to on master submit.
 - Add [#151]: do not parse names with `(endo|ecto)?symbiont`.
 - Add [#150]: ignore serovar/serotype in bacerital names.
@@ -232,6 +239,9 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.0.11]: https://github.com/gnames/gnparser/compare/v1.0.10...v1.0.11
+[v1.0.10]: https://github.com/gnames/gnparser/compare/v1.0.9...v1.0.10
+[v1.0.9]: https://github.com/gnames/gnparser/compare/v1.0.8...v1.0.9
 [v1.0.8]: https://github.com/gnames/gnparser/compare/v1.0.7...v1.0.8
 [v1.0.7]: https://github.com/gnames/gnparser/compare/v1.0.6...v1.0.7
 [v1.0.6]: https://github.com/gnames/gnparser/compare/v1.0.5...v1.0.6

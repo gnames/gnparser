@@ -84,8 +84,8 @@ func ver(gnps GNparserService) func(echo.Context) error {
 func parseNamesGET(gnps GNparserService) func(echo.Context) error {
 	return func(c echo.Context) error {
 		nameStr, _ := url.QueryUnescape(c.Param("names"))
-		csv := c.QueryParam("csv") != ""
-		det := c.QueryParam("with_details") != ""
+		csv := c.QueryParam("csv") == "true"
+		det := c.QueryParam("with_details") == "true"
 		gnp := gnps.ChangeConfig(opts(c, csv, det)...)
 		names := strings.Split(nameStr, "|")
 		res := gnp.ParseNames(names)
