@@ -125,6 +125,46 @@ func TestParseGET(t *testing.T) {
 	}
 }
 
+func TestParseParamsGET(t *testing.T) {
+	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
+	gnp := gnparser.New(cfg)
+	gnps := NewGNparserService(gnp, 0)
+
+	name := url.QueryEscape("Bubo bubo")
+	tests := []struct {
+		csv, det, startsWith, pattern string
+		contains                      bool
+	}{
+		{"true", "false", "Id", "[", false},
+		{"true", "true", "Id", "[", false},
+		{"false", "false", "[", "details", false},
+		{"false", "true", "[", "details", true},
+	}
+
+	for _, v := range tests {
+		e := echo.New()
+		q := make(url.Values)
+		q.Set("csv", v.csv)
+		q.Set("with_details", v.det)
+		req := httptest.NewRequest(http.MethodGet, "/?"+q.Encode(), nil)
+		rec := httptest.NewRecorder()
+		c := e.NewContext(req, rec)
+		c.SetPath("/:names")
+		c.SetParamNames("names")
+		c.SetParamValues(name)
+
+		assert.Nil(t, parseNamesGET(gnps)(c))
+
+		body := rec.Body.String()
+		assert.True(t, strings.HasPrefix(body, v.startsWith))
+		if v.contains {
+			assert.True(t, strings.Contains(body, v.pattern))
+		} else {
+			assert.False(t, strings.HasPrefix(body, v.pattern))
+		}
+	}
+}
+
 func TestParsePOST(t *testing.T) {
 	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
 	gnp := gnparser.New(cfg)
