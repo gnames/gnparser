@@ -446,6 +446,8 @@ def self.start_gnparser
 end
 ```
 
+@barotto kindly provided an [example in PHP][PHP pipes].
+
 Note that you have to use `--stream -s` flag for this approach to work.
 
 ### Usage as a REST API Interface
@@ -613,3 +615,4 @@ Released under [MIT license]
 [winpath]: https://www.computerhope.com/issues/ch000549.htm
 [wsl]: https://docs.microsoft.com/en-us/windows/wsl/
 [gnparser paper]: https://doi.org/10.1186/s12859-017-1663-3
+[PHP pipes]: https://gist.github.com/marcobrt/72b2a3d1b0649c1bf738c9fc88f74ec0
