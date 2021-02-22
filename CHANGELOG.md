@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add: limit nightly builds to master only.
+
 ## [v1.0.12]
 
 - Add [#154]: parse names with ambiguous `f.` as forma if there
