@@ -359,7 +359,7 @@ command line application. This approach requires sending 1 name at a time
 to ``gnparser`` instead of sending names in batches. Streaming allows to
 achieve that.
 
-``--unordered -s``
+``--unordered -u``
 : does not restore the order of output according to the order of input.
 
 ``--version -V``
@@ -446,7 +446,7 @@ def self.start_gnparser
 end
 ```
 
-@barotto kindly provided an [example in PHP][PHP pipes].
+@marcobrt kindly provided an [example in PHP][PHP pipes].
 
 Note that you have to use `--stream -s` flag for this approach to work.
 
