@@ -52,6 +52,7 @@ func NewData() *Data {
 }
 
 func home(gnps GNparserService) func(echo.Context) error {
+	gnp := gnps.ChangeConfig(gnparser.OptWithDetails(true))
 	return func(c echo.Context) error {
 		var parsed []string
 		data := NewData()
@@ -62,7 +63,7 @@ func home(gnps GNparserService) func(echo.Context) error {
 			if len(names[i]) == 0 {
 				continue
 			}
-			p := gnps.ParseName(names[i]).Output(gnfmt.PrettyJSON)
+			p := gnp.ParseName(names[i]).Output(gnfmt.PrettyJSON)
 			parsed = append(parsed, p)
 		}
 		data.Parsed = parsed
