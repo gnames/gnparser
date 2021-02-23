@@ -2,7 +2,10 @@
 
 ## Unreleased
 
+## [v1.0.13]
+
 - Add: limit nightly builds to master only.
+- Fix [#159]: POST method contains wrong URL.
 
 ## [v1.0.12]
 
@@ -249,6 +252,8 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.0.13]: https://github.com/gnames/gnparser/compare/v1.0.12...v1.0.13
+[v1.0.12]: https://github.com/gnames/gnparser/compare/v1.0.11...v1.0.12
 [v1.0.11]: https://github.com/gnames/gnparser/compare/v1.0.10...v1.0.11
 [v1.0.10]: https://github.com/gnames/gnparser/compare/v1.0.9...v1.0.10
 [v1.0.9]: https://github.com/gnames/gnparser/compare/v1.0.8...v1.0.9

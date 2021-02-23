@@ -41,8 +41,8 @@ func Run(gnps GNparserService) {
 	e.GET("/api/v1/version", ver(gnps))
 	e.GET("/api/v1/:names", parseNamesGET(gnps))
 	e.GET("/api/:names", parseNamesGET(gnps))
-	e.POST("/api/v1", parseNamesPOST(gnps))
-	e.POST("/api", parseNamesPOST(gnps))
+	e.POST("/api/v1/", parseNamesPOST(gnps))
+	e.POST("/api/", parseNamesPOST(gnps))
 
 	assetHandler := http.FileServer(fs.Files)
 	e.GET("/static/*", echo.WrapHandler(http.StripPrefix("/static/", assetHandler)))
