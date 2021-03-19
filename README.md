@@ -313,6 +313,15 @@ If you have Go installed on your computer use
 go get -u github.com/gnames/gnparser/gnparser
 ```
 
+For development install gnu make and use the following:
+
+```bash
+git clone https://github.com/gnames/gnparser.git
+cd gnparser
+make tools
+make install
+```
+
 You do need your ``PATH`` to include ``$HOME/go/bin``
 
 ## Usage

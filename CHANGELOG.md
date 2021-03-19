@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add [#161]: add automatic tools dependency.
+- Add [#160]: use embed feature of Go v1.16.
+
 ## [v1.0.13]
 
 - Add: limit nightly builds to master only.
@@ -252,6 +255,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.0.14]: https://github.com/gnames/gnparser/compare/v1.0.13...v1.0.14
 [v1.0.13]: https://github.com/gnames/gnparser/compare/v1.0.12...v1.0.13
 [v1.0.12]: https://github.com/gnames/gnparser/compare/v1.0.11...v1.0.12
 [v1.0.11]: https://github.com/gnames/gnparser/compare/v1.0.10...v1.0.11
@@ -287,6 +291,16 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
 
+[#170]: https://github.com/gnames/gnparser/issues/170
+[#169]: https://github.com/gnames/gnparser/issues/169
+[#168]: https://github.com/gnames/gnparser/issues/168
+[#167]: https://github.com/gnames/gnparser/issues/167
+[#166]: https://github.com/gnames/gnparser/issues/166
+[#165]: https://github.com/gnames/gnparser/issues/165
+[#164]: https://github.com/gnames/gnparser/issues/164
+[#163]: https://github.com/gnames/gnparser/issues/163
+[#162]: https://github.com/gnames/gnparser/issues/162
+[#161]: https://github.com/gnames/gnparser/issues/161
 [#160]: https://github.com/gnames/gnparser/issues/160
 [#159]: https://github.com/gnames/gnparser/issues/159
 [#158]: https://github.com/gnames/gnparser/issues/158
