@@ -30,6 +30,10 @@ test-build: deps build
 deps:
 	$(GOCMD) mod download;
 
+tools: deps
+	@echo Installing tools from tools.go
+	@cat gnparser/tools.go | grep _ | awk -F'"' '{print $$2}' | xargs -tI % go install %
+
 peg:
 	cd ent/parser; \
 	peg grammar.peg; \

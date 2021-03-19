@@ -11,6 +11,7 @@ require (
 	github.com/gnames/tribool v0.1.1
 	github.com/labstack/echo/v4 v4.1.17
 	github.com/mattn/go-colorable v0.1.8 // indirect
+	github.com/pointlander/peg v1.0.1-0.20201028015246-e7588a89197f
 	github.com/rendon/testcli v1.0.0
 	github.com/spf13/cobra v1.1.1
 	github.com/stretchr/testify v1.7.0
