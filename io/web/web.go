@@ -2,41 +2,13 @@
 package web
 
 import (
-	"html/template"
-	"io"
 	"net/http"
 	"strings"
 
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/io/fs"
 	"github.com/labstack/echo/v4"
-	"github.com/shurcooL/httpfs/html/vfstemplate"
 )
-
-// echoTempl implements echo.Renderer interface.
-type echoTempl struct {
-	templates *template.Template
-}
-
-// Render implements echo.Renderer interface.
-func (t *echoTempl) Render(
-	w io.Writer,
-	name string,
-	data interface{},
-	c echo.Context,
-) error {
-	return t.templates.ExecuteTemplate(w, name, data)
-}
-
-func templates() *echoTempl {
-	var t *template.Template
-	return &echoTempl{
-		templates: template.Must(
-			vfstemplate.ParseGlob(fs.Files, t, "/templates/*.html"),
-		),
-	}
-}
 
 // Data contains information required to render web-pages.
 type Data struct {

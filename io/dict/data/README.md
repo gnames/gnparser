@@ -1,14 +1,3 @@
-# Vocabularies
-
-`bacteria_genera.txt`
-: this list is used to mark parsed names as bacterial names.
-
-`bacteria_genera_homonyms.txt`
-: this list contains bacterial generic names that exist under ICZN or ICN codes.
-
-`genera_auth_icn.txt`
-: this list contains authors of genera under ICN codes.
-
 ## Creation of genera_auth_icn.txt
 
 1. Get the latest IRMNG file.

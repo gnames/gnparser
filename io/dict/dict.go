@@ -3,10 +3,13 @@ package dict
 
 import (
 	"bufio"
+	"embed"
 	"log"
-
-	"github.com/gnames/gnparser/io/fs"
+	"path/filepath"
 )
+
+//go:embed data
+var data embed.FS
 
 // Dict contains loaded dictionaries
 var Dict *Dictionary = LoadDictionary()
@@ -46,7 +49,8 @@ func readAuthorICNData() map[string]struct{} {
 }
 
 func scanAuthorICNFIle(path string, m map[string]struct{}) {
-	f, err := fs.Files.Open(path)
+	path = filepath.Join("data", path)
+	f, err := data.Open(path)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -57,7 +61,8 @@ func scanAuthorICNFIle(path string, m map[string]struct{}) {
 }
 
 func scanBacterialFile(path string, isHomonym bool, m map[string]bool) {
-	f, err := fs.Files.Open(path)
+	path = filepath.Join("data", path)
+	f, err := data.Open(path)
 	if err != nil {
 		log.Fatal(err)
 	}

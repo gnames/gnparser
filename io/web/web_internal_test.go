@@ -20,12 +20,13 @@ func handlerGET(path string) (echo.Context, *httptest.ResponseRecorder) {
 	req := httptest.NewRequest(http.MethodGet, path, nil)
 	rec := httptest.NewRecorder()
 	e := echo.New()
-	e.Renderer = templates()
+	e.Renderer, _ = NewTemplate()
 	c := e.NewContext(req, rec)
 	return c, rec
 }
 
 func TestHome(t *testing.T) {
+	var err error
 	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
@@ -34,7 +35,8 @@ func TestHome(t *testing.T) {
 	rec := httptest.NewRecorder()
 	e := echo.New()
 	c := e.NewContext(req, rec)
-	e.Renderer = templates()
+	e.Renderer, err = NewTemplate()
+	assert.Nil(t, err)
 
 	assert.Nil(t, home(gnps)(c))
 	assert.Equal(t, rec.Code, http.StatusOK)

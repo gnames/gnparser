@@ -1,6 +1,7 @@
 package web
 
 import (
+	"embed"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -10,12 +11,14 @@ import (
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
-	"github.com/gnames/gnparser/io/fs"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
 const withLogs = false
+
+//go:embed static
+var static embed.FS
 
 type inputPOST struct {
 	Names       []string `json:"names"`
@@ -27,7 +30,13 @@ type inputPOST struct {
 // a website.
 func Run(gnps GNparserService) {
 	e := echo.New()
-	e.Renderer = templates()
+
+	var err error
+	e.Renderer, err = NewTemplate()
+	if err != nil {
+		e.Logger.Fatal(err)
+	}
+
 	e.Use(middleware.Gzip())
 	e.Use(middleware.CORS())
 	if withLogs {
@@ -44,8 +53,8 @@ func Run(gnps GNparserService) {
 	e.POST("/api/v1/", parseNamesPOST(gnps))
 	e.POST("/api/", parseNamesPOST(gnps))
 
-	assetHandler := http.FileServer(fs.Files)
-	e.GET("/static/*", echo.WrapHandler(http.StripPrefix("/static/", assetHandler)))
+	fs := http.FileServer(http.FS(static))
+	e.GET("/static/*", echo.WrapHandler(fs))
 
 	addr := fmt.Sprintf(":%d", gnps.Port())
 	s := &http.Server{
