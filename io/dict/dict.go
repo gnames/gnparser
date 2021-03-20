@@ -6,7 +6,6 @@ import (
 	"embed"
 	"fmt"
 	"log"
-	"path/filepath"
 )
 
 //go:embed data
@@ -50,7 +49,7 @@ func readAuthorICNData() map[string]struct{} {
 }
 
 func scanAuthorICNFIle(path string, m map[string]struct{}) {
-	path = filepath.Join("data", path)
+	path = fmt.Sprintf("data/%s", path)
 	f, err := data.Open(path)
 	if err != nil {
 		log.Fatal(err)
