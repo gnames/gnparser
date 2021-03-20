@@ -4,6 +4,7 @@ package dict
 import (
 	"bufio"
 	"embed"
+	"fmt"
 	"log"
 	"path/filepath"
 )
@@ -61,7 +62,7 @@ func scanAuthorICNFIle(path string, m map[string]struct{}) {
 }
 
 func scanBacterialFile(path string, isHomonym bool, m map[string]bool) {
-	path = filepath.Join("data", path)
+	path = fmt.Sprintf("data/%s", path)
 	f, err := data.Open(path)
 	if err != nil {
 		log.Fatal(err)
