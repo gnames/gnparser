@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [v1.1.0]
+
 - Add [#163]: support bacterial `Candidatus` names.
 - Add [#162]: show PEG AST tree for debugging.
 - Add [#161]: add automatic tools dependency.
@@ -257,6 +259,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.1.0]: https://github.com/gnames/gnparser/compare/v1.0.14...v1.1.0
 [v1.0.14]: https://github.com/gnames/gnparser/compare/v1.0.13...v1.0.14
 [v1.0.13]: https://github.com/gnames/gnparser/compare/v1.0.12...v1.0.13
 [v1.0.12]: https://github.com/gnames/gnparser/compare/v1.0.11...v1.0.12

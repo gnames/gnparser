@@ -87,7 +87,7 @@ func (p *Engine) PreprocessAndParse(
 		return p.sn
 	}
 
-	// p.outputAST()
+	p.outputAST()
 	p.newScientificNameNode()
 	return p.sn
 }

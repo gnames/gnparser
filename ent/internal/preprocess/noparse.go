@@ -7,7 +7,7 @@ func NoParse(data []byte) bool {
   
 //line noparse.go:9
 const noparse_start int = 0
-const noparse_first_final int = 90
+const noparse_first_final int = 81
 const noparse_error int = -1
 
 const noparse_en_main int = 0
@@ -57,16 +57,16 @@ const noparse_en_main int = 0
 		goto st_case_8
 	case 9:
 		goto st_case_9
-	case 90:
-		goto st_case_90
+	case 81:
+		goto st_case_81
 	case 10:
 		goto st_case_10
 	case 11:
 		goto st_case_11
 	case 12:
 		goto st_case_12
-	case 91:
-		goto st_case_91
+	case 82:
+		goto st_case_82
 	case 13:
 		goto st_case_13
 	case 14:
@@ -75,8 +75,8 @@ const noparse_en_main int = 0
 		goto st_case_15
 	case 16:
 		goto st_case_16
-	case 92:
-		goto st_case_92
+	case 83:
+		goto st_case_83
 	case 17:
 		goto st_case_17
 	case 18:
@@ -139,8 +139,8 @@ const noparse_en_main int = 0
 		goto st_case_46
 	case 47:
 		goto st_case_47
-	case 93:
-		goto st_case_93
+	case 84:
+		goto st_case_84
 	case 48:
 		goto st_case_48
 	case 49:
@@ -207,38 +207,18 @@ const noparse_en_main int = 0
 		goto st_case_79
 	case 80:
 		goto st_case_80
-	case 81:
-		goto st_case_81
-	case 82:
-		goto st_case_82
-	case 83:
-		goto st_case_83
-	case 84:
-		goto st_case_84
-	case 85:
-		goto st_case_85
-	case 86:
-		goto st_case_86
-	case 87:
-		goto st_case_87
-	case 88:
-		goto st_case_88
-	case 89:
-		goto st_case_89
 	}
 	goto st_out
 	st_case_0:
 		switch data[p] {
 		case 32:
 			goto st2
-		case 67:
-			goto st64
 		case 73:
 			goto st4
 		case 78:
-			goto st73
+			goto st64
 		case 85:
-			goto st76
+			goto st67
 		case 105:
 			goto st5
 		case 112:
@@ -469,10 +449,10 @@ const noparse_en_main int = 0
 			switch {
 			case data[p] > 13:
 				if 32 <= data[p] && data[p] <= 47 {
-					goto tr16
+					goto tr15
 				}
 			case data[p] >= 9:
-				goto tr16
+				goto tr15
 			}
 		case data[p] > 64:
 			switch {
@@ -482,13 +462,13 @@ const noparse_en_main int = 0
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr16
+					goto tr15
 				}
 			default:
-				goto tr16
+				goto tr15
 			}
 		default:
-			goto tr16
+			goto tr15
 		}
 		goto st9
 	st9:
@@ -509,10 +489,10 @@ const noparse_en_main int = 0
 			switch {
 			case data[p] > 13:
 				if 32 <= data[p] && data[p] <= 47 {
-					goto tr16
+					goto tr15
 				}
 			case data[p] >= 9:
-				goto tr16
+				goto tr15
 			}
 		case data[p] > 64:
 			switch {
@@ -522,25 +502,25 @@ const noparse_en_main int = 0
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr16
+					goto tr15
 				}
 			default:
-				goto tr16
+				goto tr15
 			}
 		default:
-			goto tr16
+			goto tr15
 		}
 		goto st9
-tr16:
+tr15:
 //line noparse.rl:20
 match = true
-	goto st90
-	st90:
+	goto st81
+	st81:
 		if p++; p == pe {
-			goto _test_eof90
+			goto _test_eof81
 		}
-	st_case_90:
-//line noparse.go:544
+	st_case_81:
+//line noparse.go:524
 		switch data[p] {
 		case 73:
 			goto st4
@@ -554,10 +534,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 32 <= data[p] && data[p] <= 47 {
-					goto tr16
+					goto tr15
 				}
 			case data[p] >= 9:
-				goto tr16
+				goto tr15
 			}
 		case data[p] > 64:
 			switch {
@@ -567,13 +547,13 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr16
+					goto tr15
 				}
 			default:
-				goto tr16
+				goto tr15
 			}
 		default:
-			goto tr16
+			goto tr15
 		}
 		goto st9
 	st10:
@@ -596,10 +576,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 32 <= data[p] && data[p] <= 47 {
-					goto tr16
+					goto tr15
 				}
 			case data[p] >= 9:
-				goto tr16
+				goto tr15
 			}
 		case data[p] > 64:
 			switch {
@@ -609,13 +589,13 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr16
+					goto tr15
 				}
 			default:
-				goto tr16
+				goto tr15
 			}
 		default:
-			goto tr16
+			goto tr15
 		}
 		goto st9
 	st11:
@@ -638,10 +618,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 32 <= data[p] && data[p] <= 47 {
-					goto tr16
+					goto tr15
 				}
 			case data[p] >= 9:
-				goto tr16
+				goto tr15
 			}
 		case data[p] > 64:
 			switch {
@@ -651,13 +631,13 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr16
+					goto tr15
 				}
 			default:
-				goto tr16
+				goto tr15
 			}
 		default:
-			goto tr16
+			goto tr15
 		}
 		goto st9
 	st12:
@@ -667,7 +647,7 @@ match = true
 	st_case_12:
 		switch data[p] {
 		case 46:
-			goto tr20
+			goto tr19
 		case 73:
 			goto st4
 		case 82:
@@ -682,10 +662,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 32 <= data[p] && data[p] <= 47 {
-					goto tr16
+					goto tr15
 				}
 			case data[p] >= 9:
-				goto tr16
+				goto tr15
 			}
 		case data[p] > 64:
 			switch {
@@ -695,28 +675,28 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr16
+					goto tr15
 				}
 			default:
-				goto tr16
+				goto tr15
 			}
 		default:
-			goto tr16
+			goto tr15
 		}
 		goto st9
-tr20:
+tr19:
 //line noparse.rl:20
 match = true
-	goto st91
-	st91:
+	goto st82
+	st82:
 		if p++; p == pe {
-			goto _test_eof91
+			goto _test_eof82
 		}
-	st_case_91:
-//line noparse.go:717
+	st_case_82:
+//line noparse.go:697
 		switch data[p] {
 		case 32:
-			goto tr20
+			goto tr19
 		case 73:
 			goto st4
 		case 82:
@@ -731,10 +711,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 33 <= data[p] && data[p] <= 47 {
-					goto tr16
+					goto tr15
 				}
 			case data[p] >= 9:
-				goto tr20
+				goto tr19
 			}
 		case data[p] > 64:
 			switch {
@@ -744,13 +724,13 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr16
+					goto tr15
 				}
 			default:
-				goto tr16
+				goto tr15
 			}
 		default:
-			goto tr16
+			goto tr15
 		}
 		goto st9
 	st13:
@@ -848,7 +828,7 @@ match = true
 	st_case_16:
 		switch data[p] {
 		case 32:
-			goto tr26
+			goto tr25
 		case 73:
 			goto st4
 		case 82:
@@ -865,10 +845,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 33 <= data[p] && data[p] <= 47 {
-					goto tr27
+					goto tr26
 				}
 			case data[p] >= 9:
-				goto tr26
+				goto tr25
 			}
 		case data[p] > 64:
 			switch {
@@ -878,25 +858,25 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr27
+					goto tr26
 				}
 			default:
-				goto tr27
+				goto tr26
 			}
 		default:
-			goto tr27
+			goto tr26
 		}
 		goto st1
-tr26:
+tr25:
 //line noparse.rl:20
 match = true
-	goto st92
-	st92:
+	goto st83
+	st83:
 		if p++; p == pe {
-			goto _test_eof92
+			goto _test_eof83
 		}
-	st_case_92:
-//line noparse.go:900
+	st_case_83:
+//line noparse.go:880
 		switch data[p] {
 		case 32:
 			goto st2
@@ -1839,7 +1819,7 @@ match = true
 	st_case_47:
 		switch data[p] {
 		case 32:
-			goto tr26
+			goto tr25
 		case 73:
 			goto st4
 		case 82:
@@ -1856,10 +1836,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 33 <= data[p] && data[p] <= 47 {
-					goto tr27
+					goto tr26
 				}
 			case data[p] >= 9:
-				goto tr26
+				goto tr25
 			}
 		case data[p] > 64:
 			switch {
@@ -1869,25 +1849,25 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr27
+					goto tr26
 				}
 			default:
-				goto tr27
+				goto tr26
 			}
 		default:
-			goto tr27
+			goto tr26
 		}
 		goto st1
-tr27:
+tr26:
 //line noparse.rl:20
 match = true
-	goto st93
-	st93:
+	goto st84
+	st84:
 		if p++; p == pe {
-			goto _test_eof93
+			goto _test_eof84
 		}
-	st_case_93:
-//line noparse.go:1891
+	st_case_84:
+//line noparse.go:1871
 		switch data[p] {
 		case 32:
 			goto st2
@@ -1918,7 +1898,7 @@ match = true
 	st_case_48:
 		switch data[p] {
 		case 32:
-			goto tr26
+			goto tr25
 		case 73:
 			goto st4
 		case 82:
@@ -1937,10 +1917,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 33 <= data[p] && data[p] <= 47 {
-					goto tr27
+					goto tr26
 				}
 			case data[p] >= 9:
-				goto tr26
+				goto tr25
 			}
 		case data[p] > 64:
 			switch {
@@ -1950,13 +1930,13 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr27
+					goto tr26
 				}
 			default:
-				goto tr27
+				goto tr26
 			}
 		default:
-			goto tr27
+			goto tr26
 		}
 		goto st1
 	st49:
@@ -2277,10 +2257,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 32 <= data[p] && data[p] <= 47 {
-					goto tr16
+					goto tr15
 				}
 			case data[p] >= 9:
-				goto tr16
+				goto tr15
 			}
 		case data[p] > 64:
 			switch {
@@ -2290,13 +2270,13 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr16
+					goto tr15
 				}
 			default:
-				goto tr16
+				goto tr15
 			}
 		default:
-			goto tr16
+			goto tr15
 		}
 		goto st9
 	st60:
@@ -2319,10 +2299,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 32 <= data[p] && data[p] <= 47 {
-					goto tr16
+					goto tr15
 				}
 			case data[p] >= 9:
-				goto tr16
+				goto tr15
 			}
 		case data[p] > 64:
 			switch {
@@ -2332,13 +2312,13 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr16
+					goto tr15
 				}
 			default:
-				goto tr16
+				goto tr15
 			}
 		default:
-			goto tr16
+			goto tr15
 		}
 		goto st9
 	st61:
@@ -2361,10 +2341,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 32 <= data[p] && data[p] <= 47 {
-					goto tr16
+					goto tr15
 				}
 			case data[p] >= 9:
-				goto tr16
+				goto tr15
 			}
 		case data[p] > 64:
 			switch {
@@ -2374,13 +2354,13 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr16
+					goto tr15
 				}
 			default:
-				goto tr16
+				goto tr15
 			}
 		default:
-			goto tr16
+			goto tr15
 		}
 		goto st9
 	st62:
@@ -2403,10 +2383,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 32 <= data[p] && data[p] <= 47 {
-					goto tr16
+					goto tr15
 				}
 			case data[p] >= 9:
-				goto tr16
+				goto tr15
 			}
 		case data[p] > 64:
 			switch {
@@ -2416,13 +2396,13 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr16
+					goto tr15
 				}
 			default:
-				goto tr16
+				goto tr15
 			}
 		default:
-			goto tr16
+			goto tr15
 		}
 		goto st9
 	st63:
@@ -2432,7 +2412,7 @@ match = true
 	st_case_63:
 		switch data[p] {
 		case 32:
-			goto tr20
+			goto tr19
 		case 73:
 			goto st4
 		case 82:
@@ -2447,10 +2427,10 @@ match = true
 			switch {
 			case data[p] > 13:
 				if 33 <= data[p] && data[p] <= 47 {
-					goto tr16
+					goto tr15
 				}
 			case data[p] >= 9:
-				goto tr20
+				goto tr19
 			}
 		case data[p] > 64:
 			switch {
@@ -2460,13 +2440,13 @@ match = true
 				}
 			case data[p] > 96:
 				if 123 <= data[p] && data[p] <= 126 {
-					goto tr16
+					goto tr15
 				}
 			default:
-				goto tr16
+				goto tr15
 			}
 		default:
-			goto tr16
+			goto tr15
 		}
 		goto st9
 	st64:
@@ -2479,10 +2459,10 @@ match = true
 			goto st2
 		case 73:
 			goto st4
-		case 97:
-			goto st65
 		case 105:
 			goto st5
+		case 111:
+			goto st65
 		case 112:
 			goto st20
 		case 115:
@@ -2517,6 +2497,8 @@ match = true
 			goto st20
 		case 115:
 			goto st22
+		case 116:
+			goto st16
 		}
 		switch {
 		case data[p] > 13:
@@ -2539,8 +2521,8 @@ match = true
 			goto st4
 		case 82:
 			goto st6
-		case 100:
-			goto st67
+		case 101:
+			goto st16
 		case 105:
 			goto st5
 		case 112:
@@ -2567,9 +2549,9 @@ match = true
 			goto st2
 		case 73:
 			goto st4
-		case 82:
-			goto st6
 		case 105:
+			goto st5
+		case 110:
 			goto st68
 		case 112:
 			goto st20
@@ -2597,12 +2579,12 @@ match = true
 			goto st4
 		case 82:
 			goto st6
-		case 100:
+		case 97:
 			goto st69
 		case 105:
-			goto st5
+			goto st72
 		case 110:
-			goto st27
+			goto st80
 		case 112:
 			goto st20
 		case 115:
@@ -2629,10 +2611,10 @@ match = true
 			goto st4
 		case 82:
 			goto st6
-		case 97:
-			goto st70
 		case 105:
 			goto st5
+		case 109:
+			goto st70
 		case 112:
 			goto st20
 		case 115:
@@ -2659,14 +2641,14 @@ match = true
 			goto st4
 		case 82:
 			goto st6
+		case 101:
+			goto st71
 		case 105:
 			goto st5
 		case 112:
 			goto st20
 		case 115:
 			goto st22
-		case 116:
-			goto st71
 		}
 		switch {
 		case data[p] > 13:
@@ -2689,14 +2671,14 @@ match = true
 			goto st4
 		case 82:
 			goto st6
+		case 100:
+			goto st16
 		case 105:
 			goto st5
 		case 112:
 			goto st20
 		case 115:
 			goto st22
-		case 117:
-			goto st72
 		}
 		switch {
 		case data[p] > 13:
@@ -2719,12 +2701,16 @@ match = true
 			goto st4
 		case 82:
 			goto st6
+		case 100:
+			goto st73
 		case 105:
 			goto st5
+		case 110:
+			goto st27
 		case 112:
 			goto st20
 		case 115:
-			goto st48
+			goto st22
 		}
 		switch {
 		case data[p] > 13:
@@ -2745,10 +2731,12 @@ match = true
 			goto st2
 		case 73:
 			goto st4
+		case 82:
+			goto st6
+		case 101:
+			goto st74
 		case 105:
 			goto st5
-		case 111:
-			goto st74
 		case 112:
 			goto st20
 		case 115:
@@ -2783,8 +2771,6 @@ match = true
 			goto st20
 		case 115:
 			goto st22
-		case 116:
-			goto st16
 		}
 		switch {
 		case data[p] > 13:
@@ -2807,14 +2793,14 @@ match = true
 			goto st4
 		case 82:
 			goto st6
-		case 101:
-			goto st16
 		case 105:
 			goto st5
 		case 112:
 			goto st20
 		case 115:
 			goto st22
+		case 116:
+			goto st76
 		}
 		switch {
 		case data[p] > 13:
@@ -2835,9 +2821,9 @@ match = true
 			goto st2
 		case 73:
 			goto st4
+		case 82:
+			goto st6
 		case 105:
-			goto st5
-		case 110:
 			goto st77
 		case 112:
 			goto st20
@@ -2865,12 +2851,12 @@ match = true
 			goto st4
 		case 82:
 			goto st6
-		case 97:
+		case 102:
 			goto st78
 		case 105:
-			goto st81
+			goto st5
 		case 110:
-			goto st89
+			goto st27
 		case 112:
 			goto st20
 		case 115:
@@ -2898,8 +2884,6 @@ match = true
 		case 82:
 			goto st6
 		case 105:
-			goto st5
-		case 109:
 			goto st79
 		case 112:
 			goto st20
@@ -2928,9 +2912,11 @@ match = true
 		case 82:
 			goto st6
 		case 101:
-			goto st80
+			goto st71
 		case 105:
 			goto st5
+		case 110:
+			goto st27
 		case 112:
 			goto st20
 		case 115:
@@ -2957,280 +2943,8 @@ match = true
 			goto st4
 		case 82:
 			goto st6
-		case 100:
-			goto st16
-		case 105:
-			goto st5
-		case 112:
-			goto st20
-		case 115:
-			goto st22
-		}
-		switch {
-		case data[p] > 13:
-			if 65 <= data[p] && data[p] <= 90 {
-				goto st3
-			}
-		case data[p] >= 9:
-			goto st2
-		}
-		goto st1
-	st81:
-		if p++; p == pe {
-			goto _test_eof81
-		}
-	st_case_81:
-		switch data[p] {
-		case 32:
-			goto st2
-		case 73:
-			goto st4
-		case 82:
-			goto st6
-		case 100:
-			goto st82
-		case 105:
-			goto st5
-		case 110:
-			goto st27
-		case 112:
-			goto st20
-		case 115:
-			goto st22
-		}
-		switch {
-		case data[p] > 13:
-			if 65 <= data[p] && data[p] <= 90 {
-				goto st3
-			}
-		case data[p] >= 9:
-			goto st2
-		}
-		goto st1
-	st82:
-		if p++; p == pe {
-			goto _test_eof82
-		}
-	st_case_82:
-		switch data[p] {
-		case 32:
-			goto st2
-		case 73:
-			goto st4
-		case 82:
-			goto st6
-		case 101:
-			goto st83
-		case 105:
-			goto st5
-		case 112:
-			goto st20
-		case 115:
-			goto st22
-		}
-		switch {
-		case data[p] > 13:
-			if 65 <= data[p] && data[p] <= 90 {
-				goto st3
-			}
-		case data[p] >= 9:
-			goto st2
-		}
-		goto st1
-	st83:
-		if p++; p == pe {
-			goto _test_eof83
-		}
-	st_case_83:
-		switch data[p] {
-		case 32:
-			goto st2
-		case 73:
-			goto st4
-		case 82:
-			goto st6
-		case 105:
-			goto st5
-		case 110:
-			goto st84
-		case 112:
-			goto st20
-		case 115:
-			goto st22
-		}
-		switch {
-		case data[p] > 13:
-			if 65 <= data[p] && data[p] <= 90 {
-				goto st3
-			}
-		case data[p] >= 9:
-			goto st2
-		}
-		goto st1
-	st84:
-		if p++; p == pe {
-			goto _test_eof84
-		}
-	st_case_84:
-		switch data[p] {
-		case 32:
-			goto st2
-		case 73:
-			goto st4
-		case 82:
-			goto st6
-		case 105:
-			goto st5
-		case 112:
-			goto st20
-		case 115:
-			goto st22
-		case 116:
-			goto st85
-		}
-		switch {
-		case data[p] > 13:
-			if 65 <= data[p] && data[p] <= 90 {
-				goto st3
-			}
-		case data[p] >= 9:
-			goto st2
-		}
-		goto st1
-	st85:
-		if p++; p == pe {
-			goto _test_eof85
-		}
-	st_case_85:
-		switch data[p] {
-		case 32:
-			goto st2
-		case 73:
-			goto st4
-		case 82:
-			goto st6
-		case 105:
-			goto st86
-		case 112:
-			goto st20
-		case 115:
-			goto st22
-		}
-		switch {
-		case data[p] > 13:
-			if 65 <= data[p] && data[p] <= 90 {
-				goto st3
-			}
-		case data[p] >= 9:
-			goto st2
-		}
-		goto st1
-	st86:
-		if p++; p == pe {
-			goto _test_eof86
-		}
-	st_case_86:
-		switch data[p] {
-		case 32:
-			goto st2
-		case 73:
-			goto st4
-		case 82:
-			goto st6
-		case 102:
-			goto st87
-		case 105:
-			goto st5
-		case 110:
-			goto st27
-		case 112:
-			goto st20
-		case 115:
-			goto st22
-		}
-		switch {
-		case data[p] > 13:
-			if 65 <= data[p] && data[p] <= 90 {
-				goto st3
-			}
-		case data[p] >= 9:
-			goto st2
-		}
-		goto st1
-	st87:
-		if p++; p == pe {
-			goto _test_eof87
-		}
-	st_case_87:
-		switch data[p] {
-		case 32:
-			goto st2
-		case 73:
-			goto st4
-		case 82:
-			goto st6
-		case 105:
-			goto st88
-		case 112:
-			goto st20
-		case 115:
-			goto st22
-		}
-		switch {
-		case data[p] > 13:
-			if 65 <= data[p] && data[p] <= 90 {
-				goto st3
-			}
-		case data[p] >= 9:
-			goto st2
-		}
-		goto st1
-	st88:
-		if p++; p == pe {
-			goto _test_eof88
-		}
-	st_case_88:
-		switch data[p] {
-		case 32:
-			goto st2
-		case 73:
-			goto st4
-		case 82:
-			goto st6
-		case 101:
-			goto st80
-		case 105:
-			goto st5
-		case 110:
-			goto st27
-		case 112:
-			goto st20
-		case 115:
-			goto st22
-		}
-		switch {
-		case data[p] > 13:
-			if 65 <= data[p] && data[p] <= 90 {
-				goto st3
-			}
-		case data[p] >= 9:
-			goto st2
-		}
-		goto st1
-	st89:
-		if p++; p == pe {
-			goto _test_eof89
-		}
-	st_case_89:
-		switch data[p] {
-		case 32:
-			goto st2
-		case 73:
-			goto st4
-		case 82:
-			goto st6
 		case 97:
-			goto st78
+			goto st69
 		case 105:
 			goto st5
 		case 112:
@@ -3257,16 +2971,16 @@ match = true
 	_test_eof7: cs = 7; goto _test_eof
 	_test_eof8: cs = 8; goto _test_eof
 	_test_eof9: cs = 9; goto _test_eof
-	_test_eof90: cs = 90; goto _test_eof
+	_test_eof81: cs = 81; goto _test_eof
 	_test_eof10: cs = 10; goto _test_eof
 	_test_eof11: cs = 11; goto _test_eof
 	_test_eof12: cs = 12; goto _test_eof
-	_test_eof91: cs = 91; goto _test_eof
+	_test_eof82: cs = 82; goto _test_eof
 	_test_eof13: cs = 13; goto _test_eof
 	_test_eof14: cs = 14; goto _test_eof
 	_test_eof15: cs = 15; goto _test_eof
 	_test_eof16: cs = 16; goto _test_eof
-	_test_eof92: cs = 92; goto _test_eof
+	_test_eof83: cs = 83; goto _test_eof
 	_test_eof17: cs = 17; goto _test_eof
 	_test_eof18: cs = 18; goto _test_eof
 	_test_eof19: cs = 19; goto _test_eof
@@ -3298,7 +3012,7 @@ match = true
 	_test_eof45: cs = 45; goto _test_eof
 	_test_eof46: cs = 46; goto _test_eof
 	_test_eof47: cs = 47; goto _test_eof
-	_test_eof93: cs = 93; goto _test_eof
+	_test_eof84: cs = 84; goto _test_eof
 	_test_eof48: cs = 48; goto _test_eof
 	_test_eof49: cs = 49; goto _test_eof
 	_test_eof50: cs = 50; goto _test_eof
@@ -3332,23 +3046,14 @@ match = true
 	_test_eof78: cs = 78; goto _test_eof
 	_test_eof79: cs = 79; goto _test_eof
 	_test_eof80: cs = 80; goto _test_eof
-	_test_eof81: cs = 81; goto _test_eof
-	_test_eof82: cs = 82; goto _test_eof
-	_test_eof83: cs = 83; goto _test_eof
-	_test_eof84: cs = 84; goto _test_eof
-	_test_eof85: cs = 85; goto _test_eof
-	_test_eof86: cs = 86; goto _test_eof
-	_test_eof87: cs = 87; goto _test_eof
-	_test_eof88: cs = 88; goto _test_eof
-	_test_eof89: cs = 89; goto _test_eof
 
 	_test_eof: {}
 	if p == eof {
 		switch cs {
-		case 8, 9, 10, 11, 12, 16, 47, 48, 59, 60, 61, 62, 63, 90, 91:
+		case 8, 9, 10, 11, 12, 16, 47, 48, 59, 60, 61, 62, 63, 81, 82:
 //line noparse.rl:20
 match = true
-//line noparse.go:3352
+//line noparse.go:3057
 		}
 	}
 

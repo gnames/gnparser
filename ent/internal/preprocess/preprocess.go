@@ -14,7 +14,7 @@ var hybridCharRe1 = regexp.MustCompile(`(^)[Xx](\p{Lu})`)
 var hybridCharRe2 = regexp.MustCompile(`(\s|^)[Xx](\s|$)`)
 
 var notesRe = regexp.MustCompile(
-	`(?i)\s+(species\s+group|species\s+complex|group|author)\b.*$`,
+	`(?i)\s+(environmental|samples|species\s+group|species\s+complex|clade|group|author)\b.*$`,
 )
 var taxonConceptsRe1 = regexp.MustCompile(
 	`(?i)\s+(sero(var|type)|sensu|auct|sec|near|str)\.?\b.*$`,

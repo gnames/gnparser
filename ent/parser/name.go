@@ -250,6 +250,42 @@ func (nh *namedSpeciesHybridNode) details() parsed.Details {
 	return parsed.DetailsInfraspecies{Infraspecies: iso}
 }
 
+func (cnd *candidatusNameNode) words() []parsed.Word {
+	wrd := cnd.Candidatus.Pos
+	wrd.Verbatim = cnd.Candidatus.Value
+	wrd.Normalized = cnd.Candidatus.NormValue
+	words := []parsed.Word{wrd}
+	words = append(words, cnd.SingleName.words()...)
+	return words
+}
+
+func (cnd *candidatusNameNode) value() string {
+	val := cnd.Candidatus.NormValue
+	val = str.JoinStrings(val, cnd.SingleName.value(), " ")
+	return val
+}
+
+func (cnd *candidatusNameNode) canonical() *canonical {
+	var c *canonical
+	if cnd == nil {
+		return c
+	}
+	can := cnd.SingleName.canonical()
+	c = &canonical{
+		Value:       can.Value,
+		ValueRanked: "Candidatus " + can.ValueRanked,
+	}
+	return c
+}
+
+func (cnd *candidatusNameNode) lastAuthorship() *authorshipNode {
+	return cnd.SingleName.lastAuthorship()
+}
+
+func (cnd *candidatusNameNode) details() parsed.Details {
+	return cnd.SingleName.details()
+}
+
 func (apr *approxNode) words() []parsed.Word {
 	var words []parsed.Word
 	var wrd parsed.Word

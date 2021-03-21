@@ -11,7 +11,7 @@ import (
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/dict"
 	"github.com/gnames/gnuuid"
-	tb "github.com/gnames/tribool"
+	"github.com/gnames/tribool"
 )
 
 type scientificNameNode struct {
@@ -22,7 +22,7 @@ type scientificNameNode struct {
 	virus         bool
 	hybrid        *parsed.Annotation
 	surrogate     *parsed.Annotation
-	bacteria      *tb.Tribool
+	bacteria      *tribool.Tribool
 	tail          string
 	parserVersion string
 	warnings      map[parsed.Warning]struct{}
@@ -91,6 +91,8 @@ func (p *Engine) newName(n *node32) nameData {
 		annot = parsed.NamedHybridAnnot
 		p.hybrid = &annot
 		name = p.newNamedSpeciesHybridNode(n)
+	case ruleCandidatusName:
+		name = p.newCandidatusName(n)
 	case ruleSingleName:
 		name = p.newSingleName(n)
 	}
@@ -329,6 +331,34 @@ func (p *Engine) newSingleName(n *node32) nameData {
 		name = p.newUninomialComboNode(n)
 	}
 	return name
+}
+
+type candidatusNameNode struct {
+	Candidatus *wordNode
+	SingleName nameData
+}
+
+func (p *Engine) newCandidatusName(n *node32) nameData {
+	bac := tribool.New(1)
+	p.bacteria = &bac
+	p.addWarn(parsed.CandidatusName)
+
+	var cand *wordNode
+	var singName nameData
+
+	n = n.up
+	for n != nil {
+		switch n.pegRule {
+		case ruleCandidatus:
+			cand = p.newWordNode(n, parsed.CandidatusType)
+		case ruleSingleName:
+			singName = p.newSingleName(n)
+		}
+		n = n.next
+	}
+
+	candName := &candidatusNameNode{Candidatus: cand, SingleName: singName}
+	return candName
 }
 
 type approxNode struct {

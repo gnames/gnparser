@@ -14,7 +14,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const debug = true
+const debug = false
 
 var (
 	opts      []gnparser.Option
@@ -57,6 +57,10 @@ gnparser -j 5 -p 8080
 	Run: func(cmd *cobra.Command, args []string) {
 		if versionFlag(cmd) {
 			os.Exit(0)
+		}
+
+		if debug {
+			opts = append(opts, gnparser.OptDebug(true))
 		}
 
 		formatFlag(cmd)

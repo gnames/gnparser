@@ -60,6 +60,7 @@ gnparser -h
 * [Usage](#usage)
   * [Command Line](#command-line)
   * [Pipes](#pipes)
+  * [R language package](#r-language-package)
   * [Usage as a REST API Interface](#usage-as-a-rest-api-interface)
   * [Use as a Docker image](#use-as-a-docker-image)
   * [Use as a library in Go](#use-as-a-library-in-go)
@@ -459,6 +460,11 @@ end
 
 Note that you have to use `--stream -s` flag for this approach to work.
 
+### R language package
+
+For R language it is possible to use [`rgnparser` package][rgnparser]. It
+implements mentioned above `pipes` method.
+
 ### Usage as a REST API Interface
 
 Web-based user interface and API are invoked by ``--port`` or
@@ -625,3 +631,4 @@ Released under [MIT license]
 [wsl]: https://docs.microsoft.com/en-us/windows/wsl/
 [gnparser paper]: https://doi.org/10.1186/s12859-017-1663-3
 [PHP pipes]: https://gist.github.com/marcobrt/72b2a3d1b0649c1bf738c9fc88f74ec0
+[rgnparser]: https://github.com/ropensci/rgnparser

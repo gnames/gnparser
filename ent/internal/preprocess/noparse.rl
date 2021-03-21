@@ -19,7 +19,7 @@ func NoParse(data []byte) bool {
   %%{
     action setMatch {match = true}
 
-    noparse1 = ("Candidatus" | "Not" | "None" | "Un" ("n"? "amed" | "identified"));
+    noparse1 = ("Not" | "None" | "Un" ("n"? "amed" | "identified"));
     noparse2 = any* [Ii] "nc" ("." | "ertae") space* [Ss] "ed" ("." | "is");
     noparse3 = any* (("endo" | "ecto")? "symbiont" | "phytoplasma" | space "bacterium"| "plasmid" "s"? | [^A-Z] "RNA" [^A-Z]*);
 

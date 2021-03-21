@@ -8,7 +8,7 @@ SciName <- _? Name Tail END
 
 Tail <- ((_ / ';' / ',') .*)?
 
-Name <- NamedHybrid / HybridFormula / SingleName
+Name <- NamedHybrid / HybridFormula / CandidatusName / SingleName
 
 HybridFormula <- SingleName (_ (HybridFormulaPart / HybridFormulaFull))+
 
@@ -22,6 +22,10 @@ NamedSpeciesHybrid <- GenusWord (_ Subgenus)? (_ Comparison)? _ HybridChar _?
   SpeciesEpithet (_ InfraspGroup)?
 
 NamedGenusHybrid <- HybridChar _? SingleName
+
+CandidatusName <- Candidatus _ SingleName
+
+Candidatus <- 'Candidatus'
 
 SingleName <- NameComp / NameApprox / NameSpecies / NameUninomial
 

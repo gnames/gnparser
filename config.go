@@ -45,6 +45,10 @@ type Config struct {
 	// In such cases the `ParserVersion` field is presented as `test_version`
 	// instead of displaying the actual version of `gnparser`.
 	IsTest bool
+
+	// Debug sets a "debug" state for parsing. The debug state forces output
+	// format to showing parsed ast tree.
+	Debug bool
 }
 
 // NewConfig generates a new Config object. It can take an arbitrary number
@@ -141,5 +145,12 @@ func OptPort(i int) Option {
 func OptIsTest(b bool) Option {
 	return func(cfg *Config) {
 		cfg.IsTest = b
+	}
+}
+
+// OptDebugParse returns parsed tree
+func OptDebug(b bool) Option {
+	return func(cfg *Config) {
+		cfg.Debug = b
 	}
 }

@@ -14,6 +14,7 @@ const (
 	ApproxMarkerType
 	AuthorWordType
 	AuthorWordFiliusType
+	CandidatusType
 	GenusType
 	InfraspEpithetType
 	HybridCharType
@@ -32,6 +33,7 @@ var wordTypeMap = map[WordType]string{
 	ApproxMarkerType:     "APPROXIMATION_MARKER",
 	AuthorWordType:       "AUTHOR_WORD",
 	AuthorWordFiliusType: "AUTHOR_WORD_FILIUS",
+	CandidatusType:       "CANDIDATUS",
 	GenusType:            "GENUS",
 	HybridCharType:       "HYBRID_CHAR",
 	InfraspEpithetType:   "INFRASPECIES",

@@ -6126,34 +6126,74 @@ Authorship:
 
 Name: Candidatus
 
-Canonical:
+Canonical: Candidatus
 
 Authorship:
 
 ```json
-{"parsed":false,"quality":0,"verbatim":"Candidatus","cardinality":0,"id":"fb9138ac-ae7a-58c9-a912-d31d0a4eeed3","parserVersion":"test_version"}
+{"parsed":true,"quality":1,"verbatim":"Candidatus","normalized":"Candidatus","canonical":{"stemmed":"Candidatus","simple":"Candidatus","full":"Candidatus"},"cardinality":1,"details":{"uninomial":{"uninomial":"Candidatus"}},"words":[{"verbatim":"Candidatus","normalized":"Candidatus","wordType":"UNINOMIAL","start":0,"end":10}],"id":"fb9138ac-ae7a-58c9-a912-d31d0a4eeed3","parserVersion":"test_version"}
 ```
 
 Name: Candidatus Puniceispirillum Oh, Kwon, Kang, Kang, Lee, Kim & Cho, 2010
 
-Canonical:
+Canonical: Puniceispirillum
 
 Authorship:
 
 ```json
-{"parsed":false,"quality":0,"verbatim":"Candidatus Puniceispirillum Oh, Kwon, Kang, Kang, Lee, Kim \u0026 Cho, 2010","cardinality":0,"id":"82fde2e2-8e50-5fd0-8ffe-96f34f85505b","parserVersion":"test_version"}
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Bacterial `Candidatus` name"}],"verbatim":"Candidatus Puniceispirillum Oh, Kwon, Kang, Kang, Lee, Kim \u0026 Cho, 2010","normalized":"Candidatus Puniceispirillum Oh, Kwon, Kang, Kang, Lee, Kim \u0026 Cho 2010","canonical":{"stemmed":"Puniceispirillum","simple":"Puniceispirillum","full":"Candidatus Puniceispirillum"},"cardinality":1,"authorship":{"verbatim":"Oh, Kwon, Kang, Kang, Lee, Kim \u0026 Cho, 2010","normalized":"Oh, Kwon, Kang, Kang, Lee, Kim \u0026 Cho 2010","year":"2010","authors":["Oh","Kwon","Kang","Kang","Lee","Kim","Cho"],"originalAuth":{"authors":["Oh","Kwon","Kang","Kang","Lee","Kim","Cho"],"year":{"year":"2010"}}},"bacteria":"yes","details":{"uninomial":{"uninomial":"Puniceispirillum","authorship":{"verbatim":"Oh, Kwon, Kang, Kang, Lee, Kim \u0026 Cho, 2010","normalized":"Oh, Kwon, Kang, Kang, Lee, Kim \u0026 Cho 2010","year":"2010","authors":["Oh","Kwon","Kang","Kang","Lee","Kim","Cho"],"originalAuth":{"authors":["Oh","Kwon","Kang","Kang","Lee","Kim","Cho"],"year":{"year":"2010"}}}}},"words":[{"verbatim":"Candidatus","normalized":"Candidatus","wordType":"CANDIDATUS","start":0,"end":10},{"verbatim":"Puniceispirillum","normalized":"Puniceispirillum","wordType":"UNINOMIAL","start":11,"end":27},{"verbatim":"Oh","normalized":"Oh","wordType":"AUTHOR_WORD","start":28,"end":30},{"verbatim":"Kwon","normalized":"Kwon","wordType":"AUTHOR_WORD","start":32,"end":36},{"verbatim":"Kang","normalized":"Kang","wordType":"AUTHOR_WORD","start":38,"end":42},{"verbatim":"Kang","normalized":"Kang","wordType":"AUTHOR_WORD","start":44,"end":48},{"verbatim":"Lee","normalized":"Lee","wordType":"AUTHOR_WORD","start":50,"end":53},{"verbatim":"Kim","normalized":"Kim","wordType":"AUTHOR_WORD","start":55,"end":58},{"verbatim":"Cho","normalized":"Cho","wordType":"AUTHOR_WORD","start":61,"end":64},{"verbatim":"2010","normalized":"2010","wordType":"YEAR","start":66,"end":70}],"id":"82fde2e2-8e50-5fd0-8ffe-96f34f85505b","parserVersion":"test_version"}
+
 ```
 
 Name: Candidatus Halobonum
 
+Canonical: Halobonum
+
+Authorship:
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Bacterial `Candidatus` name"}],"verbatim":"Candidatus Halobonum","normalized":"Candidatus Halobonum","canonical":{"stemmed":"Halobonum","simple":"Halobonum","full":"Candidatus Halobonum"},"cardinality":1,"bacteria":"yes","details":{"uninomial":{"uninomial":"Halobonum"}},"words":[{"verbatim":"Candidatus","normalized":"Candidatus","wordType":"CANDIDATUS","start":0,"end":10},{"verbatim":"Halobonum","normalized":"Halobonum","wordType":"UNINOMIAL","start":11,"end":20}],"id":"289152c0-1042-5cac-a649-44314b25c857","parserVersion":"test_version"}
+```
+
+Name: Candidatus Endomicrobium sp. MdDo-005
+
+Canonical: Endomicrobium
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name is approximate"},{"quality":2,"warning":"Bacterial `Candidatus` name"}],"verbatim":"Candidatus Endomicrobium sp. MdDo-005","normalized":"Candidatus Endomicrobium","canonical":{"stemmed":"Endomicrobium","simple":"Endomicrobium","full":"Candidatus Endomicrobium"},"cardinality":0,"bacteria":"yes","surrogate":"APPROXIMATION","details":{"approximation":{"genus":"Endomicrobium","approximationMarker":"sp.","ignored":" MdDo-005"}},"words":[{"verbatim":"Candidatus","normalized":"Candidatus","wordType":"CANDIDATUS","start":0,"end":10},{"verbatim":"Endomicrobium","normalized":"Endomicrobium","wordType":"GENUS","start":11,"end":24},{"verbatim":"sp.","normalized":"sp.","wordType":"APPROXIMATION_MARKER","start":25,"end":28}],"id":"f9231593-37a4-5e11-b3e8-3963f90b37e8","parserVersion":"test_version"}
+```
+
+Name: Candidatus Abawacabacteria bacterium
+
 Canonical:
 
 Authorship:
 
 ```json
-{"parsed":false,"quality":0,"verbatim":"Candidatus Halobonum","cardinality":0,"id":"289152c0-1042-5cac-a649-44314b25c857","parserVersion":"test_version"}
+{"parsed":false,"quality":0,"verbatim":"Candidatus Abawacabacteria bacterium","cardinality":0,"id":"33ac7170-8bed-5051-9dd8-c6aac30a95cd","parserVersion":"test_version"}
 ```
 
+Name: Candidatus Accumulibacter phosphatis clade IIA str. UW-1
+
+Canonical: Accumulibacter phosphatis
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"},{"quality":2,"warning":"Bacterial `Candidatus` name"}],"verbatim":"Candidatus Accumulibacter phosphatis clade IIA str. UW-1","normalized":"Candidatus Accumulibacter phosphatis","canonical":{"stemmed":"Accumulibacter phosphat","simple":"Accumulibacter phosphatis","full":"Candidatus Accumulibacter phosphatis"},"cardinality":2,"bacteria":"yes","tail":" clade IIA str. UW-1","details":{"species":{"genus":"Accumulibacter","species":"phosphatis"}},"words":[{"verbatim":"Candidatus","normalized":"Candidatus","wordType":"CANDIDATUS","start":0,"end":10},{"verbatim":"Accumulibacter","normalized":"Accumulibacter","wordType":"GENUS","start":11,"end":25},{"verbatim":"phosphatis","normalized":"phosphatis","wordType":"SPECIES","start":26,"end":36}],"id":"0c1f98d9-0c9a-5750-8e44-3e4156f04825","parserVersion":"test_version"}
+```
+
+Name: Candidatus Anammoxoglobus environmental samples
+
+Canonical: Anammoxoglobus
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"},{"quality":2,"warning":"Bacterial `Candidatus` name"}],"verbatim":"Candidatus Anammoxoglobus environmental samples","normalized":"Candidatus Anammoxoglobus","canonical":{"stemmed":"Anammoxoglobus","simple":"Anammoxoglobus","full":"Candidatus Anammoxoglobus"},"cardinality":1,"bacteria":"yes","tail":" environmental samples","details":{"uninomial":{"uninomial":"Anammoxoglobus"}},"words":[{"verbatim":"Candidatus","normalized":"Candidatus","wordType":"CANDIDATUS","start":0,"end":10},{"verbatim":"Anammoxoglobus","normalized":"Anammoxoglobus","wordType":"UNINOMIAL","start":11,"end":25}],"id":"c2c440df-a095-59bc-b2b7-ed79460af6a3","parserVersion":"test_version"}
+```
 ### No parsing -- 'Not', 'None', 'Unidentified'  phrases
 
 Name: None recorded

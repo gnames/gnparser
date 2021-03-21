@@ -25,6 +25,7 @@ const (
 	AuthUpperCaseWarn
 	BacteriaMaybeWarn
 	BotanyAuthorNotSubgenWarn
+	CandidatusName
 	CanonicalApostropheWarn
 	CapWordQuestionWarn
 	CharBadWarn
@@ -75,6 +76,7 @@ var warningMap = map[Warning]string{
 	AuthUpperCaseWarn:               "Author in upper case",
 	BacteriaMaybeWarn:               "The genus is a homonym of a bacterial genus",
 	BotanyAuthorNotSubgenWarn:       "Possible ICN author instead of subgenus",
+	CandidatusName:                  "Bacterial `Candidatus` name",
 	CanonicalApostropheWarn:         "Apostrophe is not allowed in canonical",
 	CapWordQuestionWarn:             "Uninomial word with question mark",
 	CharBadWarn:                     "Non-standard characters in canonical",
@@ -134,6 +136,7 @@ var WarningQualityMap = map[Warning]int{
 	AuthUpperCaseWarn:               2,
 	BacteriaMaybeWarn:               1,
 	BotanyAuthorNotSubgenWarn:       2,
+	CandidatusName:                  2,
 	CanonicalApostropheWarn:         3,
 	CapWordQuestionWarn:             4,
 	CharBadWarn:                     2,

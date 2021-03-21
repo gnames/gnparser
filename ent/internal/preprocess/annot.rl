@@ -21,7 +21,7 @@ func AnnotationRL(data []byte) bool {
     action setMatch {match = true}
     action setPos {pos = append(pos,p)}
 
-    notes = ("species"i | "group"i | "authors"i);
+    notes = ("species"i | "group"i | "clade"i | "authors"i);
     tc1 = ("sensu"i | "auct"i | "sec"i | "near" | "str") "."?;
     tc2 = "("? "s." space? ([sl] | "str" | "lat") ".";
     tc3 = "pro parte"i | "p."i space? "p."i;
