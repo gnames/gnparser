@@ -3,10 +3,34 @@
 package parser
 
 import (
+	"bytes"
+	"fmt"
+
 	"github.com/gnames/gnparser/ent/internal/preprocess"
 	"github.com/gnames/gnparser/ent/internal/str"
 	"github.com/gnames/gnparser/ent/parsed"
 )
+
+// Debug takes a string, parsers it, and returns a byte representation of
+// the node tree
+func (p *Engine) Debug(s string) []byte {
+	ppr := preprocess.Preprocess([]byte(s))
+	var b bytes.Buffer
+	if ppr.NoParse || ppr.Virus {
+		b.WriteString("\n*** Preprocessing: NO PARSE ***\n")
+		b.WriteString(fmt.Sprintf("\n%s\n", s))
+		return b.Bytes()
+	}
+	p.Buffer = string(ppr.Body)
+	p.fullReset()
+	p.parse()
+	p.outputAST()
+	b.WriteString("\n*** Complete Syntax Tree ***\n")
+	p.AST().PrettyPrint(&b, p.Buffer)
+	b.WriteString("\n*** Output Syntax Tree ***\n")
+	p.PrintOutputSyntaxTree(&b)
+	return b.Bytes()
+}
 
 // PreprocessAndParse takes a string and returns back the Abstract
 // Syntax Tree of the scientific names. The AST is later used to
@@ -63,7 +87,7 @@ func (p *Engine) PreprocessAndParse(
 		return p.sn
 	}
 
-	p.OutputAST()
+	// p.outputAST()
 	p.newScientificNameNode()
 	return p.sn
 }

@@ -61,8 +61,8 @@ func (p *Engine) isBacteria(gen string) {
 	}
 }
 
-// OutputAST assembles PEG nodes AST structure.
-func (p *Engine) OutputAST() {
+// outputAST assembles PEG nodes AST structure.
+func (p *Engine) outputAST() {
 	type element struct {
 		node *node32
 		down *element

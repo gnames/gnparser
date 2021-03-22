@@ -35,6 +35,11 @@ func New(cfg Config) GNparser {
 	return gnp
 }
 
+// Debug returns byte representation of complete and 'output' syntax trees.
+func (gnp gnparser) Debug(s string) []byte {
+	return gnp.parser.Debug(s)
+}
+
 // Parse function parses input string according to configurations.
 // It takes a string and returns an parsed.Parsed object.
 func (gnp gnparser) ParseName(s string) parsed.Parsed {

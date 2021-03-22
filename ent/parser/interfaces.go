@@ -10,6 +10,7 @@ type Parser interface {
 	// PreprocessAndParse takes a scientific name and returns back Abstract
 	// Syntax Tree of the name-string.
 	PreprocessAndParse(name, version string, keepHTML bool) ScientificNameNode
+	Debug(name string) []byte
 }
 
 // ScientificNameNode is the Abstract Syntax Tree of a name-string.

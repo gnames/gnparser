@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#163]: support bacterial `Candidatus` names.
+- Add [#162]: show PEG AST tree for debugging.
 - Add [#161]: add automatic tools dependency.
 - Add [#160]: use embed feature of Go v1.16.
 

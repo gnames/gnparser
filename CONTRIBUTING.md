@@ -21,7 +21,6 @@
   suggestion in detail.
 * Make sure you **do not put more than one feature or change** in the new issue.
 
-
 ## **Did you write a patch that fixes a bug?**
 
 * Open a new GitHub pull request with the patch.
@@ -33,7 +32,7 @@
   finish it, or, if it is ready to merge patch with tests and documentation
   added.
 
-## **Did you write a client for your favorite language to access ``gnparser`` functionality via gRPC method calls?**
+## **Did you write a client for your favorite language to access ``gnparser`` functionality via REST api?**
 
 Let us know about your client on [GlobalNames gitter
 group](https://gitter.im/GlobalNamesArchitecture/GlobalNames).
@@ -49,61 +48,13 @@ group](https://gitter.im/GlobalNamesArchitecture/GlobalNames).
 
 ## **Setting up ``gnparser`` programming environment**
 
-### Introduction
-
-``gnparser`` uses several external tools and technologies:
-
-1. [Parsing Expression Grammar tool](https://github.com/pointlander/peg) to
-   generate parsing code.
-
-2. [Protobuf/gRPC](https://grpc.io/) to facilitate remote method calls from a
-   variety of programming languages.
-
-3. [Cobra CLI framework](https://github.com/spf13/cobra) for creating command
-   line application.
-
-4. [Ginkgo testing framework](https://github.com/onsi/ginkgo) for
-   Behavior-Driven Development and testing.
-
-5. [Virtual File System Generator](https://github.com/shurcooL/vfsgen)
-   for including dictionaries and HTML static files or templates.
-
-Most of these projects are installed by one command, but you do need to
-setup Protobuf's ``protoc`` binary.
-
-You can find binaries for ``protoc`` for Mac, Linux or Windows on the
-[``protobuf`` releases page](https://github.com/protocolbuffers/protobuf/releases)
-
-#### Installation of protoc on Mac
-
-```bash
-brew install protobuf
-
-# or
-
-brew upgrade protobuf
-```
-
-or
-
-```bash
-PROTOC_ZIP=protoc-3.6.1-osx-x86_64.zip
-curl -OL https://github.com/google/protobuf/releases/download/v3.6.1/$PROTOC_ZIP
-sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc
-rm -f $PROTOC_ZIP
-```
-
-#### Installation of ``protoc`` on Linux
-
-Use our [script for continuous integration](https://github.com/gnames/gnparser/blob/master/scripts/protoc-install.sh)
-as a guide.
-
 ### Install Go
 
-[Download and install Go](https://golang.org/doc/install) for your operating system. Make sure you
-[configured GOPATH environment library](https://github.com/golang/go/wiki/SettingGOPATH).
+[Download and install Go](https://golang.org/doc/install) for your operating
+system. Make sure you [configured GOPATH environment
+library](https://github.com/golang/go/wiki/SettingGOPATH).
 
-You need Go v1.11.x or higher, because we use recently introduced Go modules.
+You need Go v1.16.x or higher.
 
 ### Install ``gnparser`` code
 
@@ -119,37 +70,54 @@ git clone https://github.com/gnames/gnparser.git
 # or use URL of your fork on GitHub or GitLab
 
 cd gnparser
-# to download all dependencies
-make deps
+```
 
-# to make gnparser executable and place it to $GOPATH/bin
+``gnparser`` uses several external tools and technologies:
+
+1. [Parsing Expression Grammar tool](https://github.com/pointlander/peg) to
+   generate parsing code.
+
+2. [Cobra CLI framework](https://github.com/spf13/cobra) for creating command
+   line application.
+
+To install them run
+
+```bash
+make tools
+```
+
+To create a ``gnparser`` executable and place it to $GOPATH/bin
+
+```bash
 make
+```
 
-# now you should be able to use gnparser compiled from the code:
+Now you should be able to use gnparser compiled from the code:
+
+```bash
 gnparser -f pretty "Pica pica (Linnaeus, 1758)"
 ```
 
-this should install all the tools and dependencies to test and run ``gnparser``.
-You can check it by running
+To run tests
 
 ```bash
 make test
 ```
 
-Note that you would need to use ``GO111MODULE=on`` to run tests, or,
-alternatively, you can install all dependencies in a 'traditional' way at
-``GOPATH/src`` and ``GOPATH/bin``.
+or
 
 ```bash
-GO111MODULE=on go test
-# or
-GO111MODULE=on ginkgo
+go test ./...
+```
 
-# to run all tests
-GO111MODULE=on go test ./...
-# or
-GO111MODULE=on ginkgo ./...
+### Accessing a raw parsed AST tree
 
-# to run tests continuously
-GO111MODULE=on ginkgo watch
+PEG parser generates it own abstract syntax tree (AST), that later gets
+conberted into a ``gnparser`` specific AST. Sometimes it is useful to see the
+raw tree of nodes. To do that, open gnparser/gnparser/cmd/root.go,
+change ``const debug`` to ``true`` and run ``make``. After that you will be
+able to examing raw tree of a string, for example:
+
+```bash
+gnparser "Bubo bubo"
 ```

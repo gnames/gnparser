@@ -14,6 +14,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const debug = true
+
 var (
 	opts      []gnparser.Option
 	batchSize int
@@ -83,6 +85,12 @@ gnparser -j 5 -p 8080
 			os.Exit(0)
 		}
 		data := getInput(cmd, args)
+
+		if debug {
+			debugName(data, cfg)
+			os.Exit(0)
+		}
+
 		parse(data, cfg, quiet)
 	},
 }
@@ -161,6 +169,15 @@ func getInput(cmd *cobra.Command, args []string) string {
 		os.Exit(0)
 	}
 	return data
+}
+
+func debugName(
+	data string,
+	cfg gnparser.Config,
+) {
+	gnp := gnparser.New(cfg)
+	res := gnp.Debug(data)
+	fmt.Println(string(res))
 }
 
 func parse(
