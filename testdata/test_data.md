@@ -1664,6 +1664,26 @@ Authorship: (Lojac.) Soó
 {"parsed":true,"quality":1,"verbatim":"Chlorocyperus glaber form. fasciculariforme (Lojac.) Soó","normalized":"Chlorocyperus glaber f. fasciculariforme (Lojac.) Soó","canonical":{"stemmed":"Chlorocyperus glaber fasciculariform","simple":"Chlorocyperus glaber fasciculariforme","full":"Chlorocyperus glaber f. fasciculariforme"},"cardinality":3,"authorship":{"verbatim":"(Lojac.) Soó","normalized":"(Lojac.) Soó","authors":["Lojac.","Soó"],"originalAuth":{"authors":["Lojac."]},"combinationAuth":{"authors":["Soó"]}},"details":{"infraspecies":{"genus":"Chlorocyperus","species":"glaber","infraspecies":[{"value":"fasciculariforme","rank":"f.","authorship":{"verbatim":"(Lojac.) Soó","normalized":"(Lojac.) Soó","authors":["Lojac.","Soó"],"originalAuth":{"authors":["Lojac."]},"combinationAuth":{"authors":["Soó"]}}}]}},"words":[{"verbatim":"Chlorocyperus","normalized":"Chlorocyperus","wordType":"GENUS","start":0,"end":13},{"verbatim":"glaber","normalized":"glaber","wordType":"SPECIES","start":14,"end":20},{"verbatim":"form.","normalized":"f.","wordType":"RANK","start":21,"end":26},{"verbatim":"fasciculariforme","normalized":"fasciculariforme","wordType":"INFRASPECIES","start":27,"end":43},{"verbatim":"Lojac.","normalized":"Lojac.","wordType":"AUTHOR_WORD","start":45,"end":51},{"verbatim":"Soó","normalized":"Soó","wordType":"AUTHOR_WORD","start":53,"end":56}],"id":"beee0dba-bef6-5550-954f-c978af09310a","parserVersion":"test_version"}
 ```
 
+Name: Pteris longifolia fm. stipularis Linnaeus 1753
+
+Canonical: Pteris longifolia f. stipularis
+
+Authorship: Linnaeus 1753
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Pteris longifolia fm. stipularis Linnaeus 1753","normalized":"Pteris longifolia f. stipularis Linnaeus 1753","canonical":{"stemmed":"Pteris longifol stipular","simple":"Pteris longifolia stipularis","full":"Pteris longifolia f. stipularis"},"cardinality":3,"authorship":{"verbatim":"Linnaeus 1753","normalized":"Linnaeus 1753","year":"1753","authors":["Linnaeus"],"originalAuth":{"authors":["Linnaeus"],"year":{"year":"1753"}}},"details":{"infraspecies":{"genus":"Pteris","species":"longifolia","infraspecies":[{"value":"stipularis","rank":"f.","authorship":{"verbatim":"Linnaeus 1753","normalized":"Linnaeus 1753","year":"1753","authors":["Linnaeus"],"originalAuth":{"authors":["Linnaeus"],"year":{"year":"1753"}}}}]}},"words":[{"verbatim":"Pteris","normalized":"Pteris","wordType":"GENUS","start":0,"end":6},{"verbatim":"longifolia","normalized":"longifolia","wordType":"SPECIES","start":7,"end":17},{"verbatim":"fm.","normalized":"f.","wordType":"RANK","start":18,"end":21},{"verbatim":"stipularis","normalized":"stipularis","wordType":"INFRASPECIES","start":22,"end":32},{"verbatim":"Linnaeus","normalized":"Linnaeus","wordType":"AUTHOR_WORD","start":33,"end":41},{"verbatim":"1753","normalized":"1753","wordType":"YEAR","start":42,"end":46}],"id":"0460032a-131f-5a9b-9472-db8244752156","parserVersion":"test_version"}
+```
+
+Name: Pteris longifolia fm stipularis Linnaeus 1753
+
+Canonical: Pteris longifolia f. stipularis
+
+Authorship: Linnaeus 1753
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Pteris longifolia fm stipularis Linnaeus 1753","normalized":"Pteris longifolia f. stipularis Linnaeus 1753","canonical":{"stemmed":"Pteris longifol stipular","simple":"Pteris longifolia stipularis","full":"Pteris longifolia f. stipularis"},"cardinality":3,"authorship":{"verbatim":"Linnaeus 1753","normalized":"Linnaeus 1753","year":"1753","authors":["Linnaeus"],"originalAuth":{"authors":["Linnaeus"],"year":{"year":"1753"}}},"details":{"infraspecies":{"genus":"Pteris","species":"longifolia","infraspecies":[{"value":"stipularis","rank":"f.","authorship":{"verbatim":"Linnaeus 1753","normalized":"Linnaeus 1753","year":"1753","authors":["Linnaeus"],"originalAuth":{"authors":["Linnaeus"],"year":{"year":"1753"}}}}]}},"words":[{"verbatim":"Pteris","normalized":"Pteris","wordType":"GENUS","start":0,"end":6},{"verbatim":"longifolia","normalized":"longifolia","wordType":"SPECIES","start":7,"end":17},{"verbatim":"fm","normalized":"f.","wordType":"RANK","start":18,"end":20},{"verbatim":"stipularis","normalized":"stipularis","wordType":"INFRASPECIES","start":21,"end":31},{"verbatim":"Linnaeus","normalized":"Linnaeus","wordType":"AUTHOR_WORD","start":32,"end":40},{"verbatim":"1753","normalized":"1753","wordType":"YEAR","start":41,"end":45}],"id":"b79aea4b-52d8-54fb-bca8-e54a779a1ce6","parserVersion":"test_version"}
+```
+
 Name: Sphaerotheca    fuliginea    f.     dahliae    Movss.     1967
 
 Canonical: Sphaerotheca fuliginea f. dahliae

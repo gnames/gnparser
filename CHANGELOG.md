@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#166]: support 'fm.' as 'forma'.
+
 ## [v1.1.0]
 
 - Add [#163]: support bacterial `Candidatus` names.

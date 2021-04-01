@@ -65,7 +65,7 @@ RankOther <- ('morph' / 'convar' / 'pseudovar' / 'sect' /
 
 RankVar <- ('variety' / '[var.]' / 'var') ('.' / &(SpaceCharEOI))
 
-RankForma <- ('forma' / 'fma' / 'form' / 'fo' / 'f') ('.' / &(SpaceCharEOI))
+RankForma <- ('forma' / 'fma' / 'fm' / 'form' / 'fo' / 'f') ('.' / &(SpaceCharEOI))
 
 RankSsp <- ('ssp' / 'subspec' / 'subsp') ('.' / &(SpaceCharEOI))
 
