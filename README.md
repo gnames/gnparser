@@ -51,7 +51,7 @@ gnparser -h
   * [Figuring out if names are well-formed](#figuring-out-if-names-are-well-formed)
   * [Creating stable GUIDs for name-strings](#creating-stable-guids-for-name-strings)
   * [Assembling canonical forms etc. from original spelling](#assembling-canonical-forms-etc-from-original-spelling)
-* [Tutorial](#tutorial)
+* [Tutorials](#tutorials)
 * [Installation](#installation)
   * [Install with Homebrew](#install-with-homebrew)
   * [Linux or OS X](#linux-or-os-x)
@@ -253,10 +253,12 @@ The ``words`` section belongs to additional details. To use it enable
 gnparser -d "Pardosa moesta Banks, 1892"
 ```
 
-## Tutorial
+## Tutorials
 
-Robert Mesibov published an advanced [tutorial] on using
-``gnparser`` together with `awk` and pipes in Unix-like environments.
+* Parsing names from CSV files [tutorial][tutGN]
+
+<!-- * Robert Mesibov's [tutorial][tutRM] on using  ``gnparser``
+together with `awk` and pipes in Unix-like environments. -->
 
 ## Installation
 
@@ -624,7 +626,8 @@ Released under [MIT license]
 [quality]: https://github.com/gnames/gnparser/blob/master/quality.md
 [releases]: https://github.com/gnames/gnparser/releases/latest
 [ruby_ffi_go_usage]: https://stackoverflow.com/questions/58866962/how-to-pass-an-array-of-strings-and-get-an-array-of-strings-in-ruby-using-go-sha
-[tutorial]: https://www.datafix.com.au/BASHing/2019-01-20.html
+[tutRM]: https://www.datafix.com.au/BASHing/2019-01-20.html
+[tutGM]: https://globalnames.org/docs/tut-xsv-gnparser/
 [test file]:  https://github.com/gnames/gnparser/blob/master/testdata/test_data.md
 [uuid5]: http://globalnames.org/news/2015/05/31/gn-uuid-0-5-0
 [winpath]: https://www.computerhope.com/issues/ch000549.htm

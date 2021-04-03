@@ -16,6 +16,7 @@ Parsing finished without detecting any problems.
 - Apparent genus with capital character after hyphen
 - Author in upper case
 - Author is unknown
+- Bacterial `Candidatus` name
 - Combination of two uninomials
 - Deprecated Greek letter enumeration in rank
 - Emend authors are not required
