@@ -35,6 +35,6 @@ type GNparser interface {
 	// might modify parsing process, and the final output of results.
 	ChangeConfig(opts ...Option) GNparser
 
-	// Debug parses a strings and outputs raw AST tree from PEG engine.
+	// Debug parses a string and outputs raw AST tree from PEG engine.
 	Debug(s string) []byte
 }
