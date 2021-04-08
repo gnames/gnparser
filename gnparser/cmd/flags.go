@@ -77,6 +77,17 @@ func withNoOrderFlag(cmd *cobra.Command) {
 	}
 }
 
+func withCapitalizeFlag(cmd *cobra.Command) {
+	b, err := cmd.Flags().GetBool("capitalize")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	if b {
+		opts = append(opts, gnparser.OptWithCapitaliation(true))
+	}
+}
+
 func withStreamFlag(cmd *cobra.Command) {
 	withDet, err := cmd.Flags().GetBool("stream")
 	if err != nil {

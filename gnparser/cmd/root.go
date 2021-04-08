@@ -69,6 +69,7 @@ gnparser -j 5 -p 8080
 		withDetailsFlag(cmd)
 		withStreamFlag(cmd)
 		withNoOrderFlag(cmd)
+		withCapitalizeFlag(cmd)
 		batchSizeFlag(cmd)
 		port := portFlag(cmd)
 		cfg := gnparser.NewConfig(opts...)
@@ -138,6 +139,9 @@ func init() {
 
 	rootCmd.Flags().BoolP("unordered", "u", false,
 		"output and input are in different order")
+
+	rootCmd.Flags().BoolP("capitalize", "c", false,
+		"capitalize the first letter of input name-strings")
 }
 
 func processStdin(cmd *cobra.Command, cfg gnparser.Config, quiet bool) {

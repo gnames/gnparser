@@ -7,8 +7,8 @@ import (
 
 	"github.com/gnames/gnparser/ent/internal/preprocess"
 
-	"github.com/gnames/gnparser/ent/internal/str"
 	"github.com/gnames/gnparser/ent/parsed"
+	"github.com/gnames/gnparser/ent/str"
 	"github.com/gnames/gnparser/io/dict"
 	"github.com/gnames/gnuuid"
 	"github.com/gnames/tribool"

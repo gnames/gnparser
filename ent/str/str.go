@@ -1,4 +1,4 @@
-// Package str provides string functions for parsing scientific names.
+// Package str provides functions for manipulating scientific name-strings.
 package str
 
 import (
@@ -8,6 +8,28 @@ import (
 	"unicode"
 	"unicode/utf8"
 )
+
+// CapitalizeName function capitalizes the first character of a name-string.
+// It can be a useful option if the data is known to contain 'real' names, for
+// example canonical forms, but they are provided with all letters in lower
+// case.
+func CapitalizeName(name string) string {
+	runes := []rune(name)
+	if len(runes) < 2 {
+		return name
+	}
+
+	one := runes[0]
+	two := runes[1]
+	if unicode.IsUpper(one) || !unicode.IsLetter(one) {
+		return name
+	}
+	if one == 'x' && (two == ' ' || unicode.IsUpper(two)) {
+		return name
+	}
+	runes[0] = unicode.ToUpper(one)
+	return string(runes)
+}
 
 // ToASCII converts a UTF-8 diacritics to corresponding ASCII chars.
 func ToASCII(b []byte, m map[rune]string) ([]byte, error) {

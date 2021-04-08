@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v1.2.0]
+
+- Add [#169]: option to capitalize first letter of name-strings.
 - Add [#166]: support 'fm.' as 'forma'.
 
 ## [v1.1.0]
@@ -261,6 +264,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.2.0]: https://github.com/gnames/gnparser/compare/v1.1.0...v1.2.0
 [v1.1.0]: https://github.com/gnames/gnparser/compare/v1.0.14...v1.1.0
 [v1.0.14]: https://github.com/gnames/gnparser/compare/v1.0.13...v1.0.14
 [v1.0.13]: https://github.com/gnames/gnparser/compare/v1.0.12...v1.0.13

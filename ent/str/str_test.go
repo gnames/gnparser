@@ -3,13 +3,36 @@ package str_test
 import (
 	"testing"
 
-	"github.com/gnames/gnparser/ent/internal/str"
+	"github.com/gnames/gnparser/ent/str"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestStringTools(t *testing.T) {
+	t.Run("CapitalizeName", func(t *testing.T) {
+		tests := []struct {
+			msg string
+			in  string
+			out string
+		}{
+			{"common canonical", "Pomatomus saltator", "Pomatomus saltator"},
+			{"low-case canonical", "pomatomus saltator", "Pomatomus saltator"},
+			{"hybrid sign", "× Hydnellum scrobiculatum", "× Hydnellum scrobiculatum"},
+			{"hybrid sign2", "×Hydnellum scrobiculatum", "×Hydnellum scrobiculatum"},
+			{"hybrid x", "xHydnellum scrobiculatum", "xHydnellum scrobiculatum"},
+			{"first x", "xhydnellum scrobiculatum", "Xhydnellum scrobiculatum"},
+			{"first x", "x hydnellum scrobiculatum", "x hydnellum scrobiculatum"},
+			{"uninomial", "bubo", "Bubo"},
+			{"greek", "ß-Goma-dimeroceras Sobolew", "ß-Goma-dimeroceras Sobolew"},
+			{"hindi", "खपृष्ठ म", "खपृष्ठ म"},
+		}
+		for _, v := range tests {
+			res := str.CapitalizeName(v.in)
+			assert.Equal(t, res, v.out, v.msg)
+		}
+	})
+
 	t.Run("ToASCII", func(t *testing.T) {
-		data := []struct {
+		tests := []struct {
 			msg string
 			in  string
 			out string
@@ -24,14 +47,14 @@ func TestStringTools(t *testing.T) {
 			{"’", "’", "", str.Transliterations},
 			{"‘", "‘", "", str.Transliterations},
 		}
-		for _, v := range data {
+		for _, v := range tests {
 			res, _ := str.ToASCII([]byte(v.in), v.tbl)
 			assert.Equal(t, string(res), v.out, v.msg)
 		}
 	})
 
 	t.Run("NumToStr", func(t *testing.T) {
-		data := []struct {
+		tests := []struct {
 			msg string
 			in  string
 			out string
@@ -72,14 +95,14 @@ func TestStringTools(t *testing.T) {
 			{"400", "400", "400"},
 			{"something", "something", "something"},
 		}
-		for _, v := range data {
+		for _, v := range tests {
 			res := str.NumToStr(v.in)
 			assert.Equal(t, res, v.out, v.msg)
 		}
 	})
 
 	t.Run("FixAllCaps", func(t *testing.T) {
-		data := []struct {
+		tests := []struct {
 			msg string
 			in  string
 			out string
@@ -88,7 +111,7 @@ func TestStringTools(t *testing.T) {
 			{"GÓMEZ-BOLEA", "GÓMEZ-BOLEA", "Gómez-Bolea"},
 			{"hello", "hello", "hello"},
 		}
-		for _, v := range data {
+		for _, v := range tests {
 			res := str.FixAllCaps(v.in)
 			assert.Equal(t, res, v.out, v.msg)
 		}

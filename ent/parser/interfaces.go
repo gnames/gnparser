@@ -9,7 +9,10 @@ import (
 type Parser interface {
 	// PreprocessAndParse takes a scientific name and returns back Abstract
 	// Syntax Tree of the name-string.
-	PreprocessAndParse(name, version string, keepHTML bool) ScientificNameNode
+	PreprocessAndParse(
+		name, version string,
+		keepHTML, capitalize bool,
+	) ScientificNameNode
 	Debug(name string) []byte
 }
 

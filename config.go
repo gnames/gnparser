@@ -38,6 +38,10 @@ type Config struct {
 	// WithNoOrder flag, when true, output and input are in different order.
 	WithNoOrder bool
 
+	// WithCapitalization flag, when true, the first letter of a name-string
+	// is capitalized, if appropriate.
+	WithCapitalization bool
+
 	// Port to run wer-service.
 	Port int
 
@@ -131,6 +135,13 @@ func OptWithStream(b bool) Option {
 func OptWithNoOrder(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithNoOrder = b
+	}
+}
+
+// OptWithCapitaliation sets the WithCapitalization field.
+func OptWithCapitaliation(b bool) Option {
+	return func(cfg *Config) {
+		cfg.WithCapitalization = b
 	}
 }
 

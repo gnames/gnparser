@@ -18,7 +18,7 @@ func TestPreNParse(t *testing.T) {
 		{"something", ""},
 	}
 	for _, v := range testData {
-		sn := p.PreprocessAndParse(v.name, "test_version", true)
+		sn := p.PreprocessAndParse(v.name, "test_version", true, false)
 		parsed := sn.ToOutput(false)
 		can := parsed.Canonical
 		msg := v.name
@@ -54,7 +54,7 @@ func TestToOutput(t *testing.T) {
 		{"something", "", "", false, false},
 	}
 	for _, v := range testData {
-		sn := p.PreprocessAndParse(v.name, "test_version", true)
+		sn := p.PreprocessAndParse(v.name, "test_version", true, false)
 		out := sn.ToOutput(v.det)
 		msg := v.name
 		if !out.Parsed {

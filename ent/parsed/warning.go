@@ -38,6 +38,7 @@ const (
 	HybridFormulaIncompleteWarn
 	HybridFormulaProbIncompleteWarn
 	HybridNamedWarn
+	LowCaseWarn
 	NameApproxWarn
 	NameComparisonWarn
 	RankUncommonWarn
@@ -89,6 +90,7 @@ var warningMap = map[Warning]string{
 	HybridFormulaIncompleteWarn:     "Incomplete hybrid formula",
 	HybridFormulaProbIncompleteWarn: "Probably incomplete hybrid formula",
 	HybridNamedWarn:                 "Named hybrid",
+	LowCaseWarn:                     "Name starts with low-case character",
 	NameApproxWarn:                  "Name is approximate",
 	NameComparisonWarn:              "Name comparison",
 	RankUncommonWarn:                "Uncommon rank",
@@ -149,6 +151,7 @@ var WarningQualityMap = map[Warning]int{
 	HybridFormulaIncompleteWarn:     4,
 	HybridFormulaProbIncompleteWarn: 2,
 	HybridNamedWarn:                 2,
+	LowCaseWarn:                     4,
 	NameApproxWarn:                  4,
 	NameComparisonWarn:              4,
 	RankUncommonWarn:                3,

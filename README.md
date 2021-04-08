@@ -344,6 +344,9 @@ Relevant flags:
 : Sets a maximum number of names collected into a batch before processing.
 This flag is ignored if parsing mode is set to streaming with ``-s`` flag.
 
+``--capitalize -c``
+: Capitalizes the first letter of name-strings.
+
 ``--details -d``
 : Return more details for a parsed name. This flag is ignored for CSV
 formatting.
@@ -393,6 +396,10 @@ gnparser -f pretty "Parus major Linnaeus, 1788"
 
 # to parse a name from the standard input
 echo "Parus major Linnaeus, 1788" | gnparser
+
+# to parse name that is all in low-case
+gnparser "parus major" --capitalize
+gnparser "parus major" -c
 ```
 
 To parse a file:

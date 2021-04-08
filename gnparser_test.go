@@ -33,6 +33,30 @@ func TestParseName(t *testing.T) {
 	}
 }
 
+func TestParseLowCaseName(t *testing.T) {
+	tests := []struct {
+		msg, in, out string
+		quality      int
+	}{
+		{"Caps", "Pardosa moesta", "Pardosa moesta", 1},
+		{"LowCaps", "pardosa moesta", "Pardosa moesta", 4},
+		{"Deutsch", "überweisen", "", 0},
+	}
+	cfg := gnparser.NewConfig(
+		gnparser.OptWithCapitaliation(true),
+	)
+	gnp := gnparser.New(cfg)
+	for _, v := range tests {
+		parsed := gnp.ParseName(v.in)
+		if v.out != "" {
+			assert.Equal(t, parsed.Canonical.Simple, v.out, v.msg)
+		} else {
+			assert.Nil(t, parsed.Canonical)
+		}
+		assert.Equal(t, parsed.ParseQuality, v.quality, v.msg)
+	}
+}
+
 func getTestData(t *testing.T) []testData {
 	var res []testData
 	path := filepath.Join("testdata", "test_data.md")

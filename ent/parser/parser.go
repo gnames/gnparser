@@ -7,8 +7,8 @@ import (
 	"fmt"
 
 	"github.com/gnames/gnparser/ent/internal/preprocess"
-	"github.com/gnames/gnparser/ent/internal/str"
 	"github.com/gnames/gnparser/ent/parsed"
+	"github.com/gnames/gnparser/ent/str"
 )
 
 // Debug takes a string, parsers it, and returns a byte representation of
@@ -38,16 +38,25 @@ func (p *Engine) Debug(s string) []byte {
 func (p *Engine) PreprocessAndParse(
 	s, ver string,
 	keepHTML bool,
+	capitalize bool,
 ) ScientificNameNode {
 
 	originalString := s
-	tagsOrEntities := false
+	var tagsOrEntities, lowCase bool
 	if !keepHTML {
 		s = preprocess.StripTags(s)
 		if originalString != s {
 			tagsOrEntities = true
 		}
 	}
+
+	if capitalize {
+		s = str.CapitalizeName(s)
+		if s != originalString {
+			lowCase = true
+		}
+	}
+
 	preproc := preprocess.Preprocess([]byte(s))
 
 	defer func() {
@@ -74,9 +83,15 @@ func (p *Engine) PreprocessAndParse(
 
 	p.Buffer = string(preproc.Body)
 	p.fullReset()
+
 	if tagsOrEntities {
 		p.addWarn(parsed.HTMLTagsEntitiesWarn)
 	}
+
+	if lowCase {
+		p.addWarn(parsed.LowCaseWarn)
+	}
+
 	if preproc.Underscore {
 		p.addWarn(parsed.SpaceNonStandardWarn)
 	}
