@@ -71,7 +71,7 @@ func info() func(c echo.Context) error {
 			http.StatusOK,
 			`OpenAPI for gnparser is described at
 
-https://app.swaggerhub.com/apis-docs/dimus/gnparser/1.0.0`,
+https://apidoc.globalnames.org/gnparser`,
 		)
 	}
 }

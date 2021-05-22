@@ -624,7 +624,7 @@ Released under [MIT license]
 [biodiversity]: https://github.com/GlobalNamesArchitecture/biodiversity
 [export file]: https://github.com/gnames/gnparser/blob/master/binding/main.go
 [gna]: http://globalnames.org
-[OpenAPI]: https://app.swaggerhub.com/apis-docs/dimus/gnparser/1.0.0
+[OpenAPI]: https://apidoc.globalnames.org/gnparser
 [gnparser ruby]: https://gitlab.com/gnames/gnparser_rb
 [gnparser-scala]: https://github.com/GlobalNamesArchitecture/gnparser
 [gnparser.proto]: https://github.com/gnames/gnparser/blob/master/pb/gnparser.proto
