@@ -5310,6 +5310,55 @@ Authorship:
 ```
 
 
+### Names with cultivars in apostrophes
+
+Name: Sarracenia flava 'Maxima'
+
+Canonical: Sarracenia flava
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Sarracenia flava 'Maxima'","normalized":"Sarracenia flava","canonical":{"stemmed":"Sarracenia flau","simple":"Sarracenia flava","full":"Sarracenia flava"},"cardinality":2,"tail":" 'Maxima'","details":{"species":{"genus":"Sarracenia","species":"flava"}},"words":[{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":0,"end":10},{"verbatim":"flava","normalized":"flava","wordType":"SPECIES","start":11,"end":16}],"id":"39178008-65ee-5de3-af88-63ffdd67e00b","parserVersion":"test_version"}
+```
+
+### Names with cultivars in single quotes
+
+Name: Colocasia esculenta ‘Black Magic’
+
+Canonical: Colocasia esculenta
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Colocasia esculenta ‘Black Magic’","normalized":"Colocasia esculenta","canonical":{"stemmed":"Colocasia esculent","simple":"Colocasia esculenta","full":"Colocasia esculenta"},"cardinality":2,"tail":" ‘Black Magic’","details":{"species":{"genus":"Colocasia","species":"esculenta"}},"words":[{"verbatim":"Colocasia","normalized":"Colocasia","wordType":"GENUS","start":0,"end":9},{"verbatim":"esculenta","normalized":"esculenta","wordType":"SPECIES","start":10,"end":19}],"id":"9a74485c-86d2-5bc6-a796-a634bdf03a9e","parserVersion":"test_version"}
+```
+
+### Names with cultivars in double straight quotes
+
+Name: Amorphophallus konjac "Nightstick"
+
+Canonical: Amorphophallus konjac
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Amorphophallus konjac \"Nightstick\"","normalized":"Amorphophallus konjac","canonical":{"stemmed":"Amorphophallus koniac","simple":"Amorphophallus konjac","full":"Amorphophallus konjac"},"cardinality":2,"tail":" \"Nightstick\"","details":{"species":{"genus":"Amorphophallus","species":"konjac"}},"words":[{"verbatim":"Amorphophallus","normalized":"Amorphophallus","wordType":"GENUS","start":0,"end":14},{"verbatim":"konjac","normalized":"konjac","wordType":"SPECIES","start":15,"end":21}],"id":"eaa0c523-412c-55d5-a3fb-88c9476362c7","parserVersion":"test_version"}
+```
+
+
+### Names with cultivars in double curly quotes
+
+Name: Spathiphyllum “Mauna Loa”
+
+Canonical: Spathiphyllum
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Spathiphyllum “Mauna Loa”","normalized":"Spathiphyllum","canonical":{"stemmed":"Spathiphyllum","simple":"Spathiphyllum","full":"Spathiphyllum"},"cardinality":1,"tail":" “Mauna Loa”","details":{"uninomial":{"uninomial":"Spathiphyllum"}},"words":[{"verbatim":"Spathiphyllum","normalized":"Spathiphyllum","wordType":"UNINOMIAL","start":0,"end":13}],"id":"384df6b4-eb1f-5c22-9a2e-2a6e54b5bcf5","parserVersion":"test_version"}
+```
+
 ### "Open taxonomy" with ranks unfinished
 
 Name: Alyxia reinwardti var
