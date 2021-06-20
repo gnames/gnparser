@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add [#172]: add authors initials with a dash like "B.-E.van Wyk"
+- Add: tests for cultivars (Toby Marsden)
+
 ## [v1.2.0]
 
 - Add [#169]: option to capitalize first letter of name-strings.

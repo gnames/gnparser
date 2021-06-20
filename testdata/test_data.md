@@ -81,6 +81,10 @@
   * [Epithets do not start or end with a dash](#epithets-do-not-start-or-end-with-a-dash)
   * [names that contain "of"](#names-that-contain-of)
   * [Names that contain "cv" (cultivar)](#names-that-contain-cv-cultivar)
+  * [Names with cultivars in apostrophes](#names-with-cultivars-in-apostrophes)
+  * [Names with cultivars in single quotes](#names-with-cultivars-in-single-quotes)
+  * [Names with cultivars in double straight quotes](#names-with-cultivars-in-double-straight-quotes)
+  * [Names with cultivars in double curly quotes](#names-with-cultivars-in-double-curly-quotes)
   * ["Open taxonomy" with ranks unfinished](#open-taxonomy-with-ranks-unfinished)
   * [Ignoring serovar/serotype](#ignoring-serovarserotype)
   * [Ignoring sensu sec](#ignoring-sensu-sec)
@@ -795,6 +799,16 @@ Authorship: Bruce (198?)
 
 ```json
 {"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Year with question mark"}],"verbatim":"Tridentella tangeroae Bruce, 198?","normalized":"Tridentella tangeroae Bruce (198?)","canonical":{"stemmed":"Tridentella tangero","simple":"Tridentella tangeroae","full":"Tridentella tangeroae"},"cardinality":2,"authorship":{"verbatim":"Bruce, 198?","normalized":"Bruce (198?)","year":"(198?)","authors":["Bruce"],"originalAuth":{"authors":["Bruce"],"year":{"year":"198?","isApproximate":true}}},"details":{"species":{"genus":"Tridentella","species":"tangeroae","authorship":{"verbatim":"Bruce, 198?","normalized":"Bruce (198?)","year":"(198?)","authors":["Bruce"],"originalAuth":{"authors":["Bruce"],"year":{"year":"198?","isApproximate":true}}}}},"words":[{"verbatim":"Tridentella","normalized":"Tridentella","wordType":"GENUS","start":0,"end":11},{"verbatim":"tangeroae","normalized":"tangeroae","wordType":"SPECIES","start":12,"end":21},{"verbatim":"Bruce","normalized":"Bruce","wordType":"AUTHOR_WORD","start":22,"end":27},{"verbatim":"198?","normalized":"198?","wordType":"APPROXIMATE_YEAR","start":29,"end":33}],"id":"179d63c9-bad4-5e61-bf2e-7261b4aa5066","parserVersion":"test_version"}
+```
+
+Name: Calobota acanthoclada (Dinter) Boatwr. & B.-E.van Wyk
+
+Canonical: Calobota acanthoclada
+
+Authorship (Dinter) Boatwr. & B.-E. van Wyk
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Calobota acanthoclada (Dinter) Boatwr. \u0026 B.-E.van Wyk","normalized":"Calobota acanthoclada (Dinter) Boatwr. \u0026 B.-E. van Wyk","canonical":{"stemmed":"Calobota acanthoclad","simple":"Calobota acanthoclada","full":"Calobota acanthoclada"},"cardinality":2,"authorship":{"verbatim":"(Dinter) Boatwr. \u0026 B.-E.van Wyk","normalized":"(Dinter) Boatwr. \u0026 B.-E. van Wyk","authors":["Dinter","Boatwr.","B.-E. van Wyk"],"originalAuth":{"authors":["Dinter"]},"combinationAuth":{"authors":["Boatwr.","B.-E. van Wyk"]}},"details":{"species":{"genus":"Calobota","species":"acanthoclada","authorship":{"verbatim":"(Dinter) Boatwr. \u0026 B.-E.van Wyk","normalized":"(Dinter) Boatwr. \u0026 B.-E. van Wyk","authors":["Dinter","Boatwr.","B.-E. van Wyk"],"originalAuth":{"authors":["Dinter"]},"combinationAuth":{"authors":["Boatwr.","B.-E. van Wyk"]}}}},"words":[{"verbatim":"Calobota","normalized":"Calobota","wordType":"GENUS","start":0,"end":8},{"verbatim":"acanthoclada","normalized":"acanthoclada","wordType":"SPECIES","start":9,"end":21},{"verbatim":"Dinter","normalized":"Dinter","wordType":"AUTHOR_WORD","start":23,"end":29},{"verbatim":"Boatwr.","normalized":"Boatwr.","wordType":"AUTHOR_WORD","start":31,"end":38},{"verbatim":"B.-E.","normalized":"B.-E.","wordType":"AUTHOR_WORD","start":41,"end":46},{"verbatim":"van","normalized":"van","wordType":"AUTHOR_WORD","start":46,"end":49},{"verbatim":"Wyk","normalized":"Wyk","wordType":"AUTHOR_WORD","start":50,"end":53}],"id":"67a3d99b-d8d6-5f5d-ae6e-b69df693e879","parserVersion":"test_version"}
 ```
 
 Name: Zanthopsis bispinosa M'Coy, 1849
