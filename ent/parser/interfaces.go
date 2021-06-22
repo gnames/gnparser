@@ -11,7 +11,7 @@ type Parser interface {
 	// Syntax Tree of the name-string.
 	PreprocessAndParse(
 		name, version string,
-		keepHTML, capitalize bool,
+		keepHTML, capitalize, disableCultivars bool,
 	) ScientificNameNode
 	Debug(name string) []byte
 }

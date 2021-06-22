@@ -9,15 +9,16 @@ import (
 )
 
 type baseEngine struct {
-	sn          *scientificNameNode
-	root        *node32
-	cardinality int
-	error       error
-	hybrid      *parsed.Annotation
-	surrogate   *parsed.Annotation
-	bacteria    *tribool.Tribool
-	warnings    map[parsed.Warning]struct{}
-	tail        string
+	sn          			*scientificNameNode
+	root        			*node32
+	cardinality 			int
+	error       			error
+	hybrid      			*parsed.Annotation
+	surrogate   			*parsed.Annotation
+	bacteria    			*tribool.Tribool
+	warnings    			map[parsed.Warning]struct{}
+	tail        			string
+	disableCultivars	bool
 }
 
 // New creates implementation of Parser interface.

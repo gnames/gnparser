@@ -440,11 +440,11 @@ func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
 }
 
 type speciesNode struct {
-	Genus        *wordNode
-	Subgenus     *wordNode
-	SpEpithet    *spEpithetNode
-	Infraspecies []*infraspEpithetNode
-	CultivarEpithet		 *cultivarEpithetNode
+	Genus        			*wordNode
+	Subgenus     			*wordNode
+	SpEpithet    			*spEpithetNode
+	Infraspecies 			[]*infraspEpithetNode
+	CultivarEpithet		*cultivarEpithetNode
 }
 
 type cultivarEpithetNode struct {
@@ -478,7 +478,9 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		case ruleInfraspGroup:
 			infs = p.newInfraspeciesGroup(n)
 		case ruleCultivar, ruleCultivarRecursive:
-			cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
+			if(!p.disableCultivars) {
+				cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
+			}
 		}
 		n = n.next
 	}
@@ -487,11 +489,11 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		p.cardinality += 1
 	}
 	sn := speciesNode{
-		Genus:        gen,
-		Subgenus:     sg,
-		SpEpithet:    sp,
-		Infraspecies: infs,
-		CultivarEpithet: 		cultivar,
+		Genus:        		gen,
+		Subgenus:     		sg,
+		SpEpithet:    		sp,
+		Infraspecies: 		infs,
+		CultivarEpithet: 	cultivar,
 	}
 	if len(infs) > 0 && infs[0].Rank == nil && sp.Authorship != nil &&
 		sp.Authorship.TerminalFilius {
@@ -620,7 +622,9 @@ func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 	for n != nil {
 		switch n.token32.pegRule {
 		case ruleCultivar, ruleCultivarRecursive:
-			cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
+			if(!p.disableCultivars) {
+				cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
+			}
 		}
 		n = n.next
 	}

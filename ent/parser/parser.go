@@ -40,7 +40,10 @@ func (p *Engine) PreprocessAndParse(
 	s, ver string,
 	keepHTML bool,
 	capitalize bool,
+	disableCultivars bool,
 ) ScientificNameNode {
+
+	p.disableCultivars = disableCultivars
 
 	originalString := s
 	var tagsOrEntities, lowCase bool

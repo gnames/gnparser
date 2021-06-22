@@ -42,6 +42,9 @@ type Config struct {
 	// is capitalized, if appropriate.
 	WithCapitalization bool
 
+	// DisableCultivars flag, when true, cultivar names will not be parsed
+	DisableCultivars bool
+
 	// Port to run wer-service.
 	Port int
 
@@ -142,6 +145,13 @@ func OptWithNoOrder(b bool) Option {
 func OptWithCapitaliation(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithCapitalization = b
+	}
+}
+
+// OptDisableCultivars sets the DisableCultivars field.
+func OptDisableCultivars(b bool) Option {
+	return func(cfg *Config) {
+		cfg.DisableCultivars = b
 	}
 }
 
