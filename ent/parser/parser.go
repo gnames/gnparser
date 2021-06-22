@@ -22,6 +22,7 @@ func (p *Engine) Debug(s string) []byte {
 		return b.Bytes()
 	}
 	p.Buffer = string(ppr.Body)
+	fmt.Println(p.Buffer)
 	p.fullReset()
 	p.parse()
 	p.outputAST()
@@ -96,6 +97,7 @@ func (p *Engine) PreprocessAndParse(
 		p.addWarn(parsed.SpaceNonStandardWarn)
 	}
 	err := p.Parse()
+		
 	if err != nil {
 		p.error = err
 		p.newNotParsedScientificNameNode(preproc)

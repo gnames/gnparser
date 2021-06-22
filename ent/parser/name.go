@@ -451,6 +451,12 @@ func (sp *speciesNode) words() []parsed.Word {
 	for _, v := range sp.Infraspecies {
 		words = append(words, v.words()...)
 	}
+	if sp.CultivarEpithet != nil {
+		wrd = sp.CultivarEpithet.Word.Pos
+		wrd.Verbatim = sp.CultivarEpithet.Word.Value
+		wrd.Normalized = sp.CultivarEpithet.Word.NormValue
+		words = append(words, wrd)
+	}
 	return words
 }
 
@@ -465,6 +471,9 @@ func (sp *speciesNode) value() string {
 	for _, v := range sp.Infraspecies {
 		res = str.JoinStrings(res, v.value(), " ")
 	}
+	if sp.CultivarEpithet != nil {
+		res = str.JoinStrings(res, sp.CultivarEpithet.Word.NormValue, " ")
+	}	
 	return res
 }
 
@@ -474,6 +483,10 @@ func (sp *speciesNode) canonical() *canonical {
 	for _, v := range sp.Infraspecies {
 		c1 := v.canonical()
 		c = appendCanonical(c, c1, " ")
+	}
+	if sp.CultivarEpithet != nil {
+		c2 := &canonical{Value: sp.CultivarEpithet.Word.NormValue, ValueRanked: sp.CultivarEpithet.Word.NormValue}
+		c = appendCanonical(c, c2, " ")
 	}
 	return c
 }
@@ -489,6 +502,9 @@ func (sp *speciesNode) details() parsed.Details {
 	so := parsed.Species{
 		Genus:   sp.Genus.NormValue,
 		Species: sp.SpEpithet.Word.NormValue,
+	}
+	if sp.CultivarEpithet != nil {
+		so.Cultivar = sp.CultivarEpithet.Word.NormValue
 	}
 	if sp.SpEpithet.Authorship != nil {
 		so.Authorship = sp.SpEpithet.Authorship.details()
@@ -598,17 +614,34 @@ func (u *uninomialNode) words() []parsed.Word {
 	wrd.Verbatim = u.Word.Value
 	wrd.Normalized = u.Word.NormValue
 	words := []parsed.Word{wrd}
+
 	words = append(words, u.Authorship.words()...)
+
+	if u.CultivarEpithet != nil {
+		wrd = u.CultivarEpithet.Word.Pos
+		wrd.Verbatim = u.CultivarEpithet.Word.Value
+		wrd.Normalized = u.CultivarEpithet.Word.NormValue
+		words = append(words, wrd)
+	}
+
 	return words
 }
 
 func (u *uninomialNode) value() string {
-	return str.JoinStrings(u.Word.NormValue, u.Authorship.value(), " ")
+	res := str.JoinStrings(u.Word.NormValue, u.Authorship.value(), " ")
+	if u.CultivarEpithet != nil {
+		res = str.JoinStrings(res, u.CultivarEpithet.Word.NormValue, " ")
+	}	
+	return res
 }
 
 func (u *uninomialNode) canonical() *canonical {
-	c := canonical{Value: u.Word.NormValue, ValueRanked: u.Word.NormValue}
-	return &c
+	c := &canonical{Value: u.Word.NormValue, ValueRanked: u.Word.NormValue}
+	if u.CultivarEpithet != nil {
+		c2 := &canonical{Value: u.CultivarEpithet.Word.NormValue, ValueRanked: u.CultivarEpithet.Word.NormValue}
+		c = appendCanonical(c, c2, " ")
+	}
+	return c
 }
 
 func (u *uninomialNode) lastAuthorship() *authorshipNode {
@@ -619,6 +652,9 @@ func (u *uninomialNode) details() parsed.Details {
 	ud := parsed.Uninomial{Value: u.Word.NormValue}
 	if u.Authorship != nil {
 		ud.Authorship = u.Authorship.details()
+	}
+	if u.CultivarEpithet != nil {
+		ud.Cultivar = u.CultivarEpithet.Word.NormValue
 	}
 	uo := parsed.DetailsUninomial{Uninomial: ud}
 	return uo

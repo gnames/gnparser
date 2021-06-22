@@ -11,6 +11,7 @@ type WordType int
 const (
 	UnknownType WordType = iota
 	ComparisonMarkerType
+	CultivarType
 	ApproxMarkerType
 	AuthorWordType
 	AuthorWordFiliusType
@@ -30,6 +31,7 @@ const (
 var wordTypeMap = map[WordType]string{
 	UnknownType:          "WORD",
 	ComparisonMarkerType: "COMPARISON_MARKER",
+	CultivarType:					"CULTIVAR",
 	ApproxMarkerType:     "APPROXIMATION_MARKER",
 	AuthorWordType:       "AUTHOR_WORD",
 	AuthorWordFiliusType: "AUTHOR_WORD_FILIUS",

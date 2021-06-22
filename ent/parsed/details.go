@@ -7,6 +7,8 @@ type Uninomial struct {
 	// Rank of the uninomial in a combination name, for example
 	// "Pereskia subg. Maihuenia Philippi ex F.A.C.Weber, 1898"
 	Rank string `json:"rank,omitempty"`
+	// Cultivar is a value of a cultivar of a uninomial.
+	Cultivar string `json:"cultivar,omitempty"`
 	// Parent of a uninomial in a combination name.
 	Parent string `json:"parent,omitempty"`
 	// Authorship of the uninomial.
@@ -21,6 +23,8 @@ type Species struct {
 	Subgenus string `json:"subgenus,omitempty"`
 	// Species is a value of a specific epithet.
 	Species string `json:"species"`
+	// Cultivar is a value of a cultivar of a binomial.
+	Cultivar string `json:"cultivar,omitempty"`
 	// Authorship of the binomial.
 	Authorship *Authorship `json:"authorship,omitempty"`
 }
@@ -50,6 +54,8 @@ type Comparison struct {
 	Genus string `json:"genus"`
 	// Species is a specific epithet of a name.
 	Species string `json:"species,omitempty"`
+	// Cultivar is a value of a cultivar of a binomial.
+	Cultivar string `json:"cultivar,omitempty"`
 	// SpeciesAuthorship the authorship of Species.
 	SpeciesAuthorship *Authorship `json:"authorship,omitempty"`
 	// CompMarker, usually "cf.".
@@ -62,6 +68,8 @@ type Approximation struct {
 	Genus string `json:"genus"`
 	// Species is a specific epithet of a name.
 	Species string `json:"species,omitempty"`
+	// Cultivar is a value of a cultivar of a binomial.
+	Cultivar string `json:"cultivar,omitempty"`
 	// SpeciesAuthorship the authorship of Species.
 	SpeciesAuthorship *Authorship `json:"authorship,omitempty"`
 	// ApproxMarker describes what kind of approximation it is (sp., spp. etc.).
