@@ -471,7 +471,7 @@ func (sp *speciesNode) value() string {
 	for _, v := range sp.Infraspecies {
 		res = str.JoinStrings(res, v.value(), " ")
 	}
-	if sp.CultivarEpithet != nil {
+	if sp.CultivarEpithet != nil && sp.CultivarEpithet.enableCultivars {
 		res = str.JoinStrings(res, sp.CultivarEpithet.Word.NormValue, " ")
 	}	
 	return res
@@ -484,7 +484,7 @@ func (sp *speciesNode) canonical() *canonical {
 		c1 := v.canonical()
 		c = appendCanonical(c, c1, " ")
 	}
-	if sp.CultivarEpithet != nil {
+	if sp.CultivarEpithet != nil && sp.CultivarEpithet.enableCultivars {
 		c2 := &canonical{Value: sp.CultivarEpithet.Word.NormValue, ValueRanked: sp.CultivarEpithet.Word.NormValue}
 		c = appendCanonical(c, c2, " ")
 	}
@@ -629,7 +629,7 @@ func (u *uninomialNode) words() []parsed.Word {
 
 func (u *uninomialNode) value() string {
 	res := str.JoinStrings(u.Word.NormValue, u.Authorship.value(), " ")
-	if u.CultivarEpithet != nil {
+	if u.CultivarEpithet != nil && u.CultivarEpithet.enableCultivars {
 		res = str.JoinStrings(res, u.CultivarEpithet.Word.NormValue, " ")
 	}	
 	return res
@@ -637,7 +637,7 @@ func (u *uninomialNode) value() string {
 
 func (u *uninomialNode) canonical() *canonical {
 	c := &canonical{Value: u.Word.NormValue, ValueRanked: u.Word.NormValue}
-	if u.CultivarEpithet != nil {
+	if u.CultivarEpithet != nil && u.CultivarEpithet.enableCultivars {
 		c2 := &canonical{Value: u.CultivarEpithet.Word.NormValue, ValueRanked: u.CultivarEpithet.Word.NormValue}
 		c = appendCanonical(c, c2, " ")
 	}

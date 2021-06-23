@@ -29,6 +29,7 @@ const (
 	CanonicalApostropheWarn
 	CapWordQuestionWarn
 	CharBadWarn
+	CultivarEpithetWarn
 	GenusAbbrWarn
 	GenusUpperCharAfterDash
 	GreekLetterInRank
@@ -81,6 +82,7 @@ var warningMap = map[Warning]string{
 	CanonicalApostropheWarn:         "Apostrophe is not allowed in canonical",
 	CapWordQuestionWarn:             "Uninomial word with question mark",
 	CharBadWarn:                     "Non-standard characters in canonical",
+	CultivarEpithetWarn:						 "Cultivar epithet",
 	GenusAbbrWarn:                   "Abbreviated uninomial word",
 	GenusUpperCharAfterDash:         "Apparent genus with capital character after hyphen",
 	GreekLetterInRank:               "Deprecated Greek letter enumeration in rank",
@@ -142,6 +144,7 @@ var WarningQualityMap = map[Warning]int{
 	CanonicalApostropheWarn:         3,
 	CapWordQuestionWarn:             4,
 	CharBadWarn:                     2,
+	CultivarEpithetWarn:						 2,
 	GenusAbbrWarn:                   4,
 	GenusUpperCharAfterDash:         2,
 	GreekLetterInRank:               2,

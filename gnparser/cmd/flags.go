@@ -88,14 +88,14 @@ func withCapitalizeFlag(cmd *cobra.Command) {
 	}
 }
 
-func withDisableCultivarsFlag(cmd *cobra.Command) {
-	b, err := cmd.Flags().GetBool("disable_cultivars")
+func withEnableCultivarsFlag(cmd *cobra.Command) {
+	b, err := cmd.Flags().GetBool("cultivar")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
 	if b {
-		opts = append(opts, gnparser.OptDisableCultivars(true))
+		opts = append(opts, gnparser.OptEnableCultivars(true))
 	}
 }
 

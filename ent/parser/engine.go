@@ -18,7 +18,7 @@ type baseEngine struct {
 	bacteria    			*tribool.Tribool
 	warnings    			map[parsed.Warning]struct{}
 	tail        			string
-	disableCultivars	bool
+	enableCultivars		bool
 }
 
 // New creates implementation of Parser interface.

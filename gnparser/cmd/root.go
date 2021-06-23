@@ -70,7 +70,7 @@ gnparser -j 5 -p 8080
 		withStreamFlag(cmd)
 		withNoOrderFlag(cmd)
 		withCapitalizeFlag(cmd)
-		withDisableCultivarsFlag(cmd)
+		withEnableCultivarsFlag(cmd)
 		batchSizeFlag(cmd)
 		port := portFlag(cmd)
 		cfg := gnparser.NewConfig(opts...)
@@ -144,9 +144,8 @@ func init() {
 	rootCmd.Flags().BoolP("capitalize", "c", false,
 		"capitalize the first letter of input name-strings")
 
-	rootCmd.Flags().BoolP("disable_cultivars", "", false,
-		"disable the output of cultivar names")
-
+	rootCmd.Flags().BoolP("cultivar", "C", false,
+		"include cultivar epithets in normalized and canonical outputs")
 
 }
 

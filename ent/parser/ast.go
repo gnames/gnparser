@@ -448,7 +448,8 @@ type speciesNode struct {
 }
 
 type cultivarEpithetNode struct {
-	Word	*wordNode
+	Word							*wordNode
+	enableCultivars		bool
 }
 
 func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
@@ -478,14 +479,12 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		case ruleInfraspGroup:
 			infs = p.newInfraspeciesGroup(n)
 		case ruleCultivar, ruleCultivarRecursive:
-			if(!p.disableCultivars) {
-				cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
-			}
+			cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
 		}
 		n = n.next
 	}
 	p.cardinality = 2 + len(infs)
-	if cultivar != nil {
+	if cultivar != nil && p.enableCultivars {
 		p.cardinality += 1
 	}
 	sn := speciesNode{
@@ -622,9 +621,7 @@ func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 	for n != nil {
 		switch n.token32.pegRule {
 		case ruleCultivar, ruleCultivarRecursive:
-			if(!p.disableCultivars) {
-				cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
-			}
+			cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
 		}
 		n = n.next
 	}
@@ -634,7 +631,7 @@ func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 		CultivarEpithet: 	cultivar,
 	}
 	p.cardinality = 1
-	if cultivar != nil {
+	if cultivar != nil && p.enableCultivars {
 		p.cardinality += 1
 	}
 	return &un
@@ -1067,7 +1064,10 @@ func (p *Engine) newCultivarEpithetNode(n *node32, wt parsed.WordType) *cultivar
 	normval := "‘" + p.nodeValue(n) + "’"
 	pos := parsed.Word{Type: wt, Start: int(t.begin), End: int(t.end)}
 	wrd := wordNode{Value: val, NormValue: normval, Pos: pos}
-	cv := cultivarEpithetNode{Word: &wrd}
+	cv := cultivarEpithetNode{Word: &wrd, enableCultivars: p.enableCultivars}
+	if !p.enableCultivars {
+		p.addWarn(parsed.CultivarEpithetWarn)
+	}
 	return &cv
 }
 
