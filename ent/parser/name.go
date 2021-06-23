@@ -81,9 +81,13 @@ func (sn *scientificNameNode) LastAuthorship(withDetails bool) *parsed.Authorshi
 }
 
 func (nf *hybridFormulaNode) words() []parsed.Word {
+	var wrd parsed.Word
 	words := nf.FirstSpecies.words()
 	for _, v := range nf.HybridElements {
-		words = append(words, v.HybridChar.Pos)
+		wrd = v.HybridChar.Pos
+		wrd.Verbatim = v.HybridChar.Value
+		wrd.Normalized = v.HybridChar.NormValue
+		words = append(words, wrd)
 		if v.Species != nil {
 			words = append(words, v.Species.words()...)
 		}
@@ -135,7 +139,11 @@ func (nf *hybridFormulaNode) details() parsed.Details {
 }
 
 func (nh *namedGenusHybridNode) words() []parsed.Word {
-	words := []parsed.Word{nh.Hybrid.Pos}
+	var wrd parsed.Word
+	wrd = nh.Hybrid.Pos
+	wrd.Verbatim = nh.Hybrid.Value
+	wrd.Normalized = nh.Hybrid.NormValue
+	words := []parsed.Word{wrd}
 	words = append(words, nh.nameData.words()...)
 	return words
 }
