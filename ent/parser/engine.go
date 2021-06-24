@@ -9,6 +9,7 @@ import (
 )
 
 type baseEngine struct {
+	originalString  []rune
 	sn              *scientificNameNode
 	root            *node32
 	cardinality     int
@@ -140,7 +141,7 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 
 func (p *Engine) nodeValue(n *node32) string {
 	t := n.token32
-	v := string([]rune(p.Buffer)[t.begin:t.end])
+	v := string(p.originalString[t.begin:t.end])
 	return v
 }
 

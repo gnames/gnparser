@@ -8,14 +8,15 @@
   * [Names with cultivars in apostrophes](#names-with-cultivars-in-apostrophes)
   * [Names with cultivars in single quotes](#names-with-cultivars-in-single-quotes)
   * [Names with cultivars in double straight quotes](#names-with-cultivars-in-double-straight-quotes)
+  * [Hybrid formulae with cultivars](#hybrid-formulae-with-cultivars)
   * [Uninomials with cultivars](#uninomials-with-cultivars)
 
 <!-- vim-markdown-toc -->
 
 ## Introduction
 
-These tests run with the -C/--cultivar flag enabled, which adds the cultivar epithet into the normalized and canonical names.
-
+These tests run with the -C/--cultivar flag enabled, which adds the cultivar
+epithet into the normalized and canonical names.
 
 ## Tests
 
@@ -43,7 +44,7 @@ Authorship:
 
 Name: Ligusticum sinense cv 'chuanxiong' S.H. Qiu & et al.
 
-Canonical: Ligusticum sinense
+Canonical: Ligusticum sinense ‘chuanxiong’
 
 Authorship:
 
@@ -61,12 +62,11 @@ Authorship:
 {"parsed":true,"quality":1,"verbatim":"Anthurium 'Ace of Spades'","normalized":"Anthurium ‘Ace of Spades’","canonical":{"stemmed":"Anthurium ‘Ace of Spades’","simple":"Anthurium ‘Ace of Spades’","full":"Anthurium ‘Ace of Spades’"},"cardinality":2,"details":{"uninomial":{"uninomial":"Anthurium","cultivar":"‘Ace of Spades’"}},"words":[{"verbatim":"Anthurium","normalized":"Anthurium","wordType":"UNINOMIAL","start":0,"end":9},{"verbatim":"Ace of Spades","normalized":"‘Ace of Spades’","wordType":"CULTIVAR","start":11,"end":24}],"id":"3adaf031-08f2-576e-b9af-616bf328473e","parserVersion":"test_version"}
 ```
 
-
 ### Names with cultivars in apostrophes
 
 Name: Sarracenia flava 'Maxima'
 
-Canonical: Sarracenia flava
+Canonical: Sarracenia flava ‘Maxima’
 
 Authorship:
 
@@ -78,7 +78,7 @@ Authorship:
 
 Name: Colocasia esculenta ‘Black Magic’
 
-Canonical: Colocasia esculenta
+Canonical: Colocasia esculenta ‘Black Magic’
 
 Authorship:
 
@@ -90,7 +90,7 @@ Authorship:
 
 Name: Amorphophallus konjac "Nightstick"
 
-Canonical: Amorphophallus konjac
+Canonical: Amorphophallus konjac ‘Nightstick’
 
 Authorship:
 
@@ -107,7 +107,7 @@ Canonical: Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla
 Authorship:
 
 ```json
-{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Hybrid formula"}],"verbatim":"Sarracenia alata 'Black Tube' x Sarracenia leucophylla","normalized":"Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla","canonical":{"stemmed":"Sarracenia alat ‘Black Tube’ × Sarracenia leucophyll","simple":"Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla","full":"Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla"},"cardinality":0,"hybrid":"HYBRID_FORMULA","details":{"hybridFormula":[{"species":{"genus":"Sarracenia","species":"alata","cultivar":"‘Black Tube’"}},{"species":{"genus":"Sarracenia","species":"leucophylla"}}]},"words":[{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":0,"end":10},{"verbatim":"alata","normalized":"alata","wordType":"SPECIES","start":11,"end":16},{"verbatim":"Black Tube","normalized":"‘Black Tube’","wordType":"CULTIVAR","start":18,"end":28},{"verbatim":"","normalized":"","wordType":"HYBRID_CHAR","start":30,"end":31},{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":32,"end":42},{"verbatim":"leucophylla","normalized":"leucophylla","wordType":"SPECIES","start":43,"end":54}],"id":"17b9d0fb-76f0-510e-8c13-bf48033d50dd","parserVersion":"test_version"}
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Hybrid formula"}],"verbatim":"Sarracenia alata 'Black Tube' x Sarracenia leucophylla","normalized":"Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla","canonical":{"stemmed":"Sarracenia alat ‘Black Tube’ × Sarracenia leucophyll","simple":"Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla","full":"Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla"},"cardinality":0,"hybrid":"HYBRID_FORMULA","details":{"hybridFormula":[{"species":{"genus":"Sarracenia","species":"alata","cultivar":"‘Black Tube’"}},{"species":{"genus":"Sarracenia","species":"leucophylla"}}]},"words":[{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":0,"end":10},{"verbatim":"alata","normalized":"alata","wordType":"SPECIES","start":11,"end":16},{"verbatim":"Black Tube","normalized":"‘Black Tube’","wordType":"CULTIVAR","start":18,"end":28},{"verbatim":"x","normalized":"×","wordType":"HYBRID_CHAR","start":30,"end":31},{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":32,"end":42},{"verbatim":"leucophylla","normalized":"leucophylla","wordType":"SPECIES","start":43,"end":54}],"id":"17b9d0fb-76f0-510e-8c13-bf48033d50dd","parserVersion":"test_version"}
 ```
 
 Name: Sarracenia alata cv Black Tube x Sarracenia leucophylla
@@ -117,7 +117,7 @@ Canonical: Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla
 Authorship:
 
 ```json
-{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Hybrid formula"}],"verbatim":"Sarracenia alata cv Black Tube x Sarracenia leucophylla","normalized":"Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla","canonical":{"stemmed":"Sarracenia alat ‘Black Tube’ × Sarracenia leucophyll","simple":"Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla","full":"Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla"},"cardinality":0,"hybrid":"HYBRID_FORMULA","details":{"hybridFormula":[{"species":{"genus":"Sarracenia","species":"alata","cultivar":"‘Black Tube’"}},{"species":{"genus":"Sarracenia","species":"leucophylla"}}]},"words":[{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":0,"end":10},{"verbatim":"alata","normalized":"alata","wordType":"SPECIES","start":11,"end":16},{"verbatim":"Black Tube","normalized":"‘Black Tube’","wordType":"CULTIVAR","start":20,"end":30},{"verbatim":"","normalized":"","wordType":"HYBRID_CHAR","start":31,"end":32},{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":33,"end":43},{"verbatim":"leucophylla","normalized":"leucophylla","wordType":"SPECIES","start":44,"end":55}],"id":"1b978ba7-efc5-550f-a598-7830114514b1","parserVersion":"test_version"}
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Hybrid formula"}],"verbatim":"Sarracenia alata cv Black Tube x Sarracenia leucophylla","normalized":"Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla","canonical":{"stemmed":"Sarracenia alat ‘Black Tube’ × Sarracenia leucophyll","simple":"Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla","full":"Sarracenia alata ‘Black Tube’ × Sarracenia leucophylla"},"cardinality":0,"hybrid":"HYBRID_FORMULA","details":{"hybridFormula":[{"species":{"genus":"Sarracenia","species":"alata","cultivar":"‘Black Tube’"}},{"species":{"genus":"Sarracenia","species":"leucophylla"}}]},"words":[{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":0,"end":10},{"verbatim":"alata","normalized":"alata","wordType":"SPECIES","start":11,"end":16},{"verbatim":"Black Tube","normalized":"‘Black Tube’","wordType":"CULTIVAR","start":20,"end":30},{"verbatim":"x","normalized":"×","wordType":"HYBRID_CHAR","start":31,"end":32},{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":33,"end":43},{"verbatim":"leucophylla","normalized":"leucophylla","wordType":"SPECIES","start":44,"end":55}],"id":"1b978ba7-efc5-550f-a598-7830114514b1","parserVersion":"test_version"}
 ```
 
 Name: Sarracenia alata cv Black Tube x Sarracenia flava 'Copper Lid'
@@ -127,7 +127,7 @@ Canonical: Sarracenia alata ‘Black Tube’ × Sarracenia flava ‘Copper Lid�
 Authorship:
 
 ```json
-{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Hybrid formula"}],"verbatim":"Sarracenia alata cv Black Tube x Sarracenia flava 'Copper Lid'","normalized":"Sarracenia alata ‘Black Tube’ × Sarracenia flava ‘Copper Lid’","canonical":{"stemmed":"Sarracenia alat ‘Black Tube’ × Sarracenia flau ‘Copper Lid’","simple":"Sarracenia alata ‘Black Tube’ × Sarracenia flava ‘Copper Lid’","full":"Sarracenia alata ‘Black Tube’ × Sarracenia flava ‘Copper Lid’"},"cardinality":0,"hybrid":"HYBRID_FORMULA","details":{"hybridFormula":[{"species":{"genus":"Sarracenia","species":"alata","cultivar":"‘Black Tube’"}},{"species":{"genus":"Sarracenia","species":"flava","cultivar":"‘Copper Lid’"}}]},"words":[{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":0,"end":10},{"verbatim":"alata","normalized":"alata","wordType":"SPECIES","start":11,"end":16},{"verbatim":"Black Tube","normalized":"‘Black Tube’","wordType":"CULTIVAR","start":20,"end":30},{"verbatim":"","normalized":"","wordType":"HYBRID_CHAR","start":31,"end":32},{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":33,"end":43},{"verbatim":"flava","normalized":"flava","wordType":"SPECIES","start":44,"end":49},{"verbatim":"Copper Lid","normalized":"‘Copper Lid’","wordType":"CULTIVAR","start":51,"end":61}],"id":"260dea27-b2c9-5231-bebf-b149999e053a","parserVersion":"test_version"}
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Hybrid formula"}],"verbatim":"Sarracenia alata cv Black Tube x Sarracenia flava 'Copper Lid'","normalized":"Sarracenia alata ‘Black Tube’ × Sarracenia flava ‘Copper Lid’","canonical":{"stemmed":"Sarracenia alat ‘Black Tube’ × Sarracenia flau ‘Copper Lid’","simple":"Sarracenia alata ‘Black Tube’ × Sarracenia flava ‘Copper Lid’","full":"Sarracenia alata ‘Black Tube’ × Sarracenia flava ‘Copper Lid’"},"cardinality":0,"hybrid":"HYBRID_FORMULA","details":{"hybridFormula":[{"species":{"genus":"Sarracenia","species":"alata","cultivar":"‘Black Tube’"}},{"species":{"genus":"Sarracenia","species":"flava","cultivar":"‘Copper Lid’"}}]},"words":[{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":0,"end":10},{"verbatim":"alata","normalized":"alata","wordType":"SPECIES","start":11,"end":16},{"verbatim":"Black Tube","normalized":"‘Black Tube’","wordType":"CULTIVAR","start":20,"end":30},{"verbatim":"x","normalized":"×","wordType":"HYBRID_CHAR","start":31,"end":32},{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":33,"end":43},{"verbatim":"flava","normalized":"flava","wordType":"SPECIES","start":44,"end":49},{"verbatim":"Copper Lid","normalized":"‘Copper Lid’","wordType":"CULTIVAR","start":51,"end":61}],"id":"260dea27-b2c9-5231-bebf-b149999e053a","parserVersion":"test_version"}
 ```
 
 ### Uninomials with cultivars
@@ -144,9 +144,9 @@ Authorship:
 
 Name: Spathiphyllum Schott “Mauna Loa”
 
-Canonical: Spathiphyllum Schott ‘Mauna Loa’
+Canonical: Spathiphyllum ‘Mauna Loa’
 
-Authorship:
+Authorship: Schott
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Spathiphyllum Schott “Mauna Loa”","normalized":"Spathiphyllum Schott ‘Mauna Loa’","canonical":{"stemmed":"Spathiphyllum ‘Mauna Loa’","simple":"Spathiphyllum ‘Mauna Loa’","full":"Spathiphyllum ‘Mauna Loa’"},"cardinality":2,"authorship":{"verbatim":"Schott","normalized":"Schott","authors":["Schott"],"originalAuth":{"authors":["Schott"]}},"details":{"uninomial":{"uninomial":"Spathiphyllum","cultivar":"‘Mauna Loa’","authorship":{"verbatim":"Schott","normalized":"Schott","authors":["Schott"],"originalAuth":{"authors":["Schott"]}}}},"words":[{"verbatim":"Spathiphyllum","normalized":"Spathiphyllum","wordType":"UNINOMIAL","start":0,"end":13},{"verbatim":"Schott","normalized":"Schott","wordType":"AUTHOR_WORD","start":14,"end":20},{"verbatim":"Mauna Loa","normalized":"‘Mauna Loa’","wordType":"CULTIVAR","start":22,"end":31}],"id":"fb8afb5b-67b8-5bcc-8492-773cc40d3bb9","parserVersion":"test_version"}

@@ -42,7 +42,8 @@ type Config struct {
 	// is capitalized, if appropriate.
 	WithCapitalization bool
 
-	// EnableCultivars flag, when true, cultivar names will not be parsed
+	// EnableCultivars flag, when true, cultivar names will be parsed and
+	// modify cardinality, normalized and canonical output.
 	EnableCultivars bool
 
 	// Port to run wer-service.

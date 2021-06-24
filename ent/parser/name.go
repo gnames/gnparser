@@ -83,7 +83,7 @@ func (sn *scientificNameNode) LastAuthorship(withDetails bool) *parsed.Authorshi
 func (nf *hybridFormulaNode) words() []parsed.Word {
 	words := nf.FirstSpecies.words()
 	for _, v := range nf.HybridElements {
-		words = append(words, v.HybridChar.Pos)
+		words = append(words, *v.HybridChar)
 		if v.Species != nil {
 			words = append(words, v.Species.words()...)
 		}
@@ -94,7 +94,7 @@ func (nf *hybridFormulaNode) words() []parsed.Word {
 func (nf *hybridFormulaNode) value() string {
 	val := nf.FirstSpecies.value()
 	for _, v := range nf.HybridElements {
-		val = str.JoinStrings(val, v.HybridChar.Value, " ")
+		val = str.JoinStrings(val, v.HybridChar.Normalized, " ")
 		if v.Species != nil {
 			val = str.JoinStrings(val, v.Species.value(), " ")
 		}
@@ -106,8 +106,8 @@ func (nf *hybridFormulaNode) canonical() *canonical {
 	c := nf.FirstSpecies.canonical()
 	for _, v := range nf.HybridElements {
 		hc := &canonical{
-			Value:       v.HybridChar.NormValue,
-			ValueRanked: v.HybridChar.NormValue,
+			Value:       v.HybridChar.Normalized,
+			ValueRanked: v.HybridChar.Normalized,
 		}
 		c = appendCanonical(c, hc, " ")
 		if v.Species != nil {
@@ -135,7 +135,7 @@ func (nf *hybridFormulaNode) details() parsed.Details {
 }
 
 func (nh *namedGenusHybridNode) words() []parsed.Word {
-	words := []parsed.Word{nh.Hybrid.Pos}
+	words := []parsed.Word{*nh.Hybrid}
 	words = append(words, nh.nameData.words()...)
 	return words
 }
@@ -169,19 +169,13 @@ func (nh *namedGenusHybridNode) lastAuthorship() *authorshipNode {
 
 func (nh *namedSpeciesHybridNode) words() []parsed.Word {
 	var wrd parsed.Word
-	wrd = nh.Genus.Pos
-	wrd.Verbatim = nh.Genus.Value
-	wrd.Normalized = nh.Genus.NormValue
+	wrd = *nh.Genus
 	words := []parsed.Word{wrd}
 	if nh.Comparison != nil {
-		wrd = nh.Comparison.Pos
-		wrd.Verbatim = nh.Comparison.Value
-		wrd.Normalized = nh.Comparison.NormValue
+		wrd = *nh.Comparison
 		words = append(words, wrd)
 	}
-	wrd = nh.Hybrid.Pos
-	wrd.Verbatim = nh.Hybrid.Value
-	wrd.Normalized = nh.Hybrid.NormValue
+	wrd = *nh.Hybrid
 	words = append(words, wrd)
 	words = append(words, nh.SpEpithet.words()...)
 
@@ -192,7 +186,7 @@ func (nh *namedSpeciesHybridNode) words() []parsed.Word {
 }
 
 func (nh *namedSpeciesHybridNode) value() string {
-	res := nh.Genus.NormValue
+	res := nh.Genus.Normalized
 	res = res + " × " + nh.SpEpithet.value()
 	for _, v := range nh.Infraspecies {
 		res = str.JoinStrings(res, v.value(), " ")
@@ -201,7 +195,7 @@ func (nh *namedSpeciesHybridNode) value() string {
 }
 
 func (nh *namedSpeciesHybridNode) canonical() *canonical {
-	g := nh.Genus.NormValue
+	g := nh.Genus.Normalized
 	c := &canonical{Value: g, ValueRanked: g}
 	hCan := &canonical{Value: "", ValueRanked: "×"}
 	c = appendCanonical(c, hCan, " ")
@@ -223,7 +217,7 @@ func (nh *namedSpeciesHybridNode) lastAuthorship() *authorshipNode {
 }
 
 func (nh *namedSpeciesHybridNode) details() parsed.Details {
-	g := nh.Genus.NormValue
+	g := nh.Genus.Normalized
 	so := parsed.Species{
 		Genus:   g,
 		Species: nh.SpEpithet.value(),
@@ -251,16 +245,14 @@ func (nh *namedSpeciesHybridNode) details() parsed.Details {
 }
 
 func (cnd *candidatusNameNode) words() []parsed.Word {
-	wrd := cnd.Candidatus.Pos
-	wrd.Verbatim = cnd.Candidatus.Value
-	wrd.Normalized = cnd.Candidatus.NormValue
+	wrd := *cnd.Candidatus
 	words := []parsed.Word{wrd}
 	words = append(words, cnd.SingleName.words()...)
 	return words
 }
 
 func (cnd *candidatusNameNode) value() string {
-	val := cnd.Candidatus.NormValue
+	val := cnd.Candidatus.Normalized
 	val = str.JoinStrings(val, cnd.SingleName.value(), " ")
 	return val
 }
@@ -292,17 +284,13 @@ func (apr *approxNode) words() []parsed.Word {
 	if apr == nil {
 		return words
 	}
-	wrd = apr.Genus.Pos
-	wrd.Verbatim = apr.Genus.Value
-	wrd.Normalized = apr.Genus.NormValue
+	wrd = *apr.Genus
 	words = append(words, wrd)
 	if apr.SpEpithet != nil {
 		words = append(words, apr.SpEpithet.words()...)
 	}
 	if apr.Approx != nil {
-		wrd = apr.Approx.Pos
-		wrd.Verbatim = apr.Approx.Value
-		wrd.Normalized = apr.Approx.NormValue
+		wrd = *apr.Approx
 		words = append(words, wrd)
 	}
 	return words
@@ -312,7 +300,7 @@ func (apr *approxNode) value() string {
 	if apr == nil {
 		return ""
 	}
-	val := apr.Genus.NormValue
+	val := apr.Genus.Normalized
 	if apr.SpEpithet != nil {
 		val = str.JoinStrings(val, apr.SpEpithet.value(), " ")
 	}
@@ -324,7 +312,10 @@ func (apr *approxNode) canonical() *canonical {
 	if apr == nil {
 		return c
 	}
-	c = &canonical{Value: apr.Genus.NormValue, ValueRanked: apr.Genus.NormValue}
+	c = &canonical{
+		Value:       apr.Genus.Normalized,
+		ValueRanked: apr.Genus.Normalized,
+	}
 	if apr.SpEpithet != nil {
 		spCan := apr.SpEpithet.canonical()
 		c = appendCanonical(c, spCan, " ")
@@ -345,14 +336,14 @@ func (apr *approxNode) details() parsed.Details {
 		return nil
 	}
 	ao := parsed.Approximation{
-		Genus:        apr.Genus.NormValue,
-		ApproxMarker: apr.Approx.NormValue,
+		Genus:        apr.Genus.Normalized,
+		ApproxMarker: apr.Approx.Normalized,
 		Ignored:      apr.Ignored,
 	}
 	if apr.SpEpithet == nil {
 		return parsed.DetailsApproximation{Approximation: ao}
 	}
-	ao.Species = apr.SpEpithet.Word.NormValue
+	ao.Species = apr.SpEpithet.Word.Normalized
 
 	if apr.SpEpithet.Authorship != nil {
 		ao.SpeciesAuthorship = apr.SpEpithet.Authorship.details()
@@ -366,13 +357,9 @@ func (comp *comparisonNode) words() []parsed.Word {
 	if comp == nil {
 		return nil
 	}
-	wrd = comp.Genus.Pos
-	wrd.Verbatim = comp.Genus.Value
-	wrd.Normalized = comp.Genus.NormValue
+	wrd = *comp.Genus
 	words = []parsed.Word{wrd}
-	wrd = comp.Comparison.Pos
-	wrd.Verbatim = comp.Comparison.Value
-	wrd.Normalized = comp.Comparison.NormValue
+	wrd = *comp.Comparison
 	words = append(words, wrd)
 	if comp.SpEpithet != nil {
 		words = append(words, comp.SpEpithet.words()...)
@@ -384,8 +371,8 @@ func (comp *comparisonNode) value() string {
 	if comp == nil {
 		return ""
 	}
-	val := comp.Genus.NormValue
-	val = str.JoinStrings(val, comp.Comparison.NormValue, " ")
+	val := comp.Genus.Normalized
+	val = str.JoinStrings(val, comp.Comparison.Normalized, " ")
 	if comp.SpEpithet != nil {
 		val = str.JoinStrings(val, comp.SpEpithet.value(), " ")
 	}
@@ -396,7 +383,7 @@ func (comp *comparisonNode) canonical() *canonical {
 	if comp == nil {
 		return &canonical{}
 	}
-	gen := comp.Genus.NormValue
+	gen := comp.Genus.Normalized
 	c := &canonical{Value: gen, ValueRanked: gen}
 	if comp.SpEpithet != nil {
 		sCan := comp.SpEpithet.canonical()
@@ -418,8 +405,8 @@ func (comp *comparisonNode) details() parsed.Details {
 		return nil
 	}
 	co := parsed.Comparison{
-		Genus:      comp.Genus.NormValue,
-		CompMarker: comp.Comparison.NormValue,
+		Genus:      comp.Genus.Normalized,
+		CompMarker: comp.Comparison.Normalized,
 	}
 	if comp.SpEpithet == nil {
 		return parsed.DetailsComparison{Comparison: co}
@@ -435,16 +422,12 @@ func (comp *comparisonNode) details() parsed.Details {
 func (sp *speciesNode) words() []parsed.Word {
 	var words []parsed.Word
 	var wrd parsed.Word
-	if sp.Genus.Pos.End != 0 {
-		wrd = sp.Genus.Pos
-		wrd.Verbatim = sp.Genus.Value
-		wrd.Normalized = sp.Genus.NormValue
+	if sp.Genus.End != 0 {
+		wrd = *sp.Genus
 		words = append(words, wrd)
 	}
 	if sp.Subgenus != nil {
-		wrd = sp.Subgenus.Pos
-		wrd.Verbatim = sp.Subgenus.Value
-		wrd.Normalized = sp.Subgenus.NormValue
+		wrd = *sp.Subgenus
 		words = append(words, wrd)
 	}
 	words = append(words, sp.SpEpithet.words()...)
@@ -452,19 +435,17 @@ func (sp *speciesNode) words() []parsed.Word {
 		words = append(words, v.words()...)
 	}
 	if sp.CultivarEpithet != nil {
-		wrd = sp.CultivarEpithet.Word.Pos
-		wrd.Verbatim = sp.CultivarEpithet.Word.Value
-		wrd.Normalized = sp.CultivarEpithet.Word.NormValue
+		wrd = *sp.CultivarEpithet.Word
 		words = append(words, wrd)
 	}
 	return words
 }
 
 func (sp *speciesNode) value() string {
-	gen := sp.Genus.NormValue
+	gen := sp.Genus.Normalized
 	sgen := ""
 	if sp.Subgenus != nil {
-		sgen = "(" + sp.Subgenus.NormValue + ")"
+		sgen = "(" + sp.Subgenus.Normalized + ")"
 	}
 	res := str.JoinStrings(gen, sgen, " ")
 	res = str.JoinStrings(res, sp.SpEpithet.value(), " ")
@@ -472,20 +453,27 @@ func (sp *speciesNode) value() string {
 		res = str.JoinStrings(res, v.value(), " ")
 	}
 	if sp.CultivarEpithet != nil && sp.CultivarEpithet.enableCultivars {
-		res = str.JoinStrings(res, sp.CultivarEpithet.Word.NormValue, " ")
+		res = str.JoinStrings(res, sp.CultivarEpithet.Word.Normalized, " ")
 	}
 	return res
 }
 
 func (sp *speciesNode) canonical() *canonical {
-	spPart := str.JoinStrings(sp.Genus.NormValue, sp.SpEpithet.Word.NormValue, " ")
+	spPart := str.JoinStrings(
+		sp.Genus.Normalized,
+		sp.SpEpithet.Word.Normalized,
+		" ",
+	)
 	c := &canonical{Value: spPart, ValueRanked: spPart}
 	for _, v := range sp.Infraspecies {
 		c1 := v.canonical()
 		c = appendCanonical(c, c1, " ")
 	}
 	if sp.CultivarEpithet != nil && sp.CultivarEpithet.enableCultivars {
-		c2 := &canonical{Value: sp.CultivarEpithet.Word.NormValue, ValueRanked: sp.CultivarEpithet.Word.NormValue}
+		c2 := &canonical{
+			Value:       sp.CultivarEpithet.Word.Normalized,
+			ValueRanked: sp.CultivarEpithet.Word.Normalized,
+		}
 		c = appendCanonical(c, c2, " ")
 	}
 	return c
@@ -500,18 +488,18 @@ func (sp *speciesNode) lastAuthorship() *authorshipNode {
 
 func (sp *speciesNode) details() parsed.Details {
 	so := parsed.Species{
-		Genus:   sp.Genus.NormValue,
-		Species: sp.SpEpithet.Word.NormValue,
+		Genus:   sp.Genus.Normalized,
+		Species: sp.SpEpithet.Word.Normalized,
 	}
 	if sp.CultivarEpithet != nil {
-		so.Cultivar = sp.CultivarEpithet.Word.NormValue
+		so.Cultivar = sp.CultivarEpithet.Word.Normalized
 	}
 	if sp.SpEpithet.Authorship != nil {
 		so.Authorship = sp.SpEpithet.Authorship.details()
 	}
 
 	if sp.Subgenus != nil {
-		so.Subgenus = sp.Subgenus.NormValue
+		so.Subgenus = sp.Subgenus.Normalized
 	}
 	if len(sp.Infraspecies) == 0 {
 		return parsed.DetailsSpecies{Species: so}
@@ -532,37 +520,34 @@ func (sp *speciesNode) details() parsed.Details {
 }
 
 func (sep *spEpithetNode) words() []parsed.Word {
-	wrd := sep.Word.Pos
-	wrd.Verbatim = sep.Word.Value
-	wrd.Normalized = sep.Word.NormValue
+	wrd := *sep.Word
 	words := []parsed.Word{wrd}
 	words = append(words, sep.Authorship.words()...)
 	return words
 }
 
 func (sep *spEpithetNode) value() string {
-	val := sep.Word.NormValue
+	val := sep.Word.Normalized
 	val = str.JoinStrings(val, sep.Authorship.value(), " ")
 	return val
 }
 
 func (sep *spEpithetNode) canonical() *canonical {
-	c := &canonical{Value: sep.Word.NormValue, ValueRanked: sep.Word.NormValue}
+	c := &canonical{
+		Value:       sep.Word.Normalized,
+		ValueRanked: sep.Word.Normalized,
+	}
 	return c
 }
 
 func (inf *infraspEpithetNode) words() []parsed.Word {
 	var words []parsed.Word
 	var wrd parsed.Word
-	if inf.Rank != nil && inf.Rank.Word.Pos.Start != 0 {
-		wrd = inf.Rank.Word.Pos
-		wrd.Verbatim = inf.Rank.Word.Value
-		wrd.Normalized = inf.Rank.Word.NormValue
+	if inf.Rank != nil && inf.Rank.Word.Start != 0 {
+		wrd = *inf.Rank.Word
 		words = append(words, wrd)
 	}
-	wrd = inf.Word.Pos
-	wrd.Verbatim = inf.Word.Value
-	wrd.Normalized = inf.Word.NormValue
+	wrd = *inf.Word
 	words = append(words, wrd)
 	if inf.Authorship != nil {
 		words = append(words, inf.Authorship.words()...)
@@ -571,10 +556,10 @@ func (inf *infraspEpithetNode) words() []parsed.Word {
 }
 
 func (inf *infraspEpithetNode) value() string {
-	val := inf.Word.NormValue
+	val := inf.Word.Normalized
 	rank := ""
 	if inf.Rank != nil {
-		rank = inf.Rank.Word.NormValue
+		rank = inf.Rank.Word.Normalized
 	}
 	au := inf.Authorship.value()
 	res := str.JoinStrings(rank, val, " ")
@@ -583,10 +568,10 @@ func (inf *infraspEpithetNode) value() string {
 }
 
 func (inf *infraspEpithetNode) canonical() *canonical {
-	val := inf.Word.NormValue
+	val := inf.Word.Normalized
 	rank := ""
 	if inf.Rank != nil {
-		rank = inf.Rank.Word.NormValue
+		rank = inf.Rank.Word.Normalized
 	}
 	rankedVal := str.JoinStrings(rank, val, " ")
 	c := canonical{
@@ -599,10 +584,10 @@ func (inf *infraspEpithetNode) canonical() *canonical {
 func (inf *infraspEpithetNode) details() parsed.InfraspeciesElem {
 	rank := ""
 	if inf.Rank != nil && inf.Rank.Word != nil {
-		rank = inf.Rank.Word.NormValue
+		rank = inf.Rank.Word.Normalized
 	}
 	res := parsed.InfraspeciesElem{
-		Value:      inf.Word.NormValue,
+		Value:      inf.Word.Normalized,
 		Rank:       rank,
 		Authorship: inf.Authorship.details(),
 	}
@@ -610,17 +595,13 @@ func (inf *infraspEpithetNode) details() parsed.InfraspeciesElem {
 }
 
 func (u *uninomialNode) words() []parsed.Word {
-	wrd := u.Word.Pos
-	wrd.Verbatim = u.Word.Value
-	wrd.Normalized = u.Word.NormValue
+	wrd := *u.Word
 	words := []parsed.Word{wrd}
 
 	words = append(words, u.Authorship.words()...)
 
 	if u.CultivarEpithet != nil {
-		wrd = u.CultivarEpithet.Word.Pos
-		wrd.Verbatim = u.CultivarEpithet.Word.Value
-		wrd.Normalized = u.CultivarEpithet.Word.NormValue
+		wrd = *u.CultivarEpithet.Word
 		words = append(words, wrd)
 	}
 
@@ -628,17 +609,23 @@ func (u *uninomialNode) words() []parsed.Word {
 }
 
 func (u *uninomialNode) value() string {
-	res := str.JoinStrings(u.Word.NormValue, u.Authorship.value(), " ")
+	res := str.JoinStrings(u.Word.Normalized, u.Authorship.value(), " ")
 	if u.CultivarEpithet != nil && u.CultivarEpithet.enableCultivars {
-		res = str.JoinStrings(res, u.CultivarEpithet.Word.NormValue, " ")
+		res = str.JoinStrings(res, u.CultivarEpithet.Word.Normalized, " ")
 	}
 	return res
 }
 
 func (u *uninomialNode) canonical() *canonical {
-	c := &canonical{Value: u.Word.NormValue, ValueRanked: u.Word.NormValue}
+	c := &canonical{
+		Value:       u.Word.Normalized,
+		ValueRanked: u.Word.Normalized,
+	}
 	if u.CultivarEpithet != nil && u.CultivarEpithet.enableCultivars {
-		c2 := &canonical{Value: u.CultivarEpithet.Word.NormValue, ValueRanked: u.CultivarEpithet.Word.NormValue}
+		c2 := &canonical{
+			Value:       u.CultivarEpithet.Word.Normalized,
+			ValueRanked: u.CultivarEpithet.Word.Normalized,
+		}
 		c = appendCanonical(c, c2, " ")
 	}
 	return c
@@ -649,12 +636,12 @@ func (u *uninomialNode) lastAuthorship() *authorshipNode {
 }
 
 func (u *uninomialNode) details() parsed.Details {
-	ud := parsed.Uninomial{Value: u.Word.NormValue}
+	ud := parsed.Uninomial{Value: u.Word.Normalized}
 	if u.Authorship != nil {
 		ud.Authorship = u.Authorship.details()
 	}
 	if u.CultivarEpithet != nil {
-		ud.Cultivar = u.CultivarEpithet.Word.NormValue
+		ud.Cultivar = u.CultivarEpithet.Word.Normalized
 	}
 	uo := parsed.DetailsUninomial{Uninomial: ud}
 	return uo
@@ -662,38 +649,43 @@ func (u *uninomialNode) details() parsed.Details {
 
 func (u *uninomialComboNode) words() []parsed.Word {
 	var wrd parsed.Word
-	wrd = u.Uninomial1.Word.Pos
-	wrd.Verbatim = u.Uninomial1.Word.Value
-	wrd.Normalized = u.Uninomial1.Word.NormValue
+	wrd = *u.Uninomial1.Word
 	words := []parsed.Word{wrd}
 	words = append(words, u.Uninomial1.Authorship.words()...)
-	if u.Rank.Word.Pos.Start != 0 {
-		wrd = u.Rank.Word.Pos
-		wrd.Verbatim = u.Rank.Word.Value
-		wrd.Normalized = u.Rank.Word.NormValue
+	if u.Rank.Word.Start != 0 {
+		wrd = *u.Rank.Word
 		words = append(words, wrd)
 	}
-	wrd = u.Uninomial2.Word.Pos
-	wrd.Verbatim = u.Uninomial2.Word.Value
-	wrd.Normalized = u.Uninomial2.Word.NormValue
+	wrd = *u.Uninomial2.Word
 	words = append(words, wrd)
 	words = append(words, u.Uninomial2.Authorship.words()...)
 	return words
 }
 
 func (u *uninomialComboNode) value() string {
-	vl := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.NormValue, " ")
-	tail := str.JoinStrings(u.Uninomial2.Word.NormValue,
-		u.Uninomial2.Authorship.value(), " ")
+	vl := str.JoinStrings(
+		u.Uninomial1.Word.Normalized,
+		u.Rank.Word.Normalized,
+		" ",
+	)
+	tail := str.JoinStrings(
+		u.Uninomial2.Word.Normalized,
+		u.Uninomial2.Authorship.value(),
+		" ",
+	)
 	return str.JoinStrings(vl, tail, " ")
 }
 
 func (u *uninomialComboNode) canonical() *canonical {
-	ranked := str.JoinStrings(u.Uninomial1.Word.NormValue, u.Rank.Word.NormValue, " ")
-	ranked = str.JoinStrings(ranked, u.Uninomial2.Word.NormValue, " ")
+	ranked := str.JoinStrings(
+		u.Uninomial1.Word.Normalized,
+		u.Rank.Word.Normalized,
+		" ",
+	)
+	ranked = str.JoinStrings(ranked, u.Uninomial2.Word.Normalized, " ")
 
 	c := canonical{
-		Value:       u.Uninomial2.Word.NormValue,
+		Value:       u.Uninomial2.Word.Normalized,
 		ValueRanked: ranked,
 	}
 	return &c
@@ -705,9 +697,9 @@ func (u *uninomialComboNode) lastAuthorship() *authorshipNode {
 
 func (u *uninomialComboNode) details() parsed.Details {
 	ud := parsed.Uninomial{
-		Value:  u.Uninomial2.Word.NormValue,
-		Rank:   u.Rank.Word.NormValue,
-		Parent: u.Uninomial1.Word.NormValue,
+		Value:  u.Uninomial2.Word.Normalized,
+		Rank:   u.Rank.Word.Normalized,
+		Parent: u.Uninomial1.Word.Normalized,
 	}
 	if u.Uninomial2.Authorship != nil {
 		ud.Authorship = u.Uninomial2.Authorship.details()
@@ -811,7 +803,7 @@ func (ag *authorsGroupNode) value() string {
 	if ag.Team2 == nil {
 		return v
 	}
-	v = fmt.Sprintf("%s %s %s", v, ag.Team2Word.NormValue, ag.Team2.value())
+	v = fmt.Sprintf("%s %s %s", v, ag.Team2Word.Normalized, ag.Team2.value())
 	return v
 }
 
@@ -842,7 +834,7 @@ func (aut *authorsTeamNode) value() string {
 		return value
 	}
 
-	yr := aut.Year.Word.NormValue
+	yr := aut.Year.Word.Normalized
 	if aut.Year.Approximate {
 		yr = fmt.Sprintf("(%s)", yr)
 	}
@@ -864,7 +856,7 @@ func (at *authorsTeamNode) details() ([]string, *parsed.Year) {
 		return aus, yr
 	}
 	yr = &parsed.Year{
-		Value:         at.Year.Word.NormValue,
+		Value:         at.Year.Word.Normalized,
 		IsApproximate: at.Year.Approximate,
 	}
 	return aus, yr
@@ -879,9 +871,7 @@ func (aut *authorsTeamNode) words() []parsed.Word {
 		res = append(res, v.words()...)
 	}
 	if aut.Year != nil {
-		wrd := aut.Year.Word.Pos
-		wrd.Verbatim = aut.Year.Word.Value
-		wrd.Normalized = aut.Year.Word.NormValue
+		wrd := *aut.Year.Word
 		res = append(res, wrd)
 	}
 	return res
@@ -889,10 +879,8 @@ func (aut *authorsTeamNode) words() []parsed.Word {
 
 func (aun *authorNode) words() []parsed.Word {
 	p := make([]parsed.Word, len(aun.Words))
-	for i, v := range aun.Words {
-		p[i] = v.Pos
-		p[i].Verbatim = v.Value
-		p[i].Normalized = v.NormValue
+	for i := range aun.Words {
+		p[i] = *aun.Words[i]
 	}
 	return p
 }

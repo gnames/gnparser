@@ -17,9 +17,20 @@ import (
 )
 
 func genTestData() error {
+	testFiles := []string{"test_data", "test_data_cultivars"}
+	for _, v := range testFiles {
+		err := newTestFile(v)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func newTestFile(file string) error {
 	enc := gnfmt.GNjson{}
-	path := filepath.Join("..", "testdata", "test_data.md")
-	outPath := filepath.Join("..", "testdata", "test_data_new.md")
+	path := filepath.Join("..", "testdata", file+".md")
+	outPath := filepath.Join("..", "testdata", file+"_new.md")
 	f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
 	if err != nil {
 		return err
@@ -33,6 +44,9 @@ func genTestData() error {
 
 	sc := bufio.NewScanner(f)
 	opts := []gnparser.Option{gnparser.OptIsTest(true), gnparser.OptWithDetails(true)}
+	if file == "test_data_cultivars" {
+		opts = append(opts, gnparser.OptEnableCultivars(true))
+	}
 	cfg := gnparser.NewConfig(opts...)
 	gnp := gnparser.New(cfg)
 	var res parsed.Parsed

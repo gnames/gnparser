@@ -105,7 +105,7 @@ type hybridFormulaNode struct {
 }
 
 type hybridElement struct {
-	HybridChar *wordNode
+	HybridChar *parsed.Word
 	Species    nameData
 }
 
@@ -128,7 +128,7 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 			hes = append(hes, he)
 		case ruleSpeciesEpithet:
 			p.addWarn(parsed.HybridFormulaIncompleteWarn)
-			var g *wordNode
+			var g *parsed.Word
 			switch node := firstName.(type) {
 			case *speciesNode:
 				g = node.Genus
@@ -138,7 +138,7 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 				g = node.Genus
 			}
 			spe := p.newSpeciesEpithetNode(n)
-			g = &wordNode{Value: g.Value, NormValue: g.NormValue}
+			g = &parsed.Word{Verbatim: g.Verbatim, Normalized: g.Normalized}
 			he.Species = &speciesNode{Genus: g, SpEpithet: spe}
 			hes = append(hes, he)
 		}
@@ -160,15 +160,15 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 func (hf *hybridFormulaNode) normalizeAbbreviated() {
 	var fsv string
 	if fsp, ok := hf.FirstSpecies.(*speciesNode); ok {
-		fsv = fsp.Genus.NormValue
+		fsv = fsp.Genus.Normalized
 	} else {
 		return
 	}
 	for _, v := range hf.HybridElements {
 		if sp, ok := v.Species.(*speciesNode); ok {
-			val := sp.Genus.NormValue
+			val := sp.Genus.Normalized
 			if val[len(val)-1] == '.' && fsv[0:len(val)-1] == val[0:len(val)-1] {
-				sp.Genus.NormValue = fsv
+				sp.Genus.Normalized = fsv
 				v.Species = sp
 			}
 		} else {
@@ -178,7 +178,7 @@ func (hf *hybridFormulaNode) normalizeAbbreviated() {
 }
 
 type namedGenusHybridNode struct {
-	Hybrid *wordNode
+	Hybrid *parsed.Word
 	nameData
 }
 
@@ -215,9 +215,9 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 }
 
 type namedSpeciesHybridNode struct {
-	Genus        *wordNode
-	Comparison   *wordNode
-	Hybrid       *wordNode
+	Genus        *parsed.Word
+	Comparison   *parsed.Word
+	Hybrid       *parsed.Word
 	SpEpithet    *spEpithetNode
 	Infraspecies []*infraspEpithetNode
 }
@@ -226,7 +226,7 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 	var nhl *namedSpeciesHybridNode
 	var annot parsed.Annotation
 	n = n.up
-	var gen, hybrid, cf *wordNode
+	var gen, hybrid, cf *parsed.Word
 	var sp *spEpithetNode
 	var infs []*infraspEpithetNode
 	for n != nil {
@@ -249,7 +249,7 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 	}
 
 	p.addWarn(parsed.HybridNamedWarn)
-	if hybrid.Pos.End == sp.Word.Pos.Start {
+	if hybrid.End == sp.Word.Start {
 		p.addWarn(parsed.HybridCharNoSpaceWarn)
 	}
 	p.cardinality = 2 + len(infs)
@@ -275,7 +275,7 @@ func (p *Engine) botanicalUninomial(n *node32) bool {
 	}
 	w := p.newWordNode(n, parsed.UnknownType)
 
-	if _, ok := dict.Dict.AuthorICN[w.NormValue]; ok {
+	if _, ok := dict.Dict.AuthorICN[w.Normalized]; ok {
 		return true
 	}
 	return false
@@ -287,7 +287,7 @@ func (p *Engine) newBotanicalUninomialNode(n *node32) *uninomialNode {
 	w := p.newWordNode(n, parsed.UninomialType)
 	n = n.next // fake Subgenus
 	au := p.newWordNode(n.up, parsed.AuthorWordType)
-	an := &authorNode{Value: au.NormValue, Words: []*wordNode{au}}
+	an := &authorNode{Value: au.Normalized, Words: []*parsed.Word{au}}
 	at := &authorsTeamNode{Authors: []*authorNode{an}}
 	ag := &authorsGroupNode{Team1: at, Parens: true}
 	n = n.next
@@ -334,7 +334,7 @@ func (p *Engine) newSingleName(n *node32) nameData {
 }
 
 type candidatusNameNode struct {
-	Candidatus *wordNode
+	Candidatus *parsed.Word
 	SingleName nameData
 }
 
@@ -343,7 +343,7 @@ func (p *Engine) newCandidatusName(n *node32) nameData {
 	p.bacteria = &bac
 	p.addWarn(parsed.CandidatusName)
 
-	var cand *wordNode
+	var cand *parsed.Word
 	var singName nameData
 
 	n = n.up
@@ -362,9 +362,9 @@ func (p *Engine) newCandidatusName(n *node32) nameData {
 }
 
 type approxNode struct {
-	Genus     *wordNode
+	Genus     *parsed.Word
 	SpEpithet *spEpithetNode
-	Approx    *wordNode
+	Approx    *parsed.Word
 	Ignored   string
 }
 
@@ -376,9 +376,8 @@ func (p *Engine) newApproxNode(n *node32) *approxNode {
 	if n.token32.pegRule != ruleNameApprox {
 		return an
 	}
-	var gen *wordNode
+	var gen, appr *parsed.Word
 	var spEp *spEpithetNode
-	var appr *wordNode
 	var ign string
 	n = n.up
 	for n != nil {
@@ -405,9 +404,9 @@ func (p *Engine) newApproxNode(n *node32) *approxNode {
 }
 
 type comparisonNode struct {
-	Genus      *wordNode
+	Genus      *parsed.Word
 	SpEpithet  *spEpithetNode
-	Comparison *wordNode
+	Comparison *parsed.Word
 }
 
 func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
@@ -416,7 +415,7 @@ func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
 		return cn
 	}
 	n = n.up
-	var gen, comp *wordNode
+	var gen, comp *parsed.Word
 	var spEp *spEpithetNode
 	for n != nil {
 		switch n.pegRule {
@@ -440,21 +439,21 @@ func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
 }
 
 type speciesNode struct {
-	Genus        			*wordNode
-	Subgenus     			*wordNode
-	SpEpithet    			*spEpithetNode
-	Infraspecies 			[]*infraspEpithetNode
-	CultivarEpithet		*cultivarEpithetNode
+	Genus           *parsed.Word
+	Subgenus        *parsed.Word
+	SpEpithet       *spEpithetNode
+	Infraspecies    []*infraspEpithetNode
+	CultivarEpithet *cultivarEpithetNode
 }
 
 type cultivarEpithetNode struct {
-	Word							*wordNode
-	enableCultivars		bool
+	Word            *parsed.Word
+	enableCultivars bool
 }
 
 func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 	var sp *spEpithetNode
-	var sg *wordNode
+	var sg *parsed.Word
 	var infs []*infraspEpithetNode
 	var cultivar *cultivarEpithetNode
 	n = n.up
@@ -467,7 +466,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		switch n.token32.pegRule {
 		case ruleSubgenus:
 			w := p.newWordNode(n.up, parsed.SubgenusType)
-			if _, ok := dict.Dict.AuthorICN[w.NormValue]; ok {
+			if _, ok := dict.Dict.AuthorICN[w.Normalized]; ok {
 				p.addWarn(parsed.BotanyAuthorNotSubgenWarn)
 			} else {
 				sg = w
@@ -488,11 +487,11 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		p.cardinality += 1
 	}
 	sn := speciesNode{
-		Genus:        		gen,
-		Subgenus:     		sg,
-		SpEpithet:    		sp,
-		Infraspecies: 		infs,
-		CultivarEpithet: 	cultivar,
+		Genus:           gen,
+		Subgenus:        sg,
+		SpEpithet:       sp,
+		Infraspecies:    infs,
+		CultivarEpithet: cultivar,
 	}
 	if len(infs) > 0 && infs[0].Rank == nil && sp.Authorship != nil &&
 		sp.Authorship.TerminalFilius {
@@ -503,7 +502,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 }
 
 type spEpithetNode struct {
-	Word       *wordNode
+	Word       *parsed.Word
 	Authorship *authorshipNode
 }
 
@@ -523,7 +522,7 @@ func (p *Engine) newSpeciesEpithetNode(n *node32) *spEpithetNode {
 }
 
 type infraspEpithetNode struct {
-	Word       *wordNode
+	Word       *parsed.Word
 	Rank       *rankNode
 	Authorship *authorshipNode
 }
@@ -551,7 +550,7 @@ func (p *Engine) newInfraspeciesGroup(n *node32) []*infraspEpithetNode {
 func (p *Engine) newInfraspEpithetNode(n *node32) *infraspEpithetNode {
 	var inf infraspEpithetNode
 	var r *rankNode
-	var w *wordNode
+	var w *parsed.Word
 	var au *authorshipNode
 	n = n.up
 	if n == nil {
@@ -578,7 +577,7 @@ func (p *Engine) newInfraspEpithetNode(n *node32) *infraspEpithetNode {
 }
 
 type rankNode struct {
-	Word *wordNode
+	Word *parsed.Word
 }
 
 func (p *Engine) newRankNode(n *node32) *rankNode {
@@ -591,11 +590,11 @@ func (p *Engine) newRankNode(n *node32) *rankNode {
 	w := p.newWordNode(n, parsed.RankType)
 	switch n.token32.pegRule {
 	case ruleRankForma:
-		w.NormValue = "f."
+		w.Normalized = "f."
 	case ruleRankVar:
-		w.NormValue = "var."
+		w.Normalized = "var."
 	case ruleRankSsp:
-		w.NormValue = "subsp."
+		w.Normalized = "subsp."
 	case ruleRankOtherUncommon:
 		p.addWarn(parsed.RankUncommonWarn)
 	}
@@ -604,9 +603,9 @@ func (p *Engine) newRankNode(n *node32) *rankNode {
 }
 
 type uninomialNode struct {
-	Word       *wordNode
-	CultivarEpithet		 *cultivarEpithetNode
-	Authorship *authorshipNode
+	Word            *parsed.Word
+	CultivarEpithet *cultivarEpithetNode
+	Authorship      *authorshipNode
 }
 
 func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
@@ -626,9 +625,9 @@ func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 		n = n.next
 	}
 	un := uninomialNode{
-		Word:       			w,
-		Authorship: 			au,
-		CultivarEpithet: 	cultivar,
+		Word:            w,
+		Authorship:      au,
+		CultivarEpithet: cultivar,
 	}
 	p.cardinality = 1
 	if cultivar != nil && p.enableCultivars {
@@ -662,8 +661,11 @@ func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
 		u2w := p.newWordNode(n.up, parsed.UninomialType)
 		n := n.next
 		au2 := p.newAuthorshipNode(n)
-		rw := &wordNode{Value: "subgen.", NormValue: "subgen.",
-			Pos: parsed.Word{Type: parsed.RankType}}
+		rw := &parsed.Word{
+			Verbatim:   "subgen.",
+			Normalized: "subgen.",
+			Type:       parsed.RankType,
+		}
 		r = &rankUninomialNode{Word: rw}
 		u2 = &uninomialNode{
 			Word:       u2w,
@@ -680,17 +682,17 @@ func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
 }
 
 type rankUninomialNode struct {
-	Word *wordNode
+	Word *parsed.Word
 }
 
 func (p *Engine) newRankUninomialNode(n *node32) *rankUninomialNode {
 	r := p.newWordNode(n, parsed.RankType)
 	run := rankUninomialNode{Word: r}
 	switch {
-	case strings.HasPrefix(run.Word.Value, "subg"):
-		run.Word.NormValue = "subgen."
-	case strings.HasPrefix(run.Word.Value, "fam"):
-		run.Word.NormValue = "fam."
+	case strings.HasPrefix(run.Word.Verbatim, "subg"):
+		run.Word.Normalized = "subgen."
+	case strings.HasPrefix(run.Word.Verbatim, "fam"):
+		run.Word.Normalized = "fam."
 	}
 	return &run
 }
@@ -761,7 +763,7 @@ const (
 type authorsGroupNode struct {
 	Team1          *authorsTeamNode
 	Team2Type      teamType
-	Team2Word      *wordNode
+	Team2Word      *parsed.Word
 	Team2          *authorsTeamNode
 	Parens         bool
 	TerminalFilius bool
@@ -770,7 +772,7 @@ type authorsGroupNode struct {
 func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 	var t1, t2 *authorsTeamNode
 	var t2t teamType
-	var t2wrd *wordNode
+	var t2wrd *parsed.Word
 	n = n.up
 	t1 = p.newAuthorTeam(n)
 	fil := t1.TerminalFilius
@@ -790,20 +792,20 @@ func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 		p.addWarn(parsed.AuthExWarn)
 		t2t = teamEx
 		t2wrd = p.newWordNode(n, parsed.AuthorWordType)
-		ex := strings.TrimSpace(t2wrd.Value)
+		ex := strings.TrimSpace(t2wrd.Verbatim)
 		if ex[len(ex)-1] == '.' {
 			p.addWarn(parsed.AuthExWithDotWarn)
 		}
-		t2wrd.NormValue = "ex"
+		t2wrd.Normalized = "ex"
 	case ruleAuthorEmend:
 		p.addWarn(parsed.AuthEmendWarn)
 		t2t = teamEmend
 		t2wrd = p.newWordNode(n, parsed.AuthorWordType)
-		emend := strings.TrimSpace(t2wrd.Value)
+		emend := strings.TrimSpace(t2wrd.Verbatim)
 		if emend[len(emend)-1] != '.' {
 			p.addWarn(parsed.AuthEmendWithoutDotWarn)
 		}
-		t2wrd.NormValue = "emend."
+		t2wrd.Normalized = "emend."
 	default:
 		return &ag
 	}
@@ -867,14 +869,14 @@ func (p *Engine) newAuthorTeam(n *node32) *authorsTeamNode {
 type authorNode struct {
 	Value  string
 	Sep    string
-	Words  []*wordNode
+	Words  []*parsed.Word
 	Filius bool
 }
 
 func (p *Engine) newAuthorNode(n *node32) *authorNode {
-	var w *wordNode
+	var w *parsed.Word
 	var fil bool
-	var ws []*wordNode
+	var ws []*parsed.Word
 	val := ""
 	rawVal := ""
 	n = n.up
@@ -882,26 +884,26 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 		switch n.token32.pegRule {
 		case ruleFilius, ruleFiliusFNoSpace:
 			w = p.newWordNode(n, parsed.AuthorWordFiliusType)
-			w.NormValue = "fil."
+			w.Normalized = "fil."
 			fil = true
 		case ruleUnknownAuthor:
 			p.addWarn(parsed.AuthUnknownWarn)
 			w = p.authorWord(n)
-			if w.Value == "?" {
+			if w.Verbatim == "?" {
 				p.addWarn(parsed.AuthQuestionWarn)
 			}
-			w.NormValue = "anon."
+			w.Normalized = "anon."
 		case ruleAuthorEtAl:
 			w = p.newWordNode(n, parsed.AuthorWordType)
-			if strings.Contains(w.NormValue, "&") {
-				w.NormValue = "et al."
+			if strings.Contains(w.Normalized, "&") {
+				w.Normalized = "et al."
 			}
 		default:
 			w = p.authorWord(n)
 		}
 		ws = append(ws, w)
-		val = str.JoinStrings(val, w.NormValue, " ")
-		rawVal = str.JoinStrings(rawVal, w.Value, " ")
+		val = str.JoinStrings(val, w.Normalized, " ")
+		rawVal = str.JoinStrings(rawVal, w.Verbatim, " ")
 		n = n.next
 	}
 	if len(rawVal) < 2 {
@@ -915,17 +917,17 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 	return &au
 }
 
-func (p *Engine) authorWord(n *node32) *wordNode {
+func (p *Engine) authorWord(n *node32) *parsed.Word {
 	w := p.newWordNode(n, parsed.AuthorWordType)
 	if n.up != nil && n.up.token32.pegRule == ruleAllCapsAuthorWord {
 		count := 0
-		for _, v := range w.Value {
+		for _, v := range w.Verbatim {
 			if unicode.IsUpper(v) {
 				count++
 			}
 		}
 		if count > 2 {
-			w.NormValue = str.FixAllCaps(w.NormValue)
+			w.Normalized = str.FixAllCaps(w.Normalized)
 			p.addWarn(parsed.AuthUpperCaseWarn)
 		}
 	}
@@ -933,12 +935,12 @@ func (p *Engine) authorWord(n *node32) *wordNode {
 }
 
 type yearNode struct {
-	Word        *wordNode
+	Word        *parsed.Word
 	Approximate bool
 }
 
 func (p *Engine) newYearNode(nd *node32) *yearNode {
-	var w *wordNode
+	var w *parsed.Word
 	appr := false
 	nodes := nd.flatChildren()
 	for _, v := range nodes {
@@ -957,12 +959,12 @@ func (p *Engine) newYearNode(nd *node32) *yearNode {
 		case ruleYearWithChar:
 			p.addWarn(parsed.YearCharWarn)
 			w = p.newWordNode(v, parsed.YearType)
-			w.NormValue = w.Value[0 : len(w.Value)-1]
+			w.Normalized = w.Verbatim[0 : len(w.Verbatim)-1]
 		case ruleYearNum:
 			if w == nil {
 				w = p.newWordNode(v, parsed.YearType)
 			}
-			if w.Value[len(w.Value)-1] == '?' {
+			if w.Verbatim[len(w.Verbatim)-1] == '?' {
 				p.addWarn(parsed.YearQuestionWarn)
 				appr = true
 			}
@@ -972,7 +974,7 @@ func (p *Engine) newYearNode(nd *node32) *yearNode {
 		w = p.newWordNode(nd, parsed.YearType)
 	}
 	if appr {
-		w.Pos.Type = parsed.YearApproximateType
+		w.Type = parsed.YearApproximateType
 	}
 	yr := yearNode{
 		Word:        w,
@@ -999,46 +1001,47 @@ func (n *node32) flatChildren() []*node32 {
 	return ns
 }
 
-type wordNode struct {
-	Value     string
-	NormValue string
-	Pos       parsed.Word
-}
-
-func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *wordNode {
+func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *parsed.Word {
 	t := n.token32
 	val := p.nodeValue(n)
-	pos := parsed.Word{Type: wt, Start: int(t.begin), End: int(t.end)}
-	wrd := wordNode{Value: val, NormValue: val, Pos: pos}
+	wrd := parsed.Word{
+		Verbatim:   val,
+		Normalized: val,
+		Type:       wt,
+		Start:      int(t.begin),
+		End:        int(t.end),
+	}
 	children := n.flatChildren()
 	var canApostrophe bool
 	for _, v := range children {
 		switch v.token32.pegRule {
 		case ruleUpperCharExtended, ruleLowerCharExtended:
 			p.addWarn(parsed.CharBadWarn)
-			_ = wrd.normalize()
+			wrd.Normalized, _ = normalize(wrd.Verbatim)
 		case ruleWordApostr:
 			p.addWarn(parsed.CanonicalApostropheWarn)
 			canApostrophe = true
-			_ = wrd.normalize()
+			wrd.Normalized, _ = normalize(wrd.Verbatim)
 		case ruleWordStartsWithDigit:
 			p.addWarn(parsed.SpeciesNumericWarn)
-			wrd.normalizeNums()
+			wrd.Normalized = normalizeNums(wrd.Verbatim)
 		case ruleApostrOther:
 			p.addWarn(parsed.ApostrOtherWarn)
 			if !canApostrophe {
-				nv, _ := str.ToASCII([]byte(wrd.Value), str.GlobalTransliterations)
-				wrd.NormValue = string(nv)
+				nv, _ := str.ToASCII([]byte(wrd.Verbatim), str.GlobalTransliterations)
+				wrd.Normalized = string(nv)
 			}
 		}
 	}
-	if wt == parsed.GenusType || wt == parsed.UninomialType {
+	if wt == parsed.HybridCharType {
+		wrd.Normalized = "×"
+	} else if wt == parsed.GenusType || wt == parsed.UninomialType {
 		if val[len(val)-1] == '?' {
 			p.addWarn(parsed.CapWordQuestionWarn)
-			wrd.NormValue = wrd.NormValue[0 : len(wrd.NormValue)-1]
+			wrd.Normalized = wrd.Normalized[0 : len(wrd.Normalized)-1]
 		}
 		if _, ok := p.warnings[parsed.GenusUpperCharAfterDash]; ok {
-			runes := []rune(wrd.Value)
+			runes := []rune(wrd.Verbatim)
 			nv := make([]rune, len(runes))
 			var afterDash bool
 			for i, v := range runes {
@@ -1051,9 +1054,9 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *wordNode {
 				}
 				nv[i] = v
 			}
-			wrd.NormValue = string(nv)
+			wrd.Normalized = string(nv)
 		}
-		p.isBacteria(wrd.NormValue)
+		p.isBacteria(wrd.Normalized)
 	}
 	return &wrd
 }
@@ -1062,8 +1065,13 @@ func (p *Engine) newCultivarEpithetNode(n *node32, wt parsed.WordType) *cultivar
 	t := n.token32
 	val := p.nodeValue(n)
 	normval := "‘" + p.nodeValue(n) + "’"
-	pos := parsed.Word{Type: wt, Start: int(t.begin), End: int(t.end)}
-	wrd := wordNode{Value: val, NormValue: normval, Pos: pos}
+	wrd := parsed.Word{
+		Verbatim:   val,
+		Normalized: normval,
+		Type:       wt,
+		Start:      int(t.begin),
+		End:        int(t.end),
+	}
 	cv := cultivarEpithetNode{Word: &wrd, enableCultivars: p.enableCultivars}
 	if !p.enableCultivars {
 		p.addWarn(parsed.CultivarEpithetWarn)
@@ -1071,26 +1079,28 @@ func (p *Engine) newCultivarEpithetNode(n *node32, wt parsed.WordType) *cultivar
 	return &cv
 }
 
-func (w *wordNode) normalize() error {
-	if w == nil {
-		return nil
+func normalize(s string) (string, error) {
+	res := s
+	if s == "" {
+		return s, nil
 	}
-	nv, err := str.ToASCII([]byte(w.Value), str.Transliterations)
+	nv, err := str.ToASCII([]byte(s), str.Transliterations)
 	if err != nil {
-		return err
+		return res, err
 	}
-	w.NormValue = string(nv)
-	return nil
-}
-
-func (w *wordNode) normalizeNums() {
-	match := numWord.FindAllStringSubmatch(w.Value, 1)
-	if len(match) == 0 {
-		return
-	}
-	num := match[0][1]
-	wrd := match[0][2]
-	w.NormValue = str.NumToStr(num) + wrd
+	res = string(nv)
+	return res, nil
 }
 
 var numWord = regexp.MustCompile(`^([0-9]+)[-\.]?(.+)$`)
+
+func normalizeNums(s string) string {
+	res := s
+	match := numWord.FindAllStringSubmatch(s, 1)
+	if len(match) == 0 {
+		return res
+	}
+	num := match[0][1]
+	wrd := match[0][2]
+	return str.NumToStr(num) + wrd
+}
