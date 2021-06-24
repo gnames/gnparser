@@ -88,6 +88,17 @@ func withCapitalizeFlag(cmd *cobra.Command) {
 	}
 }
 
+func withEnableCultivarsFlag(cmd *cobra.Command) {
+	b, err := cmd.Flags().GetBool("cultivar")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	if b {
+		opts = append(opts, gnparser.OptEnableCultivars(true))
+	}
+}
+
 func withStreamFlag(cmd *cobra.Command) {
 	withDet, err := cmd.Flags().GetBool("stream")
 	if err != nil {

@@ -25,7 +25,23 @@ func TestParseName(t *testing.T) {
 		gnparser.OptIsTest(true),
 	)
 	gnp := gnparser.New(cfg)
-	data := getTestData(t)
+	data := getTestData(t, "test_data.md")
+	for _, v := range data {
+		parsed := gnp.ParseName(v.name)
+		json := parsed.Output(gnp.Format())
+		assert.Equal(t, json, v.jsonData, v.name)
+	}
+}
+
+func TestParseNameCultivars(t *testing.T) {
+	cfg := gnparser.NewConfig(
+		gnparser.OptWithDetails(true),
+		gnparser.OptEnableCultivars(true),
+		gnparser.OptFormat("compact"),
+		gnparser.OptIsTest(true),
+	)
+	gnp := gnparser.New(cfg)
+	data := getTestData(t, "test_data_cultivars.md")
 	for _, v := range data {
 		parsed := gnp.ParseName(v.name)
 		json := parsed.Output(gnp.Format())
@@ -57,9 +73,9 @@ func TestParseLowCaseName(t *testing.T) {
 	}
 }
 
-func getTestData(t *testing.T) []testData {
+func getTestData(t *testing.T, filename string) []testData {
 	var res []testData
-	path := filepath.Join("testdata", "test_data.md")
+	path := filepath.Join("testdata", filename)
 	f, err := os.Open(path)
 	assert.Nil(t, err)
 	scanner := bufio.NewScanner(f)

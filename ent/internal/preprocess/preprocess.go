@@ -34,8 +34,17 @@ var lastWordJunkRe = regexp.MustCompile(
 		`|sensu|new|non|nec|nudum|ssp\.?` +
 		`|subsp|subgen|hybrid)\??\s*$`,
 )
+
 var stopWordsRe = regexp.MustCompile(
-	`\s+(of[\W_]|\(?ht\.?\W|\(?hort\.?\W|spec\.|nov\s+spec|cv\.?\W).*$`,
+	`\s+(\(?ht\.?\W|\(?hort\.?\W|spec\.|nov\s+spec).*$`,
+)
+
+var cultivarRankRe = regexp.MustCompile(
+	`\s+(cultivar\.?[\W_]|cv\.?[\W_]|['"‘’“”]).*$`,
+)
+
+var ofWordRe = regexp.MustCompile(
+	`\s+(of[\W_]).*$`,
 )
 
 // Preprocessor structure keeps state of the preprocessor results.
@@ -162,6 +171,18 @@ func Annotation(bs []byte) int {
 			i = loc[0]
 		}
 	}
+
+	// If ` of ` is in the string, before the start of the already-calculated
+	// unparsed part, but there is no cultivar rank marker before it, consider it
+	// unparseable. `Anthurium 'Ace of Spades'` should parse fully;
+	// `Anthurium Trustees of the British Museum` should not.
+	cultivarRankLoc := cultivarRankRe.FindIndex(bs[0:i])
+	ofLoc := ofWordRe.FindIndex(bs[0:i])
+	if(	len(ofLoc) > 0 && ofLoc[0] < i &&
+			(len(cultivarRankLoc) == 0 || cultivarRankLoc[0] > ofLoc[0])) {
+		i = ofLoc[0]
+	}
+
 	return i
 }
 

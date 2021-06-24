@@ -70,6 +70,7 @@ gnparser -j 5 -p 8080
 		withStreamFlag(cmd)
 		withNoOrderFlag(cmd)
 		withCapitalizeFlag(cmd)
+		withEnableCultivarsFlag(cmd)
 		batchSizeFlag(cmd)
 		port := portFlag(cmd)
 		cfg := gnparser.NewConfig(opts...)
@@ -127,7 +128,7 @@ func init() {
 		"ignore HTML entities and tags when parsing.")
 
 	rootCmd.Flags().IntP("jobs", "j", 0,
-		"nubmer of threads to run. CPU's threads number is the default.")
+		"number of threads to run. CPU's threads number is the default.")
 
 	rootCmd.Flags().IntP("port", "p", 0,
 		"starts web site and REST server on the port.")
@@ -142,6 +143,10 @@ func init() {
 
 	rootCmd.Flags().BoolP("capitalize", "c", false,
 		"capitalize the first letter of input name-strings")
+
+	rootCmd.Flags().BoolP("cultivar", "C", false,
+		"include cultivar epithets in normalized and canonical outputs")
+
 }
 
 func processStdin(cmd *cobra.Command, cfg gnparser.Config, quiet bool) {

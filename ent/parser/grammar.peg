@@ -29,20 +29,33 @@ Candidatus <- 'Candidatus'
 
 SingleName <- NameComp / NameApprox / NameSpecies / NameUninomial
 
-NameUninomial <- UninomialCombo / Uninomial
+NameUninomial <- (UninomialCombo / Uninomial) (_ CultivarWordGroup)?
 
 NameApprox <- GenusWord (_ SpeciesEpithet)? _ Approximation ApproxNameIgnored
 
 NameComp <- GenusWord _ Comparison (_ SpeciesEpithet)?
 
 NameSpecies <- GenusWord (_? ( Subgenus / SubgenusOrSuperspecies))?
-               _ SpeciesEpithet (_ InfraspGroup)?
+               _ SpeciesEpithet (_ InfraspGroup)? (_ CultivarWordGroup)?
 
 GenusWord <- (AbbrGenus / UninomialWord) !(_ AuthorWord)
 
 InfraspGroup <- InfraspEpithet (_ InfraspEpithet)?  (_ InfraspEpithet)?
 
 InfraspEpithet <- (Rank _?)? !(AuthorEx) Word  (_ Authorship)?
+
+CultivarWordGroup <-  ((RankCultivar _)? CultivarApostrophe CultivarRecursive CultivarApostrophe) / (RankCultivar _ Cultivar)
+
+Cultivar <- NotHybridChar+
+
+RankCultivar <- 'cv' '.'?
+
+NotHybridChar <- (!(_ HybridChar) .)
+
+# Recursive, one character at a time
+CultivarRecursive <- NotHybridChar CultivarRecursive / &CultivarApostrophe
+
+CultivarApostrophe <- '\'' / '‘' / '’' / '"' / '“' / '”'
 
 SpeciesEpithet <- !(AuthorEx) Word (_? Authorship)?
 
@@ -116,10 +129,10 @@ LowerAfterDash <- Word1
 TwoLetterGenus <- ('Ca' / 'Ea' / 'Ge' / 'Ia' / 'Io' / 'Ix' / 'Lo' / 'Oa' /
   'Ra' / 'Ty' / 'Ua' / 'Aa' / 'Ja' / 'Zu' / 'La' / 'Qu' / 'As' / 'Ba')
 
-Word <- !(('ex' / 'et' / 'and' / 'apud' / 'pro' / AuthorPrefix /
-      RankUninomial / Approximation / Word4) SpaceCharEOI)
-      (WordApostr / WordStartsWithDigit / MultiDashedWord /
-       Word2 / Word1) &(SpaceCharEOI / '(')
+Word <- !(('ex' / 'et' / 'and' / 'apud' / 'pro' / 'cv' / 'cultivar' / 
+  AuthorPrefix / RankUninomial / Approximation / Word4) SpaceCharEOI) 
+  (WordApostr / WordStartsWithDigit / MultiDashedWord / Word2 / 
+  Word1) &(SpaceCharEOI / '(')
 
 # TODO probably never used
 Word1 <- (LowerASCII Dash)? NameLowerChar NameLowerChar+

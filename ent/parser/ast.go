@@ -440,16 +440,23 @@ func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
 }
 
 type speciesNode struct {
-	Genus        *wordNode
-	Subgenus     *wordNode
-	SpEpithet    *spEpithetNode
-	Infraspecies []*infraspEpithetNode
+	Genus        			*wordNode
+	Subgenus     			*wordNode
+	SpEpithet    			*spEpithetNode
+	Infraspecies 			[]*infraspEpithetNode
+	CultivarEpithet		*cultivarEpithetNode
+}
+
+type cultivarEpithetNode struct {
+	Word							*wordNode
+	enableCultivars		bool
 }
 
 func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 	var sp *spEpithetNode
 	var sg *wordNode
 	var infs []*infraspEpithetNode
+	var cultivar *cultivarEpithetNode
 	n = n.up
 	gen := p.newWordNode(n, parsed.GenusType)
 	if n.up.token32.pegRule == ruleAbbrGenus {
@@ -471,15 +478,21 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 			sp = p.newSpeciesEpithetNode(n)
 		case ruleInfraspGroup:
 			infs = p.newInfraspeciesGroup(n)
+		case ruleCultivar, ruleCultivarRecursive:
+			cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
 		}
 		n = n.next
 	}
 	p.cardinality = 2 + len(infs)
+	if cultivar != nil && p.enableCultivars {
+		p.cardinality += 1
+	}
 	sn := speciesNode{
-		Genus:        gen,
-		Subgenus:     sg,
-		SpEpithet:    sp,
-		Infraspecies: infs,
+		Genus:        		gen,
+		Subgenus:     		sg,
+		SpEpithet:    		sp,
+		Infraspecies: 		infs,
+		CultivarEpithet: 	cultivar,
 	}
 	if len(infs) > 0 && infs[0].Rank == nil && sp.Authorship != nil &&
 		sp.Authorship.TerminalFilius {
@@ -592,21 +605,35 @@ func (p *Engine) newRankNode(n *node32) *rankNode {
 
 type uninomialNode struct {
 	Word       *wordNode
+	CultivarEpithet		 *cultivarEpithetNode
 	Authorship *authorshipNode
 }
 
 func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 	var au *authorshipNode
+	var cultivar *cultivarEpithetNode
 	wn := n.up
 	w := p.newWordNode(wn, parsed.UninomialType)
 	if an := wn.next; an != nil {
 		au = p.newAuthorshipNode(an)
 	}
+	n = n.next
+	for n != nil {
+		switch n.token32.pegRule {
+		case ruleCultivar, ruleCultivarRecursive:
+			cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
+		}
+		n = n.next
+	}
 	un := uninomialNode{
-		Word:       w,
-		Authorship: au,
+		Word:       			w,
+		Authorship: 			au,
+		CultivarEpithet: 	cultivar,
 	}
 	p.cardinality = 1
+	if cultivar != nil && p.enableCultivars {
+		p.cardinality += 1
+	}
 	return &un
 }
 
@@ -1029,6 +1056,19 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *wordNode {
 		p.isBacteria(wrd.NormValue)
 	}
 	return &wrd
+}
+
+func (p *Engine) newCultivarEpithetNode(n *node32, wt parsed.WordType) *cultivarEpithetNode {
+	t := n.token32
+	val := p.nodeValue(n)
+	normval := "‘" + p.nodeValue(n) + "’"
+	pos := parsed.Word{Type: wt, Start: int(t.begin), End: int(t.end)}
+	wrd := wordNode{Value: val, NormValue: normval, Pos: pos}
+	cv := cultivarEpithetNode{Word: &wrd, enableCultivars: p.enableCultivars}
+	if !p.enableCultivars {
+		p.addWarn(parsed.CultivarEpithetWarn)
+	}
+	return &cv
 }
 
 func (w *wordNode) normalize() error {

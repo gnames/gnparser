@@ -118,7 +118,8 @@ type StemmedWord struct {
 }
 
 // StemCanonical takes a short form of a canonical name and returns back
-// stemmed specific and infraspecific epithets.
+// stemmed specific and infraspecific epithets, and an unstemmed cultivar 
+// epithet.
 // It assumes the following properties of a string:
 //
 // 1. There are no empty spaces over any side of a string.
@@ -126,20 +127,29 @@ type StemmedWord struct {
 // 3. All characters in the string are ASCII with exception of the
 //    hybrid sign.
 // 4. The string always starts with a capitalized word.
+// 
 func StemCanonical(c string) string {
-	words := strings.Split(c, " ")
-	if len(words) == 1 {
-		return c
-	}
-	res := make([]string, len(words))
-	for i, v := range words {
-		if i == 0 || len(v) < 3 {
-			res[i] = v
-		} else {
-			res[i] = Stem(v).Stem
+	formulaParts := strings.Split(c, " × ")
+	for i, v := range formulaParts {
+		nameParts := strings.Split(v, "‘")
+		latinPart := nameParts[0]
+		words := strings.Split(latinPart, " ")
+		if len(words) == 1 {
+			formulaParts[i] = v
+			continue
 		}
+		formulaPartsRes := make([]string, len(words))
+		for wi, wv := range words {
+			if wi == 0 || len(wv) < 3 {
+				formulaPartsRes[wi] = wv
+			} else {
+				formulaPartsRes[wi] = Stem(wv).Stem
+			}
+		}
+		nameParts[0] = strings.Join(formulaPartsRes, " ")
+		formulaParts[i] = strings.Join(nameParts, "‘")
 	}
-	return strings.Join(res, " ")
+	return strings.Join(formulaParts, " × ")
 }
 
 // Stem takes a word and, assuming the word is noun, removes its latin suffix
