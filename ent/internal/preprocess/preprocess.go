@@ -10,9 +10,6 @@ import (
 	"unicode"
 )
 
-var hybridCharRe1 = regexp.MustCompile(`(^)[Xx](\p{Lu})`)
-var hybridCharRe2 = regexp.MustCompile(`(\s|^)[Xx](\s|$)`)
-
 var notesRe = regexp.MustCompile(
 	`(?i)\s+(environmental|samples|species\s+group|species\s+complex|clade|group|author)\b.*$`,
 )
@@ -91,7 +88,7 @@ func Preprocess(bs []byte) *Preprocessor {
 		pr.Underscore = true
 	}
 
-	pr.Body = NormalizeHybridChar(bs[0:i])
+	pr.Body = bs[0:i]
 	pr.Tail = bs[i:]
 	return pr
 }
@@ -145,15 +142,6 @@ func VirusLikeName(name string) bool {
 		}
 	}
 	return false
-}
-
-// NormalizeHybridChar substitutes hybrid chars 'X' or 'x' with
-// the multiplication sign char.
-func NormalizeHybridChar(bs []byte) []byte {
-	hybridChar := []byte("$1×$2")
-	res := hybridCharRe1.ReplaceAll(bs, hybridChar)
-	res = hybridCharRe2.ReplaceAll(res, hybridChar)
-	return res
 }
 
 // Annotation returns index where unparsed part starts. In case if

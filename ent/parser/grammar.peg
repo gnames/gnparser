@@ -148,7 +148,7 @@ Word4 <- NameLowerChar+ '.' NameLowerChar
 
 MultiDashedWord <- NameLowerChar+ Dash NameLowerChar+ Dash NameLowerChar+ (Dash NameLowerChar+)?
 
-HybridChar <- '×'
+HybridChar <- '×' / [xX] &_ / [xX] &UninomialWord / [xX] &END
 
 ApproxNameIgnored <- .*
 
@@ -207,8 +207,8 @@ Author2 <- AuthorWord (_? AuthorWord)*
 
 UnknownAuthor <- '?' / (('auct' / 'anon') (&(SpaceCharEOI) / '.'))
 
-AuthorWord <- !("bold:") (AuthorDashInitials / AuthorWord2 /
-  AuthorWord3 / AuthorPrefix)
+AuthorWord <- !(HybridChar) (!("bold:") (AuthorDashInitials / AuthorWord2 /
+  AuthorWord3 / AuthorPrefix))
 
 AuthorEtAl <- 'arg.' / 'et al.{?}' / ('et' / '&') ' al' '.'?
 

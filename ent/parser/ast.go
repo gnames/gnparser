@@ -1032,6 +1032,9 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *wordNode {
 			}
 		}
 	}
+	if wt == parsed.HybridCharType {
+		wrd.NormValue = "×"
+	}
 	if wt == parsed.GenusType || wt == parsed.UninomialType {
 		if val[len(val)-1] == '?' {
 			p.addWarn(parsed.CapWordQuestionWarn)
