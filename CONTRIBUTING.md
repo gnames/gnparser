@@ -135,6 +135,47 @@ mv test_data_new.md test_data.md
 mv test_data_cultivars_new.md test_data_cultivars.md
 ```
 
+## Benchmarks
+
+Benchmarks are located in `gnparser_test.go`
+
+To run benchmarks from the project's root:
+
+```bash
+# this command will install benchstat
+make tools
+
+go test -bench=. -benchmem -count=10 -run=XXX > bench.txt && benchstat bench.txt
+```
+
+After running you should get results similar to:
+
+```bash
+name                                     time/op
+Parse/Parse_to_object_once-16            73.0µs ± 1%
+Parse/Parse_to_object_once_with_Init-16  83.2µs ± 1%
+Parse/Parse_to_object-16                 67.5ms ± 1%
+Parse/Parse_to_JSON-16                   71.5ms ± 1%
+Parse/Parse_to_JSON_(Details)-16         71.8ms ± 1%
+Parse/Parse_to_CSV-16                    69.1ms ± 1%
+
+name                                     alloc/op
+Parse/Parse_to_object_once-16            10.9kB ± 0%
+Parse/Parse_to_object_once_with_Init-16  23.8kB ± 0%
+Parse/Parse_to_object-16                 15.5MB ± 0%
+Parse/Parse_to_JSON-16                   17.2MB ± 0%
+Parse/Parse_to_JSON_(Details)-16         17.2MB ± 0%
+Parse/Parse_to_CSV-16                    16.2MB ± 0%
+
+name                                     allocs/op
+Parse/Parse_to_object_once-16               250 ± 0%
+Parse/Parse_to_object_once_with_Init-16     409 ± 0%
+Parse/Parse_to_object-16                   235k ± 0%
+Parse/Parse_to_JSON-16                     242k ± 0%
+Parse/Parse_to_JSON_(Details)-16           242k ± 0%
+Parse/Parse_to_CSV-16                      240k ± 0%
+```
+
 ### Accessing a raw parsed AST tree
 
 PEG parser generates it own abstract syntax tree (AST), that later gets
