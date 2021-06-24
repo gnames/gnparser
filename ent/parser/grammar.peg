@@ -129,9 +129,9 @@ LowerAfterDash <- Word1
 TwoLetterGenus <- ('Ca' / 'Ea' / 'Ge' / 'Ia' / 'Io' / 'Ix' / 'Lo' / 'Oa' /
   'Ra' / 'Ty' / 'Ua' / 'Aa' / 'Ja' / 'Zu' / 'La' / 'Qu' / 'As' / 'Ba')
 
-Word <- !(('ex' / 'et' / 'and' / 'apud' / 'pro' / 'cv' / 'cultivar' / 
-  AuthorPrefix / RankUninomial / Approximation / Word4) SpaceCharEOI) 
-  (WordApostr / WordStartsWithDigit / MultiDashedWord / Word2 / 
+Word <- !(('ex' / 'et' / 'and' / 'apud' / 'pro' / 'cv' / 'cultivar' /
+  AuthorPrefix / RankUninomial / Approximation / Word4) SpaceCharEOI)
+  (WordApostr / WordStartsWithDigit / MultiDashedWord / Word2 /
   Word1) &(SpaceCharEOI / '(')
 
 # TODO probably never used

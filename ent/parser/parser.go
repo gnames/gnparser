@@ -100,7 +100,7 @@ func (p *Engine) PreprocessAndParse(
 		p.addWarn(parsed.SpaceNonStandardWarn)
 	}
 	err := p.Parse()
-		
+
 	if err != nil {
 		p.error = err
 		p.newNotParsedScientificNameNode(preproc)

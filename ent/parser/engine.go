@@ -9,16 +9,16 @@ import (
 )
 
 type baseEngine struct {
-	sn          			*scientificNameNode
-	root        			*node32
-	cardinality 			int
-	error       			error
-	hybrid      			*parsed.Annotation
-	surrogate   			*parsed.Annotation
-	bacteria    			*tribool.Tribool
-	warnings    			map[parsed.Warning]struct{}
-	tail        			string
-	enableCultivars		bool
+	sn              *scientificNameNode
+	root            *node32
+	cardinality     int
+	error           error
+	hybrid          *parsed.Annotation
+	surrogate       *parsed.Annotation
+	bacteria        *tribool.Tribool
+	warnings        map[parsed.Warning]struct{}
+	tail            string
+	enableCultivars bool
 }
 
 // New creates implementation of Parser interface.
@@ -185,8 +185,8 @@ var nodeRules = map[pegRule]struct{}{
 	ruleCombinationAuthorship:           {},
 	ruleComparison:                      {},
 	ruleCultivarRecursive:               {},
-	ruleRankCultivar:										 {},
-	ruleCultivar:	    									 {},
+	ruleRankCultivar:                    {},
+	ruleCultivar:                        {},
 	ruleFilius:                          {},
 	ruleFiliusFNoSpace:                  {},
 	ruleGenusWord:                       {},

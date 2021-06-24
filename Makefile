@@ -51,7 +51,7 @@ asset:
 build: peg
 	cd gnparser; \
 	$(GOCLEAN); \
-	$(FLAGS_SHARED) $(NO_C) $(GOBUILD) -o $(BUILD_DIR) 
+	$(FLAGS_SHARED) $(NO_C) $(GOBUILD) -o $(BUILD_DIR)
 
 install: peg
 	cd gnparser; \

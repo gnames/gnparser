@@ -118,7 +118,7 @@ type StemmedWord struct {
 }
 
 // StemCanonical takes a short form of a canonical name and returns back
-// stemmed specific and infraspecific epithets, and an unstemmed cultivar 
+// stemmed specific and infraspecific epithets, and an unstemmed cultivar
 // epithet.
 // It assumes the following properties of a string:
 //
@@ -127,7 +127,7 @@ type StemmedWord struct {
 // 3. All characters in the string are ASCII with exception of the
 //    hybrid sign.
 // 4. The string always starts with a capitalized word.
-// 
+//
 func StemCanonical(c string) string {
 	formulaParts := strings.Split(c, " × ")
 	for i, v := range formulaParts {

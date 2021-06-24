@@ -473,7 +473,7 @@ func (sp *speciesNode) value() string {
 	}
 	if sp.CultivarEpithet != nil && sp.CultivarEpithet.enableCultivars {
 		res = str.JoinStrings(res, sp.CultivarEpithet.Word.NormValue, " ")
-	}	
+	}
 	return res
 }
 
@@ -631,7 +631,7 @@ func (u *uninomialNode) value() string {
 	res := str.JoinStrings(u.Word.NormValue, u.Authorship.value(), " ")
 	if u.CultivarEpithet != nil && u.CultivarEpithet.enableCultivars {
 		res = str.JoinStrings(res, u.CultivarEpithet.Word.NormValue, " ")
-	}	
+	}
 	return res
 }
 
