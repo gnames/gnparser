@@ -101,7 +101,7 @@ Now you should be able to use gnparser compiled from the code:
 gnparser -f pretty "Pica pica (Linnaeus, 1758)"
 ```
 
-To run tests
+### To run tests
 
 ```bash
 make test
@@ -111,6 +111,28 @@ or
 
 ```bash
 go test ./...
+```
+
+### To generate tests automatically
+
+If your change generates a lot of changes in `testdata/test_data.md`
+and/or `testdata/test_data_cultivars.md` you can generate
+`testdata/test_data_new.md` and `testdata/test_data_cultivars_new.md`
+files using `gentest.go` tool.
+
+```bash
+cd tools
+go run gentest.go
+cd ../testdata
+ls
+```
+
+You will have two new files in testdata. It is VERY important now to check
+difference between old and new test files before making the next step:
+
+```bash
+mv test_data_new.md test_data.md
+mv test_data_cultivars_new.md test_data_cultivars.md
 ```
 
 ### Accessing a raw parsed AST tree
