@@ -10,6 +10,7 @@ import (
 
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
+	"github.com/gnames/gnsys"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -125,6 +126,7 @@ func Example() {
 // `go test -bench=. -benchmem -count=10 -run=XXX > bench.txt && benchstat bench.txt`
 func BenchmarkParse(b *testing.B) {
 	path := filepath.Join("testdata", "200k-lines.txt")
+	check200kFile(path)
 	count := 1000
 	test := make([]string, count)
 	cfgJSON := gnparser.NewConfig(gnparser.OptFormat("compact"))
@@ -207,4 +209,53 @@ func BenchmarkParse(b *testing.B) {
 		}
 		_ = fmt.Sprintf("%d", len(s))
 	})
+}
+
+func check200kFile(path string) {
+	exists, err := gnsys.FileExists(path)
+	if exists && err == nil {
+		return
+	}
+
+	names := getNames()
+	iterNum := 200000 / len(names)
+
+	f, err := os.Create(path)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+
+	for i := iterNum; i > 0; i-- {
+		for i := range names {
+			name := fmt.Sprintf("%s\n", names[i])
+			_, err := f.Write([]byte(name))
+			if err != nil {
+				panic(err)
+			}
+		}
+	}
+}
+
+func getNames() []string {
+	var err error
+	path := filepath.Join("testdata", "test_data.md")
+	var names []string
+	f, err := os.Open(path)
+	if err != nil {
+		panic(err)
+	}
+	scanner := bufio.NewScanner(f)
+
+	for scanner.Scan() {
+		line := scanner.Text()
+		if strings.HasPrefix(line, "Name: ") {
+			names = append(names, line[6:])
+		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		panic(err)
+	}
+	return names
 }
