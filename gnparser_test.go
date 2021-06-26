@@ -37,7 +37,7 @@ func TestParseName(t *testing.T) {
 func TestParseNameCultivars(t *testing.T) {
 	cfg := gnparser.NewConfig(
 		gnparser.OptWithDetails(true),
-		gnparser.OptEnableCultivars(true),
+		gnparser.OptWithCultivars(true),
 		gnparser.OptFormat("compact"),
 		gnparser.OptIsTest(true),
 	)

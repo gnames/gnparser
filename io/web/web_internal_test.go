@@ -38,9 +38,8 @@ func TestHome(t *testing.T) {
 	e.Renderer, err = NewTemplate()
 	assert.Nil(t, err)
 
-	assert.Nil(t, home(gnps)(c))
-	assert.Equal(t, rec.Code, http.StatusOK)
-	assert.Contains(t, rec.Body.String(), "GNA Logo")
+	assert.Nil(t, homePOST(gnps)(c))
+	assert.Equal(t, rec.Code, http.StatusFound)
 }
 
 func TestDocAPI(t *testing.T) {
@@ -179,16 +178,18 @@ func TestParsePOST(t *testing.T) {
 		"Cytospora ribis mitovirus 2",
 		"A-shaped rods", "Alb. alba",
 		"Pisonia grandis", "Acacia vestita may",
+		"Sarracenia flava 'Maxima'",
 	}
-	params := inputPOST{
-		Names:       names,
-		CSV:         false,
-		WithDetails: false,
+	params := inputREST{
+		Names:         names,
+		CSV:           false,
+		WithDetails:   false,
+		WithCultivars: true,
 	}
 	reqBody, err := gnfmt.GNjson{}.Encode(params)
 	assert.Nil(t, err)
 	r := bytes.NewReader(reqBody)
-	req := httptest.NewRequest(http.MethodPost, "/", r)
+	req := httptest.NewRequest(http.MethodPost, "/api/v1", r)
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
 	e := echo.New()
@@ -209,17 +210,22 @@ func TestParsePOST(t *testing.T) {
 		case 1:
 			assert.Equal(t, v.Verbatim, "Bubo bubo", v.Verbatim)
 			assert.Equal(t, v.Canonical.Simple, "Bubo bubo")
+		case 10:
+			assert.Equal(t, v.Normalized, "Sarracenia flava ‘Maxima’")
+			assert.Equal(t, v.Cardinality, 3)
 		}
+
 	}
 
-	params = inputPOST{
-		Names:       names,
-		CSV:         true,
-		WithDetails: false,
+	params = inputREST{
+		Names:         names,
+		CSV:           true,
+		WithDetails:   false,
+		WithCultivars: false,
 	}
 	reqBody, err = gnfmt.GNjson{}.Encode(params)
 	r = bytes.NewReader(reqBody)
-	req = httptest.NewRequest(http.MethodPost, "/", r)
+	req = httptest.NewRequest(http.MethodPost, "/api/v1", r)
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec = httptest.NewRecorder()
 	c = e.NewContext(req, rec)

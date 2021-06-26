@@ -48,7 +48,7 @@ func (gnp gnparser) ParseName(s string) parsed.Parsed {
 		ver = "test_version"
 	}
 	sciNameNode := gnp.parser.PreprocessAndParse(
-		s, ver, gnp.cfg.IgnoreHTMLTags, gnp.cfg.WithCapitalization, gnp.cfg.EnableCultivars,
+		s, ver, gnp.cfg.IgnoreHTMLTags, gnp.cfg.WithCapitalization, gnp.cfg.WithCultivars,
 	)
 	res := sciNameNode.ToOutput(gnp.cfg.WithDetails)
 	return res

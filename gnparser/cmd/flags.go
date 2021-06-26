@@ -95,7 +95,7 @@ func withEnableCultivarsFlag(cmd *cobra.Command) {
 		os.Exit(1)
 	}
 	if b {
-		opts = append(opts, gnparser.OptEnableCultivars(true))
+		opts = append(opts, gnparser.OptWithCultivars(true))
 	}
 }
 

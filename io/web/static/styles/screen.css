@@ -4,6 +4,10 @@ html { font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-ad
 
 body { margin: 0; }
 
+.form-elements {
+  margin-bottom: 1em;
+}
+
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
 
 audio, canvas, progress, video { display: inline-block; vertical-align: baseline; }
@@ -50,6 +54,8 @@ button, input, optgroup, select, textarea { color: inherit; font: inherit; margi
 
 button { overflow: visible; }
 
+select { margin-right: 1em; }
+
 button, select { text-transform: none; }
 
 button, html input[type=button], input[type=reset], input[type=submit] { -webkit-appearance: button; cursor: pointer; }
@@ -60,7 +66,7 @@ button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 
 input { line-height: normal; }
 
-input[type=checkbox], input[type=radio] { box-sizing: border-box; padding: 0; }
+input[type=checkbox], input[type=radio] { box-sizing: border-box; margin-right: 1em; padding: 1em; }
 
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { height: auto; }
 

@@ -20,10 +20,11 @@ const withLogs = false
 //go:embed static
 var static embed.FS
 
-type inputPOST struct {
-	Names       []string `json:"names"`
-	WithDetails bool     `json:"withDetails,omitempty"`
-	CSV         bool     `json:"csv,omitempty"`
+type inputREST struct {
+	Names         []string `json:"names"`
+	CSV           bool     `json:"csv"`
+	WithDetails   bool     `json:"withDetails"`
+	WithCultivars bool     `json:"withCultivars"`
 }
 
 // Run starts the GNparser web service and servies both RESTful API and
@@ -42,7 +43,8 @@ func Run(gnps GNparserService) {
 	if withLogs {
 		e.Use(middleware.Logger())
 	}
-	e.GET("/", home(gnps))
+	e.GET("/", homeGET(gnps))
+	e.POST("/", homePOST(gnps))
 	e.GET("/doc/api", docAPI())
 	e.GET("/api", info())
 	e.GET("/api/v1", info())
@@ -95,7 +97,8 @@ func parseNamesGET(gnps GNparserService) func(echo.Context) error {
 		nameStr, _ := url.QueryUnescape(c.Param("names"))
 		csv := c.QueryParam("csv") == "true"
 		det := c.QueryParam("with_details") == "true"
-		gnp := gnps.ChangeConfig(opts(c, csv, det)...)
+		cultivars := c.QueryParam("cultivars") == "true"
+		gnp := gnps.ChangeConfig(opts(c, csv, det, cultivars)...)
 		names := strings.Split(nameStr, "|")
 		res := gnp.ParseNames(names)
 		return formatNames(c, res, gnp.Format())
@@ -104,11 +107,11 @@ func parseNamesGET(gnps GNparserService) func(echo.Context) error {
 
 func parseNamesPOST(gnps GNparserService) func(echo.Context) error {
 	return func(c echo.Context) error {
-		var input inputPOST
+		var input inputREST
 		if err := c.Bind(&input); err != nil {
 			return err
 		}
-		gnp := gnps.ChangeConfig(opts(c, input.CSV, input.WithDetails)...)
+		gnp := gnps.ChangeConfig(opts(c, input.CSV, input.WithDetails, input.WithCultivars)...)
 		res := gnp.ParseNames(input.Names)
 		return formatNames(c, res, gnp.Format())
 	}
@@ -132,13 +135,16 @@ func formatNames(
 	}
 }
 
-func opts(c echo.Context, csv, details bool) []gnparser.Option {
+func opts(c echo.Context, csv, details, cultivars bool) []gnparser.Option {
+	res := []gnparser.Option{
+		gnparser.OptWithDetails(details),
+		gnparser.OptWithCultivars(cultivars),
+	}
 	if csv {
-		return []gnparser.Option{gnparser.OptFormat("csv")}
+		res = append(res, gnparser.OptFormat("csv"))
+	} else {
+		res = append(res, gnparser.OptFormat("compact"))
 	}
-	var res []gnparser.Option
-	if details {
-		res = []gnparser.Option{gnparser.OptWithDetails(true)}
-	}
+
 	return res
 }

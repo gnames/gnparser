@@ -257,9 +257,6 @@ gnparser -d "Pardosa moesta Banks, 1892"
 
 * Parsing names from CSV files [tutorial][tutGN]
 
-<!-- * Robert Mesibov's [tutorial][tutRM] on using  ``gnparser``
-together with `awk` and pipes in Unix-like environments. -->
-
 ## Installation
 
 Compiled programs in Go are self-sufficient and small (``gnparser`` is only a
@@ -344,6 +341,9 @@ Relevant flags:
 : Sets a maximum number of names collected into a batch before processing.
 This flag is ignored if parsing mode is set to streaming with ``-s`` flag.
 
+``--cultivars -C``
+: Adds support for botanical cultivars like ``Sarracenia flava 'Maxima'``.
+
 ``--capitalize -c``
 : Capitalizes the first letter of name-strings.
 
@@ -396,6 +396,10 @@ gnparser -f pretty "Parus major Linnaeus, 1788"
 
 # to parse a name from the standard input
 echo "Parus major Linnaeus, 1788" | gnparser
+
+# to parse a botanical cultivar name
+gnparser "Anthurium 'Ace of Spades'" --cultivar
+gnparser "Phyllostachys vivax cv aureocaulis" -c
 
 # to parse name that is all in low-case
 gnparser "parus major" --capitalize
@@ -633,8 +637,7 @@ Released under [MIT license]
 [quality]: https://github.com/gnames/gnparser/blob/master/quality.md
 [releases]: https://github.com/gnames/gnparser/releases/latest
 [ruby_ffi_go_usage]: https://stackoverflow.com/questions/58866962/how-to-pass-an-array-of-strings-and-get-an-array-of-strings-in-ruby-using-go-sha
-[tutRM]: https://www.datafix.com.au/BASHing/2019-01-20.html
-[tutGM]: https://globalnames.org/docs/tut-xsv-gnparser/
+[tutGN]: https://globalnames.org/docs/tut-xsv-gnparser/
 [test file]:  https://github.com/gnames/gnparser/blob/master/testdata/test_data.md
 [uuid5]: http://globalnames.org/news/2015/05/31/gn-uuid-0-5-0
 [winpath]: https://www.computerhope.com/issues/ch000549.htm
