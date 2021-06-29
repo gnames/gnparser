@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [v1.3.0]
+
 - Add [#179]: add cultivars info to README.
 - Add [#178]: parse cultivars via REST API.
 - Add [#177]: parse botanical cultivars via web.
@@ -274,6 +276,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.3.0]: https://github.com/gnames/gnparser/compare/v1.2.0...v1.3.0
 [v1.2.0]: https://github.com/gnames/gnparser/compare/v1.1.0...v1.2.0
 [v1.1.0]: https://github.com/gnames/gnparser/compare/v1.0.14...v1.1.0
 [v1.0.14]: https://github.com/gnames/gnparser/compare/v1.0.13...v1.0.14
@@ -312,6 +315,16 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
 
+[#180]: https://github.com/gnames/gnparser/issues/180
+[#179]: https://github.com/gnames/gnparser/issues/179
+[#178]: https://github.com/gnames/gnparser/issues/178
+[#177]: https://github.com/gnames/gnparser/issues/177
+[#176]: https://github.com/gnames/gnparser/issues/176
+[#175]: https://github.com/gnames/gnparser/issues/175
+[#174]: https://github.com/gnames/gnparser/issues/174
+[#173]: https://github.com/gnames/gnparser/issues/173
+[#172]: https://github.com/gnames/gnparser/issues/172
+[#171]: https://github.com/gnames/gnparser/issues/171
 [#170]: https://github.com/gnames/gnparser/issues/170
 [#169]: https://github.com/gnames/gnparser/issues/169
 [#168]: https://github.com/gnames/gnparser/issues/168
