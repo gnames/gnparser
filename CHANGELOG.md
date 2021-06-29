@@ -2,8 +2,15 @@
 
 ## Unreleased
 
-- Add [#172]: add authors initials with a dash like "B.-E.van Wyk"
+- Add [#179]: add cultivars info to README.
+- Add [#178]: parse cultivars via REST API.
+- Add [#177]: parse botanical cultivars via web.
+- Add [#173]: cultivars parsing #174 @tobymarsden.
+- Add [#172]: authors initials with a dash like "B.-E.van Wyk".
 - Add: tests for cultivars (Toby Marsden)
+
+- Fix [#174]: Hybrid character is missed or wrong in details'
+              ``Words`` section.
 
 ## [v1.2.0]
 
