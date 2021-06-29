@@ -595,6 +595,7 @@ provide a warning "Possible ICN author instead of subgenus".
 
 ## Contributors
 
+* [Toby Marsden]
 * [Geoff Ower]
 * [Hernan Lucas Pereira]
 
@@ -611,8 +612,6 @@ Rees, T. (compiler) (2019). The Interim Register of Marine and Nonmarine
 Genera. Available from `http://www.irmng.org` at VLIZ.
 Accessed 2019-04-10
 
-Mesibov, R. (2019) [Parsing Scientific names][tutorial]
-
 ## License
 
 Released under [MIT license]
@@ -620,6 +619,7 @@ Released under [MIT license]
 [CONTRIBUTING]: https://github.com/gnames/gnparser/blob/master/CONTRIBUTING.md
 [Dmitry Mozzherin]: https://github.com/dimus
 [Geoff Ower]: https://github.com/gdower
+[Toby Marsden]: https://github.com/tobymarsden
 [Hernan Lucas Pereira]: https://github.com/LocoDelAssembly
 [Homebrew]: https://brew.sh/
 [IRMNG]: http://www.irmng.org
