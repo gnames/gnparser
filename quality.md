@@ -18,6 +18,7 @@ Parsing finished without detecting any problems.
 - Author is unknown
 - Bacterial `Candidatus` name
 - Combination of two uninomials
+- Cultivar epithet
 - Deprecated Greek letter enumeration in rank
 - Emend authors are not required
 - Ex authors are not required
@@ -61,5 +62,6 @@ Parsing finished without detecting any problems.
 - Incorrect conversion to UTF-8
 - Name comparison
 - Name is approximate
+- Name starts with low-case character
 - Uninomial word with question mark
 - Unparsed tail
