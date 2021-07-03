@@ -26,11 +26,13 @@ func ParseToString(
 	name *C.char,
 	f *C.char,
 	details C.int,
+	cultivars C.int,
 ) *C.char {
 	goname := C.GoString(name)
 	opts := []gnparser.Option{
 		gnparser.OptFormat(C.GoString(f)),
 		gnparser.OptWithDetails(int(details) > 0),
+		gnparser.OptWithCultivars(int(cultivars) > 0),
 	}
 	cfg := gnparser.NewConfig(opts...)
 	gnp := gnparser.New(cfg)
@@ -56,12 +58,14 @@ func ParseAryToString(
 	length C.int,
 	f *C.char,
 	details C.int,
+	cultivars C.int,
 ) *C.char {
 	names := make([]string, int(length))
 
 	opts := []gnparser.Option{
 		gnparser.OptFormat(C.GoString(f)),
 		gnparser.OptWithDetails(int(details) > 0),
+		gnparser.OptWithCultivars(int(cultivars) > 0),
 	}
 	start := unsafe.Pointer(in)
 	pointerSize := unsafe.Sizeof(in)
