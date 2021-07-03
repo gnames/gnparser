@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 
+	"github.com/dustin/go-humanize"
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
@@ -226,4 +228,16 @@ func parseString(gnp gnparser.GNparser, name string) {
 		fmt.Println(parsed.HeaderCSV())
 	}
 	fmt.Println(res.Output(f))
+}
+
+func progressLog(start time.Time, namesNum int) {
+	dur := float64(time.Now().Sub(start)) / float64(time.Second)
+	rate := float64(namesNum) / dur
+	numColor := "%s names/sec"
+	rateStr := fmt.Sprintf(numColor, humanize.Comma(int64(rate)))
+	log.Printf(
+		"Parsing %s-th name (%s)\n",
+		humanize.Comma(int64(namesNum)),
+		rateStr,
+	)
 }

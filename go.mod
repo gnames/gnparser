@@ -3,6 +3,7 @@ module github.com/gnames/gnparser
 go 1.16
 
 require (
+	github.com/dustin/go-humanize v1.0.0
 	github.com/gnames/gnfmt v0.1.0
 	github.com/gnames/gnlib v0.2.1
 	github.com/gnames/gnsys v0.1.1

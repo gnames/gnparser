@@ -96,17 +96,22 @@ capabilities, its input and output.
 
 ## Speed
 
-Number of names parsed per hour on a i7-8750H CPU
-(6 cores, 12 threads, at 2.20 GHz), parser v1.0.0:
+Number of names parsed per second on an AMD Ryzen 7 5800H CPU
+(8 cores, 16 threads), GNparser v1.3.0:
 
-| Threads | names/hr    |
+```bash
+gnparser 1_000_000_names.txt -j 200 > /dev/null
+```
+
+| Threads | names/sec   |
 | ------- | ----------- |
-| 1       | 51,000,000  |
-| 2       | 86,000,000  |
-| 4       | 128,000,000 |
-| 8       | 180,000,000 |
-| 16      | 211,000,000 |
-| 100     | 240,000,000 |
+| 1       | 9,000       |
+| 2       | 19,000      |
+| 4       | 35,000      |
+| 8       | 56,000      |
+| 16      | 82,000      |
+| 100     | 107,000     |
+| 200     | 111,000     |
 
 For simplest output Go ``gnparser`` is roughly 2 times faster than Scala
 ``gnparser`` and about 100 times faster than pure Ruby implementation. For

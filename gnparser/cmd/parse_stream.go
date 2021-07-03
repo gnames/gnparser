@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"sync"
+	"time"
 
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
@@ -62,6 +63,7 @@ func parseStream(
 	go func() {
 		defer cancel()
 		defer wg.Done()
+		start := time.Now()
 		if gnp.Format() == gnfmt.CSV {
 			fmt.Println(parsed.HeaderCSV())
 		}
@@ -69,7 +71,7 @@ func parseStream(
 		for {
 			count++
 			if count%50_000 == 0 && !quiet {
-				log.Printf("Processing %d-th name", count)
+				progressLog(start, count)
 			}
 			select {
 			case <-ctx.Done():

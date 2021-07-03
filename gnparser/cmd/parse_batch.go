@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"sync"
+	"time"
 
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
@@ -19,6 +20,7 @@ func parseBatch(
 ) {
 	batch := make([]string, batchSize)
 	chOut := make(chan []parsed.Parsed)
+	start := time.Now()
 	var wg sync.WaitGroup
 
 	wg.Add(1)
@@ -32,7 +34,7 @@ func parseBatch(
 		if count == batchSize {
 			i++
 			if !quiet {
-				log.Printf("Parsing %d-th line\n", count*i)
+				progressLog(start, count*i)
 			}
 			chOut <- gnp.ParseNames(batch)
 			batch = make([]string, batchSize)
