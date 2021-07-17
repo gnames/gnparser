@@ -1,5 +1,7 @@
 # Global Names Parser: GNparser written in Go
 
+[![DOI](https://zenodo.org/badge/320967495.svg)](https://zenodo.org/badge/latestdoi/320967495)
+
 Try `GNparser` [online][parser-web].
 
 ```text
@@ -635,7 +637,7 @@ Released under [MIT license]
 [IRMNG]: http://www.irmng.org
 [MIT license]: https://github.com/gnames/gnparser/raw/master/LICENSE
 [Schinke R et al (1996)]: https://caio.ueberalles.net/a_stemming_algorithm_for_latin_text_databases-schinke_et_al.pdf
-[Zenodo DOI]: https://example.org
+[Zenodo DOI]: https://zenodo.org/badge/latestdoi/320967495
 [biodiversity]: https://github.com/GlobalNamesArchitecture/biodiversity
 [export file]: https://github.com/gnames/gnparser/blob/master/binding/main.go
 [gna]: http://globalnames.org
