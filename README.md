@@ -4,14 +4,6 @@
 
 Try `GNparser` [online][parser-web].
 
-```text
-IMPORTANT: We are releasing gnparser v1.0.0, it means that from v1.x forward
-gnparser command line app, functions and output format will be stable and
-backward compatible for several years (until v2). There are several backward
-incompatible changes with versions v0.x that are documented at
-https://github.com/gnames/gnparser/wiki/Changes-in-v1.0.0
-```
-
 ``GNparser`` splits scientific names into their semantic elements with an
 associated meta information. Parsing is indispensable for matching names
 from different data sources, because it can normalize different lexical
@@ -84,7 +76,7 @@ gnparser -h
 
 ## Introduction
 
-Global Names Parser or ``gnparser`` is a program written in Go for breaking up
+Global Names Parser or ``GNparser`` is a program written in Go for breaking up
 scientific names into their elements.  It uses [peg] -- a Parsing
 Expression Grammar (PEG) tool.
 
@@ -92,14 +84,16 @@ Many other parsing algorithms for scientific names use regular expressions.
 This approach works well for extracting canonical forms in simple cases.
 However, for complex scientific names and to parse scientific names into
 all semantic elements, regular expressions often fail, unable to overcome
-the recursive nature of data embedded in names. By contrast, ``gnparser``
+the recursive nature of data embedded in names. By contrast, ``GNparser``
 is able to deal with the most complex scientific name-strings.
 
-``gnparser`` takes a name-string like ``Drosophila (Sophophora) melanogaster
+``GNparser`` takes a name-string like ``Drosophila (Sophophora) melanogaster
 Meigen, 1830`` and returns parsed components in `CSV` or `JSON` format. The
 parsing of scientific names might become surprisingly complex and the
 `GNparser's` [test file] is a good source of information about the parser's
 capabilities, its input and output.
+
+``GNparser`` reached a stable v1. [Differences between v1 and v0][v0diff]
 
 ## Speed
 
@@ -120,8 +114,8 @@ gnparser 1_000_000_names.txt -j 200 > /dev/null
 | 100     | 107,000     |
 | 200     | 111,000     |
 
-For simplest output Go ``gnparser`` is roughly 2 times faster than Scala
-``gnparser`` and about 100 times faster than pure Ruby implementation. For
+For simplest output Go ``GNparser`` is roughly 2 times faster than Scala
+``GNparser`` and about 100 times faster than pure Ruby implementation. For
 JSON formats the parser is approximately 8 times faster than Scala one, due to
 more efficient JSON conversion.
 
@@ -188,7 +182,7 @@ elements:
 * Trinomial
 * Quadrinomial
 
-The output of `gnparser` contains a `Cardinality` field that tells, when
+The output of `GNparser` contains a `Cardinality` field that tells, when
 possible, how many elements are detected in the name.
 
 | Cardinality  | Name Type    |
@@ -235,7 +229,7 @@ mean the following:
 
 ### Creating stable GUIDs for name-strings
 
-``gnparser`` uses UUID version 5 to generate its ``id`` field.
+``GNparser`` uses UUID version 5 to generate its ``id`` field.
 There is algorithmic 1:1 relationship between the name-string and the UUID.
 Moreover the same algorithm can be used in any popular language to
 generate the same UUID. Such IDs can be used to globally connect information
@@ -246,7 +240,7 @@ blog][uuid5]
 
 ### Assembling canonical forms etc. from original spelling
 
-``gnparser`` tries to correct problems with spelling, but sometimes it is
+``GNparser`` tries to correct problems with spelling, but sometimes it is
 important to keep original spelling of the canonical forms or authorship.
 The ``words`` field attaches semantic meaning to every word in the
 original name-string and allows users to create canonical forms or other
@@ -271,7 +265,7 @@ gnparser -d "Pardosa moesta Banks, 1892"
 
 ## Installation
 
-Compiled programs in Go are self-sufficient and small (``gnparser`` is only a
+Compiled programs in Go are self-sufficient and small (``GNparser`` is only a
 few megabytes). As a result the binary file of ``gnparser`` is all you need to
 make it work. You can install it by downloading the [latest version of the
 binary][releases] for your operating system, and placing it in your ``PATH``.
@@ -381,16 +375,16 @@ performance.
 : set a port to run web-interface and [RESTful API][OpenAPI].
 
 ``--stream -s``
-: ``gnparser`` can be used from any language using pipe-in/pipe-out of the
+: ``GNparser`` can be used from any language using pipe-in/pipe-out of the
 command line application. This approach requires sending 1 name at a time
-to ``gnparser`` instead of sending names in batches. Streaming allows to
+to ``GNparser`` instead of sending names in batches. Streaming allows to
 achieve that.
 
 ``--unordered -u``
 : does not restore the order of output according to the order of input.
 
 ``--version -V``
-: shows the version number of ``gnparser``.
+: shows the version number of ``GNparser``.
 
 To parse one name:
 
@@ -422,7 +416,7 @@ To parse a file:
 
 There is no flag for parsing a file. If parser finds the given file path on
 your computer, it will parse the content of the file, assuming that every line
-is a new scientific name. If the file path is not found, ``gnparser`` will try
+is a new scientific name. If the file path is not found, ``GNparser`` will try
 to parse the "path" as a scientific name.
 
 Parsed results will stream to STDOUT, while progress of the parsing
@@ -467,7 +461,7 @@ every idle gap in the CPU usage.
 
 About any language has an ability to use pipes of the underlying operating
 system. From the inside of your program you can make the CLI executable
-`gnparser` to listen on a STDIN pipe and produce output into STDOUT pipe. Here
+`GNparser` to listen on a STDIN pipe and produce output into STDOUT pipe. Here
 is an example in Ruby:
 
 ```ruby
@@ -566,11 +560,11 @@ func Example() {
 
 ### Use as a shared C library
 
-It is possible to bind `gnparser` functionality with languages that can use
+It is possible to bind `GNparser` functionality with languages that can use
 C Application Binary Interface. For example such languages include
 Python, Ruby, Rust, C, C++, Java (via JNI).
 
-To compile `gnparser` shared library for your platform/operating system of
+To compile `GNparser` shared library for your platform/operating system of
 choice you need `GNU make` and `GNU gcc compiler` installed:
 
 ```bash
@@ -658,3 +652,4 @@ Released under [MIT license]
 [gnparser paper]: https://doi.org/10.1186/s12859-017-1663-3
 [PHP pipes]: https://gist.github.com/marcobrt/72b2a3d1b0649c1bf738c9fc88f74ec0
 [rgnparser]: https://github.com/ropensci/rgnparser
+[v0diff]: https://github.com/gnames/gnparser/wiki/Changes-in-v1.0.0
