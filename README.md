@@ -80,7 +80,7 @@ gnparser -h
 
 ## Citing
 
-[Zenodo DOI] can be used to ciet GNparser
+[Zenodo DOI] can be used to cite GNparser
 
 ## Introduction
 
