@@ -40,6 +40,7 @@ gnparser -h
 
 <!-- vim-markdown-toc GFM -->
 
+* [Citing](#citing)
 * [Introduction](#introduction)
 * [Speed](#speed)
 * [Features](#features)
@@ -74,6 +75,10 @@ gnparser -h
 * [License](#license)
 
 <!-- vim-markdown-toc -->
+
+## Citing
+
+[Zenodo DOI] can be used to ciet GNparser
 
 ## Introduction
 
@@ -630,6 +635,7 @@ Released under [MIT license]
 [IRMNG]: http://www.irmng.org
 [MIT license]: https://github.com/gnames/gnparser/raw/master/LICENSE
 [Schinke R et al (1996)]: https://caio.ueberalles.net/a_stemming_algorithm_for_latin_text_databases-schinke_et_al.pdf
+[Zenodo DOI]: https://example.org
 [biodiversity]: https://github.com/GlobalNamesArchitecture/biodiversity
 [export file]: https://github.com/gnames/gnparser/blob/master/binding/main.go
 [gna]: http://globalnames.org

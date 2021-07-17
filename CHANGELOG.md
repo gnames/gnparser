@@ -2,9 +2,13 @@
 
 ## Unreleased
 
+## [v1.3.1]
+
+- Add [#180]: Zenodo DOI.
+
 ## [v1.3.0]
 
-- Add [#179]: add cultivars info to README.
+- Add [#179]: cultivars info to README.
 - Add [#178]: parse cultivars via REST API.
 - Add [#177]: parse botanical cultivars via web.
 - Add [#173]: cultivars parsing #174 @tobymarsden.
@@ -276,6 +280,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.3.1]: https://github.com/gnames/gnparser/compare/v1.3.0...v1.3.1
 [v1.3.0]: https://github.com/gnames/gnparser/compare/v1.2.0...v1.3.0
 [v1.2.0]: https://github.com/gnames/gnparser/compare/v1.1.0...v1.2.0
 [v1.1.0]: https://github.com/gnames/gnparser/compare/v1.0.14...v1.1.0
@@ -315,6 +320,16 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
 
+[#190]: https://github.com/gnames/gnparser/issues/190
+[#189]: https://github.com/gnames/gnparser/issues/189
+[#188]: https://github.com/gnames/gnparser/issues/188
+[#187]: https://github.com/gnames/gnparser/issues/187
+[#186]: https://github.com/gnames/gnparser/issues/186
+[#185]: https://github.com/gnames/gnparser/issues/185
+[#184]: https://github.com/gnames/gnparser/issues/184
+[#183]: https://github.com/gnames/gnparser/issues/183
+[#182]: https://github.com/gnames/gnparser/issues/182
+[#181]: https://github.com/gnames/gnparser/issues/181
 [#180]: https://github.com/gnames/gnparser/issues/180
 [#179]: https://github.com/gnames/gnparser/issues/179
 [#178]: https://github.com/gnames/gnparser/issues/178
