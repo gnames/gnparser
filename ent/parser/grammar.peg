@@ -126,8 +126,9 @@ UpperAfterDash <- CapWord1
 
 LowerAfterDash <- Word1
 
-TwoLetterGenus <- ('Ca' / 'Ea' / 'Ge' / 'Ia' / 'Io' / 'Ix' / 'Lo' / 'Oa' /
-  'Ra' / 'Ty' / 'Ua' / 'Aa' / 'Ja' / 'Zu' / 'La' / 'Qu' / 'As' / 'Ba')
+TwoLetterGenus <- ('Ca' / 'Do' / 'Ea' / 'Ge' / 'Ia' / 'Io' / 'Ix' / 'Lo' /
+  'Oa' / 'Oo' / 'Nu' / 'Ra' / 'Ty' / 'Ua' / 'Aa' / 'Ja' / 'Zu' / 'La' / 'Qu' /
+  'As' / 'Ba')
 
 Word <- !(('ex' / 'et' / 'and' / 'apud' / 'pro' / 'cv' / 'cultivar' /
   AuthorPrefix / RankUninomial / Approximation / Word4) SpaceCharEOI)

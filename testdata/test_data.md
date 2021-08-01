@@ -328,6 +328,16 @@ Authorship: Distant 1911
 {"parsed":true,"quality":1,"verbatim":"Ea Distant 1911","normalized":"Ea Distant 1911","canonical":{"stemmed":"Ea","simple":"Ea","full":"Ea"},"cardinality":1,"authorship":{"verbatim":"Distant 1911","normalized":"Distant 1911","year":"1911","authors":["Distant"],"originalAuth":{"authors":["Distant"],"year":{"year":"1911"}}},"details":{"uninomial":{"uninomial":"Ea","authorship":{"verbatim":"Distant 1911","normalized":"Distant 1911","year":"1911","authors":["Distant"],"originalAuth":{"authors":["Distant"],"year":{"year":"1911"}}}}},"words":[{"verbatim":"Ea","normalized":"Ea","wordType":"UNINOMIAL","start":0,"end":2},{"verbatim":"Distant","normalized":"Distant","wordType":"AUTHOR_WORD","start":3,"end":10},{"verbatim":"1911","normalized":"1911","wordType":"YEAR","start":11,"end":15}],"id":"c5a5643f-452f-5c51-91eb-42789ed6f3a4","parserVersion":"test_version"}
 ```
 
+Name: Do
+
+Canonical: Do
+
+Authorship:
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Do","normalized":"Do","canonical":{"stemmed":"Do","simple":"Do","full":"Do"},"cardinality":1,"details":{"uninomial":{"uninomial":"Do"}},"words":[{"verbatim":"Do","normalized":"Do","wordType":"UNINOMIAL","start":0,"end":2}],"id":"f3b54204-8d34-5c7d-94a3-85d89dd99d86","parserVersion":"test_version"}
+```
+
 Name: Ge Nicéville 1895
 
 Canonical: Ge
@@ -396,6 +406,26 @@ Authorship: Girault 1929
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Oa Girault 1929","normalized":"Oa Girault 1929","canonical":{"stemmed":"Oa","simple":"Oa","full":"Oa"},"cardinality":1,"authorship":{"verbatim":"Girault 1929","normalized":"Girault 1929","year":"1929","authors":["Girault"],"originalAuth":{"authors":["Girault"],"year":{"year":"1929"}}},"details":{"uninomial":{"uninomial":"Oa","authorship":{"verbatim":"Girault 1929","normalized":"Girault 1929","year":"1929","authors":["Girault"],"originalAuth":{"authors":["Girault"],"year":{"year":"1929"}}}}},"words":[{"verbatim":"Oa","normalized":"Oa","wordType":"UNINOMIAL","start":0,"end":2},{"verbatim":"Girault","normalized":"Girault","wordType":"AUTHOR_WORD","start":3,"end":10},{"verbatim":"1929","normalized":"1929","wordType":"YEAR","start":11,"end":15}],"id":"14647a9c-70c8-55a8-b2a7-1fc47c39732b","parserVersion":"test_version"}
+```
+
+Name: Oo
+
+Canonical: Oo
+
+Authorship:
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Oo","normalized":"Oo","canonical":{"stemmed":"Oo","simple":"Oo","full":"Oo"},"cardinality":1,"details":{"uninomial":{"uninomial":"Oo"}},"words":[{"verbatim":"Oo","normalized":"Oo","wordType":"UNINOMIAL","start":0,"end":2}],"id":"2b54a44f-a680-5a5c-9b68-4206605f2145","parserVersion":"test_version"}
+```
+
+Name: Nu
+
+Canonical: Nu
+
+Authorship:
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Nu","normalized":"Nu","canonical":{"stemmed":"Nu","simple":"Nu","full":"Nu"},"cardinality":1,"details":{"uninomial":{"uninomial":"Nu"}},"words":[{"verbatim":"Nu","normalized":"Nu","wordType":"UNINOMIAL","start":0,"end":2}],"id":"9d068582-37e2-5223-87d0-86562388b35c","parserVersion":"test_version"}
 ```
 
 Name: Ra Whitley 1931

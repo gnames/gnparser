@@ -4,6 +4,7 @@
 
 ## [v1.3.1]
 
+- Add [#182]: support `Do`, `Oo`, `Nu` 2-letter genera.
 - Add [#180]: Zenodo DOI.
 
 ## [v1.3.0]
@@ -33,7 +34,7 @@
 ## [v1.0.13]
 
 - Add: limit nightly builds to master only.
-- Fix [#159]: POST method contains wrong URL.
+- Fix [#159]: POST method contains w18rong URL.
 
 ## [v1.0.12]
 
