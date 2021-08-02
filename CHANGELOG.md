@@ -6,6 +6,7 @@
 
 - Add [#182]: support `Do`, `Oo`, `Nu` 2-letter genera.
 - Add [#53]: exceptions to annotations (`Bottaria nudum` for example).
+- Fix: names where sp epithet starts with `cf` can be parsed now.
 
 ## [v1.3.1]
 
@@ -285,6 +286,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.3.2]: https://github.com/gnames/gnparser/compare/v1.3.1...v1.3.2
 [v1.3.1]: https://github.com/gnames/gnparser/compare/v1.3.0...v1.3.1
 [v1.3.0]: https://github.com/gnames/gnparser/compare/v1.2.0...v1.3.0
 [v1.2.0]: https://github.com/gnames/gnparser/compare/v1.1.0...v1.2.0
