@@ -16,6 +16,7 @@
   * [Binomials with several authours](#binomials-with-several-authours)
   * [Binomials with several authors and a year](#binomials-with-several-authors-and-a-year)
   * [Binomials with basionym and combination authors](#binomials-with-basionym-and-combination-authors)
+  * [Binomials with exceptions](#binomials-with-exceptions)
   * [Infraspecies without rank (ICZN)](#infraspecies-without-rank-iczn)
   * [Legacy ICZN names with rank](#legacy-iczn-names-with-rank)
   * [Infraspecies with rank (ICN)](#infraspecies-with-rank-icn)
@@ -937,6 +938,16 @@ Authorship: Fischer v. Roslerstamm 1837
 {"parsed":true,"quality":1,"verbatim":"Orthosia kindermannii Fischer v. Roslerstamm, 1837","normalized":"Orthosia kindermannii Fischer v. Roslerstamm 1837","canonical":{"stemmed":"Orthosia kindermanni","simple":"Orthosia kindermannii","full":"Orthosia kindermannii"},"cardinality":2,"authorship":{"verbatim":"Fischer v. Roslerstamm, 1837","normalized":"Fischer v. Roslerstamm 1837","year":"1837","authors":["Fischer v. Roslerstamm"],"originalAuth":{"authors":["Fischer v. Roslerstamm"],"year":{"year":"1837"}}},"details":{"species":{"genus":"Orthosia","species":"kindermannii","authorship":{"verbatim":"Fischer v. Roslerstamm, 1837","normalized":"Fischer v. Roslerstamm 1837","year":"1837","authors":["Fischer v. Roslerstamm"],"originalAuth":{"authors":["Fischer v. Roslerstamm"],"year":{"year":"1837"}}}}},"words":[{"verbatim":"Orthosia","normalized":"Orthosia","wordType":"GENUS","start":0,"end":8},{"verbatim":"kindermannii","normalized":"kindermannii","wordType":"SPECIES","start":9,"end":21},{"verbatim":"Fischer","normalized":"Fischer","wordType":"AUTHOR_WORD","start":22,"end":29},{"verbatim":"v.","normalized":"v.","wordType":"AUTHOR_WORD","start":30,"end":32},{"verbatim":"Roslerstamm","normalized":"Roslerstamm","wordType":"AUTHOR_WORD","start":33,"end":44},{"verbatim":"1837","normalized":"1837","wordType":"YEAR","start":46,"end":50}],"id":"53abecc3-4083-5cdc-966c-09648fe9383d","parserVersion":"test_version"}
 ```
 
+Name: Boreophilia nomensis (Casey, 1910)
+
+Canonical: Boreophilia nomensis
+
+Authorship: (Casey, 1910)
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Boreophilia nomensis (Casey, 1910)","normalized":"Boreophilia nomensis (Casey 1910)","canonical":{"stemmed":"Boreophilia nomens","simple":"Boreophilia nomensis","full":"Boreophilia nomensis"},"cardinality":2,"authorship":{"verbatim":"(Casey, 1910)","normalized":"(Casey 1910)","year":"1910","authors":["Casey"],"originalAuth":{"authors":["Casey"],"year":{"year":"1910"}}},"details":{"species":{"genus":"Boreophilia","species":"nomensis","authorship":{"verbatim":"(Casey, 1910)","normalized":"(Casey 1910)","year":"1910","authors":["Casey"],"originalAuth":{"authors":["Casey"],"year":{"year":"1910"}}}}},"words":[{"verbatim":"Boreophilia","normalized":"Boreophilia","wordType":"GENUS","start":0,"end":11},{"verbatim":"nomensis","normalized":"nomensis","wordType":"SPECIES","start":12,"end":20},{"verbatim":"Casey","normalized":"Casey","wordType":"AUTHOR_WORD","start":22,"end":27},{"verbatim":"1910","normalized":"1910","wordType":"YEAR","start":29,"end":33}],"id":"3a0b09db-6e9b-513d-9d10-50b828c504f6","parserVersion":"test_version"}
+```
+
 Name: Nereidavus kulkovi Kul'kov in Kul'kov & Obut, 1973
 
 Canonical: Nereidavus kulkovi
@@ -1435,6 +1446,28 @@ Authorship: H. del Villar
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Armeria carpetana ssp. carpetana H. del Villar","normalized":"Armeria carpetana subsp. carpetana H. del Villar","canonical":{"stemmed":"Armeria carpetan carpetan","simple":"Armeria carpetana carpetana","full":"Armeria carpetana subsp. carpetana"},"cardinality":3,"authorship":{"verbatim":"H. del Villar","normalized":"H. del Villar","authors":["H. del Villar"],"originalAuth":{"authors":["H. del Villar"]}},"details":{"infraspecies":{"genus":"Armeria","species":"carpetana","infraspecies":[{"value":"carpetana","rank":"subsp.","authorship":{"verbatim":"H. del Villar","normalized":"H. del Villar","authors":["H. del Villar"],"originalAuth":{"authors":["H. del Villar"]}}}]}},"words":[{"verbatim":"Armeria","normalized":"Armeria","wordType":"GENUS","start":0,"end":7},{"verbatim":"carpetana","normalized":"carpetana","wordType":"SPECIES","start":8,"end":17},{"verbatim":"ssp.","normalized":"subsp.","wordType":"RANK","start":18,"end":22},{"verbatim":"carpetana","normalized":"carpetana","wordType":"INFRASPECIES","start":23,"end":32},{"verbatim":"H.","normalized":"H.","wordType":"AUTHOR_WORD","start":33,"end":35},{"verbatim":"del","normalized":"del","wordType":"AUTHOR_WORD","start":36,"end":39},{"verbatim":"Villar","normalized":"Villar","wordType":"AUTHOR_WORD","start":40,"end":46}],"id":"4b16116e-549d-56bf-959a-ff11edb25021","parserVersion":"test_version"}
+```
+
+### Binomials with exceptions
+
+Name: Navicula bacterium Frenguelli
+
+Canonical: Navicula bacterium
+
+Authorship: Frenguelli
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Navicula bacterium Frenguelli","normalized":"Navicula bacterium Frenguelli","canonical":{"stemmed":"Navicula bacteri","simple":"Navicula bacterium","full":"Navicula bacterium"},"cardinality":2,"authorship":{"verbatim":"Frenguelli","normalized":"Frenguelli","authors":["Frenguelli"],"originalAuth":{"authors":["Frenguelli"]}},"details":{"species":{"genus":"Navicula","species":"bacterium","authorship":{"verbatim":"Frenguelli","normalized":"Frenguelli","authors":["Frenguelli"],"originalAuth":{"authors":["Frenguelli"]}}}},"words":[{"verbatim":"Navicula","normalized":"Navicula","wordType":"GENUS","start":0,"end":8},{"verbatim":"bacterium","normalized":"bacterium","wordType":"SPECIES","start":9,"end":18},{"verbatim":"Frenguelli","normalized":"Frenguelli","wordType":"AUTHOR_WORD","start":19,"end":29}],"id":"0c0ce62a-8ea4-569c-b918-46e7f8c942ef","parserVersion":"test_version"}
+```
+
+Name: Bottaria nudum (Nyl.) Vain.
+
+Canonical: Bottaria nudum
+
+Authorship: (Nyl.) Vain.
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Bottaria nudum (Nyl.) Vain.","normalized":"Bottaria nudum (Nyl.) Vain.","canonical":{"stemmed":"Bottaria nud","simple":"Bottaria nudum","full":"Bottaria nudum"},"cardinality":2,"authorship":{"verbatim":"(Nyl.) Vain.","normalized":"(Nyl.) Vain.","authors":["Nyl.","Vain."],"originalAuth":{"authors":["Nyl."]},"combinationAuth":{"authors":["Vain."]}},"details":{"species":{"genus":"Bottaria","species":"nudum","authorship":{"verbatim":"(Nyl.) Vain.","normalized":"(Nyl.) Vain.","authors":["Nyl.","Vain."],"originalAuth":{"authors":["Nyl."]},"combinationAuth":{"authors":["Vain."]}}}},"words":[{"verbatim":"Bottaria","normalized":"Bottaria","wordType":"GENUS","start":0,"end":8},{"verbatim":"nudum","normalized":"nudum","wordType":"SPECIES","start":9,"end":14},{"verbatim":"Nyl.","normalized":"Nyl.","wordType":"AUTHOR_WORD","start":16,"end":20},{"verbatim":"Vain.","normalized":"Vain.","wordType":"AUTHOR_WORD","start":22,"end":27}],"id":"91799409-de6f-5341-ab24-336da9f6b80b","parserVersion":"test_version"}
 ```
 
 ### Infraspecies without rank (ICZN)

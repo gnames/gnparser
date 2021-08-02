@@ -113,6 +113,50 @@ func TestPreprocess(t *testing.T) {
 				[]byte(v.out), v.msg)
 		}
 	})
+	t.Run("NoParseLikeName", func(t *testing.T) {
+		data := []struct {
+			msg            string
+			name           string
+			likeAnnotation bool
+		}{
+			{"name", "Navicula bacterium", true},
+		}
+		for _, v := range data {
+			assert.Equal(t, ppr.IsException(v.name, ppr.NoParseException), v.likeAnnotation, v.msg)
+		}
+	})
+	t.Run("AnnotationLikeName", func(t *testing.T) {
+		data := []struct {
+			msg            string
+			name           string
+			likeAnnotation bool
+		}{
+			{"name", "Acrostichum nudum", true},
+			{"name", "Adiantum nudum", true},
+			{"name", "Africanthion nudum", true},
+			{"name", "Agathidium nudum", true},
+			{"name", "Aphaniosoma nudum", true},
+			{"name", "Aspidium nudum", true},
+			{"name", "Athyrium nudum", true},
+			{"name", "Blechnum nudum", true},
+			{"name", "Bottaria nudum", true},
+			{"name", "Gnathopleustes den", true},
+			{"name", "Lycopodium nudum", true},
+			{"name", "Nephrodium nudum", true},
+			{"name", "Paralvinella dela", true},
+			{"name", "Polypodium nudum", true},
+			{"name", "Polystichum nudum", true},
+			{"name", "Psilotum nudum", true},
+			{"name", "Ruteloryctes bis", true},
+			{"name", "Selenops ab", true},
+			{"name", "Tortolena dela", true},
+			{"name", "Trachyphloeosoma nudum", true},
+			{"name", "Zodarion van", true},
+		}
+		for _, v := range data {
+			assert.Equal(t, ppr.IsException(v.name, ppr.AnnotationException), v.likeAnnotation, v.msg)
+		}
+	})
 
 	t.Run("VirusLikeName", func(t *testing.T) {
 		data := []struct {
@@ -139,7 +183,7 @@ func TestPreprocess(t *testing.T) {
 			{"name17", "Homo sapiens coronavirus", false},
 		}
 		for _, v := range data {
-			assert.Equal(t, ppr.VirusLikeName(v.name), v.likeVirus, v.msg)
+			assert.Equal(t, ppr.IsException(v.name, ppr.VirusException), v.likeVirus, v.msg)
 		}
 	})
 

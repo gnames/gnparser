@@ -59,7 +59,7 @@ CultivarApostrophe <- '\'' / '‘' / '’' / '"' / '“' / '”'
 
 SpeciesEpithet <- !(AuthorEx) Word (_? Authorship)?
 
-Comparison <- 'cf' '.'?
+Comparison <- 'cf' '.'? &(SpaceCharEOI)
 
 Rank <- (RankForma / RankVar / RankSsp / RankOther / RankOtherUncommon /
   RankAgamo / RankNotho) (_? LowerGreek ('.' / &(SpaceCharEOI)))?

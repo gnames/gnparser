@@ -13,6 +13,57 @@ import (
 var hybridCharRe1 = regexp.MustCompile(`(^)[Xx](\p{Lu})`)
 var hybridCharRe2 = regexp.MustCompile(`(\s|^)[Xx](\s|$)`)
 
+var VirusException = map[string]string{
+	"Aspilota":      "vector",
+	"Bembidion":     "satellites",
+	"Bolivina":      "prion",
+	"Ceylonesmus":   "vector",
+	"Cryptops":      "vector",
+	"Culex":         "vector",
+	"Dasyproctus":   "cevirus",
+	"Desmoxytes":    "vector",
+	"Dicathais":     "vector",
+	"Erateina":      "satellites",
+	"Euragallia":    "prion",
+	"Exochus":       "virus",
+	"Hilara":        "vector",
+	"Ithomeis":      "satellites",
+	"Microgoneplax": "prion",
+	"Neoaemula":     "vector",
+	"Nephodia":      "satellites",
+	"Ophion":        "virus",
+	"Psenulus":      "trevirus",
+	"Tidabius":      "vector",
+}
+
+var AnnotationException = map[string]string{
+	"Acrostichum":      "nudum",
+	"Adiantum":         "nudum",
+	"Africanthion":     "nudum",
+	"Agathidium":       "nudum",
+	"Aphaniosoma":      "nudum",
+	"Aspidium":         "nudum",
+	"Athyrium":         "nudum",
+	"Blechnum":         "nudum",
+	"Bottaria":         "nudum",
+	"Gnathopleustes":   "den",
+	"Lycopodium":       "nudum",
+	"Nephrodium":       "nudum",
+	"Paralvinella":     "dela",
+	"Polypodium":       "nudum",
+	"Polystichum":      "nudum",
+	"Psilotum":         "nudum",
+	"Ruteloryctes":     "bis",
+	"Selenops":         "ab",
+	"Tortolena":        "dela",
+	"Trachyphloeosoma": "nudum",
+	"Zodarion":         "van",
+}
+
+var NoParseException = map[string]string{
+	"Navicula": "bacterium",
+}
+
 var notesRe = regexp.MustCompile(
 	`(?i)\s+(environmental|samples|species\s+group|species\s+complex|clade|group|author)\b.*$`,
 )
@@ -68,7 +119,7 @@ func Preprocess(bs []byte) *Preprocessor {
 	}
 	i := len(bs)
 	name := string(bs)
-	if !VirusLikeName(name) {
+	if !IsException(name, VirusException) {
 		pr.Virus = IsVirus(bs[0:i])
 	}
 	if pr.Virus {
@@ -76,6 +127,9 @@ func Preprocess(bs []byte) *Preprocessor {
 		return pr
 	}
 	pr.NoParse = NoParse(bs[0:i])
+	if IsException(name, NoParseException) {
+		pr.NoParse = false
+	}
 	if pr.NoParse {
 		return pr
 	}
@@ -96,50 +150,14 @@ func Preprocess(bs []byte) *Preprocessor {
 	return pr
 }
 
-// LikeVirus takes a string and checks it against known species that can
-// easily be mistaken for viruses. If the string belongs to one of such species
-// returns true.
-// The following names are covered:
-//    Aspilota vector Belokobylskij, 2007
-//    Ceylonesmus vector Chamberlin, 1941
-//    Cryptops (Cryptops) vector Chamberlin, 1939
-//    Culex vector Dyar & Knab, 1906
-//    Dasyproctus cevirus Leclercq, 1963
-//    Desmoxytes vector (Chamberlin, 1941)
-//    Dicathais vector Thornley, 1952
-//    Euragallia prion Kramer, 1976
-//    Exochus virus Gauld & Sithole, 2002
-//    Hilara vector Miller, 1923
-//    Microgoneplax prion Castro, 2007
-//    Neoaemula vector Mackinnon, Hiller, Long & Marshall, 2008
-//    Ophion virus Gauld & Mitchell, 1981
-//    Psenulus trevirus Leclercq, 1961
-//    Tidabius vector Chamberlin, 1931
-func VirusLikeName(name string) bool {
-	names := map[string]string{
-		"Aspilota":      "vector",
-		"Ceylonesmus":   "vector",
-		"Cryptops":      "vector",
-		"Culex":         "vector",
-		"Dasyproctus":   "cevirus",
-		"Desmoxytes":    "vector",
-		"Dicathais":     "vector",
-		"Euragallia":    "prion",
-		"Exochus":       "virus",
-		"Hilara":        "vector",
-		"Microgoneplax": "prion",
-		"Neoaemula":     "vector",
-		"Ophion":        "virus",
-		"Psenulus":      "trevirus",
-		"Tidabius":      "vector",
-	}
+func IsException(name string, names map[string]string) bool {
 	words := strings.Fields(name)
 	if len(words) < 2 {
 		return false
 	}
 	if epithet, ok := names[words[0]]; ok {
 		for _, w := range words[1:] {
-			if strings.HasPrefix(w, epithet) {
+			if w == epithet {
 				return true
 			}
 		}
@@ -161,6 +179,9 @@ func NormalizeHybridChar(bs []byte) []byte {
 // input.
 func Annotation(bs []byte) int {
 	i := len(bs)
+	if IsException(string(bs), AnnotationException) {
+		return i
+	}
 	regexps := []*regexp.Regexp{
 		notesRe, taxonConceptsRe1, taxonConceptsRe2, taxonConceptsRe3,
 		nomenConceptsRe, lastWordJunkRe, stopWordsRe,
@@ -178,8 +199,8 @@ func Annotation(bs []byte) int {
 	// `Anthurium Trustees of the British Museum` should not.
 	cultivarRankLoc := cultivarRankRe.FindIndex(bs[0:i])
 	ofLoc := ofWordRe.FindIndex(bs[0:i])
-	if(	len(ofLoc) > 0 && ofLoc[0] < i &&
-			(len(cultivarRankLoc) == 0 || cultivarRankLoc[0] > ofLoc[0])) {
+	if len(ofLoc) > 0 && ofLoc[0] < i &&
+		(len(cultivarRankLoc) == 0 || cultivarRankLoc[0] > ofLoc[0]) {
 		i = ofLoc[0]
 	}
 

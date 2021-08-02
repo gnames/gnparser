@@ -2,9 +2,13 @@
 
 ## Unreleased
 
-## [v1.3.1]
+## [v1.3.2]
 
 - Add [#182]: support `Do`, `Oo`, `Nu` 2-letter genera.
+- Add [#53]: exceptions to annotations (`Bottaria nudum` for example).
+
+## [v1.3.1]
+
 - Add [#180]: Zenodo DOI.
 
 ## [v1.3.0]
