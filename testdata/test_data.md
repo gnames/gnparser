@@ -13,8 +13,6 @@
   * [Binomials with authorship](#binomials-with-authorship)
   * [Binomials with an abbreviated genus](#binomials-with-an-abbreviated-genus)
   * [Binomials with abbreviated subgenus](#binomials-with-abbreviated-subgenus)
-  * [Binomials with several authours](#binomials-with-several-authours)
-  * [Binomials with several authors and a year](#binomials-with-several-authors-and-a-year)
   * [Binomials with basionym and combination authors](#binomials-with-basionym-and-combination-authors)
   * [Binomials with exceptions](#binomials-with-exceptions)
   * [Infraspecies without rank (ICZN)](#infraspecies-without-rank-iczn)
@@ -147,6 +145,85 @@ Authorship:
 
 ### Uninomials with authorship
 
+Name: Tremoctopus violaceus delle Chiaje, 1830
+
+Canonical: Tremoctopus violaceus
+
+Authorship: delle Chiaje, 1830
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Tremoctopus violaceus delle Chiaje, 1830","normalized":"Tremoctopus violaceus delle Chiaje 1830","canonical":{"stemmed":"Tremoctopus uiolace","simple":"Tremoctopus violaceus","full":"Tremoctopus violaceus"},"cardinality":2,"authorship":{"verbatim":"delle Chiaje, 1830","normalized":"delle Chiaje 1830","year":"1830","authors":["delle Chiaje"],"originalAuth":{"authors":["delle Chiaje"],"year":{"year":"1830"}}},"details":{"species":{"genus":"Tremoctopus","species":"violaceus","authorship":{"verbatim":"delle Chiaje, 1830","normalized":"delle Chiaje 1830","year":"1830","authors":["delle Chiaje"],"originalAuth":{"authors":["delle Chiaje"],"year":{"year":"1830"}}}}},"words":[{"verbatim":"Tremoctopus","normalized":"Tremoctopus","wordType":"GENUS","start":0,"end":11},{"verbatim":"violaceus","normalized":"violaceus","wordType":"SPECIES","start":12,"end":21},{"verbatim":"delle","normalized":"delle","wordType":"AUTHOR_WORD","start":22,"end":27},{"verbatim":"Chiaje","normalized":"Chiaje","wordType":"AUTHOR_WORD","start":28,"end":34},{"verbatim":"1830","normalized":"1830","wordType":"YEAR","start":36,"end":40}],"id":"0543be2c-c14c-57e3-9529-570446ee1de4","parserVersion":"test_version"}
+```
+
+Name: Protis hydrothermica ten Hove & Zibrowius, 1986
+
+Canonical: Protis hydrothermica
+
+Authorship: ten Hove & Zibrowius, 1986
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Protis hydrothermica ten Hove \u0026 Zibrowius, 1986","normalized":"Protis hydrothermica ten Hove \u0026 Zibrowius 1986","canonical":{"stemmed":"Protis hydrothermic","simple":"Protis hydrothermica","full":"Protis hydrothermica"},"cardinality":2,"authorship":{"verbatim":"ten Hove \u0026 Zibrowius, 1986","normalized":"ten Hove \u0026 Zibrowius 1986","year":"1986","authors":["ten Hove","Zibrowius"],"originalAuth":{"authors":["ten Hove","Zibrowius"],"year":{"year":"1986"}}},"details":{"species":{"genus":"Protis","species":"hydrothermica","authorship":{"verbatim":"ten Hove \u0026 Zibrowius, 1986","normalized":"ten Hove \u0026 Zibrowius 1986","year":"1986","authors":["ten Hove","Zibrowius"],"originalAuth":{"authors":["ten Hove","Zibrowius"],"year":{"year":"1986"}}}}},"words":[{"verbatim":"Protis","normalized":"Protis","wordType":"GENUS","start":0,"end":6},{"verbatim":"hydrothermica","normalized":"hydrothermica","wordType":"SPECIES","start":7,"end":20},{"verbatim":"ten","normalized":"ten","wordType":"AUTHOR_WORD","start":21,"end":24},{"verbatim":"Hove","normalized":"Hove","wordType":"AUTHOR_WORD","start":25,"end":29},{"verbatim":"Zibrowius","normalized":"Zibrowius","wordType":"AUTHOR_WORD","start":32,"end":41},{"verbatim":"1986","normalized":"1986","wordType":"YEAR","start":43,"end":47}],"id":"ef360f20-b14a-5eb2-a9ce-a5089956758b","parserVersion":"test_version"}
+```
+
+Name: Cladoniicola staurospora Diederich, van den Boom & Aptroot 2001
+
+Canonical: Cladoniicola staurospora
+
+Authorship: Diederich, van den Boom & Aptroot 2001
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Cladoniicola staurospora Diederich, van den Boom \u0026 Aptroot 2001","normalized":"Cladoniicola staurospora Diederich, van den Boom \u0026 Aptroot 2001","canonical":{"stemmed":"Cladoniicola staurospor","simple":"Cladoniicola staurospora","full":"Cladoniicola staurospora"},"cardinality":2,"authorship":{"verbatim":"Diederich, van den Boom \u0026 Aptroot 2001","normalized":"Diederich, van den Boom \u0026 Aptroot 2001","year":"2001","authors":["Diederich","van den Boom","Aptroot"],"originalAuth":{"authors":["Diederich","van den Boom","Aptroot"],"year":{"year":"2001"}}},"details":{"species":{"genus":"Cladoniicola","species":"staurospora","authorship":{"verbatim":"Diederich, van den Boom \u0026 Aptroot 2001","normalized":"Diederich, van den Boom \u0026 Aptroot 2001","year":"2001","authors":["Diederich","van den Boom","Aptroot"],"originalAuth":{"authors":["Diederich","van den Boom","Aptroot"],"year":{"year":"2001"}}}}},"words":[{"verbatim":"Cladoniicola","normalized":"Cladoniicola","wordType":"GENUS","start":0,"end":12},{"verbatim":"staurospora","normalized":"staurospora","wordType":"SPECIES","start":13,"end":24},{"verbatim":"Diederich","normalized":"Diederich","wordType":"AUTHOR_WORD","start":25,"end":34},{"verbatim":"van","normalized":"van","wordType":"AUTHOR_WORD","start":36,"end":39},{"verbatim":"den","normalized":"den","wordType":"AUTHOR_WORD","start":40,"end":43},{"verbatim":"Boom","normalized":"Boom","wordType":"AUTHOR_WORD","start":44,"end":48},{"verbatim":"Aptroot","normalized":"Aptroot","wordType":"AUTHOR_WORD","start":51,"end":58},{"verbatim":"2001","normalized":"2001","wordType":"YEAR","start":59,"end":63}],"id":"e59e3b01-311d-5dda-88e7-7e821440f5ee","parserVersion":"test_version"}
+```
+
+Name: Stagonospora polyspora M.T. Lucas & Sousa da Câmara 1934
+
+Canonical: Stagonospora polyspora
+
+Authorship: M. T. Lucas & Sousa da Câmara 1934
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Stagonospora polyspora M.T. Lucas \u0026 Sousa da Câmara 1934","normalized":"Stagonospora polyspora M. T. Lucas \u0026 Sousa da Câmara 1934","canonical":{"stemmed":"Stagonospora polyspor","simple":"Stagonospora polyspora","full":"Stagonospora polyspora"},"cardinality":2,"authorship":{"verbatim":"M.T. Lucas \u0026 Sousa da Câmara 1934","normalized":"M. T. Lucas \u0026 Sousa da Câmara 1934","year":"1934","authors":["M. T. Lucas","Sousa da Câmara"],"originalAuth":{"authors":["M. T. Lucas","Sousa da Câmara"],"year":{"year":"1934"}}},"details":{"species":{"genus":"Stagonospora","species":"polyspora","authorship":{"verbatim":"M.T. Lucas \u0026 Sousa da Câmara 1934","normalized":"M. T. Lucas \u0026 Sousa da Câmara 1934","year":"1934","authors":["M. T. Lucas","Sousa da Câmara"],"originalAuth":{"authors":["M. T. Lucas","Sousa da Câmara"],"year":{"year":"1934"}}}}},"words":[{"verbatim":"Stagonospora","normalized":"Stagonospora","wordType":"GENUS","start":0,"end":12},{"verbatim":"polyspora","normalized":"polyspora","wordType":"SPECIES","start":13,"end":22},{"verbatim":"M.","normalized":"M.","wordType":"AUTHOR_WORD","start":23,"end":25},{"verbatim":"T.","normalized":"T.","wordType":"AUTHOR_WORD","start":25,"end":27},{"verbatim":"Lucas","normalized":"Lucas","wordType":"AUTHOR_WORD","start":28,"end":33},{"verbatim":"Sousa","normalized":"Sousa","wordType":"AUTHOR_WORD","start":36,"end":41},{"verbatim":"da","normalized":"da","wordType":"AUTHOR_WORD","start":42,"end":44},{"verbatim":"Câmara","normalized":"Câmara","wordType":"AUTHOR_WORD","start":45,"end":51},{"verbatim":"1934","normalized":"1934","wordType":"YEAR","start":52,"end":56}],"id":"f03d53d7-2db1-591f-8727-6b77c0af2e0c","parserVersion":"test_version"}
+```
+
+Name: Stagonospora polyspora M.T. Lucas et Sousa da Câmara 1934
+
+Canonical: Stagonospora polyspora
+
+Authorship: M. T. Lucas & Sousa da Câmara 1934
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Stagonospora polyspora M.T. Lucas et Sousa da Câmara 1934","normalized":"Stagonospora polyspora M. T. Lucas \u0026 Sousa da Câmara 1934","canonical":{"stemmed":"Stagonospora polyspor","simple":"Stagonospora polyspora","full":"Stagonospora polyspora"},"cardinality":2,"authorship":{"verbatim":"M.T. Lucas et Sousa da Câmara 1934","normalized":"M. T. Lucas \u0026 Sousa da Câmara 1934","year":"1934","authors":["M. T. Lucas","Sousa da Câmara"],"originalAuth":{"authors":["M. T. Lucas","Sousa da Câmara"],"year":{"year":"1934"}}},"details":{"species":{"genus":"Stagonospora","species":"polyspora","authorship":{"verbatim":"M.T. Lucas et Sousa da Câmara 1934","normalized":"M. T. Lucas \u0026 Sousa da Câmara 1934","year":"1934","authors":["M. T. Lucas","Sousa da Câmara"],"originalAuth":{"authors":["M. T. Lucas","Sousa da Câmara"],"year":{"year":"1934"}}}}},"words":[{"verbatim":"Stagonospora","normalized":"Stagonospora","wordType":"GENUS","start":0,"end":12},{"verbatim":"polyspora","normalized":"polyspora","wordType":"SPECIES","start":13,"end":22},{"verbatim":"M.","normalized":"M.","wordType":"AUTHOR_WORD","start":23,"end":25},{"verbatim":"T.","normalized":"T.","wordType":"AUTHOR_WORD","start":25,"end":27},{"verbatim":"Lucas","normalized":"Lucas","wordType":"AUTHOR_WORD","start":28,"end":33},{"verbatim":"Sousa","normalized":"Sousa","wordType":"AUTHOR_WORD","start":37,"end":42},{"verbatim":"da","normalized":"da","wordType":"AUTHOR_WORD","start":43,"end":45},{"verbatim":"Câmara","normalized":"Câmara","wordType":"AUTHOR_WORD","start":46,"end":52},{"verbatim":"1934","normalized":"1934","wordType":"YEAR","start":53,"end":57}],"id":"a8a48393-0ca9-5916-83e3-fb32b7b0c422","parserVersion":"test_version"}
+```
+
+Name: Pseudocercospora dendrobii U. Braun & Crous 2003
+
+Canonical: Pseudocercospora dendrobii
+
+Authorship: U. Braun & Crous 2003
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Pseudocercospora dendrobii U. Braun \u0026 Crous 2003","normalized":"Pseudocercospora dendrobii U. Braun \u0026 Crous 2003","canonical":{"stemmed":"Pseudocercospora dendrobi","simple":"Pseudocercospora dendrobii","full":"Pseudocercospora dendrobii"},"cardinality":2,"authorship":{"verbatim":"U. Braun \u0026 Crous 2003","normalized":"U. Braun \u0026 Crous 2003","year":"2003","authors":["U. Braun","Crous"],"originalAuth":{"authors":["U. Braun","Crous"],"year":{"year":"2003"}}},"details":{"species":{"genus":"Pseudocercospora","species":"dendrobii","authorship":{"verbatim":"U. Braun \u0026 Crous 2003","normalized":"U. Braun \u0026 Crous 2003","year":"2003","authors":["U. Braun","Crous"],"originalAuth":{"authors":["U. Braun","Crous"],"year":{"year":"2003"}}}}},"words":[{"verbatim":"Pseudocercospora","normalized":"Pseudocercospora","wordType":"GENUS","start":0,"end":16},{"verbatim":"dendrobii","normalized":"dendrobii","wordType":"SPECIES","start":17,"end":26},{"verbatim":"U.","normalized":"U.","wordType":"AUTHOR_WORD","start":27,"end":29},{"verbatim":"Braun","normalized":"Braun","wordType":"AUTHOR_WORD","start":30,"end":35},{"verbatim":"Crous","normalized":"Crous","wordType":"AUTHOR_WORD","start":38,"end":43},{"verbatim":"2003","normalized":"2003","wordType":"YEAR","start":44,"end":48}],"id":"afd958fc-82a5-5551-951b-a725a49d3df0","parserVersion":"test_version"}
+```
+
+Name: Abaxisotima acuminata (Wang, Yuwen & Xiangwei Liu 1996)
+
+Canonical: Abaxisotima acuminata
+
+Authorship: (Wang, Yuwen & Xiangwei Liu 1996)
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Abaxisotima acuminata (Wang, Yuwen \u0026 Xiangwei Liu 1996)","normalized":"Abaxisotima acuminata (Wang, Yuwen \u0026 Xiangwei Liu 1996)","canonical":{"stemmed":"Abaxisotima acuminat","simple":"Abaxisotima acuminata","full":"Abaxisotima acuminata"},"cardinality":2,"authorship":{"verbatim":"(Wang, Yuwen \u0026 Xiangwei Liu 1996)","normalized":"(Wang, Yuwen \u0026 Xiangwei Liu 1996)","year":"1996","authors":["Wang","Yuwen","Xiangwei Liu"],"originalAuth":{"authors":["Wang","Yuwen","Xiangwei Liu"],"year":{"year":"1996"}}},"details":{"species":{"genus":"Abaxisotima","species":"acuminata","authorship":{"verbatim":"(Wang, Yuwen \u0026 Xiangwei Liu 1996)","normalized":"(Wang, Yuwen \u0026 Xiangwei Liu 1996)","year":"1996","authors":["Wang","Yuwen","Xiangwei Liu"],"originalAuth":{"authors":["Wang","Yuwen","Xiangwei Liu"],"year":{"year":"1996"}}}}},"words":[{"verbatim":"Abaxisotima","normalized":"Abaxisotima","wordType":"GENUS","start":0,"end":11},{"verbatim":"acuminata","normalized":"acuminata","wordType":"SPECIES","start":12,"end":21},{"verbatim":"Wang","normalized":"Wang","wordType":"AUTHOR_WORD","start":23,"end":27},{"verbatim":"Yuwen","normalized":"Yuwen","wordType":"AUTHOR_WORD","start":29,"end":34},{"verbatim":"Xiangwei","normalized":"Xiangwei","wordType":"AUTHOR_WORD","start":37,"end":45},{"verbatim":"Liu","normalized":"Liu","wordType":"AUTHOR_WORD","start":46,"end":49},{"verbatim":"1996","normalized":"1996","wordType":"YEAR","start":50,"end":54}],"id":"5eecff7d-181c-508c-832d-df4619b8b027","parserVersion":"test_version"}
+```
+
+Name: Aboilomimus sichuanensis ornatus Liu, Xiang-wei, M. Zhou, W Bi & L. Tang, 2009
+
+Canonical: Aboilomimus sichuanensis ornatus
+
+Authorship: Liu, Xiang-wei, M. Zhou, W Bi & L. Tang 2009
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Aboilomimus sichuanensis ornatus Liu, Xiang-wei, M. Zhou, W Bi \u0026 L. Tang, 2009","normalized":"Aboilomimus sichuanensis ornatus Liu, Xiang-wei, M. Zhou, W Bi \u0026 L. Tang 2009","canonical":{"stemmed":"Aboilomimus sichuanens ornat","simple":"Aboilomimus sichuanensis ornatus","full":"Aboilomimus sichuanensis ornatus"},"cardinality":3,"authorship":{"verbatim":"Liu, Xiang-wei, M. Zhou, W Bi \u0026 L. Tang, 2009","normalized":"Liu, Xiang-wei, M. Zhou, W Bi \u0026 L. Tang 2009","year":"2009","authors":["Liu","Xiang-wei","M. Zhou","W Bi","L. Tang"],"originalAuth":{"authors":["Liu","Xiang-wei","M. Zhou","W Bi","L. Tang"],"year":{"year":"2009"}}},"details":{"infraspecies":{"genus":"Aboilomimus","species":"sichuanensis","infraspecies":[{"value":"ornatus","authorship":{"verbatim":"Liu, Xiang-wei, M. Zhou, W Bi \u0026 L. Tang, 2009","normalized":"Liu, Xiang-wei, M. Zhou, W Bi \u0026 L. Tang 2009","year":"2009","authors":["Liu","Xiang-wei","M. Zhou","W Bi","L. Tang"],"originalAuth":{"authors":["Liu","Xiang-wei","M. Zhou","W Bi","L. Tang"],"year":{"year":"2009"}}}}]}},"words":[{"verbatim":"Aboilomimus","normalized":"Aboilomimus","wordType":"GENUS","start":0,"end":11},{"verbatim":"sichuanensis","normalized":"sichuanensis","wordType":"SPECIES","start":12,"end":24},{"verbatim":"ornatus","normalized":"ornatus","wordType":"INFRASPECIES","start":25,"end":32},{"verbatim":"Liu","normalized":"Liu","wordType":"AUTHOR_WORD","start":33,"end":36},{"verbatim":"Xiang-wei","normalized":"Xiang-wei","wordType":"AUTHOR_WORD","start":38,"end":47},{"verbatim":"M.","normalized":"M.","wordType":"AUTHOR_WORD","start":49,"end":51},{"verbatim":"Zhou","normalized":"Zhou","wordType":"AUTHOR_WORD","start":52,"end":56},{"verbatim":"W","normalized":"W","wordType":"AUTHOR_WORD","start":58,"end":59},{"verbatim":"Bi","normalized":"Bi","wordType":"AUTHOR_WORD","start":60,"end":62},{"verbatim":"L.","normalized":"L.","wordType":"AUTHOR_WORD","start":65,"end":67},{"verbatim":"Tang","normalized":"Tang","wordType":"AUTHOR_WORD","start":68,"end":72},{"verbatim":"2009","normalized":"2009","wordType":"YEAR","start":74,"end":78}],"id":"25ac4ba8-6595-5ab3-8463-f99f738bf4e4","parserVersion":"test_version"}
+```
 Name: Pseudocercospora Speg.
 
 Canonical: Pseudocercospora
@@ -778,6 +855,76 @@ Authorship:
 
 ### Binomials with authorship
 
+Name: Nemcia epacridoides (Meissner)Crisp
+
+Canonical: Nemcia epacridoides
+
+Authorship: (Meissner) Crisp
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Nemcia epacridoides (Meissner)Crisp","normalized":"Nemcia epacridoides (Meissner) Crisp","canonical":{"stemmed":"Nemcia epacridoid","simple":"Nemcia epacridoides","full":"Nemcia epacridoides"},"cardinality":2,"authorship":{"verbatim":"(Meissner)Crisp","normalized":"(Meissner) Crisp","authors":["Meissner","Crisp"],"originalAuth":{"authors":["Meissner"]},"combinationAuth":{"authors":["Crisp"]}},"details":{"species":{"genus":"Nemcia","species":"epacridoides","authorship":{"verbatim":"(Meissner)Crisp","normalized":"(Meissner) Crisp","authors":["Meissner","Crisp"],"originalAuth":{"authors":["Meissner"]},"combinationAuth":{"authors":["Crisp"]}}}},"words":[{"verbatim":"Nemcia","normalized":"Nemcia","wordType":"GENUS","start":0,"end":6},{"verbatim":"epacridoides","normalized":"epacridoides","wordType":"SPECIES","start":7,"end":19},{"verbatim":"Meissner","normalized":"Meissner","wordType":"AUTHOR_WORD","start":21,"end":29},{"verbatim":"Crisp","normalized":"Crisp","wordType":"AUTHOR_WORD","start":30,"end":35}],"id":"6ea9d43f-33c1-5bed-b9a9-edb164966eb6","parserVersion":"test_version"}
+```
+
+Name: Pseudocercospora dendrobii Goh & W.H. Hsieh 1990
+
+Canonical: Pseudocercospora dendrobii
+
+Authorship: Goh & W. H. Hsieh 1990
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Pseudocercospora dendrobii Goh \u0026 W.H. Hsieh 1990","normalized":"Pseudocercospora dendrobii Goh \u0026 W. H. Hsieh 1990","canonical":{"stemmed":"Pseudocercospora dendrobi","simple":"Pseudocercospora dendrobii","full":"Pseudocercospora dendrobii"},"cardinality":2,"authorship":{"verbatim":"Goh \u0026 W.H. Hsieh 1990","normalized":"Goh \u0026 W. H. Hsieh 1990","year":"1990","authors":["Goh","W. H. Hsieh"],"originalAuth":{"authors":["Goh","W. H. Hsieh"],"year":{"year":"1990"}}},"details":{"species":{"genus":"Pseudocercospora","species":"dendrobii","authorship":{"verbatim":"Goh \u0026 W.H. Hsieh 1990","normalized":"Goh \u0026 W. H. Hsieh 1990","year":"1990","authors":["Goh","W. H. Hsieh"],"originalAuth":{"authors":["Goh","W. H. Hsieh"],"year":{"year":"1990"}}}}},"words":[{"verbatim":"Pseudocercospora","normalized":"Pseudocercospora","wordType":"GENUS","start":0,"end":16},{"verbatim":"dendrobii","normalized":"dendrobii","wordType":"SPECIES","start":17,"end":26},{"verbatim":"Goh","normalized":"Goh","wordType":"AUTHOR_WORD","start":27,"end":30},{"verbatim":"W.","normalized":"W.","wordType":"AUTHOR_WORD","start":33,"end":35},{"verbatim":"H.","normalized":"H.","wordType":"AUTHOR_WORD","start":35,"end":37},{"verbatim":"Hsieh","normalized":"Hsieh","wordType":"AUTHOR_WORD","start":38,"end":43},{"verbatim":"1990","normalized":"1990","wordType":"YEAR","start":44,"end":48}],"id":"988fd6ba-0221-5b62-a041-fb81addc4465","parserVersion":"test_version"}
+```
+
+Name: Pseudocercospora dendrobii Goh and W.H. Hsieh 1990
+
+Canonical: Pseudocercospora dendrobii
+
+Authorship: Goh & W. H. Hsieh 1990
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Pseudocercospora dendrobii Goh and W.H. Hsieh 1990","normalized":"Pseudocercospora dendrobii Goh \u0026 W. H. Hsieh 1990","canonical":{"stemmed":"Pseudocercospora dendrobi","simple":"Pseudocercospora dendrobii","full":"Pseudocercospora dendrobii"},"cardinality":2,"authorship":{"verbatim":"Goh and W.H. Hsieh 1990","normalized":"Goh \u0026 W. H. Hsieh 1990","year":"1990","authors":["Goh","W. H. Hsieh"],"originalAuth":{"authors":["Goh","W. H. Hsieh"],"year":{"year":"1990"}}},"details":{"species":{"genus":"Pseudocercospora","species":"dendrobii","authorship":{"verbatim":"Goh and W.H. Hsieh 1990","normalized":"Goh \u0026 W. H. Hsieh 1990","year":"1990","authors":["Goh","W. H. Hsieh"],"originalAuth":{"authors":["Goh","W. H. Hsieh"],"year":{"year":"1990"}}}}},"words":[{"verbatim":"Pseudocercospora","normalized":"Pseudocercospora","wordType":"GENUS","start":0,"end":16},{"verbatim":"dendrobii","normalized":"dendrobii","wordType":"SPECIES","start":17,"end":26},{"verbatim":"Goh","normalized":"Goh","wordType":"AUTHOR_WORD","start":27,"end":30},{"verbatim":"W.","normalized":"W.","wordType":"AUTHOR_WORD","start":35,"end":37},{"verbatim":"H.","normalized":"H.","wordType":"AUTHOR_WORD","start":37,"end":39},{"verbatim":"Hsieh","normalized":"Hsieh","wordType":"AUTHOR_WORD","start":40,"end":45},{"verbatim":"1990","normalized":"1990","wordType":"YEAR","start":46,"end":50}],"id":"4d701dca-8774-5a5e-9378-11f60c0e735c","parserVersion":"test_version"}
+```
+
+Name: Pseudocercospora dendrobii Goh et W.H. Hsieh 1990
+
+Canonical: Pseudocercospora dendrobii
+
+Authorship: Goh & W. H. Hsieh 1990
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Pseudocercospora dendrobii Goh et W.H. Hsieh 1990","normalized":"Pseudocercospora dendrobii Goh \u0026 W. H. Hsieh 1990","canonical":{"stemmed":"Pseudocercospora dendrobi","simple":"Pseudocercospora dendrobii","full":"Pseudocercospora dendrobii"},"cardinality":2,"authorship":{"verbatim":"Goh et W.H. Hsieh 1990","normalized":"Goh \u0026 W. H. Hsieh 1990","year":"1990","authors":["Goh","W. H. Hsieh"],"originalAuth":{"authors":["Goh","W. H. Hsieh"],"year":{"year":"1990"}}},"details":{"species":{"genus":"Pseudocercospora","species":"dendrobii","authorship":{"verbatim":"Goh et W.H. Hsieh 1990","normalized":"Goh \u0026 W. H. Hsieh 1990","year":"1990","authors":["Goh","W. H. Hsieh"],"originalAuth":{"authors":["Goh","W. H. Hsieh"],"year":{"year":"1990"}}}}},"words":[{"verbatim":"Pseudocercospora","normalized":"Pseudocercospora","wordType":"GENUS","start":0,"end":16},{"verbatim":"dendrobii","normalized":"dendrobii","wordType":"SPECIES","start":17,"end":26},{"verbatim":"Goh","normalized":"Goh","wordType":"AUTHOR_WORD","start":27,"end":30},{"verbatim":"W.","normalized":"W.","wordType":"AUTHOR_WORD","start":34,"end":36},{"verbatim":"H.","normalized":"H.","wordType":"AUTHOR_WORD","start":36,"end":38},{"verbatim":"Hsieh","normalized":"Hsieh","wordType":"AUTHOR_WORD","start":39,"end":44},{"verbatim":"1990","normalized":"1990","wordType":"YEAR","start":45,"end":49}],"id":"13175b62-b95b-53b7-8d88-1be6fca794ec","parserVersion":"test_version"}
+```
+
+Name: Schottera nicaeënsis (J.V. Lamouroux ex Duby) Guiry & Hollenberg
+
+Canonical: Schottera nicaeensis
+
+Authorship: (J. V. Lamouroux ex Duby) Guiry & Hollenberg
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Ex authors are not required"},{"quality":2,"warning":"Non-standard characters in canonical"}],"verbatim":"Schottera nicaeënsis (J.V. Lamouroux ex Duby) Guiry \u0026 Hollenberg","normalized":"Schottera nicaeensis (J. V. Lamouroux ex Duby) Guiry \u0026 Hollenberg","canonical":{"stemmed":"Schottera nicaeens","simple":"Schottera nicaeensis","full":"Schottera nicaeensis"},"cardinality":2,"authorship":{"verbatim":"(J.V. Lamouroux ex Duby) Guiry \u0026 Hollenberg","normalized":"(J. V. Lamouroux ex Duby) Guiry \u0026 Hollenberg","authors":["J. V. Lamouroux","Guiry","Hollenberg"],"originalAuth":{"authors":["J. V. Lamouroux"],"exAuthors":{"authors":["Duby"]}},"combinationAuth":{"authors":["Guiry","Hollenberg"]}},"details":{"species":{"genus":"Schottera","species":"nicaeensis","authorship":{"verbatim":"(J.V. Lamouroux ex Duby) Guiry \u0026 Hollenberg","normalized":"(J. V. Lamouroux ex Duby) Guiry \u0026 Hollenberg","authors":["J. V. Lamouroux","Guiry","Hollenberg"],"originalAuth":{"authors":["J. V. Lamouroux"],"exAuthors":{"authors":["Duby"]}},"combinationAuth":{"authors":["Guiry","Hollenberg"]}}}},"words":[{"verbatim":"Schottera","normalized":"Schottera","wordType":"GENUS","start":0,"end":9},{"verbatim":"nicaeënsis","normalized":"nicaeensis","wordType":"SPECIES","start":10,"end":20},{"verbatim":"J.","normalized":"J.","wordType":"AUTHOR_WORD","start":22,"end":24},{"verbatim":"V.","normalized":"V.","wordType":"AUTHOR_WORD","start":24,"end":26},{"verbatim":"Lamouroux","normalized":"Lamouroux","wordType":"AUTHOR_WORD","start":27,"end":36},{"verbatim":"Duby","normalized":"Duby","wordType":"AUTHOR_WORD","start":40,"end":44},{"verbatim":"Guiry","normalized":"Guiry","wordType":"AUTHOR_WORD","start":46,"end":51},{"verbatim":"Hollenberg","normalized":"Hollenberg","wordType":"AUTHOR_WORD","start":54,"end":64}],"id":"ffeb3703-63e5-5ff3-b296-582c0c3a3373","parserVersion":"test_version"}
+```
+
+Name: Laevapex vazi dos Santos, 1989
+
+Canonical: Laevapex vazi
+
+Authorship: dos Santos, 1989
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Laevapex vazi dos Santos, 1989","normalized":"Laevapex vazi dos Santos 1989","canonical":{"stemmed":"Laevapex uaz","simple":"Laevapex vazi","full":"Laevapex vazi"},"cardinality":2,"authorship":{"verbatim":"dos Santos, 1989","normalized":"dos Santos 1989","year":"1989","authors":["dos Santos"],"originalAuth":{"authors":["dos Santos"],"year":{"year":"1989"}}},"details":{"species":{"genus":"Laevapex","species":"vazi","authorship":{"verbatim":"dos Santos, 1989","normalized":"dos Santos 1989","year":"1989","authors":["dos Santos"],"originalAuth":{"authors":["dos Santos"],"year":{"year":"1989"}}}}},"words":[{"verbatim":"Laevapex","normalized":"Laevapex","wordType":"GENUS","start":0,"end":8},{"verbatim":"vazi","normalized":"vazi","wordType":"SPECIES","start":9,"end":13},{"verbatim":"dos","normalized":"dos","wordType":"AUTHOR_WORD","start":14,"end":17},{"verbatim":"Santos","normalized":"Santos","wordType":"AUTHOR_WORD","start":18,"end":24},{"verbatim":"1989","normalized":"1989","wordType":"YEAR","start":26,"end":30}],"id":"34df1cb6-bba1-5115-8e9c-c27df4005291","parserVersion":"test_version"}
+```
+
+Name: Periclimenaeus aurae dos Santos, Calado & Araújo, 2008
+
+Canonical: Periclimenaeus aurae
+
+Authorship: dos Santos, Calado & Araújo, 2008
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Periclimenaeus aurae dos Santos, Calado \u0026 Araújo, 2008","normalized":"Periclimenaeus aurae dos Santos, Calado \u0026 Araújo 2008","canonical":{"stemmed":"Periclimenaeus aur","simple":"Periclimenaeus aurae","full":"Periclimenaeus aurae"},"cardinality":2,"authorship":{"verbatim":"dos Santos, Calado \u0026 Araújo, 2008","normalized":"dos Santos, Calado \u0026 Araújo 2008","year":"2008","authors":["dos Santos","Calado","Araújo"],"originalAuth":{"authors":["dos Santos","Calado","Araújo"],"year":{"year":"2008"}}},"details":{"species":{"genus":"Periclimenaeus","species":"aurae","authorship":{"verbatim":"dos Santos, Calado \u0026 Araújo, 2008","normalized":"dos Santos, Calado \u0026 Araújo 2008","year":"2008","authors":["dos Santos","Calado","Araújo"],"originalAuth":{"authors":["dos Santos","Calado","Araújo"],"year":{"year":"2008"}}}}},"words":[{"verbatim":"Periclimenaeus","normalized":"Periclimenaeus","wordType":"GENUS","start":0,"end":14},{"verbatim":"aurae","normalized":"aurae","wordType":"SPECIES","start":15,"end":20},{"verbatim":"dos","normalized":"dos","wordType":"AUTHOR_WORD","start":21,"end":24},{"verbatim":"Santos","normalized":"Santos","wordType":"AUTHOR_WORD","start":25,"end":31},{"verbatim":"Calado","normalized":"Calado","wordType":"AUTHOR_WORD","start":33,"end":39},{"verbatim":"Araújo","normalized":"Araújo","wordType":"AUTHOR_WORD","start":42,"end":48},{"verbatim":"2008","normalized":"2008","wordType":"YEAR","start":50,"end":54}],"id":"261677a4-e52c-5cdf-95f8-a1138404112c","parserVersion":"test_version"}
+```
+
 Name: Nototriton matama Boza-Oviedo, Rovito, Chaves, García-Rodríguez, Artavia, Bolaños, and Wake, 2012
 
 Canonical: Nototriton matama
@@ -1262,119 +1409,6 @@ Authorship: Kerr 1792
 {"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Abbreviated subgenus"}],"verbatim":"Simia (Cercop.) nasuus Kerr 1792","normalized":"Simia (Cercop.) nasuus Kerr 1792","canonical":{"stemmed":"Simia nasu","simple":"Simia nasuus","full":"Simia nasuus"},"cardinality":2,"authorship":{"verbatim":"Kerr 1792","normalized":"Kerr 1792","year":"1792","authors":["Kerr"],"originalAuth":{"authors":["Kerr"],"year":{"year":"1792"}}},"details":{"species":{"genus":"Simia","subgenus":"Cercop.","species":"nasuus","authorship":{"verbatim":"Kerr 1792","normalized":"Kerr 1792","year":"1792","authors":["Kerr"],"originalAuth":{"authors":["Kerr"],"year":{"year":"1792"}}}}},"words":[{"verbatim":"Simia","normalized":"Simia","wordType":"GENUS","start":0,"end":5},{"verbatim":"Cercop.","normalized":"Cercop.","wordType":"INFRA_GENUS","start":7,"end":14},{"verbatim":"nasuus","normalized":"nasuus","wordType":"SPECIES","start":16,"end":22},{"verbatim":"Kerr","normalized":"Kerr","wordType":"AUTHOR_WORD","start":23,"end":27},{"verbatim":"1792","normalized":"1792","wordType":"YEAR","start":28,"end":32}],"id":"2f54aece-f7e0-5ed2-8744-f135ceab1c7f","parserVersion":"test_version"}
 ```
 
-### Binomials with several authours
-
-Name: Nemcia epacridoides (Meissner)Crisp
-
-Canonical: Nemcia epacridoides
-
-Authorship: (Meissner) Crisp
-
-```json
-{"parsed":true,"quality":1,"verbatim":"Nemcia epacridoides (Meissner)Crisp","normalized":"Nemcia epacridoides (Meissner) Crisp","canonical":{"stemmed":"Nemcia epacridoid","simple":"Nemcia epacridoides","full":"Nemcia epacridoides"},"cardinality":2,"authorship":{"verbatim":"(Meissner)Crisp","normalized":"(Meissner) Crisp","authors":["Meissner","Crisp"],"originalAuth":{"authors":["Meissner"]},"combinationAuth":{"authors":["Crisp"]}},"details":{"species":{"genus":"Nemcia","species":"epacridoides","authorship":{"verbatim":"(Meissner)Crisp","normalized":"(Meissner) Crisp","authors":["Meissner","Crisp"],"originalAuth":{"authors":["Meissner"]},"combinationAuth":{"authors":["Crisp"]}}}},"words":[{"verbatim":"Nemcia","normalized":"Nemcia","wordType":"GENUS","start":0,"end":6},{"verbatim":"epacridoides","normalized":"epacridoides","wordType":"SPECIES","start":7,"end":19},{"verbatim":"Meissner","normalized":"Meissner","wordType":"AUTHOR_WORD","start":21,"end":29},{"verbatim":"Crisp","normalized":"Crisp","wordType":"AUTHOR_WORD","start":30,"end":35}],"id":"6ea9d43f-33c1-5bed-b9a9-edb164966eb6","parserVersion":"test_version"}
-```
-
-Name: Pseudocercospora dendrobii Goh & W.H. Hsieh 1990
-
-Canonical: Pseudocercospora dendrobii
-
-Authorship: Goh & W. H. Hsieh 1990
-
-```json
-{"parsed":true,"quality":1,"verbatim":"Pseudocercospora dendrobii Goh \u0026 W.H. Hsieh 1990","normalized":"Pseudocercospora dendrobii Goh \u0026 W. H. Hsieh 1990","canonical":{"stemmed":"Pseudocercospora dendrobi","simple":"Pseudocercospora dendrobii","full":"Pseudocercospora dendrobii"},"cardinality":2,"authorship":{"verbatim":"Goh \u0026 W.H. Hsieh 1990","normalized":"Goh \u0026 W. H. Hsieh 1990","year":"1990","authors":["Goh","W. H. Hsieh"],"originalAuth":{"authors":["Goh","W. H. Hsieh"],"year":{"year":"1990"}}},"details":{"species":{"genus":"Pseudocercospora","species":"dendrobii","authorship":{"verbatim":"Goh \u0026 W.H. Hsieh 1990","normalized":"Goh \u0026 W. H. Hsieh 1990","year":"1990","authors":["Goh","W. H. Hsieh"],"originalAuth":{"authors":["Goh","W. H. Hsieh"],"year":{"year":"1990"}}}}},"words":[{"verbatim":"Pseudocercospora","normalized":"Pseudocercospora","wordType":"GENUS","start":0,"end":16},{"verbatim":"dendrobii","normalized":"dendrobii","wordType":"SPECIES","start":17,"end":26},{"verbatim":"Goh","normalized":"Goh","wordType":"AUTHOR_WORD","start":27,"end":30},{"verbatim":"W.","normalized":"W.","wordType":"AUTHOR_WORD","start":33,"end":35},{"verbatim":"H.","normalized":"H.","wordType":"AUTHOR_WORD","start":35,"end":37},{"verbatim":"Hsieh","normalized":"Hsieh","wordType":"AUTHOR_WORD","start":38,"end":43},{"verbatim":"1990","normalized":"1990","wordType":"YEAR","start":44,"end":48}],"id":"988fd6ba-0221-5b62-a041-fb81addc4465","parserVersion":"test_version"}
-```
-
-Name: Pseudocercospora dendrobii Goh and W.H. Hsieh 1990
-
-Canonical: Pseudocercospora dendrobii
-
-Authorship: Goh & W. H. Hsieh 1990
-
-```json
-{"parsed":true,"quality":1,"verbatim":"Pseudocercospora dendrobii Goh and W.H. Hsieh 1990","normalized":"Pseudocercospora dendrobii Goh \u0026 W. H. Hsieh 1990","canonical":{"stemmed":"Pseudocercospora dendrobi","simple":"Pseudocercospora dendrobii","full":"Pseudocercospora dendrobii"},"cardinality":2,"authorship":{"verbatim":"Goh and W.H. Hsieh 1990","normalized":"Goh \u0026 W. H. Hsieh 1990","year":"1990","authors":["Goh","W. H. Hsieh"],"originalAuth":{"authors":["Goh","W. H. Hsieh"],"year":{"year":"1990"}}},"details":{"species":{"genus":"Pseudocercospora","species":"dendrobii","authorship":{"verbatim":"Goh and W.H. Hsieh 1990","normalized":"Goh \u0026 W. H. Hsieh 1990","year":"1990","authors":["Goh","W. H. Hsieh"],"originalAuth":{"authors":["Goh","W. H. Hsieh"],"year":{"year":"1990"}}}}},"words":[{"verbatim":"Pseudocercospora","normalized":"Pseudocercospora","wordType":"GENUS","start":0,"end":16},{"verbatim":"dendrobii","normalized":"dendrobii","wordType":"SPECIES","start":17,"end":26},{"verbatim":"Goh","normalized":"Goh","wordType":"AUTHOR_WORD","start":27,"end":30},{"verbatim":"W.","normalized":"W.","wordType":"AUTHOR_WORD","start":35,"end":37},{"verbatim":"H.","normalized":"H.","wordType":"AUTHOR_WORD","start":37,"end":39},{"verbatim":"Hsieh","normalized":"Hsieh","wordType":"AUTHOR_WORD","start":40,"end":45},{"verbatim":"1990","normalized":"1990","wordType":"YEAR","start":46,"end":50}],"id":"4d701dca-8774-5a5e-9378-11f60c0e735c","parserVersion":"test_version"}
-```
-
-Name: Pseudocercospora dendrobii Goh et W.H. Hsieh 1990
-
-Canonical: Pseudocercospora dendrobii
-
-Authorship: Goh & W. H. Hsieh 1990
-
-```json
-{"parsed":true,"quality":1,"verbatim":"Pseudocercospora dendrobii Goh et W.H. Hsieh 1990","normalized":"Pseudocercospora dendrobii Goh \u0026 W. H. Hsieh 1990","canonical":{"stemmed":"Pseudocercospora dendrobi","simple":"Pseudocercospora dendrobii","full":"Pseudocercospora dendrobii"},"cardinality":2,"authorship":{"verbatim":"Goh et W.H. Hsieh 1990","normalized":"Goh \u0026 W. H. Hsieh 1990","year":"1990","authors":["Goh","W. H. Hsieh"],"originalAuth":{"authors":["Goh","W. H. Hsieh"],"year":{"year":"1990"}}},"details":{"species":{"genus":"Pseudocercospora","species":"dendrobii","authorship":{"verbatim":"Goh et W.H. Hsieh 1990","normalized":"Goh \u0026 W. H. Hsieh 1990","year":"1990","authors":["Goh","W. H. Hsieh"],"originalAuth":{"authors":["Goh","W. H. Hsieh"],"year":{"year":"1990"}}}}},"words":[{"verbatim":"Pseudocercospora","normalized":"Pseudocercospora","wordType":"GENUS","start":0,"end":16},{"verbatim":"dendrobii","normalized":"dendrobii","wordType":"SPECIES","start":17,"end":26},{"verbatim":"Goh","normalized":"Goh","wordType":"AUTHOR_WORD","start":27,"end":30},{"verbatim":"W.","normalized":"W.","wordType":"AUTHOR_WORD","start":34,"end":36},{"verbatim":"H.","normalized":"H.","wordType":"AUTHOR_WORD","start":36,"end":38},{"verbatim":"Hsieh","normalized":"Hsieh","wordType":"AUTHOR_WORD","start":39,"end":44},{"verbatim":"1990","normalized":"1990","wordType":"YEAR","start":45,"end":49}],"id":"13175b62-b95b-53b7-8d88-1be6fca794ec","parserVersion":"test_version"}
-```
-
-Name: Schottera nicaeënsis (J.V. Lamouroux ex Duby) Guiry & Hollenberg
-
-Canonical: Schottera nicaeensis
-
-Authorship: (J. V. Lamouroux ex Duby) Guiry & Hollenberg
-
-```json
-{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Ex authors are not required"},{"quality":2,"warning":"Non-standard characters in canonical"}],"verbatim":"Schottera nicaeënsis (J.V. Lamouroux ex Duby) Guiry \u0026 Hollenberg","normalized":"Schottera nicaeensis (J. V. Lamouroux ex Duby) Guiry \u0026 Hollenberg","canonical":{"stemmed":"Schottera nicaeens","simple":"Schottera nicaeensis","full":"Schottera nicaeensis"},"cardinality":2,"authorship":{"verbatim":"(J.V. Lamouroux ex Duby) Guiry \u0026 Hollenberg","normalized":"(J. V. Lamouroux ex Duby) Guiry \u0026 Hollenberg","authors":["J. V. Lamouroux","Guiry","Hollenberg"],"originalAuth":{"authors":["J. V. Lamouroux"],"exAuthors":{"authors":["Duby"]}},"combinationAuth":{"authors":["Guiry","Hollenberg"]}},"details":{"species":{"genus":"Schottera","species":"nicaeensis","authorship":{"verbatim":"(J.V. Lamouroux ex Duby) Guiry \u0026 Hollenberg","normalized":"(J. V. Lamouroux ex Duby) Guiry \u0026 Hollenberg","authors":["J. V. Lamouroux","Guiry","Hollenberg"],"originalAuth":{"authors":["J. V. Lamouroux"],"exAuthors":{"authors":["Duby"]}},"combinationAuth":{"authors":["Guiry","Hollenberg"]}}}},"words":[{"verbatim":"Schottera","normalized":"Schottera","wordType":"GENUS","start":0,"end":9},{"verbatim":"nicaeënsis","normalized":"nicaeensis","wordType":"SPECIES","start":10,"end":20},{"verbatim":"J.","normalized":"J.","wordType":"AUTHOR_WORD","start":22,"end":24},{"verbatim":"V.","normalized":"V.","wordType":"AUTHOR_WORD","start":24,"end":26},{"verbatim":"Lamouroux","normalized":"Lamouroux","wordType":"AUTHOR_WORD","start":27,"end":36},{"verbatim":"Duby","normalized":"Duby","wordType":"AUTHOR_WORD","start":40,"end":44},{"verbatim":"Guiry","normalized":"Guiry","wordType":"AUTHOR_WORD","start":46,"end":51},{"verbatim":"Hollenberg","normalized":"Hollenberg","wordType":"AUTHOR_WORD","start":54,"end":64}],"id":"ffeb3703-63e5-5ff3-b296-582c0c3a3373","parserVersion":"test_version"}
-```
-
-### Binomials with several authors and a year
-
-Name: Cladoniicola staurospora Diederich, van den Boom & Aptroot 2001
-
-Canonical: Cladoniicola staurospora
-
-Authorship: Diederich, van den Boom & Aptroot 2001
-
-```json
-{"parsed":true,"quality":1,"verbatim":"Cladoniicola staurospora Diederich, van den Boom \u0026 Aptroot 2001","normalized":"Cladoniicola staurospora Diederich, van den Boom \u0026 Aptroot 2001","canonical":{"stemmed":"Cladoniicola staurospor","simple":"Cladoniicola staurospora","full":"Cladoniicola staurospora"},"cardinality":2,"authorship":{"verbatim":"Diederich, van den Boom \u0026 Aptroot 2001","normalized":"Diederich, van den Boom \u0026 Aptroot 2001","year":"2001","authors":["Diederich","van den Boom","Aptroot"],"originalAuth":{"authors":["Diederich","van den Boom","Aptroot"],"year":{"year":"2001"}}},"details":{"species":{"genus":"Cladoniicola","species":"staurospora","authorship":{"verbatim":"Diederich, van den Boom \u0026 Aptroot 2001","normalized":"Diederich, van den Boom \u0026 Aptroot 2001","year":"2001","authors":["Diederich","van den Boom","Aptroot"],"originalAuth":{"authors":["Diederich","van den Boom","Aptroot"],"year":{"year":"2001"}}}}},"words":[{"verbatim":"Cladoniicola","normalized":"Cladoniicola","wordType":"GENUS","start":0,"end":12},{"verbatim":"staurospora","normalized":"staurospora","wordType":"SPECIES","start":13,"end":24},{"verbatim":"Diederich","normalized":"Diederich","wordType":"AUTHOR_WORD","start":25,"end":34},{"verbatim":"van","normalized":"van","wordType":"AUTHOR_WORD","start":36,"end":39},{"verbatim":"den","normalized":"den","wordType":"AUTHOR_WORD","start":40,"end":43},{"verbatim":"Boom","normalized":"Boom","wordType":"AUTHOR_WORD","start":44,"end":48},{"verbatim":"Aptroot","normalized":"Aptroot","wordType":"AUTHOR_WORD","start":51,"end":58},{"verbatim":"2001","normalized":"2001","wordType":"YEAR","start":59,"end":63}],"id":"e59e3b01-311d-5dda-88e7-7e821440f5ee","parserVersion":"test_version"}
-```
-
-Name: Stagonospora polyspora M.T. Lucas & Sousa da Câmara 1934
-
-Canonical: Stagonospora polyspora
-
-Authorship: M. T. Lucas & Sousa da Câmara 1934
-
-```json
-{"parsed":true,"quality":1,"verbatim":"Stagonospora polyspora M.T. Lucas \u0026 Sousa da Câmara 1934","normalized":"Stagonospora polyspora M. T. Lucas \u0026 Sousa da Câmara 1934","canonical":{"stemmed":"Stagonospora polyspor","simple":"Stagonospora polyspora","full":"Stagonospora polyspora"},"cardinality":2,"authorship":{"verbatim":"M.T. Lucas \u0026 Sousa da Câmara 1934","normalized":"M. T. Lucas \u0026 Sousa da Câmara 1934","year":"1934","authors":["M. T. Lucas","Sousa da Câmara"],"originalAuth":{"authors":["M. T. Lucas","Sousa da Câmara"],"year":{"year":"1934"}}},"details":{"species":{"genus":"Stagonospora","species":"polyspora","authorship":{"verbatim":"M.T. Lucas \u0026 Sousa da Câmara 1934","normalized":"M. T. Lucas \u0026 Sousa da Câmara 1934","year":"1934","authors":["M. T. Lucas","Sousa da Câmara"],"originalAuth":{"authors":["M. T. Lucas","Sousa da Câmara"],"year":{"year":"1934"}}}}},"words":[{"verbatim":"Stagonospora","normalized":"Stagonospora","wordType":"GENUS","start":0,"end":12},{"verbatim":"polyspora","normalized":"polyspora","wordType":"SPECIES","start":13,"end":22},{"verbatim":"M.","normalized":"M.","wordType":"AUTHOR_WORD","start":23,"end":25},{"verbatim":"T.","normalized":"T.","wordType":"AUTHOR_WORD","start":25,"end":27},{"verbatim":"Lucas","normalized":"Lucas","wordType":"AUTHOR_WORD","start":28,"end":33},{"verbatim":"Sousa","normalized":"Sousa","wordType":"AUTHOR_WORD","start":36,"end":41},{"verbatim":"da","normalized":"da","wordType":"AUTHOR_WORD","start":42,"end":44},{"verbatim":"Câmara","normalized":"Câmara","wordType":"AUTHOR_WORD","start":45,"end":51},{"verbatim":"1934","normalized":"1934","wordType":"YEAR","start":52,"end":56}],"id":"f03d53d7-2db1-591f-8727-6b77c0af2e0c","parserVersion":"test_version"}
-```
-
-Name: Stagonospora polyspora M.T. Lucas et Sousa da Câmara 1934
-
-Canonical: Stagonospora polyspora
-
-Authorship: M. T. Lucas & Sousa da Câmara 1934
-
-```json
-{"parsed":true,"quality":1,"verbatim":"Stagonospora polyspora M.T. Lucas et Sousa da Câmara 1934","normalized":"Stagonospora polyspora M. T. Lucas \u0026 Sousa da Câmara 1934","canonical":{"stemmed":"Stagonospora polyspor","simple":"Stagonospora polyspora","full":"Stagonospora polyspora"},"cardinality":2,"authorship":{"verbatim":"M.T. Lucas et Sousa da Câmara 1934","normalized":"M. T. Lucas \u0026 Sousa da Câmara 1934","year":"1934","authors":["M. T. Lucas","Sousa da Câmara"],"originalAuth":{"authors":["M. T. Lucas","Sousa da Câmara"],"year":{"year":"1934"}}},"details":{"species":{"genus":"Stagonospora","species":"polyspora","authorship":{"verbatim":"M.T. Lucas et Sousa da Câmara 1934","normalized":"M. T. Lucas \u0026 Sousa da Câmara 1934","year":"1934","authors":["M. T. Lucas","Sousa da Câmara"],"originalAuth":{"authors":["M. T. Lucas","Sousa da Câmara"],"year":{"year":"1934"}}}}},"words":[{"verbatim":"Stagonospora","normalized":"Stagonospora","wordType":"GENUS","start":0,"end":12},{"verbatim":"polyspora","normalized":"polyspora","wordType":"SPECIES","start":13,"end":22},{"verbatim":"M.","normalized":"M.","wordType":"AUTHOR_WORD","start":23,"end":25},{"verbatim":"T.","normalized":"T.","wordType":"AUTHOR_WORD","start":25,"end":27},{"verbatim":"Lucas","normalized":"Lucas","wordType":"AUTHOR_WORD","start":28,"end":33},{"verbatim":"Sousa","normalized":"Sousa","wordType":"AUTHOR_WORD","start":37,"end":42},{"verbatim":"da","normalized":"da","wordType":"AUTHOR_WORD","start":43,"end":45},{"verbatim":"Câmara","normalized":"Câmara","wordType":"AUTHOR_WORD","start":46,"end":52},{"verbatim":"1934","normalized":"1934","wordType":"YEAR","start":53,"end":57}],"id":"a8a48393-0ca9-5916-83e3-fb32b7b0c422","parserVersion":"test_version"}
-```
-
-Name: Pseudocercospora dendrobii U. Braun & Crous 2003
-
-Canonical: Pseudocercospora dendrobii
-
-Authorship: U. Braun & Crous 2003
-
-```json
-{"parsed":true,"quality":1,"verbatim":"Pseudocercospora dendrobii U. Braun \u0026 Crous 2003","normalized":"Pseudocercospora dendrobii U. Braun \u0026 Crous 2003","canonical":{"stemmed":"Pseudocercospora dendrobi","simple":"Pseudocercospora dendrobii","full":"Pseudocercospora dendrobii"},"cardinality":2,"authorship":{"verbatim":"U. Braun \u0026 Crous 2003","normalized":"U. Braun \u0026 Crous 2003","year":"2003","authors":["U. Braun","Crous"],"originalAuth":{"authors":["U. Braun","Crous"],"year":{"year":"2003"}}},"details":{"species":{"genus":"Pseudocercospora","species":"dendrobii","authorship":{"verbatim":"U. Braun \u0026 Crous 2003","normalized":"U. Braun \u0026 Crous 2003","year":"2003","authors":["U. Braun","Crous"],"originalAuth":{"authors":["U. Braun","Crous"],"year":{"year":"2003"}}}}},"words":[{"verbatim":"Pseudocercospora","normalized":"Pseudocercospora","wordType":"GENUS","start":0,"end":16},{"verbatim":"dendrobii","normalized":"dendrobii","wordType":"SPECIES","start":17,"end":26},{"verbatim":"U.","normalized":"U.","wordType":"AUTHOR_WORD","start":27,"end":29},{"verbatim":"Braun","normalized":"Braun","wordType":"AUTHOR_WORD","start":30,"end":35},{"verbatim":"Crous","normalized":"Crous","wordType":"AUTHOR_WORD","start":38,"end":43},{"verbatim":"2003","normalized":"2003","wordType":"YEAR","start":44,"end":48}],"id":"afd958fc-82a5-5551-951b-a725a49d3df0","parserVersion":"test_version"}
-```
-
-Name: Abaxisotima acuminata (Wang, Yuwen & Xiangwei Liu 1996)
-
-Canonical: Abaxisotima acuminata
-
-Authorship: (Wang, Yuwen & Xiangwei Liu 1996)
-
-```json
-{"parsed":true,"quality":1,"verbatim":"Abaxisotima acuminata (Wang, Yuwen \u0026 Xiangwei Liu 1996)","normalized":"Abaxisotima acuminata (Wang, Yuwen \u0026 Xiangwei Liu 1996)","canonical":{"stemmed":"Abaxisotima acuminat","simple":"Abaxisotima acuminata","full":"Abaxisotima acuminata"},"cardinality":2,"authorship":{"verbatim":"(Wang, Yuwen \u0026 Xiangwei Liu 1996)","normalized":"(Wang, Yuwen \u0026 Xiangwei Liu 1996)","year":"1996","authors":["Wang","Yuwen","Xiangwei Liu"],"originalAuth":{"authors":["Wang","Yuwen","Xiangwei Liu"],"year":{"year":"1996"}}},"details":{"species":{"genus":"Abaxisotima","species":"acuminata","authorship":{"verbatim":"(Wang, Yuwen \u0026 Xiangwei Liu 1996)","normalized":"(Wang, Yuwen \u0026 Xiangwei Liu 1996)","year":"1996","authors":["Wang","Yuwen","Xiangwei Liu"],"originalAuth":{"authors":["Wang","Yuwen","Xiangwei Liu"],"year":{"year":"1996"}}}}},"words":[{"verbatim":"Abaxisotima","normalized":"Abaxisotima","wordType":"GENUS","start":0,"end":11},{"verbatim":"acuminata","normalized":"acuminata","wordType":"SPECIES","start":12,"end":21},{"verbatim":"Wang","normalized":"Wang","wordType":"AUTHOR_WORD","start":23,"end":27},{"verbatim":"Yuwen","normalized":"Yuwen","wordType":"AUTHOR_WORD","start":29,"end":34},{"verbatim":"Xiangwei","normalized":"Xiangwei","wordType":"AUTHOR_WORD","start":37,"end":45},{"verbatim":"Liu","normalized":"Liu","wordType":"AUTHOR_WORD","start":46,"end":49},{"verbatim":"1996","normalized":"1996","wordType":"YEAR","start":50,"end":54}],"id":"5eecff7d-181c-508c-832d-df4619b8b027","parserVersion":"test_version"}
-```
-
-Name: Aboilomimus sichuanensis ornatus Liu, Xiang-wei, M. Zhou, W Bi & L. Tang, 2009
-
-Canonical: Aboilomimus sichuanensis ornatus
-
-Authorship: Liu, Xiang-wei, M. Zhou, W Bi & L. Tang 2009
-
-```json
-{"parsed":true,"quality":1,"verbatim":"Aboilomimus sichuanensis ornatus Liu, Xiang-wei, M. Zhou, W Bi \u0026 L. Tang, 2009","normalized":"Aboilomimus sichuanensis ornatus Liu, Xiang-wei, M. Zhou, W Bi \u0026 L. Tang 2009","canonical":{"stemmed":"Aboilomimus sichuanens ornat","simple":"Aboilomimus sichuanensis ornatus","full":"Aboilomimus sichuanensis ornatus"},"cardinality":3,"authorship":{"verbatim":"Liu, Xiang-wei, M. Zhou, W Bi \u0026 L. Tang, 2009","normalized":"Liu, Xiang-wei, M. Zhou, W Bi \u0026 L. Tang 2009","year":"2009","authors":["Liu","Xiang-wei","M. Zhou","W Bi","L. Tang"],"originalAuth":{"authors":["Liu","Xiang-wei","M. Zhou","W Bi","L. Tang"],"year":{"year":"2009"}}},"details":{"infraspecies":{"genus":"Aboilomimus","species":"sichuanensis","infraspecies":[{"value":"ornatus","authorship":{"verbatim":"Liu, Xiang-wei, M. Zhou, W Bi \u0026 L. Tang, 2009","normalized":"Liu, Xiang-wei, M. Zhou, W Bi \u0026 L. Tang 2009","year":"2009","authors":["Liu","Xiang-wei","M. Zhou","W Bi","L. Tang"],"originalAuth":{"authors":["Liu","Xiang-wei","M. Zhou","W Bi","L. Tang"],"year":{"year":"2009"}}}}]}},"words":[{"verbatim":"Aboilomimus","normalized":"Aboilomimus","wordType":"GENUS","start":0,"end":11},{"verbatim":"sichuanensis","normalized":"sichuanensis","wordType":"SPECIES","start":12,"end":24},{"verbatim":"ornatus","normalized":"ornatus","wordType":"INFRASPECIES","start":25,"end":32},{"verbatim":"Liu","normalized":"Liu","wordType":"AUTHOR_WORD","start":33,"end":36},{"verbatim":"Xiang-wei","normalized":"Xiang-wei","wordType":"AUTHOR_WORD","start":38,"end":47},{"verbatim":"M.","normalized":"M.","wordType":"AUTHOR_WORD","start":49,"end":51},{"verbatim":"Zhou","normalized":"Zhou","wordType":"AUTHOR_WORD","start":52,"end":56},{"verbatim":"W","normalized":"W","wordType":"AUTHOR_WORD","start":58,"end":59},{"verbatim":"Bi","normalized":"Bi","wordType":"AUTHOR_WORD","start":60,"end":62},{"verbatim":"L.","normalized":"L.","wordType":"AUTHOR_WORD","start":65,"end":67},{"verbatim":"Tang","normalized":"Tang","wordType":"AUTHOR_WORD","start":68,"end":72},{"verbatim":"2009","normalized":"2009","wordType":"YEAR","start":74,"end":78}],"id":"25ac4ba8-6595-5ab3-8463-f99f738bf4e4","parserVersion":"test_version"}
-```
 
 ### Binomials with basionym and combination authors
 
