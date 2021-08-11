@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## [v1.3.3]
+
+- Add [#176]: refactoring of hybrid sign treatment (use PEG instead of
+              RegEx for normalizing `x`, `X`, and `×`.
+- Add [#183]: stop parsing after `nec`, `non`, `fide`, `vide`, treat
+              `ms in` as `in` or `ex` for exAuthors.
 - Add [#182]: support for authors with prefixes `ten`, `delle`, `dos`.
 
 ## [v1.3.2]
