@@ -34,7 +34,7 @@ func (p *Engine) newScientificNameNode() {
 	var tail string
 
 	for n != nil {
-		switch n.token32.pegRule {
+		switch n.pegRule {
 		case ruleName:
 			name = p.newName(n)
 		case ruleTail:
@@ -78,7 +78,7 @@ func (p *Engine) newName(n *node32) nameData {
 	var name nameData
 	var annot parsed.Annotation
 	n = n.up
-	switch n.token32.pegRule {
+	switch n.pegRule {
 	case ruleHybridFormula:
 		annot = parsed.HybridFormulaAnnot
 		p.hybrid = &annot
@@ -186,17 +186,17 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 	var nhn *namedGenusHybridNode
 	var name nameData
 	n = n.up
-	if n.token32.pegRule != ruleHybridChar {
+	if n.pegRule != ruleHybridChar {
 		return nhn
 	}
 	hybr := p.newWordNode(n, parsed.HybridCharType)
 	n = n.next
 	n = n.up
 	p.addWarn(parsed.HybridNamedWarn)
-	if n.token32.begin == 1 {
+	if n.begin == 1 {
 		p.addWarn(parsed.HybridCharNoSpaceWarn)
 	}
-	switch n.token32.pegRule {
+	switch n.pegRule {
 	case ruleUninomial:
 		name = p.newUninomialNode(n)
 	case ruleUninomialCombo:
@@ -265,12 +265,12 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 
 func (p *Engine) botanicalUninomial(n *node32) bool {
 	n = n.up
-	if n.token32.pegRule == ruleUninomial {
+	if n.pegRule == ruleUninomial {
 		return false
 	}
 	n = n.next
 	n = n.up
-	if n.token32.pegRule != ruleUninomialWord {
+	if n.pegRule != ruleUninomialWord {
 		return false
 	}
 	w := p.newWordNode(n, parsed.UnknownType)
@@ -293,7 +293,7 @@ func (p *Engine) newBotanicalUninomialNode(n *node32) *uninomialNode {
 	n = n.next
 	if n != nil {
 		n = n.up // fake OriginalAuthorship
-		switch n.token32.pegRule {
+		switch n.pegRule {
 		case ruleOriginalAuthorship:
 			at2 = p.newAuthorsGroupNode(n.up)
 		default:
@@ -311,7 +311,7 @@ func (p *Engine) newSingleName(n *node32) nameData {
 	var name nameData
 	var annot parsed.Annotation
 	n = n.up
-	switch n.token32.pegRule {
+	switch n.pegRule {
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
@@ -373,7 +373,7 @@ func (p *Engine) newApproxNode(n *node32) *approxNode {
 	annot := parsed.ApproximationAnnot
 	p.surrogate = &annot
 	p.addWarn(parsed.NameApproxWarn)
-	if n.token32.pegRule != ruleNameApprox {
+	if n.pegRule != ruleNameApprox {
 		return an
 	}
 	var gen, appr *parsed.Word
@@ -381,7 +381,7 @@ func (p *Engine) newApproxNode(n *node32) *approxNode {
 	var ign string
 	n = n.up
 	for n != nil {
-		switch n.token32.pegRule {
+		switch n.pegRule {
 		case ruleGenusWord:
 			gen = p.newWordNode(n, parsed.GenusType)
 		case ruleSpeciesEpithet:
@@ -458,12 +458,12 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 	var cultivar *cultivarEpithetNode
 	n = n.up
 	gen := p.newWordNode(n, parsed.GenusType)
-	if n.up.token32.pegRule == ruleAbbrGenus {
+	if n.up.pegRule == ruleAbbrGenus {
 		p.addWarn(parsed.GenusAbbrWarn)
 	}
 	n = n.next
 	for n != nil {
-		switch n.token32.pegRule {
+		switch n.pegRule {
 		case ruleSubgenus:
 			w := p.newWordNode(n.up, parsed.SubgenusType)
 			if _, ok := dict.Dict.AuthorICN[w.Normalized]; ok {
@@ -530,7 +530,7 @@ type infraspEpithetNode struct {
 func (p *Engine) newInfraspeciesGroup(n *node32) []*infraspEpithetNode {
 	var infs []*infraspEpithetNode
 	n = n.up
-	if n == nil || n.token32.pegRule != ruleInfraspEpithet {
+	if n == nil || n.pegRule != ruleInfraspEpithet {
 		return infs
 	}
 	for n != nil {
@@ -558,7 +558,7 @@ func (p *Engine) newInfraspEpithetNode(n *node32) *infraspEpithetNode {
 	}
 
 	for n != nil {
-		switch n.token32.pegRule {
+		switch n.pegRule {
 		case ruleWord:
 			w = p.newWordNode(n, parsed.InfraspEpithetType)
 		case ruleRank:
@@ -588,7 +588,7 @@ func (p *Engine) newRankNode(n *node32) *rankNode {
 	}
 	n = n.up
 	w := p.newWordNode(n, parsed.RankType)
-	switch n.token32.pegRule {
+	switch n.pegRule {
 	case ruleRankForma:
 		w.Normalized = "f."
 	case ruleRankVar:
@@ -618,7 +618,7 @@ func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 	}
 	n = n.next
 	for n != nil {
-		switch n.token32.pegRule {
+		switch n.pegRule {
 		case ruleCultivar, ruleCultivarRecursive:
 			cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
 		}
@@ -646,7 +646,7 @@ func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
 	var u1, u2 *uninomialNode
 	var r *rankUninomialNode
 	n = n.up
-	switch n.token32.pegRule {
+	switch n.pegRule {
 	case ruleUninomial:
 		u1n := n
 		u1 = p.newUninomialNode(u1n)
@@ -715,12 +715,12 @@ func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 	verbatim := p.buffer[n.begin:n.end]
 	n = n.up
 	for n != nil {
-		switch n.token32.pegRule {
+		switch n.pegRule {
 		case ruleOriginalAuthorship:
 			oa = p.newAuthorsGroupNode(n.up)
 		case ruleOriginalAuthorshipComb:
 			on := n.up
-			if on.token32.pegRule == ruleBasionymAuthorshipYearMisformed {
+			if on.pegRule == ruleBasionymAuthorshipYearMisformed {
 				p.addWarn(parsed.YearOrigMisplacedWarn)
 				on = on.up
 				misplacedYear = true
@@ -787,7 +787,7 @@ func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 	if n == nil {
 		return &ag
 	}
-	switch n.token32.pegRule {
+	switch n.pegRule {
 	case ruleAuthorEx:
 		p.addWarn(parsed.AuthExWarn)
 		t2t = teamEx
@@ -810,7 +810,7 @@ func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 		return &ag
 	}
 	n = n.next
-	if n == nil || n.token32.pegRule != ruleAuthorsTeam {
+	if n == nil || n.pegRule != ruleAuthorsTeam {
 		return &ag
 	}
 	t2 = p.newAuthorTeam(n)
@@ -833,7 +833,7 @@ func (p *Engine) newAuthorTeam(n *node32) *authorsTeamNode {
 	var yr *yearNode
 	n = n.up
 	for n != nil {
-		switch n.token32.pegRule {
+		switch n.pegRule {
 		case ruleAuthor:
 			anodes = append(anodes, n)
 		case ruleAuthorSep:
@@ -881,7 +881,7 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 	rawVal := ""
 	n = n.up
 	for n != nil {
-		switch n.token32.pegRule {
+		switch n.pegRule {
 		case ruleFilius, ruleFiliusFNoSpace:
 			w = p.newWordNode(n, parsed.AuthorWordFiliusType)
 			w.Normalized = "fil."
@@ -919,7 +919,7 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 
 func (p *Engine) authorWord(n *node32) *parsed.Word {
 	w := p.newWordNode(n, parsed.AuthorWordType)
-	if n.up != nil && n.up.token32.pegRule == ruleAllCapsAuthorWord {
+	if n.up != nil && n.up.pegRule == ruleAllCapsAuthorWord {
 		count := 0
 		for _, v := range w.Verbatim {
 			if unicode.IsUpper(v) {
@@ -944,7 +944,7 @@ func (p *Engine) newYearNode(nd *node32) *yearNode {
 	appr := false
 	nodes := nd.flatChildren()
 	for _, v := range nodes {
-		switch v.token32.pegRule {
+		switch v.pegRule {
 		case ruleYearWithPage:
 			p.addWarn(parsed.YearPageWarn)
 		case ruleYearRange:
@@ -1014,7 +1014,7 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *parsed.Word {
 	children := n.flatChildren()
 	var canApostrophe bool
 	for _, v := range children {
-		switch v.token32.pegRule {
+		switch v.pegRule {
 		case ruleUpperCharExtended, ruleLowerCharExtended:
 			p.addWarn(parsed.CharBadWarn)
 			wrd.Normalized, _ = normalize(wrd.Verbatim)
@@ -1033,6 +1033,7 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *parsed.Word {
 			}
 		}
 	}
+
 	if wt == parsed.HybridCharType {
 		wrd.Normalized = "×"
 	} else if wt == parsed.GenusType || wt == parsed.UninomialType {

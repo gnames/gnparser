@@ -9,7 +9,6 @@ import (
 )
 
 type baseEngine struct {
-	originalString  []rune
 	sn              *scientificNameNode
 	root            *node32
 	cardinality     int
@@ -89,7 +88,7 @@ func (p *Engine) outputAST() {
 }
 
 func stackNodeIsWithin(n *node32, t token32) bool {
-	return n.token32.begin >= t.begin && n.token32.end <= t.end
+	return n.begin >= t.begin && n.end <= t.end
 }
 
 // PrintOutputSyntaxTree outputs a simplified version of a nodes
@@ -132,7 +131,7 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 		p.addWarn(parsed.SpanishAndAsSeparator)
 	}
 	if _, ok := nodeRules[t.pegRule]; ok {
-		node := &node32{token32: t}
+		node = &node32{token32: t}
 		return node, false
 	}
 
@@ -141,7 +140,7 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 
 func (p *Engine) nodeValue(n *node32) string {
 	t := n.token32
-	v := string(p.originalString[t.begin:t.end])
+	v := string([]rune(p.Buffer)[t.begin:t.end])
 	return v
 }
 
@@ -151,8 +150,8 @@ func (p *Engine) ParsedName() string {
 	if p.error != nil {
 		return "noparse"
 	}
-	for i := len(p.tokens32.tree) - 1; i >= 0; i-- {
-		t := p.tokens32.tree[i]
+	for i := len(p.tree) - 1; i >= 0; i-- {
+		t := p.tree[i]
 		if t.pegRule == ruleName {
 			return string(p.buffer[t.begin:t.end])
 		}

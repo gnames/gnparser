@@ -85,7 +85,6 @@ func (p *Engine) PreprocessAndParse(
 		return p.sn
 	}
 
-	p.originalString = []rune(s)
 	p.Buffer = string(preproc.Body)
 	p.fullReset()
 
