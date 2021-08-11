@@ -65,7 +65,7 @@ var NoParseException = map[string]string{
 }
 
 var notesRe = regexp.MustCompile(
-	`(?i)\s+(environmental|samples|species\s+group|species\s+complex|clade|group|author)\b.*$`,
+	`(?i)\s+(environmental|samples|species\s+group|species\s+complex|clade|group|author|non|nec|vide|fide)\b.*$`,
 )
 var taxonConceptsRe1 = regexp.MustCompile(
 	`(?i)\s+(sero(var|type)|sensu|auct|sec|near|str)\.?\b.*$`,

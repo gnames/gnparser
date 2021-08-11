@@ -194,7 +194,7 @@ AuthorSep2 <- _? ',' _?
 
 AuthorSepSpanish <- _? 'y' _?
 
-AuthorEx <- ('ex' '.'? / 'in') _
+AuthorEx <- ('ex' '.'? / 'ms' _ 'in' / 'in') _
 
 AuthorEmend <- 'emend' '.'? _
 
