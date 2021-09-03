@@ -113,7 +113,7 @@ func Example() {
 	res := gnp.ParseNames(names)
 	fmt.Println(res[0].Authorship.Normalized)
 	fmt.Println(res[1].Canonical.Simple)
-	fmt.Println(parsed.HeaderCSV())
+	fmt.Println(parsed.HeaderCSV(gnp.Format()))
 	fmt.Println(res[0].Output(gnp.Format()))
 	// Output:
 	// Banks 1892

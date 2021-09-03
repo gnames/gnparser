@@ -7,6 +7,7 @@ FLAGS_SHARED = $(FLAG_MODULE) GOARCH=amd64
 NO_C = CGO_ENABLED=0
 FLAGS_LINUX = $(FLAGS_SHARED) GOOS=linux
 FLAGS_MAC = $(FLAGS_SHARED) GOOS=darwin
+FLAGS_MAC_ARM = GO111MODULE=on $GOARCH=arm64 GOOS=darwin
 FLAGS_WIN = $(FLAGS_SHARED) GOOS=windows
 FLAGS_LD=-ldflags "-s -w -X github.com/gnames/gnparser.Build=${DATE} \
                   -X github.com/gnames/gnparser.Version=${VERSION}"
@@ -67,6 +68,9 @@ release: peg dockerhub
 	$(FLAGS_MAC) $(NO_C) $(GOBUILD); \
 	tar zcf $(RELEASE_DIR)/gnparser-$(VER)-mac.tar.gz gnparser; \
 	$(GOCLEAN); \
+	$(FLAGS_MAC_ARM) $(NO_C) $(GOBUILD); \
+	tar zcf $(RELEASE_DIR)/gnparser-mac-arm64.tar.gz gnparser; \
+	$(GOCLEAN); \
 	$(FLAGS_WIN) $(NO_C) $(GOBUILD); \
 	zip -9 $(RELEASE_DIR)/gnparser-$(VER)-win-64.zip gnparser.exe; \
 	$(GOCLEAN);
@@ -79,6 +83,9 @@ nightly: peg
 	$(GOCLEAN); \
 	$(FLAGS_MAC) $(NO_C) $(GOBUILD); \
 	tar zcf $(RELEASE_DIR)/gnparser-mac.tar.gz gnparser; \
+	$(GOCLEAN); \
+	$(FLAGS_MAC_ARM) $(NO_C) $(GOBUILD); \
+	tar zcf $(RELEASE_DIR)/gnparser-mac-arm64.tar.gz gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_WIN) $(NO_C) $(GOBUILD); \
 	zip -9 $(RELEASE_DIR)/gnparser-win-64.zip gnparser.exe; \

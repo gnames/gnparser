@@ -11,7 +11,9 @@ import (
 func (p Parsed) Output(f gnfmt.Format) string {
 	switch f {
 	case gnfmt.CSV:
-		return p.csvOutput()
+		return p.csvOutput(',')
+	case gnfmt.TSV:
+		return p.csvOutput('\t')
 	case gnfmt.CompactJSON:
 		return p.jsonOutput(false)
 	case gnfmt.PrettyJSON:
@@ -22,11 +24,20 @@ func (p Parsed) Output(f gnfmt.Format) string {
 }
 
 // HeadersCSV returns the CSV header for parsing output.
-func HeaderCSV() string {
-	return "Id,Verbatim,Cardinality,CanonicalStem,CanonicalSimple,CanonicalFull,Authorship,Year,Quality"
+func HeaderCSV(f gnfmt.Format) string {
+	header := []string{"Id", "Verbatim", "Cardinality", "CanonicalStem",
+		"CanonicalSimple", "CanonicalFull", "Authorship", "Year", "Quality"}
+	switch f {
+	case gnfmt.CSV:
+		return gnfmt.ToCSV(header, ',')
+	case gnfmt.TSV:
+		return gnfmt.ToCSV(header, '\t')
+	default:
+		return ""
+	}
 }
 
-func (p Parsed) csvOutput() string {
+func (p Parsed) csvOutput(sep rune) string {
 	var stem, simple, full, authorship, year string
 	if p.Canonical != nil {
 		stem = p.Canonical.Stemmed
@@ -50,7 +61,7 @@ func (p Parsed) csvOutput() string {
 		year,
 		strconv.Itoa(p.ParseQuality),
 	}
-	return gncsv.ToCSV(res)
+	return gncsv.ToCSV(res, sep)
 }
 
 func (p Parsed) jsonOutput(pretty bool) string {

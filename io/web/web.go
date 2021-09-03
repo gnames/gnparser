@@ -105,7 +105,7 @@ func parsingResults(
 	data.WithCultivars = inp.WithCultivars == "on"
 
 	format := inp.Format
-	if format == "csv" || format == "json" {
+	if format == "csv" || format == "tsv" || format == "json" {
 		data.Format = format
 	}
 
@@ -132,11 +132,16 @@ func parsingResults(
 	switch data.Format {
 	case "json":
 		return c.JSON(http.StatusOK, data.Parsed)
-	case "csv":
+	case "csv", "tsv":
+		f := gnfmt.CSV
+		if data.Format == "tsv" {
+			f = gnfmt.TSV
+		}
+
 		res := make([]string, len(data.Parsed)+1)
-		res[0] = parsed.HeaderCSV()
+		res[0] = parsed.HeaderCSV(f)
 		for i := range data.Parsed {
-			res[i+1] = data.Parsed[i].Output(gnfmt.CSV)
+			res[i+1] = data.Parsed[i].Output(f)
 		}
 		return c.String(http.StatusOK, strings.Join(res, "\n"))
 	default:

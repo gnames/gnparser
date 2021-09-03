@@ -25,8 +25,11 @@ tar xvf gnparser-v1.0.0-linux.tar.gz
 sudo cp gnparser /usr/local/bin
 # for CSV output
 gnparser "Homo sapiens Linnaeus"
+# for TSV output
+gnparser -f tsv "Homo sapiens Linnaeus"
 # for JSON output
 gnparser -f compact "Homo sapiens Linnaeus"
+gnparser -f compact "Homo sapiens Linnaeus" | jq
 # or
 gnparser -f pretty "Homo sapiens Linnaeus"
 gnparser -h
@@ -88,8 +91,8 @@ the recursive nature of data embedded in names. By contrast, ``GNparser``
 is able to deal with the most complex scientific name-strings.
 
 ``GNparser`` takes a name-string like ``Drosophila (Sophophora) melanogaster
-Meigen, 1830`` and returns parsed components in `CSV` or `JSON` format. The
-parsing of scientific names might become surprisingly complex and the
+Meigen, 1830`` and returns parsed components in `CSV`, `TSV` or `JSON` format.
+The parsing of scientific names might become surprisingly complex and the
 `GNparser's` [test file] is a good source of information about the parser's
 capabilities, its input and output.
 
@@ -155,10 +158,10 @@ language described in [Schinke R et al (1996)]. For example letters `j` are
 converted to `i`, letters `v` are converted to `u`, and suffixes are removed
 from the specific and infraspecific epithets.
 
-If you only care about canonical form of a name you can use default
+If you only care mostly about canonical form of a name you can use default
 ``--format csv`` flag with command line tool.
 
-CSV output has the following fields:
+CSV/TSV output has the following fields:
 
 | Field             | Meaning                                         |
 | ------------------| ----------------------------------------------- |
@@ -354,14 +357,15 @@ This flag is ignored if parsing mode is set to streaming with ``-s`` flag.
 : Capitalizes the first letter of name-strings.
 
 ``--details -d``
-: Return more details for a parsed name. This flag is ignored for CSV
+: Return more details for a parsed name. This flag is ignored for CSV/TSV
 formatting.
 
 ``--format -f``
-: output format. Can be ``compact``, ``pretty``, ``csv``.
+: output format. Can be ``csv``, ``tsv``, ``compact``, ``pretty``.
 Default is ``csv``.
 
-CSV format returns a header row and the CSV-compatible parsed result.
+CSV and TSV formats return a header row and the CSV/TSV-compatible
+parsed result.
 
 ``--jobs -j``
 : number of jobs running concurrently.
@@ -393,6 +397,9 @@ To parse one name:
 gnparser "Parus major Linnaeus, 1788"
 # or
 gnparser -f csv "Parus major Linnaeus, 1788"
+
+# TSV output
+gnparser -f tsv "Parus major Linnaeus, 1788"
 
 # JSON compact format
 gnparser "Parus major Linnaeus, 1788" -f compact
@@ -548,7 +555,7 @@ func Example() {
   res := gnp.ParseNames(names)
   fmt.Println(res[0].Authorship.Normalized)
   fmt.Println(res[1].Canonical.Simple)
-  fmt.Println(parsed.HeaderCSV())
+  fmt.Println(parsed.HeaderCSV(gnp.Format()))
   fmt.Println(res[0].Output(gnp.Format()))
   // Output:
   // Banks 1892

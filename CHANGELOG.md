@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.4.0]
+
+- Add [#193]: add TSV format for output.
+
 ## [v1.3.3]
 
 - Add [#176]: refactoring of hybrid sign treatment (use PEG instead of
@@ -294,6 +298,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.4.0]: https://github.com/gnames/gnparser/compare/v1.3.2...v1.4.0
 [v1.3.3]: https://github.com/gnames/gnparser/compare/v1.3.2...v1.3.3
 [v1.3.2]: https://github.com/gnames/gnparser/compare/v1.3.1...v1.3.2
 [v1.3.1]: https://github.com/gnames/gnparser/compare/v1.3.0...v1.3.1
@@ -336,6 +341,16 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
 
+[#200]: https://github.com/gnames/gnparser/issues/200
+[#199]: https://github.com/gnames/gnparser/issues/199
+[#198]: https://github.com/gnames/gnparser/issues/198
+[#197]: https://github.com/gnames/gnparser/issues/197
+[#196]: https://github.com/gnames/gnparser/issues/196
+[#195]: https://github.com/gnames/gnparser/issues/195
+[#194]: https://github.com/gnames/gnparser/issues/194
+[#193]: https://github.com/gnames/gnparser/issues/193
+[#192]: https://github.com/gnames/gnparser/issues/192
+[#191]: https://github.com/gnames/gnparser/issues/191
 [#190]: https://github.com/gnames/gnparser/issues/190
 [#189]: https://github.com/gnames/gnparser/issues/189
 [#188]: https://github.com/gnames/gnparser/issues/188

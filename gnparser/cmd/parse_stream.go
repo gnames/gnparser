@@ -9,7 +9,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/nameidx"
 	"github.com/gnames/gnparser/ent/parsed"
@@ -53,10 +52,6 @@ func parseStream(
 	var wg sync.WaitGroup
 	wg.Add(1)
 
-	if gnp.Format() == gnfmt.CSV {
-		parsed.HeaderCSV()
-	}
-
 	go gnp.ParseNameStream(ctx, chIn, chOut)
 
 	// process parsing results
@@ -64,9 +59,12 @@ func parseStream(
 		defer cancel()
 		defer wg.Done()
 		start := time.Now()
-		if gnp.Format() == gnfmt.CSV {
-			fmt.Println(parsed.HeaderCSV())
+
+		header := parsed.HeaderCSV(gnp.Format())
+		if header != "" {
+			fmt.Println(header)
 		}
+
 		var count int
 		for {
 			count++

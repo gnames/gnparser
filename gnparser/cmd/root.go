@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/dustin/go-humanize"
-	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/web"
@@ -224,14 +223,17 @@ func parse(
 func parseString(gnp gnparser.GNparser, name string) {
 	res := gnp.ParseName(name)
 	f := gnp.Format()
-	if f == gnfmt.CSV {
-		fmt.Println(parsed.HeaderCSV())
+
+	header := parsed.HeaderCSV(f)
+	if header != "" {
+		fmt.Println(header)
 	}
+
 	fmt.Println(res.Output(f))
 }
 
 func progressLog(start time.Time, namesNum int) {
-	dur := float64(time.Now().Sub(start)) / float64(time.Second)
+	dur := float64(time.Since(start)) / float64(time.Second)
 	rate := float64(namesNum) / dur
 	numColor := "%s names/sec"
 	rateStr := fmt.Sprintf(numColor, humanize.Comma(int64(rate)))

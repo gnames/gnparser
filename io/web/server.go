@@ -122,10 +122,11 @@ func formatNames(
 	res []parsed.Parsed,
 	f gnfmt.Format,
 ) error {
+
 	switch f {
-	case gnfmt.CSV:
+	case gnfmt.CSV, gnfmt.TSV:
 		resCSV := make([]string, 0, len(res)+1)
-		resCSV = append(resCSV, parsed.HeaderCSV())
+		resCSV = append(resCSV, parsed.HeaderCSV(f))
 		for i := range res {
 			resCSV = append(resCSV, res[i].Output(f))
 		}

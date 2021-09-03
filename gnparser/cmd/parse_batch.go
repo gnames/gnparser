@@ -55,9 +55,12 @@ func processResults(
 	f gnfmt.Format,
 ) {
 	defer wg.Done()
-	if f == gnfmt.CSV {
-		fmt.Println(parsed.HeaderCSV())
+
+	header := parsed.HeaderCSV(f)
+	if header != "" {
+		fmt.Println(header)
 	}
+
 	for pr := range out {
 		for i := range pr {
 			fmt.Println(pr[i].Output(f))
