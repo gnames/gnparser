@@ -75,22 +75,6 @@ release: peg dockerhub
 	zip -9 $(RELEASE_DIR)/gnparser-$(VER)-win-64.zip gnparser.exe; \
 	$(GOCLEAN);
 
-nightly: peg
-	cd gnparser; \
-	$(GOCLEAN); \
-	$(FLAGS_LINUX) $(NO_C) $(GOBUILD); \
-	tar zcf $(RELEASE_DIR)/gnparser-linux.tar.gz gnparser; \
-	$(GOCLEAN); \
-	$(FLAGS_MAC) $(NO_C) $(GOBUILD); \
-	tar zcf $(RELEASE_DIR)/gnparser-mac.tar.gz gnparser; \
-	$(GOCLEAN); \
-	$(FLAGS_MAC_ARM) $(NO_C) $(GOBUILD); \
-	tar zcf $(RELEASE_DIR)/gnparser-mac-arm64.tar.gz gnparser; \
-	$(GOCLEAN); \
-	$(FLAGS_WIN) $(NO_C) $(GOBUILD); \
-	zip -9 $(RELEASE_DIR)/gnparser-win-64.zip gnparser.exe; \
-	$(GOCLEAN);
-
 dc: asset build
 	docker-compose build;
 
