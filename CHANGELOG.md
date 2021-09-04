@@ -4,6 +4,7 @@
 
 ## [v1.4.0]
 
+- Add [#187]: support `ter` suffix for authors.
 - Add [#186]: support non-ASCII apostrophe in authors.
 - Add [#193]: add TSV format for output.
 

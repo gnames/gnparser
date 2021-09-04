@@ -232,7 +232,7 @@ FiliusF <- 'f.' !(_ Word)
 
 FiliusFNoSpace <- 'f.'
 
-AuthorSuffix <- 'bis'
+AuthorSuffix <- 'bis' / 'ter'
 
 AuthorPrefixGlued <- ('d' / 'O' / 'L' / 'Mc' / 'M') Apostrophe
 

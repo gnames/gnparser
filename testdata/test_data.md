@@ -1345,6 +1345,16 @@ Authorship: (R. Br. bis) Paris
 {"parsed":true,"quality":1,"verbatim":"Hennediella microphylla (R.Br.bis) Paris","normalized":"Hennediella microphylla (R. Br. bis) Paris","canonical":{"stemmed":"Hennediella microphyll","simple":"Hennediella microphylla","full":"Hennediella microphylla"},"cardinality":2,"authorship":{"verbatim":"(R.Br.bis) Paris","normalized":"(R. Br. bis) Paris","authors":["R. Br. bis","Paris"],"originalAuth":{"authors":["R. Br. bis"]},"combinationAuth":{"authors":["Paris"]}},"details":{"species":{"genus":"Hennediella","species":"microphylla","authorship":{"verbatim":"(R.Br.bis) Paris","normalized":"(R. Br. bis) Paris","authors":["R. Br. bis","Paris"],"originalAuth":{"authors":["R. Br. bis"]},"combinationAuth":{"authors":["Paris"]}}}},"words":[{"verbatim":"Hennediella","normalized":"Hennediella","wordType":"GENUS","start":0,"end":11},{"verbatim":"microphylla","normalized":"microphylla","wordType":"SPECIES","start":12,"end":23},{"verbatim":"R.","normalized":"R.","wordType":"AUTHOR_WORD","start":25,"end":27},{"verbatim":"Br.","normalized":"Br.","wordType":"AUTHOR_WORD","start":27,"end":30},{"verbatim":"bis","normalized":"bis","wordType":"AUTHOR_WORD","start":30,"end":33},{"verbatim":"Paris","normalized":"Paris","wordType":"AUTHOR_WORD","start":35,"end":40}],"id":"e8cc6d9d-6e6c-53a1-99a9-59f636009ed0","parserVersion":"test_version"}
 ```
 
+Name: Pseudocercosporella endophytica Crous & H. Sm. ter
+
+Canonical: Pseudocercosporella endophytica
+
+Authorship: Crous & H. Sm. ter
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Pseudocercosporella endophytica Crous \u0026 H. Sm. ter","normalized":"Pseudocercosporella endophytica Crous \u0026 H. Sm. ter","canonical":{"stemmed":"Pseudocercosporella endophytic","simple":"Pseudocercosporella endophytica","full":"Pseudocercosporella endophytica"},"cardinality":2,"authorship":{"verbatim":"Crous \u0026 H. Sm. ter","normalized":"Crous \u0026 H. Sm. ter","authors":["Crous","H. Sm. ter"],"originalAuth":{"authors":["Crous","H. Sm. ter"]}},"details":{"species":{"genus":"Pseudocercosporella","species":"endophytica","authorship":{"verbatim":"Crous \u0026 H. Sm. ter","normalized":"Crous \u0026 H. Sm. ter","authors":["Crous","H. Sm. ter"],"originalAuth":{"authors":["Crous","H. Sm. ter"]}}}},"words":[{"verbatim":"Pseudocercosporella","normalized":"Pseudocercosporella","wordType":"GENUS","start":0,"end":19},{"verbatim":"endophytica","normalized":"endophytica","wordType":"SPECIES","start":20,"end":31},{"verbatim":"Crous","normalized":"Crous","wordType":"AUTHOR_WORD","start":32,"end":37},{"verbatim":"H.","normalized":"H.","wordType":"AUTHOR_WORD","start":40,"end":42},{"verbatim":"Sm.","normalized":"Sm.","wordType":"AUTHOR_WORD","start":43,"end":46},{"verbatim":"ter","normalized":"ter","wordType":"AUTHOR_WORD","start":47,"end":50}],"id":"ac52e64e-1cbe-57c8-86e2-6f5887a84da7","parserVersion":"test_version"}
+```
+
 ### Binomials with an abbreviated genus
 
 Name: M. alpium
