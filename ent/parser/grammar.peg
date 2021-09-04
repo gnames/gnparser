@@ -241,9 +241,10 @@ AuthorPrefix <- AuthorPrefix1 / AuthorPrefix2
 AuthorPrefix2 <- ('v.' (_? 'd.')?) / Apostrophe 't'
 
 AuthorPrefix1 <- ('ab' / 'af' / 'bis' / 'da' / 'der' / 'des' / 'den' /
-  'della' / 'dela' / 'delle' / 'del' / 'de' / 'di' / 'dos' / 'du' / 'el' /
-  'la' / 'le' / 'ten' / 'ter' / 'van' / 'd' Apostrophe / 'in' Apostrophe 't' /
-  'zur' / 'zu' / ('von' (_ ('d.'/ 'dem'))?) / ('v' (_'d')?)) &_
+  'della' / 'dela' / 'delle' / 'del' / 'de los' / 'de' / 'di' / 'dos' /
+  'du' / 'do' / 'el' / 'la' / 'le' / 'ten' / 'ter' / 'van' / 'd' Apostrophe /
+  'in' Apostrophe 't' / 'zur' / 'zu' / ('von' (_ ('d.'/ 'dem'))?) /
+  ('v' (_'d')?)) &_
 
 AuthorUpperChar <- UpperASCII / MiscodedChar /
   [ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝĆČĎİĶĹĺĽľŁłŅŌŐŒŘŚŜŞŠŸŹŻŽƒǾȘȚ]
