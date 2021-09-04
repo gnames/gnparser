@@ -1012,7 +1012,7 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *parsed.Word {
 		End:        int(t.end),
 	}
 	children := n.flatChildren()
-	var canApostrophe bool
+	var canonicalApostrophe bool
 	for _, v := range children {
 		switch v.pegRule {
 		case ruleUpperCharExtended, ruleLowerCharExtended:
@@ -1020,14 +1020,14 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *parsed.Word {
 			wrd.Normalized, _ = normalize(wrd.Verbatim)
 		case ruleWordApostr:
 			p.addWarn(parsed.CanonicalApostropheWarn)
-			canApostrophe = true
+			canonicalApostrophe = true
 			wrd.Normalized, _ = normalize(wrd.Verbatim)
 		case ruleWordStartsWithDigit:
 			p.addWarn(parsed.SpeciesNumericWarn)
 			wrd.Normalized = normalizeNums(wrd.Verbatim)
 		case ruleApostrOther:
 			p.addWarn(parsed.ApostrOtherWarn)
-			if !canApostrophe {
+			if !canonicalApostrophe {
 				nv, _ := str.ToASCII([]byte(wrd.Verbatim), str.GlobalTransliterations)
 				wrd.Normalized = string(nv)
 			}

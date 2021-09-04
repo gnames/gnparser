@@ -248,8 +248,8 @@ AuthorPrefix1 <- ('ab' / 'af' / 'bis' / 'da' / 'der' / 'des' / 'den' /
 AuthorUpperChar <- UpperASCII / MiscodedChar /
   [ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝĆČĎİĶĹĺĽľŁłŅŌŐŒŘŚŜŞŠŸŹŻŽƒǾȘȚ]
 
-AuthorLowerChar <- LowerASCII / MiscodedChar /
-  [àáâãäåæçèéêëìíîïðñòóóôõöøùúûüýÿāăąćĉčďđ'ēĕėęěğīĭİıĺľłńņňŏőœŕřśşšţťũūŭůűźżžſǎǔǧșțȳß]
+AuthorLowerChar <- LowerASCII / MiscodedChar / Apostrophe /
+  [àáâãäåæçèéêëìíîïðñòóóôõöøùúûüýÿāăąćĉčďđēĕėęěğīĭİıĺľłńņňŏőœŕřśşšţťũūŭůűźżžſǎǔǧșțȳß]
 
 Year <- YearRange / YearApprox / YearWithParens / YearWithPage / YearWithDot /
   YearWithChar / YearNum
@@ -296,7 +296,8 @@ Apostrophe <- ApostrOther / ApostrASCII
 
 ApostrASCII <- '\''
 
-ApostrOther <- '‘' / '’'
+ApostrOther <- '‘' / '’' / '`' / '´'
+
 
 Dash <- '-'
 

@@ -4,6 +4,7 @@
 
 ## [v1.4.0]
 
+- Add [#186]: support non-ASCII apostrophe in authors.
 - Add [#193]: add TSV format for output.
 
 ## [v1.3.3]

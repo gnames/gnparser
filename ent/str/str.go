@@ -114,7 +114,7 @@ var Transliterations = map[rune]string{
 // GlobalTransliterations are applied not only to scientific names, but
 // to the whole name-string.
 var GlobalTransliterations = map[rune]string{
-	'‘': "'", '’': "'",
+	'‘': "'", '’': "'", '`': "'", '´': "'",
 }
 
 var nameNums = map[string]string{
