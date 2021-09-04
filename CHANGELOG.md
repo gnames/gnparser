@@ -4,9 +4,10 @@
 
 ## [v1.4.0]
 
+- Add [#193]: add TSV format for output.
+- Add [#190]: support prefixes `do` and `de los` for authors.
 - Add [#187]: support `ter` suffix for authors.
 - Add [#186]: support non-ASCII apostrophe in authors.
-- Add [#193]: add TSV format for output.
 
 ## [v1.3.3]
 
@@ -300,7 +301,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
-[v1.4.0]: https://github.com/gnames/gnparser/compare/v1.3.2...v1.4.0
+[v1.4.0]: https://github.com/gnames/gnparser/compare/v1.3.3...v1.4.0
 [v1.3.3]: https://github.com/gnames/gnparser/compare/v1.3.2...v1.3.3
 [v1.3.2]: https://github.com/gnames/gnparser/compare/v1.3.1...v1.3.2
 [v1.3.1]: https://github.com/gnames/gnparser/compare/v1.3.0...v1.3.1
