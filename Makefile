@@ -69,7 +69,7 @@ release: peg dockerhub
 	tar zcf $(RELEASE_DIR)/gnparser-$(VER)-mac.tar.gz gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_MAC_ARM) $(NO_C) $(GOBUILD); \
-	tar zcf $(RELEASE_DIR)/gnparser-mac-arm64.tar.gz gnparser; \
+	tar zcf $(RELEASE_DIR)/gnparser-$(VER)-mac-arm64.tar.gz gnparser; \
 	$(GOCLEAN); \
 	$(FLAGS_WIN) $(NO_C) $(GOBUILD); \
 	zip -9 $(RELEASE_DIR)/gnparser-$(VER)-win-64.zip gnparser.exe; \
