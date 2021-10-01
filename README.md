@@ -491,15 +491,18 @@ Note that you have to use `--stream -s` flag for this approach to work.
 ### R language package
 
 For R language it is possible to use [`rgnparser` package][rgnparser]. It
-implements mentioned above `pipes` method.
+implements mentioned above `pipes` method. It does require `gnparser` app
+be installed.
 
 ### Ruby Gem
 
-Ruby developers can use `GNparser` functionality via [biodiversity] gem.
+Ruby developers can use `GNparser` functionality via [biodiversity] gem. It
+uses C-binding and does not require an installed `gnparser` app.
 
 ### Node.js
 
-@tobymarsden created a [wrapper for node.js][node-gnparser]
+@tobymarsden created a [wrapper for node.js][node-gnparser]. It uses C-binding
+and does not require an installed `gnparser` app.
 
 ### Usage as a REST API Interface
 
