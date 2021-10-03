@@ -21,24 +21,32 @@ const (
 	BOLDAnnot
 	// HybridAnnot is a miscellaneous hybrid name.
 	HybridAnnot
-	// NameHybridAnnot is a stable hybrid in botany with registered name.
+	// NamedHybridAnnot is a stable hybrid in botany with registered name.
 	NamedHybridAnnot
 	// HybridFormulaAnnot is a hybrid created by combination of 2 or more names.
 	HybridFormulaAnnot
 	// NothoHybridAnnot is a hybrid with notho- 'ranks'.
 	NothoHybridAnnot
+	// GraftChimeraAnnot is a miscellaneous graft-chimera name.
+	GraftChimeraAnnot
+	// GraftChimeraFormulatAnnot is a graft-chimera created by the combination of 2 or more names
+	GraftChimeraFormulaAnnot
+	// NamedGraftChimeraAnnot is a stable graft-chimera in botany with registered name.
+	NamedGraftChimeraAnnot
 )
 
 var annotMap = map[Annotation]string{
-	NoAnnot:            "",
-	SurrogateAnnot:     "SURROGATE",
-	ComparisonAnnot:    "COMPARISON",
-	ApproximationAnnot: "APPROXIMATION",
-	BOLDAnnot:          "BOLD_SURROGATE",
-	HybridAnnot:        "HYBRID",
-	NamedHybridAnnot:   "NAMED_HYBRID",
-	HybridFormulaAnnot: "HYBRID_FORMULA",
-	NothoHybridAnnot:   "NOTHO_HYBRID",
+	NoAnnot:                  "",
+	SurrogateAnnot:           "SURROGATE",
+	ComparisonAnnot:          "COMPARISON",
+	ApproximationAnnot:       "APPROXIMATION",
+	BOLDAnnot:                "BOLD_SURROGATE",
+	HybridAnnot:              "HYBRID",
+	NamedHybridAnnot:         "NAMED_HYBRID",
+	HybridFormulaAnnot:       "HYBRID_FORMULA",
+	NothoHybridAnnot:         "NOTHO_HYBRID",
+	GraftChimeraFormulaAnnot: "GRAFT_CHIMERA_FORMULA",
+	NamedGraftChimeraAnnot:   "NAMED_GRAFT_CHIMERA",
 }
 
 var annotStrMap = func() map[string]Annotation {

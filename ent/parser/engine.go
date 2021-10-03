@@ -14,6 +14,7 @@ type baseEngine struct {
 	cardinality     int
 	error           error
 	hybrid          *parsed.Annotation
+	graftChimera    *parsed.Annotation
 	surrogate       *parsed.Annotation
 	bacteria        *tribool.Tribool
 	warnings        map[parsed.Warning]struct{}
@@ -32,6 +33,7 @@ func (p *Engine) fullReset() {
 	p.cardinality = 0
 	p.error = nil
 	p.hybrid = nil
+	p.graftChimera = nil
 	p.surrogate = nil
 	p.bacteria = nil
 	var warnReset map[parsed.Warning]struct{}
@@ -106,6 +108,9 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 	switch t.pegRule {
 	case ruleHybridChar:
 		annot = parsed.HybridAnnot
+		p.hybrid = &annot
+	case ruleGraftChimeraChar:
+		annot = parsed.GraftChimeraAnnot
 		p.hybrid = &annot
 	case ruleRankNotho, ruleRankUninomialNotho:
 		annot = parsed.NothoHybridAnnot
@@ -190,6 +195,8 @@ var nodeRules = map[pegRule]struct{}{
 	ruleFilius:                          {},
 	ruleFiliusFNoSpace:                  {},
 	ruleGenusWord:                       {},
+	ruleGraftChimeraChar:                {},
+	ruleGraftChimeraFormula:             {},
 	ruleHybridChar:                      {},
 	ruleHybridFormula:                   {},
 	ruleInfraspEpithet:                  {},
@@ -201,6 +208,7 @@ var nodeRules = map[pegRule]struct{}{
 	ruleNameSpecies:                     {},
 	ruleNamedGenusHybrid:                {},
 	ruleNamedSpeciesHybrid:              {},
+	ruleNamedGenusGraftChimera:          {},
 	ruleOriginalAuthorship:              {},
 	ruleOriginalAuthorshipComb:          {},
 	ruleRank:                            {},

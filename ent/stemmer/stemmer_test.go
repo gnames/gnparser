@@ -34,6 +34,8 @@ func TestStemmer(t *testing.T) {
 			{"Binomial1", "Betula naturae", "Betula natur"},
 			{"Binomial2", "Betula alba", "Betula alb"},
 			{"Trinomial", "Betula alba naturae", "Betula alb natur"},
+			{"GraftChimeraFormula", "Crataegus + Mespilus", "Crataegus + Mespilus"},
+			{"GraftChimeraFormula2", "Cytisus purpureus + Laburnum anagyroides", "Cytisus purpure + Laburnum anagyroid"},
 		}
 		for _, v := range data {
 			assert.Equal(t, stemmer.StemCanonical(v.in), v.out, v.msg)
