@@ -42,7 +42,7 @@ GenusWord <- (AbbrGenus / UninomialWord) !(_ AuthorWord)
 
 InfraspGroup <- InfraspEpithet (_ InfraspEpithet)?  (_ InfraspEpithet)?
 
-InfraspEpithet <- (Rank _?)? !(AuthorEx) Word  (_ Authorship)?
+InfraspEpithet <- (Rank _?)? !(AuthorEx) Word  (_? Authorship)?
 
 CultivarWordGroup <-  ((RankCultivar _)? CultivarApostrophe CultivarRecursive CultivarApostrophe) / (RankCultivar _ Cultivar)
 

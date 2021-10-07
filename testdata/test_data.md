@@ -1656,6 +1656,16 @@ Authorship: P. L. Crouan & H. M. Crouan ex Weber-van Bosse
 {"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Ex authors are not required"}],"verbatim":"Caulerpa fastigiata confervoides P. L. Crouan \u0026 H. M. Crouan ex Weber-van Bosse","normalized":"Caulerpa fastigiata confervoides P. L. Crouan \u0026 H. M. Crouan ex Weber-van Bosse","canonical":{"stemmed":"Caulerpa fastigiat conferuoid","simple":"Caulerpa fastigiata confervoides","full":"Caulerpa fastigiata confervoides"},"cardinality":3,"authorship":{"verbatim":"P. L. Crouan \u0026 H. M. Crouan ex Weber-van Bosse","normalized":"P. L. Crouan \u0026 H. M. Crouan ex Weber-van Bosse","authors":["P. L. Crouan","H. M. Crouan"],"originalAuth":{"authors":["P. L. Crouan","H. M. Crouan"],"exAuthors":{"authors":["Weber-van Bosse"]}}},"details":{"infraspecies":{"genus":"Caulerpa","species":"fastigiata","infraspecies":[{"value":"confervoides","authorship":{"verbatim":"P. L. Crouan \u0026 H. M. Crouan ex Weber-van Bosse","normalized":"P. L. Crouan \u0026 H. M. Crouan ex Weber-van Bosse","authors":["P. L. Crouan","H. M. Crouan"],"originalAuth":{"authors":["P. L. Crouan","H. M. Crouan"],"exAuthors":{"authors":["Weber-van Bosse"]}}}}]}},"words":[{"verbatim":"Caulerpa","normalized":"Caulerpa","wordType":"GENUS","start":0,"end":8},{"verbatim":"fastigiata","normalized":"fastigiata","wordType":"SPECIES","start":9,"end":19},{"verbatim":"confervoides","normalized":"confervoides","wordType":"INFRASPECIES","start":20,"end":32},{"verbatim":"P.","normalized":"P.","wordType":"AUTHOR_WORD","start":33,"end":35},{"verbatim":"L.","normalized":"L.","wordType":"AUTHOR_WORD","start":36,"end":38},{"verbatim":"Crouan","normalized":"Crouan","wordType":"AUTHOR_WORD","start":39,"end":45},{"verbatim":"H.","normalized":"H.","wordType":"AUTHOR_WORD","start":48,"end":50},{"verbatim":"M.","normalized":"M.","wordType":"AUTHOR_WORD","start":51,"end":53},{"verbatim":"Crouan","normalized":"Crouan","wordType":"AUTHOR_WORD","start":54,"end":60},{"verbatim":"Weber-van","normalized":"Weber-van","wordType":"AUTHOR_WORD","start":64,"end":73},{"verbatim":"Bosse","normalized":"Bosse","wordType":"AUTHOR_WORD","start":74,"end":79}],"id":"8934dbda-1fd2-52c4-af76-8f80e5f02791","parserVersion":"test_version"}
 ```
 
+Name: Rhinanthus glacialis simplex(Sterneck) J.Dostál
+
+Canonical: Rhinanthus glacialis simplex
+
+Authorship: (Sterneck) J.Dostál
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Rhinanthus glacialis simplex(Sterneck) J.Dostál","normalized":"Rhinanthus glacialis simplex (Sterneck) J. Dostál","canonical":{"stemmed":"Rhinanthus glacial simplex","simple":"Rhinanthus glacialis simplex","full":"Rhinanthus glacialis simplex"},"cardinality":3,"authorship":{"verbatim":"(Sterneck) J.Dostál","normalized":"(Sterneck) J. Dostál","authors":["Sterneck","J. Dostál"],"originalAuth":{"authors":["Sterneck"]},"combinationAuth":{"authors":["J. Dostál"]}},"details":{"infraspecies":{"genus":"Rhinanthus","species":"glacialis","infraspecies":[{"value":"simplex","authorship":{"verbatim":"(Sterneck) J.Dostál","normalized":"(Sterneck) J. Dostál","authors":["Sterneck","J. Dostál"],"originalAuth":{"authors":["Sterneck"]},"combinationAuth":{"authors":["J. Dostál"]}}}]}},"words":[{"verbatim":"Rhinanthus","normalized":"Rhinanthus","wordType":"GENUS","start":0,"end":10},{"verbatim":"glacialis","normalized":"glacialis","wordType":"SPECIES","start":11,"end":20},{"verbatim":"simplex","normalized":"simplex","wordType":"INFRASPECIES","start":21,"end":28},{"verbatim":"Sterneck","normalized":"Sterneck","wordType":"AUTHOR_WORD","start":29,"end":37},{"verbatim":"J.","normalized":"J.","wordType":"AUTHOR_WORD","start":39,"end":41},{"verbatim":"Dostál","normalized":"Dostál","wordType":"AUTHOR_WORD","start":41,"end":47}],"id":"8128607d-0186-5a38-ab02-c0b18f46b3ed","parserVersion":"test_version"}
+```
+
 ### Legacy ICZN names with rank
 
 Name: Acipenser gueldenstaedti colchicus natio danubicus Movchan, 1967
@@ -1669,6 +1679,16 @@ Authorship: Movchan 1967
 ```
 
 ### Infraspecies with rank (ICN)
+
+Name: Cantharellus sinuosus var. multiplex(A.H.Sm.) Romagn., 1995
+
+Canonical: Cantharellus sinuosus var. multiplex
+
+Authorship: (A.H.Sm.) Romagn., 1995
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Cantharellus sinuosus var. multiplex(A.H.Sm.) Romagn., 1995","normalized":"Cantharellus sinuosus var. multiplex (A. H. Sm.) Romagn. 1995","canonical":{"stemmed":"Cantharellus sinuos multiplex","simple":"Cantharellus sinuosus multiplex","full":"Cantharellus sinuosus var. multiplex"},"cardinality":3,"authorship":{"verbatim":"(A.H.Sm.) Romagn., 1995","normalized":"(A. H. Sm.) Romagn. 1995","authors":["A. H. Sm.","Romagn."],"originalAuth":{"authors":["A. H. Sm."]},"combinationAuth":{"authors":["Romagn."],"year":{"year":"1995"}}},"details":{"infraspecies":{"genus":"Cantharellus","species":"sinuosus","infraspecies":[{"value":"multiplex","rank":"var.","authorship":{"verbatim":"(A.H.Sm.) Romagn., 1995","normalized":"(A. H. Sm.) Romagn. 1995","authors":["A. H. Sm.","Romagn."],"originalAuth":{"authors":["A. H. Sm."]},"combinationAuth":{"authors":["Romagn."],"year":{"year":"1995"}}}}]}},"words":[{"verbatim":"Cantharellus","normalized":"Cantharellus","wordType":"GENUS","start":0,"end":12},{"verbatim":"sinuosus","normalized":"sinuosus","wordType":"SPECIES","start":13,"end":21},{"verbatim":"var.","normalized":"var.","wordType":"RANK","start":22,"end":26},{"verbatim":"multiplex","normalized":"multiplex","wordType":"INFRASPECIES","start":27,"end":36},{"verbatim":"A.","normalized":"A.","wordType":"AUTHOR_WORD","start":37,"end":39},{"verbatim":"H.","normalized":"H.","wordType":"AUTHOR_WORD","start":39,"end":41},{"verbatim":"Sm.","normalized":"Sm.","wordType":"AUTHOR_WORD","start":41,"end":44},{"verbatim":"Romagn.","normalized":"Romagn.","wordType":"AUTHOR_WORD","start":46,"end":53},{"verbatim":"1995","normalized":"1995","wordType":"YEAR","start":55,"end":59}],"id":"46007c97-3458-58c7-aea8-2413b74449d9","parserVersion":"test_version"}
+```
 
 Name: Crematogaster impressa st. brazzai Santschi 1937
 
