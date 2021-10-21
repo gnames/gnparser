@@ -10,13 +10,14 @@
   * [Names with cultivars in double straight quotes](#names-with-cultivars-in-double-straight-quotes)
   * [Hybrid formulae with cultivars](#hybrid-formulae-with-cultivars)
   * [Uninomials with cultivars](#uninomials-with-cultivars)
+  * [Graft-chimeras](#graft-chieras)
 
 <!-- vim-markdown-toc -->
 
 ## Introduction
 
 These tests run with the -C/--cultivar flag enabled, which adds the cultivar
-epithet into the normalized and canonical names.
+epithet into the normalized and canonical names and enables the parsing of graft-chimeras
 
 ## Tests
 
@@ -150,4 +151,46 @@ Authorship: Schott
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Spathiphyllum Schott “Mauna Loa”","normalized":"Spathiphyllum Schott ‘Mauna Loa’","canonical":{"stemmed":"Spathiphyllum ‘Mauna Loa’","simple":"Spathiphyllum ‘Mauna Loa’","full":"Spathiphyllum ‘Mauna Loa’"},"cardinality":2,"authorship":{"verbatim":"Schott","normalized":"Schott","authors":["Schott"],"originalAuth":{"authors":["Schott"]}},"details":{"uninomial":{"uninomial":"Spathiphyllum","cultivar":"‘Mauna Loa’","authorship":{"verbatim":"Schott","normalized":"Schott","authors":["Schott"],"originalAuth":{"authors":["Schott"]}}}},"words":[{"verbatim":"Spathiphyllum","normalized":"Spathiphyllum","wordType":"UNINOMIAL","start":0,"end":13},{"verbatim":"Schott","normalized":"Schott","wordType":"AUTHOR_WORD","start":14,"end":20},{"verbatim":"Mauna Loa","normalized":"‘Mauna Loa’","wordType":"CULTIVAR","start":22,"end":31}],"id":"fb8afb5b-67b8-5bcc-8492-773cc40d3bb9","parserVersion":"test_version"}
+```
+
+### Graft-chimeras
+
+Name: + Crataegomespilus
+
+Canonical: + Crataegomespilus
+
+Authorship:
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Named graft-chimera"}],"verbatim":"+ Crataegomespilus","normalized":"+ Crataegomespilus","canonical":{"stemmed":"Crataegomespilus","simple":"Crataegomespilus","full":"+ Crataegomespilus"},"cardinality":1,"hybrid":"NAMED_GRAFT_CHIMERA","details":{"uninomial":{"uninomial":"Crataegomespilus"}},"words":[{"verbatim":"+","normalized":"+","wordType":"GRAFT_CHIMERA_CHAR","start":0,"end":1},{"verbatim":"Crataegomespilus","normalized":"Crataegomespilus","wordType":"UNINOMIAL","start":2,"end":18}],"id":"408e8fc7-fa27-53a6-9eff-37cb779724e4","parserVersion":"test_version"}
+```
+
+Name: +Crataegomespilus
+
+Canonical: + Crataegomespilus
+
+Authorship: 
+
+```json
+{"parsed":true,"quality":3,"qualityWarnings":[{"quality":3,"warning":"Graft-chimera char is not separated by space"},{"quality":2,"warning":"Named graft-chimera"}],"verbatim":"+Crataegomespilus","normalized":"+ Crataegomespilus","canonical":{"stemmed":"Crataegomespilus","simple":"Crataegomespilus","full":"+ Crataegomespilus"},"cardinality":1,"hybrid":"NAMED_GRAFT_CHIMERA","details":{"uninomial":{"uninomial":"Crataegomespilus"}},"words":[{"verbatim":"+","normalized":"+","wordType":"GRAFT_CHIMERA_CHAR","start":0,"end":1},{"verbatim":"Crataegomespilus","normalized":"Crataegomespilus","wordType":"UNINOMIAL","start":1,"end":17}],"id":"c2c50c08-1f62-547f-8fab-50359caf0b31","parserVersion":"test_version"}
+```
+
+Name: Cytisus purpureus + Laburnum anagyroides
+
+Canonical: Cytisus purpureus + Laburnum anagyroides
+
+Authorship:
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Graft-chimera formula"}],"verbatim":"Cytisus purpureus + Laburnum anagyroides","normalized":"Cytisus purpureus + Laburnum anagyroides","canonical":{"stemmed":"Cytisus purpure + Laburnum anagyroid","simple":"Cytisus purpureus + Laburnum anagyroides","full":"Cytisus purpureus + Laburnum anagyroides"},"cardinality":0,"hybrid":"GRAFT_CHIMERA_FORMULA","details":{"graftChimeraFormula":[{"species":{"genus":"Cytisus","species":"purpureus"}},{"species":{"genus":"Laburnum","species":"anagyroides"}}]},"words":[{"verbatim":"Cytisus","normalized":"Cytisus","wordType":"GENUS","start":0,"end":7},{"verbatim":"purpureus","normalized":"purpureus","wordType":"SPECIES","start":8,"end":17},{"verbatim":"+","normalized":"+","wordType":"GRAFT_CHIMERA_CHAR","start":18,"end":19},{"verbatim":"Laburnum","normalized":"Laburnum","wordType":"GENUS","start":20,"end":28},{"verbatim":"anagyroides","normalized":"anagyroides","wordType":"SPECIES","start":29,"end":40}],"id":"a8f8ace8-ba1a-5371-b9d5-73efce81d52c","parserVersion":"test_version"}
+```
+
+Name: Crataegus + Mespilus
+
+Canonical: Crataegus + Mespilus
+
+Authorship:
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Graft-chimera formula"}],"verbatim":"Crataegus + Mespilus","normalized":"Crataegus + Mespilus","canonical":{"stemmed":"Crataegus + Mespilus","simple":"Crataegus + Mespilus","full":"Crataegus + Mespilus"},"cardinality":0,"hybrid":"GRAFT_CHIMERA_FORMULA","details":{"graftChimeraFormula":[{"uninomial":{"uninomial":"Crataegus"}},{"uninomial":{"uninomial":"Mespilus"}}]},"words":[{"verbatim":"Crataegus","normalized":"Crataegus","wordType":"UNINOMIAL","start":0,"end":9},{"verbatim":"+","normalized":"+","wordType":"GRAFT_CHIMERA_CHAR","start":10,"end":11},{"verbatim":"Mespilus","normalized":"Mespilus","wordType":"UNINOMIAL","start":12,"end":20}],"id":"d651cd82-9b00-53dd-9d59-6af66ab62046","parserVersion":"test_version"}
 ```

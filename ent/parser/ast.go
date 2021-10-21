@@ -92,13 +92,17 @@ func (p *Engine) newName(n *node32) nameData {
 		p.hybrid = &annot
 		name = p.newNamedSpeciesHybridNode(n)
 	case ruleGraftChimeraFormula:
-		annot = parsed.GraftChimeraFormulaAnnot
-		p.hybrid = &annot
-		name = p.newGraftChimeraFormulaNode(n)
+		if(p.enableCultivars) {
+			annot = parsed.GraftChimeraFormulaAnnot
+			p.hybrid = &annot
+			name = p.newGraftChimeraFormulaNode(n)
+		}
 	case ruleNamedGenusGraftChimera:
-		annot = parsed.NamedGraftChimeraAnnot
-		p.hybrid = &annot
-		name = p.newNamedGenusGraftChimeraNode(n)
+		if(p.enableCultivars) {
+			annot = parsed.NamedGraftChimeraAnnot
+			p.hybrid = &annot
+			name = p.newNamedGenusGraftChimeraNode(n)
+		}
 	case ruleCandidatusName:
 		name = p.newCandidatusName(n)
 	case ruleSingleName:

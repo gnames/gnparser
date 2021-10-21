@@ -353,7 +353,8 @@ Relevant flags:
 This flag is ignored if parsing mode is set to streaming with ``-s`` flag.
 
 ``--cultivars -C``
-: Adds support for botanical cultivars like ``Sarracenia flava 'Maxima'``.
+: Adds support for botanical cultivars like ``Sarracenia flava 'Maxima'`` 
+and graft-chimaeras like ``+ Crataegomespilus``
 
 ``--capitalize -c``
 : Capitalizes the first letter of name-strings.

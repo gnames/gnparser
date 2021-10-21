@@ -146,7 +146,7 @@ func init() {
 		"capitalize the first letter of input name-strings")
 
 	rootCmd.Flags().BoolP("cultivar", "C", false,
-		"include cultivar epithets in normalized and canonical outputs")
+		"include cultivar epithets and graft-chimeras in normalized and canonical outputs")
 
 }
 
