@@ -855,6 +855,16 @@ Authorship:
 
 ### Binomials with authorship
 
+Name: Cryptopleura farlowiana (J.Agardh) ver Steeg & Jossly
+
+Canonical: Cryptopleura farlowiana
+
+Authorship: (J.Agardh) ver Steeg & Jossly
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Cryptopleura farlowiana (J.Agardh) ver Steeg \u0026 Jossly","normalized":"Cryptopleura farlowiana (J. Agardh) ver Steeg \u0026 Jossly","canonical":{"stemmed":"Cryptopleura farlowian","simple":"Cryptopleura farlowiana","full":"Cryptopleura farlowiana"},"cardinality":2,"authorship":{"verbatim":"(J.Agardh) ver Steeg \u0026 Jossly","normalized":"(J. Agardh) ver Steeg \u0026 Jossly","authors":["J. Agardh","ver Steeg","Jossly"],"originalAuth":{"authors":["J. Agardh"]},"combinationAuth":{"authors":["ver Steeg","Jossly"]}},"details":{"species":{"genus":"Cryptopleura","species":"farlowiana","authorship":{"verbatim":"(J.Agardh) ver Steeg \u0026 Jossly","normalized":"(J. Agardh) ver Steeg \u0026 Jossly","authors":["J. Agardh","ver Steeg","Jossly"],"originalAuth":{"authors":["J. Agardh"]},"combinationAuth":{"authors":["ver Steeg","Jossly"]}}}},"words":[{"verbatim":"Cryptopleura","normalized":"Cryptopleura","wordType":"GENUS","start":0,"end":12},{"verbatim":"farlowiana","normalized":"farlowiana","wordType":"SPECIES","start":13,"end":23},{"verbatim":"J.","normalized":"J.","wordType":"AUTHOR_WORD","start":25,"end":27},{"verbatim":"Agardh","normalized":"Agardh","wordType":"AUTHOR_WORD","start":27,"end":33},{"verbatim":"ver","normalized":"ver","wordType":"AUTHOR_WORD","start":35,"end":38},{"verbatim":"Steeg","normalized":"Steeg","wordType":"AUTHOR_WORD","start":39,"end":44},{"verbatim":"Jossly","normalized":"Jossly","wordType":"AUTHOR_WORD","start":47,"end":53}],"id":"f9b3b9e2-b1f9-56bb-b0bf-fa8eab2c03dd","parserVersion":"test_version"}
+```
+
 Name: Nemcia epacridoides (Meissner)Crisp
 
 Canonical: Nemcia epacridoides

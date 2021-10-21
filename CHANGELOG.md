@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.4.2]
+
+- Add [#196]: parse authors with prefix 'ver'
+
 ## [v1.4.1]
 
 - Fix [#195]: parse multinomials where authorshp is not separated by space.
@@ -305,6 +309,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.4.2]: https://github.com/gnames/gnparser/compare/v1.4.1...v1.4.2
 [v1.4.1]: https://github.com/gnames/gnparser/compare/v1.4.0...v1.4.1
 [v1.4.0]: https://github.com/gnames/gnparser/compare/v1.3.3...v1.4.0
 [v1.3.3]: https://github.com/gnames/gnparser/compare/v1.3.2...v1.3.3
