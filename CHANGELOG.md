@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.5.0]
+
+- Add [#194]: support for cultivars' graft-chymeras (courtesy of @tobymarsden)
+
 ## [v1.4.2]
 
 - Add [#196]: parse authors with prefix 'ver'
