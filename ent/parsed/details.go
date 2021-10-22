@@ -83,8 +83,17 @@ type DetailsHybridFormula struct {
 	HybridFormula []Details `json:"hybridFormula"`
 }
 
+// DetailsGraftChimeraFormula are details for a graft-chimera formula names.
+type DetailsGraftChimeraFormula struct {
+	GraftChimeraFormula []Details `json:"graftChimeraFormula"`
+}
+
 // isDetails implements Details interface.
 func (DetailsHybridFormula) isDetails() {}
+
+
+// isDetails implements Details interface.
+func (DetailsGraftChimeraFormula) isDetails() {}
 
 // DetailsUninomial are Uninomial details.
 type DetailsUninomial struct {

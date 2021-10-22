@@ -129,27 +129,31 @@ type StemmedWord struct {
 // 4. The string always starts with a capitalized word.
 //
 func StemCanonical(c string) string {
-	formulaParts := strings.Split(c, " × ")
-	for i, v := range formulaParts {
-		nameParts := strings.Split(v, "‘")
-		latinPart := nameParts[0]
-		words := strings.Split(latinPart, " ")
-		if len(words) == 1 {
-			formulaParts[i] = v
-			continue
-		}
-		formulaPartsRes := make([]string, len(words))
-		for wi, wv := range words {
-			if wi == 0 || len(wv) < 3 {
-				formulaPartsRes[wi] = wv
-			} else {
-				formulaPartsRes[wi] = Stem(wv).Stem
+	graftChimeraFormulaParts := strings.Split(c, " + ")
+	for gci, gcv := range graftChimeraFormulaParts {
+		hybridFormulaParts := strings.Split(gcv, " × ")
+		for hi, hv := range hybridFormulaParts {
+			nameParts := strings.Split(hv, "‘")
+			latinPart := nameParts[0]
+			words := strings.Split(latinPart, " ")
+			if len(words) == 1 {
+				hybridFormulaParts[hi] = hv
+				continue
 			}
+			formulaPartsRes := make([]string, len(words))
+			for wi, wv := range words {
+				if wi == 0 || len(wv) < 3 {
+					formulaPartsRes[wi] = wv
+				} else {
+					formulaPartsRes[wi] = Stem(wv).Stem
+				}
+			}
+			nameParts[0] = strings.Join(formulaPartsRes, " ")
+			hybridFormulaParts[hi] = strings.Join(nameParts, "‘")
 		}
-		nameParts[0] = strings.Join(formulaPartsRes, " ")
-		formulaParts[i] = strings.Join(nameParts, "‘")
+		graftChimeraFormulaParts[gci] = strings.Join(hybridFormulaParts, " × ")
 	}
-	return strings.Join(formulaParts, " × ")
+	return strings.Join(graftChimeraFormulaParts, " + ")
 }
 
 // Stem takes a word and, assuming the word is noun, removes its latin suffix

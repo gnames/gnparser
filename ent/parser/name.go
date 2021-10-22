@@ -134,6 +134,60 @@ func (nf *hybridFormulaNode) details() parsed.Details {
 	return parsed.DetailsHybridFormula{HybridFormula: dets}
 }
 
+func (nf *graftChimeraFormulaNode) words() []parsed.Word {
+	words := nf.FirstSpecies.words()
+	for _, v := range nf.GraftChimeraElements {
+		words = append(words, *v.GraftChimeraChar)
+		if v.Species != nil {
+			words = append(words, v.Species.words()...)
+		}
+	}
+	return words
+}
+
+func (nf *graftChimeraFormulaNode) value() string {
+	val := nf.FirstSpecies.value()
+	for _, v := range nf.GraftChimeraElements {
+		val = str.JoinStrings(val, v.GraftChimeraChar.Normalized, " ")
+		if v.Species != nil {
+			val = str.JoinStrings(val, v.Species.value(), " ")
+		}
+	}
+	return val
+}
+
+func (nf *graftChimeraFormulaNode) canonical() *canonical {
+	c := nf.FirstSpecies.canonical()
+	for _, v := range nf.GraftChimeraElements {
+		hc := &canonical{
+			Value:       v.GraftChimeraChar.Normalized,
+			ValueRanked: v.GraftChimeraChar.Normalized,
+		}
+		c = appendCanonical(c, hc, " ")
+		if v.Species != nil {
+			sc := v.Species.canonical()
+			c = appendCanonical(c, sc, " ")
+		}
+	}
+	return c
+}
+
+func (nf *graftChimeraFormulaNode) lastAuthorship() *authorshipNode {
+	var au *authorshipNode
+	return au
+}
+
+func (nf *graftChimeraFormulaNode) details() parsed.Details {
+	dets := make([]parsed.Details, 0, len(nf.GraftChimeraElements)+1)
+	dets = append(dets, nf.FirstSpecies.details())
+	for _, v := range nf.GraftChimeraElements {
+		if v.Species != nil {
+			dets = append(dets, v.Species.details())
+		}
+	}
+	return parsed.DetailsGraftChimeraFormula{GraftChimeraFormula: dets}
+}
+
 func (nh *namedGenusHybridNode) words() []parsed.Word {
 	words := []parsed.Word{*nh.Hybrid}
 	words = append(words, nh.nameData.words()...)
@@ -242,6 +296,39 @@ func (nh *namedSpeciesHybridNode) details() parsed.Details {
 	}
 
 	return parsed.DetailsInfraspecies{Infraspecies: iso}
+}
+
+func (nc *namedGenusGraftChimeraNode) words() []parsed.Word {
+	words := []parsed.Word{*nc.GraftChimera}
+	words = append(words, nc.nameData.words()...)
+	return words
+}
+
+func (nc *namedGenusGraftChimeraNode) value() string {
+	v := nc.nameData.value()
+	v = "+ " + v
+	return v
+}
+
+func (nc *namedGenusGraftChimeraNode) canonical() *canonical {
+	c := &canonical{
+		Value:       "",
+		ValueRanked: "+",
+	}
+
+	c1 := nc.nameData.canonical()
+	c = appendCanonical(c, c1, " ")
+	return c
+}
+
+func (nc *namedGenusGraftChimeraNode) details() parsed.Details {
+	d := nc.nameData.details()
+	return d
+}
+
+func (nc *namedGenusGraftChimeraNode) lastAuthorship() *authorshipNode {
+	au := nc.nameData.lastAuthorship()
+	return au
 }
 
 func (cnd *candidatusNameNode) words() []parsed.Word {

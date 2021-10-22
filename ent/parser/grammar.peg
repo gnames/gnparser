@@ -8,7 +8,7 @@ SciName <- _? Name Tail END
 
 Tail <- ((_ / ';' / ',') .*)?
 
-Name <- NamedHybrid / HybridFormula / CandidatusName / SingleName
+Name <- NamedGenusGraftChimera / GraftChimeraFormula / NamedHybrid / HybridFormula / CandidatusName / SingleName
 
 HybridFormula <- SingleName (_ (HybridFormulaPart / HybridFormulaFull))+
 
@@ -22,6 +22,14 @@ NamedSpeciesHybrid <- GenusWord (_ Subgenus)? (_ Comparison)? _ HybridChar _?
   SpeciesEpithet (_ InfraspGroup)?
 
 NamedGenusHybrid <- HybridChar _? SingleName
+
+GraftChimeraFormula <- SingleName (_ (GraftChimeraFormulaPart / GraftChimeraFormulaFull))+
+
+GraftChimeraFormulaFull <- GraftChimeraChar (_ SingleName)?
+
+GraftChimeraFormulaPart <- GraftChimeraChar _ SpeciesEpithet (_ InfraspGroup)?
+
+NamedGenusGraftChimera <- GraftChimeraChar _? SingleName
 
 CandidatusName <- Candidatus _ SingleName
 
@@ -150,6 +158,8 @@ Word4 <- NameLowerChar+ '.' NameLowerChar
 MultiDashedWord <- NameLowerChar+ Dash NameLowerChar+ Dash NameLowerChar+ (Dash NameLowerChar+)?
 
 HybridChar <- '×' / [xX] &_ / [xX] &UninomialWord / [xX] &END
+
+GraftChimeraChar <- '+'
 
 ApproxNameIgnored <- .*
 

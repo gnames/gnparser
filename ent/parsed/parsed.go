@@ -78,6 +78,12 @@ type Parsed struct {
 	// - notho- hybrid
 	// - hybrid formula
 	Hybrid *Annotation `json:"hybrid,omitempty"`
+	// GraftChimera is not nil if a name is detected as one of the graft chimeras
+	//
+	// - a non-categorized graft chimera
+	// - named graft chimera
+	// - graft chimera formula
+	GraftChimera *Annotation `json:"graftchimera,omitempty"`
 	// Surrogate is a wide category of names that do not follow
 	// nomenclatural rules
 

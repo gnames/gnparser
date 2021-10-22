@@ -91,6 +91,18 @@ func (p *Engine) newName(n *node32) nameData {
 		annot = parsed.NamedHybridAnnot
 		p.hybrid = &annot
 		name = p.newNamedSpeciesHybridNode(n)
+	case ruleGraftChimeraFormula:
+		if(p.enableCultivars) {
+			annot = parsed.GraftChimeraFormulaAnnot
+			p.hybrid = &annot
+			name = p.newGraftChimeraFormulaNode(n)
+		}
+	case ruleNamedGenusGraftChimera:
+		if(p.enableCultivars) {
+			annot = parsed.NamedGraftChimeraAnnot
+			p.hybrid = &annot
+			name = p.newNamedGenusGraftChimeraNode(n)
+		}
 	case ruleCandidatusName:
 		name = p.newCandidatusName(n)
 	case ruleSingleName:
@@ -107,6 +119,16 @@ type hybridFormulaNode struct {
 type hybridElement struct {
 	HybridChar *parsed.Word
 	Species    nameData
+}
+
+type graftChimeraFormulaNode struct {
+	FirstSpecies         nameData
+	GraftChimeraElements []*graftChimeraElement
+}
+
+type graftChimeraElement struct {
+	GraftChimeraChar *parsed.Word
+	Species          nameData
 }
 
 func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
@@ -157,6 +179,54 @@ func (p *Engine) newHybridFormulaNode(n *node32) *hybridFormulaNode {
 	return hf
 }
 
+func (p *Engine) newGraftChimeraFormulaNode(n *node32) *graftChimeraFormulaNode {
+	var gcf *graftChimeraFormulaNode
+	p.addWarn(parsed.GraftChimeraFormulaWarn)
+	n = n.up
+	firstName := p.newSingleName(n)
+	n = n.next
+	var gces []*graftChimeraElement
+	var gce *graftChimeraElement
+	for n != nil {
+		switch n.pegRule {
+		case ruleGraftChimeraChar:
+			gce = &graftChimeraElement{
+				GraftChimeraChar: p.newWordNode(n, parsed.GraftChimeraCharType),
+			}
+		case ruleSingleName:
+			gce.Species = p.newSingleName(n)
+			gces = append(gces, gce)
+		case ruleSpeciesEpithet:
+			p.addWarn(parsed.GraftChimeraFormulaIncompleteWarn)
+			var g *parsed.Word
+			switch node := firstName.(type) {
+			case *speciesNode:
+				g = node.Genus
+			case *uninomialNode:
+				g = node.Word
+			case *comparisonNode:
+				g = node.Genus
+			}
+			spe := p.newSpeciesEpithetNode(n)
+			g = &parsed.Word{Verbatim: g.Verbatim, Normalized: g.Normalized}
+			gce.Species = &speciesNode{Genus: g, SpEpithet: spe}
+			gces = append(gces, gce)
+		}
+		n = n.next
+	}
+	if gce.Species == nil {
+		p.addWarn(parsed.GraftChimeraFormulaProbIncompleteWarn)
+		gces = append(gces, gce)
+	}
+	gcf = &graftChimeraFormulaNode{
+		FirstSpecies:   firstName,
+		GraftChimeraElements: gces,
+	}
+	gcf.normalizeAbbreviated()
+	p.cardinality = 0
+	return gcf
+}
+
 func (hf *hybridFormulaNode) normalizeAbbreviated() {
 	var fsv string
 	if fsp, ok := hf.FirstSpecies.(*speciesNode); ok {
@@ -165,6 +235,26 @@ func (hf *hybridFormulaNode) normalizeAbbreviated() {
 		return
 	}
 	for _, v := range hf.HybridElements {
+		if sp, ok := v.Species.(*speciesNode); ok {
+			val := sp.Genus.Normalized
+			if val[len(val)-1] == '.' && fsv[0:len(val)-1] == val[0:len(val)-1] {
+				sp.Genus.Normalized = fsv
+				v.Species = sp
+			}
+		} else {
+			continue
+		}
+	}
+}
+
+func (gcf *graftChimeraFormulaNode) normalizeAbbreviated() {
+	var fsv string
+	if fsp, ok := gcf.FirstSpecies.(*speciesNode); ok {
+		fsv = fsp.Genus.Normalized
+	} else {
+		return
+	}
+	for _, v := range gcf.GraftChimeraElements {
 		if sp, ok := v.Species.(*speciesNode); ok {
 			val := sp.Genus.Normalized
 			if val[len(val)-1] == '.' && fsv[0:len(val)-1] == val[0:len(val)-1] {
@@ -261,6 +351,43 @@ func (p *Engine) newNamedSpeciesHybridNode(n *node32) *namedSpeciesHybridNode {
 		Infraspecies: infs,
 	}
 	return nhl
+}
+
+type namedGenusGraftChimeraNode struct {
+	GraftChimera *parsed.Word
+	nameData
+}
+
+func (p *Engine) newNamedGenusGraftChimeraNode(n *node32) *namedGenusGraftChimeraNode {
+	var nhn *namedGenusGraftChimeraNode
+	var name nameData
+	n = n.up
+	if n.pegRule != ruleGraftChimeraChar {
+		return nhn
+	}
+	gc := p.newWordNode(n, parsed.GraftChimeraCharType)
+	n = n.next
+	n = n.up
+	p.addWarn(parsed.GraftChimeraNamedWarn)
+	if n.begin == 1 {
+		p.addWarn(parsed.GraftChimeraCharNoSpaceWarn)
+	}
+	switch n.pegRule {
+	case ruleUninomial:
+		name = p.newUninomialNode(n)
+	case ruleUninomialCombo:
+		p.addWarn(parsed.UninomialComboWarn)
+		name = p.newUninomialComboNode(n)
+	case ruleNameSpecies:
+		name = p.newSpeciesNode(n)
+	case ruleNameApprox:
+		name = p.newApproxNode(n)
+	}
+	nhn = &namedGenusGraftChimeraNode{
+		GraftChimera:   gc,
+		nameData: name,
+	}
+	return nhn
 }
 
 func (p *Engine) botanicalUninomial(n *node32) bool {
@@ -1036,6 +1163,8 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *parsed.Word {
 
 	if wt == parsed.HybridCharType {
 		wrd.Normalized = "×"
+	} else if wt == parsed.GraftChimeraCharType {
+		wrd.Normalized = "+"
 	} else if wt == parsed.GenusType || wt == parsed.UninomialType {
 		if val[len(val)-1] == '?' {
 			p.addWarn(parsed.CapWordQuestionWarn)

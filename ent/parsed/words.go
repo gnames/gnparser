@@ -19,6 +19,7 @@ const (
 	GenusType
 	InfraspEpithetType
 	HybridCharType
+	GraftChimeraCharType
 	RankType
 	SpEpithetType
 	SubgenusType
@@ -38,6 +39,7 @@ var wordTypeMap = map[WordType]string{
 	CandidatusType:       "CANDIDATUS",
 	GenusType:            "GENUS",
 	HybridCharType:       "HYBRID_CHAR",
+	GraftChimeraCharType: "GRAFT_CHIMERA_CHAR",
 	InfraspEpithetType:   "INFRASPECIES",
 	RankType:             "RANK",
 	SpEpithetType:        "SPECIES",

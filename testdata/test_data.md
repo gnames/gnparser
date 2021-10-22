@@ -23,6 +23,7 @@
   * [Hybrids with notho- ranks](#hybrids-with-notho--ranks)
   * [Named hybrids](#named-hybrids)
   * [Hybrid formulae](#hybrid-formulae)
+  * [Graft-chimeras](#graft-chimeras)
   * [Genus with hyphen (allowed by ICN)](#genus-with-hyphen-allowed-by-icn)
   * [Misspeled name](#misspeled-name)
   * [A 'basionym' author in parenthesis (basionym is an ICN term)](#a-basionym-author-in-parenthesis-basionym-is-an-icn-term)
@@ -2612,6 +2613,48 @@ Authorship: (Chupp & Linder) X. J. Liu & Y. L. Guo 1989
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Pseudocercospora broussonetiae (Chupp \u0026 Linder) X.J. Liu \u0026 Y.L. Guo 1989","normalized":"Pseudocercospora broussonetiae (Chupp \u0026 Linder) X. J. Liu \u0026 Y. L. Guo 1989","canonical":{"stemmed":"Pseudocercospora broussoneti","simple":"Pseudocercospora broussonetiae","full":"Pseudocercospora broussonetiae"},"cardinality":2,"authorship":{"verbatim":"(Chupp \u0026 Linder) X.J. Liu \u0026 Y.L. Guo 1989","normalized":"(Chupp \u0026 Linder) X. J. Liu \u0026 Y. L. Guo 1989","authors":["Chupp","Linder","X. J. Liu","Y. L. Guo"],"originalAuth":{"authors":["Chupp","Linder"]},"combinationAuth":{"authors":["X. J. Liu","Y. L. Guo"],"year":{"year":"1989"}}},"details":{"species":{"genus":"Pseudocercospora","species":"broussonetiae","authorship":{"verbatim":"(Chupp \u0026 Linder) X.J. Liu \u0026 Y.L. Guo 1989","normalized":"(Chupp \u0026 Linder) X. J. Liu \u0026 Y. L. Guo 1989","authors":["Chupp","Linder","X. J. Liu","Y. L. Guo"],"originalAuth":{"authors":["Chupp","Linder"]},"combinationAuth":{"authors":["X. J. Liu","Y. L. Guo"],"year":{"year":"1989"}}}}},"words":[{"verbatim":"Pseudocercospora","normalized":"Pseudocercospora","wordType":"GENUS","start":0,"end":16},{"verbatim":"broussonetiae","normalized":"broussonetiae","wordType":"SPECIES","start":17,"end":30},{"verbatim":"Chupp","normalized":"Chupp","wordType":"AUTHOR_WORD","start":32,"end":37},{"verbatim":"Linder","normalized":"Linder","wordType":"AUTHOR_WORD","start":40,"end":46},{"verbatim":"X.","normalized":"X.","wordType":"AUTHOR_WORD","start":48,"end":50},{"verbatim":"J.","normalized":"J.","wordType":"AUTHOR_WORD","start":50,"end":52},{"verbatim":"Liu","normalized":"Liu","wordType":"AUTHOR_WORD","start":53,"end":56},{"verbatim":"Y.","normalized":"Y.","wordType":"AUTHOR_WORD","start":59,"end":61},{"verbatim":"L.","normalized":"L.","wordType":"AUTHOR_WORD","start":61,"end":63},{"verbatim":"Guo","normalized":"Guo","wordType":"AUTHOR_WORD","start":64,"end":67},{"verbatim":"1989","normalized":"1989","wordType":"YEAR","start":68,"end":72}],"id":"64f92545-9139-5e53-9ba5-c5c9edb51be5","parserVersion":"test_version"}
+```
+
+### Graft-chimeras
+
+Name: + Crataegomespilus
+
+Canonical:
+
+Authorship:
+
+```json
+{"parsed":false,"quality":0,"verbatim":"+ Crataegomespilus","cardinality":0,"id":"408e8fc7-fa27-53a6-9eff-37cb779724e4","parserVersion":"test_version"}
+```
+
+Name: +Crataegomespilus
+
+Canonical:
+
+Authorship: 
+
+```json
+{"parsed":false,"quality":0,"verbatim":"+Crataegomespilus","cardinality":0,"id":"c2c50c08-1f62-547f-8fab-50359caf0b31","parserVersion":"test_version"}
+```
+
+Name: Cytisus purpureus + Laburnum anagyroides
+
+Canonical:
+
+Authorship:
+
+```json
+{"parsed":false,"quality":0,"verbatim":"Cytisus purpureus + Laburnum anagyroides","cardinality":0,"id":"a8f8ace8-ba1a-5371-b9d5-73efce81d52c","parserVersion":"test_version"}
+```
+
+Name: Crataegus + Mespilus
+
+Canonical:
+
+Authorship:
+
+```json
+{"parsed":false,"quality":0,"verbatim":"Crataegus + Mespilus","cardinality":0,"id":"d651cd82-9b00-53dd-9d59-6af66ab62046","parserVersion":"test_version"}
 ```
 
 ### Genus with hyphen (allowed by ICN)
