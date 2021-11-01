@@ -35,6 +35,10 @@ func (sn *scientificNameNode) ToOutput(withDetails bool) parsed.Parsed {
 		res.Details = sn.Details()
 		res.Words = sn.Words()
 	}
+
+	if sn.ambiguousEpithet != "" {
+		res.RestoreAmbiguous(sn.ambiguousEpithet, sn.ambiguousModif)
+	}
 	return res
 }
 

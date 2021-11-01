@@ -97,7 +97,7 @@ elements. For example it finds that a genus in <em>Homo sapiens</em> is <em>Homo
 
 <h2 id="USAGE">USAGE</h2>
 
-<h3 id="Usage-for-a-one-name">Usage for a one name</h3>
+<h3 id="Usage-for-one-name">Usage for one name</h3>
 
 <pre><code>gnparser "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891"
 
@@ -105,6 +105,9 @@ elements. For example it finds that a genus in <em>Homo sapiens</em> is <em>Homo
 gnparser "Parus major Linnaeus, 1788"
 # or
 gnparser -f csv "Parus major Linnaeus, 1788"
+
+# TSV output (default)
+gnparser -f tsv "Parus major Linnaeus, 1788"
 
 # JSON compact format
 gnparser "Parus major Linnaeus, 1788" -f compact
@@ -163,6 +166,19 @@ if parsing mode is set to streaming with -s flag:</p>
 
 <p>   gnparser -b 100 names.txt</p>
 
+<h3 id="-c-capitalize">-c, --capitalize</h3>
+
+<p>Capitalizes the first letter of a name-string before parsing:</p>
+
+<p>   gnparser "homo sapiens" -c</p>
+
+<h3 id="-C-cultivar">-C, --cultivar</h3>
+
+<p>Parses given name/s according to the Code of Cultivar Plants:</p>
+
+<p>   gnparser "Sarracenia flava 'Maxima'" -C
+   gnparser "Cytisus purpureus + Laburnum anagyroides" -C</p>
+
 <h3 id="-d-details">-d, --details</h3>
 
 <p>Return more details for a parsed name. This flag is ignored for CSV formatting:</p>
@@ -181,6 +197,11 @@ parsed result:</p>
 <pre><code>gnparser "Pardosa moesta"
 </code></pre>
 
+<p>The <code>tsv</code> format returns a header row and a tab-delimited output:</p>
+
+<pre><code>gnparser "Pardosa moesta" -f tsv
+</code></pre>
+
 <p>The <code>compact</code> format returns a JSON-encoded result without indentations and
 new lines:</p>
 
@@ -193,14 +214,6 @@ form:</p>
 <pre><code>gnparser "Pardosa moesta" -f pretty
 </code></pre>
 
-<h3 id="-j-jobs-positive-integer-default-is-a-number-of-CPUs-on-a-machine-">-j, --jobs (positive integer, default is a number of CPUs on a machine)</h3>
-
-<p>The number of jobs running concurrently. This flag is ignored when parsing
-one name:</p>
-
-<pre><code>gnparser -j 200 names.txt
-</code></pre>
-
 <h3 id="-i-ignore_tags">-i, --ignore_tags</h3>
 
 <p>By default <code>gnparser</code> scans names for HTML tags and removes them before
@@ -209,6 +222,14 @@ parsing. It slows the process slightly. If there are no HTML tags in names
 step, increasing performance slightly:</p>
 
 <pre><code>gnparser -i plain-text-names.txt
+</code></pre>
+
+<h3 id="-j-jobs-positive-integer-default-is-a-number-of-CPUs-on-a-machine-">-j, --jobs (positive integer, default is a number of CPUs on a machine)</h3>
+
+<p>The number of jobs running concurrently. This flag is ignored when parsing
+one name:</p>
+
+<pre><code>gnparser -j 200 names.txt
 </code></pre>
 
 <h3 id="-p-port-port-number-">-p, --port (port number)</h3>
@@ -230,6 +251,15 @@ to achieve that, but there is a slight decrease in performance:</p>
 <pre><code>gnparser -s names.json
 </code></pre>
 
+<h3 id="-u-unordered">-u, --unordered</h3>
+
+<p>If this flag is on, output and intput order will not be syncronized. If there
+is only one parsing job running (<code>-j</code> flag), the input and output will be of
+the same order even if <code>-u</code> flag is given.</p>
+
+<pre><code>gnparser -u -j 100 names.txt
+</code></pre>
+
 <h3 id="-V-version">-V, --version</h3>
 
 <p>Shows the version number of gnparser.</p>
@@ -238,16 +268,16 @@ to achieve that, but there is a slight decrease in performance:</p>
 
 <p>The MIT License (MIT)</p>
 
-<p>Copyright (c) 2018-2021 Dmitry Mozzherin</p>
+<p>Copyright (c) 2018-2022 Dmitry Mozzherin</p>
 
 <h2 id="Contributors">Contributors</h2>
 
-<p>Geoffrey Ower, Hernan Lucas Pereira</p>
+<p>Toby Marsden, Geoffrey Ower, Hernan Lucas Pereira</p>
 
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'></li>
-    <li class='tc'>January 2021</li>
+    <li class='tc'>November 2021</li>
     <li class='tr'>gnparser(1)</li>
   </ol>
 

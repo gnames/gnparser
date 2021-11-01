@@ -33,28 +33,46 @@ var VirusException = map[string]string{
 	"Tidabius":      "vector",
 }
 
-var AnnotationException = map[string]string{
-	"Acrostichum":      "nudum",
-	"Adiantum":         "nudum",
-	"Africanthion":     "nudum",
-	"Agathidium":       "nudum",
-	"Aphaniosoma":      "nudum",
-	"Aspidium":         "nudum",
-	"Athyrium":         "nudum",
-	"Blechnum":         "nudum",
-	"Bottaria":         "nudum",
-	"Gnathopleustes":   "den",
-	"Lycopodium":       "nudum",
-	"Nephrodium":       "nudum",
-	"Paralvinella":     "dela",
-	"Polypodium":       "nudum",
-	"Polystichum":      "nudum",
-	"Psilotum":         "nudum",
-	"Ruteloryctes":     "bis",
-	"Selenops":         "ab",
-	"Tortolena":        "dela",
-	"Trachyphloeosoma": "nudum",
-	"Zodarion":         "van",
+var AmbiguousException = map[string][]string{
+	"Acrostichum":      {"nudum"},
+	"Adiantum":         {"nudum"},
+	"Africanthion":     {"nudum"},
+	"Campylosphaera":   {"dela"},
+	"Agathidium":       {"nudum"},
+	"Agnetina":         {"den"},
+	"Antaplaga":        {"dela"},
+	"Aphaniosoma":      {"nudum"},
+	"Aspidium":         {"nudum"},
+	"Athyrium":         {"nudum"},
+	"Baeolidia":        {"dela"},
+	"Blechnum":         {"nudum"},
+	"Bolitoglossa":     {"la"},
+	"Bottaria":         {"nudum"},
+	"Desmoxytes":       {"des"},
+	"Dicentria":        {"dela"},
+	"Eulaira":          {"dela"},
+	"Gnathopleustes":   {"den"},
+	"Helophorus":       {"ser"},
+	"Leptonetela":      {"la"},
+	"Lycopodium":       {"nudum"},
+	"Malamatidia":      {"zu"},
+	"Meteorus":         {"dos"},
+	"Nephrodium":       {"nudum"},
+	"Nocaracris":       {"van"},
+	"Paralvinella":     {"dela"},
+	"Polypodium":       {"nudum"},
+	"Polystichum":      {"nudum"},
+	"Psilotum":         {"nudum"},
+	"Ruteloryctes":     {"bis"},
+	"Scoparia":         {"dela"},
+	"Selenops":         {"ab"},
+	"Semiothisa":       {"da"},
+	"Serina":           {"ser", "subser"},
+	"Stenoecia":        {"dos"},
+	"Sympycnus":        {"du"},
+	"Tortolena":        {"dela"},
+	"Trachyphloeosoma": {"nudum"},
+	"Zodarion":         {"van"},
 }
 
 var NoParseException = map[string]string{
@@ -104,33 +122,51 @@ type Preprocessor struct {
 	Annotation  bool
 	Body        []byte
 	Tail        []byte
+	Ambiguous   ambiguous
+}
+
+type ambiguous struct {
+	Orig  string
+	Subst string
 }
 
 // Preprocess runs a series of regular expressions over the input to determine
 // features of the input before parsing.
 func Preprocess(bs []byte) *Preprocessor {
 	pr := &Preprocessor{}
+
+	// check for empty string
 	if len(bs) == 0 {
 		pr.NoParse = true
 		return pr
 	}
 	i := len(bs)
-	name := string(bs)
-	if !IsException(name, VirusException) {
+	words := strings.Fields(string(bs))
+
+	// check for viruses, plasmids, RNA, DNA etc.
+	if !isException(words, VirusException) {
 		pr.Virus = IsVirus(bs[0:i])
 	}
 	if pr.Virus {
 		pr.NoParse = true
 		return pr
 	}
+
+	// check for unparseable names
 	pr.NoParse = NoParse(bs[0:i])
-	if IsException(name, NoParseException) {
+	if isException(words, NoParseException) {
 		pr.NoParse = false
 	}
 	if pr.NoParse {
 		return pr
 	}
-	j := Annotation(bs[0:i])
+
+	//
+	if len(words) > 1 {
+		pr.ambiguous(words[0], bs)
+	}
+
+	j := procAnnot(bs[0:i])
 	if j < i {
 		pr.Annotation = true
 		i = j
@@ -147,8 +183,7 @@ func Preprocess(bs []byte) *Preprocessor {
 	return pr
 }
 
-func IsException(name string, names map[string]string) bool {
-	words := strings.Fields(name)
+func isException(words []string, names map[string]string) bool {
 	if len(words) < 2 {
 		return false
 	}
@@ -162,14 +197,26 @@ func IsException(name string, names map[string]string) bool {
 	return false
 }
 
-// Annotation returns index where unparsed part starts. In case if
+func (p *Preprocessor) ambiguous(firstWord string, bs []byte) {
+	if epithets, ok := AmbiguousException[firstWord]; ok {
+		var sub byte = 'k'
+		for _, epithet := range epithets {
+			idx := bytes.Index(bs, []byte(" "+epithet))
+			if idx == -1 {
+				continue
+			}
+			p.Ambiguous.Orig = epithet
+			p.Ambiguous.Subst = string(sub) + epithet[1:]
+			bs[idx+1] = sub
+		}
+	}
+}
+
+// procAnnot returns index where unparsed part starts. In case if
 // the full string can be parsed, returns returns the index of the end of the
 // input.
-func Annotation(bs []byte) int {
+func procAnnot(bs []byte) int {
 	i := len(bs)
-	if IsException(string(bs), AnnotationException) {
-		return i
-	}
 	regexps := []*regexp.Regexp{
 		notesRe, taxonConceptsRe1, taxonConceptsRe2, taxonConceptsRe3,
 		nomenConceptsRe, lastWordJunkRe, stopWordsRe,

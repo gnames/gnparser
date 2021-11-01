@@ -23,7 +23,7 @@ type Parsed struct {
 	// The ParseQuality is equal to the quality of the most
 	// severe warning (see qualityWarnings). If no problems
 	// are encountered, and the parsing succeeded, the parseQuality
-	// is set to 1. If parsing failed, the parseQuality is 0.
+	// is set to 1. If parsing failed, the parseQuality is 0.
 	ParseQuality int `json:"quality"`
 	// QualityWarnings contains encountered parsing problems.
 	QualityWarnings []QualityWarning `json:"qualityWarnings,omitempty"`
@@ -78,12 +78,14 @@ type Parsed struct {
 	// - notho- hybrid
 	// - hybrid formula
 	Hybrid *Annotation `json:"hybrid,omitempty"`
+
 	// GraftChimera is not nil if a name is detected as one of the graft chimeras
 	//
 	// - a non-categorized graft chimera
 	// - named graft chimera
 	// - graft chimera formula
 	GraftChimera *Annotation `json:"graftchimera,omitempty"`
+
 	// Surrogate is a wide category of names that do not follow
 	// nomenclatural rules
 

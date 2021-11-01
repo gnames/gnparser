@@ -1,7 +1,7 @@
 .\" generated with Ronn/v0.7.3
 .\" http://github.com/rtomayko/ronn/tree/0.7.3
 .
-.TH "GNPARSER" "1" "January 2021" "" ""
+.TH "GNPARSER" "1" "November 2021" "" ""
 .
 .SH "NAME"
 \fBgnparser\fR \- parse biodiversity scientific names
@@ -17,7 +17,7 @@ It can be used for one name, or for many names in a file (one name per line)\.
 .
 .SH "USAGE"
 .
-.SS "Usage for a one name"
+.SS "Usage for one name"
 .
 .nf
 
@@ -27,6 +27,9 @@ gnparser "Pleurosigma vitrea var\. kjellmanii H\.Peragallo, 1891"
 gnparser "Parus major Linnaeus, 1788"
 # or
 gnparser \-f csv "Parus major Linnaeus, 1788"
+
+# TSV output (default)
+gnparser \-f tsv "Parus major Linnaeus, 1788"
 
 # JSON compact format
 gnparser "Parus major Linnaeus, 1788" \-f compact
@@ -93,6 +96,18 @@ Sets a maximum number of names collected into a batch before processing\. This f
 .P
 gnparser \-b 100 names\.txt
 .
+.SS "\-c, \-\-capitalize"
+Capitalizes the first letter of a name\-string before parsing:
+.
+.P
+gnparser "homo sapiens" \-c
+.
+.SS "\-C, \-\-cultivar"
+Parses given name/s according to the Code of Cultivar Plants:
+.
+.P
+gnparser "Sarracenia flava \'Maxima\'" \-C gnparser "Cytisus purpureus + Laburnum anagyroides" \-C
+.
 .SS "\-d, \-\-details"
 Return more details for a parsed name\. This flag is ignored for CSV formatting:
 .
@@ -117,6 +132,19 @@ The default \fBcsv\fR format returns a header row and the CSV\-compatible parsed
 .nf
 
 gnparser "Pardosa moesta"
+.
+.fi
+.
+.IP "" 0
+.
+.P
+The \fBtsv\fR format returns a header row and a tab\-delimited output:
+.
+.IP "" 4
+.
+.nf
+
+gnparser "Pardosa moesta" \-f tsv
 .
 .fi
 .
@@ -148,19 +176,6 @@ gnparser "Pardosa moesta" \-f pretty
 .
 .IP "" 0
 .
-.SS "\-j, \-\-jobs (positive integer, default is a number of CPUs on a machine)"
-The number of jobs running concurrently\. This flag is ignored when parsing one name:
-.
-.IP "" 4
-.
-.nf
-
-gnparser \-j 200 names\.txt
-.
-.fi
-.
-.IP "" 0
-.
 .SS "\-i, \-\-ignore_tags"
 By default \fBgnparser\fR scans names for HTML tags and removes them before parsing\. It slows the process slightly\. If there are no HTML tags in names (no names are like \fB<i>Aus bus<i> L\.\fR, this flag allows to skip HTML removal step, increasing performance slightly:
 .
@@ -169,6 +184,19 @@ By default \fBgnparser\fR scans names for HTML tags and removes them before pars
 .nf
 
 gnparser \-i plain\-text\-names\.txt
+.
+.fi
+.
+.IP "" 0
+.
+.SS "\-j, \-\-jobs (positive integer, default is a number of CPUs on a machine)"
+The number of jobs running concurrently\. This flag is ignored when parsing one name:
+.
+.IP "" 4
+.
+.nf
+
+gnparser \-j 200 names\.txt
 .
 .fi
 .
@@ -200,6 +228,19 @@ gnparser \-s names\.json
 .
 .IP "" 0
 .
+.SS "\-u, \-\-unordered"
+If this flag is on, output and intput order will not be syncronized\. If there is only one parsing job running (\fB\-j\fR flag), the input and output will be of the same order even if \fB\-u\fR flag is given\.
+.
+.IP "" 4
+.
+.nf
+
+gnparser \-u \-j 100 names\.txt
+.
+.fi
+.
+.IP "" 0
+.
 .SS "\-V, \-\-version"
 Shows the version number of gnparser\.
 .
@@ -207,7 +248,7 @@ Shows the version number of gnparser\.
 The MIT License (MIT)
 .
 .P
-Copyright (c) 2018\-2021 Dmitry Mozzherin
+Copyright (c) 2018\-2022 Dmitry Mozzherin
 .
 .SH "Contributors"
-Geoffrey Ower, Hernan Lucas Pereira
+Toby Marsden, Geoffrey Ower, Hernan Lucas Pereira

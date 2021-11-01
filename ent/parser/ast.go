@@ -16,16 +16,18 @@ import (
 
 type scientificNameNode struct {
 	nameData
-	verbatim      string
-	verbatimID    string
-	cardinality   int
-	virus         bool
-	hybrid        *parsed.Annotation
-	surrogate     *parsed.Annotation
-	bacteria      *tribool.Tribool
-	tail          string
-	parserVersion string
-	warnings      map[parsed.Warning]struct{}
+	verbatim         string
+	verbatimID       string
+	cardinality      int
+	virus            bool
+	hybrid           *parsed.Annotation
+	surrogate        *parsed.Annotation
+	bacteria         *tribool.Tribool
+	tail             string
+	parserVersion    string
+	ambiguousEpithet string
+	ambiguousModif   string
+	warnings         map[parsed.Warning]struct{}
 }
 
 func (p *Engine) newScientificNameNode() {
@@ -92,13 +94,13 @@ func (p *Engine) newName(n *node32) nameData {
 		p.hybrid = &annot
 		name = p.newNamedSpeciesHybridNode(n)
 	case ruleGraftChimeraFormula:
-		if(p.enableCultivars) {
+		if p.enableCultivars {
 			annot = parsed.GraftChimeraFormulaAnnot
 			p.hybrid = &annot
 			name = p.newGraftChimeraFormulaNode(n)
 		}
 	case ruleNamedGenusGraftChimera:
-		if(p.enableCultivars) {
+		if p.enableCultivars {
 			annot = parsed.NamedGraftChimeraAnnot
 			p.hybrid = &annot
 			name = p.newNamedGenusGraftChimeraNode(n)
@@ -219,7 +221,7 @@ func (p *Engine) newGraftChimeraFormulaNode(n *node32) *graftChimeraFormulaNode 
 		gces = append(gces, gce)
 	}
 	gcf = &graftChimeraFormulaNode{
-		FirstSpecies:   firstName,
+		FirstSpecies:         firstName,
 		GraftChimeraElements: gces,
 	}
 	gcf.normalizeAbbreviated()
@@ -384,8 +386,8 @@ func (p *Engine) newNamedGenusGraftChimeraNode(n *node32) *namedGenusGraftChimer
 		name = p.newApproxNode(n)
 	}
 	nhn = &namedGenusGraftChimeraNode{
-		GraftChimera:   gc,
-		nameData: name,
+		GraftChimera: gc,
+		nameData:     name,
 	}
 	return nhn
 }

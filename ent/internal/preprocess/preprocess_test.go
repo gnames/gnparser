@@ -1,9 +1,9 @@
-package preprocess_test
+package preprocess
 
 import (
+	"strings"
 	"testing"
 
-	ppr "github.com/gnames/gnparser/ent/internal/preprocess"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -29,12 +29,12 @@ func TestCleanup(t *testing.T) {
 			{"entities", "Hello &amp; you", "Hello & you"},
 		}
 		for _, v := range data {
-			assert.Equal(t, ppr.StripTags(v.tags), v.notags, v.msg)
+			assert.Equal(t, StripTags(v.tags), v.notags, v.msg)
 		}
 	})
 	t.Run("does not return nil", func(t *testing.T) {
-		assert.NotNil(t, ppr.StripTags("<!--"))
-		assert.NotNil(t, ppr.StripTags("<!--\r\n"))
+		assert.NotNil(t, StripTags("<!--"))
+		assert.NotNil(t, StripTags("<!--\r\n"))
 	})
 }
 
@@ -48,39 +48,8 @@ func TestPreprocess(t *testing.T) {
 			{"name", "Navicula bacterium", true},
 		}
 		for _, v := range data {
-			assert.Equal(t, ppr.IsException(v.name, ppr.NoParseException), v.likeAnnotation, v.msg)
-		}
-	})
-	t.Run("AnnotationLikeName", func(t *testing.T) {
-		data := []struct {
-			msg            string
-			name           string
-			likeAnnotation bool
-		}{
-			{"name", "Acrostichum nudum", true},
-			{"name", "Adiantum nudum", true},
-			{"name", "Africanthion nudum", true},
-			{"name", "Agathidium nudum", true},
-			{"name", "Aphaniosoma nudum", true},
-			{"name", "Aspidium nudum", true},
-			{"name", "Athyrium nudum", true},
-			{"name", "Blechnum nudum", true},
-			{"name", "Bottaria nudum", true},
-			{"name", "Gnathopleustes den", true},
-			{"name", "Lycopodium nudum", true},
-			{"name", "Nephrodium nudum", true},
-			{"name", "Paralvinella dela", true},
-			{"name", "Polypodium nudum", true},
-			{"name", "Polystichum nudum", true},
-			{"name", "Psilotum nudum", true},
-			{"name", "Ruteloryctes bis", true},
-			{"name", "Selenops ab", true},
-			{"name", "Tortolena dela", true},
-			{"name", "Trachyphloeosoma nudum", true},
-			{"name", "Zodarion van", true},
-		}
-		for _, v := range data {
-			assert.Equal(t, ppr.IsException(v.name, ppr.AnnotationException), v.likeAnnotation, v.msg)
+			words := strings.Split(v.name, " ")
+			assert.Equal(t, isException(words, NoParseException), v.likeAnnotation, v.msg)
 		}
 	})
 
@@ -109,7 +78,8 @@ func TestPreprocess(t *testing.T) {
 			{"name17", "Homo sapiens coronavirus", false},
 		}
 		for _, v := range data {
-			assert.Equal(t, ppr.IsException(v.name, ppr.VirusException), v.likeVirus, v.msg)
+			words := strings.Split(v.name, " ")
+			assert.Equal(t, isException(words, VirusException), v.likeVirus, v.msg)
 		}
 	})
 
@@ -139,7 +109,7 @@ func TestPreprocess(t *testing.T) {
 			{"Match word", "Bacteriophage PH75", true},
 		}
 		for _, v := range data {
-			res := ppr.IsVirus([]byte(v.name))
+			res := IsVirus([]byte(v.name))
 			assert.Equal(t, res, v.isVirus, v.msg)
 		}
 	})
@@ -173,7 +143,7 @@ func TestPreprocess(t *testing.T) {
 			{"RNA4", "E. coli mRNA", true},
 		}
 		for _, v := range data {
-			res := ppr.NoParse([]byte(v.name))
+			res := NoParse([]byte(v.name))
 			assert.Equal(t, res, v.parsed, v.msg)
 		}
 	})
@@ -194,7 +164,7 @@ func TestPreprocess(t *testing.T) {
 		}
 		for _, v := range data {
 			bs := []byte(v.in)
-			i := ppr.Annotation(bs)
+			i := procAnnot(bs)
 			assert.Equal(t, string(bs[0:i]), v.out, v.msg)
 			assert.Equal(t, string(bs[i:]), v.tail, v.msg)
 		}
@@ -214,7 +184,7 @@ func TestPreprocess(t *testing.T) {
 		}
 		for _, v := range data {
 			bs := []byte(v.in)
-			changed2, _ := ppr.UnderscoreToSpace(bs)
+			changed2, _ := UnderscoreToSpace(bs)
 			assert.Equal(t, string(bs), v.out, v.msg)
 			assert.Equal(t, changed2, v.changed)
 		}
@@ -222,7 +192,7 @@ func TestPreprocess(t *testing.T) {
 
 	t.Run("does not remove spaces", func(t *testing.T) {
 		name := "    Asplenium       × inexpectatum(E. L. Braun ex Friesner      )Morton"
-		res := ppr.Preprocess([]byte(name))
+		res := Preprocess([]byte(name))
 		assert.Equal(t, string(res.Body), name)
 	})
 }

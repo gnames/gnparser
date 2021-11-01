@@ -75,6 +75,10 @@ func (p *Engine) PreprocessAndParse(
 				p.sn.surrogate = &annot
 			}
 		}
+
+		p.sn.ambiguousEpithet = preproc.Ambiguous.Orig
+		p.sn.ambiguousModif = preproc.Ambiguous.Subst
+
 		p.sn.warnings = p.warnings
 		p.sn.addVerbatim(originalString)
 		p.sn.parserVersion = ver

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.5.1]
+
+- Add [#191]: support for ambiguous specific epithets
+
 ## [v1.5.0]
 
 - Add [#194]: support for cultivars' graft-chymeras (courtesy of @tobymarsden)

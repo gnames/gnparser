@@ -13,7 +13,7 @@ It can be used for one name, or for many names in a file (one name per line).
 
 ## USAGE
 
-### Usage for a one name
+### Usage for one name
 
     gnparser "Pleurosigma vitrea var. kjellmanii H.Peragallo, 1891"
 
@@ -21,6 +21,9 @@ It can be used for one name, or for many names in a file (one name per line).
     gnparser "Parus major Linnaeus, 1788"
     # or
     gnparser -f csv "Parus major Linnaeus, 1788"
+
+    # TSV output (default)
+    gnparser -f tsv "Parus major Linnaeus, 1788"
 
     # JSON compact format
     gnparser "Parus major Linnaeus, 1788" -f compact
@@ -76,6 +79,19 @@ if parsing mode is set to streaming with -s flag:
 
    gnparser -b 100 names.txt
 
+### -c, --capitalize
+
+Capitalizes the first letter of a name-string before parsing:
+
+   gnparser "homo sapiens" -c
+
+### -C, --cultivar
+
+Parses given name/s according to the Code of Cultivar Plants:
+
+   gnparser "Sarracenia flava 'Maxima'" -C
+   gnparser "Cytisus purpureus + Laburnum anagyroides" -C
+
 ### -d, --details
 
 Return more details for a parsed name. This flag is ignored for CSV formatting:
@@ -92,6 +108,10 @@ parsed result:
 
     gnparser "Pardosa moesta"
 
+The `tsv` format returns a header row and a tab-delimited output:
+
+    gnparser "Pardosa moesta" -f tsv
+
 The `compact` format returns a JSON-encoded result without indentations and
 new lines:
 
@@ -102,13 +122,6 @@ form:
 
     gnparser "Pardosa moesta" -f pretty
 
-### -j, --jobs (positive integer, default is a number of CPUs on a machine)
-
-The number of jobs running concurrently. This flag is ignored when parsing
-one name:
-
-    gnparser -j 200 names.txt
-
 ### -i, --ignore_tags
 
 By default `gnparser` scans names for HTML tags and removes them before
@@ -117,6 +130,13 @@ parsing. It slows the process slightly. If there are no HTML tags in names
 step, increasing performance slightly:
 
     gnparser -i plain-text-names.txt
+
+### -j, --jobs (positive integer, default is a number of CPUs on a machine)
+
+The number of jobs running concurrently. This flag is ignored when parsing
+one name:
+
+    gnparser -j 200 names.txt
 
 ### -p, --port (port number)
 
@@ -135,6 +155,14 @@ to achieve that, but there is a slight decrease in performance:
 
     gnparser -s names.json
 
+### -u, --unordered
+
+If this flag is on, output and intput order will not be syncronized. If there
+is only one parsing job running (`-j` flag), the input and output will be of
+the same order even if `-u` flag is given.
+
+    gnparser -u -j 100 names.txt
+
 ### -V, --version
 
 Shows the version number of gnparser.
@@ -144,8 +172,8 @@ Shows the version number of gnparser.
 
 The MIT License (MIT)
 
-Copyright (c) 2018-2021 Dmitry Mozzherin
+Copyright (c) 2018-2022 Dmitry Mozzherin
 
 ## Contributors
 
-Geoffrey Ower, Hernan Lucas Pereira
+Toby Marsden, Geoffrey Ower, Hernan Lucas Pereira

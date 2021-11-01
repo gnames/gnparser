@@ -74,6 +74,24 @@ func TestParseLowCaseName(t *testing.T) {
 	}
 }
 
+func TestOutputRestore(t *testing.T) {
+	name := "Homo zapiens Linn. 1758"
+	cfg := gnparser.NewConfig(gnparser.OptWithDetails(true))
+	gnp := gnparser.New(cfg)
+	res := gnp.ParseName(name)
+	res.RestoreAmbiguous("sapiens", "zapiens")
+	assert.Equal(t, res.Verbatim, "Homo zapiens Linn. 1758")
+	assert.Equal(t, res.Normalized, "Homo sapiens Linn. 1758")
+	assert.Equal(t, res.Canonical.Full, "Homo sapiens")
+	assert.Equal(t, res.Canonical.Simple, "Homo sapiens")
+	assert.Equal(t, res.Canonical.Stemmed, "Homo sapiens")
+	assert.Equal(t, res.Words[1].Verbatim, "sapiens")
+	assert.Equal(t, res.Words[1].Normalized, "sapiens")
+	sp, ok := res.Details.(parsed.DetailsSpecies)
+	assert.True(t, ok)
+	assert.Equal(t, sp.Species.Species, "sapiens")
+}
+
 func getTestData(t *testing.T, filename string) []testData {
 	var res []testData
 	path := filepath.Join("testdata", filename)
