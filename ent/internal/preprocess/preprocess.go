@@ -57,6 +57,7 @@ var AmbiguousException = map[string][]string{
 	"Lycopodium":       {"nudum"},
 	"Malamatidia":      {"zu"},
 	"Meteorus":         {"dos"},
+	"Microsiphum":      {"nudum"},
 	"Nephrodium":       {"nudum"},
 	"Nocaracris":       {"van"},
 	"Paralvinella":     {"dela"},
