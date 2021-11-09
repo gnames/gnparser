@@ -149,7 +149,7 @@ Word1 <- (LowerASCII Dash)? NameLowerChar NameLowerChar+
 WordStartsWithDigit <- [123456789] Nums? ('.' / Dash)? NameLowerChar NameLowerChar
   NameLowerChar NameLowerChar+
 
-Word2 <- NameLowerChar+ Dash? NameLowerChar+
+Word2 <- NameLowerChar+ Dash? (WordApostr / NameLowerChar+)
 
 WordApostr <- NameLowerChar NameLowerChar* Apostrophe Word1
 

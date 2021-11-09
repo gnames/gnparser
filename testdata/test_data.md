@@ -3628,6 +3628,16 @@ Authorship: Herbst & J. F. W. 1795
 
 ### Non-ASCII UTF-8 characters in a name
 
+Name: Solanum tuberosum f. wila-k'oyu Ochoa
+
+Canonical: Solanum tuberosum f. wila-k'oyu
+
+Authorship: Ochoa
+
+```json
+{"parsed":true,"quality":3,"qualityWarnings":[{"quality":3,"warning":"Apostrophe is not allowed in canonical"}],"verbatim":"Solanum tuberosum f. wila-k'oyu Ochoa","normalized":"Solanum tuberosum f. wila-koyu Ochoa","canonical":{"stemmed":"Solanum tuberos wila-koy","simple":"Solanum tuberosum wila-koyu","full":"Solanum tuberosum f. wila-koyu"},"cardinality":3,"authorship":{"verbatim":"Ochoa","normalized":"Ochoa","authors":["Ochoa"],"originalAuth":{"authors":["Ochoa"]}},"details":{"infraspecies":{"genus":"Solanum","species":"tuberosum","infraspecies":[{"value":"wila-koyu","rank":"f.","authorship":{"verbatim":"Ochoa","normalized":"Ochoa","authors":["Ochoa"],"originalAuth":{"authors":["Ochoa"]}}}]}},"words":[{"verbatim":"Solanum","normalized":"Solanum","wordType":"GENUS","start":0,"end":7},{"verbatim":"tuberosum","normalized":"tuberosum","wordType":"SPECIES","start":8,"end":17},{"verbatim":"f.","normalized":"f.","wordType":"RANK","start":18,"end":20},{"verbatim":"wila-k'oyu","normalized":"wila-koyu","wordType":"INFRASPECIES","start":21,"end":31},{"verbatim":"Ochoa","normalized":"Ochoa","wordType":"AUTHOR_WORD","start":32,"end":37}],"id":"b45b0e75-d1d0-53f2-ab80-f5a99d24a385","parserVersion":"test_version"}
+```
+
 Name: Pleurotus ëous (Berk.) Sacc. 1887
 
 Canonical: Pleurotus eous
@@ -5347,17 +5357,6 @@ Authorship: (Nakai) 't Hart
 ```
 
 ### Discard apostrophe with dash (rare, needs further investigation)
-
-<!-- incorrectly parsed, but we will live with it for now-->
-Name: Solanum tuberosum wila-k'oy
-
-Canonical: Solanum tuberosum
-
-Authorship:
-
-```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Solanum tuberosum wila-k'oy","normalized":"Solanum tuberosum","canonical":{"stemmed":"Solanum tuberos","simple":"Solanum tuberosum","full":"Solanum tuberosum"},"cardinality":2,"tail":" wila-k'oy","details":{"species":{"genus":"Solanum","species":"tuberosum"}},"words":[{"verbatim":"Solanum","normalized":"Solanum","wordType":"GENUS","start":0,"end":7},{"verbatim":"tuberosum","normalized":"tuberosum","wordType":"SPECIES","start":8,"end":17}],"id":"3d40713c-3b98-5b38-a3e8-555698722078","parserVersion":"test_version"}
-```
 
 <!-- correctly parsed -->
 Name: Solanum juzepczukii janck'o-ckaisalla
