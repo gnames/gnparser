@@ -109,7 +109,7 @@ UninomialCombo2 <- Uninomial _ RankUninomial _ Uninomial
 RankUninomial <- RankUninomialPlain / RankUninomialNotho
 
 RankUninomialPlain <- ('sect' / 'subsect' / 'trib' / 'subtrib' / 'subser' /
-  'ser' / 'subgen' / 'subg' / 'fam' / 'subfam' /
+  'ser' / 'subgen' / 'subg' / 'fam' / 'subfam' / 'div' /
   'supertrib') ('.' / &(SpaceCharEOI))
 
 RankUninomialNotho <- ('notho' _? ('sect' / 'gen' / 'ser' / 'subgeen' /

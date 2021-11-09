@@ -722,6 +722,26 @@ Authorship: Brooker
 {"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Combination of two uninomials"}],"verbatim":"Eucalyptus subser. Regulares Brooker","normalized":"Eucalyptus subser. Regulares Brooker","canonical":{"stemmed":"Regulares","simple":"Regulares","full":"Eucalyptus subser. Regulares"},"cardinality":1,"authorship":{"verbatim":"Brooker","normalized":"Brooker","authors":["Brooker"],"originalAuth":{"authors":["Brooker"]}},"details":{"uninomial":{"uninomial":"Regulares","rank":"subser.","parent":"Eucalyptus","authorship":{"verbatim":"Brooker","normalized":"Brooker","authors":["Brooker"],"originalAuth":{"authors":["Brooker"]}}}},"words":[{"verbatim":"Eucalyptus","normalized":"Eucalyptus","wordType":"UNINOMIAL","start":0,"end":10},{"verbatim":"subser.","normalized":"subser.","wordType":"RANK","start":11,"end":18},{"verbatim":"Regulares","normalized":"Regulares","wordType":"UNINOMIAL","start":19,"end":28},{"verbatim":"Brooker","normalized":"Brooker","wordType":"AUTHOR_WORD","start":29,"end":36}],"id":"783aa15c-f54f-5233-b792-16774a21a34d","parserVersion":"test_version"}
 ```
 
+Name: Rosa div. Caninae Lindl.
+
+Canonical: Caninae
+
+Authorship: Lindl.
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Combination of two uninomials"}],"verbatim":"Rosa div. Caninae Lindl.","normalized":"Rosa div. Caninae Lindl.","canonical":{"stemmed":"Caninae","simple":"Caninae","full":"Rosa div. Caninae"},"cardinality":1,"authorship":{"verbatim":"Lindl.","normalized":"Lindl.","authors":["Lindl."],"originalAuth":{"authors":["Lindl."]}},"details":{"uninomial":{"uninomial":"Caninae","rank":"div.","parent":"Rosa","authorship":{"verbatim":"Lindl.","normalized":"Lindl.","authors":["Lindl."],"originalAuth":{"authors":["Lindl."]}}}},"words":[{"verbatim":"Rosa","normalized":"Rosa","wordType":"UNINOMIAL","start":0,"end":4},{"verbatim":"div.","normalized":"div.","wordType":"RANK","start":5,"end":9},{"verbatim":"Caninae","normalized":"Caninae","wordType":"UNINOMIAL","start":10,"end":17},{"verbatim":"Lindl.","normalized":"Lindl.","wordType":"AUTHOR_WORD","start":18,"end":24}],"id":"e48a933f-93e2-5839-aae9-33b83bc046d1","parserVersion":"test_version"}
+```
+
+Name: Rosa div Caninae Lindl.
+
+Canonical: Caninae
+
+Authorship: Lindl.
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Combination of two uninomials"}],"verbatim":"Rosa div Caninae Lindl.","normalized":"Rosa div Caninae Lindl.","canonical":{"stemmed":"Caninae","simple":"Caninae","full":"Rosa div Caninae"},"cardinality":1,"authorship":{"verbatim":"Lindl.","normalized":"Lindl.","authors":["Lindl."],"originalAuth":{"authors":["Lindl."]}},"details":{"uninomial":{"uninomial":"Caninae","rank":"div","parent":"Rosa","authorship":{"verbatim":"Lindl.","normalized":"Lindl.","authors":["Lindl."],"originalAuth":{"authors":["Lindl."]}}}},"words":[{"verbatim":"Rosa","normalized":"Rosa","wordType":"UNINOMIAL","start":0,"end":4},{"verbatim":"div","normalized":"div","wordType":"RANK","start":5,"end":8},{"verbatim":"Caninae","normalized":"Caninae","wordType":"UNINOMIAL","start":9,"end":16},{"verbatim":"Lindl.","normalized":"Lindl.","wordType":"AUTHOR_WORD","start":17,"end":23}],"id":"39b7a4e3-9184-5994-bbb8-b1508c420f7e","parserVersion":"test_version"}
+```
+
 Name: Aaleniella (Danocythere)
 
 Canonical: Aaleniella subgen. Danocythere

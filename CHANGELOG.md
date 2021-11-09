@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#200]: support for 'div.' rank in uninomial combinations.
+
 ## [v1.5.1]
 
 - Add [#191]: support for ambiguous specific epithets
@@ -317,6 +319,8 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.5.2]: https://github.com/gnames/gnparser/compare/v1.5.1...v1.5.2
+[v1.5.1]: https://github.com/gnames/gnparser/compare/v1.5.0...v1.5.1
 [v1.5.0]: https://github.com/gnames/gnparser/compare/v1.4.2...v1.5.0
 [v1.4.2]: https://github.com/gnames/gnparser/compare/v1.4.1...v1.4.2
 [v1.4.1]: https://github.com/gnames/gnparser/compare/v1.4.0...v1.4.1
@@ -363,6 +367,16 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
 
+[#210]: https://github.com/gnames/gnparser/issues/210
+[#209]: https://github.com/gnames/gnparser/issues/209
+[#208]: https://github.com/gnames/gnparser/issues/208
+[#207]: https://github.com/gnames/gnparser/issues/207
+[#206]: https://github.com/gnames/gnparser/issues/206
+[#205]: https://github.com/gnames/gnparser/issues/205
+[#204]: https://github.com/gnames/gnparser/issues/204
+[#203]: https://github.com/gnames/gnparser/issues/203
+[#202]: https://github.com/gnames/gnparser/issues/202
+[#201]: https://github.com/gnames/gnparser/issues/201
 [#200]: https://github.com/gnames/gnparser/issues/200
 [#199]: https://github.com/gnames/gnparser/issues/199
 [#198]: https://github.com/gnames/gnparser/issues/198
