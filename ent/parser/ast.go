@@ -1144,6 +1144,9 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *parsed.Word {
 	var canonicalApostrophe bool
 	for _, v := range children {
 		switch v.pegRule {
+		case ruleDotPrefix:
+			p.addWarn(parsed.DotEpithetWarn)
+			wrd.Normalized, _ = normalize(wrd.Verbatim)
 		case ruleUpperCharExtended, ruleLowerCharExtended:
 			p.addWarn(parsed.CharBadWarn)
 			wrd.Normalized, _ = normalize(wrd.Verbatim)

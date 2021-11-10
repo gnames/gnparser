@@ -169,7 +169,7 @@ Name: +Crataegomespilus
 
 Canonical: + Crataegomespilus
 
-Authorship: 
+Authorship:
 
 ```json
 {"parsed":true,"quality":3,"qualityWarnings":[{"quality":3,"warning":"Graft-chimera char is not separated by space"},{"quality":2,"warning":"Named graft-chimera"}],"verbatim":"+Crataegomespilus","normalized":"+ Crataegomespilus","canonical":{"stemmed":"Crataegomespilus","simple":"Crataegomespilus","full":"+ Crataegomespilus"},"cardinality":1,"hybrid":"NAMED_GRAFT_CHIMERA","details":{"uninomial":{"uninomial":"Crataegomespilus"}},"words":[{"verbatim":"+","normalized":"+","wordType":"GRAFT_CHIMERA_CHAR","start":0,"end":1},{"verbatim":"Crataegomespilus","normalized":"Crataegomespilus","wordType":"UNINOMIAL","start":1,"end":17}],"id":"c2c50c08-1f62-547f-8fab-50359caf0b31","parserVersion":"test_version"}

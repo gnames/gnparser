@@ -143,8 +143,7 @@ Word <- !(('ex' / 'et' / 'and' / 'apud' / 'pro' / 'cv' / 'cultivar' /
   (WordApostr / WordStartsWithDigit / MultiDashedWord / Word2 /
   Word1) &(SpaceCharEOI / '(')
 
-# TODO probably never used
-Word1 <- (LowerASCII Dash)? NameLowerChar NameLowerChar+
+Word1 <- ((DotPrefix / LowerASCII) Dash)? NameLowerChar NameLowerChar+
 
 WordStartsWithDigit <- [123456789] Nums? ('.' / Dash)? NameLowerChar NameLowerChar
   NameLowerChar NameLowerChar+
@@ -154,6 +153,8 @@ Word2 <- NameLowerChar+ Dash? (WordApostr / NameLowerChar+)
 WordApostr <- NameLowerChar NameLowerChar* Apostrophe Word1
 
 Word4 <- NameLowerChar+ '.' NameLowerChar
+
+DotPrefix <- 'st.'
 
 MultiDashedWord <- NameLowerChar+ Dash NameLowerChar+ Dash NameLowerChar+ (Dash NameLowerChar+)?
 
@@ -293,7 +294,7 @@ NameLowerChar <- LowerChar / LowerCharExtended / MiscodedChar
 
 MiscodedChar <- '�'
 
-LowerCharExtended <- [æœàâåãäáçčéèëíìïňññóòôøõöúùüŕřŗſššşßž]
+LowerCharExtended <- [æœàâåãäáçčéèëíìïňññóòôøõöúûùüŕřŗſššşßž]
 
 LowerChar <- LowerASCII
 

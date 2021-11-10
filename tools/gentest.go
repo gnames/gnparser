@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 // Generates a new test_data_new.txt file out of test_data.txt using current
@@ -45,7 +46,7 @@ func newTestFile(file string) error {
 	sc := bufio.NewScanner(f)
 	opts := []gnparser.Option{gnparser.OptIsTest(true), gnparser.OptWithDetails(true)}
 	if file == "test_data_cultivars" {
-		opts = append(opts, gnparser.OptEnableCultivars(true))
+		opts = append(opts, gnparser.OptWithCultivars(true))
 	}
 	cfg := gnparser.NewConfig(opts...)
 	gnp := gnparser.New(cfg)

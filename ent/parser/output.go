@@ -94,7 +94,7 @@ func prepareWarnings(ws map[parsed.Warning]struct{}) []parsed.QualityWarning {
 		if res[i].Quality < res[j].Quality {
 			return false
 		}
-		return res[i].Warning < res[j].Warning
+		return res[i].Warning.String() < res[j].Warning.String()
 	})
 	return res
 }

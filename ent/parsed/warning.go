@@ -14,10 +14,10 @@ const (
 	ApostrOtherWarn
 	AuthAmbiguousFiliusWarn
 	AuthDoubleParensWarn
-	AuthExWarn
-	AuthExWithDotWarn
 	AuthEmendWarn
 	AuthEmendWithoutDotWarn
+	AuthExWarn
+	AuthExWithDotWarn
 	AuthMissingOneParensWarn
 	AuthQuestionWarn
 	AuthShortWarn
@@ -30,19 +30,20 @@ const (
 	CapWordQuestionWarn
 	CharBadWarn
 	CultivarEpithetWarn
+	DotEpithetWarn
 	GenusAbbrWarn
 	GenusUpperCharAfterDash
 	GraftChimeraCharNoSpaceWarn
-	GraftChimeraFormulaWarn
 	GraftChimeraFormulaIncompleteWarn
 	GraftChimeraFormulaProbIncompleteWarn
+	GraftChimeraFormulaWarn
 	GraftChimeraNamedWarn
 	GreekLetterInRank
 	HTMLTagsEntitiesWarn
 	HybridCharNoSpaceWarn
-	HybridFormulaWarn
 	HybridFormulaIncompleteWarn
 	HybridFormulaProbIncompleteWarn
+	HybridFormulaWarn
 	HybridNamedWarn
 	LowCaseWarn
 	NameApproxWarn
@@ -72,10 +73,10 @@ var warningMap = map[Warning]string{
 	ApostrOtherWarn:                       "Not an ASCII apostrophe",
 	AuthAmbiguousFiliusWarn:               "Ambiguous f. (filius or forma)",
 	AuthDoubleParensWarn:                  "Authorship in double parentheses",
-	AuthExWarn:                            "Ex authors are not required",
-	AuthExWithDotWarn:                     "`ex` ends with a period",
 	AuthEmendWarn:                         "Emend authors are not required",
 	AuthEmendWithoutDotWarn:               "`emend` without a period",
+	AuthExWarn:                            "Ex authors are not required",
+	AuthExWithDotWarn:                     "`ex` ends with a period",
 	AuthMissingOneParensWarn:              "Authorship is missing one parenthesis",
 	AuthQuestionWarn:                      "Author as a question mark",
 	AuthShortWarn:                         "Author is too short",
@@ -88,19 +89,20 @@ var warningMap = map[Warning]string{
 	CapWordQuestionWarn:                   "Uninomial word with question mark",
 	CharBadWarn:                           "Non-standard characters in canonical",
 	CultivarEpithetWarn:                   "Cultivar epithet",
+	DotEpithetWarn:                        "Period character is not allowed in canonical",
 	GenusAbbrWarn:                         "Abbreviated uninomial word",
 	GenusUpperCharAfterDash:               "Apparent genus with capital character after hyphen",
 	GraftChimeraCharNoSpaceWarn:           "Graft-chimera char is not separated by space",
-	GraftChimeraFormulaWarn:               "Graft-chimera formula",
 	GraftChimeraFormulaIncompleteWarn:     "Incomplete graft-chimera formula",
 	GraftChimeraFormulaProbIncompleteWarn: "Probably incomplete graft-chimera formula",
+	GraftChimeraFormulaWarn:               "Graft-chimera formula",
 	GraftChimeraNamedWarn:                 "Named graft-chimera",
 	GreekLetterInRank:                     "Deprecated Greek letter enumeration in rank",
 	HTMLTagsEntitiesWarn:                  "HTML tags or entities in the name",
 	HybridCharNoSpaceWarn:                 "Hybrid char is not separated by space",
-	HybridFormulaWarn:                     "Hybrid formula",
 	HybridFormulaIncompleteWarn:           "Incomplete hybrid formula",
 	HybridFormulaProbIncompleteWarn:       "Probably incomplete hybrid formula",
+	HybridFormulaWarn:                     "Hybrid formula",
 	HybridNamedWarn:                       "Named hybrid",
 	LowCaseWarn:                           "Name starts with low-case character",
 	NameApproxWarn:                        "Name is approximate",
@@ -139,10 +141,10 @@ var WarningQualityMap = map[Warning]int{
 	ApostrOtherWarn:                       3,
 	AuthAmbiguousFiliusWarn:               2,
 	AuthDoubleParensWarn:                  4,
-	AuthExWarn:                            2,
-	AuthExWithDotWarn:                     3,
 	AuthEmendWarn:                         2,
 	AuthEmendWithoutDotWarn:               3,
+	AuthExWarn:                            2,
+	AuthExWithDotWarn:                     3,
 	AuthMissingOneParensWarn:              4,
 	AuthQuestionWarn:                      4,
 	AuthShortWarn:                         3,
@@ -155,19 +157,20 @@ var WarningQualityMap = map[Warning]int{
 	CapWordQuestionWarn:                   4,
 	CharBadWarn:                           2,
 	CultivarEpithetWarn:                   2,
+	DotEpithetWarn:                        3,
 	GenusAbbrWarn:                         4,
 	GenusUpperCharAfterDash:               2,
 	GraftChimeraCharNoSpaceWarn:           3,
-	GraftChimeraFormulaWarn:               2,
 	GraftChimeraFormulaIncompleteWarn:     4,
 	GraftChimeraFormulaProbIncompleteWarn: 2,
+	GraftChimeraFormulaWarn:               2,
 	GraftChimeraNamedWarn:                 2,
 	GreekLetterInRank:                     2,
 	HTMLTagsEntitiesWarn:                  3,
 	HybridCharNoSpaceWarn:                 3,
-	HybridFormulaWarn:                     2,
 	HybridFormulaIncompleteWarn:           4,
 	HybridFormulaProbIncompleteWarn:       2,
+	HybridFormulaWarn:                     2,
 	HybridNamedWarn:                       2,
 	LowCaseWarn:                           4,
 	NameApproxWarn:                        4,
