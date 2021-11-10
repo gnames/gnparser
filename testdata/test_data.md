@@ -4299,6 +4299,16 @@ Authorship:
 {"parsed":false,"quality":0,"verbatim":"Cre expression vector","cardinality":0,"virus":true,"id":"9a282683-c49b-52dc-817f-0281d5b4b831","parserVersion":"test_version"}
 ```
 
+Name: Cyanophage
+
+Canonical:
+
+Authorship:
+
+```json
+{"parsed":false,"quality":0,"verbatim":"Cyanophage","cardinality":0,"virus":true,"id":"050da5da-716e-5282-97f0-0ea9e375bbf0","parserVersion":"test_version"}
+```
+
 Name: Drosophila sturtevanti rhabdovirus
 
 Canonical:
