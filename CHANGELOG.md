@@ -6,6 +6,7 @@
 - Add [#198]: parse "Solanum tuberosum wila-k`oyu".
 - Add [#97]: do not parse "Cyanophage".
 - Add [#84]: parse "Muscicapa randi Amadon & duPont, 1970".
+- Add [#83]: parse authors like 'Laverde-R.'.
 
 ## [v1.5.1]
 

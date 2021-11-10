@@ -889,6 +889,16 @@ Authorship: (J.Agardh) ver Steeg & Jossly
 {"parsed":true,"quality":1,"verbatim":"Cryptopleura farlowiana (J.Agardh) ver Steeg \u0026 Jossly","normalized":"Cryptopleura farlowiana (J. Agardh) ver Steeg \u0026 Jossly","canonical":{"stemmed":"Cryptopleura farlowian","simple":"Cryptopleura farlowiana","full":"Cryptopleura farlowiana"},"cardinality":2,"authorship":{"verbatim":"(J.Agardh) ver Steeg \u0026 Jossly","normalized":"(J. Agardh) ver Steeg \u0026 Jossly","authors":["J. Agardh","ver Steeg","Jossly"],"originalAuth":{"authors":["J. Agardh"]},"combinationAuth":{"authors":["ver Steeg","Jossly"]}},"details":{"species":{"genus":"Cryptopleura","species":"farlowiana","authorship":{"verbatim":"(J.Agardh) ver Steeg \u0026 Jossly","normalized":"(J. Agardh) ver Steeg \u0026 Jossly","authors":["J. Agardh","ver Steeg","Jossly"],"originalAuth":{"authors":["J. Agardh"]},"combinationAuth":{"authors":["ver Steeg","Jossly"]}}}},"words":[{"verbatim":"Cryptopleura","normalized":"Cryptopleura","wordType":"GENUS","start":0,"end":12},{"verbatim":"farlowiana","normalized":"farlowiana","wordType":"SPECIES","start":13,"end":23},{"verbatim":"J.","normalized":"J.","wordType":"AUTHOR_WORD","start":25,"end":27},{"verbatim":"Agardh","normalized":"Agardh","wordType":"AUTHOR_WORD","start":27,"end":33},{"verbatim":"ver","normalized":"ver","wordType":"AUTHOR_WORD","start":35,"end":38},{"verbatim":"Steeg","normalized":"Steeg","wordType":"AUTHOR_WORD","start":39,"end":44},{"verbatim":"Jossly","normalized":"Jossly","wordType":"AUTHOR_WORD","start":47,"end":53}],"id":"f9b3b9e2-b1f9-56bb-b0bf-fa8eab2c03dd","parserVersion":"test_version"}
 ```
 
+Name: Pyxilla caput avis J.-J.Brun
+
+Canonical: Pyxilla caput avis
+
+Authorship: J.-J.Brun
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Pyxilla caput avis J.-J.Brun","normalized":"Pyxilla caput avis J.-J. Brun","canonical":{"stemmed":"Pyxilla caput au","simple":"Pyxilla caput avis","full":"Pyxilla caput avis"},"cardinality":3,"authorship":{"verbatim":"J.-J.Brun","normalized":"J.-J. Brun","authors":["J.-J. Brun"],"originalAuth":{"authors":["J.-J. Brun"]}},"details":{"infraspecies":{"genus":"Pyxilla","species":"caput","infraspecies":[{"value":"avis","authorship":{"verbatim":"J.-J.Brun","normalized":"J.-J. Brun","authors":["J.-J. Brun"],"originalAuth":{"authors":["J.-J. Brun"]}}}]}},"words":[{"verbatim":"Pyxilla","normalized":"Pyxilla","wordType":"GENUS","start":0,"end":7},{"verbatim":"caput","normalized":"caput","wordType":"SPECIES","start":8,"end":13},{"verbatim":"avis","normalized":"avis","wordType":"INFRASPECIES","start":14,"end":18},{"verbatim":"J.-J.","normalized":"J.-J.","wordType":"AUTHOR_WORD","start":19,"end":24},{"verbatim":"Brun","normalized":"Brun","wordType":"AUTHOR_WORD","start":24,"end":28}],"id":"f2cea9a2-23df-520c-b8a7-c25e50608676","parserVersion":"test_version"}
+```
+
 Name: Muscicapa randi Amadon & duPont, 1970
 
 Canonical: Muscicapa randi
@@ -897,6 +907,26 @@ Authorship: Amadon & duPont, 1970
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Muscicapa randi Amadon \u0026 duPont, 1970","normalized":"Muscicapa randi Amadon \u0026 duPont 1970","canonical":{"stemmed":"Muscicapa rand","simple":"Muscicapa randi","full":"Muscicapa randi"},"cardinality":2,"authorship":{"verbatim":"Amadon \u0026 duPont, 1970","normalized":"Amadon \u0026 duPont 1970","year":"1970","authors":["Amadon","duPont"],"originalAuth":{"authors":["Amadon","duPont"],"year":{"year":"1970"}}},"details":{"species":{"genus":"Muscicapa","species":"randi","authorship":{"verbatim":"Amadon \u0026 duPont, 1970","normalized":"Amadon \u0026 duPont 1970","year":"1970","authors":["Amadon","duPont"],"originalAuth":{"authors":["Amadon","duPont"],"year":{"year":"1970"}}}}},"words":[{"verbatim":"Muscicapa","normalized":"Muscicapa","wordType":"GENUS","start":0,"end":9},{"verbatim":"randi","normalized":"randi","wordType":"SPECIES","start":10,"end":15},{"verbatim":"Amadon","normalized":"Amadon","wordType":"AUTHOR_WORD","start":16,"end":22},{"verbatim":"duPont","normalized":"duPont","wordType":"AUTHOR_WORD","start":25,"end":31},{"verbatim":"1970","normalized":"1970","wordType":"YEAR","start":33,"end":37}],"id":"07e1f6ac-ab5f-5354-a690-69ed7a5394fc","parserVersion":"test_version"}
+```
+
+Name: Scytalopus alvarezlopezi Stiles, Laverde-R. & Cadena 2017
+
+Canonical: Scytalopus alvarezlopezi
+
+Authorship: Stiles, Laverde-R. & Cadena 2017
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Scytalopus alvarezlopezi Stiles, Laverde-R. \u0026 Cadena 2017","normalized":"Scytalopus alvarezlopezi Stiles, Laverde-R. \u0026 Cadena 2017","canonical":{"stemmed":"Scytalopus aluarezlopez","simple":"Scytalopus alvarezlopezi","full":"Scytalopus alvarezlopezi"},"cardinality":2,"authorship":{"verbatim":"Stiles, Laverde-R. \u0026 Cadena 2017","normalized":"Stiles, Laverde-R. \u0026 Cadena 2017","year":"2017","authors":["Stiles","Laverde-R.","Cadena"],"originalAuth":{"authors":["Stiles","Laverde-R.","Cadena"],"year":{"year":"2017"}}},"details":{"species":{"genus":"Scytalopus","species":"alvarezlopezi","authorship":{"verbatim":"Stiles, Laverde-R. \u0026 Cadena 2017","normalized":"Stiles, Laverde-R. \u0026 Cadena 2017","year":"2017","authors":["Stiles","Laverde-R.","Cadena"],"originalAuth":{"authors":["Stiles","Laverde-R.","Cadena"],"year":{"year":"2017"}}}}},"words":[{"verbatim":"Scytalopus","normalized":"Scytalopus","wordType":"GENUS","start":0,"end":10},{"verbatim":"alvarezlopezi","normalized":"alvarezlopezi","wordType":"SPECIES","start":11,"end":24},{"verbatim":"Stiles","normalized":"Stiles","wordType":"AUTHOR_WORD","start":25,"end":31},{"verbatim":"Laverde-R.","normalized":"Laverde-R.","wordType":"AUTHOR_WORD","start":33,"end":43},{"verbatim":"Cadena","normalized":"Cadena","wordType":"AUTHOR_WORD","start":46,"end":52},{"verbatim":"2017","normalized":"2017","wordType":"YEAR","start":53,"end":57}],"id":"bac0e1d6-411e-5d96-ad73-a3db20b9b1a0","parserVersion":"test_version"}
+```
+
+Name: Carabus (Tanaocarabus) hendrichsi Bolvar y Pieltain, Rotger & Coronado-G 1967
+
+Canonical: Carabus (Tanaocarabus) hendrichsi
+
+Authorship: Bolvar y Pieltain, Rotger & Coronado-G 1967
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Spanish 'y' is used instead of '&'"}],"verbatim":"Carabus (Tanaocarabus) hendrichsi Bolvar y Pieltain, Rotger \u0026 Coronado-G 1967","normalized":"Carabus (Tanaocarabus) hendrichsi Bolvar, Pieltain, Rotger \u0026 Coronado-G 1967","canonical":{"stemmed":"Carabus hendrichs","simple":"Carabus hendrichsi","full":"Carabus hendrichsi"},"cardinality":2,"authorship":{"verbatim":"Bolvar y Pieltain, Rotger \u0026 Coronado-G 1967","normalized":"Bolvar, Pieltain, Rotger \u0026 Coronado-G 1967","year":"1967","authors":["Bolvar","Pieltain","Rotger","Coronado-G"],"originalAuth":{"authors":["Bolvar","Pieltain","Rotger","Coronado-G"],"year":{"year":"1967"}}},"details":{"species":{"genus":"Carabus","subgenus":"Tanaocarabus","species":"hendrichsi","authorship":{"verbatim":"Bolvar y Pieltain, Rotger \u0026 Coronado-G 1967","normalized":"Bolvar, Pieltain, Rotger \u0026 Coronado-G 1967","year":"1967","authors":["Bolvar","Pieltain","Rotger","Coronado-G"],"originalAuth":{"authors":["Bolvar","Pieltain","Rotger","Coronado-G"],"year":{"year":"1967"}}}}},"words":[{"verbatim":"Carabus","normalized":"Carabus","wordType":"GENUS","start":0,"end":7},{"verbatim":"Tanaocarabus","normalized":"Tanaocarabus","wordType":"INFRA_GENUS","start":9,"end":21},{"verbatim":"hendrichsi","normalized":"hendrichsi","wordType":"SPECIES","start":23,"end":33},{"verbatim":"Bolvar","normalized":"Bolvar","wordType":"AUTHOR_WORD","start":34,"end":40},{"verbatim":"Pieltain","normalized":"Pieltain","wordType":"AUTHOR_WORD","start":43,"end":51},{"verbatim":"Rotger","normalized":"Rotger","wordType":"AUTHOR_WORD","start":53,"end":59},{"verbatim":"Coronado-G","normalized":"Coronado-G","wordType":"AUTHOR_WORD","start":62,"end":72},{"verbatim":"1967","normalized":"1967","wordType":"YEAR","start":73,"end":77}],"id":"7d2a6355-6f24-54a4-8a49-4c7510a07192","parserVersion":"test_version"}
 ```
 
 Name: Nemcia epacridoides (Meissner)Crisp
