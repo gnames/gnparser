@@ -14,6 +14,7 @@ func (sn *scientificNameNode) ToOutput(withDetails bool) parsed.Parsed {
 		Verbatim:      sn.verbatim,
 		Canonical:     sn.Canonical(),
 		Virus:         sn.virus,
+		DaggerChar:    sn.daggerChar,
 		VerbatimID:    sn.verbatimID,
 		ParserVersion: sn.parserVersion,
 	}

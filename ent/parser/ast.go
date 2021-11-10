@@ -20,6 +20,7 @@ type scientificNameNode struct {
 	verbatimID       string
 	cardinality      int
 	virus            bool
+	daggerChar       bool
 	hybrid           *parsed.Annotation
 	surrogate        *parsed.Annotation
 	bacteria         *tribool.Tribool
@@ -70,10 +71,9 @@ func (sn *scientificNameNode) addVerbatim(s string) {
 
 func (p *Engine) tailValue(n *node32) string {
 	t := n.token32
-	if t.begin == t.end {
-		return ""
-	}
-	return string(p.buffer[t.begin:t.end])
+	tail := string(p.buffer[t.begin:t.end])
+	tail = strings.TrimRight(tail, " ")
+	return tail
 }
 
 func (p *Engine) newName(n *node32) nameData {

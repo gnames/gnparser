@@ -118,8 +118,6 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 		p.addWarn(parsed.HybridNamedWarn)
 	case ruleOtherSpace:
 		p.addWarn(parsed.SpaceNonStandardWarn)
-	case ruleMultipleSpace:
-		p.addWarn(parsed.SpaceMultipleWarn)
 	case ruleMiscodedChar:
 		p.addWarn(parsed.UTF8ConvBadWarn)
 	case ruleAbbrSubgenus:

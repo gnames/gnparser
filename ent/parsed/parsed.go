@@ -11,6 +11,7 @@ import (
 type Parsed struct {
 	// Parsed is false if parsing did not succeed.
 	Parsed bool `json:"parsed"`
+
 	// ParseQuality is a number that represents the quality of the
 	// parsing.
 	//
@@ -25,15 +26,20 @@ type Parsed struct {
 	// are encountered, and the parsing succeeded, the parseQuality
 	// is set to 1. If parsing failed, the parseQuality is 0.
 	ParseQuality int `json:"quality"`
+
 	// QualityWarnings contains encountered parsing problems.
 	QualityWarnings []QualityWarning `json:"qualityWarnings,omitempty"`
+
 	// Verbatim is input name-string without modifications.
 	Verbatim string `json:"verbatim"`
+
 	// Normalized is a normalized version of the input name-string.
 	Normalized string `json:"normalized,omitempty"`
+
 	// Canonical are simplified versions of a name-string more suitable for
 	// matching and comparing name-strings than the verbatim version.
 	Canonical *Canonical `json:"canonical,omitempty"`
+
 	// Cardinality allows to sort, partition names according to number of
 	// elements in their canonical forms.
 	//
@@ -43,10 +49,12 @@ type Parsed struct {
 	// 3 - trinomial
 	// 4 - quadrinomial
 	Cardinality int `json:"cardinality"`
+
 	// Authorship describes provided metainformation about authors of a name.
 	// This authorship provided outside of Details belongs to
 	// the most fine-grained element of a name.
 	Authorship *Authorship `json:"authorship,omitempty"`
+
 	// Bacteria is not nil if the input name has a genus
 	// that is registered as bacterial. Possible
 	// values are "maybe" - if the genus has homonyms in other groups
@@ -55,6 +63,7 @@ type Parsed struct {
 	// The bacterial names often contain strain information which are
 	// not parseable and are placed into the "tail" field.
 	Bacteria *tb.Tribool `json:"bacteria,omitempty"`
+
 	// Virus is set to true in case if name is not parsed, and probably
 	// belongs to a wide variety of sub-cellular entities like
 	//
@@ -71,6 +80,11 @@ type Parsed struct {
 	// We do plan to create a parser for viruses at some point,
 	// which will expand this group into more precise categories.
 	Virus bool `json:"virus,omitempty"`
+
+	// DaggerChar if true if a name-string includes '†' rune.
+	// This rune might mean a fossil, or be indication of the clade extinction.
+	DaggerChar bool `json:"daggerChar,omitempty"`
+
 	// Hybrid is not nil if a name is detected as one of the hybrids
 	//
 	// - a non-categorized hybrid
@@ -100,14 +114,18 @@ type Parsed struct {
 	// indications, bacterial strains etc.  If there is an unparseable tail, the
 	// quality of the name-parsing is set to the worst category.
 	Tail string `json:"tail,omitempty"`
+
 	// Details contain more fine-grained information about parsed name.
 	Details Details `json:"details,omitempty"`
+
 	// Words contain description of every parsed word of a name.
 	Words []Word `json:"words,omitempty"`
+
 	// VerbatimID is a UUID v5 generated from the verbatim value of the
 	// input name-string. Every unique string always generates the same
 	// UUID.
 	VerbatimID string `json:"id"`
+
 	// ParserVersion is the version number of the GNparser.
 	ParserVersion string `json:"parserVersion"`
 }

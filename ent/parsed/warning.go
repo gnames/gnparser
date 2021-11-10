@@ -49,7 +49,6 @@ const (
 	NameApproxWarn
 	NameComparisonWarn
 	RankUncommonWarn
-	SpaceMultipleWarn
 	SpaceNonStandardWarn
 	SpanishAndAsSeparator
 	SpeciesNumericWarn
@@ -108,7 +107,6 @@ var warningMap = map[Warning]string{
 	NameApproxWarn:                        "Name is approximate",
 	NameComparisonWarn:                    "Name comparison",
 	RankUncommonWarn:                      "Uncommon rank",
-	SpaceMultipleWarn:                     "Multiple adjacent space characters",
 	SpaceNonStandardWarn:                  "Non-standard space characters",
 	SpanishAndAsSeparator:                 "Spanish 'y' is used instead of '&'",
 	SpeciesNumericWarn:                    "Numeric prefix",
@@ -176,7 +174,6 @@ var WarningQualityMap = map[Warning]int{
 	NameApproxWarn:                        4,
 	NameComparisonWarn:                    4,
 	RankUncommonWarn:                      3,
-	SpaceMultipleWarn:                     2,
 	SpaceNonStandardWarn:                  2,
 	SpanishAndAsSeparator:                 2,
 	SpeciesNumericWarn:                    3,

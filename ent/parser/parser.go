@@ -64,6 +64,7 @@ func (p *Engine) PreprocessAndParse(
 	preproc := preprocess.Preprocess([]byte(s))
 
 	defer func() {
+		p.sn.daggerChar = preproc.DaggerChar
 		if len(preproc.Tail) > 0 {
 			p.sn.tail += string(preproc.Tail)
 		}

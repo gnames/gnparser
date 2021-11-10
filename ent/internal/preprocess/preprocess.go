@@ -117,11 +117,14 @@ var ofWordRe = regexp.MustCompile(
 	`\s+(of[\W_]).*$`,
 )
 
+var dagger = []byte("†")
+
 // Preprocessor structure keeps state of the preprocessor results.
 type Preprocessor struct {
 	Virus       bool
 	Underscore  bool
 	NoParse     bool
+	DaggerChar  bool
 	Approximate bool
 	Annotation  bool
 	Body        []byte
@@ -165,7 +168,8 @@ func Preprocess(bs []byte) *Preprocessor {
 		return pr
 	}
 
-	//
+	pr.DaggerChar = hasDagger(bs[0:i])
+
 	if len(words) > 1 {
 		pr.ambiguous(words[0], bs)
 	}
@@ -185,6 +189,17 @@ func Preprocess(bs []byte) *Preprocessor {
 	pr.Body = bs[0:i]
 	pr.Tail = bs[i:]
 	return pr
+}
+
+func hasDagger(bs []byte) bool {
+	idx := bytes.Index(bs, dagger)
+	if idx == -1 {
+		return false
+	}
+
+	sp := byte(' ')
+	bs[idx], bs[idx+1], bs[idx+2] = sp, sp, sp
+	return true
 }
 
 func isException(words []string, names map[string]string) bool {
