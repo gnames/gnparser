@@ -2,9 +2,10 @@
 
 ## Unreleased
 
-- Add [#97]: do not parse "Cyanophage".
 - Add [#200]: support for 'div.' rank in uninomial combinations.
 - Add [#198]: parse "Solanum tuberosum wila-k`oyu".
+- Add [#97]: do not parse "Cyanophage".
+- Add [#84]: parse "Muscicapa randi Amadon & duPont, 1970".
 
 ## [v1.5.1]
 

@@ -889,6 +889,16 @@ Authorship: (J.Agardh) ver Steeg & Jossly
 {"parsed":true,"quality":1,"verbatim":"Cryptopleura farlowiana (J.Agardh) ver Steeg \u0026 Jossly","normalized":"Cryptopleura farlowiana (J. Agardh) ver Steeg \u0026 Jossly","canonical":{"stemmed":"Cryptopleura farlowian","simple":"Cryptopleura farlowiana","full":"Cryptopleura farlowiana"},"cardinality":2,"authorship":{"verbatim":"(J.Agardh) ver Steeg \u0026 Jossly","normalized":"(J. Agardh) ver Steeg \u0026 Jossly","authors":["J. Agardh","ver Steeg","Jossly"],"originalAuth":{"authors":["J. Agardh"]},"combinationAuth":{"authors":["ver Steeg","Jossly"]}},"details":{"species":{"genus":"Cryptopleura","species":"farlowiana","authorship":{"verbatim":"(J.Agardh) ver Steeg \u0026 Jossly","normalized":"(J. Agardh) ver Steeg \u0026 Jossly","authors":["J. Agardh","ver Steeg","Jossly"],"originalAuth":{"authors":["J. Agardh"]},"combinationAuth":{"authors":["ver Steeg","Jossly"]}}}},"words":[{"verbatim":"Cryptopleura","normalized":"Cryptopleura","wordType":"GENUS","start":0,"end":12},{"verbatim":"farlowiana","normalized":"farlowiana","wordType":"SPECIES","start":13,"end":23},{"verbatim":"J.","normalized":"J.","wordType":"AUTHOR_WORD","start":25,"end":27},{"verbatim":"Agardh","normalized":"Agardh","wordType":"AUTHOR_WORD","start":27,"end":33},{"verbatim":"ver","normalized":"ver","wordType":"AUTHOR_WORD","start":35,"end":38},{"verbatim":"Steeg","normalized":"Steeg","wordType":"AUTHOR_WORD","start":39,"end":44},{"verbatim":"Jossly","normalized":"Jossly","wordType":"AUTHOR_WORD","start":47,"end":53}],"id":"f9b3b9e2-b1f9-56bb-b0bf-fa8eab2c03dd","parserVersion":"test_version"}
 ```
 
+Name: Muscicapa randi Amadon & duPont, 1970
+
+Canonical: Muscicapa randi
+
+Authorship: Amadon & duPont, 1970
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Muscicapa randi Amadon \u0026 duPont, 1970","normalized":"Muscicapa randi Amadon \u0026 duPont 1970","canonical":{"stemmed":"Muscicapa rand","simple":"Muscicapa randi","full":"Muscicapa randi"},"cardinality":2,"authorship":{"verbatim":"Amadon \u0026 duPont, 1970","normalized":"Amadon \u0026 duPont 1970","year":"1970","authors":["Amadon","duPont"],"originalAuth":{"authors":["Amadon","duPont"],"year":{"year":"1970"}}},"details":{"species":{"genus":"Muscicapa","species":"randi","authorship":{"verbatim":"Amadon \u0026 duPont, 1970","normalized":"Amadon \u0026 duPont 1970","year":"1970","authors":["Amadon","duPont"],"originalAuth":{"authors":["Amadon","duPont"],"year":{"year":"1970"}}}}},"words":[{"verbatim":"Muscicapa","normalized":"Muscicapa","wordType":"GENUS","start":0,"end":9},{"verbatim":"randi","normalized":"randi","wordType":"SPECIES","start":10,"end":15},{"verbatim":"Amadon","normalized":"Amadon","wordType":"AUTHOR_WORD","start":16,"end":22},{"verbatim":"duPont","normalized":"duPont","wordType":"AUTHOR_WORD","start":25,"end":31},{"verbatim":"1970","normalized":"1970","wordType":"YEAR","start":33,"end":37}],"id":"07e1f6ac-ab5f-5354-a690-69ed7a5394fc","parserVersion":"test_version"}
+```
+
 Name: Nemcia epacridoides (Meissner)Crisp
 
 Canonical: Nemcia epacridoides
