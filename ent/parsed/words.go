@@ -3,7 +3,42 @@ package parsed
 import (
 	"errors"
 	"strings"
+
+	"github.com/gnames/gnparser/ent/stemmer"
 )
+
+// Word represents a parsed word and its meaning in the name-string.
+type Word struct {
+	// Verbatim is unmodified value of a word.
+	Verbatim string `json:"verbatim"`
+	// Normalized is normalized value of a word.
+	Normalized string `json:"normalized"`
+	// Type is a semantic meaning of a word.
+	Type WordType `json:"wordType"`
+	// Start is the index of the first letter of a word.
+	Start int `json:"start"`
+	// End is the index of the end of a word.
+	End int `json:"end"`
+}
+
+// NormalizeMore is useful when searching for a word alone.
+// In such cases specific epithets will match better when stemmed,
+// authors low-cased with stripped periods.
+func (w Word) NormalizeMore() string {
+	var res string
+	switch w.Type {
+	case SpEpithetType, InfraspEpithetType:
+		res = stemmer.Stem(w.Normalized).Stem
+	case GenusType:
+		res = strings.ToLower(w.Normalized)
+	case AuthorWordType:
+		res = strings.ToLower(w.Normalized)
+		res = strings.ReplaceAll(res, ".", "")
+	default:
+		res = w.Normalized
+	}
+	return res
+}
 
 // WordType designates semantic meaning of a word.
 type WordType int
@@ -32,7 +67,7 @@ const (
 var wordTypeMap = map[WordType]string{
 	UnknownType:          "WORD",
 	ComparisonMarkerType: "COMPARISON_MARKER",
-	CultivarType:					"CULTIVAR",
+	CultivarType:         "CULTIVAR",
 	ApproxMarkerType:     "APPROXIMATION_MARKER",
 	AuthorWordType:       "AUTHOR_WORD",
 	AuthorWordFiliusType: "AUTHOR_WORD_FILIUS",

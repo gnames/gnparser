@@ -223,17 +223,3 @@ type Year struct {
 	// a question mark "188?", by parentheses "(1888)".
 	IsApproximate bool `json:"isApproximate,omitempty"`
 }
-
-// Word represents a parsed word and its meaning in the name-string.
-type Word struct {
-	// Verbatim is unmodified value of a word.
-	Verbatim string `json:"verbatim"`
-	// Normalized is normalized value of a word.
-	Normalized string `json:"normalized"`
-	// Type is a semantic meaning of a word.
-	Type WordType `json:"wordType"`
-	// Start is the index of the first letter of a word.
-	Start int `json:"start"`
-	// End is the index of the end of a word.
-	End int `json:"end"`
-}

@@ -74,6 +74,27 @@ func TestParseLowCaseName(t *testing.T) {
 	}
 }
 
+func TestWordNormalizeMore(t *testing.T) {
+	tests := []struct {
+		msg, name string
+		norm      []string
+	}{
+		{"1", "Betula alba Linn.", []string{"betula", "alb", "linn"}},
+		{"2", "Plantago major var. major", []string{"plantago", "maior", "var.", "maior"}},
+	}
+
+	cfg := gnparser.NewConfig(gnparser.OptWithDetails(true))
+	gnp := gnparser.New(cfg)
+	for _, v := range tests {
+		p := gnp.ParseName(v.name)
+		res := make([]string, len(p.Words))
+		for i, v := range p.Words {
+			res[i] = v.NormalizeMore()
+		}
+		assert.Equal(t, res, v.norm, v.msg)
+	}
+}
+
 func TestOutputRestore(t *testing.T) {
 	name := "Homo zapiens Linn. 1758"
 	cfg := gnparser.NewConfig(gnparser.OptWithDetails(true))

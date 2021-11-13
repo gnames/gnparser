@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.5.3]
+
+- Add [#202]: add NormalizeMore function for Word.
+
 ## [v1.5.2]
 
 - Add [#200]: support for 'div.' rank in uninomial combinations.
@@ -327,6 +331,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.5.3]: https://github.com/gnames/gnparser/compare/v1.5.2...v1.5.3
 [v1.5.2]: https://github.com/gnames/gnparser/compare/v1.5.1...v1.5.2
 [v1.5.1]: https://github.com/gnames/gnparser/compare/v1.5.0...v1.5.1
 [v1.5.0]: https://github.com/gnames/gnparser/compare/v1.4.2...v1.5.0
