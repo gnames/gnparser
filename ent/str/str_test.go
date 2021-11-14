@@ -48,8 +48,8 @@ func TestStringTools(t *testing.T) {
 			{"‘", "‘", "", str.Transliterations},
 		}
 		for _, v := range tests {
-			res, _ := str.ToASCII([]byte(v.in), v.tbl)
-			assert.Equal(t, string(res), v.out, v.msg)
+			res := str.ToASCII(v.in, v.tbl)
+			assert.Equal(t, res, v.out, v.msg)
 		}
 	})
 

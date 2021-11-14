@@ -1146,22 +1146,22 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *parsed.Word {
 		switch v.pegRule {
 		case ruleDotPrefix:
 			p.addWarn(parsed.DotEpithetWarn)
-			wrd.Normalized, _ = normalize(wrd.Verbatim)
+			wrd.Normalized = str.Normalize(wrd.Verbatim)
 		case ruleUpperCharExtended, ruleLowerCharExtended:
 			p.addWarn(parsed.CharBadWarn)
-			wrd.Normalized, _ = normalize(wrd.Verbatim)
+			wrd.Normalized = str.Normalize(wrd.Verbatim)
 		case ruleWordApostr:
 			p.addWarn(parsed.CanonicalApostropheWarn)
 			canonicalApostrophe = true
-			wrd.Normalized, _ = normalize(wrd.Verbatim)
+			wrd.Normalized = str.Normalize(wrd.Verbatim)
 		case ruleWordStartsWithDigit:
 			p.addWarn(parsed.SpeciesNumericWarn)
 			wrd.Normalized = normalizeNums(wrd.Verbatim)
 		case ruleApostrOther:
 			p.addWarn(parsed.ApostrOtherWarn)
 			if !canonicalApostrophe {
-				nv, _ := str.ToASCII([]byte(wrd.Verbatim), str.GlobalTransliterations)
-				wrd.Normalized = string(nv)
+				nv := str.ToASCII(wrd.Verbatim, str.GlobalTransliterations)
+				wrd.Normalized = nv
 			}
 		}
 	}
@@ -1212,19 +1212,6 @@ func (p *Engine) newCultivarEpithetNode(n *node32, wt parsed.WordType) *cultivar
 		p.addWarn(parsed.CultivarEpithetWarn)
 	}
 	return &cv
-}
-
-func normalize(s string) (string, error) {
-	res := s
-	if s == "" {
-		return s, nil
-	}
-	nv, err := str.ToASCII([]byte(s), str.Transliterations)
-	if err != nil {
-		return res, err
-	}
-	res = string(nv)
-	return res, nil
 }
 
 var numWord = regexp.MustCompile(`^([0-9]+)[-\.]?(.+)$`)

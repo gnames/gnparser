@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/gnames/gnparser/ent/stemmer"
+	"github.com/gnames/gnparser/ent/str"
 )
 
 // Word represents a parsed word and its meaning in the name-string.
@@ -21,21 +22,22 @@ type Word struct {
 	End int `json:"end"`
 }
 
-// NormalizeMore is useful when searching for a word alone.
+// NormalizeByType is useful when searching for a word alone.
 // In such cases specific epithets will match better when stemmed,
-// authors low-cased with stripped periods.
-func (w Word) NormalizeMore() string {
+// authors and genera low-cased, authors with stripped periods.
+func NormalizeByType(wrd string, wt WordType) string {
 	var res string
-	switch w.Type {
+	wrd = str.Normalize(wrd)
+	switch wt {
 	case SpEpithetType, InfraspEpithetType:
-		res = stemmer.Stem(w.Normalized).Stem
+		res = stemmer.Stem(wrd).Stem
 	case GenusType:
-		res = strings.ToLower(w.Normalized)
+		res = strings.ToLower(wrd)
 	case AuthorWordType:
-		res = strings.ToLower(w.Normalized)
+		res = strings.ToLower(wrd)
 		res = strings.ReplaceAll(res, ".", "")
 	default:
-		res = w.Normalized
+		res = wrd
 	}
 	return res
 }

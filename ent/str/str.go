@@ -31,8 +31,18 @@ func CapitalizeName(name string) string {
 	return string(runes)
 }
 
+// Normalize takes a string and returns normalized version of it.
+// Normalize function should be indempotent.
+func Normalize(s string) string {
+	return ToASCII(s, Transliterations)
+}
+
 // ToASCII converts a UTF-8 diacritics to corresponding ASCII chars.
-func ToASCII(b []byte, m map[rune]string) ([]byte, error) {
+func ToASCII(s string, m map[rune]string) string {
+	if s == "" {
+		return s
+	}
+	b := []byte(s)
 	tlBuf := bytes.NewBuffer(make([]byte, 0, len(b)*125/100))
 	for i, w := 0, 0; i < len(b); i += w {
 		r, width := utf8.DecodeRune(b[i:])
@@ -43,7 +53,7 @@ func ToASCII(b []byte, m map[rune]string) ([]byte, error) {
 		}
 		w = width
 	}
-	return tlBuf.Bytes(), nil
+	return tlBuf.String()
 }
 
 func IsBoldSurrogate(s string) bool {
