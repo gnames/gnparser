@@ -5,7 +5,7 @@
 ## [v1.5.4]
 
 - Add: different approach for normalize-by-type for words.
-- Add [#204]: allow genera starting with De-, Eu-, Le-, Ne- (by @tobymarsden).
+- Add [#205]: allow genera starting with De-, Eu-, Le-, Ne- (by @tobymarsden).
 - Add [#203]: allow up to 2 dashes in genera (by @tobymarsden).
 
 ## [v1.5.3]
