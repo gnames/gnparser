@@ -2812,7 +2812,7 @@ Name: Prunus-lauro-cerasus
 
 Canonical: Prunus-lauro-cerasus
 
-Authorship: 
+Authorship:
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Prunus-lauro-cerasus","normalized":"Prunus-lauro-cerasus","canonical":{"stemmed":"Prunus-lauro-cerasus","simple":"Prunus-lauro-cerasus","full":"Prunus-lauro-cerasus"},"cardinality":1,"details":{"uninomial":{"uninomial":"Prunus-lauro-cerasus"}},"words":[{"verbatim":"Prunus-lauro-cerasus","normalized":"Prunus-lauro-cerasus","wordType":"UNINOMIAL","start":0,"end":20}],"id":"e23ffe7a-f6ef-5276-a591-93e328213992","parserVersion":"test_version"}
@@ -2822,10 +2822,29 @@ Name: Prunus-Lauro-Cerasus
 
 Canonical: Prunus-lauro-cerasus
 
-Authorship: 
+Authorship:
 
 ```json
 {"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Apparent genus with capital character after hyphen"}],"verbatim":"Prunus-Lauro-Cerasus","normalized":"Prunus-lauro-cerasus","canonical":{"stemmed":"Prunus-lauro-cerasus","simple":"Prunus-lauro-cerasus","full":"Prunus-lauro-cerasus"},"cardinality":1,"details":{"uninomial":{"uninomial":"Prunus-lauro-cerasus"}},"words":[{"verbatim":"Prunus-Lauro-Cerasus","normalized":"Prunus-lauro-cerasus","wordType":"UNINOMIAL","start":0,"end":20}],"id":"192bf946-803d-53b4-934d-365a8b2798e4","parserVersion":"test_version"}
+```
+Name: Tsugo-piceo-picea × crassifolia (Flous) Campo-Duplan & Gaussen
+
+Canonical: Tsugo-piceo-picea × crassifolia
+
+Authorship: (Flous) Campo-Duplan & Gaussen
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Named hybrid"}],"verbatim":"Tsugo-piceo-picea × crassifolia (Flous) Campo-Duplan \u0026 Gaussen","normalized":"Tsugo-piceo-picea × crassifolia (Flous) Campo-Duplan \u0026 Gaussen","canonical":{"stemmed":"Tsugo-piceo-picea crassifol","simple":"Tsugo-piceo-picea crassifolia","full":"Tsugo-piceo-picea × crassifolia"},"cardinality":2,"authorship":{"verbatim":"(Flous) Campo-Duplan \u0026 Gaussen","normalized":"(Flous) Campo-Duplan \u0026 Gaussen","authors":["Flous","Campo-Duplan","Gaussen"],"originalAuth":{"authors":["Flous"]},"combinationAuth":{"authors":["Campo-Duplan","Gaussen"]}},"hybrid":"NAMED_HYBRID","details":{"species":{"genus":"Tsugo-piceo-picea","species":"crassifolia (Flous) Campo-Duplan \u0026 Gaussen","authorship":{"verbatim":"(Flous) Campo-Duplan \u0026 Gaussen","normalized":"(Flous) Campo-Duplan \u0026 Gaussen","authors":["Flous","Campo-Duplan","Gaussen"],"originalAuth":{"authors":["Flous"]},"combinationAuth":{"authors":["Campo-Duplan","Gaussen"]}}}},"words":[{"verbatim":"Tsugo-piceo-picea","normalized":"Tsugo-piceo-picea","wordType":"GENUS","start":0,"end":17},{"verbatim":"×","normalized":"×","wordType":"HYBRID_CHAR","start":18,"end":19},{"verbatim":"crassifolia","normalized":"crassifolia","wordType":"SPECIES","start":20,"end":31},{"verbatim":"Flous","normalized":"Flous","wordType":"AUTHOR_WORD","start":33,"end":38},{"verbatim":"Campo-Duplan","normalized":"Campo-Duplan","wordType":"AUTHOR_WORD","start":40,"end":52},{"verbatim":"Gaussen","normalized":"Gaussen","wordType":"AUTHOR_WORD","start":55,"end":62}],"id":"a00c94bb-566b-5433-a666-d56c1495ca3b","parserVersion":"test_version"}
+```
+
+Name: Tsugo-piceo-piceo-picea × crassifolia
+
+Canonical:
+
+Authorship:
+
+```json
+{"parsed":false,"quality":0,"verbatim":"Tsugo-piceo-piceo-picea × crassifolia","cardinality":0,"id":"0ab8c5ed-b224-5c17-9957-298a80cc07be","parserVersion":"test_version"}
 ```
 
 ### Misspeled name
