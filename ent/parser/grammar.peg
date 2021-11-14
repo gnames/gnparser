@@ -128,7 +128,9 @@ CapWord <- CapWordWithDash / CapWord1
 
 CapWord1 <- NameUpperChar NameLowerChar NameLowerChar+ '?'?
 
-CapWordWithDash <- CapWord1 Dash (UpperAfterDash / LowerAfterDash)
+CapWordWithDash <- (CapWord1 / TwoLetterGenusDashedSegment) Dash (UpperAfterDash / LowerAfterDash)
+
+TwoLetterGenusDashedSegment <- ('De' / 'Eu' / 'Le' / 'Ne')
 
 UpperAfterDash <- CapWord1
 

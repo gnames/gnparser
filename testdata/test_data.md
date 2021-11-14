@@ -2808,6 +2808,16 @@ Authorship: (Howell) A. Heller
 {"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Apparent genus with capital character after hyphen"}],"verbatim":"Uva-Ursi cinerea (Howell) A. Heller","normalized":"Uva-ursi cinerea (Howell) A. Heller","canonical":{"stemmed":"Uva-ursi cinere","simple":"Uva-ursi cinerea","full":"Uva-ursi cinerea"},"cardinality":2,"authorship":{"verbatim":"(Howell) A. Heller","normalized":"(Howell) A. Heller","authors":["Howell","A. Heller"],"originalAuth":{"authors":["Howell"]},"combinationAuth":{"authors":["A. Heller"]}},"details":{"species":{"genus":"Uva-ursi","species":"cinerea","authorship":{"verbatim":"(Howell) A. Heller","normalized":"(Howell) A. Heller","authors":["Howell","A. Heller"],"originalAuth":{"authors":["Howell"]},"combinationAuth":{"authors":["A. Heller"]}}}},"words":[{"verbatim":"Uva-Ursi","normalized":"Uva-ursi","wordType":"GENUS","start":0,"end":8},{"verbatim":"cinerea","normalized":"cinerea","wordType":"SPECIES","start":9,"end":16},{"verbatim":"Howell","normalized":"Howell","wordType":"AUTHOR_WORD","start":18,"end":24},{"verbatim":"A.","normalized":"A.","wordType":"AUTHOR_WORD","start":26,"end":28},{"verbatim":"Heller","normalized":"Heller","wordType":"AUTHOR_WORD","start":29,"end":35}],"id":"c89977a6-b948-5d3f-b4f2-d25b4d0b6ea0","parserVersion":"test_version"}
 ```
 
+Name: Le-monniera
+
+Canonical: Le-monniera
+
+Authorship: 
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Le-monniera","normalized":"Le-monniera","canonical":{"stemmed":"Le-monniera","simple":"Le-monniera","full":"Le-monniera"},"cardinality":1,"details":{"uninomial":{"uninomial":"Le-monniera"}},"words":[{"verbatim":"Le-monniera","normalized":"Le-monniera","wordType":"UNINOMIAL","start":0,"end":11}],"id":"86091af8-6354-5f2e-94b4-c8a2a3e1fbef","parserVersion":"test_version"}
+```
+
 ### Misspeled name
 
 Name: Ambrysus-Stål, 1862
