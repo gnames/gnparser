@@ -42,6 +42,9 @@ type Config struct {
 	// is capitalized, if appropriate.
 	WithCapitalization bool
 
+	// WithPreserveDiaereses flag, when true, diaereses will not be transliterated
+	WithPreserveDiaereses bool
+
 	// WithCultivars flag, when true, cultivar names will be parsed and
 	// modify cardinality, normalized and canonical output.
 	WithCultivars bool
@@ -130,6 +133,13 @@ func OptPort(i int) Option {
 func OptWithCapitaliation(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithCapitalization = b
+	}
+}
+
+// OptPreserveDiaereses sets the PreserveDiaereses field.
+func OptWithPreserveDiaereses(b bool) Option {
+	return func(cfg *Config) {
+		cfg.WithPreserveDiaereses = b
 	}
 }
 

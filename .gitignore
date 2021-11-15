@@ -10,4 +10,4 @@ bench*.txt
 binding/libgnparser.h
 binding/*.so
 build/**
-
+.DS_Store

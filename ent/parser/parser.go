@@ -41,9 +41,11 @@ func (p *Engine) PreprocessAndParse(
 	keepHTML bool,
 	capitalize bool,
 	enableCultivars bool,
+	preserveDiaereses bool,
 ) ScientificNameNode {
 
 	p.enableCultivars = enableCultivars
+	p.preserveDiaereses = preserveDiaereses
 
 	originalString := s
 	var tagsOrEntities, lowCase bool

@@ -72,6 +72,7 @@ gnparser -j 5 -p 8080
 		withNoOrderFlag(cmd)
 		withCapitalizeFlag(cmd)
 		withEnableCultivarsFlag(cmd)
+		withPreserveDiaeresesFlag(cmd)
 		batchSizeFlag(cmd)
 		port := portFlag(cmd)
 		cfg := gnparser.NewConfig(opts...)
@@ -147,6 +148,9 @@ func init() {
 
 	rootCmd.Flags().BoolP("cultivar", "C", false,
 		"include cultivar epithets and graft-chimeras in normalized and canonical outputs")
+
+	rootCmd.Flags().BoolP("diaereses", "D", false,
+		"preserve diaereses in names")
 
 }
 
