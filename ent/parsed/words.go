@@ -31,7 +31,7 @@ func NormalizeByType(wrd string, wt WordType) string {
 	switch wt {
 	case SpEpithetType, InfraspEpithetType:
 		res = stemmer.Stem(wrd).Stem
-	case GenusType:
+	case UninomialType, GenusType:
 		res = strings.ToLower(wrd)
 	case AuthorWordType:
 		res = strings.ToLower(wrd)
