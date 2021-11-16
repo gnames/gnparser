@@ -34,19 +34,10 @@ var VirusException = map[string]string{
 }
 
 var AmbiguousException = map[string][]string{
-	"Acrostichum":      {"nudum"},
-	"Adiantum":         {"nudum"},
-	"Africanthion":     {"nudum"},
-	"Agathidium":       {"nudum"},
 	"Agnetina":         {"den"},
 	"Antaplaga":        {"dela"},
-	"Aphaniosoma":      {"nudum"},
-	"Aspidium":         {"nudum"},
-	"Athyrium":         {"nudum"},
 	"Baeolidia":        {"dela"},
-	"Blechnum":         {"nudum"},
 	"Bolitoglossa":     {"la"},
-	"Bottaria":         {"nudum"},
 	"Campylosphaera":   {"dela"},
 	"Desmoxytes":       {"des"},
 	"Dicentria":        {"dela"},
@@ -55,18 +46,12 @@ var AmbiguousException = map[string][]string{
 	"Helophorus":       {"ser"},
 	"Hyacinthoides":    {"non-scripta"},
 	"Leptonetela":      {"la"},
-	"Lycopodium":       {"nudum"},
 	"Malamatidia":      {"zu"},
 	"Meteorus":         {"dos"},
-	"Microsiphum":      {"nudum"},
 	"Monocelis":        {"non-scripta"},
-	"Nephrodium":       {"nudum"},
 	"Nocaracris":       {"van"},
 	"Paralvinella":     {"dela"},
 	"Peperomia":        {"non-alata"},
-	"Polypodium":       {"nudum"},
-	"Polystichum":      {"nudum"},
-	"Psilotum":         {"nudum"},
 	"Ruteloryctes":     {"bis"},
 	"Scoparia":         {"dela"},
 	"Selenops":         {"ab"},
@@ -75,7 +60,6 @@ var AmbiguousException = map[string][]string{
 	"Stenoecia":        {"dos"},
 	"Sympycnus":        {"du"},
 	"Tortolena":        {"dela"},
-	"Trachyphloeosoma": {"nudum"},
 	"Zodarion":         {"van"},
 }
 
@@ -101,7 +85,7 @@ var nomenConceptsRe = regexp.MustCompile(
 var lastWordJunkRe = regexp.MustCompile(
 	`(?i)(,\s*|\s+)` +
 		`(var\.?|von|van|ined\.?` +
-		`|sensu|new|non|nec|nudum|ssp\.?` +
+		`|sensu|new|non|nec|ssp\.?` +
 		`|subsp|subgen|hybrid)\??\s*$`,
 )
 
