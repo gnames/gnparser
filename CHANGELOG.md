@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v1.5.5]
+
+- Add [#207]: PR [#209] by @tobymarsden, fix parsing of names with `nudum`
+              specific epithet.
+
 ## [v1.5.4]
 
 - Add: different approach for normalize-by-type for words.
@@ -337,6 +342,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.5.5]: https://github.com/gnames/gnparser/compare/v1.5.4...v1.5.5
 [v1.5.4]: https://github.com/gnames/gnparser/compare/v1.5.3...v1.5.4
 [v1.5.3]: https://github.com/gnames/gnparser/compare/v1.5.2...v1.5.3
 [v1.5.2]: https://github.com/gnames/gnparser/compare/v1.5.1...v1.5.2
@@ -387,6 +393,16 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
 
+[#220]: https://github.com/gnames/gnparser/issues/220
+[#219]: https://github.com/gnames/gnparser/issues/219
+[#218]: https://github.com/gnames/gnparser/issues/218
+[#217]: https://github.com/gnames/gnparser/issues/217
+[#216]: https://github.com/gnames/gnparser/issues/216
+[#215]: https://github.com/gnames/gnparser/issues/215
+[#214]: https://github.com/gnames/gnparser/issues/214
+[#213]: https://github.com/gnames/gnparser/issues/213
+[#212]: https://github.com/gnames/gnparser/issues/212
+[#211]: https://github.com/gnames/gnparser/issues/211
 [#210]: https://github.com/gnames/gnparser/issues/210
 [#209]: https://github.com/gnames/gnparser/issues/209
 [#208]: https://github.com/gnames/gnparser/issues/208
