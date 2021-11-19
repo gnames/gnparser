@@ -108,6 +108,22 @@ Parses given name/s according to the Code of Cultivar Plants:
 .P
 gnparser "Sarracenia flava \'Maxima\'" \-C gnparser "Cytisus purpureus + Laburnum anagyroides" \-C
 .
+.SS "\-D, \-\-diaereses"
+Preserves diaereses present in names:
+.
+.IP "" 4
+.
+.nf
+
+gnparser "Leptochloöpsis virgata" \-D
+.
+.fi
+.
+.IP "" 0
+.
+.P
+The stemmed canonical name will be generated without diaereses\.
+.
 .SS "\-d, \-\-details"
 Return more details for a parsed name\. This flag is ignored for CSV formatting:
 .
