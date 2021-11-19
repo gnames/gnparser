@@ -3,7 +3,7 @@
 package main
 
 /*
-	#include "stdlib.h"
+  #include "stdlib.h"
 */
 import "C"
 
@@ -27,12 +27,14 @@ func ParseToString(
 	f *C.char,
 	details C.int,
 	cultivars C.int,
+	diaereses C.int,
 ) *C.char {
 	goname := C.GoString(name)
 	opts := []gnparser.Option{
 		gnparser.OptFormat(C.GoString(f)),
 		gnparser.OptWithDetails(int(details) > 0),
 		gnparser.OptWithCultivars(int(cultivars) > 0),
+		gnparser.OptWithPreserveDiaereses(int(diaereses) > 0),
 	}
 	cfg := gnparser.NewConfig(opts...)
 	gnp := gnparser.New(cfg)
@@ -59,6 +61,7 @@ func ParseAryToString(
 	f *C.char,
 	details C.int,
 	cultivars C.int,
+	diaereses C.int,
 ) *C.char {
 	names := make([]string, int(length))
 
@@ -66,6 +69,7 @@ func ParseAryToString(
 		gnparser.OptFormat(C.GoString(f)),
 		gnparser.OptWithDetails(int(details) > 0),
 		gnparser.OptWithCultivars(int(cultivars) > 0),
+		gnparser.OptWithPreserveDiaereses(int(diaereses) > 0),
 	}
 	start := unsafe.Pointer(in)
 	pointerSize := unsafe.Sizeof(in)

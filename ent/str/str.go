@@ -37,6 +37,39 @@ func Normalize(s string) string {
 	return ToASCII(s, Transliterations)
 }
 
+// Transliterate diaereses (ä, ë, ï, ö, ü) to their ASCII equivalents
+// Note that this is a straight replacement and doesn't check for the
+// existence of a vowel preceding them.
+func TransliterateDiaereses(s string) string {
+	return ToASCII(s, DiaeresesTransliterations)
+}
+
+// NormalizePreservingDiaereses converts diacritics in a UTF8 string to their ASCII
+// equivalents, but preserves diaereses (i.e. ä, ë, ï, ö, ü that occur after a vowel)
+func NormalizePreservingDiaereses(s string) string {
+	if s == "" {
+		return s
+	}
+	b := []byte(s)
+	var r rune
+	var width int
+	tlBuf := bytes.NewBuffer(make([]byte, 0, len(b)*125/100))
+	for i, w := 0, 0; i < len(b); i += w {
+		prevRuneIsVowel := Vowels[r] // r is the rune from the last invocation (or empty)
+		r, width = utf8.DecodeRune(b[i:])
+		s, runeIsTransliterable := Transliterations[r]
+		_, runeIsDiaeresis := DiaeresesTransliterations[r]
+		// replace with transliteration if one is found, and it's not a diaeresis
+		if runeIsTransliterable && !(runeIsDiaeresis && prevRuneIsVowel) {
+			tlBuf.WriteString(s)
+		} else {
+			tlBuf.WriteRune(r)
+		}
+		w = width
+	}
+	return tlBuf.String()
+}
+
 // ToASCII converts a UTF-8 diacritics to corresponding ASCII chars.
 func ToASCII(s string, m map[rune]string) string {
 	if s == "" {
@@ -102,6 +135,11 @@ func NumToStr(num string) string {
 	}
 	return num
 }
+
+var DiaeresesTransliterations = map[rune]string{'ä': "a", 'ë': "e", 'ï': "i", 'ö': "o", 'ü': "u"}
+
+var Vowels = map[rune]bool{'A': true, 'a': true, 'E': true, 'e': true,
+	'I': true, 'i': true, 'O': true, 'o': true, 'U': true, 'u': true}
 
 // Transliteration table is used to convert diacritical characters to their
 // latin letter equivalents.

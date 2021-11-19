@@ -15,21 +15,23 @@ import (
 
 // inputFORM is used to collect data from HTML form.
 type inputFORM struct {
-	Names         string `query:"names" form:"names"`
-	Format        string `query:"format" form:"format"`
-	WithDetails   string `query:"with_details" form:"with_details"`
-	WithCultivars string `query:"cultivars" form:"cultivars"`
+	Names             string `query:"names" form:"names"`
+	Format            string `query:"format" form:"format"`
+	WithDetails       string `query:"with_details" form:"with_details"`
+	WithCultivars     string `query:"cultivars" form:"cultivars"`
+	PreserveDiaereses string `query:"diaereses" form:"diaereses"`
 }
 
 // Data contains information required to render web-pages.
 type Data struct {
-	Input         string
-	Parsed        []parsed.Parsed
-	Format        string
-	HomePage      bool
-	Version       string
-	WithDetails   bool
-	WithCultivars bool
+	Input             string
+	Parsed            []parsed.Parsed
+	Format            string
+	HomePage          bool
+	Version           string
+	WithDetails       bool
+	WithCultivars     bool
+	PreserveDiaereses bool
 }
 
 // NewData creates new Data for web-page templates.
@@ -62,6 +64,7 @@ func homePOST(gnps GNparserService) func(echo.Context) error {
 func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	withDetails := inp.WithDetails == "on"
 	withCultivars := inp.WithCultivars == "on"
+	preserveDiaereses := inp.PreserveDiaereses == "on"
 	q := make(url.Values)
 	q.Set("names", inp.Names)
 	q.Set("format", inp.Format)
@@ -70,6 +73,9 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	}
 	if withCultivars {
 		q.Set("cultivars", inp.WithCultivars)
+	}
+	if preserveDiaereses {
+		q.Set("diaereses", inp.PreserveDiaereses)
 	}
 
 	url := fmt.Sprintf("/?%s", q.Encode())
@@ -103,6 +109,7 @@ func parsingResults(
 	var names []string
 	data.WithDetails = inp.WithDetails == "on"
 	data.WithCultivars = inp.WithCultivars == "on"
+	data.PreserveDiaereses = inp.PreserveDiaereses == "on"
 
 	format := inp.Format
 	if format == "csv" || format == "tsv" || format == "json" {
@@ -124,6 +131,7 @@ func parsingResults(
 	opts := []gnparser.Option{
 		gnparser.OptWithDetails(data.WithDetails),
 		gnparser.OptWithCultivars(data.WithCultivars),
+		gnparser.OptWithPreserveDiaereses(data.PreserveDiaereses),
 	}
 
 	gnp := gnps.ChangeConfig(opts...)

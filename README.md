@@ -363,6 +363,10 @@ and graft-chimaeras like ``+ Crataegomespilus``
 : Return more details for a parsed name. This flag is ignored for CSV/TSV
 formatting.
 
+``--diaereses -D``
+: Preserves diaereses within names, e.g. ``Leptochloöpsis virgata``. The stemmed
+canonical name will be generated without diaereses.
+
 ``--format -f``
 : output format. Can be ``csv``, ``tsv``, ``compact``, ``pretty``.
 Default is ``csv``.

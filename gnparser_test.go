@@ -74,6 +74,28 @@ func TestParseLowCaseName(t *testing.T) {
 	}
 }
 
+func TestParsePreserveDiaereses(t *testing.T) {
+	tests := []struct {
+		msg, in, normalized, canonical string
+		quality                        int
+	}{
+		{"DiaeresisInGenus", "Leptochloöpsis virgata", "Leptochloöpsis virgata", "Leptochloöpsis virgata", 1},
+		{"DiaeresisInSpEpithet", "Hieracium samoënsicum", "Hieracium samoënsicum", "Hieracium samoënsicum", 1},
+		{"DiaeresisInInfraSpEpithet", "Hieracium macilentum subsp. samoënsicum", "Hieracium macilentum subsp. samoënsicum", "Hieracium macilentum samoënsicum", 1},
+		{"TransliteratesDiactiric", "Anthurium gudiñoi", "Anthurium gudinoi", "Anthurium gudinoi", 1},
+	}
+	cfg := gnparser.NewConfig(
+		gnparser.OptWithPreserveDiaereses(true),
+	)
+	gnp := gnparser.New(cfg)
+	for _, v := range tests {
+		parsed := gnp.ParseName(v.in)
+		assert.Equal(t, parsed.Canonical.Simple, v.canonical, v.msg)
+		assert.Equal(t, parsed.Normalized, v.normalized, v.msg)
+		assert.Equal(t, parsed.ParseQuality, v.quality, v.msg)
+	}
+}
+
 func TestWordNormalizeByType(t *testing.T) {
 	tests := []struct {
 		msg, word, norm string

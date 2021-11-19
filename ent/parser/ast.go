@@ -1148,8 +1148,12 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *parsed.Word {
 			p.addWarn(parsed.DotEpithetWarn)
 			wrd.Normalized = str.Normalize(wrd.Verbatim)
 		case ruleUpperCharExtended, ruleLowerCharExtended:
-			p.addWarn(parsed.CharBadWarn)
-			wrd.Normalized = str.Normalize(wrd.Verbatim)
+			if p.preserveDiaereses {
+				wrd.Normalized = str.NormalizePreservingDiaereses(wrd.Verbatim)
+			} else {
+				p.addWarn(parsed.CharBadWarn)
+				wrd.Normalized = str.Normalize(wrd.Verbatim)
+			}
 		case ruleWordApostr:
 			p.addWarn(parsed.CanonicalApostropheWarn)
 			canonicalApostrophe = true

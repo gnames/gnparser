@@ -78,6 +78,7 @@
 package stemmer
 
 import (
+	"github.com/gnames/gnparser/ent/str"
 	"strings"
 )
 
@@ -153,7 +154,8 @@ func StemCanonical(c string) string {
 		}
 		graftChimeraFormulaParts[gci] = strings.Join(hybridFormulaParts, " × ")
 	}
-	return strings.Join(graftChimeraFormulaParts, " + ")
+	//return strings.Join(graftChimeraFormulaParts, " + ")
+	return str.TransliterateDiaereses(strings.Join(graftChimeraFormulaParts, " + "))
 }
 
 // Stem takes a word and, assuming the word is noun, removes its latin suffix

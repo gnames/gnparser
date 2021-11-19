@@ -33,6 +33,7 @@ func TestStemmer(t *testing.T) {
 			{"Uninomial", "Pomatomus", "Pomatomus"},
 			{"Binomial1", "Betula naturae", "Betula natur"},
 			{"Binomial2", "Betula alba", "Betula alb"},
+			{"Binomial3", "Leptochloöpsis virgata", "Leptochloopsis uirgat"},
 			{"Trinomial", "Betula alba naturae", "Betula alb natur"},
 			{"GraftChimeraFormula", "Crataegus + Mespilus", "Crataegus + Mespilus"},
 			{"GraftChimeraFormula2", "Cytisus purpureus + Laburnum anagyroides", "Cytisus purpure + Laburnum anagyroid"},

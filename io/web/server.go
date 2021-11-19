@@ -21,10 +21,11 @@ const withLogs = false
 var static embed.FS
 
 type inputREST struct {
-	Names         []string `json:"names"`
-	CSV           bool     `json:"csv"`
-	WithDetails   bool     `json:"withDetails"`
-	WithCultivars bool     `json:"withCultivars"`
+	Names             []string `json:"names"`
+	CSV               bool     `json:"csv"`
+	WithDetails       bool     `json:"withDetails"`
+	WithCultivars     bool     `json:"withCultivars"`
+	PreserveDiaereses bool     `json:"preserveDiaereses"`
 }
 
 // Run starts the GNparser web service and servies both RESTful API and
@@ -98,7 +99,8 @@ func parseNamesGET(gnps GNparserService) func(echo.Context) error {
 		csv := c.QueryParam("csv") == "true"
 		det := c.QueryParam("with_details") == "true"
 		cultivars := c.QueryParam("cultivars") == "true"
-		gnp := gnps.ChangeConfig(opts(c, csv, det, cultivars)...)
+		diaereses := c.QueryParam("diaereses") == "true"
+		gnp := gnps.ChangeConfig(opts(c, csv, det, cultivars, diaereses)...)
 		names := strings.Split(nameStr, "|")
 		res := gnp.ParseNames(names)
 		return formatNames(c, res, gnp.Format())
@@ -111,7 +113,7 @@ func parseNamesPOST(gnps GNparserService) func(echo.Context) error {
 		if err := c.Bind(&input); err != nil {
 			return err
 		}
-		gnp := gnps.ChangeConfig(opts(c, input.CSV, input.WithDetails, input.WithCultivars)...)
+		gnp := gnps.ChangeConfig(opts(c, input.CSV, input.WithDetails, input.WithCultivars, input.PreserveDiaereses)...)
 		res := gnp.ParseNames(input.Names)
 		return formatNames(c, res, gnp.Format())
 	}
@@ -136,10 +138,11 @@ func formatNames(
 	}
 }
 
-func opts(c echo.Context, csv, details, cultivars bool) []gnparser.Option {
+func opts(c echo.Context, csv, details, cultivars bool, diaereses bool) []gnparser.Option {
 	res := []gnparser.Option{
 		gnparser.OptWithDetails(details),
 		gnparser.OptWithCultivars(cultivars),
+		gnparser.OptWithPreserveDiaereses(diaereses),
 	}
 	if csv {
 		res = append(res, gnparser.OptFormat("csv"))

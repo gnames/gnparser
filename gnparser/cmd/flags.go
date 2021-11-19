@@ -88,6 +88,17 @@ func withCapitalizeFlag(cmd *cobra.Command) {
 	}
 }
 
+func withPreserveDiaeresesFlag(cmd *cobra.Command) {
+	b, err := cmd.Flags().GetBool("diaereses")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	if b {
+		opts = append(opts, gnparser.OptWithPreserveDiaereses(true))
+	}
+}
+
 func withEnableCultivarsFlag(cmd *cobra.Command) {
 	b, err := cmd.Flags().GetBool("cultivar")
 	if err != nil {
