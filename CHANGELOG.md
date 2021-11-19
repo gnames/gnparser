@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#208]: PR [#210] by @tobymarsden, option to preserve diaereses.
+
 ## [v1.5.5]
 
 - Add [#207]: PR [#209] by @tobymarsden, fix parsing of names with `nudum`
