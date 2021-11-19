@@ -44,14 +44,11 @@ var AmbiguousException = map[string][]string{
 	"Eulaira":        {"dela"},
 	"Gnathopleustes": {"den"},
 	"Helophorus":     {"ser"},
-	"Hyacinthoides":  {"non-scripta"},
 	"Leptonetela":    {"la"},
 	"Malamatidia":    {"zu"},
 	"Meteorus":       {"dos"},
-	"Monocelis":      {"non-scripta"},
 	"Nocaracris":     {"van"},
 	"Paralvinella":   {"dela"},
-	"Peperomia":      {"non-alata"},
 	"Ruteloryctes":   {"bis"},
 	"Scoparia":       {"dela"},
 	"Selenops":       {"ab"},
@@ -68,7 +65,7 @@ var NoParseException = map[string]string{
 }
 
 var notesRe = regexp.MustCompile(
-	`(?i)\s+(environmental|samples|species\s+group|species\s+complex|clade|group|author|non|nec|vide|fide)\b.*$`,
+	`(?i)\s+((environmental|samples|species\s+group|species\s+complex|clade|group|author|nec|vide|fide)\b|non[^a-zA-Z-]).*$`,
 )
 var taxonConceptsRe1 = regexp.MustCompile(
 	`(?i)\s+(sero(var|type)|sensu|auct|sec|near|str)\.?\b.*$`,
