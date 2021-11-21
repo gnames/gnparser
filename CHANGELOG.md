@@ -2,7 +2,18 @@
 
 ## Unreleased
 
+## [v1.5.6]
+
+- Add [#212]: Set year from 'ex' authorship as a year of a name.
+              Add 'ex' authors to list of all authors.
+
+- Add [#211]: PR [#214] by @tobymarsden, general approach for `non-...`
+              specific epithets.
+
 - Add [#208]: PR [#210] by @tobymarsden, option to preserve diaereses.
+
+- Fix [#213]: Stop generating space between `Mc`, `Mac` and the rest of an
+              an author name.
 
 ## [v1.5.5]
 
