@@ -15,6 +15,7 @@
   * [Binomials with abbreviated subgenus](#binomials-with-abbreviated-subgenus)
   * [Binomials with basionym and combination authors](#binomials-with-basionym-and-combination-authors)
   * [Binomials with exceptions](#binomials-with-exceptions)
+  * [Binomials with Mc and Mac authors](#binomials-with-mc-and-mac-authors)
   * [Infraspecies without rank (ICZN)](#infraspecies-without-rank-iczn)
   * [Legacy ICZN names with rank](#legacy-iczn-names-with-rank)
   * [Infraspecies with rank (ICN)](#infraspecies-with-rank-icn)
@@ -1619,6 +1620,48 @@ Authorship: (Nyl.) Vain.
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Bottaria nudum (Nyl.) Vain.","normalized":"Bottaria nudum (Nyl.) Vain.","canonical":{"stemmed":"Bottaria nud","simple":"Bottaria nudum","full":"Bottaria nudum"},"cardinality":2,"authorship":{"verbatim":"(Nyl.) Vain.","normalized":"(Nyl.) Vain.","authors":["Nyl.","Vain."],"originalAuth":{"authors":["Nyl."]},"combinationAuth":{"authors":["Vain."]}},"details":{"species":{"genus":"Bottaria","species":"nudum","authorship":{"verbatim":"(Nyl.) Vain.","normalized":"(Nyl.) Vain.","authors":["Nyl.","Vain."],"originalAuth":{"authors":["Nyl."]},"combinationAuth":{"authors":["Vain."]}}}},"words":[{"verbatim":"Bottaria","normalized":"Bottaria","wordType":"GENUS","start":0,"end":8},{"verbatim":"nudum","normalized":"nudum","wordType":"SPECIES","start":9,"end":14},{"verbatim":"Nyl.","normalized":"Nyl.","wordType":"AUTHOR_WORD","start":16,"end":20},{"verbatim":"Vain.","normalized":"Vain.","wordType":"AUTHOR_WORD","start":22,"end":27}],"id":"91799409-de6f-5341-ab24-336da9f6b80b","parserVersion":"test_version"}
+```
+
+### Binomials with Mc and Mac authors
+
+Name: Zygocera norfolkensis McKeown 1938
+
+Canonical: Zygocera norfolkensis
+
+Authorship: McKeown 1938
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Zygocera norfolkensis McKeown 1938","normalized":"Zygocera norfolkensis McKeown 1938","canonical":{"stemmed":"Zygocera norfolkens","simple":"Zygocera norfolkensis","full":"Zygocera norfolkensis"},"cardinality":2,"authorship":{"verbatim":"McKeown 1938","normalized":"McKeown 1938","year":"1938","authors":["McKeown"],"originalAuth":{"authors":["McKeown"],"year":{"year":"1938"}}},"details":{"species":{"genus":"Zygocera","species":"norfolkensis","authorship":{"verbatim":"McKeown 1938","normalized":"McKeown 1938","year":"1938","authors":["McKeown"],"originalAuth":{"authors":["McKeown"],"year":{"year":"1938"}}}}},"words":[{"verbatim":"Zygocera","normalized":"Zygocera","wordType":"GENUS","start":0,"end":8},{"verbatim":"norfolkensis","normalized":"norfolkensis","wordType":"SPECIES","start":9,"end":21},{"verbatim":"McKeown","normalized":"McKeown","wordType":"AUTHOR_WORD","start":22,"end":29},{"verbatim":"1938","normalized":"1938","wordType":"YEAR","start":30,"end":34}],"id":"9286faf0-6410-51df-b647-f9f546f610b4","parserVersion":"test_version"}
+```
+
+Name: Zygocera norfolkensis MacKeown 1938
+
+Canonical: Zygocera norfolkensis
+
+Authorship: MacKeown 1938
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Zygocera norfolkensis MacKeown 1938","normalized":"Zygocera norfolkensis MacKeown 1938","canonical":{"stemmed":"Zygocera norfolkens","simple":"Zygocera norfolkensis","full":"Zygocera norfolkensis"},"cardinality":2,"authorship":{"verbatim":"MacKeown 1938","normalized":"MacKeown 1938","year":"1938","authors":["MacKeown"],"originalAuth":{"authors":["MacKeown"],"year":{"year":"1938"}}},"details":{"species":{"genus":"Zygocera","species":"norfolkensis","authorship":{"verbatim":"MacKeown 1938","normalized":"MacKeown 1938","year":"1938","authors":["MacKeown"],"originalAuth":{"authors":["MacKeown"],"year":{"year":"1938"}}}}},"words":[{"verbatim":"Zygocera","normalized":"Zygocera","wordType":"GENUS","start":0,"end":8},{"verbatim":"norfolkensis","normalized":"norfolkensis","wordType":"SPECIES","start":9,"end":21},{"verbatim":"MacKeown","normalized":"MacKeown","wordType":"AUTHOR_WORD","start":22,"end":30},{"verbatim":"1938","normalized":"1938","wordType":"YEAR","start":31,"end":35}],"id":"b1fc99c8-6b6c-5208-a897-910c4738286c","parserVersion":"test_version"}
+```
+
+Name: Zygocera norfolkensis Mac'Keown 1938
+
+Canonical: Zygocera norfolkensis
+
+Authorship: Mac'Keown 1938
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Zygocera norfolkensis Mac'Keown 1938","normalized":"Zygocera norfolkensis Mac'Keown 1938","canonical":{"stemmed":"Zygocera norfolkens","simple":"Zygocera norfolkensis","full":"Zygocera norfolkensis"},"cardinality":2,"authorship":{"verbatim":"Mac'Keown 1938","normalized":"Mac'Keown 1938","year":"1938","authors":["Mac'Keown"],"originalAuth":{"authors":["Mac'Keown"],"year":{"year":"1938"}}},"details":{"species":{"genus":"Zygocera","species":"norfolkensis","authorship":{"verbatim":"Mac'Keown 1938","normalized":"Mac'Keown 1938","year":"1938","authors":["Mac'Keown"],"originalAuth":{"authors":["Mac'Keown"],"year":{"year":"1938"}}}}},"words":[{"verbatim":"Zygocera","normalized":"Zygocera","wordType":"GENUS","start":0,"end":8},{"verbatim":"norfolkensis","normalized":"norfolkensis","wordType":"SPECIES","start":9,"end":21},{"verbatim":"Mac'Keown","normalized":"Mac'Keown","wordType":"AUTHOR_WORD","start":22,"end":31},{"verbatim":"1938","normalized":"1938","wordType":"YEAR","start":32,"end":36}],"id":"7da46f00-251c-5e42-b314-756f0f2b4f41","parserVersion":"test_version"}
+```
+
+Name: Zygocera norfolkensis Mc'Keown 1938
+
+Canonical: Zygocera norfolkensis
+
+Authorship: Mc'Keown 1938
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Zygocera norfolkensis Mc'Keown 1938","normalized":"Zygocera norfolkensis Mc'Keown 1938","canonical":{"stemmed":"Zygocera norfolkens","simple":"Zygocera norfolkensis","full":"Zygocera norfolkensis"},"cardinality":2,"authorship":{"verbatim":"Mc'Keown 1938","normalized":"Mc'Keown 1938","year":"1938","authors":["Mc'Keown"],"originalAuth":{"authors":["Mc'Keown"],"year":{"year":"1938"}}},"details":{"species":{"genus":"Zygocera","species":"norfolkensis","authorship":{"verbatim":"Mc'Keown 1938","normalized":"Mc'Keown 1938","year":"1938","authors":["Mc'Keown"],"originalAuth":{"authors":["Mc'Keown"],"year":{"year":"1938"}}}}},"words":[{"verbatim":"Zygocera","normalized":"Zygocera","wordType":"GENUS","start":0,"end":8},{"verbatim":"norfolkensis","normalized":"norfolkensis","wordType":"SPECIES","start":9,"end":21},{"verbatim":"Mc'Keown","normalized":"Mc'Keown","wordType":"AUTHOR_WORD","start":22,"end":30},{"verbatim":"1938","normalized":"1938","wordType":"YEAR","start":31,"end":35}],"id":"b1dda8e1-2e48-56e7-a508-0a4dd8372a9e","parserVersion":"test_version"}
 ```
 
 ### Infraspecies without rank (ICZN)
@@ -5525,10 +5568,10 @@ Name: Negalasa fumalis Barnes & McDunnough 1913. Next sentence
 
 Canonical: Negalasa fumalis
 
-Authorship: Barnes & Mc Dunnough 1913
+Authorship: Barnes & McDunnough 1913
 
 ```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Negalasa fumalis Barnes \u0026 McDunnough 1913. Next sentence","normalized":"Negalasa fumalis Barnes \u0026 Mc Dunnough 1913","canonical":{"stemmed":"Negalasa fumal","simple":"Negalasa fumalis","full":"Negalasa fumalis"},"cardinality":2,"authorship":{"verbatim":"Barnes \u0026 McDunnough 1913.","normalized":"Barnes \u0026 Mc Dunnough 1913","year":"1913","authors":["Barnes","Mc Dunnough"],"originalAuth":{"authors":["Barnes","Mc Dunnough"],"year":{"year":"1913"}}},"tail":" Next sentence","details":{"species":{"genus":"Negalasa","species":"fumalis","authorship":{"verbatim":"Barnes \u0026 McDunnough 1913.","normalized":"Barnes \u0026 Mc Dunnough 1913","year":"1913","authors":["Barnes","Mc Dunnough"],"originalAuth":{"authors":["Barnes","Mc Dunnough"],"year":{"year":"1913"}}}}},"words":[{"verbatim":"Negalasa","normalized":"Negalasa","wordType":"GENUS","start":0,"end":8},{"verbatim":"fumalis","normalized":"fumalis","wordType":"SPECIES","start":9,"end":16},{"verbatim":"Barnes","normalized":"Barnes","wordType":"AUTHOR_WORD","start":17,"end":23},{"verbatim":"Mc","normalized":"Mc","wordType":"AUTHOR_WORD","start":26,"end":28},{"verbatim":"Dunnough","normalized":"Dunnough","wordType":"AUTHOR_WORD","start":28,"end":36},{"verbatim":"1913","normalized":"1913","wordType":"YEAR","start":37,"end":41}],"id":"45b7343f-d42a-52d5-b0a4-25956d46427b","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Negalasa fumalis Barnes \u0026 McDunnough 1913. Next sentence","normalized":"Negalasa fumalis Barnes \u0026 McDunnough 1913","canonical":{"stemmed":"Negalasa fumal","simple":"Negalasa fumalis","full":"Negalasa fumalis"},"cardinality":2,"authorship":{"verbatim":"Barnes \u0026 McDunnough 1913.","normalized":"Barnes \u0026 McDunnough 1913","year":"1913","authors":["Barnes","McDunnough"],"originalAuth":{"authors":["Barnes","McDunnough"],"year":{"year":"1913"}}},"tail":" Next sentence","details":{"species":{"genus":"Negalasa","species":"fumalis","authorship":{"verbatim":"Barnes \u0026 McDunnough 1913.","normalized":"Barnes \u0026 McDunnough 1913","year":"1913","authors":["Barnes","McDunnough"],"originalAuth":{"authors":["Barnes","McDunnough"],"year":{"year":"1913"}}}}},"words":[{"verbatim":"Negalasa","normalized":"Negalasa","wordType":"GENUS","start":0,"end":8},{"verbatim":"fumalis","normalized":"fumalis","wordType":"SPECIES","start":9,"end":16},{"verbatim":"Barnes","normalized":"Barnes","wordType":"AUTHOR_WORD","start":17,"end":23},{"verbatim":"McDunnough","normalized":"McDunnough","wordType":"AUTHOR_WORD","start":26,"end":36},{"verbatim":"1913","normalized":"1913","wordType":"YEAR","start":37,"end":41}],"id":"45b7343f-d42a-52d5-b0a4-25956d46427b","parserVersion":"test_version"}
 ```
 
 Name: Negalasa fumalis. Next sentence

@@ -224,15 +224,17 @@ Author2 <- AuthorWord (_? AuthorWord)*
 UnknownAuthor <- '?' / (('auct' / 'anon') (&(SpaceCharEOI) / '.'))
 
 AuthorWord <- !( HybridChar / "bold:") (AuthorDashInitials / AuthorWord1 /
-  AuthorWord2 / AuthorWord3 / AuthorPrefix)
+  AuthorWord2 / AuthorWord3 / AuthorWord4 / AuthorPrefix)
 
 AuthorEtAl <- 'arg.' / 'et al.{?}' / ('et' / '&') ' al' '.'?
 
 AuthorWord1 <- 'duPont'
 
-AuthorWord2 <- AuthorWord3 Dash (AuthorWordSoft / AuthorInitial)
+AuthorWord2 <- (AuthorWord3 / AuthorWord4) Dash (AuthorWordSoft / AuthorInitial)
 
-AuthorWord3 <- AuthorPrefixGlued? (AllCapsAuthorWord / CapAuthorWord) '.'?
+AuthorWord3 <- AuthorPrefixGlued2 (CapAuthorWord / AuthorLowerChar+) '.'?
+
+AuthorWord4 <- AuthorPrefixGlued1? (AllCapsAuthorWord / CapAuthorWord) '.'?
 
 AuthorDashInitials <- AuthorUpperChar '.'? Dash AuthorUpperChar '.'?
 
@@ -253,7 +255,9 @@ FiliusFNoSpace <- 'f.'
 
 AuthorSuffix <- 'bis' / 'ter'
 
-AuthorPrefixGlued <- ('d' / 'O' / 'L' / 'Mc' / 'M') Apostrophe
+AuthorPrefixGlued1 <- ('d' / 'O' / 'L' / 'M') Apostrophe
+
+AuthorPrefixGlued2 <- ('Mc' / 'Mac') Apostrophe?
 
 AuthorPrefix <- AuthorPrefix1 / AuthorPrefix2
 
