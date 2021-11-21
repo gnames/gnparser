@@ -200,3 +200,21 @@ var nameNums = map[string]string{
 	"38": "trigintaocto",
 	"40": "quadraginta",
 }
+
+// Uniq removes duplicates from an array without changing the order of
+// the elements.
+func Uniq(strs []string) []string {
+	sMap := make(map[string]struct{})
+	res := make([]string, len(strs))
+	var offset, i int
+	for i = range strs {
+		if _, ok := sMap[strs[i]]; ok {
+			offset++
+		} else {
+			sMap[strs[i]] = struct{}{}
+			res[i-offset] = strs[i]
+		}
+	}
+	i = i - offset + 1
+	return res[0:i]
+}

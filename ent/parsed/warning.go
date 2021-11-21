@@ -74,7 +74,7 @@ var warningMap = map[Warning]string{
 	AuthDoubleParensWarn:                  "Authorship in double parentheses",
 	AuthEmendWarn:                         "Emend authors are not required",
 	AuthEmendWithoutDotWarn:               "`emend` without a period",
-	AuthExWarn:                            "Ex authors are not required",
+	AuthExWarn:                            "Ex authors are not required (ICZN only)",
 	AuthExWithDotWarn:                     "`ex` ends with a period",
 	AuthMissingOneParensWarn:              "Authorship is missing one parenthesis",
 	AuthQuestionWarn:                      "Author as a question mark",

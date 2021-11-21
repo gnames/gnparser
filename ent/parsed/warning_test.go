@@ -34,7 +34,7 @@ func TestJSONWarn(t *testing.T) {
 		{dataOb{"Tail", parsed.TailWarn, []int{}},
 			`{"f1":"Tail","warning":"Unparsed tail","f2":[]}`},
 		{dataOb{"AuthEx", parsed.AuthExWarn, []int{2, 3, 4}},
-			`{"f1":"AuthEx","warning":"Ex authors are not required","f2":[2,3,4]}`},
+			`{"f1":"AuthEx","warning":"Ex authors are not required (ICZN only)","f2":[2,3,4]}`},
 	}
 	enc := gnfmt.GNjson{}
 	var dob dataOb

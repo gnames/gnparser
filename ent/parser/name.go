@@ -24,7 +24,7 @@ func appendCanonical(c1 *canonical, c2 *canonical, sep string) *canonical {
 // contains the value of the word, its semantic meaning and its
 // position in the string.
 func (sn *scientificNameNode) Words() []parsed.Word {
-	return sn.nameData.words()
+	return sn.words()
 }
 
 // Normalized returns a normalized version of a scientific name.
@@ -32,7 +32,7 @@ func (sn *scientificNameNode) Normalized() string {
 	if sn.nameData == nil {
 		return ""
 	}
-	return sn.nameData.value()
+	return sn.value()
 }
 
 // Canonical returns canonical forms of scientific name. There are
@@ -43,7 +43,7 @@ func (sn *scientificNameNode) Canonical() *parsed.Canonical {
 	if sn.nameData == nil {
 		return res
 	}
-	c := sn.nameData.canonical()
+	c := sn.canonical()
 	return &parsed.Canonical{
 		Stemmed: stemmer.StemCanonical(c.Value),
 		Simple:  c.Value,
@@ -57,7 +57,7 @@ func (sn *scientificNameNode) Details() parsed.Details {
 	if sn.nameData == nil {
 		return nil
 	}
-	return sn.nameData.details()
+	return sn.details()
 }
 
 // LastAuthorship returns the authorshop of the smallest element of a name.
@@ -68,7 +68,7 @@ func (sn *scientificNameNode) LastAuthorship(withDetails bool) *parsed.Authorshi
 	if sn.nameData == nil {
 		return ao
 	}
-	an := sn.nameData.lastAuthorship()
+	an := sn.lastAuthorship()
 	if an == nil {
 		return ao
 	}
@@ -813,14 +813,27 @@ func (au *authorshipNode) details() *parsed.Authorship {
 			yr = fmt.Sprintf("(%s)", yr)
 		}
 	}
+	if ao.Original != nil && ao.Original.ExAuthors != nil &&
+		ao.Original.ExAuthors.Year != nil && yr == "" {
+		yr = ao.Original.ExAuthors.Year.Value
+		if ao.Original.ExAuthors.Year.IsApproximate {
+			yr = fmt.Sprintf("(%s)", yr)
+		}
+	}
 	var aus []string
 	if ao.Original != nil {
 		aus = ao.Original.Authors
+		if ao.Original.ExAuthors != nil {
+			aus = append(aus, ao.Original.ExAuthors.Authors...)
+		}
 	}
 	if ao.Combination != nil {
 		aus = append(aus, ao.Combination.Authors...)
+		if ao.Combination.ExAuthors != nil {
+			aus = append(aus, ao.Combination.ExAuthors.Authors...)
+		}
 	}
-	ao.Authors = aus
+	ao.Authors = str.Uniq(aus)
 	ao.Year = yr
 	return &ao
 }
