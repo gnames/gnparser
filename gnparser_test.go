@@ -101,9 +101,11 @@ func TestWordNormalizeByType(t *testing.T) {
 		msg, word, norm string
 		wType           parsed.WordType
 	}{
+		{"b.", "B.", "b.", parsed.GenusType},
 		{"betula", "Betula", "betula", parsed.GenusType},
 		{"alba", "alba", "alb", parsed.SpEpithetType},
-		{"Linn", "Linn.", "linn", parsed.AuthorWordType},
+		{"Linn", "Linn.", "linn.", parsed.AuthorWordType},
+    {"yr", "1888", "1888", parsed.YearType},
 	}
 
 	for _, v := range tests {

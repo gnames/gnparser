@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.5.7]
+
+- Fix: parsed.NormalizeByType preserves period char.
+
 ## [v1.5.6]
 
 - Add [#212]: Set year from 'ex' authorship as a year of a name.
@@ -355,6 +359,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.5.7]: https://github.com/gnames/gnparser/compare/v1.5.6...v1.5.7
 [v1.5.6]: https://github.com/gnames/gnparser/compare/v1.5.5...v1.5.6
 [v1.5.5]: https://github.com/gnames/gnparser/compare/v1.5.4...v1.5.5
 [v1.5.4]: https://github.com/gnames/gnparser/compare/v1.5.3...v1.5.4
