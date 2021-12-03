@@ -87,6 +87,15 @@ dockerhub: docker
 	docker push gnames/gognparser; \
 	docker push gnames/gognparser:$(VERSION)
 
+clib_darwin: peg
+	cd binding; \
+	$(GOCLEAN); \
+	CGO_ENABLED=1 GOOS=darwin GOARCH=arm64 $(GOBUILD) -buildmode=c-shared -o $(CLIB_DIR)/libgnparser_arm64.so; \
+	CGO_ENABLED=1 GOOS=darwin GOARCH=amd64 $(GOBUILD) -buildmode=c-shared -o $(CLIB_DIR)/libgnparser_amd64.so; \
+	rm libgnparser_amd64.h; \
+	mv libgnparser_arm64.h libgnparser.h; \
+	lipo -create -output $(CLIB_DIR)/libgnparser.so $(CLIB_DIR)/libgnparser_arm64.so $(CLIB_DIR)/libgnparser_amd64.so;
+
 clib: peg
 	cd binding; \
 	$(GOBUILD) -buildmode=c-shared -o $(CLIB_DIR)/libgnparser.so;
