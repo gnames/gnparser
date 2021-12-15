@@ -79,7 +79,7 @@ gnparser -j 5 -p 8080
 		batchSize = cfg.BatchSize
 
 		if port != 0 {
-			cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
+			cfg = gnparser.NewConfig(gnparser.OptFormat("compact"))
 			gnp := gnparser.New(cfg)
 			gnps := web.NewGNparserService(gnp, port)
 			web.Run(gnps)
@@ -172,7 +172,7 @@ func checkStdin() bool {
 	stdInFile := os.Stdin
 	stat, err := stdInFile.Stat()
 	if err != nil {
-		log.Panic(err)
+		log.Fatal(err)
 	}
 	return (stat.Mode() & os.ModeCharDevice) == 0
 }
@@ -211,7 +211,6 @@ func parse(
 		f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
 		if err != nil {
 			log.Fatal(err)
-			os.Exit(1)
 		}
 		if cfg.WithStream {
 			parseStream(gnp, f, quiet)
