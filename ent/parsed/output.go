@@ -4,7 +4,6 @@ import (
 	"strconv"
 
 	"github.com/gnames/gnfmt"
-	gncsv "github.com/gnames/gnfmt"
 )
 
 // Output creates a JSON or CSV representation of Parsed results.
@@ -61,7 +60,7 @@ func (p Parsed) csvOutput(sep rune) string {
 		year,
 		strconv.Itoa(p.ParseQuality),
 	}
-	return gncsv.ToCSV(res, sep)
+	return gnfmt.ToCSV(res, sep)
 }
 
 func (p Parsed) jsonOutput(pretty bool) string {
