@@ -122,8 +122,9 @@ func init() {
 
 	rootCmd.Flags().BoolP("details", "d", false, "provides more details")
 
-	formatHelp := "sets output format. Can be one of:\n  " +
-		"'csv', 'compact', 'pretty'"
+	formatHelp := "sets output format. Can be one of:\n" +
+		"'csv', 'tsv', 'compact', 'pretty'\n" +
+		"default is 'csv'"
 	rootCmd.Flags().StringP("format", "f", "", formatHelp)
 
 	rootCmd.Flags().BoolP("ignore_tags", "i", false,
