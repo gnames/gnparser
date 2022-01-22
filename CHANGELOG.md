@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v1.6.0]
+
+- Add [#218]: enable/disable logs for web-services, allow logs aggregation
+              with NSQd.
+
 ## [v1.5.7]
 
 - Fix: parsed.NormalizeByType preserves period char.
@@ -359,6 +364,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.6.0]: https://github.com/gnames/gnparser/compare/v1.5.7...v1.6.0
 [v1.5.7]: https://github.com/gnames/gnparser/compare/v1.5.6...v1.5.7
 [v1.5.6]: https://github.com/gnames/gnparser/compare/v1.5.5...v1.5.6
 [v1.5.5]: https://github.com/gnames/gnparser/compare/v1.5.4...v1.5.5
