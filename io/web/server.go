@@ -9,13 +9,13 @@ import (
 	"time"
 
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnlib/io/lognsq"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/labstack/gommon/log"
 )
-
-const withLogs = false
 
 //go:embed static
 var static embed.FS
@@ -31,9 +31,11 @@ type inputREST struct {
 // Run starts the GNparser web service and servies both RESTful API and
 // a website.
 func Run(gnps GNparserService) {
+	var remote *lognsq.LogNSQ
+	var err error
+
 	e := echo.New()
 
-	var err error
 	e.Renderer, err = NewTemplate()
 	if err != nil {
 		e.Logger.Fatal(err)
@@ -41,9 +43,30 @@ func Run(gnps GNparserService) {
 
 	e.Use(middleware.Gzip())
 	e.Use(middleware.CORS())
-	if withLogs {
+
+	nsqAddr := gnps.WebLogsNsqdTCP()
+	withLogs := gnps.WebLogs()
+
+	if nsqAddr != "" {
+		cfg := lognsq.Config{
+			PrintLogs: withLogs,
+			Topic:     "gnparser",
+			NsqdURL:   nsqAddr,
+		}
+		remote, err = lognsq.New(cfg)
+		logCfg := middleware.DefaultLoggerConfig
+		if err == nil {
+			logCfg.Output = remote
+		}
+		e.Use(middleware.LoggerWithConfig(logCfg))
+		if err != nil {
+			log.Warn(err)
+		}
+		defer remote.Stop()
+	} else if withLogs {
 		e.Use(middleware.Logger())
 	}
+
 	e.GET("/", homeGET(gnps))
 	e.POST("/", homePOST(gnps))
 	e.GET("/doc/api", docAPI())

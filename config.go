@@ -10,26 +10,52 @@ import (
 // Config keeps settings that might affect how parsing is done,
 // of change the parsing output.
 type Config struct {
+	// BatchSize sets the maximum number of elements in names-strings slice.
+	BatchSize int
+
+	// Debug sets a "debug" state for parsing. The debug state forces output
+	// format to showing parsed ast tree.
+	Debug bool
+
 	// Format sets the output format for CLI and Web interfaces.
 	// There are 3 formats available: 'CSV', 'CompactJSON' and
 	// 'PrettyJSON'.
 	Format gnfmt.Format
 
-	// JobsNum sets a level of parallelism used during parsing of
-	// a stream of name-strings.
-	JobsNum int
-
-	// BatchSize sets the maximum number of elements in names-strings slice.
-	BatchSize int
-
-	// WithStream changes from parsing a batch by batch, to parsing one name
-	// at a time. When WithStream is true, BatchSize setting is ignored.
-	WithStream bool
-
 	// IgnoreHTMLTags can be set to true when it is desirable to clean up names
 	// from a few HTML tags often present in names-strings that were planned to
 	// be presented via an HTML page.
 	IgnoreHTMLTags bool
+
+	// IsTest can be set to true when parsing functionality is used for tests.
+	// In such cases the `ParserVersion` field is presented as `test_version`
+	// instead of displaying the actual version of `gnparser`.
+	IsTest bool
+
+	// JobsNum sets a level of parallelism used during parsing of
+	// a stream of name-strings.
+	JobsNum int
+
+	// Port to run wer-service.
+	Port int
+
+	// WebLogsNsqdTCP provides an address to the NSQ messenger TCP service. If
+	// this value is set and valid, the web logs will be published to the NSQ.
+	// The option is ignored if `Port` is not set.
+	//
+	// If WithWebLogs option is set to `false`, but `WebLogsNsqdTCP` is set to a
+	// valid URL, the logs will be sent to the NSQ messanging service, but they
+	// wil not appear as STRERR output.
+	// Example: `127.0.0.1:4150`
+	WebLogsNsqdTCP string
+
+	// WithCapitalization flag, when true, the first letter of a name-string
+	// is capitalized, if appropriate.
+	WithCapitalization bool
+
+	// WithCultivars flag, when true, cultivar names will be parsed and
+	// modify cardinality, normalized and canonical output.
+	WithCultivars bool
 
 	// WithDetails can be set to true when a simplified output is not sufficient
 	// for obtaining a required information.
@@ -38,28 +64,16 @@ type Config struct {
 	// WithNoOrder flag, when true, output and input are in different order.
 	WithNoOrder bool
 
-	// WithCapitalization flag, when true, the first letter of a name-string
-	// is capitalized, if appropriate.
-	WithCapitalization bool
-
 	// WithPreserveDiaereses flag, when true, diaereses will not be transliterated
 	WithPreserveDiaereses bool
 
-	// WithCultivars flag, when true, cultivar names will be parsed and
-	// modify cardinality, normalized and canonical output.
-	WithCultivars bool
+	// WithStream changes from parsing a batch by batch, to parsing one name
+	// at a time. When WithStream is true, BatchSize setting is ignored.
+	WithStream bool
 
-	// Port to run wer-service.
-	Port int
-
-	// IsTest can be set to true when parsing functionality is used for tests.
-	// In such cases the `ParserVersion` field is presented as `test_version`
-	// instead of displaying the actual version of `gnparser`.
-	IsTest bool
-
-	// Debug sets a "debug" state for parsing. The debug state forces output
-	// format to showing parsed ast tree.
-	Debug bool
+	// WithWebLogs flag enables logs when running web-service. This flag is
+	// ignored if `Port` value is not set.
+	WithWebLogs bool
 }
 
 // Option is a type that has to be returned by all Option functions. Such
@@ -129,17 +143,17 @@ func OptPort(i int) Option {
 	}
 }
 
+// OptWebLogsNsqdTCP provides a URL to NSQ messanging service.
+func OptWebLogsNsqdTCP(s string) Option {
+	return func(cfg *Config) {
+		cfg.WebLogsNsqdTCP = s
+	}
+}
+
 // OptWithCapitaliation sets the WithCapitalization field.
 func OptWithCapitaliation(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithCapitalization = b
-	}
-}
-
-// OptPreserveDiaereses sets the PreserveDiaereses field.
-func OptWithPreserveDiaereses(b bool) Option {
-	return func(cfg *Config) {
-		cfg.WithPreserveDiaereses = b
 	}
 }
 
@@ -164,10 +178,24 @@ func OptWithNoOrder(b bool) Option {
 	}
 }
 
+// OptWithPreserveDiaereses sets the PreserveDiaereses field.
+func OptWithPreserveDiaereses(b bool) Option {
+	return func(cfg *Config) {
+		cfg.WithPreserveDiaereses = b
+	}
+}
+
 // OptWithDetails sets the WithDetails field.
 func OptWithStream(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithStream = b
+	}
+}
+
+// OptWithWebLogs sets the WithWebLogs field.
+func OptWithWebLogs(b bool) Option {
+	return func(cfg *Config) {
+		cfg.WithWebLogs = b
 	}
 }
 

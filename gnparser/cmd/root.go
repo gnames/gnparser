@@ -79,7 +79,12 @@ gnparser -j 5 -p 8080
 		batchSize = cfg.BatchSize
 
 		if port != 0 {
-			cfg = gnparser.NewConfig(gnparser.OptFormat("compact"))
+			webopts := []gnparser.Option{
+				gnparser.OptFormat("compact"),
+				gnparser.OptWithWebLogs(withWebLogsFlag(cmd)),
+				gnparser.OptWebLogsNsqdTCP(webLogsNsqdTCPFlag(cmd)),
+			}
+			cfg = gnparser.NewConfig(webopts...)
 			gnp := gnparser.New(cfg)
 			gnps := web.NewGNparserService(gnp, port)
 			web.Run(gnps)
@@ -114,11 +119,17 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.PersistentFlags().BoolP("version", "V", false,
-		"shows build version and date, ignores other flags.")
-
 	rootCmd.Flags().IntP("batch_size", "b", 0,
 		"maximum number of names in a batch send for processing.")
+
+	rootCmd.Flags().BoolP("cultivar", "C", false,
+		"include cultivar epithets and graft-chimeras in normalized and canonical outputs")
+
+	rootCmd.Flags().BoolP("capitalize", "c", false,
+		"capitalize the first letter of input name-strings")
+
+	rootCmd.Flags().BoolP("diaereses", "D", false,
+		"preserve diaereses in names")
 
 	rootCmd.Flags().BoolP("details", "d", false, "provides more details")
 
@@ -144,15 +155,12 @@ func init() {
 	rootCmd.Flags().BoolP("unordered", "u", false,
 		"output and input are in different order")
 
-	rootCmd.Flags().BoolP("capitalize", "c", false,
-		"capitalize the first letter of input name-strings")
+	rootCmd.PersistentFlags().BoolP("version", "V", false,
+		"shows build version and date, ignores other flags.")
 
-	rootCmd.Flags().BoolP("cultivar", "C", false,
-		"include cultivar epithets and graft-chimeras in normalized and canonical outputs")
+	rootCmd.Flags().BoolP("web-logs", "", false, "enable logs for the web service")
 
-	rootCmd.Flags().BoolP("diaereses", "D", false,
-		"preserve diaereses in names")
-
+	rootCmd.Flags().StringP("nsqd-tcp", "", "", "an addresss pointing to NSQ TCP service for logs redirection (e.g. 127.0.0.1:4150)")
 }
 
 func processStdin(cmd *cobra.Command, cfg gnparser.Config, quiet bool) {

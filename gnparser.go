@@ -104,6 +104,15 @@ func (gnp gnparser) Format() gnfmt.Format {
 	return gnp.cfg.Format
 }
 
+// WebLogs returns a boolean to show or not the web-service logs.
+func (gnp gnparser) WebLogs() bool {
+	return gnp.cfg.WithWebLogs
+}
+
+func (gnp gnparser) WebLogsNsqdTCP() string {
+	return gnp.cfg.WebLogsNsqdTCP
+}
+
 // ChangeConfig allows change configuration of already created
 // GNparser object.
 func (gnp gnparser) ChangeConfig(opts ...Option) GNparser {

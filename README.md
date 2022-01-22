@@ -61,7 +61,8 @@ gnparser -h
   * [R language package](#r-language-package)
   * [Ruby Gem](#ruby-gem)
   * [Node.js](#nodejs)
-  * [Usage as a REST API Interface](#usage-as-a-rest-api-interface)
+  * [Usage as a REST API Interface or Web-based User Graphical Interface](#usage-as-a-rest-api-interface-or-web-based-user-graphical-interface)
+    * [Enabling logs for GNparser's web-service](#enabling-logs-for-gnparsers-web-service)
   * [Use as a Docker image](#use-as-a-docker-image)
   * [Use as a library in Go](#use-as-a-library-in-go)
   * [Use as a shared C library](#use-as-a-shared-c-library)
@@ -353,7 +354,7 @@ Relevant flags:
 This flag is ignored if parsing mode is set to streaming with ``-s`` flag.
 
 ``--cultivars -C``
-: Adds support for botanical cultivars like ``Sarracenia flava 'Maxima'`` 
+: Adds support for botanical cultivars like ``Sarracenia flava 'Maxima'``
 and graft-chimaeras like ``+ Crataegomespilus``
 
 ``--capitalize -c``
@@ -384,6 +385,15 @@ performance.
 
 ``--port -p``
 : set a port to run web-interface and [RESTful API][OpenAPI].
+
+`` --web-logs``
+: requires `--port`. Enables output of logs for web-services.
+
+`` --nsqd-tcp``
+: requires `--port`. Allows to redirect web-service log output to [NSQ]
+  messaging server's TCP-based endpoint. It is handy for aggregations of logs
+  from GNparser web-services running inside of Docker containers or
+  in Kubernetes pods.
 
 ``--stream -s``
 : ``GNparser`` can be used from any language using pipe-in/pipe-out of the
@@ -509,7 +519,7 @@ uses C-binding and does not require an installed `gnparser` app.
 @tobymarsden created a [wrapper for node.js][node-gnparser]. It uses C-binding
 and does not require an installed `gnparser` app.
 
-### Usage as a REST API Interface
+### Usage as a REST API Interface or Web-based User Graphical Interface
 
 Web-based user interface and API are invoked by ``--port`` or
 ``-p`` flag. To start web server on ``http://0.0.0.0:9000``
@@ -543,6 +553,33 @@ request.body = ['Solanum mariae Särkinen & S.Knapp',
 response = http.request(request)
 ```
 
+#### Enabling logs for GNparser's web-service
+
+There are several ways to enable logging from a web service.
+
+The following enables web-access logs to be printed to STDERR
+
+```
+gnparser -p 80 --web-logs
+```
+
+This next settings allows to send logs to a [NSQ] messaging service.
+This option allows aggregation logs from several instances of GNparser together.
+It is a great way for log aggregation and analysis if the instances run
+inside Docker containers or as Kubernetes Pods.
+
+```
+gnparser -p 80 --nsqd-tcp=127.0.0.1:4150
+```
+
+An **important note**: the address must point to the TCP service of nsqd.
+
+To enable logs to be sent to STDERR and [NSQ] run
+
+```
+gnparser -p 80 --web-logs --nsqd-tcp=127.0.0.1:4150
+```
+
 ### Use as a Docker image
 
 You need to have [docker runtime installed](https://docs.docker.com/install/)
@@ -550,7 +587,7 @@ on your computer for these examples to work.
 
 ```bash
 # run as a website and a RESTful service
-docker run -p 0.0.0.0:80:8080 gnames/gognparser -p 8080
+docker run -p 0.0.0.0:80:8080 gnames/gognparser -p 8080 --web-logs
 
 # just parse something
 docker run gnames/gognparser "Amaurorhinus bewichianus (Wollaston,1860) (s.str.)"
@@ -650,6 +687,7 @@ Released under [MIT license]
 [CONTRIBUTING]: https://github.com/gnames/gnparser/blob/master/CONTRIBUTING.md
 [Dmitry Mozzherin]: https://github.com/dimus
 [Geoff Ower]: https://github.com/gdower
+[NSQ]: https://nsq.io/overview/quick_start.html
 [Toby Marsden]: https://github.com/tobymarsden
 [Hernan Lucas Pereira]: https://github.com/LocoDelAssembly
 [Homebrew]: https://brew.sh/
