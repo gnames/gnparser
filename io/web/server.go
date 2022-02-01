@@ -9,12 +9,14 @@ import (
 	"time"
 
 	"github.com/gnames/gnfmt"
-	"github.com/gnames/gnlib/io/lognsq"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
+	nsqcfg "github.com/sfgrp/lognsq/config"
+	"github.com/sfgrp/lognsq/ent/nsq"
+	"github.com/sfgrp/lognsq/io/nsqio"
 )
 
 //go:embed static
@@ -31,7 +33,6 @@ type inputREST struct {
 // Run starts the GNparser web service and servies both RESTful API and
 // a website.
 func Run(gnps GNparserService) {
-	var remote *lognsq.LogNSQ
 	var err error
 
 	e := echo.New()
@@ -44,29 +45,34 @@ func Run(gnps GNparserService) {
 	e.Use(middleware.Gzip())
 	e.Use(middleware.CORS())
 
-	nsqAddr := gnps.WebLogsNsqdTCP()
-	withLogs := gnps.WebLogs()
-
-	if nsqAddr != "" {
-		cfg := lognsq.Config{
-			PrintLogs: withLogs,
-			Topic:     "gnparser",
-			NsqdURL:   nsqAddr,
-		}
-		remote, err = lognsq.New(cfg)
-		logCfg := middleware.DefaultLoggerConfig
-		if err == nil {
-			logCfg.Output = remote
-		}
-		e.Use(middleware.LoggerWithConfig(logCfg))
-		if err != nil {
-			log.Warn(err)
-		}
-		defer remote.Stop()
-	} else if withLogs {
-		e.Use(middleware.Logger())
+	loggerNSQ := setLogger(e, gnps)
+	if loggerNSQ != nil {
+		defer loggerNSQ.Stop()
 	}
 
+	// nsqAddr := gnps.WebLogsNsqdTCP()
+	// withLogs := gnps.WebLogs()
+	//
+	// if nsqAddr != "" {
+	// 	cfg := lognsq.Config{
+	// 		PrintLogs: withLogs,
+	// 		Topic:     "gnparser",
+	// 		NsqdURL:   nsqAddr,
+	// 	}
+	// 	remote, err = lognsq.New(cfg)
+	// 	logCfg := middleware.DefaultLoggerConfig
+	// 	if err == nil {
+	// 		logCfg.Output = remote
+	// 	}
+	// 	e.Use(middleware.LoggerWithConfig(logCfg))
+	// 	if err != nil {
+	// 		log.Warn(err)
+	// 	}
+	// 	defer remote.Stop()
+	// } else if withLogs {
+	// 	e.Use(middleware.Logger())
+	// }
+	//
 	e.GET("/", homeGET(gnps))
 	e.POST("/", homePOST(gnps))
 	e.GET("/doc/api", docAPI())
@@ -174,4 +180,31 @@ func opts(c echo.Context, csv, details, cultivars bool, diaereses bool) []gnpars
 	}
 
 	return res
+}
+
+func setLogger(e *echo.Echo, gnps GNparserService) nsq.NSQ {
+	nsqAddr := gnps.WebLogsNsqdTCP()
+	withLogs := gnps.WebLogs()
+
+	if nsqAddr != "" {
+		cfg := nsqcfg.Config{
+			StderrLogs: withLogs,
+			Topic:      "gnparser",
+			Address:    nsqAddr,
+		}
+		remote, err := nsqio.New(cfg)
+		logCfg := middleware.DefaultLoggerConfig
+		if err == nil {
+			logCfg.Output = remote
+		}
+		e.Use(middleware.LoggerWithConfig(logCfg))
+		if err != nil {
+			log.Warn(err)
+		}
+		return remote
+	} else if withLogs {
+		e.Use(middleware.Logger())
+		return nil
+	}
+	return nil
 }
