@@ -6591,6 +6591,26 @@ Authorship:
 {"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Parus caeruleus species complex","normalized":"Parus caeruleus","canonical":{"stemmed":"Parus caerule","simple":"Parus caeruleus","full":"Parus caeruleus"},"cardinality":2,"tail":" species complex","details":{"species":{"genus":"Parus","species":"caeruleus"}},"words":[{"verbatim":"Parus","normalized":"Parus","wordType":"GENUS","start":0,"end":5},{"verbatim":"caeruleus","normalized":"caeruleus","wordType":"SPECIES","start":6,"end":15}],"id":"f3752c09-242f-501c-8c8c-0feaf86c4693","parserVersion":"test_version"}
 ```
 
+Name: Crenarchaeote enrichment culture clone OREC-B1022
+
+Canonical: Crenarchaeote
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Crenarchaeote enrichment culture clone OREC-B1022","normalized":"Crenarchaeote","canonical":{"stemmed":"Crenarchaeote","simple":"Crenarchaeote","full":"Crenarchaeote"},"cardinality":1,"tail":" enrichment culture clone OREC-B1022","details":{"uninomial":{"uninomial":"Crenarchaeote"}},"words":[{"verbatim":"Crenarchaeote","normalized":"Crenarchaeote","wordType":"UNINOMIAL","start":0,"end":13}],"id":"f16c9aa3-f749-5025-b9cb-2dcfc6d7629b","parserVersion":"test_version"}
+```
+
+Name: Dasysyrphus intrudens complex sp. BBDCQ003-10
+
+Canonical: Dasysyrphus intrudens
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Dasysyrphus intrudens complex sp. BBDCQ003-10","normalized":"Dasysyrphus intrudens","canonical":{"stemmed":"Dasysyrphus intrudens","simple":"Dasysyrphus intrudens","full":"Dasysyrphus intrudens"},"cardinality":2,"tail":" complex sp. BBDCQ003-10","details":{"species":{"genus":"Dasysyrphus","species":"intrudens"}},"words":[{"verbatim":"Dasysyrphus","normalized":"Dasysyrphus","wordType":"GENUS","start":0,"end":11},{"verbatim":"intrudens","normalized":"intrudens","wordType":"SPECIES","start":12,"end":21}],"id":"5c436c20-40bc-5969-a788-72e3b87451b2","parserVersion":"test_version"}
+```
+
 ### Horticultural annotation
 
 Name: Lachenalia tricolor var. nelsonii (ht.) Baker
