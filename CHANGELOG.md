@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v1.6.2]
+
+- Fix [#219]: filter out `complex` word during preprocessing for names like
+              `Aegla uruguayana complex`.
+
 ## [v1.6.1]
 
 - Add: use NSQ logger from sfgrp/lognsq
@@ -368,6 +373,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.6.2]: https://github.com/gnames/gnparser/compare/v1.6.1...v1.6.2
 [v1.6.1]: https://github.com/gnames/gnparser/compare/v1.6.0...v1.6.1
 [v1.6.0]: https://github.com/gnames/gnparser/compare/v1.5.7...v1.6.0
 [v1.5.7]: https://github.com/gnames/gnparser/compare/v1.5.6...v1.5.7
@@ -423,6 +429,16 @@ This document follows [changelog guidelines]
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
 
+[#230]: https://github.com/gnames/gnparser/issues/230
+[#229]: https://github.com/gnames/gnparser/issues/229
+[#228]: https://github.com/gnames/gnparser/issues/228
+[#227]: https://github.com/gnames/gnparser/issues/227
+[#226]: https://github.com/gnames/gnparser/issues/226
+[#225]: https://github.com/gnames/gnparser/issues/225
+[#224]: https://github.com/gnames/gnparser/issues/224
+[#223]: https://github.com/gnames/gnparser/issues/223
+[#222]: https://github.com/gnames/gnparser/issues/222
+[#221]: https://github.com/gnames/gnparser/issues/221
 [#220]: https://github.com/gnames/gnparser/issues/220
 [#219]: https://github.com/gnames/gnparser/issues/219
 [#218]: https://github.com/gnames/gnparser/issues/218
