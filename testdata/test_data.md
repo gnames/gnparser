@@ -7032,6 +7032,16 @@ Authorship:
 {"parsed":false,"quality":0,"verbatim":"Acidobacteria bacterium","cardinality":0,"id":"c982b4fd-c41a-5987-bcc8-989c4164b9ec","parserVersion":"test_version"}
 ```
 
+Name: Oscillatoriales cyanobacterium PCC 10608
+
+Canonical:
+
+Authorship:
+
+```json
+{"parsed":false,"quality":0,"verbatim":"Oscillatoriales cyanobacterium PCC 10608","cardinality":0,"id":"80236e5d-1d14-5279-864d-28957b98adf8","parserVersion":"test_version"}
+```
+
 Name: Acidimicrobiales bacterium JGI 01_E13
 
 Canonical:

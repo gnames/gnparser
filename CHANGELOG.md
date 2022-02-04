@@ -4,6 +4,7 @@
 
 ## [v1.6.2]
 
+- Fix [#221]: No parsing for names with `cyanobacterium`.
 - Fix [#220]: `Crenarchaeote enrichment culture clone` should stop parsing
               at `enrichment`.
 - Fix [#219]: filter out `complex` word during preprocessing for names like
