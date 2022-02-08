@@ -148,6 +148,14 @@ Canonical forms of a scientific name are the latinized components without
 annotations, authors or dates. They are great for matching lexical variants
 of names. Three versions of canonical forms are included:
 
+| Canonical | Example                         | Use                                                    |
+| :-------- | :------------------------------ | :----------------------------------------------------- |
+| -         | *Spiraea alba var. alba* Du Roi | Best for disambiguation, but has many lexical variants |
+| Full      | *Spiraea alba var. alba*        | Presentation, infraspecies disambiguation              |
+| Simple    | *Spiraea alba alba*             | Name matching, presentation                            |
+| Stem      | *Spiraea alb alb*               | Best for matching fem./masc. inconsistencies           |
+
+
 The ``canonicalName -> full`` is good for presentation, as it keeps more
 details.
 
@@ -156,10 +164,11 @@ sources, because sometimes dataset curators omit hybrid sign in named hybrids,
 or remove ranks for infraspecific epithets.
 
 The ``canonicalName -> stem`` field normalizes `simple` canonical form even
-further. The normalization is done according to stemming rules for Latin
-language described in [Schinke R et al (1996)]. For example letters `j` are
-converted to `i`, letters `v` are converted to `u`, and suffixes are removed
-from the specific and infraspecific epithets.
+further. It allows to match names with inconsistent gender suffixes in specific
+epithets (for example *alba* vs. *albus*). The normalization is done according
+to stemming rules for Latin language described in [Schinke R et al (1996)]. For
+example letters `j` are converted to `i`, letters `v` are converted to `u`, and
+suffixes are removed from the specific and infraspecific epithets.
 
 If you only care mostly about canonical form of a name you can use default
 ``--format csv`` flag with command line tool.
