@@ -2,13 +2,13 @@ package gnparser
 
 import (
 	"context"
-	"log"
 	"sync"
 
 	"github.com/gnames/gnparser/ent/nameidx"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/ent/parser"
 	"github.com/gnames/organizer"
+	"github.com/rs/zerolog/log"
 )
 
 // ParseNameStream takes an input channel of input.Name and
@@ -72,7 +72,7 @@ func sendOrdered(
 		var p parsed.Parsed
 		err := v.Unpack(&p)
 		if err != nil {
-			log.Panic(err)
+			log.Fatal().Err(err)
 		}
 		select {
 		case <-ctx.Done():
@@ -94,7 +94,7 @@ func sendUnordered(
 		var p parsed.Parsed
 		err := v.Unpack(&p)
 		if err != nil {
-			log.Panic(err)
+			log.Fatal().Err(err)
 		}
 		select {
 		case <-ctx.Done():

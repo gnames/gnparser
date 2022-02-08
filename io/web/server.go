@@ -14,6 +14,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
+	zlog "github.com/rs/zerolog/log"
 	nsqcfg "github.com/sfgrp/lognsq/config"
 	"github.com/sfgrp/lognsq/ent/nsq"
 	"github.com/sfgrp/lognsq/io/nsqio"
@@ -50,29 +51,6 @@ func Run(gnps GNparserService) {
 		defer loggerNSQ.Stop()
 	}
 
-	// nsqAddr := gnps.WebLogsNsqdTCP()
-	// withLogs := gnps.WebLogs()
-	//
-	// if nsqAddr != "" {
-	// 	cfg := lognsq.Config{
-	// 		PrintLogs: withLogs,
-	// 		Topic:     "gnparser",
-	// 		NsqdURL:   nsqAddr,
-	// 	}
-	// 	remote, err = lognsq.New(cfg)
-	// 	logCfg := middleware.DefaultLoggerConfig
-	// 	if err == nil {
-	// 		logCfg.Output = remote
-	// 	}
-	// 	e.Use(middleware.LoggerWithConfig(logCfg))
-	// 	if err != nil {
-	// 		log.Warn(err)
-	// 	}
-	// 	defer remote.Stop()
-	// } else if withLogs {
-	// 	e.Use(middleware.Logger())
-	// }
-	//
 	e.GET("/", homeGET(gnps))
 	e.POST("/", homePOST(gnps))
 	e.GET("/doc/api", docAPI())
@@ -129,9 +107,17 @@ func parseNamesGET(gnps GNparserService) func(echo.Context) error {
 		det := c.QueryParam("with_details") == "true"
 		cultivars := c.QueryParam("cultivars") == "true"
 		diaereses := c.QueryParam("diaereses") == "true"
-		gnp := gnps.ChangeConfig(opts(c, csv, det, cultivars, diaereses)...)
+		gnp := gnps.ChangeConfig(opts(csv, det, cultivars, diaereses)...)
 		names := strings.Split(nameStr, "|")
 		res := gnp.ParseNames(names)
+		if l := len(names); l > 0 {
+			zlog.Info().
+				Int("namesNum", l).
+				Str("example", names[0]).
+				Str("parsedBy", "REST API").
+				Str("method", "GET").
+				Msg("Parsed")
+		}
 		return formatNames(c, res, gnp.Format())
 	}
 }
@@ -142,7 +128,16 @@ func parseNamesPOST(gnps GNparserService) func(echo.Context) error {
 		if err := c.Bind(&input); err != nil {
 			return err
 		}
-		gnp := gnps.ChangeConfig(opts(c, input.CSV, input.WithDetails, input.WithCultivars, input.PreserveDiaereses)...)
+
+		if l := len(input.Names); l > 0 {
+			zlog.Info().
+				Int("namesNum", l).
+				Str("example", input.Names[0]).
+				Str("parsedBy", "REST API").
+				Str("method", "POST").
+				Msg("Parsed")
+		}
+		gnp := gnps.ChangeConfig(opts(input.CSV, input.WithDetails, input.WithCultivars, input.PreserveDiaereses)...)
 		res := gnp.ParseNames(input.Names)
 		return formatNames(c, res, gnp.Format())
 	}
@@ -167,7 +162,7 @@ func formatNames(
 	}
 }
 
-func opts(c echo.Context, csv, details, cultivars bool, diaereses bool) []gnparser.Option {
+func opts(csv, details, cultivars bool, diaereses bool) []gnparser.Option {
 	res := []gnparser.Option{
 		gnparser.OptWithDetails(details),
 		gnparser.OptWithCultivars(cultivars),
@@ -191,11 +186,13 @@ func setLogger(e *echo.Echo, gnps GNparserService) nsq.NSQ {
 			StderrLogs: withLogs,
 			Topic:      "gnparser",
 			Address:    nsqAddr,
+			Contains:   "!/static/",
 		}
 		remote, err := nsqio.New(cfg)
 		logCfg := middleware.DefaultLoggerConfig
 		if err == nil {
 			logCfg.Output = remote
+			zlog.Logger = zlog.Output(remote)
 		}
 		e.Use(middleware.LoggerWithConfig(logCfg))
 		if err != nil {

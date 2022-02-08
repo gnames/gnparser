@@ -20,8 +20,21 @@
 
 package main
 
-import "github.com/gnames/gnparser/gnparser/cmd"
+import (
+	"os"
+
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
+
+	"github.com/gnames/gnparser/gnparser/cmd"
+)
 
 func main() {
+	log.Logger = log.Output(
+		zerolog.ConsoleWriter{
+			Out:        os.Stderr,
+			TimeFormat: "15:04:05",
+		},
+	)
 	cmd.Execute()
 }

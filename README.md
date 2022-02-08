@@ -155,7 +155,6 @@ of names. Three versions of canonical forms are included:
 | Simple    | *Spiraea alba alba*             | Name matching, presentation                            |
 | Stem      | *Spiraea alb alb*               | Best for matching fem./masc. inconsistencies           |
 
-
 The ``canonicalName -> full`` is good for presentation, as it keeps more
 details.
 

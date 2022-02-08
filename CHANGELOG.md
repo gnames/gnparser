@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.6.3]
+
+- Add [#222]: Improve logs.
+
 ## [v1.6.2]
 
 - Fix [#221]: No parsing for names with `cyanobacterium`.
@@ -376,6 +380,7 @@ array of names instead of a stream.
 
 This document follows [changelog guidelines]
 
+[v1.6.3]: https://github.com/gnames/gnparser/compare/v1.6.2...v1.6.3
 [v1.6.2]: https://github.com/gnames/gnparser/compare/v1.6.1...v1.6.2
 [v1.6.1]: https://github.com/gnames/gnparser/compare/v1.6.0...v1.6.1
 [v1.6.0]: https://github.com/gnames/gnparser/compare/v1.5.7...v1.6.0

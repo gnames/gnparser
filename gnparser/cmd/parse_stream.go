@@ -5,13 +5,13 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"log"
 	"sync"
 	"time"
 
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/nameidx"
 	"github.com/gnames/gnparser/ent/parsed"
+	"github.com/rs/zerolog/log"
 )
 
 func getNames(
@@ -35,7 +35,7 @@ func getNames(
 		}
 	}()
 	if err := sc.Err(); err != nil {
-		log.Panic(err)
+		log.Fatal().Err(err)
 	}
 	return chIn
 }
@@ -43,7 +43,6 @@ func getNames(
 func parseStream(
 	gnp gnparser.GNparser,
 	f io.Reader,
-	quiet bool,
 ) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -68,7 +67,7 @@ func parseStream(
 		var count int
 		for {
 			count++
-			if count%50_000 == 0 && !quiet {
+			if count%50_000 == 0 {
 				progressLog(start, count)
 			}
 			select {

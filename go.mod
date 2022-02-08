@@ -14,6 +14,7 @@ require (
 	github.com/labstack/gommon v0.3.1
 	github.com/pointlander/peg v1.0.1
 	github.com/rendon/testcli v1.0.0
+	github.com/rs/zerolog v1.26.1
 	github.com/sfgrp/lognsq v0.1.1
 	github.com/spf13/cobra v1.3.0
 	github.com/stretchr/testify v1.7.0

@@ -3,7 +3,6 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"time"
 
@@ -12,6 +11,8 @@ import (
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/web"
 	"github.com/gnames/gnsys"
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
 )
 
@@ -79,6 +80,8 @@ gnparser -j 5 -p 8080
 		batchSize = cfg.BatchSize
 
 		if port != 0 {
+			log.Logger = zerolog.New(os.Stderr).With().
+				Str("gnApp", "gnparser").Logger()
 			webopts := []gnparser.Option{
 				gnparser.OptFormat("compact"),
 				gnparser.OptWithWebLogs(withWebLogsFlag(cmd)),
@@ -92,9 +95,12 @@ gnparser -j 5 -p 8080
 		}
 
 		quiet, _ := cmd.Flags().GetBool("quiet")
+		if quiet {
+			zerolog.SetGlobalLevel(zerolog.Disabled)
+		}
 
 		if len(args) == 0 {
-			processStdin(cmd, cfg, quiet)
+			processStdin(cmd, cfg)
 			os.Exit(0)
 		}
 		data := getInput(cmd, args)
@@ -104,7 +110,7 @@ gnparser -j 5 -p 8080
 			os.Exit(0)
 		}
 
-		parse(data, cfg, quiet)
+		parse(data, cfg)
 	},
 }
 
@@ -163,7 +169,7 @@ func init() {
 	rootCmd.Flags().StringP("nsqd-tcp", "", "", "an addresss pointing to NSQ TCP service for logs redirection (e.g. 127.0.0.1:4150)")
 }
 
-func processStdin(cmd *cobra.Command, cfg gnparser.Config, quiet bool) {
+func processStdin(cmd *cobra.Command, cfg gnparser.Config) {
 	if !checkStdin() {
 		_ = cmd.Help()
 		return
@@ -171,9 +177,9 @@ func processStdin(cmd *cobra.Command, cfg gnparser.Config, quiet bool) {
 	gnp := gnparser.New(cfg)
 
 	if cfg.WithStream {
-		parseStream(gnp, os.Stdin, quiet)
+		parseStream(gnp, os.Stdin)
 	} else {
-		parseBatch(gnp, os.Stdin, quiet)
+		parseBatch(gnp, os.Stdin)
 	}
 }
 
@@ -181,7 +187,7 @@ func checkStdin() bool {
 	stdInFile := os.Stdin
 	stat, err := stdInFile.Stat()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal().Err(err)
 	}
 	return (stat.Mode() & os.ModeCharDevice) == 0
 }
@@ -210,7 +216,6 @@ func debugName(
 func parse(
 	data string,
 	cfg gnparser.Config,
-	quiet bool,
 ) {
 	gnp := gnparser.New(cfg)
 
@@ -219,12 +224,12 @@ func parse(
 	if exists {
 		f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
 		if err != nil {
-			log.Fatal(err)
+			log.Fatal().Err(err)
 		}
 		if cfg.WithStream {
-			parseStream(gnp, f, quiet)
+			parseStream(gnp, f)
 		} else {
-			parseBatch(gnp, f, quiet)
+			parseBatch(gnp, f)
 		}
 		f.Close()
 	} else {
@@ -247,11 +252,9 @@ func parseString(gnp gnparser.GNparser, name string) {
 func progressLog(start time.Time, namesNum int) {
 	dur := float64(time.Since(start)) / float64(time.Second)
 	rate := float64(namesNum) / dur
-	numColor := "%s names/sec"
-	rateStr := fmt.Sprintf(numColor, humanize.Comma(int64(rate)))
-	log.Printf(
-		"Parsing %s-th name (%s)\n",
-		humanize.Comma(int64(namesNum)),
-		rateStr,
-	)
+	rateStr := humanize.Comma(int64(rate))
+	log.Info().
+		Str("names/sec", rateStr).
+		Str("count", humanize.Comma(int64(namesNum))).
+		Msg("File parsing")
 }

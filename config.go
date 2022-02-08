@@ -1,10 +1,10 @@
 package gnparser
 
 import (
-	"log"
 	"runtime"
 
 	"github.com/gnames/gnfmt"
+	"github.com/rs/zerolog/log"
 )
 
 // Config keeps settings that might affect how parsing is done,
@@ -84,7 +84,7 @@ type Option func(*Config)
 func OptBatchSize(i int) Option {
 	return func(cfg *Config) {
 		if i <= 0 {
-			log.Println("Batch size should be a positive number")
+			log.Info().Msg("Batch size should be a positive number")
 			return
 		}
 		cfg.BatchSize = i

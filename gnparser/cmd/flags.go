@@ -2,10 +2,10 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/gnames/gnparser"
+	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
 )
 
@@ -68,7 +68,7 @@ func portFlag(cmd *cobra.Command) int {
 func versionFlag(cmd *cobra.Command) bool {
 	version, err := cmd.Flags().GetBool("version")
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal().Err(err)
 	}
 	if version {
 		fmt.Printf("\nversion: %s\n\nbuild:   %s\n\n",

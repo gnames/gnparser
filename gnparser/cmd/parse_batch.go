@@ -4,19 +4,18 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"log"
 	"sync"
 	"time"
 
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
+	"github.com/rs/zerolog/log"
 )
 
 func parseBatch(
 	gnp gnparser.GNparser,
 	f io.Reader,
-	quiet bool,
 ) {
 	batch := make([]string, batchSize)
 	chOut := make(chan []parsed.Parsed)
@@ -33,9 +32,7 @@ func parseBatch(
 		count++
 		if count == batchSize {
 			i++
-			if !quiet {
-				progressLog(start, count*i)
-			}
+			progressLog(start, count*i)
 			chOut <- gnp.ParseNames(batch)
 			batch = make([]string, batchSize)
 			count = 0
@@ -44,7 +41,7 @@ func parseBatch(
 	chOut <- gnp.ParseNames(batch[:count])
 	close(chOut)
 	if err := sc.Err(); err != nil {
-		log.Panic(err)
+		log.Fatal().Err(err)
 	}
 	wg.Wait()
 }
