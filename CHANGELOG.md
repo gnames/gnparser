@@ -2,9 +2,9 @@
 
 ## Unreleased
 
-## [v1.6.3]
+## [v1.6.3] - 2022-02-08
 
-- Add [#222]: Improve logs.
+- Add [#222]: Improve logs for NSQ, switch to zerologs library.
 
 ## [v1.6.2]
 
