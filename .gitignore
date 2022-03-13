@@ -11,3 +11,6 @@ binding/libgnparser.h
 binding/*.so
 build/**
 .DS_Store
+*.pprof
+*.test
+*.gif
