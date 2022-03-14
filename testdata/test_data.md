@@ -1,5 +1,7 @@
 # Global Names Parser Test
 
+<!-- markdownlint-disable -->
+
 <!-- vim-markdown-toc GFM -->
 
 * [Introduction](#introduction)
@@ -7489,12 +7491,12 @@ Authorship: (Ginsburg 1939)
 
 Name: Globigerina spec
 
-Canonical: Globigerina spec
+Canonical: Globigerina
 
 Authorship:
 
 ```json
-{"parsed":true,"quality":1,"verbatim":"Globigerina spec","normalized":"Globigerina spec","canonical":{"stemmed":"Globigerina spec","simple":"Globigerina spec","full":"Globigerina spec"},"cardinality":2,"details":{"species":{"genus":"Globigerina","species":"spec"}},"words":[{"verbatim":"Globigerina","normalized":"Globigerina","wordType":"GENUS","start":0,"end":11},{"verbatim":"spec","normalized":"spec","wordType":"SPECIES","start":12,"end":16}],"id":"4f8f7189-42a0-59e2-8d6f-67c3889673d9","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Globigerina spec","normalized":"Globigerina","canonical":{"stemmed":"Globigerina","simple":"Globigerina","full":"Globigerina"},"cardinality":1,"tail":" spec","details":{"uninomial":{"uninomial":"Globigerina"}},"words":[{"verbatim":"Globigerina","normalized":"Globigerina","wordType":"UNINOMIAL","start":0,"end":11}],"id":"4f8f7189-42a0-59e2-8d6f-67c3889673d9","parserVersion":"test_version"}
 ```
 
 Name: Eunotia genuflexa Norpel-Schempp nov spec
@@ -7599,6 +7601,16 @@ Authorship:
 
 ```json
 {"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Non-standard space characters"}],"verbatim":"Oxalis_barrelieri","normalized":"Oxalis barrelieri","canonical":{"stemmed":"Oxalis barrelier","simple":"Oxalis barrelieri","full":"Oxalis barrelieri"},"cardinality":2,"details":{"species":{"genus":"Oxalis","species":"barrelieri"}},"words":[{"verbatim":"Oxalis","normalized":"Oxalis","wordType":"GENUS","start":0,"end":6},{"verbatim":"barrelieri","normalized":"barrelieri","wordType":"SPECIES","start":7,"end":17}],"id":"ad546700-9cae-50d3-9eaf-6adcbbb67bae","parserVersion":"test_version"}
+```
+
+Name:   Oxalis_barrelieri ined.?
+
+Canonical: Oxalis barrelieri
+
+Authorship:
+
+```json
+{"parsed":false,"quality":0,"verbatim":"  Oxalis_barrelieri ined.?","cardinality":0,"id":"c065444b-dbdd-5f29-96f9-629f49469abd","parserVersion":"test_version"}
 ```
 
 Name: Pseudocercospora__dendrobii

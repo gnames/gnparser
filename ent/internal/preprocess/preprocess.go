@@ -8,6 +8,8 @@ import (
 	"regexp"
 	"strings"
 	"unicode"
+
+	"github.com/gnames/gnparser/ent/internal/preparser"
 )
 
 var VirusException = map[string]string{
@@ -43,7 +45,9 @@ var AmbiguousException = map[string][]string{
 	"Dicentria":      {"dela"},
 	"Eulaira":        {"dela"},
 	"Gnathopleustes": {"den"},
+	"Gobiosoma":      {"spec"},
 	"Helophorus":     {"ser"},
+	"Lampona":        {"spec"},
 	"Leptonetela":    {"la"},
 	"Malamatidia":    {"zu"},
 	"Meteorus":       {"dos"},
@@ -63,32 +67,6 @@ var AmbiguousException = map[string][]string{
 var NoParseException = map[string]string{
 	"Navicula": "bacterium",
 }
-
-var notesRe = regexp.MustCompile(
-	`(?i)\s+((environmental|enrichment|samples|species\s+group|(species\s+)?complex|clade|group|author|nec|vide|fide)\b|non[^a-zA-Z-]).*$`,
-)
-var taxonConceptsRe1 = regexp.MustCompile(
-	`(?i)\s+(sero(var|type)|sensu|auct|sec|near|str)\.?\b.*$`,
-)
-var taxonConceptsRe2 = regexp.MustCompile(
-	`(,\s*|\s+)(\(?s\.\s?s\.|\(?s\.\s?l\.|\(?s\.\s?str\.|\(?s\.\s?lat\.).*$`,
-)
-var taxonConceptsRe3 = regexp.MustCompile(
-	`(?i)(,\s*|\s+)(pro parte|p\.\s?p\.)\s*$`,
-)
-var nomenConceptsRe = regexp.MustCompile(
-	`(?i)(,\s*|\s+)(\(?(nomen|nom\.|comb\.)(\s.*)?)$`,
-)
-var lastWordJunkRe = regexp.MustCompile(
-	`(?i)(,\s*|\s+)` +
-		`(var\.?|von|van|ined\.?` +
-		`|sensu|new|non|nec|ssp\.?` +
-		`|subsp|subgen|hybrid)\??\s*$`,
-)
-
-var stopWordsRe = regexp.MustCompile(
-	`\s+(\(?ht\.?\W|\(?hort\.?\W|spec\.|nov\s+spec).*$`,
-)
 
 var cultivarRankRe = regexp.MustCompile(
 	`\s+(cultivar\.?[\W_]|cv\.?[\W_]|['"‘’“”]).*$`,
@@ -120,11 +98,11 @@ type ambiguous struct {
 
 // Preprocess runs a series of regular expressions over the input to determine
 // features of the input before parsing.
-func Preprocess(bs []byte) *Preprocessor {
+func Preprocess(ppr *preparser.PreParser, bs []byte) *Preprocessor {
 	pr := &Preprocessor{}
 
 	// check for empty string
-	if len(bs) == 0 {
+	if len(bs) == 0 || strings.TrimSpace(string(bs)) == "" {
 		pr.NoParse = true
 		return pr
 	}
@@ -155,7 +133,7 @@ func Preprocess(bs []byte) *Preprocessor {
 		pr.ambiguous(words[0], bs)
 	}
 
-	j := procAnnot(bs[0:i])
+	j := procAnnot(ppr, bs[0:i])
 	if j < i {
 		pr.Annotation = true
 		i = j
@@ -215,17 +193,10 @@ func (p *Preprocessor) ambiguous(firstWord string, bs []byte) {
 // procAnnot returns index where unparsed part starts. In case if
 // the full string can be parsed, returns returns the index of the end of the
 // input.
-func procAnnot(bs []byte) int {
+func procAnnot(ppr *preparser.PreParser, bs []byte) int {
 	i := len(bs)
-	regexps := []*regexp.Regexp{
-		notesRe, taxonConceptsRe1, taxonConceptsRe2, taxonConceptsRe3,
-		nomenConceptsRe, lastWordJunkRe, stopWordsRe,
-	}
-	for _, r := range regexps {
-		loc := r.FindIndex(bs[0:i])
-		if len(loc) > 0 {
-			i = loc[0]
-		}
+	if idx := ppr.TailIndex(string(bs)); idx >= 0 {
+		i = idx
 	}
 
 	// If ` of ` is in the string, before the start of the already-calculated

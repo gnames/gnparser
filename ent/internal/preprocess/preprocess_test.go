@@ -4,6 +4,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/gnames/gnparser/ent/internal/preparser"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -29,7 +30,7 @@ func TestCleanup(t *testing.T) {
 			{"entities", "Hello &amp; you", "Hello & you"},
 		}
 		for _, v := range data {
-			assert.Equal(t, StripTags(v.tags), v.notags, v.msg)
+			assert.Equal(t, v.notags, StripTags(v.tags), v.msg)
 		}
 	})
 	t.Run("does not return nil", func(t *testing.T) {
@@ -49,7 +50,7 @@ func TestPreprocess(t *testing.T) {
 		}
 		for _, v := range data {
 			words := strings.Split(v.name, " ")
-			assert.Equal(t, isException(words, NoParseException), v.likeAnnotation, v.msg)
+			assert.Equal(t, v.likeAnnotation, isException(words, NoParseException), v.msg)
 		}
 	})
 
@@ -79,7 +80,7 @@ func TestPreprocess(t *testing.T) {
 		}
 		for _, v := range data {
 			words := strings.Split(v.name, " ")
-			assert.Equal(t, isException(words, VirusException), v.likeVirus, v.msg)
+			assert.Equal(t, v.likeVirus, isException(words, VirusException), v.msg)
 		}
 	})
 
@@ -110,7 +111,7 @@ func TestPreprocess(t *testing.T) {
 		}
 		for _, v := range data {
 			res := IsVirus([]byte(v.name))
-			assert.Equal(t, res, v.isVirus, v.msg)
+			assert.Equal(t, v.isVirus, res, v.msg)
 		}
 	})
 
@@ -144,12 +145,12 @@ func TestPreprocess(t *testing.T) {
 		}
 		for _, v := range data {
 			res := NoParse([]byte(v.name))
-			assert.Equal(t, res, v.parsed, v.msg)
+			assert.Equal(t, v.parsed, res, v.msg)
 		}
 	})
 
 	t.Run("Annotations", func(t *testing.T) {
-		data := []struct {
+		tests := []struct {
 			msg  string
 			in   string
 			out  string
@@ -157,16 +158,18 @@ func TestPreprocess(t *testing.T) {
 		}{
 
 			{"No tail", "Homo sapiens", "Homo sapiens", ""},
-			{"No tail", "Homo sapiens S. S.", "Homo sapiens S. S.", ""},
-			{"No tail", "Homo sapiens s. s.", "Homo sapiens", " s. s."},
-			{"No tail", "Homo sapiens sensu Linn.", "Homo sapiens", " sensu Linn."},
-			{"No tail", "Homo sapiens nomen nudum", "Homo sapiens", " nomen nudum"},
+			{"S. S.", "Homo sapiens S. S.", "Homo sapiens S. S.", ""},
+			{"s. s.", "Homo sapiens s. s.", "Homo sapiens", " s. s."},
+			{"sensu", "Homo sapiens sensu Linn.", "Homo sapiens", " sensu Linn."},
+			{"nomen", "Homo sapiens nomen nudum", "Homo sapiens", " nomen nudum"},
 		}
-		for _, v := range data {
+		ppr := preparser.New()
+
+		for _, v := range tests {
 			bs := []byte(v.in)
-			i := procAnnot(bs)
-			assert.Equal(t, string(bs[0:i]), v.out, v.msg)
-			assert.Equal(t, string(bs[i:]), v.tail, v.msg)
+			i := procAnnot(ppr, bs)
+			assert.Equal(t, v.out, string(bs[0:i]), v.msg)
+			assert.Equal(t, v.tail, string(bs[i:]), v.msg)
 		}
 	})
 
@@ -185,14 +188,15 @@ func TestPreprocess(t *testing.T) {
 		for _, v := range data {
 			bs := []byte(v.in)
 			changed2, _ := UnderscoreToSpace(bs)
-			assert.Equal(t, string(bs), v.out, v.msg)
-			assert.Equal(t, changed2, v.changed)
+			assert.Equal(t, v.out, string(bs), v.msg)
+			assert.Equal(t, v.changed, changed2)
 		}
 	})
 
 	t.Run("does not remove spaces", func(t *testing.T) {
 		name := "    Asplenium       × inexpectatum(E. L. Braun ex Friesner      )Morton"
-		res := Preprocess([]byte(name))
-		assert.Equal(t, string(res.Body), name)
+		ppr := preparser.New()
+		res := Preprocess(ppr, []byte(name))
+		assert.Equal(t, name, string(res.Body))
 	})
 }

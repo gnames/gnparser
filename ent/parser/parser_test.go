@@ -9,8 +9,7 @@ import (
 
 // TTestPreNParse tests PreprocessAndParse method
 func TestPreNParse(t *testing.T) {
-	p := &parser.Engine{Buffer: ""}
-	p.Init()
+	p := parser.New()
 	testData := []struct {
 		name, can string
 	}{
@@ -26,14 +25,13 @@ func TestPreNParse(t *testing.T) {
 			assert.Nil(t, can, msg)
 			continue
 		}
-		assert.Equal(t, can.Simple, v.can, msg)
+		assert.Equal(t, v.can, can.Simple, msg)
 	}
 }
 
 // TTestToOutput tests ToOutput method of ScientificNameNode
 func TestToOutput(t *testing.T) {
-	p := &parser.Engine{Buffer: ""}
-	p.Init()
+	p := parser.New()
 	testData := []struct {
 		name, can, au string
 		det, parsed   bool
@@ -61,7 +59,7 @@ func TestToOutput(t *testing.T) {
 			assert.Nil(t, out.Canonical, msg)
 			continue
 		}
-		assert.Equal(t, out.Canonical.Simple, v.can, msg)
-		assert.Equal(t, out.Authorship.Normalized, v.au, msg)
+		assert.Equal(t, v.can, out.Canonical.Simple, msg)
+		assert.Equal(t, v.au, out.Authorship.Normalized, msg)
 	}
 }

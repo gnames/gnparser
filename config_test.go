@@ -20,7 +20,7 @@ func TestNew(t *testing.T) {
 		Port:           8080,
 		IsTest:         false,
 	}
-	assert.Equal(t, cfg, deflt)
+	assert.Equal(t, deflt, cfg)
 }
 
 func TestNewOpts(t *testing.T) {
@@ -34,7 +34,7 @@ func TestNewOpts(t *testing.T) {
 		WithDetails:    true,
 		Port:           8989,
 	}
-	assert.Equal(t, cnf, updt)
+	assert.Equal(t, updt, cnf)
 }
 
 func opts() []gnparser.Option {

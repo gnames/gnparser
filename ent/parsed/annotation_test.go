@@ -20,7 +20,7 @@ func TestStringAnnot(t *testing.T) {
 	}
 
 	for i := range data {
-		assert.Equal(t, data[i].annot.String(), data[i].res)
+		assert.Equal(t, data[i].res, data[i].annot.String())
 	}
 }
 
@@ -44,9 +44,9 @@ func TestJSONAnnot(t *testing.T) {
 	for i := range data {
 		res, err := enc.Encode(data[i].dob)
 		assert.Nil(t, err)
-		assert.Equal(t, string(res), data[i].res)
+		assert.Equal(t, data[i].res, string(res))
 		err = enc.Decode(res, &dob)
 		assert.Nil(t, err)
-		assert.Equal(t, dob.Annot, data[i].dob.Annot)
+		assert.Equal(t, data[i].dob.Annot, dob.Annot)
 	}
 }

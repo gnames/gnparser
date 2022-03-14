@@ -14,7 +14,7 @@ import (
 // Debug takes a string, parsers it, and returns a byte representation of
 // the node tree
 func (p *Engine) Debug(s string) []byte {
-	ppr := preprocess.Preprocess([]byte(s))
+	ppr := preprocess.Preprocess(p.preParser, []byte(s))
 	var b bytes.Buffer
 	if ppr.NoParse || ppr.Virus {
 		b.WriteString("\n*** Preprocessing: NO PARSE ***\n")
@@ -63,7 +63,7 @@ func (p *Engine) PreprocessAndParse(
 		}
 	}
 
-	preproc := preprocess.Preprocess([]byte(s))
+	preproc := preprocess.Preprocess(p.preParser, []byte(s))
 
 	defer func() {
 		p.sn.daggerChar = preproc.DaggerChar

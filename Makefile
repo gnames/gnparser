@@ -39,6 +39,9 @@ peg:
 	cd ent/parser; \
 	peg grammar.peg; \
 	goimports -w grammar.peg.go; \
+	cd ../internal/preparser; \
+	peg grammar.peg; \
+	goimports -w grammar.peg.go;
 
 ragel:
 	cd ent/internal/preprocess; \

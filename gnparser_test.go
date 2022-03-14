@@ -30,7 +30,7 @@ func TestParseName(t *testing.T) {
 	for _, v := range data {
 		parsed := gnp.ParseName(v.name)
 		json := parsed.Output(gnp.Format())
-		assert.Equal(t, json, v.jsonData, v.name)
+		assert.Equal(t, v.jsonData, json, v.name)
 	}
 }
 
@@ -46,7 +46,7 @@ func TestParseNameCultivars(t *testing.T) {
 	for _, v := range data {
 		parsed := gnp.ParseName(v.name)
 		json := parsed.Output(gnp.Format())
-		assert.Equal(t, json, v.jsonData, v.name)
+		assert.Equal(t, v.jsonData, json, v.name)
 	}
 }
 
@@ -66,11 +66,11 @@ func TestParseLowCaseName(t *testing.T) {
 	for _, v := range tests {
 		parsed := gnp.ParseName(v.in)
 		if v.out != "" {
-			assert.Equal(t, parsed.Canonical.Simple, v.out, v.msg)
+			assert.Equal(t, v.out, parsed.Canonical.Simple, v.msg)
 		} else {
 			assert.Nil(t, parsed.Canonical)
 		}
-		assert.Equal(t, parsed.ParseQuality, v.quality, v.msg)
+		assert.Equal(t, v.quality, parsed.ParseQuality, v.msg)
 	}
 }
 
@@ -90,9 +90,9 @@ func TestParsePreserveDiaereses(t *testing.T) {
 	gnp := gnparser.New(cfg)
 	for _, v := range tests {
 		parsed := gnp.ParseName(v.in)
-		assert.Equal(t, parsed.Canonical.Simple, v.canonical, v.msg)
-		assert.Equal(t, parsed.Normalized, v.normalized, v.msg)
-		assert.Equal(t, parsed.ParseQuality, v.quality, v.msg)
+		assert.Equal(t, v.canonical, parsed.Canonical.Simple, v.msg)
+		assert.Equal(t, v.normalized, parsed.Normalized, v.msg)
+		assert.Equal(t, v.quality, parsed.ParseQuality, v.msg)
 	}
 }
 
@@ -105,12 +105,12 @@ func TestWordNormalizeByType(t *testing.T) {
 		{"betula", "Betula", "betula", parsed.GenusType},
 		{"alba", "alba", "alb", parsed.SpEpithetType},
 		{"Linn", "Linn.", "linn.", parsed.AuthorWordType},
-    {"yr", "1888", "1888", parsed.YearType},
+		{"yr", "1888", "1888", parsed.YearType},
 	}
 
 	for _, v := range tests {
 		res := parsed.NormalizeByType(v.word, v.wType)
-		assert.Equal(t, res, v.norm, v.msg)
+		assert.Equal(t, v.norm, res, v.msg)
 	}
 }
 
@@ -120,16 +120,16 @@ func TestOutputRestore(t *testing.T) {
 	gnp := gnparser.New(cfg)
 	res := gnp.ParseName(name)
 	res.RestoreAmbiguous("sapiens", "zapiens")
-	assert.Equal(t, res.Verbatim, "Homo zapiens Linn. 1758")
-	assert.Equal(t, res.Normalized, "Homo sapiens Linn. 1758")
-	assert.Equal(t, res.Canonical.Full, "Homo sapiens")
-	assert.Equal(t, res.Canonical.Simple, "Homo sapiens")
-	assert.Equal(t, res.Canonical.Stemmed, "Homo sapiens")
-	assert.Equal(t, res.Words[1].Verbatim, "sapiens")
-	assert.Equal(t, res.Words[1].Normalized, "sapiens")
+	assert.Equal(t, "Homo zapiens Linn. 1758", res.Verbatim)
+	assert.Equal(t, "Homo sapiens Linn. 1758", res.Normalized)
+	assert.Equal(t, "Homo sapiens", res.Canonical.Full)
+	assert.Equal(t, "Homo sapiens", res.Canonical.Simple)
+	assert.Equal(t, "Homo sapiens", res.Canonical.Stemmed)
+	assert.Equal(t, "sapiens", res.Words[1].Verbatim)
+	assert.Equal(t, "sapiens", res.Words[1].Normalized)
 	sp, ok := res.Details.(parsed.DetailsSpecies)
 	assert.True(t, ok)
-	assert.Equal(t, sp.Species.Species, "sapiens")
+	assert.Equal(t, "sapiens", sp.Species.Species)
 }
 
 func getTestData(t *testing.T, filename string) []testData {

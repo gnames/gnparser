@@ -15,12 +15,12 @@ import (
 func TestStemmer(t *testing.T) {
 	stemsDict := stemData(t)
 	t.Run("treats que suffix with exceptions", func(t *testing.T) {
-		assert.Equal(t, stemmer.Stem("detorque").Stem, "detorque")
-		assert.Equal(t, stemmer.Stem("somethingque").Stem, "something")
+		assert.Equal(t, "detorque", stemmer.Stem("detorque").Stem)
+		assert.Equal(t, "something", stemmer.Stem("somethingque").Stem)
 	})
 	t.Run("removes suffixes correctly", func(t *testing.T) {
 		for k, v := range stemsDict {
-			assert.Equal(t, stemmer.Stem(k).Stem, v)
+			assert.Equal(t, v, stemmer.Stem(k).Stem)
 		}
 	})
 
@@ -39,7 +39,7 @@ func TestStemmer(t *testing.T) {
 			{"GraftChimeraFormula2", "Cytisus purpureus + Laburnum anagyroides", "Cytisus purpure + Laburnum anagyroid"},
 		}
 		for _, v := range data {
-			assert.Equal(t, stemmer.StemCanonical(v.in), v.out, v.msg)
+			assert.Equal(t, v.out, stemmer.StemCanonical(v.in), v.msg)
 		}
 	})
 }

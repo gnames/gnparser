@@ -1,0 +1,51 @@
+package preparser
+
+type PreParser Peg { PreString }
+
+String <- _? (Head Tail? / TailPhrase .*) SpaceOrEnd
+
+Head <- Word (CommaSpace Word)* &(Tail / SpaceOrEnd)
+
+Tail <- { p.tailIndex = int(token.begin) } CommaSpace TailPhrase .*
+
+Word <- !TailPhrase [^, ]+ / ','
+
+TailPhrase <- TailLastWordJunk / TailPhrase4 / TailPhrase3 /
+  TailStopWords / TailPhrase2 / TailPhrase1
+
+TailLastWordJunk <- (("var" / "ined" / "ssp" / "subsp" / "subgen" ) '.'? /
+ "sensu" / "new" / "non" / "nec" / "hybrid" / "von") '?'? &SpaceOrEnd
+
+TailPhrase4 <- ("pro" _ "parte" / "nomen") &NotLetterOrEnd / "p." _? "p." /
+  "nom." / "comb."
+
+TailPhrase3 <- '('? 's' ('.' _? / _ ) ('s' '.'? &NotLetterOrEnd / 'l.' / 'str.' /
+   'lat.')
+
+TailStopWords <- ("environmental" / "enrichment" / "samples" /
+  ("species" _)? ("group" / "complex") / "clade" /
+  "author" / "nec" / "vide" / "fide" / "non" ) &NotLetterOrEnd
+
+TailPhrase2 <- ("sero" ("var" / "type") / "sensu" / "auct" / "sec" / "near" /
+  "str") '.'? &NotLetterOrEnd
+
+TailPhrase1 <- (('('? ('ht' / 'hort')) / 'spec' /
+  'nov' '.'? _ 'spec') '.'? &NotLetterOrEnd
+
+SpaceOrEnd <- CommaSpace? END
+
+CommaSpace <- (_? ',' _?)+ / _
+
+_ <- MultipleSpace / SingleSpace
+
+NotLetterOrEnd <- NotLetter / END
+
+NotLetter <- [[^A-Z0-9_\-]]
+
+MultipleSpace <- SingleSpace SingleSpace+
+
+SingleSpace <- ' ' / OtherSpace
+
+OtherSpace <- [　 \t\r\n\f\v]
+
+END <- !.

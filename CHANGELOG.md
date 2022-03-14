@@ -2,15 +2,20 @@
 
 ## Unreleased
 
+## [v1.6.5] - 2022-03-21 Mon
+
+- Add [#223]: Use PEG parser for preprocess instead of RegEx.
+  This approach gives 15-17% speed increase.
+
 ## [v1.6.4] - 2022-03-19 Sat
 
 - Add [#224]: Parse correctly italian authors with `degli`.
 
-## [v1.6.3] - 2022-02-08
+## [v1.6.3] - 2022-02-08 Tue
 
 - Add [#222]: Improve logs for NSQ, switch to zerologs library.
 
-## [v1.6.2]
+## [v1.6.2] - 2022-02-04 Fri
 
 - Fix [#221]: No parsing for names with `cyanobacterium`.
 - Fix [#220]: `Crenarchaeote enrichment culture clone` should stop parsing
@@ -18,20 +23,20 @@
 - Fix [#219]: filter out `complex` word during preprocessing for names like
   `Aegla uruguayana complex`.
 
-## [v1.6.1]
+## [v1.6.1] - 2022-02-01 Sat
 
 - Add: use NSQ logger from sfgrp/lognsq
 
-## [v1.6.0]
+## [v1.6.0] - 2022-01-22 Sat
 
 - Add [#218]: enable/disable logs for web-services, allow logs aggregation
   with NSQd.
 
-## [v1.5.7]
+## [v1.5.7] - 2021-11-26 Fri
 
 - Fix: parsed.NormalizeByType preserves period char.
 
-## [v1.5.6]
+## [v1.5.6] - 2021-11-21 Sun
 
 - Add [#212]: Set year from 'ex' authorship as a year of a name.
   Add 'ex' authors to list of all authors.
@@ -44,22 +49,22 @@
 - Fix [#213]: Stop generating space between `Mc`, `Mac` and the rest of an
   an author name.
 
-## [v1.5.5]
+## [v1.5.5] - 2021-11-17 Wed
 
 - Add [#207]: PR [#209] by @tobymarsden, fix parsing of names with `nudum`
   specific epithet.
 
-## [v1.5.4]
+## [v1.5.4] - 2021-11-14 Sun
 
 - Add: different approach for normalize-by-type for words.
 - Add [#205]: allow genera starting with De-, Eu-, Le-, Ne- (by @tobymarsden).
 - Add [#203]: allow up to 2 dashes in genera (by @tobymarsden).
 
-## [v1.5.3]
+## [v1.5.3] - 2021-11-13 Sat
 
 - Add [#202]: add NormalizeMore function for Word.
 
-## [v1.5.2]
+## [v1.5.2] - 2021-11-10 Wed
 
 - Add [#200]: support for 'div.' rank in uninomial combinations.
 - Add [#199]: fixes for several names that were not parsed correctly.
@@ -69,30 +74,30 @@
 - Add [#84]: parse "Muscicapa randi Amadon & duPont, 1970".
 - Add [#83]: parse authors like 'Laverde-R.'.
 
-## [v1.5.1]
+## [v1.5.1] - 2021-11-01 Mon
 
 - Add [#191]: support for ambiguous specific epithets
 
-## [v1.5.0]
+## [v1.5.0] - 2021-10-22 Fri
 
 - Add [#194]: support for cultivars' graft-chymeras (courtesy of @tobymarsden)
 
-## [v1.4.2]
+## [v1.4.2] - 2021-10-21 Thu
 
 - Add [#196]: parse authors with prefix 'ver'
 
-## [v1.4.1]
+## [v1.4.1] - 2021-10-07 Thu
 
 - Fix [#195]: parse multinomials where authorshp is not separated by space.
 
-## [v1.4.0]
+## [v1.4.0] - 2021-09-4 Sat
 
 - Add [#193]: add TSV format for output.
 - Add [#190]: support prefixes `do` and `de los` for authors.
 - Add [#187]: support `ter` suffix for authors.
 - Add [#186]: support non-ASCII apostrophe in authors.
 
-## [v1.3.3]
+## [v1.3.3] - 2021-09-11 Wed
 
 - Add [#176]: refactoring of hybrid sign treatment (use PEG instead of
   RegEx for normalizing `x`, `X`, and `×`.
@@ -100,17 +105,17 @@
   `ms in` as `in` or `ex` for exAuthors.
 - Add [#182]: support for authors with prefixes `ten`, `delle`, `dos`.
 
-## [v1.3.2]
+## [v1.3.2] - 2021-08-02 Mon
 
 - Add [#182]: support `Do`, `Oo`, `Nu` 2-letter genera.
 - Add [#53]: exceptions to annotations (`Bottaria nudum` for example).
 - Fix: names where sp epithet starts with `cf` can be parsed now.
 
-## [v1.3.1]
+## [v1.3.1] - 2021-07-17 Sat
 
 - Add [#180]: Zenodo DOI.
 
-## [v1.3.0]
+## [v1.3.0] - 2021-06-29 Tue
 
 - Add [#179]: cultivars info to README.
 - Add [#178]: parse cultivars via REST API.
@@ -122,24 +127,24 @@
 - Fix [#174]: Hybrid character is missed or wrong in details'
   `Words` section.
 
-## [v1.2.0]
+## [v1.2.0] - 2021-04-08 Thu
 
 - Add [#169]: option to capitalize first letter of name-strings.
 - Add [#166]: support 'fm.' as 'forma'.
 
-## [v1.1.0]
+## [v1.1.0] - 2021-03-21 Sun
 
 - Add [#163]: support bacterial `Candidatus` names.
 - Add [#162]: show PEG AST tree for debugging.
 - Add [#161]: add automatic tools dependency.
 - Add [#160]: use embed feature of Go v1.16.
 
-## [v1.0.13]
+## [v1.0.13] - 2021-02-23 Tue
 
 - Add: limit nightly builds to master only.
 - Fix [#159]: POST method contains w18rong URL.
 
-## [v1.0.12]
+## [v1.0.12] - 2021-02-21 Sun
 
 - Add [#154]: parse names with ambiguous `f.` as forma if there
   is a space between authr and `f.`. If there is
@@ -147,59 +152,59 @@
   warning in both cases.
 - Add: PHP example from @barotto about using pipes with gnparser.
 
-## [v1.0.11]
+## [v1.0.11] - 2021-02-20 Sat
 
 - Fix [#153]: flags `csv=false` and `with_details=false`
   trigger opposite behavior.
 
-## [v1.0.10]
+## [v1.0.10] - 2021-02-19 Fri
 
 - Add [#152]: change auto-prereleases from nightly to on master submit.
 - Add [#151]: do not parse names with `(endo|ecto)?symbiont`.
 - Add [#150]: ignore serovar/serotype in bacerital names.
 - Add [#149]: support abbreviated subgenus (`Aus (B.) cus`).
 
-## [v1.0.9]
+## [v1.0.9] - 2021-02-17 Wed
 
 - Add [#146]: unordered flag.
 - Add [#145]: better CI/build actions, add nightly binaries.
 - Fix [#144]: remove configuration file as it creates more problems than solves.
 
-## [v1.0.8]
+## [v1.0.8] - 2021-02-15 Mon
 
 - Add: remove config message for CLI app.
 - Add: ldflags `-s -w` to decrease binary size.
 - Fix: header does not show in CSV format for stream.
 
-## [v1.0.7]
+## [v1.0.7] - 2021-02-14 Sun
 
 - Add [#143]: `quiet` flag to suppress showing progress output.
 
 - Fix [#142]: stream waits until certain names number is equal the batch size.
 - Fix [#141]: config file is not created.
 
-## [v1.0.6]
+## [v1.0.6] - 2021-02-04 Thu
 
 - Add: update version handling, readme.
 
-## [v1.0.5]
+## [v1.0.5] - 2021-02-01 Mon
 
 - Add: remove gnlib package.
 - Add [#140]: remove config package.
 
-## [v1.0.4]
+## [v1.0.4] - 2021-01-23 Sat
 
 - Add: cleanup constructor methods names.
 
-## [v1.0.3]
+## [v1.0.3] - 2021-01-23 Sat
 
 - Add [#139]: make package names less abstract.
 
-## [v1.0.2]
+## [v1.0.2] - 2021-01-22 Fri
 
 - Fix [#137]: add correct VerbatimID for HTML-containing names.
 
-## [v1.0.1]
+## [v1.0.1] - 2021-01-20 Wed
 
 - Add [#136]: Man page
 - Add [#100]: Switch continuous integration to use GitHub Actions.
@@ -207,7 +212,7 @@
 
 - Fix [#135]: Changes: SubGenus->Subgenus, InfraSpecies->Infraspecies
 
-## [v1.0.0]
+## [v1.0.0] - 2021-01-19 Tue
 
 - Add [#127]: Update documentation to v1.0.0.
 - Add [#122]: Implement parsing as a stream in addition to batch parsing.
@@ -239,58 +244,58 @@
 - Add [#99]: Move code to GitHub and change links accordingly.
 - Add [#95]: Remove dependency on gRPC and protobuf.
 
-## [v0.14.4]
+## [v0.14.4] - 2020-12-15 Tue
 
 - Add [#96]: Do not parse names starting with "Candidatus".
 - Add [#93]: Parse 'y' (Spanish '&') as an author separator.
 
-## [v0.14.3]
+## [v0.14.3] - 2020-12-13 Sun
 
 - Add [#95]: Remove make dependency on gRPC tooling.
 - Add [#94]: Do not parse names with "bacterium" "epithet.
 
-## [v0.14.2]
+## [v0.14.2] - 2020-05-12 Tue
 
 - Add [#90]: Allow `ß` in names.
 - Add [#89]: Support `subspec.` as a rank.
 - Add [#82]: Support authors with prefix `zu`.
 
-## [v0.14.1]
+## [v0.14.1] - 2020-05-07 Thu
 
 - Fix: Change web API from default to Compact format to get correct API output.
 
-## [v0.14.0]
+## [v0.14.0] - 2020-05-07 Thu
 
 - Add [#81]: Add year range in format "1888/89".
 - Add [#80]: Add Cardinality to parser outputs.
 - Add [#79]: Make CSV the default format for CLI.
 - Add [#78]: Take into account `non-virus` names that look like virus names.
 
-## [v0.13.1]
+## [v0.13.1] - 2020-03-05 Thu
 
 - Fix [#77]: Memory leak when used as clib.
 - Fix [#76]: Non ASCII apostrophe does not show up in canonical.
 
-## [v0.13.0]
+## [v0.13.0] - 2020-02-12 Wed
 
 - Add [#74]: Simple format output is now in CSV format.
 - Add [#73]: Improve speed by using ragel's FSM instead of regex.
 - Fix [#75]: Normalize subspecies to `subsp.` instead of `ssp.`.
 - Fix [#72]: Surrogate detection by `gnparser.ParseToObject` method.
 
-## [v0.12.0]
+## [v0.12.0] - 2019-11-18 Mon
 
 - Add [#71]: do not parse 'Unnamed clade...'.
 - Add [#69]: gnparser as a shared C library.
 - Add: Make dynamic version using ldflags.
 - Fix [#70]: parse 'Remera cvancarai' correctly.
 
-## [v0.11.0]
+## [v0.11.0] - 2019-10-24 Thu
 
 - Add [#68]: add stemmed version of canonical form to outputs.
 - Add: benchmarks to gnparser_test.go
 
-## [v0.10.0]
+## [v0.10.0] - 2019-09-10 Tue
 
 - Add [#67]: field `authorship` of the name for JSON output
 - Add [#66]: remove HTML tags during parsing instead of a separate step.
@@ -298,7 +303,7 @@
 - Add [#60]: handle correctly deprecated ranks with Greek letters.
 - Fix [#62]: parser breaks on `Drepanolejeunea (Spruce) (Steph.)`.
 
-## [v0.9.0]
+## [v0.9.0] - 2019-08-16 Fri
 
 - Add [#65]: gRPC is able to return a protobuf object now instead of JSON.
   string (only for ParseArray function so far). The same protobuf object is now
@@ -307,14 +312,14 @@
   array of names instead of a stream.
 - Add [#63]: abbreviation for `form` or `forma` is now `f.` instead of `fm.`.
 
-## [v0.8.0]
+## [v0.8.0] - 2019-04-10 Wed
 
 - Add [#51]: strings like `Aus (Bus)` are parsed differently for ICN and ICZN
   names. If string inside of parenthesis matches known ICN author
   name is parsed as `Uninomial (Author)`, otherwise it is parsed
   as `Aus subgen. Bus`.
 
-## [v0.7.5]
+## [v0.7.5] - 2019-03-31 Sun
 
 - Add [#59]: method `ParseToObject` to avoid JSON in Go programs.
 - Add [#58]: parse `Aus (Bus)` as `Uninomial (Author)` to prevent botanical
@@ -322,14 +327,14 @@
 - Add [#57]: warning in cases of an ambiguous `filius`.
 - Fix [#56]: bug `Ambrysus-Stål, 1862` breaks parser.
 
-## [v0.7.4]
+## [v0.7.4] - 2019-02-12 Tue
 
 - Add [#48]: transliteration of diacriticals.
 - Add [#43]: notho- (hybrids) rank supported.
 - Add [#52]: genera with hyphens with lower or upper char after hyphen.
 - Add [#49]: multiple hyphens in specific epithet.
 
-## [v0.7.3]
+## [v0.7.3] - 2019-02-04 Mon
 
 - Add [#54]: add cleaning functions to gRPC
 - Add [#46]: add `supg.` rank
@@ -337,16 +342,16 @@
 - Add [#44]: documentation for canonicalName fields
 - Add [#42]: tests for command line app
 
-## [v0.7.2]
+## [v0.7.2] - 2019-02-01 Fri
 
 - Add [#41]: parse/clean multiple names from standard input.
 
-## [v0.7.1]
+## [v0.7.1] - 2019-01-24 Thu
 
 - Add [#40]: add names with missing parenthesis for combination authors.
 - Fix: remove typo for Scala parser URL on the parser web-page.
 
-## [v0.7.0]
+## [v0.7.0] - 2019-01-23 Wed
 
 - Add [#38]: docker image can do gRPC, REST, CLI
 - Add [#37]: flag for cleanup HTML entities and tags,
@@ -357,14 +362,14 @@
 - Add [#34]: escape HTML entities, remove common tags.
 - Add [#33]: Web-based user interface and REST API.
 
-## [v0.6.0]
+## [v0.6.0] - 2019-01-16 Wed
 
 - Add [#35]: gRPC method to preserve order in output according to input
 - Add [#30]: write inline and README documentation.
 - Add [#29]: docker and dockerhub support.
 - Add [#26]: get all parser rules to CamelCase format.
 
-## [v0.5.1]
+## [v0.5.1] - 2019-01-15 Tue
 
 - Add: fix Makefile
 - Add [#28]: non-ASCII apostrophe support.
@@ -384,6 +389,8 @@
 
 This document follows [changelog guidelines]
 
+[v1.6.5]: https://github.com/gnames/gnparser/compare/v1.6.4...v1.6.5
+[v1.6.4]: https://github.com/gnames/gnparser/compare/v1.6.3...v1.6.4
 [v1.6.3]: https://github.com/gnames/gnparser/compare/v1.6.2...v1.6.3
 [v1.6.2]: https://github.com/gnames/gnparser/compare/v1.6.1...v1.6.2
 [v1.6.1]: https://github.com/gnames/gnparser/compare/v1.6.0...v1.6.1
