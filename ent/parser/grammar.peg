@@ -228,7 +228,7 @@ AuthorWord <- !( HybridChar / "bold:") (AuthorDashInitials / AuthorWord1 /
 
 AuthorEtAl <- 'arg.' / 'et al.{?}' / ('et' / '&') ' al' '.'?
 
-AuthorWord1 <- 'duPont'
+AuthorWord1 <- 'duPont' / 'degli'
 
 AuthorWord2 <- (AuthorWord3 / AuthorWord4) Dash (AuthorWordSoft / AuthorInitial)
 

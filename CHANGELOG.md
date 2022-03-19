@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.6.4] - 2022-03-19 Sat
+
+- Add [#224]: Parse correctly italian authors with `degli`.
+
 ## [v1.6.3] - 2022-02-08
 
 - Add [#222]: Improve logs for NSQ, switch to zerologs library.
@@ -10,9 +14,9 @@
 
 - Fix [#221]: No parsing for names with `cyanobacterium`.
 - Fix [#220]: `Crenarchaeote enrichment culture clone` should stop parsing
-              at `enrichment`.
+  at `enrichment`.
 - Fix [#219]: filter out `complex` word during preprocessing for names like
-              `Aegla uruguayana complex`.
+  `Aegla uruguayana complex`.
 
 ## [v1.6.1]
 
@@ -21,7 +25,7 @@
 ## [v1.6.0]
 
 - Add [#218]: enable/disable logs for web-services, allow logs aggregation
-              with NSQd.
+  with NSQd.
 
 ## [v1.5.7]
 
@@ -30,20 +34,20 @@
 ## [v1.5.6]
 
 - Add [#212]: Set year from 'ex' authorship as a year of a name.
-              Add 'ex' authors to list of all authors.
+  Add 'ex' authors to list of all authors.
 
 - Add [#211]: PR [#214] by @tobymarsden, general approach for `non-...`
-              specific epithets.
+  specific epithets.
 
 - Add [#208]: PR [#210] by @tobymarsden, option to preserve diaereses.
 
 - Fix [#213]: Stop generating space between `Mc`, `Mac` and the rest of an
-              an author name.
+  an author name.
 
 ## [v1.5.5]
 
 - Add [#207]: PR [#209] by @tobymarsden, fix parsing of names with `nudum`
-              specific epithet.
+  specific epithet.
 
 ## [v1.5.4]
 
@@ -91,9 +95,9 @@
 ## [v1.3.3]
 
 - Add [#176]: refactoring of hybrid sign treatment (use PEG instead of
-              RegEx for normalizing `x`, `X`, and `×`.
+  RegEx for normalizing `x`, `X`, and `×`.
 - Add [#183]: stop parsing after `nec`, `non`, `fide`, `vide`, treat
-              `ms in` as `in` or `ex` for exAuthors.
+  `ms in` as `in` or `ex` for exAuthors.
 - Add [#182]: support for authors with prefixes `ten`, `delle`, `dos`.
 
 ## [v1.3.2]
@@ -116,7 +120,7 @@
 - Add: tests for cultivars (Toby Marsden)
 
 - Fix [#174]: Hybrid character is missed or wrong in details'
-              ``Words`` section.
+  `Words` section.
 
 ## [v1.2.0]
 
@@ -138,15 +142,15 @@
 ## [v1.0.12]
 
 - Add [#154]: parse names with ambiguous `f.` as forma if there
-              is a space between authr and `f.`. If there is
-              no space, parse as `filius`. Give ambiguity
-              warning in both cases.
-- Add:        PHP example from @barotto about using pipes with gnparser.
+  is a space between authr and `f.`. If there is
+  no space, parse as `filius`. Give ambiguity
+  warning in both cases.
+- Add: PHP example from @barotto about using pipes with gnparser.
 
 ## [v1.0.11]
 
 - Fix [#153]: flags `csv=false` and `with_details=false`
-              trigger opposite behavior.
+  trigger opposite behavior.
 
 ## [v1.0.10]
 
@@ -292,29 +296,29 @@
 - Add [#66]: remove HTML tags during parsing instead of a separate step.
 - Add [#61]: handle authors that end with a word "bis".
 - Add [#60]: handle correctly deprecated ranks with Greek letters.
-- Fix [#62]: parser breaks on ``Drepanolejeunea (Spruce) (Steph.)``.
+- Fix [#62]: parser breaks on `Drepanolejeunea (Spruce) (Steph.)`.
 
 ## [v0.9.0]
 
 - Add [#65]: gRPC is able to return a protobuf object now instead of JSON.
-string (only for ParseArray function so far). The same protobuf object is now
-also used by gnparser.ParseToObject function.
+  string (only for ParseArray function so far). The same protobuf object is now
+  also used by gnparser.ParseToObject function.
 - Add [#64]: gRPC method ParseArray that cleans and parses an input from an
-array of names instead of a stream.
+  array of names instead of a stream.
 - Add [#63]: abbreviation for `form` or `forma` is now `f.` instead of `fm.`.
 
 ## [v0.8.0]
 
 - Add [#51]: strings like `Aus (Bus)` are parsed differently for ICN and ICZN
-             names. If string inside of parenthesis matches known ICN author
-             name is parsed as `Uninomial (Author)`, otherwise it is parsed
-             as  `Aus subgen. Bus`.
+  names. If string inside of parenthesis matches known ICN author
+  name is parsed as `Uninomial (Author)`, otherwise it is parsed
+  as `Aus subgen. Bus`.
 
 ## [v0.7.5]
 
 - Add [#59]: method `ParseToObject` to avoid JSON in Go programs.
 - Add [#58]: parse `Aus (Bus)` as `Uninomial (Author)` to prevent botanical
-             authors appear as subgenera. We need a better solution for this.
+  authors appear as subgenera. We need a better solution for this.
 - Add [#57]: warning in cases of an ambiguous `filius`.
 - Fix [#56]: bug `Ambrysus-Stål, 1862` breaks parser.
 
@@ -328,8 +332,8 @@ array of names instead of a stream.
 ## [v0.7.3]
 
 - Add [#54]: add cleaning functions to gRPC
-- Add [#46]: add ``supg.`` rank
-- Add [#45]: add ``natio`` rank (deprecated ICZN rank)
+- Add [#46]: add `supg.` rank
+- Add [#45]: add `natio` rank (deprecated ICZN rank)
 - Add [#44]: documentation for canonicalName fields
 - Add [#42]: tests for command line app
 
@@ -346,7 +350,7 @@ array of names instead of a stream.
 
 - Add [#38]: docker image can do gRPC, REST, CLI
 - Add [#37]: flag for cleanup HTML entities and tags,
-             underscores are part of parsing.
+  underscores are part of parsing.
 - Add [#39]: documentation for contributors.
 - Add [#31]: continuous integration.
 - Add [#36]: substitute underscores to spaces for Newick format.
@@ -367,14 +371,14 @@ array of names instead of a stream.
 - Add [#27]: agamosp. agamossp. agamovar. ranks.
 - Add [#25]: reorganize output to be more readable and logical.
 - Add [#24]: gRPC server for receiving name-strings and streaming back the
-             parsed results.
+  parsed results.
 - Add [#23]: Remove multiple years. Now name can have only one year.
 - Add [#22]: Run the parser against 24 million names from global names index and
-             fix found problems.
-- Add [#21]: Rebuilds tests into ``test_data_new.txt`` file. It is important for
-             making global changes in tests.
+  fix found problems.
+- Add [#21]: Rebuilds tests into `test_data_new.txt` file. It is important for
+  making global changes in tests.
 - Add [#20]: Pass all tests made for Scala gnparser. Tickets 1-19 are about
-             approaching [#20].
+  approaching [#20].
 
 ## Footnotes
 
@@ -436,7 +440,6 @@ This document follows [changelog guidelines]
 [v0.7.0]: https://github.com/gnames/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
-
 [#230]: https://github.com/gnames/gnparser/issues/230
 [#229]: https://github.com/gnames/gnparser/issues/229
 [#228]: https://github.com/gnames/gnparser/issues/228
@@ -644,5 +647,4 @@ This document follows [changelog guidelines]
 [#22]: https://github.com/gnames/gnparser/issues/22
 [#21]: https://github.com/gnames/gnparser/issues/21
 [#20]: https://github.com/gnames/gnparser/issues/20
-
 [changelog guidelines]: https://github.com/olivierlacan/keep-a-changelog

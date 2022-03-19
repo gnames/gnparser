@@ -41,6 +41,7 @@
   * [Names with ex authors (we follow ICZN convention)](#names-with-ex-authors-we-follow-iczn-convention)
   * [Empty spaces](#empty-spaces)
   * [Names with a dash](#names-with-a-dash)
+  * [Authorship with 'degli'](#authorship-with-degli)
   * [Authorship with filius (son of)](#authorship-with-filius-son-of)
   * [Names with emend (rectified by) authorship](#names-with-emend-rectified-by-authorship)
   * [Names with an unparsed "tail"](#names-with-an-unparsed-tail)
@@ -3552,6 +3553,18 @@ Authorship: Y. C. Lan & T. Y. Cheo
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Solms-laubachia orbiculata Y.C. Lan \u0026 T.Y. Cheo","normalized":"Solms-laubachia orbiculata Y. C. Lan \u0026 T. Y. Cheo","canonical":{"stemmed":"Solms-laubachia orbiculat","simple":"Solms-laubachia orbiculata","full":"Solms-laubachia orbiculata"},"cardinality":2,"authorship":{"verbatim":"Y.C. Lan \u0026 T.Y. Cheo","normalized":"Y. C. Lan \u0026 T. Y. Cheo","authors":["Y. C. Lan","T. Y. Cheo"],"originalAuth":{"authors":["Y. C. Lan","T. Y. Cheo"]}},"details":{"species":{"genus":"Solms-laubachia","species":"orbiculata","authorship":{"verbatim":"Y.C. Lan \u0026 T.Y. Cheo","normalized":"Y. C. Lan \u0026 T. Y. Cheo","authors":["Y. C. Lan","T. Y. Cheo"],"originalAuth":{"authors":["Y. C. Lan","T. Y. Cheo"]}}}},"words":[{"verbatim":"Solms-laubachia","normalized":"Solms-laubachia","wordType":"GENUS","start":0,"end":15},{"verbatim":"orbiculata","normalized":"orbiculata","wordType":"SPECIES","start":16,"end":26},{"verbatim":"Y.","normalized":"Y.","wordType":"AUTHOR_WORD","start":27,"end":29},{"verbatim":"C.","normalized":"C.","wordType":"AUTHOR_WORD","start":29,"end":31},{"verbatim":"Lan","normalized":"Lan","wordType":"AUTHOR_WORD","start":32,"end":35},{"verbatim":"T.","normalized":"T.","wordType":"AUTHOR_WORD","start":38,"end":40},{"verbatim":"Y.","normalized":"Y.","wordType":"AUTHOR_WORD","start":40,"end":42},{"verbatim":"Cheo","normalized":"Cheo","wordType":"AUTHOR_WORD","start":43,"end":47}],"id":"4dce39e2-ffd7-5a1b-bd1a-2bc12049be90","parserVersion":"test_version"}
+```
+
+### Authorship with 'degli'
+
+Name: Cestodiscus gemmifer F. S. Castracane degli Antelminelli
+
+Canonical: Cestodiscus gemmifer
+
+Authorship: F. S. Castracane degli Antelminelli
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Cestodiscus gemmifer F. S. Castracane degli Antelminelli","normalized":"Cestodiscus gemmifer F. S. Castracane degli Antelminelli","canonical":{"stemmed":"Cestodiscus gemmifer","simple":"Cestodiscus gemmifer","full":"Cestodiscus gemmifer"},"cardinality":2,"authorship":{"verbatim":"F. S. Castracane degli Antelminelli","normalized":"F. S. Castracane degli Antelminelli","authors":["F. S. Castracane degli Antelminelli"],"originalAuth":{"authors":["F. S. Castracane degli Antelminelli"]}},"details":{"species":{"genus":"Cestodiscus","species":"gemmifer","authorship":{"verbatim":"F. S. Castracane degli Antelminelli","normalized":"F. S. Castracane degli Antelminelli","authors":["F. S. Castracane degli Antelminelli"],"originalAuth":{"authors":["F. S. Castracane degli Antelminelli"]}}}},"words":[{"verbatim":"Cestodiscus","normalized":"Cestodiscus","wordType":"GENUS","start":0,"end":11},{"verbatim":"gemmifer","normalized":"gemmifer","wordType":"SPECIES","start":12,"end":20},{"verbatim":"F.","normalized":"F.","wordType":"AUTHOR_WORD","start":21,"end":23},{"verbatim":"S.","normalized":"S.","wordType":"AUTHOR_WORD","start":24,"end":26},{"verbatim":"Castracane","normalized":"Castracane","wordType":"AUTHOR_WORD","start":27,"end":37},{"verbatim":"degli","normalized":"degli","wordType":"AUTHOR_WORD","start":38,"end":43},{"verbatim":"Antelminelli","normalized":"Antelminelli","wordType":"AUTHOR_WORD","start":44,"end":56}],"id":"95572f76-8ce0-5ba4-ae63-7492d37d0bed","parserVersion":"test_version"}
 ```
 
 ### Authorship with filius (son of)
