@@ -1,4 +1,4 @@
-package main
+package gnparser_test
 
 import (
 	"strings"

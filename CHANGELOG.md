@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.6.6] - 2022-05-15 Sun
+
+- Add [#224]: Creation of Nix packages for gnparser.
+
 ## [v1.6.5] - 2022-03-21 Mon
 
 - Add [#223]: Use PEG parser for preprocess instead of RegEx.
