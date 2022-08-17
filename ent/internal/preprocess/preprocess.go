@@ -31,8 +31,10 @@ var VirusException = map[string]string{
 	"Neoaemula":     "vector",
 	"Nephodia":      "satellites",
 	"Ophion":        "virus",
+	"Phalium":       "vector",
 	"Psenulus":      "trevirus",
 	"Tidabius":      "vector",
+	"Turkozelotes":  "attavirus",
 }
 
 var AmbiguousException = map[string][]string{
@@ -65,7 +67,8 @@ var AmbiguousException = map[string][]string{
 }
 
 var NoParseException = map[string]string{
-	"Navicula": "bacterium",
+	"Navicula":   "bacterium",
+	"Spirophora": "bacterium",
 }
 
 var cultivarRankRe = regexp.MustCompile(

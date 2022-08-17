@@ -16,7 +16,7 @@
   * [Binomials with an abbreviated genus](#binomials-with-an-abbreviated-genus)
   * [Binomials with abbreviated subgenus](#binomials-with-abbreviated-subgenus)
   * [Binomials with basionym and combination authors](#binomials-with-basionym-and-combination-authors)
-  * [Binomials with exceptions](#binomials-with-exceptions)
+  * [Exceptions with Binomials](#exceptions-with-binomials)
   * [Binomials with Mc and Mac authors](#binomials-with-mc-and-mac-authors)
   * [Infraspecies without rank (ICZN)](#infraspecies-without-rank-iczn)
   * [Legacy ICZN names with rank](#legacy-iczn-names-with-rank)
@@ -1603,7 +1603,7 @@ Authorship: H. del Villar
 {"parsed":true,"quality":1,"verbatim":"Armeria carpetana ssp. carpetana H. del Villar","normalized":"Armeria carpetana subsp. carpetana H. del Villar","canonical":{"stemmed":"Armeria carpetan carpetan","simple":"Armeria carpetana carpetana","full":"Armeria carpetana subsp. carpetana"},"cardinality":3,"authorship":{"verbatim":"H. del Villar","normalized":"H. del Villar","authors":["H. del Villar"],"originalAuth":{"authors":["H. del Villar"]}},"details":{"infraspecies":{"genus":"Armeria","species":"carpetana","infraspecies":[{"value":"carpetana","rank":"subsp.","authorship":{"verbatim":"H. del Villar","normalized":"H. del Villar","authors":["H. del Villar"],"originalAuth":{"authors":["H. del Villar"]}}}]}},"words":[{"verbatim":"Armeria","normalized":"Armeria","wordType":"GENUS","start":0,"end":7},{"verbatim":"carpetana","normalized":"carpetana","wordType":"SPECIES","start":8,"end":17},{"verbatim":"ssp.","normalized":"subsp.","wordType":"RANK","start":18,"end":22},{"verbatim":"carpetana","normalized":"carpetana","wordType":"INFRASPECIES","start":23,"end":32},{"verbatim":"H.","normalized":"H.","wordType":"AUTHOR_WORD","start":33,"end":35},{"verbatim":"del","normalized":"del","wordType":"AUTHOR_WORD","start":36,"end":39},{"verbatim":"Villar","normalized":"Villar","wordType":"AUTHOR_WORD","start":40,"end":46}],"id":"4b16116e-549d-56bf-959a-ff11edb25021","parserVersion":"test_version"}
 ```
 
-### Binomials with exceptions
+### Exceptions with Binomials
 
 Name: Navicula bacterium Frenguelli
 
@@ -1623,6 +1623,36 @@ Authorship: (Nyl.) Vain.
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Bottaria nudum (Nyl.) Vain.","normalized":"Bottaria nudum (Nyl.) Vain.","canonical":{"stemmed":"Bottaria nud","simple":"Bottaria nudum","full":"Bottaria nudum"},"cardinality":2,"authorship":{"verbatim":"(Nyl.) Vain.","normalized":"(Nyl.) Vain.","authors":["Nyl.","Vain."],"originalAuth":{"authors":["Nyl."]},"combinationAuth":{"authors":["Vain."]}},"details":{"species":{"genus":"Bottaria","species":"nudum","authorship":{"verbatim":"(Nyl.) Vain.","normalized":"(Nyl.) Vain.","authors":["Nyl.","Vain."],"originalAuth":{"authors":["Nyl."]},"combinationAuth":{"authors":["Vain."]}}}},"words":[{"verbatim":"Bottaria","normalized":"Bottaria","wordType":"GENUS","start":0,"end":8},{"verbatim":"nudum","normalized":"nudum","wordType":"SPECIES","start":9,"end":14},{"verbatim":"Nyl.","normalized":"Nyl.","wordType":"AUTHOR_WORD","start":16,"end":20},{"verbatim":"Vain.","normalized":"Vain.","wordType":"AUTHOR_WORD","start":22,"end":27}],"id":"91799409-de6f-5341-ab24-336da9f6b80b","parserVersion":"test_version"}
+```
+
+Name: Turkozelotes attavirus Chatzaki, 2019
+
+Canonical: Turkozelotes attavirus
+
+Authorship: Chatzaki, 2019
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Turkozelotes attavirus Chatzaki, 2019","normalized":"Turkozelotes attavirus Chatzaki 2019","canonical":{"stemmed":"Turkozelotes attauir","simple":"Turkozelotes attavirus","full":"Turkozelotes attavirus"},"cardinality":2,"authorship":{"verbatim":"Chatzaki, 2019","normalized":"Chatzaki 2019","year":"2019","authors":["Chatzaki"],"originalAuth":{"authors":["Chatzaki"],"year":{"year":"2019"}}},"details":{"species":{"genus":"Turkozelotes","species":"attavirus","authorship":{"verbatim":"Chatzaki, 2019","normalized":"Chatzaki 2019","year":"2019","authors":["Chatzaki"],"originalAuth":{"authors":["Chatzaki"],"year":{"year":"2019"}}}}},"words":[{"verbatim":"Turkozelotes","normalized":"Turkozelotes","wordType":"GENUS","start":0,"end":12},{"verbatim":"attavirus","normalized":"attavirus","wordType":"SPECIES","start":13,"end":22},{"verbatim":"Chatzaki","normalized":"Chatzaki","wordType":"AUTHOR_WORD","start":23,"end":31},{"verbatim":"2019","normalized":"2019","wordType":"YEAR","start":33,"end":37}],"id":"60295698-060d-5ffd-982b-e3c0e0d6a1c7","parserVersion":"test_version"}
+```
+
+Name: Phalium (Semicassis) vector R. T. Abbott, 1993
+
+Canonical: Phalium (Semicassis) vector
+
+Authorship: R. T. Abbott, 1993
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Phalium (Semicassis) vector R. T. Abbott, 1993","normalized":"Phalium (Semicassis) vector R. T. Abbott 1993","canonical":{"stemmed":"Phalium uector","simple":"Phalium vector","full":"Phalium vector"},"cardinality":2,"authorship":{"verbatim":"R. T. Abbott, 1993","normalized":"R. T. Abbott 1993","year":"1993","authors":["R. T. Abbott"],"originalAuth":{"authors":["R. T. Abbott"],"year":{"year":"1993"}}},"details":{"species":{"genus":"Phalium","subgenus":"Semicassis","species":"vector","authorship":{"verbatim":"R. T. Abbott, 1993","normalized":"R. T. Abbott 1993","year":"1993","authors":["R. T. Abbott"],"originalAuth":{"authors":["R. T. Abbott"],"year":{"year":"1993"}}}}},"words":[{"verbatim":"Phalium","normalized":"Phalium","wordType":"GENUS","start":0,"end":7},{"verbatim":"Semicassis","normalized":"Semicassis","wordType":"INFRA_GENUS","start":9,"end":19},{"verbatim":"vector","normalized":"vector","wordType":"SPECIES","start":21,"end":27},{"verbatim":"R.","normalized":"R.","wordType":"AUTHOR_WORD","start":28,"end":30},{"verbatim":"T.","normalized":"T.","wordType":"AUTHOR_WORD","start":31,"end":33},{"verbatim":"Abbott","normalized":"Abbott","wordType":"AUTHOR_WORD","start":34,"end":40},{"verbatim":"1993","normalized":"1993","wordType":"YEAR","start":42,"end":46}],"id":"15589e11-23ac-5896-859c-448018697211","parserVersion":"test_version"}
+```
+
+Name: Spirophora bacterium Lendenfeld, 1887
+
+Canonical: Spirophora bacterium
+
+Authorship: Lendenfeld, 1887
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Spirophora bacterium Lendenfeld, 1887","normalized":"Spirophora bacterium Lendenfeld 1887","canonical":{"stemmed":"Spirophora bacteri","simple":"Spirophora bacterium","full":"Spirophora bacterium"},"cardinality":2,"authorship":{"verbatim":"Lendenfeld, 1887","normalized":"Lendenfeld 1887","year":"1887","authors":["Lendenfeld"],"originalAuth":{"authors":["Lendenfeld"],"year":{"year":"1887"}}},"details":{"species":{"genus":"Spirophora","species":"bacterium","authorship":{"verbatim":"Lendenfeld, 1887","normalized":"Lendenfeld 1887","year":"1887","authors":["Lendenfeld"],"originalAuth":{"authors":["Lendenfeld"],"year":{"year":"1887"}}}}},"words":[{"verbatim":"Spirophora","normalized":"Spirophora","wordType":"GENUS","start":0,"end":10},{"verbatim":"bacterium","normalized":"bacterium","wordType":"SPECIES","start":11,"end":20},{"verbatim":"Lendenfeld","normalized":"Lendenfeld","wordType":"AUTHOR_WORD","start":21,"end":31},{"verbatim":"1887","normalized":"1887","wordType":"YEAR","start":33,"end":37}],"id":"df16a7e2-a81f-578e-9e1c-ce8644fe4a62","parserVersion":"test_version"}
 ```
 
 ### Binomials with Mc and Mac authors
