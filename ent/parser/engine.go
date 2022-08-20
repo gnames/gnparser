@@ -136,6 +136,8 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 		p.addWarn(parsed.GreekLetterInRank)
 	case ruleAuthorSepSpanish:
 		p.addWarn(parsed.SpanishAndAsSeparator)
+	case ruleIgnoredWord:
+		p.addWarn(parsed.ContainsIgnoredAnnotation)
 	}
 	if _, ok := nodeRules[t.pegRule]; ok {
 		node = &node32{token32: t}

@@ -50,9 +50,11 @@ GenusWord <- (AbbrGenus / UninomialWord) !(_ AuthorWord)
 
 InfraspGroup <- InfraspEpithet (_ InfraspEpithet)?  (_ InfraspEpithet)?
 
-InfraspEpithet <- (Rank _?)? !(AuthorEx) Word  (_? Authorship)?
+InfraspEpithet <- (Rank _?)? !(AuthorEx) Word (_ IgnoredWord)? (_? Authorship)?
 
-CultivarWordGroup <-  ((RankCultivar _)? CultivarApostrophe CultivarRecursive CultivarApostrophe) / (RankCultivar _ Cultivar)
+CultivarWordGroup <-  ((RankCultivar _)? CultivarApostrophe
+                      CultivarRecursive CultivarApostrophe) /
+                      (RankCultivar _ Cultivar)
 
 Cultivar <- NotHybridChar+
 
@@ -65,7 +67,9 @@ CultivarRecursive <- NotHybridChar CultivarRecursive / &CultivarApostrophe
 
 CultivarApostrophe <- '\'' / '‘' / '’' / '"' / '“' / '”'
 
-SpeciesEpithet <- !(AuthorEx) Word (_? Authorship)?
+SpeciesEpithet <- !(AuthorEx) Word (_ IgnoredWord)? (_? Authorship)?
+
+IgnoredWord <- 'mihi.' / 'mihi'
 
 Comparison <- 'cf' '.'? &(SpaceCharEOI)
 

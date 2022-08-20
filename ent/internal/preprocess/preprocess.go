@@ -38,13 +38,16 @@ var VirusException = map[string]string{
 }
 
 var AmbiguousException = map[string][]string{
+	"Aeolesthes":     {"mihi"},
 	"Agnetina":       {"den"},
+	"Anisochaeta":    {"mihi"},
 	"Antaplaga":      {"dela"},
 	"Baeolidia":      {"dela"},
 	"Bolitoglossa":   {"la"},
 	"Campylosphaera": {"dela"},
 	"Desmoxytes":     {"des"},
 	"Dicentria":      {"dela"},
+	"Eucyclops":      {"mihi"},
 	"Eulaira":        {"dela"},
 	"Gnathopleustes": {"den"},
 	"Gobiosoma":      {"spec"},

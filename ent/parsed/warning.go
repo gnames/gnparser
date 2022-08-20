@@ -29,6 +29,7 @@ const (
 	CanonicalApostropheWarn
 	CapWordQuestionWarn
 	CharBadWarn
+	ContainsIgnoredAnnotation
 	CultivarEpithetWarn
 	DotEpithetWarn
 	GenusAbbrWarn
@@ -87,6 +88,7 @@ var warningMap = map[Warning]string{
 	CanonicalApostropheWarn:               "Apostrophe is not allowed in canonical",
 	CapWordQuestionWarn:                   "Uninomial word with question mark",
 	CharBadWarn:                           "Non-standard characters in canonical",
+	ContainsIgnoredAnnotation:             "Ignored annotation `mihi`",
 	CultivarEpithetWarn:                   "Cultivar epithet",
 	DotEpithetWarn:                        "Period character is not allowed in canonical",
 	GenusAbbrWarn:                         "Abbreviated uninomial word",
@@ -154,6 +156,7 @@ var WarningQualityMap = map[Warning]int{
 	CanonicalApostropheWarn:               3,
 	CapWordQuestionWarn:                   4,
 	CharBadWarn:                           2,
+	ContainsIgnoredAnnotation:             3,
 	CultivarEpithetWarn:                   2,
 	DotEpithetWarn:                        3,
 	GenusAbbrWarn:                         4,

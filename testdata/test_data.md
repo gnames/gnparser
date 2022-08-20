@@ -95,6 +95,8 @@
   * [Removing nomenclatural annotations](#removing-nomenclatural-annotations)
   * [Misc annotations](#misc-annotations)
   * [Horticultural annotation](#horticultural-annotation)
+  * [Names with "mihi"](#names-with-mihi)
+  * [Exceptions with "mihi"](#exceptions-with-mihi)
   * [Exceptions from ranks (rank-line epithets)](#exceptions-from-ranks-rank-line-epithets)
   * [Exceptions from author prefixes (prefix-like epithets)](#exceptions-from-author-prefixes-prefix-like-epithets)
   * [Exceptions from author suffixes (suffix-like epithets)](#exceptions-from-author-suffixes-suffix-like-epithets)
@@ -6696,6 +6698,40 @@ Authorship:
 
 ```json
 {"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Puya acris hort.","normalized":"Puya acris","canonical":{"stemmed":"Puya acr","simple":"Puya acris","full":"Puya acris"},"cardinality":2,"tail":" hort.","details":{"species":{"genus":"Puya","species":"acris"}},"words":[{"verbatim":"Puya","normalized":"Puya","wordType":"GENUS","start":0,"end":4},{"verbatim":"acris","normalized":"acris","wordType":"SPECIES","start":5,"end":10}],"id":"78228a5e-dcd3-58f9-bf21-b452c378f6ee","parserVersion":"test_version"}
+```
+
+### Names with "mihi"
+
+Name: Characium obovatum mihi. var. longipes mihi
+
+Canonical: Characium obovatum var. longipes
+
+Authorship:
+
+```json
+{"parsed":true,"quality":3,"qualityWarnings":[{"quality":3,"warning":"Ignored annotation `mihi`"}],"verbatim":"Characium obovatum mihi. var. longipes mihi","normalized":"Characium obovatum var. longipes","canonical":{"stemmed":"Characium obouat longip","simple":"Characium obovatum longipes","full":"Characium obovatum var. longipes"},"cardinality":3,"details":{"infraspecies":{"genus":"Characium","species":"obovatum","infraspecies":[{"value":"longipes","rank":"var."}]}},"words":[{"verbatim":"Characium","normalized":"Characium","wordType":"GENUS","start":0,"end":9},{"verbatim":"obovatum","normalized":"obovatum","wordType":"SPECIES","start":10,"end":18},{"verbatim":"var.","normalized":"var.","wordType":"RANK","start":25,"end":29},{"verbatim":"longipes","normalized":"longipes","wordType":"INFRASPECIES","start":30,"end":38}],"id":"39baca43-fcb1-5b13-8458-0729fb5f22dd","parserVersion":"test_version"}
+```
+
+Name: Regulus modestus mihi. Gould 1837
+
+Canonical: Regulus modestus
+
+Authorship: Gould 1837"
+
+```json
+{"parsed":true,"quality":3,"qualityWarnings":[{"quality":3,"warning":"Ignored annotation `mihi`"}],"verbatim":"Regulus modestus mihi. Gould 1837","normalized":"Regulus modestus Gould 1837","canonical":{"stemmed":"Regulus modest","simple":"Regulus modestus","full":"Regulus modestus"},"cardinality":2,"authorship":{"verbatim":"Gould 1837","normalized":"Gould 1837","year":"1837","authors":["Gould"],"originalAuth":{"authors":["Gould"],"year":{"year":"1837"}}},"details":{"species":{"genus":"Regulus","species":"modestus","authorship":{"verbatim":"Gould 1837","normalized":"Gould 1837","year":"1837","authors":["Gould"],"originalAuth":{"authors":["Gould"],"year":{"year":"1837"}}}}},"words":[{"verbatim":"Regulus","normalized":"Regulus","wordType":"GENUS","start":0,"end":7},{"verbatim":"modestus","normalized":"modestus","wordType":"SPECIES","start":8,"end":16},{"verbatim":"Gould","normalized":"Gould","wordType":"AUTHOR_WORD","start":23,"end":28},{"verbatim":"1837","normalized":"1837","wordType":"YEAR","start":29,"end":33}],"id":"4cb15cc3-9327-552f-9afb-2af349a874a5","parserVersion":"test_version"}
+```
+
+### Exceptions with "mihi"
+
+Name: Eucyclops serrulatus mihi Dussart, Graf & Husson, 1966
+
+Canonical: Eucyclops serrulatus mihi
+
+Authorship: Dussart, Graf & Husson, 1966"
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Eucyclops serrulatus mihi Dussart, Graf \u0026 Husson, 1966","normalized":"Eucyclops serrulatus mihi Dussart, Graf \u0026 Husson 1966","canonical":{"stemmed":"Eucyclops serrulat mih","simple":"Eucyclops serrulatus mihi","full":"Eucyclops serrulatus mihi"},"cardinality":3,"authorship":{"verbatim":"Dussart, Graf \u0026 Husson, 1966","normalized":"Dussart, Graf \u0026 Husson 1966","year":"1966","authors":["Dussart","Graf","Husson"],"originalAuth":{"authors":["Dussart","Graf","Husson"],"year":{"year":"1966"}}},"details":{"infraspecies":{"genus":"Eucyclops","species":"serrulatus","infraspecies":[{"value":"kihi","authorship":{"verbatim":"Dussart, Graf \u0026 Husson, 1966","normalized":"Dussart, Graf \u0026 Husson 1966","year":"1966","authors":["Dussart","Graf","Husson"],"originalAuth":{"authors":["Dussart","Graf","Husson"],"year":{"year":"1966"}}}}]}},"words":[{"verbatim":"Eucyclops","normalized":"Eucyclops","wordType":"GENUS","start":0,"end":9},{"verbatim":"serrulatus","normalized":"serrulatus","wordType":"SPECIES","start":10,"end":20},{"verbatim":"mihi","normalized":"mihi","wordType":"INFRASPECIES","start":21,"end":25},{"verbatim":"Dussart","normalized":"Dussart","wordType":"AUTHOR_WORD","start":26,"end":33},{"verbatim":"Graf","normalized":"Graf","wordType":"AUTHOR_WORD","start":35,"end":39},{"verbatim":"Husson","normalized":"Husson","wordType":"AUTHOR_WORD","start":42,"end":48},{"verbatim":"1966","normalized":"1966","wordType":"YEAR","start":50,"end":54}],"id":"fd1806d9-761c-5b8c-9ee4-94299b9dd289","parserVersion":"test_version"}
 ```
 
 ### Exceptions from ranks (rank-line epithets)
