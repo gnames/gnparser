@@ -320,10 +320,11 @@ mkdir C:\bin
 copy path_to\gnparser.exe C:\bin
 ```
 
-[Add ``C:\bin`` directory to your ``PATH``][winpath] environment variable.
+[Add ``C:\bin`` directory to your ``PATH``][winpath] `user` and/or `system`
+environment variables.
 
 It is also possible to install [Windows Subsystem for Linux][wsl] on Windows
-10, and use ``gnparser`` as a Linux executable.
+(v10 or v11), and use ``gnparser`` as a Linux executable.
 
 ### Install with Go
 
