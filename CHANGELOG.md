@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v1.6.7] - 2022-08-22 Mon
+
+- Add [#231]: more edge cases.
+- Add [#230]: Take into account `mihi` annotation.
+
 ## [v1.6.6] - 2022-05-15 Sun
 
 - Add [#224]: Creation of Nix packages for gnparser.
