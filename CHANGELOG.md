@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.6.8] - 2022-10-01 Sat
+
+- Add: update all modules.
+
 ## [v1.6.7] - 2022-08-22 Mon
 
 - Add [#231]: more edge cases.
