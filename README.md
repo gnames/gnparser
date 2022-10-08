@@ -18,7 +18,10 @@ as a part of [Global Names Architecture Project][gna].
 
 To use `GNparser` as a command line tool under Windows, Mac or Linux,
 download the [latest release][releases], uncompress it, and copy `gnparser`
-binary somewhere in your PATH.
+binary somewhere in your PATH. On a Mac you might also need to go to
+`System Preferences` and security panel select `Allow from other
+developers`. Then, after running `gnparser`, click 'Yes' in a dialog box
+allowing to run a program from an "unregistered developer".
 
 ```bash
 tar xvf gnparser-v1.0.0-linux.tar.gz
