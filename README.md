@@ -51,8 +51,8 @@ gnparser -h
   * [Assembling canonical forms etc. from original spelling](#assembling-canonical-forms-etc-from-original-spelling)
 * [Tutorials](#tutorials)
 * [Installation](#installation)
-  * [Install with Homebrew](#install-with-homebrew)
-  * [Linux or OS X](#linux-or-os-x)
+  * [Install with Homebrew (Mac OS X, Linux)](#install-with-homebrew-mac-os-x-linux)
+  * [Linux or Mac OS X](#linux-or-mac-os-x)
   * [Windows](#windows)
   * [Install with Go](#install-with-go)
 * [Usage](#usage)
@@ -284,7 +284,7 @@ few megabytes). As a result the binary file of ``gnparser`` is all you need to
 make it work. You can install it by downloading the [latest version of the
 binary][releases] for your operating system, and placing it in your ``PATH``.
 
-### Install with Homebrew
+### Install with Homebrew (Mac OS X, Linux)
 
 [Homebrew] is a packaging system originally made for Mac OS X. You can use it
 now for Mac, Linux, or Windows X WSL (Windows susbsystem for Linux).
@@ -298,7 +298,7 @@ now for Mac, Linux, or Windows X WSL (Windows susbsystem for Linux).
     brew install gnparser
     ```
 
-### Linux or OS X
+### Linux or Mac OS X
 
 Move ``gnparser`` executable somewhere in your PATH
 (for example ``/usr/local/bin``)
