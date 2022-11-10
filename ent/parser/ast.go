@@ -1167,6 +1167,9 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *parsed.Word {
 				nv := str.ToASCII(wrd.Verbatim, str.GlobalTransliterations)
 				wrd.Normalized = nv
 			}
+		case ruleDashOther:
+			p.addWarn(parsed.DashOtherWarn)
+			wrd.Normalized = normalizeDashes(wrd.Verbatim)
 		}
 	}
 
@@ -1219,6 +1222,10 @@ func (p *Engine) newCultivarEpithetNode(n *node32, wt parsed.WordType) *cultivar
 }
 
 var numWord = regexp.MustCompile(`^([0-9]+)[-\.]?(.+)$`)
+
+func normalizeDashes(s string) string {
+	return strings.ReplaceAll(s, "‑", "-")
+}
 
 func normalizeNums(s string) string {
 	res := s

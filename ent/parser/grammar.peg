@@ -327,7 +327,9 @@ ApostrASCII <- '\''
 ApostrOther <- '‘' / '’' / '`' / '´'
 
 
-Dash <- '-'
+Dash <- '-' / DashOther
+
+DashOther <- [‑]
 
 Slash <- '/'
 

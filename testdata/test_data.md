@@ -80,6 +80,7 @@
   * [Punctuation in the end](#punctuation-in-the-end)
   * [Names with 'ex' as sp. epithet](#names-with-ex-as-sp-epithet)
   * [Names with Spanish 'y' instead of '&'](#names-with-spanish-y-instead-of-)
+  * [Normalize atypical dashes](#normalize-atypical-dashes)
   * [Discard apostrophes at the start and end of words](#discard-apostrophes-at-the-start-and-end-of-words)
   * [Discard apostrophe with dash (rare, needs further investigation)](#discard-apostrophe-with-dash-rare-needs-further-investigation)
   * [Possible canonical](#possible-canonical)
@@ -5714,6 +5715,18 @@ Authorship: Bolvar, Pieltain, Rotger & Coronado 1967
 
 ```json
 {"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Spanish 'y' is used instead of '&'"}],"verbatim":"Carabus (Tanaocarabus) hendrichsi Bolvar y Pieltain, Rotger \u0026 Coronado 1967","normalized":"Carabus (Tanaocarabus) hendrichsi Bolvar, Pieltain, Rotger \u0026 Coronado 1967","canonical":{"stemmed":"Carabus hendrichs","simple":"Carabus hendrichsi","full":"Carabus hendrichsi"},"cardinality":2,"authorship":{"verbatim":"Bolvar y Pieltain, Rotger \u0026 Coronado 1967","normalized":"Bolvar, Pieltain, Rotger \u0026 Coronado 1967","year":"1967","authors":["Bolvar","Pieltain","Rotger","Coronado"],"originalAuth":{"authors":["Bolvar","Pieltain","Rotger","Coronado"],"year":{"year":"1967"}}},"details":{"species":{"genus":"Carabus","subgenus":"Tanaocarabus","species":"hendrichsi","authorship":{"verbatim":"Bolvar y Pieltain, Rotger \u0026 Coronado 1967","normalized":"Bolvar, Pieltain, Rotger \u0026 Coronado 1967","year":"1967","authors":["Bolvar","Pieltain","Rotger","Coronado"],"originalAuth":{"authors":["Bolvar","Pieltain","Rotger","Coronado"],"year":{"year":"1967"}}}}},"words":[{"verbatim":"Carabus","normalized":"Carabus","wordType":"GENUS","start":0,"end":7},{"verbatim":"Tanaocarabus","normalized":"Tanaocarabus","wordType":"INFRA_GENUS","start":9,"end":21},{"verbatim":"hendrichsi","normalized":"hendrichsi","wordType":"SPECIES","start":23,"end":33},{"verbatim":"Bolvar","normalized":"Bolvar","wordType":"AUTHOR_WORD","start":34,"end":40},{"verbatim":"Pieltain","normalized":"Pieltain","wordType":"AUTHOR_WORD","start":43,"end":51},{"verbatim":"Rotger","normalized":"Rotger","wordType":"AUTHOR_WORD","start":53,"end":59},{"verbatim":"Coronado","normalized":"Coronado","wordType":"AUTHOR_WORD","start":62,"end":70},{"verbatim":"1967","normalized":"1967","wordType":"YEAR","start":71,"end":75}],"id":"519c0687-2303-5b8c-a69f-68e2bd055b5e","parserVersion":"test_version"}
+```
+
+### Normalize atypical dashes
+
+Name: Passalus (Pertinax) gaboi Jiménez‑Ferbans & Reyes‑Castillo, 2022
+
+Canonical: Passalus gaboi
+
+Authorship: Jiménez-Ferbans & Reyes-Castillo 2022
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Atypical hyphen character"}],"verbatim":"Passalus (Pertinax) gaboi Jiménez‑Ferbans \u0026 Reyes‑Castillo, 2022","normalized":"Passalus (Pertinax) gaboi Jiménez-Ferbans \u0026 Reyes-Castillo 2022","canonical":{"stemmed":"Passalus gabo","simple":"Passalus gaboi","full":"Passalus gaboi"},"cardinality":2,"authorship":{"verbatim":"Jiménez‑Ferbans \u0026 Reyes‑Castillo, 2022","normalized":"Jiménez-Ferbans \u0026 Reyes-Castillo 2022","year":"2022","authors":["Jiménez-Ferbans","Reyes-Castillo"],"originalAuth":{"authors":["Jiménez-Ferbans","Reyes-Castillo"],"year":{"year":"2022"}}},"details":{"species":{"genus":"Passalus","subgenus":"Pertinax","species":"gaboi","authorship":{"verbatim":"Jiménez‑Ferbans \u0026 Reyes‑Castillo, 2022","normalized":"Jiménez-Ferbans \u0026 Reyes-Castillo 2022","year":"2022","authors":["Jiménez-Ferbans","Reyes-Castillo"],"originalAuth":{"authors":["Jiménez-Ferbans","Reyes-Castillo"],"year":{"year":"2022"}}}}},"words":[{"verbatim":"Passalus","normalized":"Passalus","wordType":"GENUS","start":0,"end":8},{"verbatim":"Pertinax","normalized":"Pertinax","wordType":"INFRA_GENUS","start":10,"end":18},{"verbatim":"gaboi","normalized":"gaboi","wordType":"SPECIES","start":20,"end":25},{"verbatim":"Jiménez‑Ferbans","normalized":"Jiménez-Ferbans","wordType":"AUTHOR_WORD","start":26,"end":41},{"verbatim":"Reyes‑Castillo","normalized":"Reyes-Castillo","wordType":"AUTHOR_WORD","start":44,"end":58},{"verbatim":"2022","normalized":"2022","wordType":"YEAR","start":60,"end":64}],"id":"4cf1b94a-b80f-5666-92d0-5f7fc2076ce8","parserVersion":"test_version"}
 ```
 
 ### Discard apostrophes at the start and end of words

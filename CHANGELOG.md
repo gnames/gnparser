@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v1.6.9] - 2022-11-10 Thu
+
+- Add [#237]: detect and normalize non-breaking hyphens. In case if other
+  non-typical hythens will appear, they will be dealt the same way.
+
 ## [v1.6.8] - 2022-10-01 Sat
 
 - Add: update all modules.
@@ -402,6 +407,10 @@
 
 This document follows [changelog guidelines]
 
+[v1.6.9]: https://github.com/gnames/gnparser/compare/v1.6.8...v1.6.9
+[v1.6.8]: https://github.com/gnames/gnparser/compare/v1.6.7...v1.6.8
+[v1.6.7]: https://github.com/gnames/gnparser/compare/v1.6.6...v1.6.7
+[v1.6.6]: https://github.com/gnames/gnparser/compare/v1.6.5...v1.6.6
 [v1.6.5]: https://github.com/gnames/gnparser/compare/v1.6.4...v1.6.5
 [v1.6.4]: https://github.com/gnames/gnparser/compare/v1.6.3...v1.6.4
 [v1.6.3]: https://github.com/gnames/gnparser/compare/v1.6.2...v1.6.3
@@ -460,6 +469,16 @@ This document follows [changelog guidelines]
 [v0.7.0]: https://github.com/gnames/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
+[#240]: https://github.com/gnames/gnparser/issues/240
+[#239]: https://github.com/gnames/gnparser/issues/239
+[#238]: https://github.com/gnames/gnparser/issues/238
+[#237]: https://github.com/gnames/gnparser/issues/237
+[#236]: https://github.com/gnames/gnparser/issues/236
+[#235]: https://github.com/gnames/gnparser/issues/235
+[#234]: https://github.com/gnames/gnparser/issues/234
+[#233]: https://github.com/gnames/gnparser/issues/233
+[#232]: https://github.com/gnames/gnparser/issues/232
+[#231]: https://github.com/gnames/gnparser/issues/231
 [#230]: https://github.com/gnames/gnparser/issues/230
 [#229]: https://github.com/gnames/gnparser/issues/229
 [#228]: https://github.com/gnames/gnparser/issues/228

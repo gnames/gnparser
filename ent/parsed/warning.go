@@ -31,6 +31,7 @@ const (
 	CharBadWarn
 	ContainsIgnoredAnnotation
 	CultivarEpithetWarn
+	DashOtherWarn
 	DotEpithetWarn
 	GenusAbbrWarn
 	GenusUpperCharAfterDash
@@ -90,6 +91,7 @@ var warningMap = map[Warning]string{
 	CharBadWarn:                           "Non-standard characters in canonical",
 	ContainsIgnoredAnnotation:             "Ignored annotation `mihi`",
 	CultivarEpithetWarn:                   "Cultivar epithet",
+	DashOtherWarn:                         "Atypical hyphen character",
 	DotEpithetWarn:                        "Period character is not allowed in canonical",
 	GenusAbbrWarn:                         "Abbreviated uninomial word",
 	GenusUpperCharAfterDash:               "Apparent genus with capital character after hyphen",
@@ -158,6 +160,7 @@ var WarningQualityMap = map[Warning]int{
 	CharBadWarn:                           2,
 	ContainsIgnoredAnnotation:             3,
 	CultivarEpithetWarn:                   2,
+	DashOtherWarn:                         2,
 	DotEpithetWarn:                        3,
 	GenusAbbrWarn:                         4,
 	GenusUpperCharAfterDash:               2,

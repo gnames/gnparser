@@ -195,6 +195,7 @@ var nodeRules = map[pegRule]struct{}{
 	ruleComparison:                      {},
 	ruleCultivar:                        {},
 	ruleCultivarRecursive:               {},
+	ruleDashOther:                       {},
 	ruleDotPrefix:                       {},
 	ruleFilius:                          {},
 	ruleFiliusFNoSpace:                  {},
