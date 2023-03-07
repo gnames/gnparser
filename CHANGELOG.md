@@ -411,6 +411,7 @@
 
 This document follows [changelog guidelines]
 
+[v1.7.0]: https://github.com/gnames/gnparser/compare/v1.6.9...v1.7.0
 [v1.6.9]: https://github.com/gnames/gnparser/compare/v1.6.8...v1.6.9
 [v1.6.8]: https://github.com/gnames/gnparser/compare/v1.6.7...v1.6.8
 [v1.6.7]: https://github.com/gnames/gnparser/compare/v1.6.6...v1.6.7
@@ -473,6 +474,16 @@ This document follows [changelog guidelines]
 [v0.7.0]: https://github.com/gnames/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
+[#250]: https://github.com/gnames/gnparser/issues/250
+[#249]: https://github.com/gnames/gnparser/issues/249
+[#248]: https://github.com/gnames/gnparser/issues/248
+[#247]: https://github.com/gnames/gnparser/issues/247
+[#246]: https://github.com/gnames/gnparser/issues/246
+[#245]: https://github.com/gnames/gnparser/issues/245
+[#244]: https://github.com/gnames/gnparser/issues/244
+[#243]: https://github.com/gnames/gnparser/issues/243
+[#242]: https://github.com/gnames/gnparser/issues/242
+[#241]: https://github.com/gnames/gnparser/issues/241
 [#240]: https://github.com/gnames/gnparser/issues/240
 [#239]: https://github.com/gnames/gnparser/issues/239
 [#238]: https://github.com/gnames/gnparser/issues/238
