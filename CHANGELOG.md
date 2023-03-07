@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.7.1] - 2023-03-07 Tue
+
+- Add: upgrade all modules.
+
 ## [v1.7.0] - 2023-03-07 Tue
 
 - Add [#238]: stem takes in account -ii suffix, `macdonaldii` -> `macdonald`.
