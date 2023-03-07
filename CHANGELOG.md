@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.7.0] - 2023-03-07 Tue
+
+- Add [#238]: stem takes in account -ii suffix, `macdonaldii` -> `macdonald`.
+
 ## [v1.6.9] - 2022-11-10 Thu
 
 - Add [#237]: detect and normalize non-breaking hyphens. In case if other
