@@ -1,19 +1,24 @@
+PROJ_NAME = gnparser
+
 VERSION = $(shell git describe --tags)
 VER = $(shell git describe --tags --abbrev=0)
 DATE = $(shell date -u '+%Y-%m-%d_%H:%M:%S%Z')
 
-FLAG_MODULE = GO111MODULE=on
-FLAGS_SHARED = $(FLAG_MODULE) GOARCH=amd64
 NO_C = CGO_ENABLED=0
+FLAGS_SHARED = GOARCH=amd64
 FLAGS_LINUX = $(FLAGS_SHARED) GOOS=linux
 FLAGS_MAC = $(FLAGS_SHARED) GOOS=darwin
-FLAGS_MAC_ARM = GO111MODULE=on $GOARCH=arm64 GOOS=darwin
+FLAGS_MAC_ARM = $GOARCH=arm64 GOOS=darwin
 FLAGS_WIN = $(FLAGS_SHARED) GOOS=windows
-FLAGS_LD=-ldflags "-s -w -X github.com/gnames/gnparser.Build=${DATE} \
-                  -X github.com/gnames/gnparser.Version=${VERSION}"
+FLAGS_LD=-ldflags "-s -w -X github.com/gnames/$(PROJ_NAME).Build=$(DATE) \
+                  -X github.com/gnames/$(PROJ_NAME).Version=$(VERSION)"
+FLAGS_REL = -trimpath -ldflags "-s -w \
+						-X github.com/gnames/$(PROJ_NAME).Build=$(DATE)"
+
 GOCMD = go
 GOBUILD = $(GOCMD) build $(FLAGS_LD)
 GOINSTALL = $(GOCMD) install $(FLAGS_LD)
+GORELEASE = $(GOCMD) build $(FLAGS_REL)
 GOCLEAN = $(GOCMD) clean
 GOGET = $(GOCMD) get
 
@@ -24,7 +29,7 @@ CLIB_DIR ?= "."
 all: install
 
 test: deps install
-	$(FLAG_MODULE) go test -race ./...
+	$(FLAG_MODULE) go test -shuffle=on -race -count=1 ./...
 
 test-build: deps build
 
@@ -33,7 +38,7 @@ deps:
 
 tools: deps
 	@echo Installing tools from tools.go
-	@cat gnparser/tools.go | grep _ | awk -F'"' '{print $$2}' | xargs -tI % go install %
+	@cat $(PROJ_NAME)/tools.go | grep _ | awk -F'"' '{print $$2}' | xargs -tI % go install %
 
 peg:
 	cd ent/parser; \
@@ -53,55 +58,60 @@ asset:
 	$(FLAGS_SHARED) go run -tags=dev assets_gen.go
 
 build: peg
-	cd gnparser; \
+	cd $(PROJ_NAME); \
 	$(GOCLEAN); \
 	$(NO_C) $(GOBUILD) -o $(BUILD_DIR)
 
+buildrel: peg
+	cd $(PROJ_NAME); \
+	$(GOCLEAN); \
+	$(NO_C) $(GORELEASE) -o $(BUILD_DIR)
+
 install: peg
-	cd gnparser; \
+	cd $(PROJ_NAME); \
 	$(GOCLEAN); \
 	$(NO_C) $(GOINSTALL)
 
 release: peg dockerhub
-	cd gnparser; \
+	cd $(PROJ_NAME); \
 	$(GOCLEAN); \
 	$(FLAGS_LINUX) $(NO_C) $(GOBUILD); \
-	tar zcf $(RELEASE_DIR)/gnparser-$(VER)-linux.tar.gz gnparser; \
+	tar zcf $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-linux.tar.gz $(PROJ_NAME); \
 	$(GOCLEAN); \
 	$(FLAGS_MAC) $(NO_C) $(GOBUILD); \
-	tar zcf $(RELEASE_DIR)/gnparser-$(VER)-mac.tar.gz gnparser; \
+	tar zcf $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-mac.tar.gz $(PROJ_NAME); \
 	$(GOCLEAN); \
 	$(FLAGS_MAC_ARM) $(NO_C) $(GOBUILD); \
-	tar zcf $(RELEASE_DIR)/gnparser-$(VER)-mac-arm64.tar.gz gnparser; \
+	tar zcf $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-mac-arm64.tar.gz $(PROJ_NAME); \
 	$(GOCLEAN); \
 	$(FLAGS_WIN) $(NO_C) $(GOBUILD); \
-	zip -9 $(RELEASE_DIR)/gnparser-$(VER)-win-64.zip gnparser.exe; \
+	zip -9 $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-win-64.zip $(PROJ_NAME).exe; \
 	$(GOCLEAN);
 
 dc: asset build
 	docker-compose build;
 
 docker: build
-	docker build -t gnames/gognparser:latest -t gnames/gognparser:$(VERSION) .; \
-	cd gnparser; \
+	docker build -t gnames/go$(PROJ_NAME):latest -t gnames/go$(PROJ_NAME):$(VERSION) .; \
+	cd $(PROJ_NAME); \
 	$(GOCLEAN);
 
 dockerhub: docker
-	docker push gnames/gognparser; \
-	docker push gnames/gognparser:$(VERSION)
+	docker push gnames/go$(PROJ_NAME); \
+	docker push gnames/go$(PROJ_NAME):$(VERSION)
 
 clib_darwin: peg
 	cd binding; \
 	$(GOCLEAN); \
-	CGO_ENABLED=1 GOOS=darwin GOARCH=arm64 $(GOBUILD) -buildmode=c-shared -o $(CLIB_DIR)/libgnparser_arm64.so; \
-	CGO_ENABLED=1 GOOS=darwin GOARCH=amd64 $(GOBUILD) -buildmode=c-shared -o $(CLIB_DIR)/libgnparser_amd64.so; \
-	rm libgnparser_amd64.h; \
-	mv libgnparser_arm64.h libgnparser.h; \
-	lipo -create -output $(CLIB_DIR)/libgnparser.so $(CLIB_DIR)/libgnparser_arm64.so $(CLIB_DIR)/libgnparser_amd64.so;
+	CGO_ENABLED=1 GOOS=darwin GOARCH=arm64 $(GOBUILD) -buildmode=c-shared -o $(CLIB_DIR)/lib$(PROJ_NAME)_arm64.so; \
+	CGO_ENABLED=1 GOOS=darwin GOARCH=amd64 $(GOBUILD) -buildmode=c-shared -o $(CLIB_DIR)/lib$(PROJ_NAME)_amd64.so; \
+	rm lib$(PROJ_NAME)_amd64.h; \
+	mv lib$(PROJ_NAME)_arm64.h lib$(PROJ_NAME).h; \
+	lipo -create -output $(CLIB_DIR)/lib$(PROJ_NAME).so $(CLIB_DIR)/lib$(PROJ_NAME)_arm64.so $(CLIB_DIR)/lib$(PROJ_NAME)_amd64.so;
 
 clib: peg
 	cd binding; \
-	$(GOBUILD) -buildmode=c-shared -o $(CLIB_DIR)/libgnparser.so;
+	$(GOBUILD) -buildmode=c-shared -o $(CLIB_DIR)/lib$(PROJ_NAME).so;
 
 quality:
 	cd tools;\
@@ -110,7 +120,7 @@ quality:
 
 .PHONY: man
 man: ronn
-	@ronn ./man/gnparser.1.ronn --style=dark
+	@ronn ./man/$(PROJ_NAME).1.ronn --style=dark
 
 .PHONY: ronn
 ronn:

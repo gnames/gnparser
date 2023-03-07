@@ -1032,7 +1032,7 @@ aduersando                    aduersand
 aduersante                    aduersant
 aduersantibus                 aduersant
 aduersarentur                 aduersarentur
-aduersarii                    aduersari
+aduersarii                    aduersar
 aduersariis                   aduersari
 aduersario                    aduersari
 aduersariorum                 aduersarior
@@ -1153,7 +1153,7 @@ aedificatum                   aedificat
 aedificatur                   aedificatur
 aedificent                    aedifice
 aedificia                     aedific
-aedificii                     aedifici
+aedificii                     aedific
 aedificiis                    aedifici
 aedificio                     aedifici
 aedile                        aedil
@@ -1191,7 +1191,7 @@ aegrotis                      aegrot
 aegrotum                      aegrot
 aegypti                       aegypt
 aegyptiae                     aegypti
-aegyptii                      aegypti
+aegyptii                      aegypt
 aegyptiis                     aegypti
 aegyptio                      aegypti
 aegyptiorum                   aegyptior
@@ -1268,7 +1268,7 @@ aequum                        aequ
 aer                           aer
 aera                          aer
 aeraque                       aer
-aerarii                       aerari
+aerarii                       aerar
 aerario                       aerari
 aerarium                      aerari
 aeratae                       aerat
@@ -1361,7 +1361,7 @@ afraniana                     afranian
 afraniani                     afranian
 afranianis                    afranian
 afranianos                    afranian
-afranii                       afrani
+afranii                       afran
 afranio                       afrani
 afranium                      afrani
 afranius                      afran
@@ -1477,7 +1477,7 @@ agnum                         agn
 agraria                       agrar
 agrariae                      agrari
 agrariam                      agrari
-agrarii                       agrari
+agrarii                       agrar
 agrariis                      agrari
 agrestem                      agrest
 agrestes                      agrest
@@ -1617,8 +1617,8 @@ alieno                        alien
 alienoque                     alien
 alienos                       alien
 alienum                       alien
-alii                          ali
-aliique                       ali
+alii                          al
+aliique                       al
 aliis                         ali
 aliisque                      ali
 alils                         alils
@@ -2078,7 +2078,7 @@ antiates                      antiat
 antiatibus                    antiat
 anticipationem                anticipation
 anticipatum                   anticipat
-antii                         anti
+antii                         ant
 antio                         anti
 antiochensium                 antiochensi
 antiochi                      antioch
@@ -2116,7 +2116,7 @@ antium                        anti
 antoni                        anton
 antonianae                    antonian
 antonianos                    antonian
-antonii                       antoni
+antonii                       anton
 antonio                       antoni
 antonium                      antoni
 antonius                      anton
@@ -2343,7 +2343,7 @@ arbitratur                    arbitratur
 arbitratus                    arbitrat
 arbitrerisne                  arbitrerisn
 arbitri                       arbitr
-arbitrii                      arbitri
+arbitrii                      arbitr
 arbitrio                      arbitri
 arbitris                      arbitr
 arbitrium                     arbitri
@@ -2710,7 +2710,7 @@ attigimus                     attigim
 attigissent                   attigisse
 attigistis                    attigist
 attigit                       attigit
-attii                         atti
+attii                         att
 attineat                      attineat
 attinet                       attinet
 attingam                      atting
@@ -2926,7 +2926,7 @@ augure                        augur
 augurem                       augur
 augures                       augur
 auguribus                     augur
-augurii                       auguri
+augurii                       augur
 auguriis                      auguri
 augurio                       auguri
 augurium                      auguri
@@ -3034,7 +3034,7 @@ auxilia                       auxil
 auxiliaque                    auxil
 auxiliaresque                 auxiliar
 auxiliaribus                  auxiliar
-auxilii                       auxili
+auxilii                       auxil
 auxiliis                      auxili
 auxiliisque                   auxili
 auxilio                       auxili
@@ -3164,7 +3164,7 @@ beneficentia                  beneficent
 beneficentissimus             beneficentissim
 beneficia                     benefic
 beneficiariis                 beneficiari
-beneficii                     benefici
+beneficii                     benefic
 beneficiis                    benefici
 beneficiisque                 benefici
 beneficio                     benefici
@@ -3200,7 +3200,7 @@ biduo                         bidu
 biduoque                      bidu
 biduum                        bidu
 biduumque                     bidu
-biennii                       bienni
+biennii                       bienn
 biennio                       bienni
 biennium                      bienni
 bifariam                      bifari
@@ -3228,7 +3228,7 @@ blandimenta                   blandiment
 blanditiae                    blanditi
 bllistis                      bllist
 boeotia                       boeot
-boii                          boi
+boii                          bo
 bolani                        bolan
 bolanis                       bolan
 bolanum                       bolan
@@ -3287,7 +3287,7 @@ brumae                        brum
 brumali                       brumal
 brumisque                     brum
 brundisi                      brundis
-brundisii                     brundisi
+brundisii                     brundis
 brundisini                    brundisin
 brundisinis                   brundisin
 brundisino                    brundisin
@@ -3429,7 +3429,7 @@ calescit                      calescit
 calficiendum                  calficiend
 calida                        calid
 calidam                       calid
-calidii                       calidi
+calidii                       calid
 calidiora                     calidior
 calidius                      calid
 calido                        calid
@@ -3714,7 +3714,7 @@ cassi                         cass
 cassia                        cass
 cassianam                     cassian
 cassiepia                     cassiep
-cassii                        cassi
+cassii                        cass
 cassio                        cassi
 cassios                       cassi
 cassium                       cassi
@@ -4767,7 +4767,7 @@ collegamque                   colleg
 collegarum                    collegar
 collegas                      colleg
 collegasque                   colleg
-collegii                      collegi
+collegii                      colleg
 collegio                      collegi
 collegis                      colleg
 collegisque                   colleg
@@ -4808,7 +4808,7 @@ colloquendi                   colloquend
 colloqueretur                 colloqueretur
 colloqui                      colloqu
 colloquia                     colloqu
-colloquii                     colloqui
+colloquii                     colloqu
 colloquiis                    colloqui
 colloquiisque                 colloqui
 colloquio                     colloqui
@@ -5213,7 +5213,7 @@ conciliata                    conciliat
 conciliatrix                  conciliatrix
 conciliavit                   conciliauit
 concilient                    concilie
-concilii                      concili
+concilii                      concil
 conciliis                     concili
 conciliisque                  concili
 concilio                      concili
@@ -5725,7 +5725,7 @@ conscendunt                   conscendu
 conscientia                   conscient
 conscientiae                  conscienti
 conscientiam                  conscienti
-conscii                       consci
+conscii                       consc
 conscisceremus                consciscerem
 consciscoque                  conscisc
 conscisse                     consciss
@@ -5837,7 +5837,7 @@ consilia                      consil
 consiliandi                   consiliand
 consiliantibus                consiliant
 consiliaque                   consil
-consilii                      consili
+consilii                      consil
 consiliis                     consili
 consiliisque                  consili
 consilio                      consili
@@ -6282,7 +6282,7 @@ conualescere                  conualescer
 conualle                      conuall
 conualles                     conuall
 conubia                       conub
-conubii                       conubi
+conubii                       conub
 conubiis                      conubi
 conubio                       conubi
 conubium                      conubi
@@ -6442,13 +6442,13 @@ cordubae                      cordub
 cordubam                      cordub
 corfiniensem                  corfiniens
 corfiniensibus                corfiniens
-corfinii                      corfini
+corfinii                      corfin
 corfinio                      corfini
 corfinium                     corfini
 corfinlo                      corfinl
 coria                         cor
 coriis                        cori
-corinthii                     corinthi
+corinthii                     corinth
 corintho                      corinth
 corinthum                     corinth
 coriolana                     coriolan
@@ -6890,7 +6890,7 @@ curiam                        curi
 curiamque                     curi
 curias                        curi
 curiata                       curiat
-curiatii                      curiati
+curiatii                      curiat
 curiatiis                     curiati
 curiatio                      curiati
 curiatiorum                   curiatior
@@ -8172,7 +8172,7 @@ digressi                      digress
 digressos                     digress
 digressu                      digress
 digressus                     digress
-dii                           di
+dii                           dii
 diis                          di
 diiudicata                    diiudicat
 diiunctionibus                diiunction
@@ -8809,7 +8809,7 @@ domitianas                    domitian
 domitiani                     domitian
 domitianis                    domitian
 domitianos                    domitian
-domitii                       domiti
+domitii                       domit
 domitio                       domiti
 domitis                       domit
 domitium                      domiti
@@ -8869,7 +8869,7 @@ dubia                         dub
 dubiae                        dubi
 dubiam                        dubi
 dubie                         dubi
-dubii                         dubi
+dubii                         dub
 dubiis                        dubi
 dubiisque                     dubi
 dubio                         dubi
@@ -9014,7 +9014,7 @@ duxisse                       duxiss
 duxisset                      duxisset
 duxit                         duxit
 dynastis                      dynast
-dyrrachii                     dyrrachi
+dyrrachii                     dyrrach
 dyrrachinis                   dyrrachin
 dyrrachino                    dyrrachin
 dyrrachinorum                 dyrrachinor
@@ -9865,7 +9865,7 @@ excessisset                   excessisset
 excessit                      excessit
 excidere                      excider
 excidia                       excid
-excidii                       excidi
+excidii                       excid
 excidio                       excidi
 excidit                       excidit
 excidium                      excidi
@@ -10305,7 +10305,7 @@ exsequi                       exsequ
 exsequias                     exsequi
 exsequitur                    exsequitur
 exsignataque                  exsignat
-exsilii                       exsili
+exsilii                       exsil
 exsilio                       exsili
 exsilium                      exsili
 exsiliumque                   exsili
@@ -10454,7 +10454,7 @@ extrahenda                    extrahend
 extrahente                    extrahent
 extrahi                       extrah
 extrahitur                    extrahitur
-extraordinarii                extraordinari
+extraordinarii                extraordinar
 extraordinarium               extraordinari
 extraque                      extr
 extraxit                      extraxit
@@ -10492,7 +10492,7 @@ fabiae                        fabi
 fabianae                      fabian
 fabianis                      fabian
 fabianus                      fabian
-fabii                         fabi
+fabii                         fab
 fabiis                        fabi
 fabio                         fabi
 fabiorum                      fabior
@@ -10693,7 +10693,7 @@ fastidire                     fastidir
 fastiditur                    fastiditur
 fastidium                     fastidi
 fastigato                     fastigat
-fastigii                      fastigi
+fastigii                      fastig
 fastigio                      fastigi
 fastos                        fast
 fastosque                     fast
@@ -10829,7 +10829,7 @@ ferentibus                    ferent
 ferentinae                    ferentin
 ferentinum                    ferentin
 feretri                       feretr
-feretrii                      feretri
+feretrii                      feretr
 feretur                       feretur
 feriae                        feri
 feriam                        feri
@@ -10993,7 +10993,7 @@ filiaeque                     fili
 filiam                        fili
 filiamque                     fili
 filias                        fili
-filii                         fili
+filii                         fil
 filiis                        fili
 filio                         fili
 filios                        fili
@@ -11640,7 +11640,7 @@ gallis                        gall
 gallisque                     gall
 gallo                         gall
 gallograecia                  gallograec
-gallonii                      galloni
+gallonii                      gallon
 gallonio                      galloni
 gallonium                     galloni
 gallorum                      gallor
@@ -11797,7 +11797,7 @@ gignunt                       gignu
 gignuntur                     gignuntur
 gladiatoresque                gladiator
 gladiatoriac                  gladiatoriac
-gladii                        gladi
+gladii                        glad
 gladiis                       gladi
 gladio                        gladi
 gladiorum                     gladior
@@ -11859,7 +11859,7 @@ graecos                       graec
 graecum                       graec
 graecun                       graecun
 grai                          gra
-graii                         grai
+graii                         gra
 graio                         grai
 graios                        grai
 graius                        gra
@@ -12306,7 +12306,7 @@ horas                         hor
 horati                        horat
 horatia                       horat
 horatiae                      horati
-horatii                       horati
+horatii                       horat
 horatiis                      horati
 horatio                       horati
 horatios                      horati
@@ -12360,7 +12360,7 @@ hospites                      hospit
 hospitesque                   hospit
 hospitia                      hospit
 hospitibus                    hospit
-hospitii                      hospiti
+hospitii                      hospit
 hospitio                      hospiti
 hospitium                     hospiti
 hospitum                      hospit
@@ -12500,7 +12500,7 @@ ibit                          ibit
 ichneumonum                   ichneumon
 icili                         icil
 icilia                        icil
-icilii                        icili
+icilii                        icil
 icilio                        icili
 icilios                       icili
 iciliosque                    icili
@@ -12541,7 +12541,7 @@ ierant                        iera
 ierat                         ierat
 iere                          ier
 ierunt                        ieru
-igilii                        igili
+igilii                        igil
 igitur                        igitur
 ignari                        ignar
 ignaris                       ignar
@@ -12618,8 +12618,7 @@ iguvinorum                    iguuinor
 iguvium                       iguui
 ii                            ii
 iidem                         iid
-iii                           ii
-iiii                          iii
+iiii                          ii
 iingua                        iingu
 iis                           iis
 iisdem                        iisd
@@ -12853,7 +12852,7 @@ imperet                       imperet
 imperfecta                    imperfect
 imperia                       imper
 imperiaque                    imper
-imperii                       imperi
+imperii                       imper
 imperiis                      imperi
 imperio                       imperi
 imperioque                    imperi
@@ -13587,8 +13586,8 @@ infusus                       infus
 ingemuistis                   ingemuist
 ingenerauit                   ingenerauit
 ingenia                       ingen
-ingenii                       ingeni
-ingeniique                    ingeni
+ingenii                       ingen
+ingeniique                    ingen
 ingeniis                      ingeni
 ingenio                       ingeni
 ingenitae                     ingenit
@@ -13809,7 +13808,7 @@ innocentiae                   innocenti
 innocentiaque                 innocent
 innocentissumus               innocentissum
 innoxia                       innox
-innoxii                       innoxi
+innoxii                       innox
 innoxiis                      innoxi
 innoxio                       innoxi
 innoxium                      innoxi
@@ -14846,7 +14845,7 @@ iudicetur                     iudicetur
 iudici                        iudic
 iudicia                       iudic
 iudicibus                     iudic
-iudicii                       iudici
+iudicii                       iudic
 iudiciis                      iudici
 iudiciisque                   iudici
 iudicio                       iudici
@@ -15116,7 +15115,7 @@ laedantur                     laedantur
 laederent                     laedere
 laedi                         laed
 laelianas                     laelian
-laelii                        laeli
+laelii                        lael
 laelium                       laeli
 laelius                       lael
 laeserat                      laeserat
@@ -15281,7 +15280,7 @@ latoremque                    lator
 latores                       lator
 latoribus                     lator
 latrocinantur                 latrocinantur
-latrocinii                    latrocini
+latrocinii                    latrocin
 latrocinio                    latrocini
 latrones                      latron
 latronibus                    latron
@@ -15313,7 +15312,7 @@ laudibus                      laud
 laudibusque                   laud
 laudis                        laud
 laudum                        laud
-lauiniique                    lauini
+lauiniique                    lauin
 lauinium                      lauini
 laureae                       laure
 lauream                       laure
@@ -15325,7 +15324,7 @@ laurentium                    laurenti
 laus                          la
 lautis                        laut
 lavinia                       lauin
-lavinii                       lauini
+lavinii                       lauin
 lavinio                       lauini
 lavinium                      lauini
 laviniumque                   lauini
@@ -15378,7 +15377,7 @@ legibus                       leg
 legibusque                    leg
 legio                         legi
 legionariasque                legionari
-legionarii                    legionari
+legionarii                    legionar
 legionariorum                 legionarior
 legione                       legion
 legionem                      legion
@@ -15737,7 +15736,7 @@ longo                         long
 longulam                      longul
 longum                        long
 longumque                     long
-longuriique                   longuri
+longuriique                   longur
 longuriis                     longuri
 longus                        long
 loquaces                      loquac
@@ -15775,7 +15774,7 @@ lucescebat                    lucescebat
 lucet                         lucet
 lucifer                       lucifer
 luciferam                     lucifer
-lucii                         luci
+lucii                         luc
 lucili                        lucil
 lucilio                       lucili
 lucilium                      lucili
@@ -16016,7 +16015,7 @@ malebant                      maleba
 malebat                       malebat
 maledicta                     maledict
 maledictis                    maledict
-maleficii                     malefici
+maleficii                     malefic
 maleficio                     malefici
 mali                          mal
 maligne                       malign
@@ -16290,7 +16289,7 @@ medicina                      medicin
 medicis                       medic
 medicorum                     medicor
 medicus                       medic
-medii                         medi
+medii                         med
 mediis                        medi
 medio                         medi
 mediocre                      mediocr
@@ -16371,7 +16370,7 @@ memoris                       memor
 memoriter                     memoriter
 memoro                        memor
 memorque                      memor
-mendacii                      mendaci
+mendacii                      mendac
 mendacio                      mendaci
 menedemus                     menedem
 meneni                        menen
@@ -16596,7 +16595,7 @@ minisque                      min
 minister                      minister
 ministeria                    minister
 ministeriaque                 minister
-ministerii                    ministeri
+ministerii                    minister
 ministeriis                   ministeri
 ministerio                    ministeri
 ministerium                   ministeri
@@ -17145,7 +17144,7 @@ munia                         mun
 municipem                     municip
 municipes                     municip
 municipia                     municip
-municipii                     municipi
+municipii                     municip
 municipiis                    municipi
 municipiorum                  municipior
 muniebant                     munieba
@@ -17291,7 +17290,7 @@ nasci                         nasc
 nascuntur                     nascuntur
 nasidianae                    nasidian
 nasidianis                    nasidian
-nasidii                       nasidi
+nasidii                       nasid
 nasidio                       nasidi
 nasidium                      nasidi
 nasidius                      nasid
@@ -17380,7 +17379,7 @@ navigatio                     nauigati
 navigatione                   nauigation
 navigationis                  nauigation
 navigia                       nauig
-navigii                       nauigi
+navigii                       nauig
 navigiis                      nauigi
 navigium                      nauigi
 navim                         nauim
@@ -17407,7 +17406,7 @@ necessariam                   necessari
 necessariarum                 necessariar
 necessariarun                 necessariarun
 necessarias                   necessari
-necessarii                    necessari
+necessarii                    necessar
 necessariis                   necessari
 necessariisque                necessari
 necessario                    necessari
@@ -17510,7 +17509,7 @@ negotiabantur                 negotiabantur
 negotiarentur                 negotiarentur
 negotiatores                  negotiator
 negotiatoribus                negotiator
-negotii                       negoti
+negotii                       negot
 negotiis                      negoti
 negotio                       negoti
 negotium                      negoti
@@ -17593,7 +17592,7 @@ nimbum                        nimb
 nimia                         nim
 nimiae                        nimi
 nimiam                        nimi
-nimii                         nimi
+nimii                         nim
 nimiis                        nimi
 nimio                         nimi
 nimirum                       nimir
@@ -17852,7 +17851,7 @@ noxae                         nox
 noxam                         nox
 noxia                         nox
 noxiae                        noxi
-noxii                         noxi
+noxii                         nox
 noxiis                        noxi
 noxque                        nox
 nube                          nub
@@ -17977,7 +17976,7 @@ nuntiaverunt                  nuntiaueru
 nuntiavisse                   nuntiauiss
 nuntiavisset                  nuntiauisset
 nuntiet                       nuntiet
-nuntii                        nunti
+nuntii                        nunt
 nuntiis                       nunti
 nuntiisque                    nunti
 nuntio                        nunti
@@ -18281,7 +18280,7 @@ obuersis                      obuers
 obuia                         obu
 obuiae                        obui
 obuiam                        obui
-obuii                         obui
+obuii                         obu
 obuiis                        obui
 obuium                        obui
 obuius                        obu
@@ -18414,7 +18413,7 @@ octavamque                    octau
 octavi                        octau
 octaviano                     octauian
 octavianos                    octauian
-octavii                       octaui
+octavii                       octau
 octavio                       octaui
 octavis                       octau
 octavium                      octaui
@@ -18481,7 +18480,7 @@ officeret                     officeret
 officia                       offic
 officiens                     officiens
 officientque                  officie
-officii                       offici
+officii                       offic
 officiis                      offici
 officinas                     officin
 officio                       offici
@@ -18499,7 +18498,7 @@ olivetisque                   oliuet
 olninione                     olninion
 olympiadis                    olympiad
 olympiae                      olympi
-olympii                       olympi
+olympii                       olymp
 olympius                      olymp
 omen                          omen
 ominari                       ominar
@@ -18948,7 +18947,7 @@ ostiaria                      ostiar
 ostium                        osti
 otacilio                      otacili
 otacilius                     otacil
-otii                          oti
+otii                          ot
 otio                          oti
 otioque                       oti
 otiose                        otios
@@ -19340,15 +19339,15 @@ patribus                      patr
 patribusque                   patr
 patriciae                     patrici
 patriciam                     patrici
-patricii                      patrici
-patriciique                   patrici
+patricii                      patric
+patriciique                   patric
 patriciis                     patrici
 patricio                      patrici
 patriciorum                   patricior
 patricios                     patrici
 patricium                     patrici
 patricius                     patric
-patriique                     patri
+patriique                     patr
 patrimonia                    patrimon
 patrimoniis                   patrimoni
 patrimonium                   patrimoni
@@ -20114,7 +20113,7 @@ petiverunt                    petiueru
 petivit                       petiuit
 petra                         petr
 petraeus                      petrae
-petreii                       petrei
+petreii                       petre
 petreio                       petrei
 petreioque                    petrei
 petreius                      petre
@@ -20204,7 +20203,7 @@ pilleum                       pille
 pilorum                       pilor
 pilum                         pil
 pina                          pin
-pinarii                       pinari
+pinarii                       pinar
 pinariis                      pinari
 pinarium                      pinari
 pinarius                      pinar
@@ -20289,7 +20288,7 @@ plebe                         pleb
 plebei                        plebe
 plebeiae                      plebei
 plebeiam                      plebei
-plebeii                       plebei
+plebeii                       plebe
 plebeiis                      plebei
 plebeio                       plebei
 plebeiorum                    plebeior
@@ -20762,7 +20761,7 @@ potissima                     potissim
 potissimum                    potissim
 potissimus                    potissim
 potiti                        potit
-potitii                       potiti
+potitii                       potit
 potitiis                      potiti
 potitiorum                    potitior
 potito                        potit
@@ -21071,7 +21070,7 @@ praesideat                    praesideat
 praesides                     praesid
 praesidia                     praesid
 praesidiaque                  praesid
-praesidii                     praesidi
+praesidii                     praesid
 praesidiis                    praesidi
 praesidiisque                 praesidi
 praesidio                     praesidi
@@ -21235,7 +21234,7 @@ pressione                     pression
 pressionibus                  pression
 pressos                       press
 pressu                        press
-pretii                        preti
+pretii                        pret
 pretiis                       preti
 pretio                        preti
 pretium                       preti
@@ -21472,7 +21471,7 @@ prodiere                      prodier
 prodiga                       prodig
 prodigam                      prodig
 prodigia                      prodig
-prodigii                      prodigi
+prodigii                      prodig
 prodigiisque                  prodigi
 prodigio                      prodigi
 prodigiorum                   prodigior
@@ -21519,7 +21518,7 @@ proelians                     proelians
 proeliaque                    proel
 proeliarentur                 proeliarentur
 proeliari                     proeliar
-proelii                       proeli
+proelii                       proel
 proeliis                      proeli
 proeliisque                   proeli
 proelio                       proeli
@@ -21783,7 +21782,7 @@ propior                       propior
 propiora                      propior
 propiore                      propior
 propiorem                     propior
-propitii                      propiti
+propitii                      propit
 propitio                      propiti
 propitios                     propiti
 propitium                     propiti
@@ -22979,7 +22978,7 @@ regiam                        regi
 regias                        regi
 regibus                       reg
 regibusque                    reg
-regii                         regi
+regii                         reg
 regiis                        regi
 regillensi                    regillens
 regillensis                   regillens
@@ -23620,7 +23619,7 @@ rhodani                       rhodan
 rhodi                         rhod
 rhodiae                       rhodi
 rhodias                       rhodi
-rhodii                        rhodi
+rhodii                        rhod
 rhodiis                       rhodi
 rhodum                        rhod
 rideat                        rideat
@@ -23909,7 +23908,7 @@ saevum                        saeu
 sagacitas                     sagacit
 sagacitate                    sagacitat
 sagis                         sag
-sagittarii                    sagittari
+sagittarii                    sagittar
 sagittariis                   sagittari
 sagittariorum                 sagittarior
 sagittarios                   sagittari
@@ -23923,13 +23922,13 @@ saietae                       saiet
 salaria                       salar
 sale                          sal
 salem                         sal
-salii                         sali
+salii                         sal
 salinae                       salin
 salinas                       salin
 salinis                       salin
 salios                        sali
 salis                         sal
-salluuiique                   salluui
+salluuiique                   salluu
 sallyas                       sally
 salo                          sal
 salonas                       salon
@@ -24411,7 +24410,7 @@ senatore                      senator
 senatorem                     senator
 senatores                     senator
 senatoribus                   senator
-senatorii                     senatori
+senatorii                     senator
 senatoris                     senator
 senatorum                     senator
 senatorumque                  senator
@@ -24513,7 +24512,7 @@ septentriones                 septentrion
 septiens                      septiens
 septimam                      septim
 septimamque                   septim
-septimii                      septimi
+septimii                      septim
 septimio                      septimi
 septimium                     septimi
 septimo                       septim
@@ -24645,7 +24644,7 @@ seruiret                      seruiret
 seruis                        seru
 seruitia                      seruit
 seruitiaque                   seruit
-seruitiique                   seruiti
+seruitiique                   seruit
 seruitiis                     seruiti
 seruitio                      seruiti
 seruitiorum                   seruitior
@@ -24948,8 +24947,8 @@ societates                    societat
 societatis                    societat
 societatum                    societat
 societur                      societur
-socii                         soci
-sociique                      soci
+socii                         soc
+sociique                      soc
 sociis                        soci
 socio                         soci
 sociorum                      socior
@@ -25057,7 +25056,7 @@ solo                          sol
 solonis                       solon
 solos                         sol
 solstitiali                   solstitial
-solstitii                     solstiti
+solstitii                     solstit
 solstitiis                    solstiti
 soluendum                     soluend
 soluerentur                   soluerentur
@@ -25144,7 +25143,7 @@ sparsum                       spars
 spartae                       spart
 spartam                       spart
 spatia                        spat
-spatii                        spati
+spatii                        spat
 spatiis                       spati
 spatio                        spati
 spatiorum                     spatior
@@ -25369,7 +25368,7 @@ stimulet                      stimulet
 stimulis                      stimul
 stipatus                      stipat
 stipendia                     stipend
-stipendii                     stipendi
+stipendii                     stipend
 stipendiis                    stipendi
 stipendio                     stipendi
 stipendioque                  stipendi
@@ -25433,7 +25432,7 @@ studeat                       studeat
 studebant                     studeba
 studebat                      studebat
 studia                        stud
-studii                        studi
+studii                        stud
 studiis                       studi
 studio                        studi
 studium                       studi
@@ -25616,7 +25615,7 @@ subsidiaque                   subsid
 subsidiariae                  subsidiari
 subsidiariis                  subsidiari
 subsidiarios                  subsidiari
-subsidii                      subsidi
+subsidii                      subsid
 subsidiis                     subsidi
 subsidio                      subsidi
 subsidium                     subsidi
@@ -25695,7 +25694,7 @@ sufficitur                    sufficitur
 suffragabatur                 suffragabatur
 suffragatio                   suffragati
 suffragia                     suffrag
-suffragii                     suffragi
+suffragii                     suffrag
 suffragiis                    suffragi
 suffragio                     suffragi
 suffragium                    suffragi
@@ -25893,7 +25892,7 @@ supplices                     supplic
 supplici                      supplic
 supplicia                     supplic
 supplicibus                   supplic
-supplicii                     supplici
+supplicii                     supplic
 suppliciis                    supplici
 supplicio                     supplici
 supplicioque                  supplici
@@ -26152,8 +26151,8 @@ tarquiniensesque              tarquiniens
 tarquiniensis                 tarquiniens
 tarquiniensisque              tarquiniens
 tarquiniensium                tarquiniensi
-tarquinii                     tarquini
-tarquiniique                  tarquini
+tarquinii                     tarquin
+tarquiniique                  tarquin
 tarquiniis                    tarquini
 tarquinio                     tarquini
 tarquiniorum                  tarquinior
@@ -26460,7 +26459,7 @@ tertia                        tert
 tertiae                       terti
 tertiam                       terti
 tertianas                     tertian
-tertii                        terti
+tertii                        tert
 tertio                        terti
 tertium                       terti
 tertius                       tert
@@ -26918,7 +26917,7 @@ trebium                       trebi
 treboni                       trebon
 treboniae                     treboni
 treboniam                     treboni
-trebonii                      treboni
+trebonii                      trebon
 treboninm                     treboninm
 trebonio                      treboni
 trebonium                     treboni
@@ -26962,7 +26961,7 @@ trepidus                      trepid
 tres                          tr
 tria                          tr
 trianguli                     triangul
-triarii                       triari
+triarii                       triar
 triariis                      triari
 triarius                      triar
 tribu                         trib
@@ -26993,7 +26992,7 @@ tribunicia                    tribunic
 tribuniciae                   tribunici
 tribuniciam                   tribunici
 tribunicias                   tribunici
-tribunicii                    tribunici
+tribunicii                    tribunic
 tribuniciis                   tribunici
 tribunicio                    tribunici
 tribunicios                   tribunici
@@ -27033,7 +27032,7 @@ tricipitinum                  tricipitin
 tricipitinus                  tricipitin
 triduo                        tridu
 triduum                       tridu
-triennii                      trienni
+triennii                      trienn
 triennio                      trienni
 triennium                     trienni
 trieterides                   trieterid
@@ -27422,7 +27421,7 @@ uariassent                    uariasse
 uariatis                      uariat
 uarie                         uari
 uariet                        uariet
-uarii                         uari
+uarii                         uar
 uariis                        uari
 uasa                          uas
 uasta                         uast
@@ -28269,7 +28268,6 @@ uxoresque                     uxor
 uxori                         uxor
 uxoribus                      uxor
 uxoris                        uxor
-v                             u
 vacabant                      uacaba
 vacabat                       uacabat
 vacans                        uacans
@@ -28427,8 +28425,8 @@ veientibus                    ueient
 veientique                    ueient
 veientis                      ueient
 veientium                     ueienti
-veii                          uei
-veiique                       uei
+veii                          ue
+veiique                       ue
 veiis                         uei
 veiorum                       ueior
 veios                         uei
@@ -28891,9 +28889,9 @@ vigiliis                      uigili
 viginti                       uigint
 vigor                         uigor
 viguit                        uiguit
-vii                           ui
-viii                          uii
-viiii                         uiii
+vii                           uii
+viii                          ui
+viiii                         uii
 viis                          ui
 villam                        uill
 villarum                      uillar
@@ -29034,7 +29032,7 @@ vitet                         uitet
 vitia                         uit
 vitibus                       uit
 viticulas                     uiticul
-vitii                         uiti
+vitii                         uit
 vitiis                        uiti
 vitio                         uiti
 vitiorum                      uitior
@@ -29215,7 +29213,7 @@ volumnius                     uolumn
 volumus                       uolum
 volunt                        uolu
 voluntariam                   uoluntari
-voluntarii                    uoluntari
+voluntarii                    uoluntar
 voluntariis                   uoluntari
 voluntarios                   uoluntari
 voluntarium                   uoluntari
@@ -29293,22 +29291,22 @@ xenophon                      xenophon
 xenophontem                   xenophont
 xerses                        xers
 xi                            xi
-xii                           xi
-xiii                          xii
-xiiii                         xiii
+xii                           xii
+xiii                          xi
+xiiii                         xii
 xl                            xl
 xlv                           xl
 xv                            xu
 xvi                           xu
-xvii                          xui
-xviii                         xuii
+xvii                          xu
+xviii                         xui
 xx                            xx
-xxii                          xxi
-xxiiii                        xxiii
-xxvii                         xxui
+xxii                          xx
+xxiiii                        xxii
+xxvii                         xxu
 xxx                           xxx
-xxxii                         xxxi
-xxxiii                        xxxii
+xxxii                         xxx
+xxxiii                        xxxi
 xxxv                          xxx
 zeno                          zen
 zenon                         zenon
