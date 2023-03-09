@@ -788,7 +788,7 @@ func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
 		u1 = &uninomialNode{Word: uw}
 		n = n.next
 		u2w := p.newWordNode(n.up, parsed.UninomialType)
-		n := n.next
+		n = n.next
 		au2 := p.newAuthorshipNode(n)
 		rw := &parsed.Word{
 			Verbatim:   "subgen.",
@@ -822,6 +822,10 @@ func (p *Engine) newRankUninomialNode(n *node32) *rankUninomialNode {
 		run.Word.Normalized = "subgen."
 	case strings.HasPrefix(run.Word.Verbatim, "fam"):
 		run.Word.Normalized = "fam."
+	case strings.HasPrefix(run.Word.Verbatim, "tr"):
+		run.Word.Normalized = "trib."
+	case strings.HasPrefix(run.Word.Verbatim, "subtr"):
+		run.Word.Normalized = "subtrib."
 	}
 	return &run
 }

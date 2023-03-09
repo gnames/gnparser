@@ -622,6 +622,46 @@ Authorship: Solem 1983
 
 ### Combination of two uninomials
 
+Name: Agaricus tr. Hypholoma Fr.
+
+Canonical: Agaricus tr. Hypholoma
+
+Authorship: Fr.
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Combination of two uninomials"}],"verbatim":"Agaricus tr. Hypholoma Fr.","normalized":"Agaricus trib. Hypholoma Fr.","canonical":{"stemmed":"Hypholoma","simple":"Hypholoma","full":"Agaricus trib. Hypholoma"},"cardinality":1,"authorship":{"verbatim":"Fr.","normalized":"Fr.","authors":["Fr."],"originalAuth":{"authors":["Fr."]}},"details":{"uninomial":{"uninomial":"Hypholoma","rank":"trib.","parent":"Agaricus","authorship":{"verbatim":"Fr.","normalized":"Fr.","authors":["Fr."],"originalAuth":{"authors":["Fr."]}}}},"words":[{"verbatim":"Agaricus","normalized":"Agaricus","wordType":"UNINOMIAL","start":0,"end":8},{"verbatim":"tr.","normalized":"trib.","wordType":"RANK","start":9,"end":12},{"verbatim":"Hypholoma","normalized":"Hypholoma","wordType":"UNINOMIAL","start":13,"end":22},{"verbatim":"Fr.","normalized":"Fr.","wordType":"AUTHOR_WORD","start":23,"end":26}],"id":"e00a0fc2-e0b2-53e4-9ec3-3d6f793c772f","parserVersion":"test_version"}
+```
+
+Name: Agaricus tr Hypholoma Fr.
+
+Canonical: Agaricus tr Hypholoma
+
+Authorship: Fr.
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Combination of two uninomials"}],"verbatim":"Agaricus tr Hypholoma Fr.","normalized":"Agaricus trib. Hypholoma Fr.","canonical":{"stemmed":"Hypholoma","simple":"Hypholoma","full":"Agaricus trib. Hypholoma"},"cardinality":1,"authorship":{"verbatim":"Fr.","normalized":"Fr.","authors":["Fr."],"originalAuth":{"authors":["Fr."]}},"details":{"uninomial":{"uninomial":"Hypholoma","rank":"trib.","parent":"Agaricus","authorship":{"verbatim":"Fr.","normalized":"Fr.","authors":["Fr."],"originalAuth":{"authors":["Fr."]}}}},"words":[{"verbatim":"Agaricus","normalized":"Agaricus","wordType":"UNINOMIAL","start":0,"end":8},{"verbatim":"tr","normalized":"trib.","wordType":"RANK","start":9,"end":11},{"verbatim":"Hypholoma","normalized":"Hypholoma","wordType":"UNINOMIAL","start":12,"end":21},{"verbatim":"Fr.","normalized":"Fr.","wordType":"AUTHOR_WORD","start":22,"end":25}],"id":"2e90eb8f-6371-5c1f-9ec1-e753a30f0e86","parserVersion":"test_version"}
+```
+
+Name: Agaricus subtr. Oesypii Fr.
+
+Canonical: Agaricus subtr. Oesypii
+
+Authorship: Fr.
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Combination of two uninomials"}],"verbatim":"Agaricus subtr. Oesypii Fr.","normalized":"Agaricus subtrib. Oesypii Fr.","canonical":{"stemmed":"Oesypii","simple":"Oesypii","full":"Agaricus subtrib. Oesypii"},"cardinality":1,"authorship":{"verbatim":"Fr.","normalized":"Fr.","authors":["Fr."],"originalAuth":{"authors":["Fr."]}},"details":{"uninomial":{"uninomial":"Oesypii","rank":"subtrib.","parent":"Agaricus","authorship":{"verbatim":"Fr.","normalized":"Fr.","authors":["Fr."],"originalAuth":{"authors":["Fr."]}}}},"words":[{"verbatim":"Agaricus","normalized":"Agaricus","wordType":"UNINOMIAL","start":0,"end":8},{"verbatim":"subtr.","normalized":"subtrib.","wordType":"RANK","start":9,"end":15},{"verbatim":"Oesypii","normalized":"Oesypii","wordType":"UNINOMIAL","start":16,"end":23},{"verbatim":"Fr.","normalized":"Fr.","wordType":"AUTHOR_WORD","start":24,"end":27}],"id":"b58fd6e6-71d1-5889-9ada-519ffb0efd7c","parserVersion":"test_version"}
+```
+
+Name: Agaricus subtr Oesypii Fr.
+
+Canonical: Agaricus subtr Oesypii
+
+Authorship: Fr.
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Combination of two uninomials"}],"verbatim":"Agaricus subtr Oesypii Fr.","normalized":"Agaricus subtrib. Oesypii Fr.","canonical":{"stemmed":"Oesypii","simple":"Oesypii","full":"Agaricus subtrib. Oesypii"},"cardinality":1,"authorship":{"verbatim":"Fr.","normalized":"Fr.","authors":["Fr."],"originalAuth":{"authors":["Fr."]}},"details":{"uninomial":{"uninomial":"Oesypii","rank":"subtrib.","parent":"Agaricus","authorship":{"verbatim":"Fr.","normalized":"Fr.","authors":["Fr."],"originalAuth":{"authors":["Fr."]}}}},"words":[{"verbatim":"Agaricus","normalized":"Agaricus","wordType":"UNINOMIAL","start":0,"end":8},{"verbatim":"subtr","normalized":"subtrib.","wordType":"RANK","start":9,"end":14},{"verbatim":"Oesypii","normalized":"Oesypii","wordType":"UNINOMIAL","start":15,"end":22},{"verbatim":"Fr.","normalized":"Fr.","wordType":"AUTHOR_WORD","start":23,"end":26}],"id":"20360ca1-6217-5d48-915d-e5515832e2b2","parserVersion":"test_version"}
+```
+
 Name: Poaceae subtrib. Scolochloinae Soreng
 
 Canonical: Poaceae subtrib. Scolochloinae

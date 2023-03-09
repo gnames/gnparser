@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#240]: add `tr.` `subtr.` as ranks for combo-uninomials.
+
 ## [v1.7.1] - 2023-03-07 Tue
 
 - Add: upgrade all modules.
@@ -415,6 +417,8 @@
 
 This document follows [changelog guidelines]
 
+[v1.7.2]: https://github.com/gnames/gnparser/compare/v1.7.1...v1.7.2
+[v1.7.1]: https://github.com/gnames/gnparser/compare/v1.7.0...v1.7.1
 [v1.7.0]: https://github.com/gnames/gnparser/compare/v1.6.9...v1.7.0
 [v1.6.9]: https://github.com/gnames/gnparser/compare/v1.6.8...v1.6.9
 [v1.6.8]: https://github.com/gnames/gnparser/compare/v1.6.7...v1.6.8
