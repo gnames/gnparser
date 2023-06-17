@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v1.7.2] - 2023-06-17 Sat
+
+- Add [#241]: allow comma before `ex` authors.
 - Add [#240]: add `tr.` `subtr.` as ranks for combo-uninomials.
 
 ## [v1.7.1] - 2023-03-07 Tue

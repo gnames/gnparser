@@ -201,7 +201,7 @@ BasionymAuthorship1 <- '(' _? AuthorsGroup _? ')'
 
 BasionymAuthorship2Parens <- '(' _? '(' _? AuthorsGroup _? ')' _? ')'
 
-AuthorsGroup <- AuthorsTeam (_ (AuthorEmend / AuthorEx) AuthorsTeam)?
+AuthorsGroup <- AuthorsTeam (','?_ (AuthorEmend / AuthorEx) AuthorsTeam)?
 
 AuthorsTeam <- Author (AuthorSep Author)* (_? ','? _? Year)?
 
