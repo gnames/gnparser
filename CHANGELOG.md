@@ -2,9 +2,12 @@
 
 ## Unreleased
 
-## [v1.7.2] - 2023-06-17 Sat
+## [v1.7.3] - 2023-06-17 Sat
 
 - Add [#241]: allow comma before `ex` authors.
+
+## [v1.7.2] - 2023-03-09 Thu
+
 - Add [#240]: add `tr.` `subtr.` as ranks for combo-uninomials.
 
 ## [v1.7.1] - 2023-03-07 Tue
@@ -420,6 +423,7 @@
 
 This document follows [changelog guidelines]
 
+[v1.7.3]: https://github.com/gnames/gnparser/compare/v1.7.2...v1.7.3
 [v1.7.2]: https://github.com/gnames/gnparser/compare/v1.7.1...v1.7.2
 [v1.7.1]: https://github.com/gnames/gnparser/compare/v1.7.0...v1.7.1
 [v1.7.0]: https://github.com/gnames/gnparser/compare/v1.6.9...v1.7.0
