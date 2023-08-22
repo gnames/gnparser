@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.7.4] - 2023-08-22 Tue
+
+- Fix [#243]: parse correctly `Nassa pagoda var. acuta P. P. Carpenter, 1857`.
+
 ## [v1.7.3] - 2023-06-17 Sat
 
 - Add [#241]: allow comma before `ex` authors.

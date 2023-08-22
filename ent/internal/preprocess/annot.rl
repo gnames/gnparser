@@ -25,7 +25,7 @@ func AnnotationRL(data []byte) bool {
       "fide" | "vide" );
     tc1 = ("sensu"i | "auct"i | "sec"i | "near" | "str") "."?;
     tc2 = "("? "s." space? ([sl] | "str" | "lat") ".";
-    tc3 = "pro parte"i | "p."i space? "p."i;
+    tc3 = "pro parte"i | "p." space? "p.";
     tc4 = "("? ("nomen"i | "nom."i | "comb.");
 
     main := any* ((space+ | "," space?)
