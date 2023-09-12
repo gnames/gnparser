@@ -210,6 +210,8 @@ var nodeRules = map[pegRule]struct{}{
 	ruleName:                            {},
 	ruleNameApprox:                      {},
 	ruleNameComp:                        {},
+	ruleNameCompSp:                      {},
+	ruleNameCompIsp:                     {},
 	ruleNameSpecies:                     {},
 	ruleNamedGenusGraftChimera:          {},
 	ruleNamedGenusHybrid:                {},

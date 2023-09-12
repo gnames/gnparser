@@ -533,16 +533,60 @@ func (p *Engine) newApproxNode(n *node32) *approxNode {
 }
 
 type comparisonNode struct {
-	Genus      *parsed.Word
-	SpEpithet  *spEpithetNode
-	Comparison *parsed.Word
+	Genus          *parsed.Word
+	SpEpithet      *spEpithetNode
+	InfraSpEpithet *infraspEpithetNode
+	Comparison     *parsed.Word
+	Cardinality    int
 }
 
 func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
-	var cn *comparisonNode
-	if n.pegRule != ruleNameComp {
-		return cn
+	n = n.up
+	switch n.pegRule {
+	case ruleNameCompIsp:
+		return p.newCompIspNode(n)
+	case ruleNameCompSp:
+		return p.newCompSpNode(n)
+	default:
+		var res *comparisonNode
+		return res
 	}
+}
+
+func (p *Engine) newCompIspNode(n *node32) *comparisonNode {
+	var cn *comparisonNode
+	n = n.up
+	var gen, comp *parsed.Word
+	var spEp *spEpithetNode
+	var ispEp *infraspEpithetNode
+	for n != nil {
+		switch n.pegRule {
+		case ruleGenusWord:
+			gen = p.newWordNode(n, parsed.GenusType)
+		case ruleComparison:
+			comp = p.newWordNode(n, parsed.ComparisonMarkerType)
+		case ruleSpeciesEpithet:
+			spEp = p.newSpeciesEpithetNode(n)
+			p.cardinality = 2
+		case ruleInfraspEpithet:
+			ispEp = p.newInfraspEpithetNode(n)
+			p.cardinality = 3
+		}
+		n = n.next
+	}
+	cn = &comparisonNode{
+		Genus:          gen,
+		Comparison:     comp,
+		SpEpithet:      spEp,
+		InfraSpEpithet: ispEp,
+		Cardinality:    3,
+	}
+	return cn
+
+}
+
+func (p *Engine) newCompSpNode(n *node32) *comparisonNode {
+	var cn *comparisonNode
 	n = n.up
 	var gen, comp *parsed.Word
 	var spEp *spEpithetNode
@@ -560,9 +604,10 @@ func (p *Engine) newComparisonNode(n *node32) *comparisonNode {
 		n = n.next
 	}
 	cn = &comparisonNode{
-		Genus:      gen,
-		Comparison: comp,
-		SpEpithet:  spEp,
+		Genus:       gen,
+		Comparison:  comp,
+		SpEpithet:   spEp,
+		Cardinality: 2,
 	}
 	return cn
 }
@@ -1137,9 +1182,13 @@ func (n *node32) flatChildren() []*node32 {
 func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *parsed.Word {
 	t := n.token32
 	val := p.nodeValue(n)
+	norm := val
+	if n.pegRule == ruleComparison {
+		norm = "cf."
+	}
 	wrd := parsed.Word{
 		Verbatim:   val,
-		Normalized: val,
+		Normalized: norm,
 		Type:       wt,
 		Start:      int(t.begin),
 		End:        int(t.end),

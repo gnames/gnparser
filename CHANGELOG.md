@@ -4,7 +4,7 @@
 
 ## [v1.7.5] - 2023-09-12 Tue
 
-- Fix [#249]: ignore `cf` at the end of the strings.
+- Fix [#249]: allow `cf` at the end of the strings, cf for infraspecies.
 - Fix [#248]: do not escape double quotes for TSV output.
 - Fix [#246]: ignore `ms` at the end of the strings.
 

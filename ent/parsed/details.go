@@ -50,14 +50,15 @@ type InfraspeciesElem struct {
 
 // Comparison are details for a surrogate comparison name.
 type Comparison struct {
-	// Genus is the genus of a name.
-	Genus string `json:"genus"`
-	// Species is a specific epithet of a name.
-	Species string `json:"species,omitempty"`
-	// Cultivar is a value of a cultivar of a binomial.
-	Cultivar string `json:"cultivar,omitempty"`
-	// SpeciesAuthorship the authorship of Species.
-	SpeciesAuthorship *Authorship `json:"authorship,omitempty"`
+	// Genus is used if no species information is given
+	Genus string `json:"genus,omitempty"`
+
+	// Species are details for the binomial part of a name.
+	*Species
+
+	// InfraSpecies is an infraspecific epthet of a name.
+	InfraSpecies *InfraspeciesElem `json:"infraspecies,omitempty"`
+
 	// CompMarker, usually "cf.".
 	CompMarker string `json:"comparisonMarker"`
 }
@@ -90,7 +91,6 @@ type DetailsGraftChimeraFormula struct {
 
 // isDetails implements Details interface.
 func (DetailsHybridFormula) isDetails() {}
-
 
 // isDetails implements Details interface.
 func (DetailsGraftChimeraFormula) isDetails() {}

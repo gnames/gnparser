@@ -41,7 +41,11 @@ NameUninomial <- (UninomialCombo / Uninomial) (_ CultivarWordGroup)?
 
 NameApprox <- GenusWord (_ SpeciesEpithet)? _ Approximation ApproxNameIgnored
 
-NameComp <- GenusWord _ Comparison (_ SpeciesEpithet)?
+NameComp <- NameCompIsp / NameCompSp
+
+NameCompSp <- GenusWord _ Comparison (_ SpeciesEpithet)?
+
+NameCompIsp <- GenusWord _ SpeciesEpithet _ Comparison (_ InfraspEpithet)? 
 
 NameSpecies <- GenusWord (_? ( Subgenus / SubgenusOrSuperspecies))?
                _ SpeciesEpithet (_ InfraspGroup)? (_ CultivarWordGroup)?

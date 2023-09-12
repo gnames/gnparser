@@ -16,10 +16,15 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// debug is true when output shows Abstract Synthax Tree instead of
+// parsed results.
 const debug = false
 
 var (
-	opts      []gnparser.Option
+	// opts is a container for configuration options
+	opts []gnparser.Option
+
+	// batchSize determines the size of a batch sent to gnparser workers.
 	batchSize int
 )
 

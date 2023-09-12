@@ -446,10 +446,17 @@ func (comp *comparisonNode) words() []parsed.Word {
 	}
 	wrd = *comp.Genus
 	words = []parsed.Word{wrd}
-	wrd = *comp.Comparison
-	words = append(words, wrd)
+	if comp.Cardinality == 2 {
+		words = append(words, *comp.Comparison)
+	}
 	if comp.SpEpithet != nil {
 		words = append(words, comp.SpEpithet.words()...)
+	}
+	if comp.Cardinality == 3 {
+		words = append(words, *comp.Comparison)
+	}
+	if comp.InfraSpEpithet != nil {
+		words = append(words, comp.InfraSpEpithet.words()...)
 	}
 	return words
 }
@@ -459,9 +466,17 @@ func (comp *comparisonNode) value() string {
 		return ""
 	}
 	val := comp.Genus.Normalized
-	val = str.JoinStrings(val, comp.Comparison.Normalized, " ")
+	if comp.Cardinality == 2 {
+		val = str.JoinStrings(val, comp.Comparison.Normalized, " ")
+	}
 	if comp.SpEpithet != nil {
 		val = str.JoinStrings(val, comp.SpEpithet.value(), " ")
+	}
+	if comp.Cardinality == 3 {
+		val = str.JoinStrings(val, comp.Comparison.Normalized, " ")
+	}
+	if comp.InfraSpEpithet != nil {
+		val = str.JoinStrings(val, comp.InfraSpEpithet.value(), " ")
 	}
 	return val
 }
@@ -476,15 +491,23 @@ func (comp *comparisonNode) canonical() *canonical {
 		sCan := comp.SpEpithet.canonical()
 		c = appendCanonical(c, sCan, " ")
 	}
+	if comp.InfraSpEpithet != nil {
+		ispCan := comp.InfraSpEpithet.canonical()
+		c = appendCanonical(c, ispCan, " ")
+
+	}
 	return c
 }
 
 func (comp *comparisonNode) lastAuthorship() *authorshipNode {
 	var au *authorshipNode
-	if comp == nil || comp.SpEpithet == nil {
-		return au
+	if comp.Cardinality == 2 && comp.SpEpithet != nil {
+		return comp.SpEpithet.Authorship
 	}
-	return comp.SpEpithet.Authorship
+	if comp.Cardinality == 3 && comp.InfraSpEpithet != nil {
+		return comp.InfraSpEpithet.Authorship
+	}
+	return au
 }
 
 func (comp *comparisonNode) details() parsed.Details {
@@ -495,14 +518,24 @@ func (comp *comparisonNode) details() parsed.Details {
 		Genus:      comp.Genus.Normalized,
 		CompMarker: comp.Comparison.Normalized,
 	}
-	if comp.SpEpithet == nil {
-		return parsed.DetailsComparison{Comparison: co}
+	if comp.SpEpithet != nil {
+		co.Species = &parsed.Species{
+			Genus:      comp.Genus.Normalized,
+			Species:    comp.SpEpithet.Word.Normalized,
+			Authorship: comp.SpEpithet.Authorship.details(),
+		}
+	}
+	if comp.InfraSpEpithet != nil {
+		co.InfraSpecies = &parsed.InfraspeciesElem{
+			Value:      comp.InfraSpEpithet.Word.Normalized,
+			Authorship: comp.InfraSpEpithet.Authorship.details(),
+		}
+		if comp.InfraSpEpithet.Rank != nil {
+			co.InfraSpecies.Rank = comp.InfraSpEpithet.Rank.Word.Normalized
+		}
+
 	}
 
-	co.Species = comp.SpEpithet.value()
-	if comp.SpEpithet.Authorship != nil {
-		co.SpeciesAuthorship = comp.SpEpithet.Authorship.details()
-	}
 	return parsed.DetailsComparison{Comparison: co}
 }
 

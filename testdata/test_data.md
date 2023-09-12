@@ -624,7 +624,7 @@ Authorship: Solem 1983
 
 Name: Agaricus tr. Hypholoma Fr.
 
-Canonical: Agaricus tr. Hypholoma
+Canonical: Agaricus trib. Hypholoma
 
 Authorship: Fr.
 
@@ -634,7 +634,7 @@ Authorship: Fr.
 
 Name: Agaricus tr Hypholoma Fr.
 
-Canonical: Agaricus tr Hypholoma
+Canonical: Agaricus trib. Hypholoma
 
 Authorship: Fr.
 
@@ -644,7 +644,7 @@ Authorship: Fr.
 
 Name: Agaricus subtr. Oesypii Fr.
 
-Canonical: Agaricus subtr. Oesypii
+Canonical: Agaricus subtrib. Oesypii
 
 Authorship: Fr.
 
@@ -654,7 +654,7 @@ Authorship: Fr.
 
 Name: Agaricus subtr Oesypii Fr.
 
-Canonical: Agaricus subtr Oesypii
+Canonical: Agaricus subtrib. Oesypii
 
 Authorship: Fr.
 
@@ -3456,7 +3456,7 @@ Name: Pisania billehousti Souverbie, in Souverbie and Montrouzier, 1864
 
 Canonical: Pisania billehousti
 
-Authorship: Souverbie, in Souverbie and Montrouzier, 1864
+Authorship: Souverbie ex Souverbie & Montrouzier 1864
 
 ```json
 {"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Ex authors are not required (ICZN only)"}],"verbatim":"Pisania billehousti Souverbie, in Souverbie and Montrouzier, 1864","normalized":"Pisania billehousti Souverbie ex Souverbie \u0026 Montrouzier 1864","canonical":{"stemmed":"Pisania billehoust","simple":"Pisania billehousti","full":"Pisania billehousti"},"cardinality":2,"authorship":{"verbatim":"Souverbie, in Souverbie and Montrouzier, 1864","normalized":"Souverbie ex Souverbie \u0026 Montrouzier 1864","year":"1864","authors":["Souverbie","Montrouzier"],"originalAuth":{"authors":["Souverbie"],"exAuthors":{"authors":["Souverbie","Montrouzier"],"year":{"year":"1864"}}}},"details":{"species":{"genus":"Pisania","species":"billehousti","authorship":{"verbatim":"Souverbie, in Souverbie and Montrouzier, 1864","normalized":"Souverbie ex Souverbie \u0026 Montrouzier 1864","year":"1864","authors":["Souverbie","Montrouzier"],"originalAuth":{"authors":["Souverbie"],"exAuthors":{"authors":["Souverbie","Montrouzier"],"year":{"year":"1864"}}}}}},"words":[{"verbatim":"Pisania","normalized":"Pisania","wordType":"GENUS","start":0,"end":7},{"verbatim":"billehousti","normalized":"billehousti","wordType":"SPECIES","start":8,"end":19},{"verbatim":"Souverbie","normalized":"Souverbie","wordType":"AUTHOR_WORD","start":20,"end":29},{"verbatim":"Souverbie","normalized":"Souverbie","wordType":"AUTHOR_WORD","start":34,"end":43},{"verbatim":"Montrouzier","normalized":"Montrouzier","wordType":"AUTHOR_WORD","start":48,"end":59},{"verbatim":"1864","normalized":"1864","wordType":"YEAR","start":61,"end":65}],"id":"a84244fa-ee95-5b97-a339-2de33cef70de","parserVersion":"test_version"}
@@ -4598,7 +4598,7 @@ Canonical: Abturia alabamensis
 Authorship: (Morton)
 
 ```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name comparison"}],"verbatim":"Abturia cf. alabamensis (Morton )","normalized":"Abturia cf. alabamensis (Morton)","canonical":{"stemmed":"Abturia alabamens","simple":"Abturia alabamensis","full":"Abturia alabamensis"},"cardinality":2,"authorship":{"verbatim":"(Morton )","normalized":"(Morton)","authors":["Morton"],"originalAuth":{"authors":["Morton"]}},"surrogate":"COMPARISON","details":{"comparison":{"genus":"Abturia","species":"alabamensis (Morton)","authorship":{"verbatim":"(Morton )","normalized":"(Morton)","authors":["Morton"],"originalAuth":{"authors":["Morton"]}},"comparisonMarker":"cf."}},"words":[{"verbatim":"Abturia","normalized":"Abturia","wordType":"GENUS","start":0,"end":7},{"verbatim":"cf.","normalized":"cf.","wordType":"COMPARISON_MARKER","start":8,"end":11},{"verbatim":"alabamensis","normalized":"alabamensis","wordType":"SPECIES","start":12,"end":23},{"verbatim":"Morton","normalized":"Morton","wordType":"AUTHOR_WORD","start":25,"end":31}],"id":"5fd4ce59-98d3-50af-9e28-918adc47d264","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name comparison"}],"verbatim":"Abturia cf. alabamensis (Morton )","normalized":"Abturia cf. alabamensis (Morton)","canonical":{"stemmed":"Abturia alabamens","simple":"Abturia alabamensis","full":"Abturia alabamensis"},"cardinality":2,"authorship":{"verbatim":"(Morton )","normalized":"(Morton)","authors":["Morton"],"originalAuth":{"authors":["Morton"]}},"surrogate":"COMPARISON","details":{"comparison":{"genus":"Abturia","species":"alabamensis","authorship":{"verbatim":"(Morton )","normalized":"(Morton)","authors":["Morton"],"originalAuth":{"authors":["Morton"]}},"comparisonMarker":"cf."}},"words":[{"verbatim":"Abturia","normalized":"Abturia","wordType":"GENUS","start":0,"end":7},{"verbatim":"cf.","normalized":"cf.","wordType":"COMPARISON_MARKER","start":8,"end":11},{"verbatim":"alabamensis","normalized":"alabamensis","wordType":"SPECIES","start":12,"end":23},{"verbatim":"Morton","normalized":"Morton","wordType":"AUTHOR_WORD","start":25,"end":31}],"id":"5fd4ce59-98d3-50af-9e28-918adc47d264","parserVersion":"test_version"}
 ```
 
 Name: Abturia cf alabamensis (Morton )
@@ -4608,7 +4608,7 @@ Canonical: Abturia alabamensis
 Authorship: (Morton)
 
 ```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name comparison"}],"verbatim":"Abturia cf alabamensis (Morton )","normalized":"Abturia cf alabamensis (Morton)","canonical":{"stemmed":"Abturia alabamens","simple":"Abturia alabamensis","full":"Abturia alabamensis"},"cardinality":2,"authorship":{"verbatim":"(Morton )","normalized":"(Morton)","authors":["Morton"],"originalAuth":{"authors":["Morton"]}},"surrogate":"COMPARISON","details":{"comparison":{"genus":"Abturia","species":"alabamensis (Morton)","authorship":{"verbatim":"(Morton )","normalized":"(Morton)","authors":["Morton"],"originalAuth":{"authors":["Morton"]}},"comparisonMarker":"cf"}},"words":[{"verbatim":"Abturia","normalized":"Abturia","wordType":"GENUS","start":0,"end":7},{"verbatim":"cf","normalized":"cf","wordType":"COMPARISON_MARKER","start":8,"end":10},{"verbatim":"alabamensis","normalized":"alabamensis","wordType":"SPECIES","start":11,"end":22},{"verbatim":"Morton","normalized":"Morton","wordType":"AUTHOR_WORD","start":24,"end":30}],"id":"423cd26d-c6fd-54fb-937b-f98ba8056fc0","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name comparison"}],"verbatim":"Abturia cf alabamensis (Morton )","normalized":"Abturia cf. alabamensis (Morton)","canonical":{"stemmed":"Abturia alabamens","simple":"Abturia alabamensis","full":"Abturia alabamensis"},"cardinality":2,"authorship":{"verbatim":"(Morton )","normalized":"(Morton)","authors":["Morton"],"originalAuth":{"authors":["Morton"]}},"surrogate":"COMPARISON","details":{"comparison":{"genus":"Abturia","species":"alabamensis","authorship":{"verbatim":"(Morton )","normalized":"(Morton)","authors":["Morton"],"originalAuth":{"authors":["Morton"]}},"comparisonMarker":"cf."}},"words":[{"verbatim":"Abturia","normalized":"Abturia","wordType":"GENUS","start":0,"end":7},{"verbatim":"cf","normalized":"cf.","wordType":"COMPARISON_MARKER","start":8,"end":10},{"verbatim":"alabamensis","normalized":"alabamensis","wordType":"SPECIES","start":11,"end":22},{"verbatim":"Morton","normalized":"Morton","wordType":"AUTHOR_WORD","start":24,"end":30}],"id":"423cd26d-c6fd-54fb-937b-f98ba8056fc0","parserVersion":"test_version"}
 ```
 
 <!--TODO Larus occidentalis cf. wymani|{}-->
@@ -4653,7 +4653,7 @@ Canonical: Barbus macrotaenia × Barbus toppini
 Authorship:
 
 ```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Incomplete hybrid formula"},{"quality":4,"warning":"Name comparison"},{"quality":2,"warning":"Hybrid formula"}],"verbatim":"Barbus cf macrotaenia × toppini","normalized":"Barbus cf macrotaenia × Barbus toppini","canonical":{"stemmed":"Barbus macrotaen × Barbus toppin","simple":"Barbus macrotaenia × Barbus toppini","full":"Barbus macrotaenia × Barbus toppini"},"cardinality":0,"hybrid":"HYBRID_FORMULA","surrogate":"COMPARISON","details":{"hybridFormula":[{"comparison":{"genus":"Barbus","species":"macrotaenia","comparisonMarker":"cf"}},{"species":{"genus":"Barbus","species":"toppini"}}]},"words":[{"verbatim":"Barbus","normalized":"Barbus","wordType":"GENUS","start":0,"end":6},{"verbatim":"cf","normalized":"cf","wordType":"COMPARISON_MARKER","start":7,"end":9},{"verbatim":"macrotaenia","normalized":"macrotaenia","wordType":"SPECIES","start":10,"end":21},{"verbatim":"×","normalized":"×","wordType":"HYBRID_CHAR","start":22,"end":23},{"verbatim":"toppini","normalized":"toppini","wordType":"SPECIES","start":24,"end":31}],"id":"37b0b404-d5d9-5699-bbb2-8c3d9bf543a3","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Incomplete hybrid formula"},{"quality":4,"warning":"Name comparison"},{"quality":2,"warning":"Hybrid formula"}],"verbatim":"Barbus cf macrotaenia × toppini","normalized":"Barbus cf. macrotaenia × Barbus toppini","canonical":{"stemmed":"Barbus macrotaen × Barbus toppin","simple":"Barbus macrotaenia × Barbus toppini","full":"Barbus macrotaenia × Barbus toppini"},"cardinality":0,"hybrid":"HYBRID_FORMULA","surrogate":"COMPARISON","details":{"hybridFormula":[{"comparison":{"genus":"Barbus","species":"macrotaenia","comparisonMarker":"cf."}},{"species":{"genus":"Barbus","species":"toppini"}}]},"words":[{"verbatim":"Barbus","normalized":"Barbus","wordType":"GENUS","start":0,"end":6},{"verbatim":"cf","normalized":"cf.","wordType":"COMPARISON_MARKER","start":7,"end":9},{"verbatim":"macrotaenia","normalized":"macrotaenia","wordType":"SPECIES","start":10,"end":21},{"verbatim":"×","normalized":"×","wordType":"HYBRID_CHAR","start":22,"end":23},{"verbatim":"toppini","normalized":"toppini","wordType":"SPECIES","start":24,"end":31}],"id":"37b0b404-d5d9-5699-bbb2-8c3d9bf543a3","parserVersion":"test_version"}
 ```
 
 Name: Gemmula cf. cosmoi NP-2008
@@ -6167,10 +6167,9 @@ Canonical: Formicidae
 Authorship:
 
 ```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name comparison"}],"verbatim":"Formicidae cf","normalized":"Formicidae cf","canonical":{"stemmed":"Formicidae","simple":"Formicidae","full":"Formicidae"},"cardinality":1,"surrogate":"COMPARISON","details":{"comparison":{"genus":"Formicidae","comparisonMarker":"cf"}},"words":[{"verbatim":"Formicidae","normalized":"Formicidae","wordType":"GENUS","start":0,"end":10},{"verbatim":"cf","normalized":"cf","wordType":"COMPARISON_MARKER","start":11,"end":13}],"id":"90473425-7ce1-5ec6-8160-737646816ea7","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name comparison"}],"verbatim":"Formicidae cf","normalized":"Formicidae cf.","canonical":{"stemmed":"Formicidae","simple":"Formicidae","full":"Formicidae"},"cardinality":1,"surrogate":"COMPARISON","details":{"comparison":{"genus":"Formicidae","comparisonMarker":"cf."}},"words":[{"verbatim":"Formicidae","normalized":"Formicidae","wordType":"GENUS","start":0,"end":10},{"verbatim":"cf","normalized":"cf.","wordType":"COMPARISON_MARKER","start":11,"end":13}],"id":"90473425-7ce1-5ec6-8160-737646816ea7","parserVersion":"test_version"}
 ```
 
-<!-- We do not cover infraspecific comparisons yet -->
 Name: Arctostaphylos preglauca cf.
 
 Canonical: Arctostaphylos preglauca
@@ -6178,7 +6177,39 @@ Canonical: Arctostaphylos preglauca
 Authorship:
 
 ```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Arctostaphylos preglauca cf.","normalized":"Arctostaphylos preglauca","canonical":{"stemmed":"Arctostaphylos preglauc","simple":"Arctostaphylos preglauca","full":"Arctostaphylos preglauca"},"cardinality":2,"tail":" cf.","details":{"species":{"genus":"Arctostaphylos","species":"preglauca"}},"words":[{"verbatim":"Arctostaphylos","normalized":"Arctostaphylos","wordType":"GENUS","start":0,"end":14},{"verbatim":"preglauca","normalized":"preglauca","wordType":"SPECIES","start":15,"end":24}],"id":"246b43d4-9786-5157-8d35-b81a470e6379","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name comparison"}],"verbatim":"Arctostaphylos preglauca cf.","normalized":"Arctostaphylos preglauca cf.","canonical":{"stemmed":"Arctostaphylos preglauc","simple":"Arctostaphylos preglauca","full":"Arctostaphylos preglauca"},"cardinality":2,"surrogate":"COMPARISON","details":{"comparison":{"genus":"Arctostaphylos","species":"preglauca","comparisonMarker":"cf."}},"words":[{"verbatim":"Arctostaphylos","normalized":"Arctostaphylos","wordType":"GENUS","start":0,"end":14},{"verbatim":"preglauca","normalized":"preglauca","wordType":"SPECIES","start":15,"end":24},{"verbatim":"cf.","normalized":"cf.","wordType":"COMPARISON_MARKER","start":25,"end":28}],"id":"246b43d4-9786-5157-8d35-b81a470e6379","parserVersion":"test_version"}
+```
+
+Name: Albinaria brevicollis cf. sica Fuchs & Kaufel 1936
+
+Canonical: Albinaria brevicollis sica
+
+Authorship: Fuchs & Kaufel 1936
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name comparison"}],"verbatim":"Albinaria brevicollis cf. sica Fuchs \u0026 Kaufel 1936","normalized":"Albinaria brevicollis cf. sica Fuchs \u0026 Kaufel 1936","canonical":{"stemmed":"Albinaria breuicoll sic","simple":"Albinaria brevicollis sica","full":"Albinaria brevicollis sica"},"cardinality":3,"authorship":{"verbatim":"Fuchs \u0026 Kaufel 1936","normalized":"Fuchs \u0026 Kaufel 1936","year":"1936","authors":["Fuchs","Kaufel"],"originalAuth":{"authors":["Fuchs","Kaufel"],"year":{"year":"1936"}}},"surrogate":"COMPARISON","details":{"comparison":{"genus":"Albinaria","species":"brevicollis","infraspecies":{"value":"sica","authorship":{"verbatim":"Fuchs \u0026 Kaufel 1936","normalized":"Fuchs \u0026 Kaufel 1936","year":"1936","authors":["Fuchs","Kaufel"],"originalAuth":{"authors":["Fuchs","Kaufel"],"year":{"year":"1936"}}}},"comparisonMarker":"cf."}},"words":[{"verbatim":"Albinaria","normalized":"Albinaria","wordType":"GENUS","start":0,"end":9},{"verbatim":"brevicollis","normalized":"brevicollis","wordType":"SPECIES","start":10,"end":21},{"verbatim":"cf.","normalized":"cf.","wordType":"COMPARISON_MARKER","start":22,"end":25},{"verbatim":"sica","normalized":"sica","wordType":"INFRASPECIES","start":26,"end":30},{"verbatim":"Fuchs","normalized":"Fuchs","wordType":"AUTHOR_WORD","start":31,"end":36},{"verbatim":"Kaufel","normalized":"Kaufel","wordType":"AUTHOR_WORD","start":39,"end":45},{"verbatim":"1936","normalized":"1936","wordType":"YEAR","start":46,"end":50}],"id":"cc77e528-f730-563f-ba5c-5696ec456b69","parserVersion":"test_version"}
+```
+
+# we do not support this
+
+Name: Albinaria cf brevicollis sica Fuchs & Kaufel 1936
+
+Canonical: Albinaria brevicollis
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name comparison"},{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Albinaria cf brevicollis sica Fuchs \u0026 Kaufel 1936","normalized":"Albinaria cf. brevicollis","canonical":{"stemmed":"Albinaria breuicoll","simple":"Albinaria brevicollis","full":"Albinaria brevicollis"},"cardinality":2,"surrogate":"COMPARISON","tail":" sica Fuchs \u0026 Kaufel 1936","details":{"comparison":{"genus":"Albinaria","species":"brevicollis","comparisonMarker":"cf."}},"words":[{"verbatim":"Albinaria","normalized":"Albinaria","wordType":"GENUS","start":0,"end":9},{"verbatim":"cf","normalized":"cf.","wordType":"COMPARISON_MARKER","start":10,"end":12},{"verbatim":"brevicollis","normalized":"brevicollis","wordType":"SPECIES","start":13,"end":24}],"id":"8e2beae0-6a8e-54da-ac16-53de069fb3f0","parserVersion":"test_version"}
+```
+
+Name: Albinaria brevicollis cf
+
+Canonical: Albinaria brevicollis sica
+
+Authorship: Fuchs & Kaufel 1936
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name comparison"}],"verbatim":"Albinaria brevicollis cf","normalized":"Albinaria brevicollis cf.","canonical":{"stemmed":"Albinaria breuicoll","simple":"Albinaria brevicollis","full":"Albinaria brevicollis"},"cardinality":2,"surrogate":"COMPARISON","details":{"comparison":{"genus":"Albinaria","species":"brevicollis","comparisonMarker":"cf."}},"words":[{"verbatim":"Albinaria","normalized":"Albinaria","wordType":"GENUS","start":0,"end":9},{"verbatim":"brevicollis","normalized":"brevicollis","wordType":"SPECIES","start":10,"end":21},{"verbatim":"cf","normalized":"cf.","wordType":"COMPARISON_MARKER","start":22,"end":24}],"id":"591f1263-acfb-58f0-bcae-07a0e0977adf","parserVersion":"test_version"}
 ```
 
 Name: Acastoides spp.
@@ -6479,9 +6510,9 @@ Authorship: R. Vig.
 
 Name: Abida secale margaridae I.M.Fake Ms
 
-Canonical: Abida secale margaridae 
+Canonical: Abida secale margaridae
 
-Authorship:
+Authorship: I. M. Fake
 
 ```json
 {"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Abida secale margaridae I.M.Fake Ms","normalized":"Abida secale margaridae I. M. Fake","canonical":{"stemmed":"Abida secal margarid","simple":"Abida secale margaridae","full":"Abida secale margaridae"},"cardinality":3,"authorship":{"verbatim":"I.M.Fake","normalized":"I. M. Fake","authors":["I. M. Fake"],"originalAuth":{"authors":["I. M. Fake"]}},"tail":" Ms","details":{"infraspecies":{"genus":"Abida","species":"secale","infraspecies":[{"value":"margaridae","authorship":{"verbatim":"I.M.Fake","normalized":"I. M. Fake","authors":["I. M. Fake"],"originalAuth":{"authors":["I. M. Fake"]}}}]}},"words":[{"verbatim":"Abida","normalized":"Abida","wordType":"GENUS","start":0,"end":5},{"verbatim":"secale","normalized":"secale","wordType":"SPECIES","start":6,"end":12},{"verbatim":"margaridae","normalized":"margaridae","wordType":"INFRASPECIES","start":13,"end":23},{"verbatim":"I.","normalized":"I.","wordType":"AUTHOR_WORD","start":24,"end":26},{"verbatim":"M.","normalized":"M.","wordType":"AUTHOR_WORD","start":26,"end":28},{"verbatim":"Fake","normalized":"Fake","wordType":"AUTHOR_WORD","start":28,"end":32}],"id":"a1409474-7c90-54c9-9161-7b003c9dffcb","parserVersion":"test_version"}
@@ -6489,9 +6520,9 @@ Authorship:
 
 Name: Abida secale margaridae I.M.Fake ms
 
-Canonical: Abida secale margaridae 
+Canonical: Abida secale margaridae
 
-Authorship:
+Authorship: I. M. Fake
 
 ```json
 {"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Abida secale margaridae I.M.Fake ms","normalized":"Abida secale margaridae I. M. Fake","canonical":{"stemmed":"Abida secal margarid","simple":"Abida secale margaridae","full":"Abida secale margaridae"},"cardinality":3,"authorship":{"verbatim":"I.M.Fake","normalized":"I. M. Fake","authors":["I. M. Fake"],"originalAuth":{"authors":["I. M. Fake"]}},"tail":" ms","details":{"infraspecies":{"genus":"Abida","species":"secale","infraspecies":[{"value":"margaridae","authorship":{"verbatim":"I.M.Fake","normalized":"I. M. Fake","authors":["I. M. Fake"],"originalAuth":{"authors":["I. M. Fake"]}}}]}},"words":[{"verbatim":"Abida","normalized":"Abida","wordType":"GENUS","start":0,"end":5},{"verbatim":"secale","normalized":"secale","wordType":"SPECIES","start":6,"end":12},{"verbatim":"margaridae","normalized":"margaridae","wordType":"INFRASPECIES","start":13,"end":23},{"verbatim":"I.","normalized":"I.","wordType":"AUTHOR_WORD","start":24,"end":26},{"verbatim":"M.","normalized":"M.","wordType":"AUTHOR_WORD","start":26,"end":28},{"verbatim":"Fake","normalized":"Fake","wordType":"AUTHOR_WORD","start":28,"end":32}],"id":"cfa8d6e1-3913-512b-8e4f-163419c662bc","parserVersion":"test_version"}
