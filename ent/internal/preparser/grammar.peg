@@ -14,7 +14,8 @@ TailPhrase <- TailLastWordJunk / TailPhrase4 / TailPhrase3 /
   TailStopWords / TailPhrase2 / TailPhrase1
 
 TailLastWordJunk <- (("var" / "ined" / "ssp" / "subsp" / "subgen" ) '.'? /
- "sensu" / "new" / "non" / "nec" / "hybrid" / "von" / 'P.' _? 'P.') '?'? &SpaceOrEnd
+ "sensu" / "new" / "non" / "nec" / "hybrid" / "von" / 'P.' _? 'P.' /
+ "ms") '?'? &SpaceOrEnd
 
 TailPhrase4 <- ("pro" _ "parte" / "nomen") &NotLetterOrEnd / 'p.' _? 'p.' /
   "nom." / "comb."

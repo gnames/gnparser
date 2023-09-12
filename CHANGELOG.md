@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## [v1.7.5] - 2023-09-12 Tue
+
+- Fix [#249]: ignore `cf` at the end of the strings.
+- Fix [#248]: do not escape double quotes for TSV output.
+- Fix [#246]: ignore `ms` at the end of the strings.
+
 ## [v1.7.4] - 2023-08-22 Tue
 
 - Fix [#243]: parse correctly `Nassa pagoda var. acuta P. P. Carpenter, 1857`.

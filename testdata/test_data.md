@@ -6475,6 +6475,28 @@ Authorship: R. Vig.
 {"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Indigofera phyllogramme var. aphylla R.Vig., p.p.B","normalized":"Indigofera phyllogramme var. aphylla R. Vig.","canonical":{"stemmed":"Indigofera phyllogramm aphyll","simple":"Indigofera phyllogramme aphylla","full":"Indigofera phyllogramme var. aphylla"},"cardinality":3,"authorship":{"verbatim":"R.Vig.","normalized":"R. Vig.","authors":["R. Vig."],"originalAuth":{"authors":["R. Vig."]}},"tail":", p.p.B","details":{"infraspecies":{"genus":"Indigofera","species":"phyllogramme","infraspecies":[{"value":"aphylla","rank":"var.","authorship":{"verbatim":"R.Vig.","normalized":"R. Vig.","authors":["R. Vig."],"originalAuth":{"authors":["R. Vig."]}}}]}},"words":[{"verbatim":"Indigofera","normalized":"Indigofera","wordType":"GENUS","start":0,"end":10},{"verbatim":"phyllogramme","normalized":"phyllogramme","wordType":"SPECIES","start":11,"end":23},{"verbatim":"var.","normalized":"var.","wordType":"RANK","start":24,"end":28},{"verbatim":"aphylla","normalized":"aphylla","wordType":"INFRASPECIES","start":29,"end":36},{"verbatim":"R.","normalized":"R.","wordType":"AUTHOR_WORD","start":37,"end":39},{"verbatim":"Vig.","normalized":"Vig.","wordType":"AUTHOR_WORD","start":39,"end":43}],"id":"04bb878e-4442-5b7c-86d7-a41f2f6aefd3","parserVersion":"test_version"}
 ```
 
+### Ignore terminal annotations
+
+Name: Abida secale margaridae I.M.Fake Ms
+
+Canonical: Abida secale margaridae 
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Abida secale margaridae I.M.Fake Ms","normalized":"Abida secale margaridae I. M. Fake","canonical":{"stemmed":"Abida secal margarid","simple":"Abida secale margaridae","full":"Abida secale margaridae"},"cardinality":3,"authorship":{"verbatim":"I.M.Fake","normalized":"I. M. Fake","authors":["I. M. Fake"],"originalAuth":{"authors":["I. M. Fake"]}},"tail":" Ms","details":{"infraspecies":{"genus":"Abida","species":"secale","infraspecies":[{"value":"margaridae","authorship":{"verbatim":"I.M.Fake","normalized":"I. M. Fake","authors":["I. M. Fake"],"originalAuth":{"authors":["I. M. Fake"]}}}]}},"words":[{"verbatim":"Abida","normalized":"Abida","wordType":"GENUS","start":0,"end":5},{"verbatim":"secale","normalized":"secale","wordType":"SPECIES","start":6,"end":12},{"verbatim":"margaridae","normalized":"margaridae","wordType":"INFRASPECIES","start":13,"end":23},{"verbatim":"I.","normalized":"I.","wordType":"AUTHOR_WORD","start":24,"end":26},{"verbatim":"M.","normalized":"M.","wordType":"AUTHOR_WORD","start":26,"end":28},{"verbatim":"Fake","normalized":"Fake","wordType":"AUTHOR_WORD","start":28,"end":32}],"id":"a1409474-7c90-54c9-9161-7b003c9dffcb","parserVersion":"test_version"}
+```
+
+Name: Abida secale margaridae I.M.Fake ms
+
+Canonical: Abida secale margaridae 
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Abida secale margaridae I.M.Fake ms","normalized":"Abida secale margaridae I. M. Fake","canonical":{"stemmed":"Abida secal margarid","simple":"Abida secale margaridae","full":"Abida secale margaridae"},"cardinality":3,"authorship":{"verbatim":"I.M.Fake","normalized":"I. M. Fake","authors":["I. M. Fake"],"originalAuth":{"authors":["I. M. Fake"]}},"tail":" ms","details":{"infraspecies":{"genus":"Abida","species":"secale","infraspecies":[{"value":"margaridae","authorship":{"verbatim":"I.M.Fake","normalized":"I. M. Fake","authors":["I. M. Fake"],"originalAuth":{"authors":["I. M. Fake"]}}}]}},"words":[{"verbatim":"Abida","normalized":"Abida","wordType":"GENUS","start":0,"end":5},{"verbatim":"secale","normalized":"secale","wordType":"SPECIES","start":6,"end":12},{"verbatim":"margaridae","normalized":"margaridae","wordType":"INFRASPECIES","start":13,"end":23},{"verbatim":"I.","normalized":"I.","wordType":"AUTHOR_WORD","start":24,"end":26},{"verbatim":"M.","normalized":"M.","wordType":"AUTHOR_WORD","start":26,"end":28},{"verbatim":"Fake","normalized":"Fake","wordType":"AUTHOR_WORD","start":28,"end":32}],"id":"cfa8d6e1-3913-512b-8e4f-163419c662bc","parserVersion":"test_version"}
+```
+
 ### Unparseable hort. annotations
 
 Name: Asplenium mayi ht.May; Gard.
