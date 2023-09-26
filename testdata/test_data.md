@@ -929,6 +929,16 @@ Authorship:
 
 ### Binomials with authorship
 
+Name: Melania testudinaria Von dem Busch, 1842
+
+Canonical: Melania testudinaria
+
+Authorship: Von dem Busch, 1842
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Melania testudinaria Von dem Busch, 1842","normalized":"Melania testudinaria Von dem Busch 1842","canonical":{"stemmed":"Melania testudinar","simple":"Melania testudinaria","full":"Melania testudinaria"},"cardinality":2,"authorship":{"verbatim":"Von dem Busch, 1842","normalized":"Von dem Busch 1842","year":"1842","authors":["Von dem Busch"],"originalAuth":{"authors":["Von dem Busch"],"year":{"year":"1842"}}},"details":{"species":{"genus":"Melania","species":"testudinaria","authorship":{"verbatim":"Von dem Busch, 1842","normalized":"Von dem Busch 1842","year":"1842","authors":["Von dem Busch"],"originalAuth":{"authors":["Von dem Busch"],"year":{"year":"1842"}}}}},"words":[{"verbatim":"Melania","normalized":"Melania","wordType":"GENUS","start":0,"end":7},{"verbatim":"testudinaria","normalized":"testudinaria","wordType":"SPECIES","start":8,"end":20},{"verbatim":"Von","normalized":"Von","wordType":"AUTHOR_WORD","start":21,"end":24},{"verbatim":"dem","normalized":"dem","wordType":"AUTHOR_WORD","start":25,"end":28},{"verbatim":"Busch","normalized":"Busch","wordType":"AUTHOR_WORD","start":29,"end":34},{"verbatim":"1842","normalized":"1842","wordType":"YEAR","start":36,"end":40}],"id":"77b32062-db7e-59e5-9c7d-cc7d8e98c2e9","parserVersion":"test_version"}
+```
+
 Name: Cryptopleura farlowiana (J.Agardh) ver Steeg & Jossly
 
 Canonical: Cryptopleura farlowiana
@@ -6190,7 +6200,7 @@ Authorship: Fuchs & Kaufel 1936
 {"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name comparison"}],"verbatim":"Albinaria brevicollis cf. sica Fuchs \u0026 Kaufel 1936","normalized":"Albinaria brevicollis cf. sica Fuchs \u0026 Kaufel 1936","canonical":{"stemmed":"Albinaria breuicoll sic","simple":"Albinaria brevicollis sica","full":"Albinaria brevicollis sica"},"cardinality":3,"authorship":{"verbatim":"Fuchs \u0026 Kaufel 1936","normalized":"Fuchs \u0026 Kaufel 1936","year":"1936","authors":["Fuchs","Kaufel"],"originalAuth":{"authors":["Fuchs","Kaufel"],"year":{"year":"1936"}}},"surrogate":"COMPARISON","details":{"comparison":{"genus":"Albinaria","species":"brevicollis","infraspecies":{"value":"sica","authorship":{"verbatim":"Fuchs \u0026 Kaufel 1936","normalized":"Fuchs \u0026 Kaufel 1936","year":"1936","authors":["Fuchs","Kaufel"],"originalAuth":{"authors":["Fuchs","Kaufel"],"year":{"year":"1936"}}}},"comparisonMarker":"cf."}},"words":[{"verbatim":"Albinaria","normalized":"Albinaria","wordType":"GENUS","start":0,"end":9},{"verbatim":"brevicollis","normalized":"brevicollis","wordType":"SPECIES","start":10,"end":21},{"verbatim":"cf.","normalized":"cf.","wordType":"COMPARISON_MARKER","start":22,"end":25},{"verbatim":"sica","normalized":"sica","wordType":"INFRASPECIES","start":26,"end":30},{"verbatim":"Fuchs","normalized":"Fuchs","wordType":"AUTHOR_WORD","start":31,"end":36},{"verbatim":"Kaufel","normalized":"Kaufel","wordType":"AUTHOR_WORD","start":39,"end":45},{"verbatim":"1936","normalized":"1936","wordType":"YEAR","start":46,"end":50}],"id":"cc77e528-f730-563f-ba5c-5696ec456b69","parserVersion":"test_version"}
 ```
 
-# we do not support this
+<!-- we do not support this -->
 
 Name: Albinaria cf brevicollis sica Fuchs & Kaufel 1936
 

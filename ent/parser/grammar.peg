@@ -271,7 +271,7 @@ AuthorPrefix <- AuthorPrefix1 / AuthorPrefix2
 
 AuthorPrefix2 <- ('v.' (_? 'd.')?) / Apostrophe 't'
 
-AuthorPrefix1 <- ('ab' / 'af' / 'bis' / 'da' / 'der' / 'des' / 'den' /
+AuthorPrefix1 <- ('ab' / 'af' / 'bis' / 'da' / 'der' / 'des' / 'den' / 'dem' /
   'della' / 'dela' / 'delle' / 'del' / 'de los' / 'de' / 'di' / 'dos' /
   'du' / 'do' / 'el' / 'la' / 'le' / 'ten' / 'ter' / 'van' / 'ver' /
   'd' Apostrophe / 'in' Apostrophe 't' / 'zur' / 'zu' /
