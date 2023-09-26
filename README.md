@@ -6,8 +6,6 @@ Try `GNparser` [online][parser-web].
 
 Try [GNparser with OpenRefine][OpenRefine]
 
-## Introduction
-
 ``GNparser`` splits scientific names into their semantic elements with an
 associated meta information. Parsing is indispensable for matching names
 from different data sources, because it can normalize different lexical
