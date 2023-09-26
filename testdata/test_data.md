@@ -3764,6 +3764,16 @@ Authorship: (Choisy) Hall. fil.
 {"parsed":true,"quality":1,"verbatim":"Jacquemontia spiciflora (Choisy) Hall. fil.","normalized":"Jacquemontia spiciflora (Choisy) Hall. fil.","canonical":{"stemmed":"Jacquemontia spiciflor","simple":"Jacquemontia spiciflora","full":"Jacquemontia spiciflora"},"cardinality":2,"authorship":{"verbatim":"(Choisy) Hall. fil.","normalized":"(Choisy) Hall. fil.","authors":["Choisy","Hall. fil."],"originalAuth":{"authors":["Choisy"]},"combinationAuth":{"authors":["Hall. fil."]}},"details":{"species":{"genus":"Jacquemontia","species":"spiciflora","authorship":{"verbatim":"(Choisy) Hall. fil.","normalized":"(Choisy) Hall. fil.","authors":["Choisy","Hall. fil."],"originalAuth":{"authors":["Choisy"]},"combinationAuth":{"authors":["Hall. fil."]}}}},"words":[{"verbatim":"Jacquemontia","normalized":"Jacquemontia","wordType":"GENUS","start":0,"end":12},{"verbatim":"spiciflora","normalized":"spiciflora","wordType":"SPECIES","start":13,"end":23},{"verbatim":"Choisy","normalized":"Choisy","wordType":"AUTHOR_WORD","start":25,"end":31},{"verbatim":"Hall.","normalized":"Hall.","wordType":"AUTHOR_WORD","start":33,"end":38},{"verbatim":"fil.","normalized":"fil.","wordType":"AUTHOR_WORD_FILIUS","start":39,"end":43}],"id":"14a98945-4e97-5c13-a0b9-97741641a6a4","parserVersion":"test_version"}
 ```
 
+Name: Littorina (Littorina) littorea fa major (Linnaeus, 1758)
+
+Canonical: Littorina littorea f. major
+
+Authorship: (Linnaeus 1758)
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Littorina (Littorina) littorea fa major (Linnaeus, 1758)","normalized":"Littorina (Littorina) littorea f. major (Linnaeus 1758)","canonical":{"stemmed":"Littorina littore maior","simple":"Littorina littorea major","full":"Littorina littorea f. major"},"cardinality":3,"authorship":{"verbatim":"(Linnaeus, 1758)","normalized":"(Linnaeus 1758)","year":"1758","authors":["Linnaeus"],"originalAuth":{"authors":["Linnaeus"],"year":{"year":"1758"}}},"details":{"infraspecies":{"genus":"Littorina","subgenus":"Littorina","species":"littorea","infraspecies":[{"value":"major","rank":"f.","authorship":{"verbatim":"(Linnaeus, 1758)","normalized":"(Linnaeus 1758)","year":"1758","authors":["Linnaeus"],"originalAuth":{"authors":["Linnaeus"],"year":{"year":"1758"}}}}]}},"words":[{"verbatim":"Littorina","normalized":"Littorina","wordType":"GENUS","start":0,"end":9},{"verbatim":"Littorina","normalized":"Littorina","wordType":"INFRA_GENUS","start":11,"end":20},{"verbatim":"littorea","normalized":"littorea","wordType":"SPECIES","start":22,"end":30},{"verbatim":"fa","normalized":"f.","wordType":"RANK","start":31,"end":33},{"verbatim":"major","normalized":"major","wordType":"INFRASPECIES","start":34,"end":39},{"verbatim":"Linnaeus","normalized":"Linnaeus","wordType":"AUTHOR_WORD","start":41,"end":49},{"verbatim":"1758","normalized":"1758","wordType":"YEAR","start":51,"end":55}],"id":"fcd777b2-d8c9-5fe5-9883-ed0affa4a0e2","parserVersion":"test_version"}
+```
+
 Name: Amelanchier arborea f. hirsuta (Michx. f.) Fernald
 
 Canonical: Amelanchier arborea f. hirsuta
