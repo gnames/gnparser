@@ -4,6 +4,7 @@
 
 ## [v1.7.5] - 2023-09-12 Tue
 
+- Fix [#251]: do not process `y` as `and` for `Rafael Arango y Molina`.
 - Fix [#249]: allow `cf` at the end of the strings, cf for infraspecies.
 - Fix [#248]: do not escape double quotes for TSV output.
 - Fix [#246]: ignore `ms` at the end of the strings.
