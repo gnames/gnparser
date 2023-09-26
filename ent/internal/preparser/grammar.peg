@@ -15,7 +15,7 @@ TailPhrase <- TailLastWordJunk / TailPhrase4 / TailPhrase3 /
 
 TailLastWordJunk <- (("var" / "ined" / "ssp" / "subsp" / "subgen" ) '.'? /
  "sensu" / "new" / "non" / "nec" / "hybrid" / "von" / 'P.' _? 'P.' /
- "ms") '?'? &SpaceOrEnd
+ "ms" / 'CF') '?'? &SpaceOrEnd
 
 TailPhrase4 <- ("pro" _ "parte" / "nomen") &NotLetterOrEnd / 'p.' _? 'p.' /
   "nom." / "comb."
@@ -24,13 +24,13 @@ TailPhrase3 <- '('? 's' ('.' _? / _ ) ('s' '.'? &NotLetterOrEnd / 'l.' / 'str.' 
    'lat.')
 
 TailStopWords <- ("environmental" / "enrichment" / "samples" /
-  ("species" _)? ("group" / "complex") / "clade" /
-  "author" / "nec" / "vide" / "fide" / "non" ) &NotLetterOrEnd
+  "species" / "group" / "complex" / "clade" /
+  "author" / "nec" / "vide" / "species" / "fide" / "non" / "not" ) &NotLetterOrEnd
 
 TailPhrase2 <- ("sero" ("var" / "type") / "sensu" / "auct" / "sec" / "near" /
   "str") '.'? &NotLetterOrEnd
 
-TailPhrase1 <- (('('? ('ht' / 'hort')) / 'spec' /
+TailPhrase1 <- (('('? ('ht' / 'hort')) / "S" 'pec' /
   'nov' '.'? _ 'spec') '.'? &NotLetterOrEnd
 
 SpaceOrEnd <- CommaSpace? END

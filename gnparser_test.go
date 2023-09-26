@@ -169,15 +169,15 @@ func Example() {
 	cfg := gnparser.NewConfig()
 	gnp := gnparser.New(cfg)
 	res := gnp.ParseNames(names)
-	fmt.Println(res[0].Authorship.Normalized)
+	fmt.Println(res[0].Authorship.Verbatim)
 	fmt.Println(res[1].Canonical.Simple)
 	fmt.Println(parsed.HeaderCSV(gnp.Format()))
 	fmt.Println(res[0].Output(gnp.Format()))
 	// Output:
-	// Banks 1892
+	// Banks, 1892
 	// Bubo bubo
 	// Id,Verbatim,Cardinality,CanonicalStem,CanonicalSimple,CanonicalFull,Authorship,Year,Quality
-	// e2fdf10b-6a36-5cc7-b6ca-be4d3b34b21f,"Pardosa moesta Banks, 1892",2,Pardosa moest,Pardosa moesta,Pardosa moesta,Banks 1892,1892,1
+	// e2fdf10b-6a36-5cc7-b6ca-be4d3b34b21f,"Pardosa moesta Banks, 1892",2,Pardosa moest,Pardosa moesta,Pardosa moesta,"Banks, 1892",1892,1
 }
 
 // BenchmarkParse checks parsing event speed. Run it with:

@@ -45,7 +45,7 @@ func (p Parsed) csvOutput(sep rune) string {
 	}
 
 	if p.Authorship != nil {
-		authorship = p.Authorship.Normalized
+		authorship = p.Authorship.Verbatim
 		year = p.Authorship.Year
 	}
 

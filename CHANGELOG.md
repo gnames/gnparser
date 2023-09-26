@@ -4,8 +4,11 @@
 
 ## [v1.7.5] - 2023-09-12 Tue
 
+- Add: CSV and TSV files provide now verbatim authorship instead of normalized
+  one.
+- Add: a few more "termination words"
 - Fix [#254]: treat `fa` as forma.
-- Fix [#252]: process `dem` as an author word for `Von dem Bush` and like.
+- Fix [#253]: process `dem` as an author word for `Von dem Bush` and like.
 - Fix [#251]: do not process `y` as `and` for `Rafael Arango y Molina`.
 - Fix [#249]: allow `cf` at the end of the strings, cf for infraspecies.
 - Fix [#248]: do not escape double quotes for TSV output.

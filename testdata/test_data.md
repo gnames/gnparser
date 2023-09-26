@@ -929,6 +929,16 @@ Authorship:
 
 ### Binomials with authorship
 
+Name: Cymatium raderi D’Attilio & Myers, 1984
+
+Canonical form: Cymatium raderi
+
+Authorship: D’Attilio & Myers, 1984
+
+```json
+{"parsed":true,"quality":3,"qualityWarnings":[{"quality":3,"warning":"Not an ASCII apostrophe"}],"verbatim":"Cymatium raderi D’Attilio \u0026 Myers, 1984","normalized":"Cymatium raderi D'Attilio \u0026 Myers 1984","canonical":{"stemmed":"Cymatium rader","simple":"Cymatium raderi","full":"Cymatium raderi"},"cardinality":2,"authorship":{"verbatim":"D’Attilio \u0026 Myers, 1984","normalized":"D'Attilio \u0026 Myers 1984","year":"1984","authors":["D'Attilio","Myers"],"originalAuth":{"authors":["D'Attilio","Myers"],"year":{"year":"1984"}}},"details":{"species":{"genus":"Cymatium","species":"raderi","authorship":{"verbatim":"D’Attilio \u0026 Myers, 1984","normalized":"D'Attilio \u0026 Myers 1984","year":"1984","authors":["D'Attilio","Myers"],"originalAuth":{"authors":["D'Attilio","Myers"],"year":{"year":"1984"}}}}},"words":[{"verbatim":"Cymatium","normalized":"Cymatium","wordType":"GENUS","start":0,"end":8},{"verbatim":"raderi","normalized":"raderi","wordType":"SPECIES","start":9,"end":15},{"verbatim":"D’Attilio","normalized":"D'Attilio","wordType":"AUTHOR_WORD","start":16,"end":25},{"verbatim":"Myers","normalized":"Myers","wordType":"AUTHOR_WORD","start":28,"end":33},{"verbatim":"1984","normalized":"1984","wordType":"YEAR","start":35,"end":39}],"id":"b3a9e67a-58b7-5aed-a74c-1f2b57b015d0","parserVersion":"test_version"}
+```
+
 Name: Melania testudinaria Von dem Busch, 1842
 
 Canonical: Melania testudinaria
@@ -3770,7 +3780,7 @@ Canonical: Littorina littorea f. major
 
 Authorship: (Linnaeus 1758)
 
-```json
+(Linnaeus 1758)```json
 {"parsed":true,"quality":1,"verbatim":"Littorina (Littorina) littorea fa major (Linnaeus, 1758)","normalized":"Littorina (Littorina) littorea f. major (Linnaeus 1758)","canonical":{"stemmed":"Littorina littore maior","simple":"Littorina littorea major","full":"Littorina littorea f. major"},"cardinality":3,"authorship":{"verbatim":"(Linnaeus, 1758)","normalized":"(Linnaeus 1758)","year":"1758","authors":["Linnaeus"],"originalAuth":{"authors":["Linnaeus"],"year":{"year":"1758"}}},"details":{"infraspecies":{"genus":"Littorina","subgenus":"Littorina","species":"littorea","infraspecies":[{"value":"major","rank":"f.","authorship":{"verbatim":"(Linnaeus, 1758)","normalized":"(Linnaeus 1758)","year":"1758","authors":["Linnaeus"],"originalAuth":{"authors":["Linnaeus"],"year":{"year":"1758"}}}}]}},"words":[{"verbatim":"Littorina","normalized":"Littorina","wordType":"GENUS","start":0,"end":9},{"verbatim":"Littorina","normalized":"Littorina","wordType":"INFRA_GENUS","start":11,"end":20},{"verbatim":"littorea","normalized":"littorea","wordType":"SPECIES","start":22,"end":30},{"verbatim":"fa","normalized":"f.","wordType":"RANK","start":31,"end":33},{"verbatim":"major","normalized":"major","wordType":"INFRASPECIES","start":34,"end":39},{"verbatim":"Linnaeus","normalized":"Linnaeus","wordType":"AUTHOR_WORD","start":41,"end":49},{"verbatim":"1758","normalized":"1758","wordType":"YEAR","start":51,"end":55}],"id":"fcd777b2-d8c9-5fe5-9883-ed0affa4a0e2","parserVersion":"test_version"}
 ```
 
@@ -4582,7 +4592,7 @@ Canonical: Liopropoma
 Authorship:
 
 ```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name is approximate"}],"verbatim":"Liopropoma sp.2 Not applicable","normalized":"Liopropoma","canonical":{"stemmed":"Liopropoma","simple":"Liopropoma","full":"Liopropoma"},"cardinality":0,"surrogate":"APPROXIMATION","details":{"approximation":{"genus":"Liopropoma","approximationMarker":"sp.","ignored":"2 Not applicable"}},"words":[{"verbatim":"Liopropoma","normalized":"Liopropoma","wordType":"GENUS","start":0,"end":10},{"verbatim":"sp.","normalized":"sp.","wordType":"APPROXIMATION_MARKER","start":11,"end":14}],"id":"fb3779a4-57a0-5628-8c4e-e341ca4f952d","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Name is approximate"},{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Liopropoma sp.2 Not applicable","normalized":"Liopropoma","canonical":{"stemmed":"Liopropoma","simple":"Liopropoma","full":"Liopropoma"},"cardinality":0,"surrogate":"APPROXIMATION","tail":" Not applicable","details":{"approximation":{"genus":"Liopropoma","approximationMarker":"sp.","ignored":"2"}},"words":[{"verbatim":"Liopropoma","normalized":"Liopropoma","wordType":"GENUS","start":0,"end":10},{"verbatim":"sp.","normalized":"sp.","wordType":"APPROXIMATION_MARKER","start":11,"end":14}],"id":"fb3779a4-57a0-5628-8c4e-e341ca4f952d","parserVersion":"test_version"}
 ```
 
 Name: Lacanobia sp. nr. subjuncta Bold:Aab, 0925
@@ -6724,6 +6734,35 @@ Authorship:
 
 ### Misc annotations
 
+Name: Feldmannia species
+
+Canonical: Feldmannia
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Feldmannia species","normalized":"Feldmannia","canonical":{"stemmed":"Feldmannia","simple":"Feldmannia","full":"Feldmannia"},"cardinality":1,"tail":" species","details":{"uninomial":{"uninomial":"Feldmannia"}},"words":[{"verbatim":"Feldmannia","normalized":"Feldmannia","wordType":"UNINOMIAL","start":0,"end":10}],"id":"55474a4d-2fc1-5417-8fac-06485167c33e","parserVersion":"test_version"}
+```
+
+Name: Periglypta G. Paulay, MS
+
+Canonical: Periglypta
+
+Authorship: G. Paulay
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Periglypta G. Paulay, MS","normalized":"Periglypta G. Paulay","canonical":{"stemmed":"Periglypta","simple":"Periglypta","full":"Periglypta"},"cardinality":1,"authorship":{"verbatim":"G. Paulay","normalized":"G. Paulay","authors":["G. Paulay"],"originalAuth":{"authors":["G. Paulay"]}},"tail":", MS","details":{"uninomial":{"uninomial":"Periglypta","authorship":{"verbatim":"G. Paulay","normalized":"G. Paulay","authors":["G. Paulay"],"originalAuth":{"authors":["G. Paulay"]}}}},"words":[{"verbatim":"Periglypta","normalized":"Periglypta","wordType":"UNINOMIAL","start":0,"end":10},{"verbatim":"G.","normalized":"G.","wordType":"AUTHOR_WORD","start":11,"end":13},{"verbatim":"Paulay","normalized":"Paulay","wordType":"AUTHOR_WORD","start":14,"end":20}],"id":"6da4ccdf-99c9-5cef-ae1c-a2d332a9c476","parserVersion":"test_version"}
+```
+
+Name: Teredo not found
+
+Canonical: Teredo
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Teredo not found","normalized":"Teredo","canonical":{"stemmed":"Teredo","simple":"Teredo","full":"Teredo"},"cardinality":1,"tail":" not found","details":{"uninomial":{"uninomial":"Teredo"}},"words":[{"verbatim":"Teredo","normalized":"Teredo","wordType":"UNINOMIAL","start":0,"end":6}],"id":"81d633f5-1f21-53ca-bbd0-92e436f440d1","parserVersion":"test_version"}
+```
 Name: Velutina haliotoides (Linnaeus, 1758), sensu Fabricius, 1780
 
 Canonical: Velutina haliotoides
@@ -6782,6 +6821,16 @@ Authorship:
 
 ```json
 {"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Crenarchaeote enrichment culture clone OREC-B1022","normalized":"Crenarchaeote","canonical":{"stemmed":"Crenarchaeote","simple":"Crenarchaeote","full":"Crenarchaeote"},"cardinality":1,"tail":" enrichment culture clone OREC-B1022","details":{"uninomial":{"uninomial":"Crenarchaeote"}},"words":[{"verbatim":"Crenarchaeote","normalized":"Crenarchaeote","wordType":"UNINOMIAL","start":0,"end":13}],"id":"f16c9aa3-f749-5025-b9cb-2dcfc6d7629b","parserVersion":"test_version"}
+```
+
+Name: Diodora dorsata  CF
+
+Canonical:
+
+Authorship:
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Diodora dorsata  CF","normalized":"Diodora dorsata","canonical":{"stemmed":"Diodora dorsat","simple":"Diodora dorsata","full":"Diodora dorsata"},"cardinality":2,"tail":"  CF","details":{"species":{"genus":"Diodora","species":"dorsata"}},"words":[{"verbatim":"Diodora","normalized":"Diodora","wordType":"GENUS","start":0,"end":7},{"verbatim":"dorsata","normalized":"dorsata","wordType":"SPECIES","start":8,"end":15}],"id":"d3991dd5-f6c2-54aa-94e1-419fb560e703","parserVersion":"test_version"}
 ```
 
 Name: Dasysyrphus intrudens complex sp. BBDCQ003-10

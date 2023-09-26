@@ -263,7 +263,7 @@ FiliusFNoSpace <- 'f.'
 
 AuthorSuffix <- 'bis' / 'ter'
 
-AuthorPrefixGlued1 <- ('d' / 'O' / 'L' / 'M') Apostrophe
+AuthorPrefixGlued1 <- ("d" / 'O' / 'L' / 'M') Apostrophe
 
 AuthorPrefixGlued2 <- ('Mc' / 'Mac') Apostrophe?
 
@@ -329,7 +329,6 @@ Apostrophe <- ApostrOther / ApostrASCII
 ApostrASCII <- '\''
 
 ApostrOther <- '‘' / '’' / '`' / '´'
-
 
 Dash <- '-' / DashOther
 
