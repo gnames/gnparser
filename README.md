@@ -4,6 +4,8 @@
 
 Try `GNparser` [online][parser-web].
 
+[`GNparser` with `OpenRefine`][OpenRefine]
+
 ``GNparser`` splits scientific names into their semantic elements with an
 associated meta information. Parsing is indispensable for matching names
 from different data sources, because it can normalize different lexical
@@ -729,3 +731,4 @@ Released under [MIT license]
 [PHP pipes]: https://gist.github.com/marcobrt/72b2a3d1b0649c1bf738c9fc88f74ec0
 [rgnparser]: https://github.com/ropensci/rgnparser
 [v0diff]: https://github.com/gnames/gnparser/wiki/Changes-in-v1.0.0
+[OpenRefine]: https://github.com/gnames/gnverifier/wiki/OpenRefine-readme
