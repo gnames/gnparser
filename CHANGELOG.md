@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add: sorting uses `slices` package.
+
 ## [v1.7.5] - 2023-09-26 Tue
 
 - Add: CSV and TSV files provide now verbatim authorship instead of normalized

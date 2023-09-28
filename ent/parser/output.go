@@ -1,7 +1,8 @@
 package parser
 
 import (
-	"sort"
+	"cmp"
+	"slices"
 	"strings"
 
 	"github.com/gnames/gnparser/ent/parsed"
@@ -88,14 +89,13 @@ func prepareWarnings(ws map[parsed.Warning]struct{}) []parsed.QualityWarning {
 		i++
 	}
 
-	sort.Slice(res, func(i, j int) bool {
-		if res[i].Quality > res[j].Quality {
-			return true
+	slices.SortFunc(res, func(a, b parsed.QualityWarning) int {
+		res := cmp.Compare(b.Quality, a.Quality)
+		if res != 0 {
+			return res
 		}
-		if res[i].Quality < res[j].Quality {
-			return false
-		}
-		return res[i].Warning.String() < res[j].Warning.String()
+		return cmp.Compare(a.Warning.String(), b.Warning.String())
 	})
+
 	return res
 }

@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 // quality.go generates a markdown file that describes meaning of each quality
@@ -6,8 +7,9 @@ package main
 
 import (
 	"fmt"
+	"slices"
+
 	"github.com/gnames/gnparser/ent/parsed"
-	"sort"
 )
 
 var body = `# Quality categories
@@ -28,7 +30,7 @@ func main() {
 
 	for _, v := range []int{2, 3, 4} {
 		warns := warnsMap[v]
-		sort.Strings(warns)
+		slices.Sort(warns)
 		item := fmt.Sprintf("\n\n## Quality %d\n", v)
 		for i := range warns {
 			warn := fmt.Sprintf("\n- %s", warns[i])
