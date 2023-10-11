@@ -7,6 +7,7 @@
 ## [v1.8.0] - 2023-10-11 Wed
 
 - Add [#255]: normalize stemmed canonical of `Aus bus bus` to `Aus bus`.
+    **WARNING** this creates some backward incompatibility.
 
 ## [v1.7.5] - 2023-09-26 Tue
 

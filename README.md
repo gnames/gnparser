@@ -158,7 +158,13 @@ of names. Three versions of canonical forms are included:
 | -         | *Spiraea alba var. alba* Du Roi | Best for disambiguation, but has many lexical variants |
 | Full      | *Spiraea alba var. alba*        | Presentation, infraspecies disambiguation              |
 | Simple    | *Spiraea alba alba*             | Name matching, presentation                            |
-| Stem      | *Spiraea alb alb*               | Best for matching fem./masc. inconsistencies           |
+| Stem      | *Spiraea alb*                   | Best for matching fem./masc. inconsistencies           |
+
+Note than stemmed version loses infraspecific epithet in cases where
+it is the same as specific epithet. If they are not identical, both will be
+present (e.g. `Bus alba albus` will produce stemmed canonical as
+`Bus alb alb`, because `alba` and `albus` are not identical. This helps to
+match nominotypical infraspecies (ICN)/species groups (ICZN).
 
 The ``canonicalName -> full`` is good for presentation, as it keeps more
 details.
