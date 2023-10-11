@@ -26,20 +26,23 @@ func TestStemmer(t *testing.T) {
 
 	t.Run("StemCanonical", func(t *testing.T) {
 		data := []struct {
-			msg string
-			in  string
-			out string
+			msg  string
+			in   string
+			out  string
+			card int
 		}{
-			{"Uninomial", "Pomatomus", "Pomatomus"},
-			{"Binomial1", "Betula naturae", "Betula natur"},
-			{"Binomial2", "Betula alba", "Betula alb"},
-			{"Binomial3", "Leptochloöpsis virgata", "Leptochloopsis uirgat"},
-			{"Trinomial", "Betula alba naturae", "Betula alb natur"},
-			{"GraftChimeraFormula", "Crataegus + Mespilus", "Crataegus + Mespilus"},
-			{"GraftChimeraFormula2", "Cytisus purpureus + Laburnum anagyroides", "Cytisus purpure + Laburnum anagyroid"},
+			{"Uninomial", "Pomatomus", "Pomatomus", 1},
+			{"Binomial1", "Betula naturae", "Betula natur", 2},
+			{"Binomial2", "Betula alba", "Betula alb", 2},
+			{"Binomial3", "Leptochloöpsis virgata", "Leptochloopsis uirgat", 2},
+			{"Trinomial", "Betula alba naturae", "Betula alb natur", 3},
+			{"SpGroup", "Betula alba alba", "Betula alb", 3},
+			{"SpGroup", "Betula alba albus", "Betula alb alb", 3},
+			{"GraftChimeraFormula", "Crataegus + Mespilus", "Crataegus + Mespilus", 0},
+			{"GraftChimeraFormula2", "Cytisus purpureus + Laburnum anagyroides", "Cytisus purpure + Laburnum anagyroid", 0},
 		}
 		for _, v := range data {
-			assert.Equal(t, v.out, stemmer.StemCanonical(v.in), v.msg)
+			assert.Equal(t, v.out, stemmer.StemCanonical(v.in, v.card), v.msg)
 		}
 	})
 }

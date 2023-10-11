@@ -45,7 +45,7 @@ func (sn *scientificNameNode) Canonical() *parsed.Canonical {
 	}
 	c := sn.canonical()
 	return &parsed.Canonical{
-		Stemmed: stemmer.StemCanonical(c.Value),
+		Stemmed: stemmer.StemCanonical(c.Value, sn.cardinality),
 		Simple:  c.Value,
 		Full:    c.ValueRanked,
 	}

@@ -130,7 +130,10 @@ type StemmedWord struct {
 //  3. All characters in the string are ASCII with exception of the
 //     hybrid sign.
 //  4. The string always starts with a capitalized word.
-func StemCanonical(c string) string {
+func StemCanonical(c string, card int) string {
+	if card == 3 {
+		c = normalizeSpGroup(c, card)
+	}
 	graftChimeraFormulaParts := strings.Split(c, " + ")
 	for gci, gcv := range graftChimeraFormulaParts {
 		hybridFormulaParts := strings.Split(gcv, " × ")
@@ -157,6 +160,19 @@ func StemCanonical(c string) string {
 	}
 	//return strings.Join(graftChimeraFormulaParts, " + ")
 	return str.TransliterateDiaereses(strings.Join(graftChimeraFormulaParts, " + "))
+}
+
+func normalizeSpGroup(c string, card int) string {
+	if card != 3 {
+		return c
+	}
+
+	es := strings.Split(c, " ")
+	if len(es) != 3 || es[1] != es[2] {
+		return c
+	}
+
+	return es[0] + " " + es[1]
 }
 
 // Stem takes a word and, assuming the word is noun, removes its latin suffix
