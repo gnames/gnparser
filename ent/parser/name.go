@@ -2,6 +2,7 @@ package parser
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/ent/stemmer"
@@ -38,17 +39,36 @@ func (sn *scientificNameNode) Normalized() string {
 // Canonical returns canonical forms of scientific name. There are
 // three forms: Stemmed, the most normalized, Simple, and Full (the least
 // normalized).
-func (sn *scientificNameNode) Canonical() *parsed.Canonical {
+func (sn *scientificNameNode) Canonical(withSpGr bool) *parsed.Canonical {
 	var res *parsed.Canonical
 	if sn.nameData == nil {
 		return res
 	}
 	c := sn.canonical()
-	return &parsed.Canonical{
-		Stemmed: stemmer.StemCanonical(c.Value, sn.cardinality),
+	res = &parsed.Canonical{
+		Stemmed: stemmer.StemCanonical(c.Value),
 		Simple:  c.Value,
 		Full:    c.ValueRanked,
 	}
+	if withSpGr && sn.cardinality == 3 {
+		res.Stemmed = spGrStemmed(res.Stemmed, res.Simple)
+	}
+	return res
+}
+
+func spGrStemmed(stem, simple string) string {
+
+	eStem := strings.Split(stem, " ")
+	if len(eStem) != 3 || eStem[1] != eStem[2] {
+		return stem
+	}
+
+	sStem := strings.Split(simple, " ")
+	if len(sStem) != 3 || sStem[1] != sStem[2] {
+		return stem
+	}
+
+	return eStem[0] + " " + eStem[1]
 }
 
 // Details returns additional details of about a scientific names.

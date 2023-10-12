@@ -10,10 +10,11 @@ import (
 
 // ToOutput converts Abstract Syntax Tree of scientific name to a
 // final output object.
-func (sn *scientificNameNode) ToOutput(withDetails bool) parsed.Parsed {
+func (sn *scientificNameNode) ToOutput(
+	withDetails, withSpGr bool) parsed.Parsed {
 	res := parsed.Parsed{
 		Verbatim:      sn.verbatim,
-		Canonical:     sn.Canonical(),
+		Canonical:     sn.Canonical(withSpGr),
 		Virus:         sn.virus,
 		DaggerChar:    sn.daggerChar,
 		VerbatimID:    sn.verbatimID,

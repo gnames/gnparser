@@ -50,7 +50,10 @@ func (gnp gnparser) ParseName(s string) parsed.Parsed {
 	sciNameNode := gnp.parser.PreprocessAndParse(
 		s, ver, gnp.cfg.IgnoreHTMLTags, gnp.cfg.WithCapitalization, gnp.cfg.WithCultivars, gnp.cfg.WithPreserveDiaereses,
 	)
-	res := sciNameNode.ToOutput(gnp.cfg.WithDetails)
+	res := sciNameNode.ToOutput(
+		gnp.cfg.WithDetails,
+		gnp.cfg.WithSpeciesGroupCut,
+	)
 	return res
 }
 

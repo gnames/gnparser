@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.9.0] - 2023-10-12 Thu
+
+- Add: restore backward compatibility by creating a new flag
+  `--species-group-cut`.
 
 ## [v1.8.0] - 2023-10-11 Wed
 

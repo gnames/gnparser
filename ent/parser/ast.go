@@ -29,6 +29,7 @@ type scientificNameNode struct {
 	ambiguousEpithet string
 	ambiguousModif   string
 	warnings         map[parsed.Warning]struct{}
+	withSpGroup      bool
 }
 
 func (p *Engine) newScientificNameNode() {

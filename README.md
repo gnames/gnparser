@@ -158,13 +158,7 @@ of names. Three versions of canonical forms are included:
 | -         | *Spiraea alba var. alba* Du Roi | Best for disambiguation, but has many lexical variants |
 | Full      | *Spiraea alba var. alba*        | Presentation, infraspecies disambiguation              |
 | Simple    | *Spiraea alba alba*             | Name matching, presentation                            |
-| Stem      | *Spiraea alb*                   | Best for matching fem./masc. inconsistencies           |
-
-Note than stemmed version loses infraspecific epithet in cases where
-it is the same as specific epithet. If they are not identical, both will be
-present (e.g. `Bus alba albus` will produce stemmed canonical as
-`Bus alb alb`, because `alba` and `albus` are not identical. This helps to
-match nominotypical infraspecies (ICN)/species groups (ICZN).
+| Stem      | *Spiraea alb alb*               | Best for matching fem./masc. inconsistencies           |
 
 The ``canonicalName -> full`` is good for presentation, as it keeps more
 details.
@@ -406,14 +400,16 @@ performance.
 ``--port -p``
 : set a port to run web-interface and [RESTful API][OpenAPI].
 
-`` --web-logs``
-: requires `--port`. Enables output of logs for web-services.
-
 `` --nsqd-tcp``
 : requires `--port`. Allows to redirect web-service log output to [NSQ]
   messaging server's TCP-based endpoint. It is handy for aggregations of logs
   from GNparser web-services running inside of Docker containers or
   in Kubernetes pods.
+
+``--species-group-cut``
+: Changes stemmed canonical for autonym or species group names (e.g. `Aus bus bus`). It cuts infraspecific epithet, leaving only genus and specific
+epithet. All other data stays the same. This feature might be useful to
+match names like `Aus bus` and `Aus bus bus`.
 
 ``--stream -s``
 : ``GNparser`` can be used from any language using pipe-in/pipe-out of the
@@ -426,6 +422,9 @@ achieve that.
 
 ``--version -V``
 : shows the version number of ``GNparser``.
+
+`` --web-logs``
+: requires `--port`. Enables output of logs for web-services.
 
 To parse one name:
 

@@ -1,6 +1,7 @@
 package parser_test
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/gnames/gnparser/ent/parser"
@@ -18,7 +19,7 @@ func TestPreNParse(t *testing.T) {
 	}
 	for _, v := range testData {
 		sn := p.PreprocessAndParse(v.name, "test_version", true, false, false, false)
-		parsed := sn.ToOutput(false)
+		parsed := sn.ToOutput(false, false)
 		can := parsed.Canonical
 		msg := v.name
 		if v.can == "" {
@@ -29,7 +30,7 @@ func TestPreNParse(t *testing.T) {
 	}
 }
 
-// TTestToOutput tests ToOutput method of ScientificNameNode
+// TestToOutput tests ToOutput method of ScientificNameNode
 func TestToOutput(t *testing.T) {
 	p := parser.New()
 	testData := []struct {
@@ -39,21 +40,24 @@ func TestToOutput(t *testing.T) {
 		{"Pardosa moesta L.", "Pardosa moesta", "L.", false, true},
 		{
 			"Bacillus subtilis (Ehrenberg, 1835) Cohn, 1872",
-			"Bacillus subtilis", "(Ehrenberg 1835) Cohn 1872", false, true,
+			"Bacillus subtilis", "(Ehrenberg 1835) Cohn 1872",
+			false, true,
 		},
 		{
 			"Bacillus subtilis (Ehrenberg, 1835) Cohn, 1872 sec. Miller",
-			"Bacillus subtilis", "(Ehrenberg 1835) Cohn 1872", false, true,
+			"Bacillus subtilis", "(Ehrenberg 1835) Cohn 1872",
+			false, true,
 		},
 		{
 			"Aconitum napellus var. formosum (Rchb.) W. D. J. Koch (nom. ambig.)",
-			"Aconitum napellus formosum", "(Rchb.) W. D. J. Koch", true, true,
+			"Aconitum napellus formosum", "(Rchb.) W. D. J. Koch",
+			true, true,
 		},
 		{"something", "", "", false, false},
 	}
 	for _, v := range testData {
 		sn := p.PreprocessAndParse(v.name, "test_version", true, false, false, false)
-		out := sn.ToOutput(v.det)
+		out := sn.ToOutput(v.det, false)
 		msg := v.name
 		if !out.Parsed {
 			assert.Nil(t, out.Canonical, msg)
@@ -61,5 +65,42 @@ func TestToOutput(t *testing.T) {
 		}
 		assert.Equal(t, v.can, out.Canonical.Simple, msg)
 		assert.Equal(t, v.au, out.Authorship.Normalized, msg)
+	}
+}
+
+// TestSpecGroupOption checks if stem is cut when WithSpeciesGroupCut is true.
+func TestSpecGroupOption(t *testing.T) {
+	assert := assert.New(t)
+
+	p := parser.New()
+	testData := []struct {
+		name, stemmed string
+		spGrp         bool
+	}{
+		{"Aus alba alba", "Aus alb alb", false},
+		{"Aus alba alba", "Aus alb", true},
+		{"Aus alba albus", "Aus alb alb", true},
+		{
+			"Bacillus subtilis subtilis (Ehrenberg, 1835) Cohn, 1872",
+			"Bacillus subtil subtil", false,
+		},
+		{
+			"Bacillus subtilis subtilis (Ehrenberg, 1835) Cohn, 1872",
+			"Bacillus subtil", true,
+		},
+		{
+			"Bacillus subtila subtilis (Ehrenberg, 1835) Cohn, 1872",
+			"Bacillus subtil subtil", true,
+		},
+	}
+	for _, v := range testData {
+		sn := p.PreprocessAndParse(
+			v.name, "test_version",
+			true, false, false, false,
+		)
+		out := sn.ToOutput(false, v.spGrp)
+		msg := v.name
+		fmt.Println(out.Canonical.Simple)
+		assert.Equal(v.stemmed, out.Canonical.Stemmed, msg)
 	}
 }

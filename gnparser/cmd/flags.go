@@ -142,6 +142,18 @@ func withPreserveDiaeresesFlag(cmd *cobra.Command) {
 	}
 }
 
+func spGrCutFlag(cmd *cobra.Command) {
+	b, err := cmd.Flags().GetBool("species-group-cut")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	if b {
+		opts = append(opts, gnparser.OptWithSpeciesGroupCut(true))
+	}
+
+}
+
 func withStreamFlag(cmd *cobra.Command) {
 	withDet, err := cmd.Flags().GetBool("stream")
 	if err != nil {

@@ -74,6 +74,11 @@ type Config struct {
 	// WithWebLogs flag enables logs when running web-service. This flag is
 	// ignored if `Port` value is not set.
 	WithWebLogs bool
+
+	// WithSpeciesGroupCut flag means that stemmed version of autonyms (ICN) and
+	// species group names (ICZN) will be truncated to species. It helps to
+	// simplify matching names like `Aus bus` and `Aus bus bus`.
+	WithSpeciesGroupCut bool
 }
 
 // Option is a type that has to be returned by all Option functions. Such
@@ -196,6 +201,13 @@ func OptWithStream(b bool) Option {
 func OptWithWebLogs(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithWebLogs = b
+	}
+}
+
+// OptWithSpeciesGroupCut sets WithSpeciesGroupCut field.
+func OptWithSpeciesGroupCut(b bool) Option {
+	return func(cfg *Config) {
+		cfg.WithSpeciesGroupCut = b
 	}
 }
 

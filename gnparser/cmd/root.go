@@ -80,6 +80,7 @@ gnparser -j 5 -p 8080
 		withEnableCultivarsFlag(cmd)
 		withPreserveDiaeresesFlag(cmd)
 		batchSizeFlag(cmd)
+		spGrCutFlag(cmd)
 		port := portFlag(cmd)
 		cfg := gnparser.NewConfig(opts...)
 		batchSize = cfg.BatchSize
@@ -170,6 +171,8 @@ func init() {
 		"shows build version and date, ignores other flags.")
 
 	rootCmd.Flags().BoolP("web-logs", "", false, "enable logs for the web service")
+
+	rootCmd.Flags().BoolP("species-group-cut", "", false, "cut autonym/species group names to species for stemmed version")
 
 	rootCmd.Flags().StringP("nsqd-tcp", "", "", "an addresss pointing to NSQ TCP service for logs redirection (e.g. 127.0.0.1:4150)")
 }

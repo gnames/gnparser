@@ -20,7 +20,7 @@ type Parser interface {
 // It contains a method to convert AST into final output.
 type ScientificNameNode interface {
 	// ToOutput converts AST into final output object.
-	ToOutput(withDetails bool) parsed.Parsed
+	ToOutput(withDetails, withSpGr bool) parsed.Parsed
 }
 
 // nameData is the interface for converting AST to output elements.
