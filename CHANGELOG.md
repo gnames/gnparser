@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add: update modules.
+
 ## [v1.9.0] - 2023-10-12 Thu
 
 - Add: restore backward compatibility by creating a new flag
