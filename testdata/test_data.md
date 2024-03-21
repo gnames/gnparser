@@ -1762,6 +1762,16 @@ Authorship: Mc'Keown 1938
 
 ### Infraspecies without rank (ICZN)
 
+Name: Myotis fimbriatus taiwanensis Ärnbäck-Christie-Linde, 1908
+
+Canonical: Myotis fimbriatus taiwanensis
+
+Authorship: Ärnbäck-Christie-Linde, 1908
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Myotis fimbriatus taiwanensis Ärnbäck-Christie-Linde, 1908","normalized":"Myotis fimbriatus taiwanensis Ärnbäck-Christie-Linde 1908","canonical":{"stemmed":"Myotis fimbriat taiwanens","simple":"Myotis fimbriatus taiwanensis","full":"Myotis fimbriatus taiwanensis"},"cardinality":3,"authorship":{"verbatim":"Ärnbäck-Christie-Linde, 1908","normalized":"Ärnbäck-Christie-Linde 1908","year":"1908","authors":["Ärnbäck-Christie-Linde"],"originalAuth":{"authors":["Ärnbäck-Christie-Linde"],"year":{"year":"1908"}}},"details":{"infraspecies":{"genus":"Myotis","species":"fimbriatus","infraspecies":[{"value":"taiwanensis","authorship":{"verbatim":"Ärnbäck-Christie-Linde, 1908","normalized":"Ärnbäck-Christie-Linde 1908","year":"1908","authors":["Ärnbäck-Christie-Linde"],"originalAuth":{"authors":["Ärnbäck-Christie-Linde"],"year":{"year":"1908"}}}}]}},"words":[{"verbatim":"Myotis","normalized":"Myotis","wordType":"GENUS","start":0,"end":6},{"verbatim":"fimbriatus","normalized":"fimbriatus","wordType":"SPECIES","start":7,"end":17},{"verbatim":"taiwanensis","normalized":"taiwanensis","wordType":"INFRASPECIES","start":18,"end":29},{"verbatim":"Ärnbäck-Christie-Linde","normalized":"Ärnbäck-Christie-Linde","wordType":"AUTHOR_WORD","start":30,"end":52},{"verbatim":"1908","normalized":"1908","wordType":"YEAR","start":54,"end":58}],"id":"fdc33e56-f42c-5035-87a8-4bd9f0bcf1dc","parserVersion":"test_version"}
+```
+
 Name: Peristernia nassatula forskali Tapparone-Canefri 1875
 
 Canonical: Peristernia nassatula forskali

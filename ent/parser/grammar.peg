@@ -238,7 +238,8 @@ AuthorEtAl <- 'arg.' / 'et al.{?}' / ('et' / '&') ' al' '.'?
 
 AuthorWord1 <- 'duPont' / 'degli' / 'Arango y Molina'
 
-AuthorWord2 <- (AuthorWord3 / AuthorWord4) Dash (AuthorWordSoft / AuthorInitial)
+AuthorWord2 <- (AuthorWord3 / AuthorWord4) Dash 
+  (AuthorWordSoft / AuthorInitial) ( Dash (AuthorWordSoft / AuthorInitial))?
 
 AuthorWord3 <- AuthorPrefixGlued2 (CapAuthorWord / AuthorLowerChar+) '.'?
 
