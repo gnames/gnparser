@@ -4287,6 +4287,16 @@ Authorship: (È. Neé) Brüch.
 
 ### Digraph unicode characters
 
+Name: Crisia romanica Zágoršek Silye & Szabó 2008
+
+Canonical: Crisia romanica
+
+Authorship:  Zágoršek Silye & Szabó 2008
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Crisia romanica Zágoršek Silye \u0026 Szabó 2008","normalized":"Crisia romanica Zágoršek Silye \u0026 Szabó 2008","canonical":{"stemmed":"Crisia romanic","simple":"Crisia romanica","full":"Crisia romanica"},"cardinality":2,"authorship":{"verbatim":"Zágoršek Silye \u0026 Szabó 2008","normalized":"Zágoršek Silye \u0026 Szabó 2008","year":"2008","authors":["Zágoršek Silye","Szabó"],"originalAuth":{"authors":["Zágoršek Silye","Szabó"],"year":{"year":"2008"}}},"details":{"species":{"genus":"Crisia","species":"romanica","authorship":{"verbatim":"Zágoršek Silye \u0026 Szabó 2008","normalized":"Zágoršek Silye \u0026 Szabó 2008","year":"2008","authors":["Zágoršek Silye","Szabó"],"originalAuth":{"authors":["Zágoršek Silye","Szabó"],"year":{"year":"2008"}}}}},"words":[{"verbatim":"Crisia","normalized":"Crisia","wordType":"GENUS","start":0,"end":6},{"verbatim":"romanica","normalized":"romanica","wordType":"SPECIES","start":7,"end":15},{"verbatim":"Zágoršek","normalized":"Zágoršek","wordType":"AUTHOR_WORD","start":16,"end":24},{"verbatim":"Silye","normalized":"Silye","wordType":"AUTHOR_WORD","start":25,"end":30},{"verbatim":"Szabó","normalized":"Szabó","wordType":"AUTHOR_WORD","start":33,"end":38},{"verbatim":"2008","normalized":"2008","wordType":"YEAR","start":39,"end":43}],"id":"f95faed8-6aa4-53d2-bd9d-e9463d5eca60","parserVersion":"test_version"}
+```
+
 Name: Æschopalæa grisella Pascoe, 1864
 
 Canonical: Aeschopalaea grisella

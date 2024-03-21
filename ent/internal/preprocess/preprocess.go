@@ -10,6 +10,7 @@ import (
 	"unicode"
 
 	"github.com/gnames/gnparser/ent/internal/preparser"
+	"golang.org/x/text/unicode/norm"
 )
 
 var VirusException = map[string]string{
@@ -102,9 +103,13 @@ type ambiguous struct {
 	Subst string
 }
 
+var normalizer = norm.NFC
+
 // Preprocess runs a series of regular expressions over the input to determine
 // features of the input before parsing.
 func Preprocess(ppr *preparser.PreParser, bs []byte) *Preprocessor {
+	bs = normalizer.Bytes(bs)
+
 	pr := &Preprocessor{}
 
 	// check for empty string
