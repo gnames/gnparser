@@ -900,7 +900,6 @@ func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 		case ruleOriginalAuthorshipComb:
 			on := n.up
 			if on.pegRule == ruleBasionymAuthorshipYearMisformed {
-				p.addWarn(parsed.YearOrigMisplacedWarn)
 				on = on.up
 				misplacedYear = true
 			} else {
@@ -910,7 +909,12 @@ func (p *Engine) newAuthorshipNode(n *node32) *authorshipNode {
 			oa.Parens = true
 			if misplacedYear {
 				yr := p.newYearNode(on.next)
-				oa.Team1.Year = yr
+				if oa.Team1.Year == nil {
+					p.addWarn(parsed.YearOrigMisplacedWarn)
+					oa.Team1.Year = yr
+				} else {
+					p.addWarn(parsed.YearMisplacedWarn)
+				}
 			}
 		case ruleCombinationAuthorship:
 			ca = p.newAuthorsGroupNode(n.up)

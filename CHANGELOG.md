@@ -2,7 +2,14 @@
 
 ## Unreleased
 
+
+## [v1.9.1] - 2023-10-13 Fri
+
 - Add: update modules.
+- Fix [#259]: allow diacritics in any UTF-8 normalization form.
+- Fix [#258]: allow authors with 2 dashes in the name.
+- Fix [#256]: fix normalization where a misplacced year changes
+  the year of original authors.
 
 ## [v1.9.0] - 2023-10-12 Thu
 
@@ -452,6 +459,11 @@
 
 This document follows [changelog guidelines]
 
+[v1.9.1]: https://github.com/gnames/gnparser/compare/v1.9.0...v1.9.1
+[v1.9.0]: https://github.com/gnames/gnparser/compare/v1.8.0...v1.9.0
+[v1.8.0]: https://github.com/gnames/gnparser/compare/v1.7.5...v1.8.0
+[v1.7.5]: https://github.com/gnames/gnparser/compare/v1.7.4...v1.7.5
+[v1.7.4]: https://github.com/gnames/gnparser/compare/v1.7.3...v1.7.4
 [v1.7.3]: https://github.com/gnames/gnparser/compare/v1.7.2...v1.7.3
 [v1.7.2]: https://github.com/gnames/gnparser/compare/v1.7.1...v1.7.2
 [v1.7.1]: https://github.com/gnames/gnparser/compare/v1.7.0...v1.7.1
@@ -518,6 +530,27 @@ This document follows [changelog guidelines]
 [v0.7.0]: https://github.com/gnames/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
+
+[#270]: https://github.com/gnames/gnparser/issues/270
+[#269]: https://github.com/gnames/gnparser/issues/269
+[#268]: https://github.com/gnames/gnparser/issues/268
+[#267]: https://github.com/gnames/gnparser/issues/267
+[#266]: https://github.com/gnames/gnparser/issues/266
+[#265]: https://github.com/gnames/gnparser/issues/265
+[#264]: https://github.com/gnames/gnparser/issues/264
+[#263]: https://github.com/gnames/gnparser/issues/263
+[#262]: https://github.com/gnames/gnparser/issues/262
+[#261]: https://github.com/gnames/gnparser/issues/261
+[#260]: https://github.com/gnames/gnparser/issues/260
+[#259]: https://github.com/gnames/gnparser/issues/259
+[#258]: https://github.com/gnames/gnparser/issues/258
+[#257]: https://github.com/gnames/gnparser/issues/257
+[#256]: https://github.com/gnames/gnparser/issues/256
+[#255]: https://github.com/gnames/gnparser/issues/255
+[#254]: https://github.com/gnames/gnparser/issues/254
+[#253]: https://github.com/gnames/gnparser/issues/253
+[#252]: https://github.com/gnames/gnparser/issues/252
+[#251]: https://github.com/gnames/gnparser/issues/251
 [#250]: https://github.com/gnames/gnparser/issues/250
 [#249]: https://github.com/gnames/gnparser/issues/249
 [#248]: https://github.com/gnames/gnparser/issues/248

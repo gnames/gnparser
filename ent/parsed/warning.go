@@ -61,6 +61,7 @@ const (
 	WhiteSpaceTrailWarn
 	YearCharWarn
 	YearDotWarn
+	YearMisplacedWarn
 	YearOrigMisplacedWarn
 	YearPageWarn
 	YearParensWarn
@@ -121,6 +122,7 @@ var warningMap = map[Warning]string{
 	WhiteSpaceTrailWarn:                   "Trailing whitespace",
 	YearCharWarn:                          "Year with latin character",
 	YearDotWarn:                           "Year with period",
+	YearMisplacedWarn:                     "Misplaced year",
 	YearOrigMisplacedWarn:                 "Misplaced basionym year",
 	YearPageWarn:                          "Year with page info",
 	YearParensWarn:                        "Year with parentheses",
@@ -190,7 +192,8 @@ var WarningQualityMap = map[Warning]int{
 	WhiteSpaceTrailWarn:                   2,
 	YearCharWarn:                          2,
 	YearDotWarn:                           2,
-	YearOrigMisplacedWarn:                 2,
+	YearMisplacedWarn:                     3,
+	YearOrigMisplacedWarn:                 3,
 	YearPageWarn:                          2,
 	YearParensWarn:                        2,
 	YearQuestionWarn:                      2,

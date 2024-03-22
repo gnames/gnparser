@@ -3145,6 +3145,16 @@ Authorship: (Chatanay 1914)
 {"parsed":true,"quality":1,"verbatim":"Zophosis persis (Chatanay 1914)","normalized":"Zophosis persis (Chatanay 1914)","canonical":{"stemmed":"Zophosis pers","simple":"Zophosis persis","full":"Zophosis persis"},"cardinality":2,"authorship":{"verbatim":"(Chatanay 1914)","normalized":"(Chatanay 1914)","year":"1914","authors":["Chatanay"],"originalAuth":{"authors":["Chatanay"],"year":{"year":"1914"}}},"details":{"species":{"genus":"Zophosis","species":"persis","authorship":{"verbatim":"(Chatanay 1914)","normalized":"(Chatanay 1914)","year":"1914","authors":["Chatanay"],"originalAuth":{"authors":["Chatanay"],"year":{"year":"1914"}}}}},"words":[{"verbatim":"Zophosis","normalized":"Zophosis","wordType":"GENUS","start":0,"end":8},{"verbatim":"persis","normalized":"persis","wordType":"SPECIES","start":9,"end":15},{"verbatim":"Chatanay","normalized":"Chatanay","wordType":"AUTHOR_WORD","start":17,"end":25},{"verbatim":"1914","normalized":"1914","wordType":"YEAR","start":26,"end":30}],"id":"c6c42947-16b5-5c1c-a889-51392d82a03b","parserVersion":"test_version"}
 ```
 
+Name: Lobodon (Hombrot & Jacquinot, 1842), 2020
+
+Canonical: Lobodon
+
+Authorship: (Hombrot & Jacquinot, 1842)
+
+```json
+{"parsed":true,"quality":3,"qualityWarnings":[{"quality":3,"warning":"Misplaced year"}],"verbatim":"Lobodon (Hombrot \u0026 Jacquinot, 1842), 2020","normalized":"Lobodon (Hombrot \u0026 Jacquinot 1842)","canonical":{"stemmed":"Lobodon","simple":"Lobodon","full":"Lobodon"},"cardinality":1,"authorship":{"verbatim":"(Hombrot \u0026 Jacquinot, 1842), 2020","normalized":"(Hombrot \u0026 Jacquinot 1842)","year":"1842","authors":["Hombrot","Jacquinot"],"originalAuth":{"authors":["Hombrot","Jacquinot"],"year":{"year":"1842"}}},"details":{"uninomial":{"uninomial":"Lobodon","authorship":{"verbatim":"(Hombrot \u0026 Jacquinot, 1842), 2020","normalized":"(Hombrot \u0026 Jacquinot 1842)","year":"1842","authors":["Hombrot","Jacquinot"],"originalAuth":{"authors":["Hombrot","Jacquinot"],"year":{"year":"1842"}}}}},"words":[{"verbatim":"Lobodon","normalized":"Lobodon","wordType":"UNINOMIAL","start":0,"end":7},{"verbatim":"Hombrot","normalized":"Hombrot","wordType":"AUTHOR_WORD","start":9,"end":16},{"verbatim":"Jacquinot","normalized":"Jacquinot","wordType":"AUTHOR_WORD","start":19,"end":28},{"verbatim":"1842","normalized":"1842","wordType":"YEAR","start":30,"end":34}],"id":"449d5241-186f-5b1c-af6a-ec8786108fba","parserVersion":"test_version"}
+```
+
 Name: Zophosis persis (Chatanay), 1914
 
 Canonical: Zophosis persis
@@ -3152,7 +3162,7 @@ Canonical: Zophosis persis
 Authorship: (Chatanay 1914)
 
 ```json
-{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Misplaced basionym year"}],"verbatim":"Zophosis persis (Chatanay), 1914","normalized":"Zophosis persis (Chatanay 1914)","canonical":{"stemmed":"Zophosis pers","simple":"Zophosis persis","full":"Zophosis persis"},"cardinality":2,"authorship":{"verbatim":"(Chatanay), 1914","normalized":"(Chatanay 1914)","year":"1914","authors":["Chatanay"],"originalAuth":{"authors":["Chatanay"],"year":{"year":"1914"}}},"details":{"species":{"genus":"Zophosis","species":"persis","authorship":{"verbatim":"(Chatanay), 1914","normalized":"(Chatanay 1914)","year":"1914","authors":["Chatanay"],"originalAuth":{"authors":["Chatanay"],"year":{"year":"1914"}}}}},"words":[{"verbatim":"Zophosis","normalized":"Zophosis","wordType":"GENUS","start":0,"end":8},{"verbatim":"persis","normalized":"persis","wordType":"SPECIES","start":9,"end":15},{"verbatim":"Chatanay","normalized":"Chatanay","wordType":"AUTHOR_WORD","start":17,"end":25},{"verbatim":"1914","normalized":"1914","wordType":"YEAR","start":28,"end":32}],"id":"3f9b079c-510a-5c0c-9df6-f1660e1b005f","parserVersion":"test_version"}
+{"parsed":true,"quality":3,"qualityWarnings":[{"quality":3,"warning":"Misplaced basionym year"}],"verbatim":"Zophosis persis (Chatanay), 1914","normalized":"Zophosis persis (Chatanay 1914)","canonical":{"stemmed":"Zophosis pers","simple":"Zophosis persis","full":"Zophosis persis"},"cardinality":2,"authorship":{"verbatim":"(Chatanay), 1914","normalized":"(Chatanay 1914)","year":"1914","authors":["Chatanay"],"originalAuth":{"authors":["Chatanay"],"year":{"year":"1914"}}},"details":{"species":{"genus":"Zophosis","species":"persis","authorship":{"verbatim":"(Chatanay), 1914","normalized":"(Chatanay 1914)","year":"1914","authors":["Chatanay"],"originalAuth":{"authors":["Chatanay"],"year":{"year":"1914"}}}}},"words":[{"verbatim":"Zophosis","normalized":"Zophosis","wordType":"GENUS","start":0,"end":8},{"verbatim":"persis","normalized":"persis","wordType":"SPECIES","start":9,"end":15},{"verbatim":"Chatanay","normalized":"Chatanay","wordType":"AUTHOR_WORD","start":17,"end":25},{"verbatim":"1914","normalized":"1914","wordType":"YEAR","start":28,"end":32}],"id":"3f9b079c-510a-5c0c-9df6-f1660e1b005f","parserVersion":"test_version"}
 ```
 
 Name: Zophosis quadrilineata (Oliv. )
