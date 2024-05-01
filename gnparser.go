@@ -35,6 +35,19 @@ func New(cfg Config) GNparser {
 	return gnp
 }
 
+// NewPool creates a pool of GNparser objects. It is useful for concurrent
+// parsing of many names. The function takes a configuration object and the
+// size of the pool. It returns a channel GNparser objects with the
+// corresponding buffer size.
+func NewPool(cfg Config, size int) chan GNparser {
+	res := make(chan GNparser, size)
+	for range size {
+		gnp := New(cfg)
+		res <- gnp
+	}
+	return res
+}
+
 // Debug returns byte representation of complete and 'output' syntax trees.
 func (gnp gnparser) Debug(s string) []byte {
 	return gnp.parser.Debug(s)

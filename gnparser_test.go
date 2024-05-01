@@ -34,6 +34,23 @@ func TestParseName(t *testing.T) {
 	}
 }
 
+func TestPool(t *testing.T) {
+	assert := assert.New(t)
+	cfg := gnparser.NewConfig()
+	pool := gnparser.NewPool(cfg, 3)
+	gnp := <-pool
+	assert.NotNil(gnp)
+	gnp2 := <-pool
+	assert.NotNil(gnp2)
+	gnp3 := <-pool
+	assert.NotNil(gnp3)
+	pd := gnp3.ParseName("Abarema clypearia")
+	assert.True(pd.Parsed)
+	pool <- gnp
+	pool <- gnp2
+	pool <- gnp3
+}
+
 func TestParseNameCultivars(t *testing.T) {
 	cfg := gnparser.NewConfig(
 		gnparser.OptWithDetails(true),

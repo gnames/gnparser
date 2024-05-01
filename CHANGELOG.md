@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v1.9.2] - 2024-05-01 Wed
+
+- Add [#261]: a constructor to return a pool of a given size of gnparsers.
 
 ## [v1.9.1] - 2023-10-13 Fri
 
