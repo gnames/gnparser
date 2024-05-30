@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v1.10.0] - 2024-06-04 Tue
+
+- Add [#260]: add `candidatus` field for parsed data.
+- Add [#232]: parse names like `subgen. Psammophrynopsis Koch, 1953`.
+
 ## [v1.9.2] - 2024-05-01 Wed
 
 - Add [#261]: a constructor to return a pool of a given size of gnparsers.

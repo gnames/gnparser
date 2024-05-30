@@ -58,6 +58,7 @@ const (
 	SuperspeciesWarn
 	UTF8ConvBadWarn
 	UninomialComboWarn
+	UninomialWithRank
 	WhiteSpaceTrailWarn
 	YearCharWarn
 	YearDotWarn
@@ -119,6 +120,7 @@ var warningMap = map[Warning]string{
 	SuperspeciesWarn:                      "Ambiguity: subgenus or superspecies found",
 	UTF8ConvBadWarn:                       "Incorrect conversion to UTF-8",
 	UninomialComboWarn:                    "Combination of two uninomials",
+	UninomialWithRank:                     "Uninomial prepended by its rank",
 	WhiteSpaceTrailWarn:                   "Trailing whitespace",
 	YearCharWarn:                          "Year with latin character",
 	YearDotWarn:                           "Year with period",
@@ -189,6 +191,7 @@ var WarningQualityMap = map[Warning]int{
 	SuperspeciesWarn:                      2,
 	UTF8ConvBadWarn:                       4,
 	UninomialComboWarn:                    2,
+	UninomialWithRank:                     2,
 	WhiteSpaceTrailWarn:                   2,
 	YearCharWarn:                          2,
 	YearDotWarn:                           2,

@@ -788,23 +788,31 @@ func (u *uninomialNode) details() parsed.Details {
 }
 
 func (u *uninomialComboNode) words() []parsed.Word {
-	var wrd parsed.Word
-	wrd = *u.Uninomial1.Word
-	words := []parsed.Word{wrd}
-	words = append(words, u.Uninomial1.Authorship.words()...)
-	if u.Rank.Word.Start != 0 {
-		wrd = *u.Rank.Word
+	var words []parsed.Word
+	if u.Uninomial1 != nil {
+		var wrd parsed.Word
+		wrd = *u.Uninomial1.Word
+		words := append(words, wrd)
+		words = append(words, u.Uninomial1.Authorship.words()...)
+	}
+	// Rank does exist as a word and is not implied
+	if !(u.Rank.Word.Start == 0 && u.Rank.Word.End == 0) {
+		wrd := *u.Rank.Word
 		words = append(words, wrd)
 	}
-	wrd = *u.Uninomial2.Word
+	wrd := *u.Uninomial2.Word
 	words = append(words, wrd)
 	words = append(words, u.Uninomial2.Authorship.words()...)
 	return words
 }
 
 func (u *uninomialComboNode) value() string {
+	var u1 string
+	if u.Uninomial1 != nil {
+		u1 = u.Uninomial1.Word.Normalized
+	}
 	vl := str.JoinStrings(
-		u.Uninomial1.Word.Normalized,
+		u1,
 		u.Rank.Word.Normalized,
 		" ",
 	)
@@ -817,8 +825,12 @@ func (u *uninomialComboNode) value() string {
 }
 
 func (u *uninomialComboNode) canonical() *canonical {
+	var u1 string
+	if u.Uninomial1 != nil {
+		u1 = u.Uninomial1.Word.Normalized
+	}
 	ranked := str.JoinStrings(
-		u.Uninomial1.Word.Normalized,
+		u1,
 		u.Rank.Word.Normalized,
 		" ",
 	)
@@ -836,10 +848,14 @@ func (u *uninomialComboNode) lastAuthorship() *authorshipNode {
 }
 
 func (u *uninomialComboNode) details() parsed.Details {
+	var u1Norm string
+	if u.Uninomial1 != nil {
+		u1Norm = u.Uninomial1.Word.Normalized
+	}
 	ud := parsed.Uninomial{
 		Value:  u.Uninomial2.Word.Normalized,
 		Rank:   u.Rank.Word.Normalized,
-		Parent: u.Uninomial1.Word.Normalized,
+		Parent: u1Norm,
 	}
 	if u.Uninomial2.Authorship != nil {
 		ud.Authorship = u.Uninomial2.Authorship.details()

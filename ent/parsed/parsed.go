@@ -50,6 +50,11 @@ type Parsed struct {
 	// 4 - quadrinomial
 	Cardinality int `json:"cardinality"`
 
+	// Rank provides information about the rank of the name. It is not
+	// always possible to infer rank correctly, so this field will be
+	// omitted when the data for it does not exist.
+	Rank string `json:"rank,omitempty"`
+
 	// Authorship describes provided metainformation about authors of a name.
 	// This authorship provided outside of Details belongs to
 	// the most fine-grained element of a name.
@@ -80,6 +85,9 @@ type Parsed struct {
 	// We do plan to create a parser for viruses at some point,
 	// which will expand this group into more precise categories.
 	Virus bool `json:"virus,omitempty"`
+
+	// Cultivar is true if a name was parsed as a cultivar.
+	Cultivar bool `json:"cultivar,omitempty"`
 
 	// DaggerChar if true if a name-string includes '†' rune.
 	// This rune might mean a fossil, or be indication of the clade extinction.

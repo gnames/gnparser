@@ -19,10 +19,12 @@ type scientificNameNode struct {
 	verbatim         string
 	verbatimID       string
 	cardinality      int
+	rank             string
 	virus            bool
 	daggerChar       bool
 	hybrid           *parsed.Annotation
 	surrogate        *parsed.Annotation
+	cultivar         bool
 	bacteria         *tribool.Tribool
 	tail             string
 	parserVersion    string
@@ -49,12 +51,20 @@ func (p *Engine) newScientificNameNode() {
 	if p.tail != "" && tail == "" {
 		tail = p.tail
 	}
+	if p.cardinality == 2 {
+		p.rank = "sp."
+	}
+	if p.cultivar {
+		p.rank = ""
+	}
 	sn := scientificNameNode{
 		nameData:    name,
 		cardinality: p.cardinality,
+		rank:        p.rank,
 		hybrid:      p.hybrid,
 		surrogate:   p.surrogate,
 		bacteria:    p.bacteria,
+		cultivar:    p.cultivar,
 		tail:        tail,
 	}
 	p.sn = &sn
@@ -457,7 +467,6 @@ func (p *Engine) newSingleName(n *node32) nameData {
 		if p.botanicalUninomial(n) {
 			return p.newBotanicalUninomialNode(n)
 		}
-		p.addWarn(parsed.UninomialComboWarn)
 		name = p.newUninomialComboNode(n)
 	}
 	return name
@@ -659,6 +668,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 	}
 	p.cardinality = 2 + len(infs)
 	if cultivar != nil && p.enableCultivars {
+		p.cultivar = true
 		p.cardinality += 1
 	}
 	sn := speciesNode{
@@ -708,6 +718,7 @@ func (p *Engine) newInfraspeciesGroup(n *node32) []*infraspEpithetNode {
 	if n == nil || n.pegRule != ruleInfraspEpithet {
 		return infs
 	}
+	var currentInf *infraspEpithetNode
 	for n != nil {
 		inf := p.newInfraspEpithetNode(n)
 		if len(infs) > 0 && inf.Rank == nil {
@@ -717,7 +728,11 @@ func (p *Engine) newInfraspeciesGroup(n *node32) []*infraspEpithetNode {
 			}
 		}
 		infs = append(infs, inf)
+		currentInf = inf
 		n = n.next
+	}
+	if currentInf != nil && currentInf.Rank != nil {
+		p.rank = currentInf.Rank.Word.Normalized
 	}
 	return infs
 }
@@ -806,6 +821,7 @@ func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 	}
 	p.cardinality = 1
 	if cultivar != nil && p.enableCultivars {
+		p.cultivar = true
 		p.cardinality += 1
 	}
 	return &un
@@ -826,6 +842,11 @@ func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
 		u1n := n
 		u1 = p.newUninomialNode(u1n)
 		rn := u1n.next
+		r = p.newRankUninomialNode(rn)
+		u2n := rn.next
+		u2 = p.newUninomialNode(u2n)
+	case ruleRankUninomial:
+		rn := n
 		r = p.newRankUninomialNode(rn)
 		u2n := rn.next
 		u2 = p.newUninomialNode(u2n)
@@ -851,6 +872,14 @@ func (p *Engine) newUninomialComboNode(n *node32) *uninomialComboNode {
 		Uninomial1: u1,
 		Rank:       r,
 		Uninomial2: u2,
+	}
+	if r != nil {
+		p.rank = r.Word.Normalized
+	}
+	if u1 != nil {
+		p.addWarn(parsed.UninomialComboWarn)
+	} else {
+		p.addWarn(parsed.UninomialWithRank)
 	}
 	p.cardinality = 1
 	return &ucn

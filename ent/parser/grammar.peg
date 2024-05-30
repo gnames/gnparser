@@ -8,7 +8,8 @@ SciName <- _? Name Tail END
 
 Tail <- ((_ / ';' / ',') .*)?
 
-Name <- NamedGenusGraftChimera / GraftChimeraFormula / NamedHybrid / HybridFormula / CandidatusName / SingleName
+Name <- NamedGenusGraftChimera / GraftChimeraFormula / NamedHybrid / 
+        HybridFormula / CandidatusName / SingleName
 
 HybridFormula <- SingleName (_ (HybridFormulaPart / HybridFormulaFull))+
 
@@ -112,7 +113,7 @@ UninomialCombo <- UninomialCombo1 / UninomialCombo2
 
 UninomialCombo1 <- UninomialWord _? Subgenus (_? Authorship)?
 
-UninomialCombo2 <- Uninomial _ RankUninomial _ Uninomial
+UninomialCombo2 <- (Uninomial _)? RankUninomial _ Uninomial
 
 RankUninomial <- RankUninomialPlain / RankUninomialNotho
 

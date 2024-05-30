@@ -14,6 +14,7 @@ type baseEngine struct {
 	sn                *scientificNameNode
 	root              *node32
 	cardinality       int
+	rank              string
 	error             error
 	hybrid            *parsed.Annotation
 	graftChimera      *parsed.Annotation
@@ -21,6 +22,7 @@ type baseEngine struct {
 	bacteria          *tribool.Tribool
 	warnings          map[parsed.Warning]struct{}
 	tail              string
+	cultivar          bool
 	enableCultivars   bool
 	preserveDiaereses bool
 }
@@ -33,8 +35,11 @@ func New() Parser {
 	return &p
 }
 
+// fullReset must set all fields to empty, or results from the previous
+// parse might bleed into new results.
 func (p *Engine) fullReset() {
 	p.cardinality = 0
+	p.rank = ""
 	p.error = nil
 	p.hybrid = nil
 	p.graftChimera = nil
@@ -43,6 +48,7 @@ func (p *Engine) fullReset() {
 	var warnReset map[parsed.Warning]struct{}
 	p.warnings = warnReset
 	p.tail = ""
+	p.cultivar = false
 	p.Reset()
 }
 
