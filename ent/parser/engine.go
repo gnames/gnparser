@@ -20,6 +20,7 @@ type baseEngine struct {
 	graftChimera      *parsed.Annotation
 	surrogate         *parsed.Annotation
 	bacteria          *tribool.Tribool
+	candidatus        bool
 	warnings          map[parsed.Warning]struct{}
 	tail              string
 	cultivar          bool
@@ -45,6 +46,7 @@ func (p *Engine) fullReset() {
 	p.graftChimera = nil
 	p.surrogate = nil
 	p.bacteria = nil
+	p.candidatus = false
 	var warnReset map[parsed.Warning]struct{}
 	p.warnings = warnReset
 	p.tail = ""

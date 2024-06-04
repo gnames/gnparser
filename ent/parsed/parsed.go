@@ -69,6 +69,9 @@ type Parsed struct {
 	// not parseable and are placed into the "tail" field.
 	Bacteria *tb.Tribool `json:"bacteria,omitempty"`
 
+	// Candidatus indicates that the parsed string is a candidatus bacterial name.
+	Candidatus bool `json:"candidatus,omitempty"`
+
 	// Virus is set to true in case if name is not parsed, and probably
 	// belongs to a wide variety of sub-cellular entities like
 	//

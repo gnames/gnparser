@@ -29,6 +29,7 @@ func (sn *scientificNameNode) ToOutput(
 	res.ParseQuality, res.QualityWarnings = sn.qualityWarnings()
 	res.Normalized = sn.Normalized()
 	res.Cardinality = sn.cardinality
+	res.Candidatus = sn.candidatus
 	res.Rank = sn.rank
 	res.Authorship = sn.LastAuthorship(withDetails)
 	res.Hybrid = sn.hybrid

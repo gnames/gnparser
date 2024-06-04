@@ -26,6 +26,7 @@ type scientificNameNode struct {
 	surrogate        *parsed.Annotation
 	cultivar         bool
 	bacteria         *tribool.Tribool
+	candidatus       bool
 	tail             string
 	parserVersion    string
 	ambiguousEpithet string
@@ -64,6 +65,7 @@ func (p *Engine) newScientificNameNode() {
 		hybrid:      p.hybrid,
 		surrogate:   p.surrogate,
 		bacteria:    p.bacteria,
+		candidatus:  p.candidatus,
 		cultivar:    p.cultivar,
 		tail:        tail,
 	}
@@ -480,6 +482,7 @@ type candidatusNameNode struct {
 func (p *Engine) newCandidatusName(n *node32) nameData {
 	bac := tribool.New(1)
 	p.bacteria = &bac
+	p.candidatus = true
 	p.addWarn(parsed.CandidatusName)
 
 	var cand *parsed.Word
