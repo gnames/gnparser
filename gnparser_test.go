@@ -149,6 +149,20 @@ func TestOutputRestore(t *testing.T) {
 	assert.Equal(t, "sapiens", sp.Species.Species)
 }
 
+func TestExceptions(t *testing.T) {
+	assert := assert.New(t)
+	cfg := gnparser.NewConfig()
+	gnp := gnparser.New(cfg)
+	f, err := os.Open("testdata/exceptions.txt")
+	assert.Nil(err)
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		name := scanner.Text()
+		parsed := gnp.ParseName(name)
+		assert.True(parsed.ParseQuality == 1, name)
+	}
+}
+
 func getTestData(t *testing.T, filename string) []testData {
 	var res []testData
 	path := filepath.Join("testdata", filename)
