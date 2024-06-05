@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v1.10.1] - 2024-06-05 Wed
+
+- Add [#263]: add more exceptions with speciific epithets like
+              "complex", "do", "spec".
+
 ## [v1.10.0] - 2024-06-04 Tue
 
 - Add [#260]: add `candidatus` field for parsed data.
