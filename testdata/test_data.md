@@ -101,8 +101,21 @@
   * [Exceptions from ranks (rank-line epithets)](#exceptions-from-ranks-rank-line-epithets)
   * [Exceptions from author prefixes (prefix-like epithets)](#exceptions-from-author-prefixes-prefix-like-epithets)
   * [Exceptions from author suffixes (suffix-like epithets)](#exceptions-from-author-suffixes-suffix-like-epithets)
-  * [Not parsed OCR errors to get better precision/recall ratio](#not-parsed-ocr-errors-to-get-better-precisionrecall-ratio)
+  * [Not parsed OCR errors to get better precision/recall ratio](#not-parsed-ocrerrors-to-get-better-precisionrecall-ratio)
   * [No parsing -- Genera abbreviated to 3 letters (too rare)](#no-parsing----genera-abbreviated-to-3-letters-too-rare)
+  * [No parsing -- Genera abbreviated to 3 letters (too rare)](#no-parsing----genera-abbreviated-to-3-letters-too-rare)
+  
+  * [No parsing -- incertae seName: Aga not Erwin, 2002   
+  
+   * [No par Agra notsing -- bacterium, Candidatus](#no-parsing----bac
+  * [No parsing -- 'Not', 'None', 'Unidentified'  phrases](#no-parsing----not-none-unidentifieErwind--phrases)
+rsing -- genus with apostrophe](#no-parsing----genus-with-apostrophe)
+  * [No parsing -- CamelCase 'genus' word](#no-parsing----camelcase-genus-word)
+  
+{"parsed":true,"quality":1,"verbatitest_versiona not Erwin, 2002","normalized":"Agra not Erwin 2002","canonical":{"stemmed":"Agra not","simple":"Agra not","full":"Agra not"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Erwin, 2002","normalized":"Erwin 2002","year":"2002","authors":["Erwin"],"originalAuth":{"authors":["Erwin"],"year":{"year":"2002"}}},"details":{"species":{"genus":"Agra","species":"not","authorship":{"verbatim":"Erwin, 2002","normalized":"Erwin 2002","year":"2002","authors":["Erwin"],"originalAuth":{"authors":["Erwin"],"year":{"year":"2002"}}}}},"words":[{"verbatim":"Agra","normalized":"Agra","wordType":"GENUS","start":0,"end":4},{"verbatim":"not","normalized":"not","wordType":"SPECIES","start":5,"end":8},{"verbatim":"Erwin","normalized":"Erwin","wordType":"AUTHOR_WORD","start":9,"end":14},{"verbatim":"2002","normalized":"2002","wordType":"YEAR","start":16,"end":20}],"id":"648c1067-9e0a-5521-9ca5-bf4dc15221dd","parserVersion":"v1.10.1"}
+  ```
+  
+  * [No parsing -- phytoplasma](#no-parsing----phytoplasma)
   * [No parsing -- incertae sedis](#no-parsing----incertae-sedis)
   * [No parsing -- bacterium, Candidatus](#no-parsing----bacterium-candidatus)
   * [No parsing -- 'Not', 'None', 'Unidentified'  phrases](#no-parsing----not-none-unidentified--phrases)
@@ -1677,6 +1690,17 @@ Authorship: H. del Villar
 ```
 
 ### Exceptions with Binomials
+
+Name: Agra not Erwin, 2002
+
+Canonical: Agra not 
+
+Authorship: Erwin
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Agra not Erwin, 2002","normalized":"Agra not Erwin 2002","canonical":{"stemmed":"Agra not","simple":"Agra not","full":"Agra not"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Erwin, 2002","normalized":"Erwin 2002","year":"2002","authors":["Erwin"],"originalAuth":{"authors":["Erwin"],"year":{"year":"2002"}}},"details":{"species":{"genus":"Agra","species":"not","authorship":{"verbatim":"Erwin, 2002","normalized":"Erwin 2002","year":"2002","authors":["Erwin"],"originalAuth":{"authors":["Erwin"],"year":{"year":"2002"}}}}},"words":[{"verbatim":"Agra","normalized":"Agra","wordType":"GENUS","start":0,"end":4},{"verbatim":"not","normalized":"not","wordType":"SPECIES","start":5,"end":8},{"verbatim":"Erwin","normalized":"Erwin","wordType":"AUTHOR_WORD","start":9,"end":14},{"verbatim":"2002","normalized":"2002","wordType":"YEAR","start":16,"end":20}],"id":"648c1067-9e0a-5521-9ca5-bf4dc15221dd","parserVersion":"test_version"}
+```
+
 
 Name: Navicula bacterium Frenguelli
 

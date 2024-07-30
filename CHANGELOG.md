@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.10.2] - 2024-07-30 Tue
+
+- Add [#264]: more exceptions.
+
 ## [v1.10.1] - 2024-06-05 Wed
 
 - Add [#263]: add more exceptions with speciific epithets like
