@@ -2,7 +2,7 @@ FROM alpine:3.14
 
 LABEL maintainer="Dmitry Mozzherin"
 
-ENV LAST_FULL_REBUILD 2021-04-07
+ENV LAST_FULL_REBUILD=2024-10-11
 
 WORKDIR /bin
 
