@@ -294,7 +294,7 @@ func (nh *namedSpeciesHybridNode) details() parsed.Details {
 	g := nh.Genus.Normalized
 	so := parsed.Species{
 		Genus:   g,
-		Species: nh.SpEpithet.value(),
+		Species: nh.SpEpithet.Word.Normalized,
 	}
 	if nh.SpEpithet.Authorship != nil {
 		so.Authorship = nh.SpEpithet.Authorship.details()

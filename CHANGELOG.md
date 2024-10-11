@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.10.3] - 2024-10-11 Fri
+
+- Fix [#266]: remove author from species detail for named hybrids.
+
 ## [v1.10.2] - 2024-07-30 Tue
 
 - Add [#264]: more exceptions.
@@ -9,7 +13,7 @@
 ## [v1.10.1] - 2024-06-05 Wed
 
 - Add [#263]: add more exceptions with speciific epithets like
-              "complex", "do", "spec".
+  "complex", "do", "spec".
 
 ## [v1.10.0] - 2024-06-04 Tue
 
@@ -36,7 +40,7 @@
 ## [v1.8.0] - 2023-10-11 Wed
 
 - Add [#255]: normalize stemmed canonical of `Aus bus bus` to `Aus bus`.
-    **WARNING** this creates some backward incompatibility.
+  **WARNING** this creates some backward incompatibility.
 - Add: sorting uses `slices` package.
 
 ## [v1.7.5] - 2023-09-26 Tue
@@ -476,6 +480,11 @@
 
 This document follows [changelog guidelines]
 
+[v1.10.3]: https://github.com/gnames/gnparser/compare/v1.10.2...v1.10.3
+[v1.10.2]: https://github.com/gnames/gnparser/compare/v1.10.1...v1.10.2
+[v1.10.1]: https://github.com/gnames/gnparser/compare/v1.10.0...v1.10.1
+[v1.10.0]: https://github.com/gnames/gnparser/compare/v1.9.2...v1.10.0
+[v1.9.2]: https://github.com/gnames/gnparser/compare/v1.9.1...v1.9.2
 [v1.9.1]: https://github.com/gnames/gnparser/compare/v1.9.0...v1.9.1
 [v1.9.0]: https://github.com/gnames/gnparser/compare/v1.8.0...v1.9.0
 [v1.8.0]: https://github.com/gnames/gnparser/compare/v1.7.5...v1.8.0
@@ -547,7 +556,6 @@ This document follows [changelog guidelines]
 [v0.7.0]: https://github.com/gnames/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
-
 [#270]: https://github.com/gnames/gnparser/issues/270
 [#269]: https://github.com/gnames/gnparser/issues/269
 [#268]: https://github.com/gnames/gnparser/issues/268
