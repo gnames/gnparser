@@ -6,10 +6,12 @@ DATE = $(shell date -u '+%Y-%m-%d_%H:%M:%S%Z')
 
 NO_C = CGO_ENABLED=0
 FLAGS_SHARED = GOARCH=amd64
-FLAGS_LINUX = $(FLAGS_SHARED) GOOS=linux
-FLAGS_MAC = $(FLAGS_SHARED) GOOS=darwin
-FLAGS_MAC_ARM = $GOARCH=arm64 GOOS=darwin
-FLAGS_WIN = $(FLAGS_SHARED) GOOS=windows
+FLAGS_LINUX = GOARCH=amd64 GOOS=linux
+FLAGS_LINUX_ARM = GOARCH=amd64 GOOS=linux
+FLAGS_MAC = GOARCH=amd64 GOOS=darwin
+FLAGS_MAC_ARM = GOARCH=arm64 GOOS=darwin
+FLAGS_WIN = GOARCH=amd64 GOOS=windows
+FLAGS_WIN_ARM = GOARCH=arm64 GOOS=windows
 FLAGS_LD=-ldflags "-s -w -X github.com/gnames/$(PROJ_NAME).Build=$(DATE) \
                   -X github.com/gnames/$(PROJ_NAME).Version=$(VERSION)"
 FLAGS_REL = -trimpath -ldflags "-s -w \
@@ -76,16 +78,22 @@ release: peg dockerhub
 	cd $(PROJ_NAME); \
 	$(GOCLEAN); \
 	$(FLAGS_LINUX) $(NO_C) $(GOBUILD); \
-	tar zcf $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-linux.tar.gz $(PROJ_NAME); \
+	tar zcf $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-linux-x86.tar.gz $(PROJ_NAME); \
+	$(GOCLEAN); \
+	$(FLAGS_LINUX_ARM) $(NO_C) $(GOBUILD); \
+	tar zcf $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-linux-arm.tar.gz $(PROJ_NAME); \
 	$(GOCLEAN); \
 	$(FLAGS_MAC) $(NO_C) $(GOBUILD); \
-	tar zcf $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-mac.tar.gz $(PROJ_NAME); \
+	tar zcf $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-mac-x86.tar.gz $(PROJ_NAME); \
 	$(GOCLEAN); \
 	$(FLAGS_MAC_ARM) $(NO_C) $(GOBUILD); \
-	tar zcf $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-mac-arm64.tar.gz $(PROJ_NAME); \
+	tar zcf $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-mac-arm.tar.gz $(PROJ_NAME); \
 	$(GOCLEAN); \
 	$(FLAGS_WIN) $(NO_C) $(GOBUILD); \
-	zip -9 $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-win-64.zip $(PROJ_NAME).exe; \
+	zip -9 $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-win-x86.zip $(PROJ_NAME).exe; \
+	$(GOCLEAN); \
+	$(FLAGS_WIN_ARM) $(NO_C) $(GOBUILD); \
+	zip -9 $(RELEASE_DIR)/$(PROJ_NAME)-$(VER)-win-arm.zip $(PROJ_NAME).exe; \
 	$(GOCLEAN);
 
 dc: asset build
