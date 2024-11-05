@@ -415,7 +415,7 @@ func (p *Engine) botanicalUninomial(n *node32) bool {
 	if n.pegRule != ruleUninomialWord {
 		return false
 	}
-	w := p.newWordNode(n, parsed.UnknownType)
+	w := p.newWordNode(n, parsed.AuthorWordType)
 
 	if _, ok := dict.Dict.AuthorICN[w.Normalized]; ok {
 		return true
@@ -1238,10 +1238,15 @@ func (p *Engine) newWordNode(n *node32, wt parsed.WordType) *parsed.Word {
 			p.addWarn(parsed.DotEpithetWarn)
 			wrd.Normalized = str.Normalize(wrd.Verbatim)
 		case ruleUpperCharExtended, ruleLowerCharExtended:
-			if p.preserveDiaereses {
+			if wt == parsed.AuthorWordType {
+				// this can only happen if word looked like botanical uninomial with
+				// parent, but happen to be an author.
+			} else if p.preserveDiaereses {
 				wrd.Normalized = str.NormalizePreservingDiaereses(wrd.Verbatim)
 			} else {
-				p.addWarn(parsed.CharBadWarn)
+				if wt != parsed.AuthorWordType {
+					p.addWarn(parsed.CharBadWarn)
+				}
 				wrd.Normalized = str.Normalize(wrd.Verbatim)
 			}
 		case ruleWordApostr:

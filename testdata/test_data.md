@@ -45,87 +45,6 @@
   * [Names with a dash](#names-with-a-dash)
   * [Authorship with 'degli'](#authorship-with-degli)
   * [Authorship with filius (son of)](#authorship-with-filius-son-of)
-  * [Names with emend (rectified by) authorship](#names-with-emend-rectified-by-authorship)
-  * [Names with an unparsed "tail"](#names-with-an-unparsed-tail)
-  * [Abbreviated words after a name](#abbreviated-words-after-a-name)
-  * [Epithets starting with numeric value (not allowed anymore)](#epithets-starting-with-numeric-value-not-allowed-anymore)
-  * [Non-ASCII UTF-8 characters in a name](#non-ascii-utf-8-characters-in-a-name)
-  * [Epithets with an apostrophe](#epithets-with-an-apostrophe)
-  * [Authors with an apostrophe](#authors-with-an-apostrophe)
-  * [Digraph unicode characters](#digraph-unicode-characters)
-  * [Old style s (ſ)](#old-style-s-)
-  * [Miscellaneous diacritics](#miscellaneous-diacritics)
-  * [Open Nomenclature ('approximate' names)](#open-nomenclature-approximate-names)
-  * [Surrogate Name-Strings](#surrogate-name-strings)
-  * [Virus-like "normal" names](#virus-like-normal-names)
-  * [Viruses, plasmids, prions etc.](#viruses-plasmids-prions-etc)
-  * [Name-strings with RNA](#name-strings-with-rna)
-  * [Epithet prioni is not a prion](#epithet-prioni-is-not-a-prion)
-  * [Names with "satellite" as a substring](#names-with-satellite-as-a-substring)
-  * [Bacterial genus](#bacterial-genus)
-  * [Bacteria genus homonym](#bacteria-genus-homonym)
-  * [Bacteria with pathovar rank](#bacteria-with-pathovar-rank)
-  * ["Stray" ex is not parsed as species](#stray-ex-is-not-parsed-as-species)
-  * [Authorship in upper case](#authorship-in-upper-case)
-  * [Numbers and letters separated with '-' are not parsed as authors](#numbers-and-letters-separated-with---are-not-parsed-as-authors)
-  * [Double parenthesis](#double-parenthesis)
-  * [Numbers at the start/middle of names](#numbers-at-the-startmiddle-of-names)
-  * [Year without authorship](#year-without-authorship)
-  * [Year range](#year-range)
-  * [Year with page number](#year-with-page-number)
-  * [Year in square brackets](#year-in-square-brackets)
-  * [Names with broken conversion between encodings](#names-with-broken-conversion-between-encodings)
-  * [UTF-8 0xA0 character (NO_BREAK_SPACE)](#utf-8-0xa0-character-no_break_space)
-  * [UTF-8 0x3000 character (IDEOGRAPHIC_SPACE)](#utf-8-0x3000-character-ideographic_space)
-  * [Punctuation in the end](#punctuation-in-the-end)
-  * [Names with 'ex' as sp. epithet](#names-with-ex-as-sp-epithet)
-  * [Names with Spanish 'y' instead of '&'](#names-with-spanish-y-instead-of-)
-  * [Normalize atypical dashes](#normalize-atypical-dashes)
-  * [Discard apostrophes at the start and end of words](#discard-apostrophes-at-the-start-and-end-of-words)
-  * [Discard apostrophe with dash (rare, needs further investigation)](#discard-apostrophe-with-dash-rare-needs-further-investigation)
-  * [Possible canonical](#possible-canonical)
-  * [Treating `& al.` as `et al.`](#treating--al-as-et-al)
-  * [Authors do not start with apostrophe](#authors-do-not-start-with-apostrophe)
-  * [Epithets do not start or end with a dash](#epithets-do-not-start-or-end-with-a-dash)
-  * [Names that contain "of"](#names-that-contain-of)
-  * [Cultivars](#cultivars)
-  * ["Open taxonomy" with ranks unfinished](#open-taxonomy-with-ranks-unfinished)
-  * [Ignoring serovar/serotype](#ignoring-serovarserotype)
-  * [Ignoring sensu sec](#ignoring-sensu-sec)
-  * [Unparseable hort. annotations](#unparseable-hort-annotations)
-  * [Removing nomenclatural annotations](#removing-nomenclatural-annotations)
-  * [Misc annotations](#misc-annotations)
-  * [Horticultural annotation](#horticultural-annotation)
-  * [Names with "mihi"](#names-with-mihi)
-  * [Exceptions with "mihi"](#exceptions-with-mihi)
-  * [Exceptions from ranks (rank-line epithets)](#exceptions-from-ranks-rank-line-epithets)
-  * [Exceptions from author prefixes (prefix-like epithets)](#exceptions-from-author-prefixes-prefix-like-epithets)
-  * [Exceptions from author suffixes (suffix-like epithets)](#exceptions-from-author-suffixes-suffix-like-epithets)
-  * [Not parsed OCR errors to get better precision/recall ratio](#not-parsed-ocrerrors-to-get-better-precisionrecall-ratio)
-  * [No parsing -- Genera abbreviated to 3 letters (too rare)](#no-parsing----genera-abbreviated-to-3-letters-too-rare)
-  * [No parsing -- Genera abbreviated to 3 letters (too rare)](#no-parsing----genera-abbreviated-to-3-letters-too-rare)
-  
-  * [No parsing -- incertae seName: Aga not Erwin, 2002   
-  
-   * [No par Agra notsing -- bacterium, Candidatus](#no-parsing----bac
-  * [No parsing -- 'Not', 'None', 'Unidentified'  phrases](#no-parsing----not-none-unidentifieErwind--phrases)
-rsing -- genus with apostrophe](#no-parsing----genus-with-apostrophe)
-  * [No parsing -- CamelCase 'genus' word](#no-parsing----camelcase-genus-word)
-  
-{"parsed":true,"quality":1,"verbatitest_versiona not Erwin, 2002","normalized":"Agra not Erwin 2002","canonical":{"stemmed":"Agra not","simple":"Agra not","full":"Agra not"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Erwin, 2002","normalized":"Erwin 2002","year":"2002","authors":["Erwin"],"originalAuth":{"authors":["Erwin"],"year":{"year":"2002"}}},"details":{"species":{"genus":"Agra","species":"not","authorship":{"verbatim":"Erwin, 2002","normalized":"Erwin 2002","year":"2002","authors":["Erwin"],"originalAuth":{"authors":["Erwin"],"year":{"year":"2002"}}}}},"words":[{"verbatim":"Agra","normalized":"Agra","wordType":"GENUS","start":0,"end":4},{"verbatim":"not","normalized":"not","wordType":"SPECIES","start":5,"end":8},{"verbatim":"Erwin","normalized":"Erwin","wordType":"AUTHOR_WORD","start":9,"end":14},{"verbatim":"2002","normalized":"2002","wordType":"YEAR","start":16,"end":20}],"id":"648c1067-9e0a-5521-9ca5-bf4dc15221dd","parserVersion":"v1.10.1"}
-  ```
-  
-  * [No parsing -- phytoplasma](#no-parsing----phytoplasma)
-  * [No parsing -- incertae sedis](#no-parsing----incertae-sedis)
-  * [No parsing -- bacterium, Candidatus](#no-parsing----bacterium-candidatus)
-  * [No parsing -- 'Not', 'None', 'Unidentified'  phrases](#no-parsing----not-none-unidentified--phrases)
-  * [No parsing -- genus with apostrophe](#no-parsing----genus-with-apostrophe)
-  * [No parsing -- CamelCase 'genus' word](#no-parsing----camelcase-genus-word)
-  * [No parsing -- phytoplasma](#no-parsing----phytoplasma)
-  * [No parsing symbiont](#no-parsing-symbiont)
-  * [Names with spec., nov spec](#names-with-spec-nov-spec)
-  * [HTML tags and entities](#html-tags-and-entities)
-  * [Underscores instead of spaces](#underscores-instead-of-spaces)
 
 <!-- vim-markdown-toc -->
 
@@ -834,7 +753,7 @@ Canonical: Clathrotropis
 Authorship: (Bentham) Harms ex Dalla Torre & Harms 1901
 
 ```json
-{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Ex authors are not required (ICZN only)"},{"quality":2,"warning":"Possible ICN author instead of subgenus"}],"verbatim":"Clathrotropis (Bentham) Harms in Dalla Torre \u0026 Harms, 1901","normalized":"Clathrotropis (Bentham) Harms ex Dalla Torre \u0026 Harms 1901","canonical":{"stemmed":"Clathrotropis","simple":"Clathrotropis","full":"Clathrotropis"},"cardinality":1,"authorship":{"verbatim":"","normalized":"(Bentham) Harms ex Dalla Torre \u0026 Harms 1901","authors":["Bentham","Harms","Dalla Torre"],"originalAuth":{"authors":["Bentham"]},"combinationAuth":{"authors":["Harms"],"exAuthors":{"authors":["Dalla Torre","Harms"],"year":{"year":"1901"}}}},"details":{"uninomial":{"uninomial":"Clathrotropis","authorship":{"verbatim":"","normalized":"(Bentham) Harms ex Dalla Torre \u0026 Harms 1901","authors":["Bentham","Harms","Dalla Torre"],"originalAuth":{"authors":["Bentham"]},"combinationAuth":{"authors":["Harms"],"exAuthors":{"authors":["Dalla Torre","Harms"],"year":{"year":"1901"}}}}}},"words":[{"verbatim":"Clathrotropis","normalized":"Clathrotropis","wordType":"UNINOMIAL","start":0,"end":13},{"verbatim":"Bentham","normalized":"Bentham","wordType":"AUTHOR_WORD","start":15,"end":22},{"verbatim":"Harms","normalized":"Harms","wordType":"AUTHOR_WORD","start":24,"end":29},{"verbatim":"Dalla","normalized":"Dalla","wordType":"AUTHOR_WORD","start":33,"end":38},{"verbatim":"Torre","normalized":"Torre","wordType":"AUTHOR_WORD","start":39,"end":44},{"verbatim":"Harms","normalized":"Harms","wordType":"AUTHOR_WORD","start":47,"end":52},{"verbatim":"1901","normalized":"1901","wordType":"YEAR","start":54,"end":58}],"id":"6b730cea-e81b-53ba-a511-caaa233b9b84","parserVersion":"test_version"}
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Ambiguity: ICN author or subgenus"},{"quality":2,"warning":"Ex authors are not required (ICZN only)"}],"verbatim":"Clathrotropis (Bentham) Harms in Dalla Torre \u0026 Harms, 1901","normalized":"Clathrotropis (Bentham) Harms ex Dalla Torre \u0026 Harms 1901","canonical":{"stemmed":"Clathrotropis","simple":"Clathrotropis","full":"Clathrotropis"},"cardinality":1,"authorship":{"verbatim":"","normalized":"(Bentham) Harms ex Dalla Torre \u0026 Harms 1901","authors":["Bentham","Harms","Dalla Torre"],"originalAuth":{"authors":["Bentham"]},"combinationAuth":{"authors":["Harms"],"exAuthors":{"authors":["Dalla Torre","Harms"],"year":{"year":"1901"}}}},"details":{"uninomial":{"uninomial":"Clathrotropis","authorship":{"verbatim":"","normalized":"(Bentham) Harms ex Dalla Torre \u0026 Harms 1901","authors":["Bentham","Harms","Dalla Torre"],"originalAuth":{"authors":["Bentham"]},"combinationAuth":{"authors":["Harms"],"exAuthors":{"authors":["Dalla Torre","Harms"],"year":{"year":"1901"}}}}}},"words":[{"verbatim":"Clathrotropis","normalized":"Clathrotropis","wordType":"UNINOMIAL","start":0,"end":13},{"verbatim":"Bentham","normalized":"Bentham","wordType":"AUTHOR_WORD","start":15,"end":22},{"verbatim":"Harms","normalized":"Harms","wordType":"AUTHOR_WORD","start":24,"end":29},{"verbatim":"Dalla","normalized":"Dalla","wordType":"AUTHOR_WORD","start":33,"end":38},{"verbatim":"Torre","normalized":"Torre","wordType":"AUTHOR_WORD","start":39,"end":44},{"verbatim":"Harms","normalized":"Harms","wordType":"AUTHOR_WORD","start":47,"end":52},{"verbatim":"1901","normalized":"1901","wordType":"YEAR","start":54,"end":58}],"id":"6b730cea-e81b-53ba-a511-caaa233b9b84","parserVersion":"test_version"}
 ```
 
 Name: Humiriastrum (Urban) Cuatrecasas, 1961
@@ -844,7 +763,7 @@ Canonical: Humiriastrum
 Authorship: (Urban) Cuatrecasas 1961
 
 ```json
-{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Possible ICN author instead of subgenus"}],"verbatim":"Humiriastrum (Urban) Cuatrecasas, 1961","normalized":"Humiriastrum (Urban) Cuatrecasas 1961","canonical":{"stemmed":"Humiriastrum","simple":"Humiriastrum","full":"Humiriastrum"},"cardinality":1,"authorship":{"verbatim":"","normalized":"(Urban) Cuatrecasas 1961","authors":["Urban","Cuatrecasas"],"originalAuth":{"authors":["Urban"]},"combinationAuth":{"authors":["Cuatrecasas"],"year":{"year":"1961"}}},"details":{"uninomial":{"uninomial":"Humiriastrum","authorship":{"verbatim":"","normalized":"(Urban) Cuatrecasas 1961","authors":["Urban","Cuatrecasas"],"originalAuth":{"authors":["Urban"]},"combinationAuth":{"authors":["Cuatrecasas"],"year":{"year":"1961"}}}}},"words":[{"verbatim":"Humiriastrum","normalized":"Humiriastrum","wordType":"UNINOMIAL","start":0,"end":12},{"verbatim":"Urban","normalized":"Urban","wordType":"AUTHOR_WORD","start":14,"end":19},{"verbatim":"Cuatrecasas","normalized":"Cuatrecasas","wordType":"AUTHOR_WORD","start":21,"end":32},{"verbatim":"1961","normalized":"1961","wordType":"YEAR","start":34,"end":38}],"id":"98f8aa31-1cc3-59c2-a4f2-ebf18e0929ab","parserVersion":"test_version"}
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Ambiguity: ICN author or subgenus"}],"verbatim":"Humiriastrum (Urban) Cuatrecasas, 1961","normalized":"Humiriastrum (Urban) Cuatrecasas 1961","canonical":{"stemmed":"Humiriastrum","simple":"Humiriastrum","full":"Humiriastrum"},"cardinality":1,"authorship":{"verbatim":"","normalized":"(Urban) Cuatrecasas 1961","authors":["Urban","Cuatrecasas"],"originalAuth":{"authors":["Urban"]},"combinationAuth":{"authors":["Cuatrecasas"],"year":{"year":"1961"}}},"details":{"uninomial":{"uninomial":"Humiriastrum","authorship":{"verbatim":"","normalized":"(Urban) Cuatrecasas 1961","authors":["Urban","Cuatrecasas"],"originalAuth":{"authors":["Urban"]},"combinationAuth":{"authors":["Cuatrecasas"],"year":{"year":"1961"}}}}},"words":[{"verbatim":"Humiriastrum","normalized":"Humiriastrum","wordType":"UNINOMIAL","start":0,"end":12},{"verbatim":"Urban","normalized":"Urban","wordType":"AUTHOR_WORD","start":14,"end":19},{"verbatim":"Cuatrecasas","normalized":"Cuatrecasas","wordType":"AUTHOR_WORD","start":21,"end":32},{"verbatim":"1961","normalized":"1961","wordType":"YEAR","start":34,"end":38}],"id":"98f8aa31-1cc3-59c2-a4f2-ebf18e0929ab","parserVersion":"test_version"}
 ```
 
 Name: Pampocactus (Doweld) Doweld
@@ -854,7 +773,7 @@ Canonical: Pampocactus
 Authorship: (Doweld) Doweld
 
 ```json
-{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Possible ICN author instead of subgenus"}],"verbatim":"Pampocactus (Doweld) Doweld","normalized":"Pampocactus (Doweld) Doweld","canonical":{"stemmed":"Pampocactus","simple":"Pampocactus","full":"Pampocactus"},"cardinality":1,"authorship":{"verbatim":"","normalized":"(Doweld) Doweld","authors":["Doweld"],"originalAuth":{"authors":["Doweld"]},"combinationAuth":{"authors":["Doweld"]}},"details":{"uninomial":{"uninomial":"Pampocactus","authorship":{"verbatim":"","normalized":"(Doweld) Doweld","authors":["Doweld"],"originalAuth":{"authors":["Doweld"]},"combinationAuth":{"authors":["Doweld"]}}}},"words":[{"verbatim":"Pampocactus","normalized":"Pampocactus","wordType":"UNINOMIAL","start":0,"end":11},{"verbatim":"Doweld","normalized":"Doweld","wordType":"AUTHOR_WORD","start":13,"end":19},{"verbatim":"Doweld","normalized":"Doweld","wordType":"AUTHOR_WORD","start":21,"end":27}],"id":"82494c70-6400-51a3-b786-2a8a747f8305","parserVersion":"test_version"}
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Ambiguity: ICN author or subgenus"}],"verbatim":"Pampocactus (Doweld) Doweld","normalized":"Pampocactus (Doweld) Doweld","canonical":{"stemmed":"Pampocactus","simple":"Pampocactus","full":"Pampocactus"},"cardinality":1,"authorship":{"verbatim":"","normalized":"(Doweld) Doweld","authors":["Doweld"],"originalAuth":{"authors":["Doweld"]},"combinationAuth":{"authors":["Doweld"]}},"details":{"uninomial":{"uninomial":"Pampocactus","authorship":{"verbatim":"","normalized":"(Doweld) Doweld","authors":["Doweld"],"originalAuth":{"authors":["Doweld"]},"combinationAuth":{"authors":["Doweld"]}}}},"words":[{"verbatim":"Pampocactus","normalized":"Pampocactus","wordType":"UNINOMIAL","start":0,"end":11},{"verbatim":"Doweld","normalized":"Doweld","wordType":"AUTHOR_WORD","start":13,"end":19},{"verbatim":"Doweld","normalized":"Doweld","wordType":"AUTHOR_WORD","start":21,"end":27}],"id":"82494c70-6400-51a3-b786-2a8a747f8305","parserVersion":"test_version"}
 ```
 
 Name: Pampocactus (Doweld)
@@ -864,7 +783,7 @@ Canonical: Pampocactus
 Authorship: (Doweld)
 
 ```json
-{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Possible ICN author instead of subgenus"}],"verbatim":"Pampocactus (Doweld)","normalized":"Pampocactus (Doweld)","canonical":{"stemmed":"Pampocactus","simple":"Pampocactus","full":"Pampocactus"},"cardinality":1,"authorship":{"verbatim":"","normalized":"(Doweld)","authors":["Doweld"],"originalAuth":{"authors":["Doweld"]}},"details":{"uninomial":{"uninomial":"Pampocactus","authorship":{"verbatim":"","normalized":"(Doweld)","authors":["Doweld"],"originalAuth":{"authors":["Doweld"]}}}},"words":[{"verbatim":"Pampocactus","normalized":"Pampocactus","wordType":"UNINOMIAL","start":0,"end":11},{"verbatim":"Doweld","normalized":"Doweld","wordType":"AUTHOR_WORD","start":13,"end":19}],"id":"3ed64c9a-ec8a-52c9-a913-eae09b6c71b9","parserVersion":"test_version"}
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Ambiguity: ICN author or subgenus"}],"verbatim":"Pampocactus (Doweld)","normalized":"Pampocactus (Doweld)","canonical":{"stemmed":"Pampocactus","simple":"Pampocactus","full":"Pampocactus"},"cardinality":1,"authorship":{"verbatim":"","normalized":"(Doweld)","authors":["Doweld"],"originalAuth":{"authors":["Doweld"]}},"details":{"uninomial":{"uninomial":"Pampocactus","authorship":{"verbatim":"","normalized":"(Doweld)","authors":["Doweld"],"originalAuth":{"authors":["Doweld"]}}}},"words":[{"verbatim":"Pampocactus","normalized":"Pampocactus","wordType":"UNINOMIAL","start":0,"end":11},{"verbatim":"Doweld","normalized":"Doweld","wordType":"AUTHOR_WORD","start":13,"end":19}],"id":"3ed64c9a-ec8a-52c9-a913-eae09b6c71b9","parserVersion":"test_version"}
 ```
 
 Name: Drepanolejeunea (Spruce) (Steph.)
@@ -874,7 +793,17 @@ Canonical: Drepanolejeunea
 Authorship: (Spruce)
 
 ```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"},{"quality":2,"warning":"Possible ICN author instead of subgenus"}],"verbatim":"Drepanolejeunea (Spruce) (Steph.)","normalized":"Drepanolejeunea (Spruce)","canonical":{"stemmed":"Drepanolejeunea","simple":"Drepanolejeunea","full":"Drepanolejeunea"},"cardinality":1,"authorship":{"verbatim":"","normalized":"(Spruce)","authors":["Spruce"],"originalAuth":{"authors":["Spruce"]}},"tail":"(Steph.)","details":{"uninomial":{"uninomial":"Drepanolejeunea","authorship":{"verbatim":"","normalized":"(Spruce)","authors":["Spruce"],"originalAuth":{"authors":["Spruce"]}}}},"words":[{"verbatim":"Drepanolejeunea","normalized":"Drepanolejeunea","wordType":"UNINOMIAL","start":0,"end":15},{"verbatim":"Spruce","normalized":"Spruce","wordType":"AUTHOR_WORD","start":17,"end":23}],"id":"19265c95-0a2b-5e8a-b2c4-478716e9c9ec","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"},{"quality":2,"warning":"Ambiguity: ICN author or subgenus"}],"verbatim":"Drepanolejeunea (Spruce) (Steph.)","normalized":"Drepanolejeunea (Spruce)","canonical":{"stemmed":"Drepanolejeunea","simple":"Drepanolejeunea","full":"Drepanolejeunea"},"cardinality":1,"authorship":{"verbatim":"","normalized":"(Spruce)","authors":["Spruce"],"originalAuth":{"authors":["Spruce"]}},"tail":"(Steph.)","details":{"uninomial":{"uninomial":"Drepanolejeunea","authorship":{"verbatim":"","normalized":"(Spruce)","authors":["Spruce"],"originalAuth":{"authors":["Spruce"]}}}},"words":[{"verbatim":"Drepanolejeunea","normalized":"Drepanolejeunea","wordType":"UNINOMIAL","start":0,"end":15},{"verbatim":"Spruce","normalized":"Spruce","wordType":"AUTHOR_WORD","start":17,"end":23}],"id":"19265c95-0a2b-5e8a-b2c4-478716e9c9ec","parserVersion":"test_version"}
+```
+
+Name: Glaphyropteris (Fée) C.Presl ex Fée
+
+Canonical: Glaphyropteris
+
+Authorship: (Fée) C.Presl ex Fée
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Ambiguity: ICN author or subgenus"},{"quality":2,"warning":"Ex authors are not required (ICZN only)"}],"verbatim":"Glaphyropteris (Fée) C.Presl ex Fée","normalized":"Glaphyropteris (Fée) C. Presl ex Fée","canonical":{"stemmed":"Glaphyropteris","simple":"Glaphyropteris","full":"Glaphyropteris"},"cardinality":1,"authorship":{"verbatim":"","normalized":"(Fée) C. Presl ex Fée","authors":["Fée","C. Presl"],"originalAuth":{"authors":["Fée"]},"combinationAuth":{"authors":["C. Presl"],"exAuthors":{"authors":["Fée"]}}},"details":{"uninomial":{"uninomial":"Glaphyropteris","authorship":{"verbatim":"","normalized":"(Fée) C. Presl ex Fée","authors":["Fée","C. Presl"],"originalAuth":{"authors":["Fée"]},"combinationAuth":{"authors":["C. Presl"],"exAuthors":{"authors":["Fée"]}}}}},"words":[{"verbatim":"Glaphyropteris","normalized":"Glaphyropteris","wordType":"UNINOMIAL","start":0,"end":14},{"verbatim":"Fée","normalized":"Fée","wordType":"AUTHOR_WORD","start":16,"end":19},{"verbatim":"C.","normalized":"C.","wordType":"AUTHOR_WORD","start":21,"end":23},{"verbatim":"Presl","normalized":"Presl","wordType":"AUTHOR_WORD","start":23,"end":28},{"verbatim":"Fée","normalized":"Fée","wordType":"AUTHOR_WORD","start":32,"end":35}],"id":"1fc3870d-c28c-5150-94fa-b2a25ae4d623","parserVersion":"test_version"}
 ```
 
 
@@ -3273,7 +3202,7 @@ Canonical: Acanthoderes satanas
 Authorship: Aurivillius
 
 ```json
-{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Possible ICN author instead of subgenus"}],"verbatim":"Acanthoderes (Abramov) satanas Aurivillius","normalized":"Acanthoderes satanas Aurivillius","canonical":{"stemmed":"Acanthoderes satan","simple":"Acanthoderes satanas","full":"Acanthoderes satanas"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Aurivillius","normalized":"Aurivillius","authors":["Aurivillius"],"originalAuth":{"authors":["Aurivillius"]}},"details":{"species":{"genus":"Acanthoderes","species":"satanas","authorship":{"verbatim":"Aurivillius","normalized":"Aurivillius","authors":["Aurivillius"],"originalAuth":{"authors":["Aurivillius"]}}}},"words":[{"verbatim":"Acanthoderes","normalized":"Acanthoderes","wordType":"GENUS","start":0,"end":12},{"verbatim":"satanas","normalized":"satanas","wordType":"SPECIES","start":23,"end":30},{"verbatim":"Aurivillius","normalized":"Aurivillius","wordType":"AUTHOR_WORD","start":31,"end":42}],"id":"8eb2a9be-eb11-537e-8488-eacdb6e2b9e7","parserVersion":"test_version"}
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Ambiguity: ICN author or subgenus"}],"verbatim":"Acanthoderes (Abramov) satanas Aurivillius","normalized":"Acanthoderes satanas Aurivillius","canonical":{"stemmed":"Acanthoderes satan","simple":"Acanthoderes satanas","full":"Acanthoderes satanas"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Aurivillius","normalized":"Aurivillius","authors":["Aurivillius"],"originalAuth":{"authors":["Aurivillius"]}},"details":{"species":{"genus":"Acanthoderes","species":"satanas","authorship":{"verbatim":"Aurivillius","normalized":"Aurivillius","authors":["Aurivillius"],"originalAuth":{"authors":["Aurivillius"]}}}},"words":[{"verbatim":"Acanthoderes","normalized":"Acanthoderes","wordType":"GENUS","start":0,"end":12},{"verbatim":"satanas","normalized":"satanas","wordType":"SPECIES","start":23,"end":30},{"verbatim":"Aurivillius","normalized":"Aurivillius","wordType":"AUTHOR_WORD","start":31,"end":42}],"id":"8eb2a9be-eb11-537e-8488-eacdb6e2b9e7","parserVersion":"test_version"}
 ```
 
 ### Names with multiple dashes in specific epithet

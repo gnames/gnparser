@@ -28,7 +28,7 @@ Parsing finished without detecting any problems.
 - Named hybrid
 - Non-standard characters in canonical
 - Non-standard space characters
-- Possible ICN author instead of subgenus
+- Ambiguity: ICN author or subgenus
 - Probably incomplete hybrid formula
 - Spanish 'y' is used instead of '&'
 - Trailing whitespace

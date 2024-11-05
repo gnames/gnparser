@@ -172,9 +172,11 @@ func init() {
 
 	rootCmd.Flags().BoolP("web-logs", "", false, "enable logs for the web service")
 
-	rootCmd.Flags().BoolP("species-group-cut", "", false, "cut autonym/species group names to species for stemmed version")
+	rootCmd.Flags().
+		BoolP("species-group-cut", "", false, "cut autonym/species group names to species for stemmed version")
 
-	rootCmd.Flags().StringP("nsqd-tcp", "", "", "an addresss pointing to NSQ TCP service for logs redirection (e.g. 127.0.0.1:4150)")
+	rootCmd.Flags().
+		StringP("nsqd-tcp", "", "", "an addresss pointing to NSQ TCP service for logs redirection (e.g. 127.0.0.1:4150)")
 }
 
 func processStdin(cmd *cobra.Command, cfg gnparser.Config) {

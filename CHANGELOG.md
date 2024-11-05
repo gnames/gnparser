@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Fix [#268]: if botanical author looks like a combination uninomial,
+  make sure its characters are not normalized.
+
 ## [v1.10.3] - 2024-10-11 Fri
 
 - Fix [#266]: remove author from species detail for named hybrids.

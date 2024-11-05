@@ -86,7 +86,7 @@ var warningMap = map[Warning]string{
 	AuthUnknownWarn:                       "Author is unknown",
 	AuthUpperCaseWarn:                     "Author in upper case",
 	BacteriaMaybeWarn:                     "The genus is a homonym of a bacterial genus",
-	BotanyAuthorNotSubgenWarn:             "Possible ICN author instead of subgenus",
+	BotanyAuthorNotSubgenWarn:             "Ambiguity: ICN author or subgenus",
 	CandidatusName:                        "Bacterial `Candidatus` name",
 	CanonicalApostropheWarn:               "Apostrophe is not allowed in canonical",
 	CapWordQuestionWarn:                   "Uninomial word with question mark",
