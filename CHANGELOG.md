@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix [#270]: missing verbatim authorship for names that look similar to
+  combination uninomial in ICZN.
 - Fix [#268]: if botanical author looks like a combination uninomial,
   make sure its characters are not normalized.
 

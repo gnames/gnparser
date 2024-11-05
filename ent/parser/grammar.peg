@@ -103,17 +103,17 @@ RankAgamo <- ('agamosp' / 'agamossp' / 'agamovar') ('.' / &(SpaceCharEOI))
 
 SubgenusOrSuperspecies <- '(' _? NameLowerChar+ _? ')'
 
-Subgenus <- Subgenus2 / Subgenus1
-
-Subgenus2 <- '(' _? AbbrSubgenus _? ')' !(_? NameUpperChar)
-
-Subgenus1 <- '(' _? UninomialWord _? ')'
-
 UninomialCombo <- UninomialCombo1 / UninomialCombo2
 
 UninomialCombo1 <- UninomialWord _? Subgenus (_? Authorship)?
 
 UninomialCombo2 <- (Uninomial _)? RankUninomial _ Uninomial
+
+Subgenus <- Subgenus2 / Subgenus1
+
+Subgenus2 <- '(' _? AbbrSubgenus _? ')' !(_? Authorship)
+
+Subgenus1 <- '(' _? UninomialWord _? ')'
 
 RankUninomial <- RankUninomialPlain / RankUninomialNotho
 

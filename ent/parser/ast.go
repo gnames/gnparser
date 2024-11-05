@@ -428,12 +428,16 @@ func (p *Engine) newBotanicalUninomialNode(n *node32) *uninomialNode {
 	n = n.up
 	w := p.newWordNode(n, parsed.UninomialType)
 	n = n.next // fake Subgenus
+	verbatim := p.nodeValue(n)
 	au := p.newWordNode(n.up, parsed.AuthorWordType)
 	an := &authorNode{Value: au.Normalized, Words: []*parsed.Word{au}}
 	at := &authorsTeamNode{Authors: []*authorNode{an}}
 	ag := &authorsGroupNode{Team1: at, Parens: true}
 	n = n.next
 	if n != nil {
+		// cheating by adding space by hand here, so it is not real verbatim
+		// as a result.
+		verbatim += " " + p.nodeValue(n)
 		n = n.up // fake OriginalAuthorship
 		switch n.pegRule {
 		case ruleOriginalAuthorship:
@@ -442,7 +446,11 @@ func (p *Engine) newBotanicalUninomialNode(n *node32) *uninomialNode {
 			p.tail = p.tailValue(n)
 		}
 	}
-	authorship := &authorshipNode{OriginalAuthors: ag, CombinationAuthors: at2}
+	authorship := &authorshipNode{
+		Verbatim:           verbatim,
+		OriginalAuthors:    ag,
+		CombinationAuthors: at2,
+	}
 	u := &uninomialNode{Word: w, Authorship: authorship}
 	p.addWarn(parsed.BotanyAuthorNotSubgenWarn)
 	p.cardinality = 1

@@ -61,12 +61,12 @@ const (
 	ruleRankSsp
 	ruleRankAgamo
 	ruleSubgenusOrSuperspecies
-	ruleSubgenus
-	ruleSubgenus2
-	ruleSubgenus1
 	ruleUninomialCombo
 	ruleUninomialCombo1
 	ruleUninomialCombo2
+	ruleSubgenus
+	ruleSubgenus2
+	ruleSubgenus1
 	ruleRankUninomial
 	ruleRankUninomialPlain
 	ruleRankUninomialNotho
@@ -219,12 +219,12 @@ var rul3s = [...]string{
 	"RankSsp",
 	"RankAgamo",
 	"SubgenusOrSuperspecies",
-	"Subgenus",
-	"Subgenus2",
-	"Subgenus1",
 	"UninomialCombo",
 	"UninomialCombo1",
 	"UninomialCombo2",
+	"Subgenus",
+	"Subgenus2",
+	"Subgenus1",
 	"RankUninomial",
 	"RankUninomialPlain",
 	"RankUninomialNotho",
@@ -3429,40 +3429,39 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 			position, tokenIndex = position305, tokenIndex305
 			return false
 		},
-		/* 43 Subgenus <- <(Subgenus2 / Subgenus1)> */
+		/* 43 UninomialCombo <- <(UninomialCombo1 / UninomialCombo2)> */
 		func() bool {
 			position313, tokenIndex313 := position, tokenIndex
 			{
 				position314 := position
 				{
 					position315, tokenIndex315 := position, tokenIndex
-					if !_rules[ruleSubgenus2]() {
+					if !_rules[ruleUninomialCombo1]() {
 						goto l316
 					}
 					goto l315
 				l316:
 					position, tokenIndex = position315, tokenIndex315
-					if !_rules[ruleSubgenus1]() {
+					if !_rules[ruleUninomialCombo2]() {
 						goto l313
 					}
 				}
 			l315:
-				add(ruleSubgenus, position314)
+				add(ruleUninomialCombo, position314)
 			}
 			return true
 		l313:
 			position, tokenIndex = position313, tokenIndex313
 			return false
 		},
-		/* 44 Subgenus2 <- <('(' _? AbbrSubgenus _? ')' !(_? NameUpperChar))> */
+		/* 44 UninomialCombo1 <- <(UninomialWord _? Subgenus (_? Authorship)?)> */
 		func() bool {
 			position317, tokenIndex317 := position, tokenIndex
 			{
 				position318 := position
-				if buffer[position] != rune('(') {
+				if !_rules[ruleUninomialWord]() {
 					goto l317
 				}
-				position++
 				{
 					position319, tokenIndex319 := position, tokenIndex
 					if !_rules[rule_]() {
@@ -3473,12 +3472,22 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 					position, tokenIndex = position319, tokenIndex319
 				}
 			l320:
-				if !_rules[ruleAbbrSubgenus]() {
+				if !_rules[ruleSubgenus]() {
 					goto l317
 				}
 				{
 					position321, tokenIndex321 := position, tokenIndex
-					if !_rules[rule_]() {
+					{
+						position323, tokenIndex323 := position, tokenIndex
+						if !_rules[rule_]() {
+							goto l323
+						}
+						goto l324
+					l323:
+						position, tokenIndex = position323, tokenIndex323
+					}
+				l324:
+					if !_rules[ruleAuthorship]() {
 						goto l321
 					}
 					goto l322
@@ -3486,162 +3495,158 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 					position, tokenIndex = position321, tokenIndex321
 				}
 			l322:
-				if buffer[position] != rune(')') {
-					goto l317
-				}
-				position++
-				{
-					position323, tokenIndex323 := position, tokenIndex
-					{
-						position324, tokenIndex324 := position, tokenIndex
-						if !_rules[rule_]() {
-							goto l324
-						}
-						goto l325
-					l324:
-						position, tokenIndex = position324, tokenIndex324
-					}
-				l325:
-					if !_rules[ruleNameUpperChar]() {
-						goto l323
-					}
-					goto l317
-				l323:
-					position, tokenIndex = position323, tokenIndex323
-				}
-				add(ruleSubgenus2, position318)
+				add(ruleUninomialCombo1, position318)
 			}
 			return true
 		l317:
 			position, tokenIndex = position317, tokenIndex317
 			return false
 		},
-		/* 45 Subgenus1 <- <('(' _? UninomialWord _? ')')> */
+		/* 45 UninomialCombo2 <- <((Uninomial _)? RankUninomial _ Uninomial)> */
 		func() bool {
-			position326, tokenIndex326 := position, tokenIndex
+			position325, tokenIndex325 := position, tokenIndex
 			{
-				position327 := position
-				if buffer[position] != rune('(') {
-					goto l326
-				}
-				position++
+				position326 := position
 				{
-					position328, tokenIndex328 := position, tokenIndex
-					if !_rules[rule_]() {
-						goto l328
+					position327, tokenIndex327 := position, tokenIndex
+					if !_rules[ruleUninomial]() {
+						goto l327
 					}
-					goto l329
-				l328:
-					position, tokenIndex = position328, tokenIndex328
-				}
-			l329:
-				if !_rules[ruleUninomialWord]() {
-					goto l326
-				}
-				{
-					position330, tokenIndex330 := position, tokenIndex
 					if !_rules[rule_]() {
-						goto l330
+						goto l327
 					}
-					goto l331
-				l330:
-					position, tokenIndex = position330, tokenIndex330
+					goto l328
+				l327:
+					position, tokenIndex = position327, tokenIndex327
 				}
-			l331:
-				if buffer[position] != rune(')') {
-					goto l326
+			l328:
+				if !_rules[ruleRankUninomial]() {
+					goto l325
 				}
-				position++
-				add(ruleSubgenus1, position327)
+				if !_rules[rule_]() {
+					goto l325
+				}
+				if !_rules[ruleUninomial]() {
+					goto l325
+				}
+				add(ruleUninomialCombo2, position326)
 			}
 			return true
-		l326:
-			position, tokenIndex = position326, tokenIndex326
+		l325:
+			position, tokenIndex = position325, tokenIndex325
 			return false
 		},
-		/* 46 UninomialCombo <- <(UninomialCombo1 / UninomialCombo2)> */
+		/* 46 Subgenus <- <(Subgenus2 / Subgenus1)> */
 		func() bool {
-			position332, tokenIndex332 := position, tokenIndex
+			position329, tokenIndex329 := position, tokenIndex
 			{
-				position333 := position
+				position330 := position
 				{
-					position334, tokenIndex334 := position, tokenIndex
-					if !_rules[ruleUninomialCombo1]() {
-						goto l335
-					}
-					goto l334
-				l335:
-					position, tokenIndex = position334, tokenIndex334
-					if !_rules[ruleUninomialCombo2]() {
+					position331, tokenIndex331 := position, tokenIndex
+					if !_rules[ruleSubgenus2]() {
 						goto l332
 					}
+					goto l331
+				l332:
+					position, tokenIndex = position331, tokenIndex331
+					if !_rules[ruleSubgenus1]() {
+						goto l329
+					}
 				}
-			l334:
-				add(ruleUninomialCombo, position333)
+			l331:
+				add(ruleSubgenus, position330)
 			}
 			return true
-		l332:
-			position, tokenIndex = position332, tokenIndex332
+		l329:
+			position, tokenIndex = position329, tokenIndex329
 			return false
 		},
-		/* 47 UninomialCombo1 <- <(UninomialWord _? Subgenus (_? Authorship)?)> */
+		/* 47 Subgenus2 <- <('(' _? AbbrSubgenus _? ')' !(_? Authorship))> */
 		func() bool {
-			position336, tokenIndex336 := position, tokenIndex
+			position333, tokenIndex333 := position, tokenIndex
 			{
-				position337 := position
-				if !_rules[ruleUninomialWord]() {
-					goto l336
+				position334 := position
+				if buffer[position] != rune('(') {
+					goto l333
 				}
+				position++
 				{
-					position338, tokenIndex338 := position, tokenIndex
+					position335, tokenIndex335 := position, tokenIndex
 					if !_rules[rule_]() {
-						goto l338
+						goto l335
 					}
-					goto l339
-				l338:
-					position, tokenIndex = position338, tokenIndex338
-				}
-			l339:
-				if !_rules[ruleSubgenus]() {
 					goto l336
+				l335:
+					position, tokenIndex = position335, tokenIndex335
+				}
+			l336:
+				if !_rules[ruleAbbrSubgenus]() {
+					goto l333
 				}
 				{
-					position340, tokenIndex340 := position, tokenIndex
-					{
-						position342, tokenIndex342 := position, tokenIndex
-						if !_rules[rule_]() {
-							goto l342
-						}
-						goto l343
-					l342:
-						position, tokenIndex = position342, tokenIndex342
+					position337, tokenIndex337 := position, tokenIndex
+					if !_rules[rule_]() {
+						goto l337
 					}
-				l343:
-					if !_rules[ruleAuthorship]() {
-						goto l340
-					}
-					goto l341
-				l340:
-					position, tokenIndex = position340, tokenIndex340
+					goto l338
+				l337:
+					position, tokenIndex = position337, tokenIndex337
 				}
-			l341:
-				add(ruleUninomialCombo1, position337)
+			l338:
+				if buffer[position] != rune(')') {
+					goto l333
+				}
+				position++
+				{
+					position339, tokenIndex339 := position, tokenIndex
+					{
+						position340, tokenIndex340 := position, tokenIndex
+						if !_rules[rule_]() {
+							goto l340
+						}
+						goto l341
+					l340:
+						position, tokenIndex = position340, tokenIndex340
+					}
+				l341:
+					if !_rules[ruleAuthorship]() {
+						goto l339
+					}
+					goto l333
+				l339:
+					position, tokenIndex = position339, tokenIndex339
+				}
+				add(ruleSubgenus2, position334)
 			}
 			return true
-		l336:
-			position, tokenIndex = position336, tokenIndex336
+		l333:
+			position, tokenIndex = position333, tokenIndex333
 			return false
 		},
-		/* 48 UninomialCombo2 <- <((Uninomial _)? RankUninomial _ Uninomial)> */
+		/* 48 Subgenus1 <- <('(' _? UninomialWord _? ')')> */
 		func() bool {
-			position344, tokenIndex344 := position, tokenIndex
+			position342, tokenIndex342 := position, tokenIndex
 			{
-				position345 := position
+				position343 := position
+				if buffer[position] != rune('(') {
+					goto l342
+				}
+				position++
+				{
+					position344, tokenIndex344 := position, tokenIndex
+					if !_rules[rule_]() {
+						goto l344
+					}
+					goto l345
+				l344:
+					position, tokenIndex = position344, tokenIndex344
+				}
+			l345:
+				if !_rules[ruleUninomialWord]() {
+					goto l342
+				}
 				{
 					position346, tokenIndex346 := position, tokenIndex
-					if !_rules[ruleUninomial]() {
-						goto l346
-					}
 					if !_rules[rule_]() {
 						goto l346
 					}
@@ -3650,20 +3655,15 @@ func (p *Engine) Init(options ...func(*Engine) error) error {
 					position, tokenIndex = position346, tokenIndex346
 				}
 			l347:
-				if !_rules[ruleRankUninomial]() {
-					goto l344
+				if buffer[position] != rune(')') {
+					goto l342
 				}
-				if !_rules[rule_]() {
-					goto l344
-				}
-				if !_rules[ruleUninomial]() {
-					goto l344
-				}
-				add(ruleUninomialCombo2, position345)
+				position++
+				add(ruleSubgenus1, position343)
 			}
 			return true
-		l344:
-			position, tokenIndex = position344, tokenIndex344
+		l342:
+			position, tokenIndex = position342, tokenIndex342
 			return false
 		},
 		/* 49 RankUninomial <- <(RankUninomialPlain / RankUninomialNotho)> */
