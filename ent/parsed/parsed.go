@@ -209,7 +209,11 @@ type AuthGroup struct {
 	// authors, that sometimes appear in scientific names after "ex"
 	// qualifier.
 	ExAuthors *Authors `json:"exAuthors,omitempty"`
-	// ExAuthors provided only if "with_details=true" A "special" group of
+	// InAuthors provided only if "with_details=true" A "special" group of
+	// authors, that sometimes appear in scientific names after "in"
+	// qualifier.
+	InAuthors *Authors `json:"inAuthors,omitempty"`
+	// EmendAuthors provided only if "with_details=true" A "special" group of
 	// authors, that sometimes appear in scientific names after "emend."
 	// qualifier.
 	EmendAuthors *Authors `json:"emendAuthors,omitempty"`

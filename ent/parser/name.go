@@ -889,17 +889,30 @@ func (au *authorshipNode) details() *parsed.Authorship {
 			yr = fmt.Sprintf("(%s)", yr)
 		}
 	}
+	if ao.Original != nil && ao.Original.InAuthors != nil &&
+		ao.Original.InAuthors.Year != nil && yr == "" {
+		yr = ao.Original.InAuthors.Year.Value
+		if ao.Original.InAuthors.Year.IsApproximate {
+			yr = fmt.Sprintf("(%s)", yr)
+		}
+	}
 	var aus []string
 	if ao.Original != nil {
 		aus = ao.Original.Authors
 		if ao.Original.ExAuthors != nil {
 			aus = append(aus, ao.Original.ExAuthors.Authors...)
 		}
+		if ao.Original.InAuthors != nil {
+			aus = append(aus, ao.Original.InAuthors.Authors...)
+		}
 	}
 	if ao.Combination != nil {
 		aus = append(aus, ao.Combination.Authors...)
 		if ao.Combination.ExAuthors != nil {
 			aus = append(aus, ao.Combination.ExAuthors.Authors...)
+		}
+		if ao.Combination.InAuthors != nil {
+			aus = append(aus, ao.Combination.InAuthors.Authors...)
 		}
 	}
 	ao.Authors = str.Uniq(aus)
@@ -928,6 +941,12 @@ func authGroupDetail(ag *authorsGroupNode) *parsed.AuthGroup {
 			Year:    yr,
 		}
 		ago.ExAuthors = &eao
+	case teamIn:
+		eao := parsed.Authors{
+			Authors: aus,
+			Year:    yr,
+		}
+		ago.InAuthors = &eao
 	case teamEmend:
 		eao := parsed.Authors{
 			Authors: aus,

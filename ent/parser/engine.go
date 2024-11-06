@@ -187,6 +187,7 @@ var nodeRules = map[pegRule]struct{}{
 	ruleAuthorEmend:                     {},
 	ruleAuthorEtAl:                      {},
 	ruleAuthorEx:                        {},
+	ruleAuthorIn:                        {},
 	ruleAuthorPrefix:                    {},
 	ruleAuthorSep:                       {},
 	ruleAuthorSuffix:                    {},

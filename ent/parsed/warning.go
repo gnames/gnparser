@@ -17,7 +17,9 @@ const (
 	AuthEmendWarn
 	AuthEmendWithoutDotWarn
 	AuthExWarn
+	AuthInWarn
 	AuthExWithDotWarn
+	AuthInWithDotWarn
 	AuthMissingOneParensWarn
 	AuthQuestionWarn
 	AuthShortWarn
@@ -78,8 +80,10 @@ var warningMap = map[Warning]string{
 	AuthDoubleParensWarn:                  "Authorship in double parentheses",
 	AuthEmendWarn:                         "Emend authors are not required",
 	AuthEmendWithoutDotWarn:               "`emend` without a period",
-	AuthExWarn:                            "Ex authors are not required (ICZN only)",
+	AuthExWarn:                            "`ex` authors are not required (ICZN only)",
+	AuthInWarn:                            "`in` authors are not required",
 	AuthExWithDotWarn:                     "`ex` ends with a period",
+	AuthInWithDotWarn:                     "`in` ends with a period",
 	AuthMissingOneParensWarn:              "Authorship is missing one parenthesis",
 	AuthQuestionWarn:                      "Author as a question mark",
 	AuthShortWarn:                         "Author is too short",
@@ -150,7 +154,9 @@ var WarningQualityMap = map[Warning]int{
 	AuthEmendWarn:                         2,
 	AuthEmendWithoutDotWarn:               3,
 	AuthExWarn:                            2,
+	AuthInWarn:                            2,
 	AuthExWithDotWarn:                     3,
+	AuthInWithDotWarn:                     3,
 	AuthMissingOneParensWarn:              4,
 	AuthQuestionWarn:                      4,
 	AuthShortWarn:                         3,

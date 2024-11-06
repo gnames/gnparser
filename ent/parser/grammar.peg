@@ -55,7 +55,7 @@ GenusWord <- (AbbrGenus / UninomialWord) !(_ AuthorWord)
 
 InfraspGroup <- InfraspEpithet (_ InfraspEpithet)?  (_ InfraspEpithet)?
 
-InfraspEpithet <- (Rank _?)? !(AuthorEx) Word (_ IgnoredWord)? (_? Authorship)?
+InfraspEpithet <- (Rank _?)? !(AuthorEx / AuthorIn) Word (_ IgnoredWord)? (_? Authorship)?
 
 CultivarWordGroup <-  ((RankCultivar _)? CultivarApostrophe
                       CultivarRecursive CultivarApostrophe) /
@@ -72,7 +72,7 @@ CultivarRecursive <- NotHybridChar CultivarRecursive / &CultivarApostrophe
 
 CultivarApostrophe <- '\'' / '‘' / '’' / '"' / '“' / '”'
 
-SpeciesEpithet <- !(AuthorEx) Word (_ IgnoredWord)? (_? Authorship)?
+SpeciesEpithet <- !(AuthorEx / AuthorIn) Word (_ IgnoredWord)? (_? Authorship)?
 
 IgnoredWord <- 'mihi.' / 'mihi'
 
@@ -206,7 +206,7 @@ BasionymAuthorship1 <- '(' _? AuthorsGroup _? ')'
 
 BasionymAuthorship2Parens <- '(' _? '(' _? AuthorsGroup _? ')' _? ')'
 
-AuthorsGroup <- AuthorsTeam (','?_ (AuthorEmend / AuthorEx) AuthorsTeam)?
+AuthorsGroup <- AuthorsTeam (','?_ (AuthorEmend / AuthorEx / AuthorIn) AuthorsTeam)?
 
 AuthorsTeam <- Author (AuthorSep Author)* (_? ','? _? Year)?
 
@@ -218,7 +218,9 @@ AuthorSep2 <- _? ',' _?
 
 AuthorSepSpanish <- _? 'y' _?
 
-AuthorEx <- ('ex' '.'? / 'ms' _ 'in' / 'in') _
+AuthorEx <- ('ex' '.'? ) _
+
+AuthorIn <- ( 'ms' _ 'in' / 'in') _
 
 AuthorEmend <- 'emend' '.'? _
 

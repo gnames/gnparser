@@ -980,6 +980,7 @@ type teamType int
 const (
 	teamDefault teamType = iota
 	teamEx
+	teamIn
 	teamEmend
 )
 
@@ -1020,6 +1021,15 @@ func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 			p.addWarn(parsed.AuthExWithDotWarn)
 		}
 		t2wrd.Normalized = "ex"
+	case ruleAuthorIn:
+		p.addWarn(parsed.AuthInWarn)
+		t2t = teamIn
+		t2wrd = p.newWordNode(n, parsed.AuthorWordType)
+		inWrd := strings.TrimSpace(t2wrd.Verbatim)
+		if inWrd[len(inWrd)-1] == '.' {
+			p.addWarn(parsed.AuthInWithDotWarn)
+		}
+		t2wrd.Normalized = "in"
 	case ruleAuthorEmend:
 		p.addWarn(parsed.AuthEmendWarn)
 		t2t = teamEmend
