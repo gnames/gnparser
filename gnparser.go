@@ -61,7 +61,12 @@ func (gnp gnparser) ParseName(s string) parsed.Parsed {
 		ver = "test_version"
 	}
 	sciNameNode := gnp.parser.PreprocessAndParse(
-		s, ver, gnp.cfg.IgnoreHTMLTags, gnp.cfg.WithCapitalization, gnp.cfg.WithCultivars, gnp.cfg.WithPreserveDiaereses,
+		s,
+		ver,
+		gnp.cfg.IgnoreHTMLTags,
+		gnp.cfg.WithCapitalization,
+		gnp.cfg.WithCultivars,
+		gnp.cfg.WithPreserveDiaereses,
 	)
 	res := sciNameNode.ToOutput(
 		gnp.cfg.WithDetails,
@@ -123,10 +128,6 @@ func (gnp gnparser) Format() gnfmt.Format {
 // WebLogs returns a boolean to show or not the web-service logs.
 func (gnp gnparser) WebLogs() bool {
 	return gnp.cfg.WithWebLogs
-}
-
-func (gnp gnparser) WebLogsNsqdTCP() string {
-	return gnp.cfg.WebLogsNsqdTCP
 }
 
 // ChangeConfig allows change configuration of already created

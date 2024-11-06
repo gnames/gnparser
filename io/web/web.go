@@ -3,6 +3,7 @@ package web
 
 import (
 	"fmt"
+	"log/slog"
 	"net/http"
 	"net/url"
 	"strings"
@@ -11,16 +12,15 @@ import (
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/labstack/echo/v4"
-	"github.com/rs/zerolog/log"
 )
 
 // inputFORM is used to collect data from HTML form.
 type inputFORM struct {
-	Names             string `query:"names" form:"names"`
-	Format            string `query:"format" form:"format"`
+	Names             string `query:"names"        form:"names"`
+	Format            string `query:"format"       form:"format"`
 	WithDetails       string `query:"with_details" form:"with_details"`
-	WithCultivars     string `query:"cultivars" form:"cultivars"`
-	PreserveDiaereses string `query:"diaereses" form:"diaereses"`
+	WithCultivars     string `query:"cultivars"    form:"cultivars"`
+	PreserveDiaereses string `query:"diaereses"    form:"diaereses"`
 }
 
 // Data contains information required to render web-pages.
@@ -128,11 +128,11 @@ func parsingResults(
 		names[i] = strings.TrimSpace(split[i])
 	}
 	if l := len(names); l > 0 {
-		log.Info().
-			Int("namesNum", l).
-			Str("example", names[0]).
-			Str("parsedBy", "WEB GUI").
-			Msg("Parsed")
+		slog.Info("Parsed",
+			"namesNum", l,
+			"example", names[0],
+			"parsedBy", "WEB GUI",
+		)
 	}
 	data.Input = strings.Join(names, "\n")
 

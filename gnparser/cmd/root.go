@@ -3,6 +3,7 @@ package cmd
 
 import (
 	"fmt"
+	"log/slog"
 	"os"
 	"time"
 
@@ -11,8 +12,6 @@ import (
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/web"
 	"github.com/gnames/gnsys"
-	"github.com/rs/zerolog"
-	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
 )
 
@@ -86,12 +85,17 @@ gnparser -j 5 -p 8080
 		batchSize = cfg.BatchSize
 
 		if port != 0 {
-			log.Logger = zerolog.New(os.Stderr).With().
-				Str("gnApp", "gnparser").Logger()
+
+			// Create a JSON handler
+			handler := slog.NewJSONHandler(os.Stdout, nil)
+			logger := slog.New(handler).With(
+				slog.String("gnApp", "gnparser"),
+			)
+			slog.SetDefault(logger)
+
 			webopts := []gnparser.Option{
 				gnparser.OptFormat("compact"),
 				gnparser.OptWithWebLogs(withWebLogsFlag(cmd)),
-				gnparser.OptWebLogsNsqdTCP(webLogsNsqdTCPFlag(cmd)),
 			}
 			cfg = gnparser.NewConfig(webopts...)
 			gnp := gnparser.New(cfg)
@@ -102,7 +106,7 @@ gnparser -j 5 -p 8080
 
 		quiet, _ := cmd.Flags().GetBool("quiet")
 		if quiet {
-			zerolog.SetGlobalLevel(zerolog.Disabled)
+			slog.SetLogLoggerLevel(10)
 		}
 
 		if len(args) == 0 {
@@ -174,9 +178,6 @@ func init() {
 
 	rootCmd.Flags().
 		BoolP("species-group-cut", "", false, "cut autonym/species group names to species for stemmed version")
-
-	rootCmd.Flags().
-		StringP("nsqd-tcp", "", "", "an addresss pointing to NSQ TCP service for logs redirection (e.g. 127.0.0.1:4150)")
 }
 
 func processStdin(cmd *cobra.Command, cfg gnparser.Config) {
@@ -197,7 +198,7 @@ func checkStdin() bool {
 	stdInFile := os.Stdin
 	stat, err := stdInFile.Stat()
 	if err != nil {
-		log.Fatal().Err(err)
+		slog.Error("No stdin input", "error", err)
 	}
 	return (stat.Mode() & os.ModeCharDevice) == 0
 }
@@ -234,7 +235,7 @@ func parse(
 	if exists {
 		f, err := os.OpenFile(path, os.O_RDONLY, os.ModePerm)
 		if err != nil {
-			log.Fatal().Err(err)
+			slog.Error("Cannot open file", "error", err, "path", path)
 		}
 		if cfg.WithStream {
 			parseStream(gnp, f)
@@ -263,8 +264,8 @@ func progressLog(start time.Time, namesNum int) {
 	dur := float64(time.Since(start)) / float64(time.Second)
 	rate := float64(namesNum) / dur
 	rateStr := humanize.Comma(int64(rate))
-	log.Info().
-		Str("names/sec", rateStr).
-		Str("count", humanize.Comma(int64(namesNum))).
-		Msg("File parsing")
+	slog.Info("File parsing",
+		"names/sec", rateStr,
+		"count", humanize.Comma(int64(namesNum)),
+	)
 }

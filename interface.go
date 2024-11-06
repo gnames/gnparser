@@ -40,8 +40,4 @@ type GNparser interface {
 
 	// WebLogs returns a boolean to show or not the web-service logs.
 	WebLogs() bool
-
-	// WebLogsNsqdTCP returns a URL to NSQ messanging service if it is given.
-	// WebLogsNsqdTCP is used for publishing web logs as messages to NSQ server.
-	WebLogsNsqdTCP() string
 }

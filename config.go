@@ -1,10 +1,10 @@
 package gnparser
 
 import (
+	"log/slog"
 	"runtime"
 
 	"github.com/gnames/gnfmt"
-	"github.com/rs/zerolog/log"
 )
 
 // Config keeps settings that might affect how parsing is done,
@@ -38,16 +38,6 @@ type Config struct {
 
 	// Port to run wer-service.
 	Port int
-
-	// WebLogsNsqdTCP provides an address to the NSQ messenger TCP service. If
-	// this value is set and valid, the web logs will be published to the NSQ.
-	// The option is ignored if `Port` is not set.
-	//
-	// If WithWebLogs option is set to `false`, but `WebLogsNsqdTCP` is set to a
-	// valid URL, the logs will be sent to the NSQ messanging service, but they
-	// wil not appear as STRERR output.
-	// Example: `127.0.0.1:4150`
-	WebLogsNsqdTCP string
 
 	// WithCapitalization flag, when true, the first letter of a name-string
 	// is capitalized, if appropriate.
@@ -89,7 +79,7 @@ type Option func(*Config)
 func OptBatchSize(i int) Option {
 	return func(cfg *Config) {
 		if i <= 0 {
-			log.Info().Msg("Batch size should be a positive number")
+			slog.Warn("Batch size should be a positive number")
 			return
 		}
 		cfg.BatchSize = i
@@ -112,7 +102,7 @@ func OptFormat(s string) Option {
 		f, err := gnfmt.NewFormat(s)
 		if err != nil {
 			f = gnfmt.CSV
-			log.Printf("Set default CSV format due to error: %s.", err)
+			slog.Warn("Set default CSV format due to error", "error", err)
 		}
 		cfg.Format = f
 	}
@@ -145,13 +135,6 @@ func OptJobsNum(i int) Option {
 func OptPort(i int) Option {
 	return func(cfg *Config) {
 		cfg.Port = i
-	}
-}
-
-// OptWebLogsNsqdTCP provides a URL to NSQ messanging service.
-func OptWebLogsNsqdTCP(s string) Option {
-	return func(cfg *Config) {
-		cfg.WebLogsNsqdTCP = s
 	}
 }
 

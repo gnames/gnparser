@@ -3,6 +3,7 @@ package web
 import (
 	"embed"
 	"fmt"
+	"log/slog"
 	"net/http"
 	"net/url"
 	"strings"
@@ -13,11 +14,6 @@ import (
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/labstack/gommon/log"
-	zlog "github.com/rs/zerolog/log"
-	nsqcfg "github.com/sfgrp/lognsq/config"
-	"github.com/sfgrp/lognsq/ent/nsq"
-	"github.com/sfgrp/lognsq/io/nsqio"
 )
 
 //go:embed static
@@ -45,11 +41,6 @@ func Run(gnps GNparserService) {
 
 	e.Use(middleware.Gzip())
 	e.Use(middleware.CORS())
-
-	loggerNSQ := setLogger(e, gnps)
-	if loggerNSQ != nil {
-		defer loggerNSQ.Stop()
-	}
 
 	e.GET("/", homeGET(gnps))
 	e.POST("/", homePOST(gnps))
@@ -111,12 +102,10 @@ func parseNamesGET(gnps GNparserService) func(echo.Context) error {
 		names := strings.Split(nameStr, "|")
 		res := gnp.ParseNames(names)
 		if l := len(names); l > 0 {
-			zlog.Info().
-				Int("namesNum", l).
-				Str("example", names[0]).
-				Str("parsedBy", "REST API").
-				Str("method", "GET").
-				Msg("Parsed")
+			slog.Info("Parsed",
+				"namesNum", l, "example", names[0],
+				"parsedBy", "REST API", "method", "GET",
+			)
 		}
 		return formatNames(c, res, gnp.Format())
 	}
@@ -130,14 +119,15 @@ func parseNamesPOST(gnps GNparserService) func(echo.Context) error {
 		}
 
 		if l := len(input.Names); l > 0 {
-			zlog.Info().
-				Int("namesNum", l).
-				Str("example", input.Names[0]).
-				Str("parsedBy", "REST API").
-				Str("method", "POST").
-				Msg("Parsed")
+			slog.Info("Parsed",
+				"namesNum", l,
+				"example", input.Names[0],
+				"parsedBy", "REST API",
+				"method", "POST",
+			)
 		}
-		gnp := gnps.ChangeConfig(opts(input.CSV, input.WithDetails, input.WithCultivars, input.PreserveDiaereses)...)
+		gnp := gnps.ChangeConfig(
+			opts(input.CSV, input.WithDetails, input.WithCultivars, input.PreserveDiaereses)...)
 		res := gnp.ParseNames(input.Names)
 		return formatNames(c, res, gnp.Format())
 	}
@@ -175,33 +165,4 @@ func opts(csv, details, cultivars bool, diaereses bool) []gnparser.Option {
 	}
 
 	return res
-}
-
-func setLogger(e *echo.Echo, gnps GNparserService) nsq.NSQ {
-	nsqAddr := gnps.WebLogsNsqdTCP()
-	withLogs := gnps.WebLogs()
-
-	if nsqAddr != "" {
-		cfg := nsqcfg.Config{
-			StderrLogs: withLogs,
-			Topic:      "gnparser",
-			Address:    nsqAddr,
-			Contains:   "!/static/",
-		}
-		remote, err := nsqio.New(cfg)
-		logCfg := middleware.DefaultLoggerConfig
-		if err == nil {
-			logCfg.Output = remote
-			zlog.Logger = zlog.Output(remote)
-		}
-		e.Use(middleware.LoggerWithConfig(logCfg))
-		if err != nil {
-			log.Warn(err)
-		}
-		return remote
-	} else if withLogs {
-		e.Use(middleware.Logger())
-		return nil
-	}
-	return nil
 }

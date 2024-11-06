@@ -1,6 +1,6 @@
 package preparser
 
-import "github.com/rs/zerolog/log"
+import "log/slog"
 
 func New() *PreParser {
 	res := &PreParser{}
@@ -22,7 +22,7 @@ func (ppr *PreParser) NewString(s string) {
 func (ppr *PreParser) TailIndex(s string) int {
 	ppr.NewString(s)
 	if err := ppr.Parse(); err != nil {
-		log.Warn().Err(err).Msgf("Preparsing broke for string '%s'", s)
+		slog.Error("Preparsing failed", "error", err, "string", s)
 		return -1
 	}
 	ppr.Execute()

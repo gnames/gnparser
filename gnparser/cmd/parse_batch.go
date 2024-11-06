@@ -4,13 +4,13 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"log/slog"
 	"sync"
 	"time"
 
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
-	"github.com/rs/zerolog/log"
 )
 
 func parseBatch(
@@ -41,7 +41,7 @@ func parseBatch(
 	chOut <- gnp.ParseNames(batch[:count])
 	close(chOut)
 	if err := sc.Err(); err != nil {
-		log.Fatal().Err(err)
+		slog.Error("File reading failed", "error", err)
 	}
 	wg.Wait()
 }

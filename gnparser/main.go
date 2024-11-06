@@ -21,20 +21,16 @@
 package main
 
 import (
+	"log/slog"
 	"os"
 
-	"github.com/rs/zerolog"
-	"github.com/rs/zerolog/log"
-
 	"github.com/gnames/gnparser/gnparser/cmd"
+	"github.com/lmittmann/tint"
 )
 
 func main() {
-	log.Logger = log.Output(
-		zerolog.ConsoleWriter{
-			Out:        os.Stderr,
-			TimeFormat: "15:04:05",
-		},
-	)
+	handle := slog.New(tint.NewHandler(os.Stderr, nil))
+	slog.SetDefault(handle)
+
 	cmd.Execute()
 }

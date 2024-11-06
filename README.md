@@ -400,12 +400,6 @@ performance.
 `--port -p`
 : set a port to run web-interface and [RESTful API][OpenAPI].
 
-` --nsqd-tcp`
-: requires `--port`. Allows to redirect web-service log output to [NSQ]
-messaging server's TCP-based endpoint. It is handy for aggregations of logs
-from GNparser web-services running inside of Docker containers or
-in Kubernetes pods.
-
 `--species-group-cut`
 : Changes stemmed canonical for autonym or species group names (e.g. `Aus bus bus`). It cuts infraspecific epithet, leaving only genus and specific
 epithet. All other data stays the same. This feature might be useful to
@@ -582,23 +576,6 @@ The following enables web-access logs to be printed to STDERR
 gnparser -p 80 --web-logs
 ```
 
-This next settings allows to send logs to a [NSQ] messaging service.
-This option allows aggregation logs from several instances of GNparser together.
-It is a great way for log aggregation and analysis if the instances run
-inside Docker containers or as Kubernetes Pods.
-
-```
-gnparser -p 80 --nsqd-tcp=127.0.0.1:4150
-```
-
-An **important note**: the address must point to the TCP service of nsqd.
-
-To enable logs to be sent to STDERR and [NSQ] run
-
-```
-gnparser -p 80 --web-logs --nsqd-tcp=127.0.0.1:4150
-```
-
 ### Use as a Docker image
 
 You need to have [docker runtime installed](https://docs.docker.com/install/)
@@ -706,7 +683,6 @@ Released under [MIT license]
 [CONTRIBUTING]: https://github.com/gnames/gnparser/blob/master/CONTRIBUTING.md
 [Dmitry Mozzherin]: https://github.com/dimus
 [Geoff Ower]: https://github.com/gdower
-[NSQ]: https://nsq.io/overview/quick_start.html
 [Toby Marsden]: https://github.com/tobymarsden
 [Hernan Lucas Pereira]: https://github.com/LocoDelAssembly
 [Homebrew]: https://brew.sh/

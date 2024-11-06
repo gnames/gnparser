@@ -5,8 +5,8 @@ import (
 	"bufio"
 	"embed"
 	"fmt"
-
-	"github.com/rs/zerolog/log"
+	"log/slog"
+	"os"
 )
 
 //go:embed data
@@ -53,7 +53,8 @@ func scanAuthorICNFIle(path string, m map[string]struct{}) {
 	path = fmt.Sprintf("data/%s", path)
 	f, err := data.Open(path)
 	if err != nil {
-		log.Fatal().Err(err)
+		slog.Error("Cannot open authors' file", "error", err, "path", path)
+		os.Exit(1)
 	}
 	sc := bufio.NewScanner(f)
 	for sc.Scan() {
@@ -65,7 +66,7 @@ func scanBacterialFile(path string, isHomonym bool, m map[string]bool) {
 	path = fmt.Sprintf("data/%s", path)
 	f, err := data.Open(path)
 	if err != nil {
-		log.Fatal().Err(err)
+		slog.Error("Cannot open bacteria file", "error", err, "path", path)
 	}
 	sc := bufio.NewScanner(f)
 	for sc.Scan() {

@@ -5,13 +5,13 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"log/slog"
 	"sync"
 	"time"
 
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/nameidx"
 	"github.com/gnames/gnparser/ent/parsed"
-	"github.com/rs/zerolog/log"
 )
 
 func getNames(
@@ -35,7 +35,7 @@ func getNames(
 		}
 	}()
 	if err := sc.Err(); err != nil {
-		log.Fatal().Err(err)
+		slog.Error("Cannot read data", "error", err)
 	}
 	return chIn
 }

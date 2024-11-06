@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/gnames/gnparser"
-	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
 )
 
@@ -66,25 +65,13 @@ func portFlag(cmd *cobra.Command) int {
 }
 
 func versionFlag(cmd *cobra.Command) bool {
-	version, err := cmd.Flags().GetBool("version")
-	if err != nil {
-		log.Fatal().Err(err)
-	}
+	version, _ := cmd.Flags().GetBool("version")
 	if version {
 		fmt.Printf("\nversion: %s\n\nbuild:   %s\n\n",
 			gnparser.Version, gnparser.Build)
 		return true
 	}
 	return false
-}
-
-func webLogsNsqdTCPFlag(cmd *cobra.Command) string {
-	u, err := cmd.Flags().GetString("nsqd-tcp")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-	return u
 }
 
 func withCapitalizeFlag(cmd *cobra.Command) {
