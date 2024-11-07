@@ -4,6 +4,7 @@ import (
 	"io"
 
 	"github.com/gnames/gnparser/ent/internal/preparser"
+	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/dict"
 	"github.com/gnames/tribool"
@@ -13,6 +14,7 @@ type baseEngine struct {
 	preParser         *preparser.PreParser
 	sn                *scientificNameNode
 	root              *node32
+	code              nomcode.Code
 	cardinality       int
 	rank              string
 	error             error
@@ -24,7 +26,6 @@ type baseEngine struct {
 	warnings          map[parsed.Warning]struct{}
 	tail              string
 	cultivar          bool
-	enableCultivars   bool
 	preserveDiaereses bool
 }
 
@@ -64,6 +65,10 @@ func (p *Engine) addWarn(w parsed.Warning) {
 }
 
 func (p *Engine) isBacteria(gen string) {
+	if p.code == nomcode.Bacterial {
+		bac := tribool.New(1)
+		p.bacteria = &bac
+	}
 	if hom, ok := dict.Dict.Bacteria[gen]; ok {
 		if hom {
 			p.addWarn(parsed.BacteriaMaybeWarn)

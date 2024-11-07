@@ -11,6 +11,7 @@ import (
 
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -23,8 +24,11 @@ type inputREST struct {
 	Names             []string `json:"names"`
 	CSV               bool     `json:"csv"`
 	WithDetails       bool     `json:"withDetails"`
-	WithCultivars     bool     `json:"withCultivars"`
 	PreserveDiaereses bool     `json:"preserveDiaereses"`
+	Code              string   `json:"code"`
+
+	// WithCultivars is deprecated by Code and overriden by it
+	WithCultivars bool `json:"withCultivars"`
 }
 
 // Run starts the GNparser web service and servies both RESTful API and
@@ -98,7 +102,11 @@ func parseNamesGET(gnps GNparserService) func(echo.Context) error {
 		det := c.QueryParam("with_details") == "true"
 		cultivars := c.QueryParam("cultivars") == "true"
 		diaereses := c.QueryParam("diaereses") == "true"
-		gnp := gnps.ChangeConfig(opts(csv, det, cultivars, diaereses)...)
+		codeStr := c.QueryParam("code")
+
+		code := getCode(codeStr, cultivars)
+
+		gnp := gnps.ChangeConfig(opts(code, csv, det, diaereses)...)
 		names := strings.Split(nameStr, "|")
 		res := gnp.ParseNames(names)
 		if l := len(names); l > 0 {
@@ -126,11 +134,25 @@ func parseNamesPOST(gnps GNparserService) func(echo.Context) error {
 				"method", "POST",
 			)
 		}
+		code := getCode(input.Code, input.WithCultivars)
+
 		gnp := gnps.ChangeConfig(
-			opts(input.CSV, input.WithDetails, input.WithCultivars, input.PreserveDiaereses)...)
+			opts(code, input.CSV, input.WithDetails, input.PreserveDiaereses)...)
 		res := gnp.ParseNames(input.Names)
 		return formatNames(c, res, gnp.Format())
 	}
+}
+
+func getCode(codeStr string, cultivars bool) nomcode.Code {
+	code := nomcode.Unknown
+	if cultivars {
+		code = nomcode.Cultivar
+	}
+	code2 := nomcode.New(codeStr)
+	if code2 == nomcode.Unknown {
+		return code
+	}
+	return code2
 }
 
 func formatNames(
@@ -152,16 +174,16 @@ func formatNames(
 	}
 }
 
-func opts(csv, details, cultivars bool, diaereses bool) []gnparser.Option {
+func opts(code nomcode.Code, csv, details, diaereses bool) []gnparser.Option {
 	res := []gnparser.Option{
 		gnparser.OptWithDetails(details),
-		gnparser.OptWithCultivars(cultivars),
+		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(diaereses),
 	}
 	if csv {
-		res = append(res, gnparser.OptFormat("csv"))
+		res = append(res, gnparser.OptFormat(gnfmt.CSV))
 	} else {
-		res = append(res, gnparser.OptFormat("compact"))
+		res = append(res, gnparser.OptFormat(gnfmt.CompactJSON))
 	}
 
 	return res

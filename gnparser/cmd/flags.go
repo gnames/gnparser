@@ -2,9 +2,12 @@ package cmd
 
 import (
 	"fmt"
+	"log/slog"
 	"os"
 
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/spf13/cobra"
 )
 
@@ -19,14 +22,27 @@ func batchSizeFlag(cmd *cobra.Command) {
 	}
 }
 
-func formatFlag(cmd *cobra.Command) {
-	f, err := cmd.Flags().GetString("format")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+func codeFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("nomenclatural-code")
+	if s == "" {
+		return
 	}
-	if f != "" {
-		opts = append(opts, gnparser.OptFormat(f))
+	code := nomcode.New(s)
+	if code == nomcode.Unknown {
+		slog.Warn("Cannot determine nomenclatural-code from input", "input", s)
+	}
+	opts = append(opts, gnparser.OptCode(code))
+}
+
+func formatFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("format")
+	if s != "" {
+		frmt, err := gnfmt.NewFormat(s)
+		if err != nil {
+			slog.Warn("Unknown format input, using default: CSV", "inut", s)
+			frmt = gnfmt.CSV
+		}
+		opts = append(opts, gnparser.OptFormat(frmt))
 	}
 }
 
@@ -97,13 +113,9 @@ func withDetailsFlag(cmd *cobra.Command) {
 }
 
 func withEnableCultivarsFlag(cmd *cobra.Command) {
-	b, err := cmd.Flags().GetBool("cultivar")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	b, _ := cmd.Flags().GetBool("cultivar")
 	if b {
-		opts = append(opts, gnparser.OptWithCultivars(true))
+		opts = append(opts, gnparser.OptCode(nomcode.Cultivar))
 	}
 }
 

@@ -2649,7 +2649,7 @@ Authorship: (E. L. Braun 1940) Morton (1956)
 ```
 Name: Androrchis × fallax (De Not.) W.Foelsche & Jakely
 
-Canonical: Androrchis fallax
+Canonical: Androrchis × fallax
 
 Authorship: (De Not.) W. Foelsche & Jakely
 
@@ -5875,7 +5875,7 @@ Canonical: Verpericola megasoma
 Authorship:
 
 ```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"},{"quality":2,"warning":"Cultivar epithet"}],"verbatim":"Verpericola megasoma \"\"Dall\" Pils.","normalized":"Verpericola megasoma","canonical":{"stemmed":"Verpericola megasom","simple":"Verpericola megasoma","full":"Verpericola megasoma"},"cardinality":2,"rank":"sp.","tail":" Pils.","details":{"species":{"genus":"Verpericola","species":"megasoma","cultivar":"‘\"Dall’"}},"words":[{"verbatim":"Verpericola","normalized":"Verpericola","wordType":"GENUS","start":0,"end":11},{"verbatim":"megasoma","normalized":"megasoma","wordType":"SPECIES","start":12,"end":20},{"verbatim":"\"Dall","normalized":"‘\"Dall’","wordType":"CULTIVAR","start":22,"end":27}],"id":"cebb60d9-fc8e-5fa0-874a-ae21819b242b","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Verpericola megasoma \"\"Dall\" Pils.","normalized":"Verpericola megasoma","canonical":{"stemmed":"Verpericola megasom","simple":"Verpericola megasoma","full":"Verpericola megasoma"},"cardinality":2,"rank":"sp.","tail":" Pils.","details":{"species":{"genus":"Verpericola","species":"megasoma"}},"words":[{"verbatim":"Verpericola","normalized":"Verpericola","wordType":"GENUS","start":0,"end":11},{"verbatim":"megasoma","normalized":"megasoma","wordType":"SPECIES","start":12,"end":20}],"id":"cebb60d9-fc8e-5fa0-874a-ae21819b242b","parserVersion":"test_version"}
 ```
 
 Name: Verpericola megasoma "Dall" Pils.
@@ -5885,7 +5885,7 @@ Canonical: Verpericola megasoma
 Authorship:
 
 ```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"},{"quality":2,"warning":"Cultivar epithet"}],"verbatim":"Verpericola megasoma \"Dall\" Pils.","normalized":"Verpericola megasoma","canonical":{"stemmed":"Verpericola megasom","simple":"Verpericola megasoma","full":"Verpericola megasoma"},"cardinality":2,"rank":"sp.","tail":" Pils.","details":{"species":{"genus":"Verpericola","species":"megasoma","cultivar":"‘Dall’"}},"words":[{"verbatim":"Verpericola","normalized":"Verpericola","wordType":"GENUS","start":0,"end":11},{"verbatim":"megasoma","normalized":"megasoma","wordType":"SPECIES","start":12,"end":20},{"verbatim":"Dall","normalized":"‘Dall’","wordType":"CULTIVAR","start":22,"end":26}],"id":"02011460-ba94-5162-98c9-4064a700c7f8","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Verpericola megasoma \"Dall\" Pils.","normalized":"Verpericola megasoma","canonical":{"stemmed":"Verpericola megasom","simple":"Verpericola megasoma","full":"Verpericola megasoma"},"cardinality":2,"rank":"sp.","tail":" Pils.","details":{"species":{"genus":"Verpericola","species":"megasoma"}},"words":[{"verbatim":"Verpericola","normalized":"Verpericola","wordType":"GENUS","start":0,"end":11},{"verbatim":"megasoma","normalized":"megasoma","wordType":"SPECIES","start":12,"end":20}],"id":"02011460-ba94-5162-98c9-4064a700c7f8","parserVersion":"test_version"}
 ```
 
 
@@ -6097,7 +6097,7 @@ Canonical: Sarracenia flava
 Authorship:
 
 ```json
-{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Cultivar epithet"}],"verbatim":"Sarracenia flava 'Maxima'","normalized":"Sarracenia flava","canonical":{"stemmed":"Sarracenia flau","simple":"Sarracenia flava","full":"Sarracenia flava"},"cardinality":2,"rank":"sp.","details":{"species":{"genus":"Sarracenia","species":"flava","cultivar":"‘Maxima’"}},"words":[{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":0,"end":10},{"verbatim":"flava","normalized":"flava","wordType":"SPECIES","start":11,"end":16},{"verbatim":"Maxima","normalized":"‘Maxima’","wordType":"CULTIVAR","start":18,"end":24}],"id":"39178008-65ee-5de3-af88-63ffdd67e00b","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Sarracenia flava 'Maxima'","normalized":"Sarracenia flava","canonical":{"stemmed":"Sarracenia flau","simple":"Sarracenia flava","full":"Sarracenia flava"},"cardinality":2,"rank":"sp.","tail":" 'Maxima'","details":{"species":{"genus":"Sarracenia","species":"flava"}},"words":[{"verbatim":"Sarracenia","normalized":"Sarracenia","wordType":"GENUS","start":0,"end":10},{"verbatim":"flava","normalized":"flava","wordType":"SPECIES","start":11,"end":16}],"id":"39178008-65ee-5de3-af88-63ffdd67e00b","parserVersion":"test_version"}
 ```
 
 ### "Open taxonomy" with ranks unfinished

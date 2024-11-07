@@ -8,7 +8,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnsys"
 	"github.com/stretchr/testify/assert"
@@ -22,7 +24,7 @@ type testData struct {
 func TestParseName(t *testing.T) {
 	cfg := gnparser.NewConfig(
 		gnparser.OptWithDetails(true),
-		gnparser.OptFormat("compact"),
+		gnparser.OptFormat(gnfmt.CompactJSON),
 		gnparser.OptIsTest(true),
 	)
 	gnp := gnparser.New(cfg)
@@ -54,8 +56,8 @@ func TestPool(t *testing.T) {
 func TestParseNameCultivars(t *testing.T) {
 	cfg := gnparser.NewConfig(
 		gnparser.OptWithDetails(true),
-		gnparser.OptWithCultivars(true),
-		gnparser.OptFormat("compact"),
+		gnparser.OptCode(nomcode.Cultivar),
+		gnparser.OptFormat(gnfmt.CompactJSON),
 		gnparser.OptIsTest(true),
 	)
 	gnp := gnparser.New(cfg)
@@ -96,10 +98,34 @@ func TestParsePreserveDiaereses(t *testing.T) {
 		msg, in, normalized, canonical string
 		quality                        int
 	}{
-		{"DiaeresisInGenus", "Leptochloöpsis virgata", "Leptochloöpsis virgata", "Leptochloöpsis virgata", 1},
-		{"DiaeresisInSpEpithet", "Hieracium samoënsicum", "Hieracium samoënsicum", "Hieracium samoënsicum", 1},
-		{"DiaeresisInInfraSpEpithet", "Hieracium macilentum subsp. samoënsicum", "Hieracium macilentum subsp. samoënsicum", "Hieracium macilentum samoënsicum", 1},
-		{"TransliteratesDiactiric", "Anthurium gudiñoi", "Anthurium gudinoi", "Anthurium gudinoi", 1},
+		{
+			"DiaeresisInGenus",
+			"Leptochloöpsis virgata",
+			"Leptochloöpsis virgata",
+			"Leptochloöpsis virgata",
+			1,
+		},
+		{
+			"DiaeresisInSpEpithet",
+			"Hieracium samoënsicum",
+			"Hieracium samoënsicum",
+			"Hieracium samoënsicum",
+			1,
+		},
+		{
+			"DiaeresisInInfraSpEpithet",
+			"Hieracium macilentum subsp. samoënsicum",
+			"Hieracium macilentum subsp. samoënsicum",
+			"Hieracium macilentum samoënsicum",
+			1,
+		},
+		{
+			"TransliteratesDiactiric",
+			"Anthurium gudiñoi",
+			"Anthurium gudinoi",
+			"Anthurium gudinoi",
+			1,
+		},
 	}
 	cfg := gnparser.NewConfig(
 		gnparser.OptWithPreserveDiaereses(true),
@@ -128,6 +154,97 @@ func TestWordNormalizeByType(t *testing.T) {
 	for _, v := range tests {
 		res := parsed.NormalizeByType(v.word, v.wType)
 		assert.Equal(t, v.norm, res, v.msg)
+	}
+}
+
+func TestCultivar(t *testing.T) {
+	assert := assert.New(t)
+	tests := []struct {
+		msg, name string
+		code      nomcode.Code
+		quality   int
+		hasTail   bool
+	}{
+		{"any", `Spathiphyllum Schott “Mauna Loa”`, nomcode.Unknown, 4, true},
+		{"bot", `Spathiphyllum Schott “Mauna Loa”`, nomcode.Botanical, 4, true},
+		{"cult", `Spathiphyllum Schott “Mauna Loa”`, nomcode.Cultivar, 1, false},
+	}
+
+	for _, v := range tests {
+		cfg := gnparser.NewConfig(gnparser.OptCode(v.code))
+		gnp := gnparser.New(cfg)
+		res := gnp.ParseName(v.name)
+		assert.True(res.Parsed, v.msg)
+		assert.Equal(v.quality, res.ParseQuality, v.msg)
+		assert.Equal(v.hasTail, res.Tail != "", v.msg)
+	}
+}
+
+func TestNomCode(t *testing.T) {
+	assert := assert.New(t)
+	tests := []struct {
+		msg, name, subgenus string
+		code                nomcode.Code
+		quality             int
+		hasTail             bool
+	}{
+		{"nocode1", "Aus (Bus)", "Bus", nomcode.Unknown, 2, false},
+		{"nocode2", "Aus (Zubcova)", "", nomcode.Unknown, 2, false},
+		{"nocode3", "Aus (Bus) cus", "Bus", nomcode.Unknown, 1, false},
+		{"nocode4", "Aus (Zubcova) cus", "", nomcode.Unknown, 2, false},
+		{"nocode5", "Aus (Bus) cus \"Black Widow\"", "", nomcode.Unknown, 4, true},
+		{"bot1", "Aus (Bus)", "", nomcode.Botanical, 1, false},
+		{"bot2", "Aus (Zubcova)", "", nomcode.Botanical, 1, false},
+		{"bot3", "Aus (Bus) cus", "", nomcode.Botanical, 1, false},
+		{"bot4", "Aus (Zubcova) cus", "", nomcode.Botanical, 1, false},
+		{"bot5", "Aus (Bus) cus \"Black Widow\"", "", nomcode.Botanical, 4, true},
+		{"cult1", "Aus (Bus)", "", nomcode.Cultivar, 1, false},
+		{"cult2", "Aus (Zubcova)", "", nomcode.Cultivar, 1, false},
+		{"cult3", "Aus (Bus) cus", "", nomcode.Cultivar, 1, false},
+		{"cult4", "Aus (Zubcova) cus", "", nomcode.Cultivar, 1, false},
+		{"cult5", "Aus (Bus) cus \"Black Widow\"", "", nomcode.Cultivar, 1, false},
+		{"zoo1", "Aus (Bus)", "Bus", nomcode.Zoological, 2, false},
+		{"zoo2", "Aus (Zubcova)", "Zubcova", nomcode.Zoological, 2, false},
+		{"zoo3", "Aus (Bus) cus", "Bus", nomcode.Zoological, 1, false},
+		{"zoo4", "Aus (Zubcova) cus", "Zubcova", nomcode.Zoological, 1, false},
+		{"zoo5", "Aus (Bus) cus \"Black Widow\"", "Zubcova", nomcode.Zoological, 4, true},
+	}
+
+	for _, v := range tests {
+		cfg := gnparser.NewConfig(gnparser.OptCode(v.code))
+		gnp := gnparser.New(cfg)
+		res := gnp.ParseName(v.name)
+		assert.True(res.Parsed, v.msg)
+		assert.Equal(v.quality, res.ParseQuality, v.msg)
+		assert.Equal(v.hasTail, res.Tail != "", v.msg)
+	}
+}
+
+func TestBacterialCode(t *testing.T) {
+	assert := assert.New(t)
+	tests := []struct {
+		msg, name string
+		code      nomcode.Code
+		quality   int
+		isBact    bool
+	}{
+		{"nocode1", "Pomatomus saltator", nomcode.Unknown, 1, false},
+		{"nocode2", "Escherichia coli", nomcode.Unknown, 1, true},
+		{"bact1", "Pomatomus saltator", nomcode.Bacterial, 1, true},
+		{"bact2", "Escherichia coli", nomcode.Bacterial, 1, true},
+	}
+
+	for _, v := range tests {
+		cfg := gnparser.NewConfig(gnparser.OptCode(v.code))
+		gnp := gnparser.New(cfg)
+		res := gnp.ParseName(v.name)
+		assert.True(res.Parsed, v.msg)
+		assert.Equal(v.quality, res.ParseQuality, v.msg)
+		if v.isBact {
+			assert.True(res.Bacteria.String() == "yes")
+		} else {
+			assert.True(res.Bacteria == nil || res.Bacteria.String() != "yes")
+		}
 	}
 }
 
@@ -218,11 +335,14 @@ func BenchmarkParse(b *testing.B) {
 	check200kFile(path)
 	count := 1000
 	test := make([]string, count)
-	cfgJSON := gnparser.NewConfig(gnparser.OptFormat("compact"))
+	cfgJSON := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
 	gnpJSON := gnparser.New(cfgJSON)
-	cfgDet := gnparser.NewConfig(gnparser.OptFormat("compact"), gnparser.OptWithDetails(true))
+	cfgDet := gnparser.NewConfig(
+		gnparser.OptFormat(gnfmt.CompactJSON),
+		gnparser.OptWithDetails(true),
+	)
 	gnpDet := gnparser.New(cfgDet)
-	cfgCSV := gnparser.NewConfig(gnparser.OptFormat("csv"))
+	cfgCSV := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CSV))
 	gnpCSV := gnparser.New(cfgCSV)
 	f, err := os.Open(path)
 

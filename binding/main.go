@@ -13,6 +13,7 @@ import (
 
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/ent/nomcode"
 )
 
 // ParseToString function takes a name-string, desired format, a withDetails
@@ -21,19 +22,25 @@ import (
 // 'csv', 'compact', 'pretty'. If withDetails argument is 0, additional
 // parsed details are ommited, if it is 1 -- they are included.
 // true.
+//
 //export ParseToString
 func ParseToString(
 	name *C.char,
-	f *C.char,
+	fmtStr *C.char,
+	codeStr *C.char,
 	details C.int,
-	cultivars C.int,
 	diaereses C.int,
 ) *C.char {
 	goname := C.GoString(name)
+	code := nomcode.New(C.GoString(codeStr))
+	frmt, err := gnfmt.NewFormat(C.GoString(fmtStr))
+	if err != nil {
+		frmt = gnfmt.CSV
+	}
 	opts := []gnparser.Option{
-		gnparser.OptFormat(C.GoString(f)),
+		gnparser.OptFormat(frmt),
 		gnparser.OptWithDetails(int(details) > 0),
-		gnparser.OptWithCultivars(int(cultivars) > 0),
+		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(int(diaereses) > 0),
 	}
 	cfg := gnparser.NewConfig(opts...)
@@ -44,6 +51,7 @@ func ParseToString(
 }
 
 // FreeMemory takes a string pointer and frees its memory.
+//
 //export FreeMemory
 func FreeMemory(p *C.char) {
 	C.free(unsafe.Pointer(p))
@@ -51,24 +59,30 @@ func FreeMemory(p *C.char) {
 
 // ParseAryToString function takes an array of names, parsing format, and a
 // withDetails flag as 0|1 integer.  Parsed outputs are sent as a string in
-// either CSV or JSON format.  Format argument can take values of 'csv',
+// either CSV or JSONformat. Format argument can take values of 'csv',
 // 'compact', or 'pretty'. For withDetails argument 0 means false, 1 means
 // true.
+//
 //export ParseAryToString
 func ParseAryToString(
 	in **C.char,
 	length C.int,
-	f *C.char,
+	fmtStr *C.char,
+	codeStr *C.char,
 	details C.int,
-	cultivars C.int,
 	diaereses C.int,
 ) *C.char {
 	names := make([]string, int(length))
+	code := nomcode.New(C.GoString(codeStr))
+	frmt, err := gnfmt.NewFormat(C.GoString(fmtStr))
+	if err != nil {
+		frmt = gnfmt.CSV
+	}
 
 	opts := []gnparser.Option{
-		gnparser.OptFormat(C.GoString(f)),
+		gnparser.OptFormat(frmt),
 		gnparser.OptWithDetails(int(details) > 0),
-		gnparser.OptWithCultivars(int(cultivars) > 0),
+		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(int(diaereses) > 0),
 	}
 	start := unsafe.Pointer(in)

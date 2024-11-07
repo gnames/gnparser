@@ -39,7 +39,7 @@ func TestNewOpts(t *testing.T) {
 
 func opts() []gnparser.Option {
 	return []gnparser.Option{
-		gnparser.OptFormat("compact"),
+		gnparser.OptFormat(gnfmt.CompactJSON),
 		gnparser.OptJobsNum(161),
 		gnparser.OptBatchSize(1),
 		gnparser.OptIgnoreHTMLTags(true),

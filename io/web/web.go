@@ -10,27 +10,33 @@ import (
 
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/labstack/echo/v4"
 )
 
 // inputFORM is used to collect data from HTML form.
 type inputFORM struct {
-	Names             string `query:"names"        form:"names"`
-	Format            string `query:"format"       form:"format"`
-	WithDetails       string `query:"with_details" form:"with_details"`
-	WithCultivars     string `query:"cultivars"    form:"cultivars"`
-	PreserveDiaereses string `query:"diaereses"    form:"diaereses"`
+	Names       string `query:"names"        form:"names"`
+	Code        string `query:"code"         form:"code"`
+	Format      string `query:"format"       form:"format"`
+	WithDetails string `query:"with_details" form:"with_details"`
+
+	// WithCultivars is deprecated and overriden by Code
+	WithCultivars     string `query:"cultivars" form:"cultivars"`
+	PreserveDiaereses string `query:"diaereses" form:"diaereses"`
 }
 
 // Data contains information required to render web-pages.
 type Data struct {
-	Input             string
-	Parsed            []parsed.Parsed
-	Format            string
-	HomePage          bool
-	Version           string
-	WithDetails       bool
+	Input       string
+	Parsed      []parsed.Parsed
+	Code        string
+	Format      string
+	HomePage    bool
+	Version     string
+	WithDetails bool
+	// WithCultivars is deprecated by Code field
 	WithCultivars     bool
 	PreserveDiaereses bool
 }
@@ -78,6 +84,7 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	if preserveDiaereses {
 		q.Set("diaereses", inp.PreserveDiaereses)
 	}
+	q.Set("code", inp.Code)
 
 	url := fmt.Sprintf("/?%s", q.Encode())
 	return c.Redirect(http.StatusFound, url)
@@ -111,6 +118,7 @@ func parsingResults(
 	data.WithDetails = inp.WithDetails == "on"
 	data.WithCultivars = inp.WithCultivars == "on"
 	data.PreserveDiaereses = inp.PreserveDiaereses == "on"
+	data.Code = inp.Code
 
 	format := inp.Format
 	if format == "csv" || format == "tsv" || format == "json" {
@@ -138,8 +146,17 @@ func parsingResults(
 
 	opts := []gnparser.Option{
 		gnparser.OptWithDetails(data.WithDetails),
-		gnparser.OptWithCultivars(data.WithCultivars),
 		gnparser.OptWithPreserveDiaereses(data.PreserveDiaereses),
+	}
+
+	if data.WithCultivars {
+		opts = append(opts, gnparser.OptCode(nomcode.Cultivar))
+	}
+
+	code := nomcode.New(data.Code)
+	if code != nomcode.Unknown {
+		// overrides data.WithCultivars
+		opts = append(opts, gnparser.OptCode(code))
 	}
 
 	gnp := gnps.ChangeConfig(opts...)

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v1.11.0] - 2024-11-11 Mon
+
+- Add [#265]: add optional nomenclatural code option to parse names with
+  an ambiguity according to a particular code.
+
 ## [v1.10.4] - 2024-11-07 Thu
 
 - Add [#269]: switch to slog from zerologs.

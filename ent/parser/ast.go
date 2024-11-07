@@ -6,6 +6,7 @@ import (
 	"unicode"
 
 	"github.com/gnames/gnparser/ent/internal/preprocess"
+	"github.com/gnames/gnparser/ent/nomcode"
 
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/ent/str"
@@ -16,6 +17,7 @@ import (
 
 type scientificNameNode struct {
 	nameData
+	code             nomcode.Code
 	verbatim         string
 	verbatimID       string
 	cardinality      int
@@ -60,6 +62,7 @@ func (p *Engine) newScientificNameNode() {
 	}
 	sn := scientificNameNode{
 		nameData:    name,
+		code:        p.code,
 		cardinality: p.cardinality,
 		rank:        p.rank,
 		hybrid:      p.hybrid,
@@ -107,13 +110,13 @@ func (p *Engine) newName(n *node32) nameData {
 		p.hybrid = &annot
 		name = p.newNamedSpeciesHybridNode(n)
 	case ruleGraftChimeraFormula:
-		if p.enableCultivars {
+		if p.code == nomcode.Cultivar {
 			annot = parsed.GraftChimeraFormulaAnnot
 			p.hybrid = &annot
 			name = p.newGraftChimeraFormulaNode(n)
 		}
 	case ruleNamedGenusGraftChimera:
-		if p.enableCultivars {
+		if p.code == nomcode.Cultivar {
 			annot = parsed.NamedGraftChimeraAnnot
 			p.hybrid = &annot
 			name = p.newNamedGenusGraftChimeraNode(n)
@@ -305,8 +308,12 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 	case ruleUninomial:
 		name = p.newUninomialNode(n)
 	case ruleUninomialCombo:
-		p.addWarn(parsed.UninomialComboWarn)
-		name = p.newUninomialComboNode(n)
+		if p.botanicalUninomial(n) {
+			name = p.newBotanicalUninomialNode(n)
+		} else {
+			p.addWarn(parsed.UninomialComboWarn)
+			name = p.newUninomialComboNode(n)
+		}
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
@@ -391,8 +398,12 @@ func (p *Engine) newNamedGenusGraftChimeraNode(n *node32) *namedGenusGraftChimer
 	case ruleUninomial:
 		name = p.newUninomialNode(n)
 	case ruleUninomialCombo:
-		p.addWarn(parsed.UninomialComboWarn)
-		name = p.newUninomialComboNode(n)
+		if p.botanicalUninomial(n) {
+			name = p.newBotanicalUninomialNode(n)
+		} else {
+			p.addWarn(parsed.UninomialComboWarn)
+			name = p.newUninomialComboNode(n)
+		}
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
@@ -406,6 +417,10 @@ func (p *Engine) newNamedGenusGraftChimeraNode(n *node32) *namedGenusGraftChimer
 }
 
 func (p *Engine) botanicalUninomial(n *node32) bool {
+	if p.code == nomcode.Zoological {
+		return false
+	}
+
 	n = n.up
 	if n.pegRule == ruleUninomial {
 		return false
@@ -416,6 +431,9 @@ func (p *Engine) botanicalUninomial(n *node32) bool {
 		return false
 	}
 	w := p.newWordNode(n, parsed.AuthorWordType)
+	if p.code == nomcode.Botanical || p.code == nomcode.Cultivar {
+		return true
+	}
 
 	if _, ok := dict.Dict.AuthorICN[w.Normalized]; ok {
 		return true
@@ -452,7 +470,9 @@ func (p *Engine) newBotanicalUninomialNode(n *node32) *uninomialNode {
 		CombinationAuthors: at2,
 	}
 	u := &uninomialNode{Word: w, Authorship: authorship}
-	p.addWarn(parsed.BotanyAuthorNotSubgenWarn)
+	if p.code == nomcode.Unknown {
+		p.addWarn(parsed.BotanyAuthorNotSubgenWarn)
+	}
 	p.cardinality = 1
 	return u
 }
@@ -661,10 +681,17 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		switch n.pegRule {
 		case ruleSubgenus:
 			w := p.newWordNode(n.up, parsed.SubgenusType)
-			if _, ok := dict.Dict.AuthorICN[w.Normalized]; ok {
-				p.addWarn(parsed.BotanyAuthorNotSubgenWarn)
-			} else {
+			switch p.code {
+			case nomcode.Botanical, nomcode.Cultivar:
+			// Botanical code has author of genus here
+			case nomcode.Zoological:
 				sg = w
+			default:
+				if _, ok := dict.Dict.AuthorICN[w.Normalized]; ok {
+					p.addWarn(parsed.BotanyAuthorNotSubgenWarn)
+				} else {
+					sg = w
+				}
 			}
 		case ruleSubgenusOrSuperspecies:
 			p.addWarn(parsed.SuperspeciesWarn)
@@ -673,12 +700,17 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		case ruleInfraspGroup:
 			infs = p.newInfraspeciesGroup(n)
 		case ruleCultivar, ruleCultivarRecursive:
-			cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
+			switch p.code {
+			case nomcode.Cultivar:
+				cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
+			default:
+				p.tail = string(p.buffer[n.begin-2 : len(p.buffer)-1])
+			}
 		}
 		n = n.next
 	}
 	p.cardinality = 2 + len(infs)
-	if cultivar != nil && p.enableCultivars {
+	if cultivar != nil && p.code == nomcode.Cultivar {
 		p.cultivar = true
 		p.cardinality += 1
 	}
@@ -831,7 +863,7 @@ func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 		CultivarEpithet: cultivar,
 	}
 	p.cardinality = 1
-	if cultivar != nil && p.enableCultivars {
+	if cultivar != nil && p.code == nomcode.Cultivar {
 		p.cultivar = true
 		p.cardinality += 1
 	}
@@ -1327,10 +1359,12 @@ func (p *Engine) newCultivarEpithetNode(n *node32, wt parsed.WordType) *cultivar
 		Start:      int(t.begin),
 		End:        int(t.end),
 	}
-	cv := cultivarEpithetNode{Word: &wrd, enableCultivars: p.enableCultivars}
-	if !p.enableCultivars {
-		p.addWarn(parsed.CultivarEpithetWarn)
+	cult := p.code == nomcode.Cultivar
+	if !cult {
+		p.tail = " " + string(p.buffer[n.begin-1:len(p.buffer)-1])
+		return nil
 	}
+	cv := cultivarEpithetNode{Word: &wrd, enableCultivars: cult}
 	return &cv
 }
 

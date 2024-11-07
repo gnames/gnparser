@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 )
 
@@ -11,7 +12,8 @@ type Parser interface {
 	// Syntax Tree of the name-string.
 	PreprocessAndParse(
 		name, version string,
-		keepHTML, capitalize, enableCultivars, preserveDiaereses bool,
+		code nomcode.Code,
+		keepHTML, capitalize, preserveDiaereses bool,
 	) ScientificNameNode
 	Debug(name string) []byte
 }

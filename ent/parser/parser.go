@@ -7,6 +7,7 @@ import (
 	"fmt"
 
 	"github.com/gnames/gnparser/ent/internal/preprocess"
+	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/ent/str"
 )
@@ -38,13 +39,12 @@ func (p *Engine) Debug(s string) []byte {
 // create the final output.
 func (p *Engine) PreprocessAndParse(
 	s, ver string,
+	code nomcode.Code,
 	keepHTML bool,
 	capitalize bool,
-	enableCultivars bool,
 	preserveDiaereses bool,
 ) ScientificNameNode {
-
-	p.enableCultivars = enableCultivars
+	p.code = code
 	p.preserveDiaereses = preserveDiaereses
 
 	originalString := s
