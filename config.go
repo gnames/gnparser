@@ -5,6 +5,7 @@ import (
 	"runtime"
 
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnparser/ent/nomcode"
 )
 
 // Config keeps settings that might affect how parsing is done,
@@ -12,6 +13,11 @@ import (
 type Config struct {
 	// BatchSize sets the maximum number of elements in names-strings slice.
 	BatchSize int
+
+	// Code contains optional nomenclatural code value. This option is
+	// useful to solve ambiguous parsing cases and to add cultivar botanical
+	// rules.
+	nomcode.Code
 
 	// Debug sets a "debug" state for parsing. The debug state forces output
 	// format to showing parsed ast tree.
@@ -42,10 +48,6 @@ type Config struct {
 	// WithCapitalization flag, when true, the first letter of a name-string
 	// is capitalized, if appropriate.
 	WithCapitalization bool
-
-	// WithCultivars flag, when true, cultivar names will be parsed and
-	// modify cardinality, normalized and canonical output.
-	WithCultivars bool
 
 	// WithDetails can be set to true when a simplified output is not sufficient
 	// for obtaining a required information.
@@ -145,10 +147,10 @@ func OptWithCapitaliation(b bool) Option {
 	}
 }
 
-// OptWithCultivars sets the EnableCultivars field.
-func OptWithCultivars(b bool) Option {
+// OptCode sets Code field
+func OptCode(c nomcode.Code) Option {
 	return func(cfg *Config) {
-		cfg.WithCultivars = b
+		cfg.Code = c
 	}
 }
 

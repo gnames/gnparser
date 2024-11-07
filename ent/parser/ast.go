@@ -6,6 +6,7 @@ import (
 	"unicode"
 
 	"github.com/gnames/gnparser/ent/internal/preprocess"
+	"github.com/gnames/gnparser/ent/nomcode"
 
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/ent/str"
@@ -107,13 +108,13 @@ func (p *Engine) newName(n *node32) nameData {
 		p.hybrid = &annot
 		name = p.newNamedSpeciesHybridNode(n)
 	case ruleGraftChimeraFormula:
-		if p.enableCultivars {
+		if p.code == nomcode.Cultivar {
 			annot = parsed.GraftChimeraFormulaAnnot
 			p.hybrid = &annot
 			name = p.newGraftChimeraFormulaNode(n)
 		}
 	case ruleNamedGenusGraftChimera:
-		if p.enableCultivars {
+		if p.code == nomcode.Cultivar {
 			annot = parsed.NamedGraftChimeraAnnot
 			p.hybrid = &annot
 			name = p.newNamedGenusGraftChimeraNode(n)
@@ -678,7 +679,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		n = n.next
 	}
 	p.cardinality = 2 + len(infs)
-	if cultivar != nil && p.enableCultivars {
+	if cultivar != nil && p.code == nomcode.Cultivar {
 		p.cultivar = true
 		p.cardinality += 1
 	}
@@ -831,7 +832,7 @@ func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 		CultivarEpithet: cultivar,
 	}
 	p.cardinality = 1
-	if cultivar != nil && p.enableCultivars {
+	if cultivar != nil && p.code == nomcode.Cultivar {
 		p.cultivar = true
 		p.cardinality += 1
 	}
@@ -1327,8 +1328,9 @@ func (p *Engine) newCultivarEpithetNode(n *node32, wt parsed.WordType) *cultivar
 		Start:      int(t.begin),
 		End:        int(t.end),
 	}
-	cv := cultivarEpithetNode{Word: &wrd, enableCultivars: p.enableCultivars}
-	if !p.enableCultivars {
+	cult := p.code == nomcode.Cultivar
+	cv := cultivarEpithetNode{Word: &wrd, enableCultivars: cult}
+	if !cult {
 		p.addWarn(parsed.CultivarEpithetWarn)
 	}
 	return &cv

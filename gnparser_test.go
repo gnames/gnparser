@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnsys"
 	"github.com/stretchr/testify/assert"
@@ -54,7 +55,7 @@ func TestPool(t *testing.T) {
 func TestParseNameCultivars(t *testing.T) {
 	cfg := gnparser.NewConfig(
 		gnparser.OptWithDetails(true),
-		gnparser.OptWithCultivars(true),
+		gnparser.OptCode(nomcode.Cultivar),
 		gnparser.OptFormat("compact"),
 		gnparser.OptIsTest(true),
 	)
@@ -96,10 +97,34 @@ func TestParsePreserveDiaereses(t *testing.T) {
 		msg, in, normalized, canonical string
 		quality                        int
 	}{
-		{"DiaeresisInGenus", "Leptochloöpsis virgata", "Leptochloöpsis virgata", "Leptochloöpsis virgata", 1},
-		{"DiaeresisInSpEpithet", "Hieracium samoënsicum", "Hieracium samoënsicum", "Hieracium samoënsicum", 1},
-		{"DiaeresisInInfraSpEpithet", "Hieracium macilentum subsp. samoënsicum", "Hieracium macilentum subsp. samoënsicum", "Hieracium macilentum samoënsicum", 1},
-		{"TransliteratesDiactiric", "Anthurium gudiñoi", "Anthurium gudinoi", "Anthurium gudinoi", 1},
+		{
+			"DiaeresisInGenus",
+			"Leptochloöpsis virgata",
+			"Leptochloöpsis virgata",
+			"Leptochloöpsis virgata",
+			1,
+		},
+		{
+			"DiaeresisInSpEpithet",
+			"Hieracium samoënsicum",
+			"Hieracium samoënsicum",
+			"Hieracium samoënsicum",
+			1,
+		},
+		{
+			"DiaeresisInInfraSpEpithet",
+			"Hieracium macilentum subsp. samoënsicum",
+			"Hieracium macilentum subsp. samoënsicum",
+			"Hieracium macilentum samoënsicum",
+			1,
+		},
+		{
+			"TransliteratesDiactiric",
+			"Anthurium gudiñoi",
+			"Anthurium gudinoi",
+			"Anthurium gudinoi",
+			1,
+		},
 	}
 	cfg := gnparser.NewConfig(
 		gnparser.OptWithPreserveDiaereses(true),

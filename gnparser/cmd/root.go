@@ -77,6 +77,8 @@ gnparser -j 5 -p 8080
 		withNoOrderFlag(cmd)
 		withCapitalizeFlag(cmd)
 		withEnableCultivarsFlag(cmd)
+		// overrides Cultivar flag
+		codeFlag(cmd)
 		withPreserveDiaeresesFlag(cmd)
 		batchSizeFlag(cmd)
 		spGrCutFlag(cmd)

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parser"
 	"github.com/stretchr/testify/assert"
 )
@@ -18,7 +19,9 @@ func TestPreNParse(t *testing.T) {
 		{"something", ""},
 	}
 	for _, v := range testData {
-		sn := p.PreprocessAndParse(v.name, "test_version", true, false, false, false)
+		sn := p.PreprocessAndParse(
+			v.name, "test_version", nomcode.Unknown, true, false, false,
+		)
 		parsed := sn.ToOutput(false, false)
 		can := parsed.Canonical
 		msg := v.name
@@ -56,7 +59,9 @@ func TestToOutput(t *testing.T) {
 		{"something", "", "", false, false},
 	}
 	for _, v := range testData {
-		sn := p.PreprocessAndParse(v.name, "test_version", true, false, false, false)
+		sn := p.PreprocessAndParse(
+			v.name, "test_version", nomcode.Unknown, true, false, false,
+		)
 		out := sn.ToOutput(v.det, false)
 		msg := v.name
 		if !out.Parsed {
@@ -96,7 +101,8 @@ func TestSpecGroupOption(t *testing.T) {
 	for _, v := range testData {
 		sn := p.PreprocessAndParse(
 			v.name, "test_version",
-			true, false, false, false,
+			nomcode.Unknown,
+			true, false, false,
 		)
 		out := sn.ToOutput(false, v.spGrp)
 		msg := v.name

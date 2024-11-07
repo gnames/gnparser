@@ -2,9 +2,11 @@ package cmd
 
 import (
 	"fmt"
+	"log/slog"
 	"os"
 
 	"github.com/gnames/gnparser"
+	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/spf13/cobra"
 )
 
@@ -17,6 +19,18 @@ func batchSizeFlag(cmd *cobra.Command) {
 	if bs > 0 {
 		opts = append(opts, gnparser.OptBatchSize(bs))
 	}
+}
+
+func codeFlag(cmd *cobra.Command) {
+	s, _ := cmd.Flags().GetString("nomenclatural-code")
+	if s == "" {
+		return
+	}
+	code := nomcode.New(s)
+	if code == nomcode.Unknown {
+		slog.Warn("Cannot determine nomenclatural-code from input", "input", s)
+	}
+	opts = append(opts, gnparser.OptCode(code))
 }
 
 func formatFlag(cmd *cobra.Command) {
@@ -97,13 +111,9 @@ func withDetailsFlag(cmd *cobra.Command) {
 }
 
 func withEnableCultivarsFlag(cmd *cobra.Command) {
-	b, err := cmd.Flags().GetBool("cultivar")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	b, _ := cmd.Flags().GetBool("cultivar")
 	if b {
-		opts = append(opts, gnparser.OptWithCultivars(true))
+		opts = append(opts, gnparser.OptCode(nomcode.Cultivar))
 	}
 }
 
