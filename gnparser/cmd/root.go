@@ -139,7 +139,18 @@ func init() {
 		"maximum number of names in a batch send for processing.")
 
 	rootCmd.Flags().BoolP("cultivar", "C", false,
-		"include cultivar epithets and graft-chimeras in normalized and canonical outputs")
+		"parse according to  cultivar code ICNCP (DEPRECATED, use nomenclatural-code instead)")
+
+	codeHelp := `Modifies the parser's behavior in ambiguous cases, sometimes 
+introducing additional parsing rules.
+
+Accepted values are:
+  - 'bot', 'icn', 'botanical' for botanical code
+  - 'cult', 'icncp', 'cultivar' for cultivar code
+  - 'zoo', 'iczn', 'zoological' for zoological code
+
+If not set, the parser will attempt to determine the appropriate code/s.`
+	rootCmd.Flags().StringP("nomenclatural-code", "n", "", codeHelp)
 
 	rootCmd.Flags().BoolP("capitalize", "c", false,
 		"capitalize the first letter of input name-strings")
@@ -149,9 +160,15 @@ func init() {
 
 	rootCmd.Flags().BoolP("details", "d", false, "provides more details")
 
-	formatHelp := "sets output format. Can be one of:\n" +
-		"'csv', 'tsv', 'compact', 'pretty'\n" +
-		"default is 'csv'"
+	formatHelp := `Sets the output format.
+
+Accepted values are:
+  - 'csv': Comma-separated values
+  - 'tsv': Tab-separated values
+  - 'compact': Compact JSON format
+  - 'pretty': Human-readable JSON format
+
+If not set, the output format defaults to 'csv'.`
 	rootCmd.Flags().StringP("format", "f", "", formatHelp)
 
 	rootCmd.Flags().BoolP("ignore_tags", "i", false,
