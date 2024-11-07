@@ -2,8 +2,10 @@
 
 ## Unreleased
 
-- Fix [#271]: distinguish between `ex` and `in`.
+## [v1.10.4] - 2024-11-07 Thu
+
 - Add [#269]: switch to slog from zerologs.
+- Fix [#271]: distinguish between `ex` and `in`.
 - Fix [#270]: missing verbatim authorship for names that look similar to
   combination uninomial in ICZN.
 - Fix [#268]: if botanical author looks like a combination uninomial,
