@@ -41,7 +41,7 @@ _ <- MultipleSpace / SingleSpace
 
 NotLetterOrEnd <- NotLetter / END
 
-NotLetter <- [[^A-Z0-9_\-\.]]
+NotLetter <- [[^A-Z0-9_.\-]]
 
 MultipleSpace <- SingleSpace SingleSpace+
 

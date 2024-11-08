@@ -4087,7 +4087,7 @@ func (p *PreParser) Init(options ...func(*PreParser) error) error {
 			position, tokenIndex = position520, tokenIndex520
 			return false
 		},
-		/* 15 NotLetter <- <(!([a-z] / [A-Z] / ([0-9] / [0-9]) / '_' / '-') .)> */
+		/* 15 NotLetter <- <(!([a-z] / [A-Z] / ([0-9] / [0-9]) / '_' / '.' / '-') .)> */
 		func() bool {
 			position524, tokenIndex524 := position, tokenIndex
 			{
@@ -4135,6 +4135,13 @@ func (p *PreParser) Init(options ...func(*PreParser) error) error {
 						goto l527
 					l533:
 						position, tokenIndex = position527, tokenIndex527
+						if buffer[position] != rune('.') {
+							goto l534
+						}
+						position++
+						goto l527
+					l534:
+						position, tokenIndex = position527, tokenIndex527
 						if buffer[position] != rune('-') {
 							goto l526
 						}
@@ -4157,139 +4164,139 @@ func (p *PreParser) Init(options ...func(*PreParser) error) error {
 		},
 		/* 16 MultipleSpace <- <(SingleSpace SingleSpace+)> */
 		func() bool {
-			position534, tokenIndex534 := position, tokenIndex
+			position535, tokenIndex535 := position, tokenIndex
 			{
-				position535 := position
+				position536 := position
 				if !_rules[ruleSingleSpace]() {
-					goto l534
+					goto l535
 				}
 				if !_rules[ruleSingleSpace]() {
-					goto l534
+					goto l535
 				}
-			l536:
+			l537:
 				{
-					position537, tokenIndex537 := position, tokenIndex
+					position538, tokenIndex538 := position, tokenIndex
 					if !_rules[ruleSingleSpace]() {
-						goto l537
+						goto l538
 					}
-					goto l536
-				l537:
-					position, tokenIndex = position537, tokenIndex537
+					goto l537
+				l538:
+					position, tokenIndex = position538, tokenIndex538
 				}
-				add(ruleMultipleSpace, position535)
+				add(ruleMultipleSpace, position536)
 			}
 			return true
-		l534:
-			position, tokenIndex = position534, tokenIndex534
+		l535:
+			position, tokenIndex = position535, tokenIndex535
 			return false
 		},
 		/* 17 SingleSpace <- <(' ' / OtherSpace)> */
 		func() bool {
-			position538, tokenIndex538 := position, tokenIndex
+			position539, tokenIndex539 := position, tokenIndex
 			{
-				position539 := position
+				position540 := position
 				{
-					position540, tokenIndex540 := position, tokenIndex
+					position541, tokenIndex541 := position, tokenIndex
 					if buffer[position] != rune(' ') {
-						goto l541
+						goto l542
 					}
 					position++
-					goto l540
-				l541:
-					position, tokenIndex = position540, tokenIndex540
+					goto l541
+				l542:
+					position, tokenIndex = position541, tokenIndex541
 					if !_rules[ruleOtherSpace]() {
-						goto l538
+						goto l539
 					}
 				}
-			l540:
-				add(ruleSingleSpace, position539)
+			l541:
+				add(ruleSingleSpace, position540)
 			}
 			return true
-		l538:
-			position, tokenIndex = position538, tokenIndex538
+		l539:
+			position, tokenIndex = position539, tokenIndex539
 			return false
 		},
 		/* 18 OtherSpace <- <('\u3000' / '\u00a0' / '\t' / '\r' / '\n' / '\f' / '\v')> */
 		func() bool {
-			position542, tokenIndex542 := position, tokenIndex
+			position543, tokenIndex543 := position, tokenIndex
 			{
-				position543 := position
+				position544 := position
 				{
-					position544, tokenIndex544 := position, tokenIndex
+					position545, tokenIndex545 := position, tokenIndex
 					if buffer[position] != rune('\u3000') {
-						goto l545
-					}
-					position++
-					goto l544
-				l545:
-					position, tokenIndex = position544, tokenIndex544
-					if buffer[position] != rune('\u00a0') {
 						goto l546
 					}
 					position++
-					goto l544
+					goto l545
 				l546:
-					position, tokenIndex = position544, tokenIndex544
-					if buffer[position] != rune('\t') {
+					position, tokenIndex = position545, tokenIndex545
+					if buffer[position] != rune('\u00a0') {
 						goto l547
 					}
 					position++
-					goto l544
+					goto l545
 				l547:
-					position, tokenIndex = position544, tokenIndex544
-					if buffer[position] != rune('\r') {
+					position, tokenIndex = position545, tokenIndex545
+					if buffer[position] != rune('\t') {
 						goto l548
 					}
 					position++
-					goto l544
+					goto l545
 				l548:
-					position, tokenIndex = position544, tokenIndex544
-					if buffer[position] != rune('\n') {
+					position, tokenIndex = position545, tokenIndex545
+					if buffer[position] != rune('\r') {
 						goto l549
 					}
 					position++
-					goto l544
+					goto l545
 				l549:
-					position, tokenIndex = position544, tokenIndex544
-					if buffer[position] != rune('\f') {
+					position, tokenIndex = position545, tokenIndex545
+					if buffer[position] != rune('\n') {
 						goto l550
 					}
 					position++
-					goto l544
+					goto l545
 				l550:
-					position, tokenIndex = position544, tokenIndex544
+					position, tokenIndex = position545, tokenIndex545
+					if buffer[position] != rune('\f') {
+						goto l551
+					}
+					position++
+					goto l545
+				l551:
+					position, tokenIndex = position545, tokenIndex545
 					if buffer[position] != rune('\v') {
-						goto l542
+						goto l543
 					}
 					position++
 				}
-			l544:
-				add(ruleOtherSpace, position543)
+			l545:
+				add(ruleOtherSpace, position544)
 			}
 			return true
-		l542:
-			position, tokenIndex = position542, tokenIndex542
+		l543:
+			position, tokenIndex = position543, tokenIndex543
 			return false
 		},
 		/* 19 END <- <!.> */
 		func() bool {
-			position551, tokenIndex551 := position, tokenIndex
+			position552, tokenIndex552 := position, tokenIndex
 			{
-				position552 := position
+				position553 := position
 				{
-					position553, tokenIndex553 := position, tokenIndex
+					position554, tokenIndex554 := position, tokenIndex
 					if !matchDot() {
-						goto l553
+						goto l554
 					}
-					goto l551
-				l553:
-					position, tokenIndex = position553, tokenIndex553
+					goto l552
+				l554:
+					position, tokenIndex = position554, tokenIndex554
 				}
-				add(ruleEND, position552)
+				add(ruleEND, position553)
 			}
 			return true
-		l551:
-			position, tokenIndex = position551, tokenIndex551
+		l552:
+			position, tokenIndex = position552, tokenIndex552
 			return false
 		},
 		/* 21 Action0 <- <{ p.tailIndex = int(token.begin) }> */
