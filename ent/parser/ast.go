@@ -306,8 +306,12 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 	case ruleUninomial:
 		name = p.newUninomialNode(n)
 	case ruleUninomialCombo:
-		p.addWarn(parsed.UninomialComboWarn)
-		name = p.newUninomialComboNode(n)
+		if p.botanicalUninomial(n) {
+			name = p.newBotanicalUninomialNode(n)
+		} else {
+			p.addWarn(parsed.UninomialComboWarn)
+			name = p.newUninomialComboNode(n)
+		}
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
@@ -392,8 +396,12 @@ func (p *Engine) newNamedGenusGraftChimeraNode(n *node32) *namedGenusGraftChimer
 	case ruleUninomial:
 		name = p.newUninomialNode(n)
 	case ruleUninomialCombo:
-		p.addWarn(parsed.UninomialComboWarn)
-		name = p.newUninomialComboNode(n)
+		if p.botanicalUninomial(n) {
+			name = p.newBotanicalUninomialNode(n)
+		} else {
+			p.addWarn(parsed.UninomialComboWarn)
+			name = p.newUninomialComboNode(n)
+		}
 	case ruleNameSpecies:
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
@@ -407,6 +415,13 @@ func (p *Engine) newNamedGenusGraftChimeraNode(n *node32) *namedGenusGraftChimer
 }
 
 func (p *Engine) botanicalUninomial(n *node32) bool {
+	switch p.code {
+	case nomcode.Botanical, nomcode.Cultivar:
+		return true
+	case nomcode.Zoological:
+		return false
+	}
+
 	n = n.up
 	if n.pegRule == ruleUninomial {
 		return false
