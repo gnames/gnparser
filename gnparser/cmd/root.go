@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/dustin/go-humanize"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/web"
@@ -96,7 +97,7 @@ gnparser -j 5 -p 8080
 			slog.SetDefault(logger)
 
 			webopts := []gnparser.Option{
-				gnparser.OptFormat("compact"),
+				gnparser.OptFormat(gnfmt.CompactJSON),
 				gnparser.OptWithWebLogs(withWebLogsFlag(cmd)),
 			}
 			cfg = gnparser.NewConfig(webopts...)

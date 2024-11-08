@@ -5,6 +5,7 @@ import (
 	"log/slog"
 	"os"
 
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/spf13/cobra"
@@ -34,13 +35,14 @@ func codeFlag(cmd *cobra.Command) {
 }
 
 func formatFlag(cmd *cobra.Command) {
-	f, err := cmd.Flags().GetString("format")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-	if f != "" {
-		opts = append(opts, gnparser.OptFormat(f))
+	s, _ := cmd.Flags().GetString("format")
+	if s != "" {
+		frmt, err := gnfmt.NewFormat(s)
+		if err != nil {
+			slog.Warn("Unknown format input, using default: CSV", "inut", s)
+			frmt = gnfmt.CSV
+		}
+		opts = append(opts, gnparser.OptFormat(frmt))
 	}
 }
 

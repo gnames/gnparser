@@ -8,6 +8,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnparser"
 	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
@@ -23,7 +24,7 @@ type testData struct {
 func TestParseName(t *testing.T) {
 	cfg := gnparser.NewConfig(
 		gnparser.OptWithDetails(true),
-		gnparser.OptFormat("compact"),
+		gnparser.OptFormat(gnfmt.CompactJSON),
 		gnparser.OptIsTest(true),
 	)
 	gnp := gnparser.New(cfg)
@@ -56,7 +57,7 @@ func TestParseNameCultivars(t *testing.T) {
 	cfg := gnparser.NewConfig(
 		gnparser.OptWithDetails(true),
 		gnparser.OptCode(nomcode.Cultivar),
-		gnparser.OptFormat("compact"),
+		gnparser.OptFormat(gnfmt.CompactJSON),
 		gnparser.OptIsTest(true),
 	)
 	gnp := gnparser.New(cfg)
@@ -243,11 +244,14 @@ func BenchmarkParse(b *testing.B) {
 	check200kFile(path)
 	count := 1000
 	test := make([]string, count)
-	cfgJSON := gnparser.NewConfig(gnparser.OptFormat("compact"))
+	cfgJSON := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
 	gnpJSON := gnparser.New(cfgJSON)
-	cfgDet := gnparser.NewConfig(gnparser.OptFormat("compact"), gnparser.OptWithDetails(true))
+	cfgDet := gnparser.NewConfig(
+		gnparser.OptFormat(gnfmt.CompactJSON),
+		gnparser.OptWithDetails(true),
+	)
 	gnpDet := gnparser.New(cfgDet)
-	cfgCSV := gnparser.NewConfig(gnparser.OptFormat("csv"))
+	cfgCSV := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CSV))
 	gnpCSV := gnparser.New(cfgCSV)
 	f, err := os.Open(path)
 

@@ -95,17 +95,10 @@ func OptDebug(b bool) Option {
 	}
 }
 
-// OptFormat takes a string (one of 'csv', 'compact', 'pretty') to set
-// the formatting option for the CLI or Web presentation. If some other
-// string is entered, the default, 'CSV' format is set, accompanied by a
-// warning.
-func OptFormat(s string) Option {
+// OptFormat sets the formatting option for CLI or Web presentation.
+// It accepts a gnfmt.Format value to control the output format.
+func OptFormat(f gnfmt.Format) Option {
 	return func(cfg *Config) {
-		f, err := gnfmt.NewFormat(s)
-		if err != nil {
-			f = gnfmt.CSV
-			slog.Warn("Set default CSV format due to error", "error", err)
-		}
 		cfg.Format = f
 	}
 }

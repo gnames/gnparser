@@ -27,7 +27,7 @@ func handlerGET(path string) (echo.Context, *httptest.ResponseRecorder) {
 
 func TestHome(t *testing.T) {
 	var err error
-	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
+	cfg := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
 
@@ -58,7 +58,7 @@ func TestInfo(t *testing.T) {
 }
 
 func TestPing(t *testing.T) {
-	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
+	cfg := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
 	c, rec := handlerGET("/ping")
@@ -69,7 +69,7 @@ func TestPing(t *testing.T) {
 }
 
 func TestVer(t *testing.T) {
-	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
+	cfg := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
 	c, rec := handlerGET("/version")
@@ -83,7 +83,7 @@ func TestVer(t *testing.T) {
 }
 
 func TestParseGET(t *testing.T) {
-	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
+	cfg := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
 
@@ -127,7 +127,7 @@ func TestParseGET(t *testing.T) {
 }
 
 func TestParseParamsGET(t *testing.T) {
-	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
+	cfg := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
 
@@ -167,7 +167,7 @@ func TestParseParamsGET(t *testing.T) {
 }
 
 func TestParsePOST(t *testing.T) {
-	cfg := gnparser.NewConfig(gnparser.OptFormat("compact"))
+	cfg := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
 

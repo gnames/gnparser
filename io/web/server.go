@@ -181,9 +181,9 @@ func opts(code nomcode.Code, csv, details, diaereses bool) []gnparser.Option {
 		gnparser.OptWithPreserveDiaereses(diaereses),
 	}
 	if csv {
-		res = append(res, gnparser.OptFormat("csv"))
+		res = append(res, gnparser.OptFormat(gnfmt.CSV))
 	} else {
-		res = append(res, gnparser.OptFormat("compact"))
+		res = append(res, gnparser.OptFormat(gnfmt.CompactJSON))
 	}
 
 	return res
