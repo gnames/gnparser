@@ -21,7 +21,7 @@ Parsing finished without detecting any problems.
 - Cultivar epithet
 - Deprecated Greek letter enumeration in rank
 - Emend authors are not required
-- Ex authors are not required
+- `ex` authors are not required
 - Hybrid formula
 - Misplaced basionym year
 - Multiple adjacent space characters
@@ -51,6 +51,7 @@ Parsing finished without detecting any problems.
 - Years range
 - `emend` without a period
 - `ex` ends with a period
+- `in` ends with a period
 
 ## Quality 4
 

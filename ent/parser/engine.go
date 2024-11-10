@@ -65,6 +65,10 @@ func (p *Engine) addWarn(w parsed.Warning) {
 }
 
 func (p *Engine) isBacteria(gen string) {
+	if p.code == nomcode.Bacterial {
+		bac := tribool.New(1)
+		p.bacteria = &bac
+	}
 	if hom, ok := dict.Dict.Bacteria[gen]; ok {
 		if hom {
 			p.addWarn(parsed.BacteriaMaybeWarn)

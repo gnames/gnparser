@@ -21,9 +21,10 @@ type inputFORM struct {
 	Code        string `query:"code"         form:"code"`
 	Format      string `query:"format"       form:"format"`
 	WithDetails string `query:"with_details" form:"with_details"`
-	// WithCultivars is deprecated by Code
-	WithCultivars     string `query:"cultivars"    form:"cultivars"`
-	PreserveDiaereses string `query:"diaereses"    form:"diaereses"`
+
+	// WithCultivars is deprecated and overriden by Code
+	WithCultivars     string `query:"cultivars" form:"cultivars"`
+	PreserveDiaereses string `query:"diaereses" form:"diaereses"`
 }
 
 // Data contains information required to render web-pages.
@@ -83,6 +84,7 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	if preserveDiaereses {
 		q.Set("diaereses", inp.PreserveDiaereses)
 	}
+	q.Set("code", inp.Code)
 
 	url := fmt.Sprintf("/?%s", q.Encode())
 	return c.Redirect(http.StatusFound, url)
@@ -116,6 +118,7 @@ func parsingResults(
 	data.WithDetails = inp.WithDetails == "on"
 	data.WithCultivars = inp.WithCultivars == "on"
 	data.PreserveDiaereses = inp.PreserveDiaereses == "on"
+	data.Code = inp.Code
 
 	format := inp.Format
 	if format == "csv" || format == "tsv" || format == "json" {

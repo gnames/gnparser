@@ -25,8 +25,8 @@ type inputREST struct {
 	CSV               bool     `json:"csv"`
 	WithDetails       bool     `json:"withDetails"`
 	PreserveDiaereses bool     `json:"preserveDiaereses"`
+	Code              string   `json:"code"`
 
-	Code string `json:"code"`
 	// WithCultivars is deprecated by Code and overriden by it
 	WithCultivars bool `json:"withCultivars"`
 }

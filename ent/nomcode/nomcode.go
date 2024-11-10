@@ -1,7 +1,6 @@
 package nomcode
 
 import (
-	"log/slog"
 	"strings"
 )
 
@@ -14,6 +13,7 @@ const (
 	Zoological             // Zoological code
 	Botanical              // Botanical code
 	Cultivar               // Cultivar code
+	Bacterial              // Bacterial code
 )
 
 // New creates a new Code from a string representation.
@@ -22,17 +22,17 @@ const (
 // official abbreviations ('icn', 'iczn', 'icncp').
 // The input string is case-insensitive.
 func New(s string) Code {
-	sOrig := s
 	s = strings.ToLower(s)
 	switch s {
-	case "b", "bot", "botanical", "icn":
+	case "bot", "botanical", "icn":
 		return Botanical
-	case "z", "zoo", "zoological", "iczn":
+	case "zoo", "zoological", "iczn":
 		return Zoological
-	case "c", "cult", "cultivar", "icncp":
+	case "cult", "cultivar", "icncp":
 		return Cultivar
+	case "bact", "bacterial", "icnp":
+		return Bacterial
 	default:
-		slog.Warn("Cannot determine nomenclatural code", "input", sOrig)
 		return Unknown
 	}
 }
@@ -46,6 +46,8 @@ func (c Code) String() string {
 		return "ICN"
 	case Cultivar:
 		return "ICNCP"
+	case Bacterial:
+		return "ICNP"
 	default:
 		return ""
 	}

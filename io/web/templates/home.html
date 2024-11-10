@@ -1,45 +1,61 @@
 {{ define "home" }}
-<section class='parser'>
-  <div class='grid'>
-    <div class='unit whole'>
-      <form action='/' method='post'>
-        <div class='form-elements'>
-          <label for='format'>Output format</label>
-          <select id='format' name='format'>
-            <option value='html'>HTML</option>
-            <option value='json'>JSON</option>
-            <option value='csv'>CSV</option>
-            <option value='tsv'>TSV</option>
+<section class="parser">
+  <div class="grid">
+    <div class="unit whole">
+      <form action="/" method="post">
+        <div class="form-elements">
+          <label for="format">Output format</label>
+          <select id="format" name="format">
+            <option value="html">HTML</option>
+            <option value="json">JSON</option>
+            <option value="csv">CSV</option>
+            <option value="tsv">TSV</option>
           </select>
-          <label for='with_details'>Show details</label>
-          <input type='checkbox' id='with_details' name='with_details' checked='checked'/>
-          <label for='cultivars'>Allow cultivars</label>
-          <input type='checkbox' id='cultivars' name='cultivars'/>
-          <label for='diaereses'>Preserve diaereses</label>
-          <input type='checkbox' id='diaereses' name='diaereses'/>
+          <label for="with_details">Show details</label>
+          <input
+            type="checkbox"
+            id="with_details"
+            name="with_details"
+            checked="checked"
+          />
+          <label for="code">Nomenclatural Code</label>
+          <select id="code" name="code">
+            <option value="">Any</option>
+            <option value="bacterial">Bacterial</option>
+            <option value="botanical">Botanical</option>
+            <option value="cultivar">Cultivar</option>
+            <option value="zoological">Zoological</option>
+          </select>
+          <label for="diaereses">Preserve diaereses</label>
+          <input type="checkbox" id="diaereses" name="diaereses" />
         </div>
-        <textarea autofocus id='names' name='names' placeholder='Add up to 5000 names, one per line'>{{.Input}}</textarea>
-        <input type='submit' value='Parse'>
+        <textarea
+          autofocus
+          id="names"
+          name="names"
+          placeholder="Add up to 5000 names, one per line"
+        >
+{{.Input}}</textarea
+        >
+        <input type="submit" value="Parse" />
       </form>
     </div>
   </div>
 </section>
-{{ if .Parsed }}
-  {{if eq .Format "html" }}
+{{ if .Parsed }} {{if eq .Format "html" }}
 <section class="parser results">
   <div class="grid">
     <div class="unit whole">
       <h4>Results:</h4>
       {{ range .Parsed }}
       <p>
-        <code class="unit whole" style="margin-bottom: 1em">{{ parsedJSON . }}</code>
+        <code class="unit whole" style="margin-bottom: 1em"
+          >{{ parsedJSON . }}</code
+        >
       </p>
-      <p>
-      </p>
+      <p></p>
       {{ end }}
     </div>
   </div>
 </section>
-  {{ end }}
-{{ end }}
-{{ end }}
+{{ end }} {{ end }} {{ end }}

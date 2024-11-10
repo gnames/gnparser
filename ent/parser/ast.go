@@ -468,7 +468,9 @@ func (p *Engine) newBotanicalUninomialNode(n *node32) *uninomialNode {
 		CombinationAuthors: at2,
 	}
 	u := &uninomialNode{Word: w, Authorship: authorship}
-	p.addWarn(parsed.BotanyAuthorNotSubgenWarn)
+	if p.code == nomcode.Unknown {
+		p.addWarn(parsed.BotanyAuthorNotSubgenWarn)
+	}
 	p.cardinality = 1
 	return u
 }
@@ -677,10 +679,17 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		switch n.pegRule {
 		case ruleSubgenus:
 			w := p.newWordNode(n.up, parsed.SubgenusType)
-			if _, ok := dict.Dict.AuthorICN[w.Normalized]; ok {
-				p.addWarn(parsed.BotanyAuthorNotSubgenWarn)
-			} else {
+			switch p.code {
+			case nomcode.Botanical, nomcode.Cultivar:
+			// Botanical code has author of genus here
+			case nomcode.Zoological:
 				sg = w
+			default:
+				if _, ok := dict.Dict.AuthorICN[w.Normalized]; ok {
+					p.addWarn(parsed.BotanyAuthorNotSubgenWarn)
+				} else {
+					sg = w
+				}
 			}
 		case ruleSubgenusOrSuperspecies:
 			p.addWarn(parsed.SuperspeciesWarn)
@@ -689,7 +698,12 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		case ruleInfraspGroup:
 			infs = p.newInfraspeciesGroup(n)
 		case ruleCultivar, ruleCultivarRecursive:
-			cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
+			switch p.code {
+			case nomcode.Cultivar:
+				cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
+			default:
+				p.tail = string(p.buffer[n.begin-2 : len(p.buffer)-1])
+			}
 		}
 		n = n.next
 	}
