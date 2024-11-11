@@ -157,6 +157,29 @@ func TestWordNormalizeByType(t *testing.T) {
 	}
 }
 
+func TestCultivar(t *testing.T) {
+	assert := assert.New(t)
+	tests := []struct {
+		msg, name string
+		code      nomcode.Code
+		quality   int
+		hasTail   bool
+	}{
+		{"any", `Spathiphyllum Schott “Mauna Loa”`, nomcode.Unknown, 4, true},
+		{"bot", `Spathiphyllum Schott “Mauna Loa”`, nomcode.Botanical, 4, true},
+		{"cult", `Spathiphyllum Schott “Mauna Loa”`, nomcode.Cultivar, 1, false},
+	}
+
+	for _, v := range tests {
+		cfg := gnparser.NewConfig(gnparser.OptCode(v.code))
+		gnp := gnparser.New(cfg)
+		res := gnp.ParseName(v.name)
+		assert.True(res.Parsed, v.msg)
+		assert.Equal(v.quality, res.ParseQuality, v.msg)
+		assert.Equal(v.hasTail, res.Tail != "", v.msg)
+	}
+}
+
 func TestNomCode(t *testing.T) {
 	assert := assert.New(t)
 	tests := []struct {

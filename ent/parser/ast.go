@@ -1360,10 +1360,11 @@ func (p *Engine) newCultivarEpithetNode(n *node32, wt parsed.WordType) *cultivar
 		End:        int(t.end),
 	}
 	cult := p.code == nomcode.Cultivar
-	cv := cultivarEpithetNode{Word: &wrd, enableCultivars: cult}
 	if !cult {
-		p.addWarn(parsed.CultivarEpithetWarn)
+		p.tail = " " + string(p.buffer[n.begin-1:len(p.buffer)-1])
+		return nil
 	}
+	cv := cultivarEpithetNode{Word: &wrd, enableCultivars: cult}
 	return &cv
 }
 
