@@ -2,12 +2,11 @@ name: Tests
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-
   build:
     name: Build
     runs-on: ${{ matrix.os }}
@@ -17,30 +16,30 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
-    - name: Set up Go
-      uses: actions/setup-go@v3
-      with:
-        go-version: 1.22
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.23
 
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v3
-    - run: git fetch --prune --unshallow
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v3
+      - run: git fetch --prune --unshallow
 
-    - name: install tools and dependencies
-      run: make tools
+      - name: install tools and dependencies
+        run: make tools
 
-    - name: Test
-      run: make test
+      - name: Test
+        run: make test
 
-    - name: Build
-      run: make build
+      - name: Build
+        run: make build
 
-    - name: Build C lib
-      run: make clib
+      - name: Build C lib
+        run: make clib
 
-    - name: Store C library
-      uses: actions/upload-artifact@v3
-      with:
-        name: ${{ matrix.os }}-clib
-        path: binding/lib*
-        retention-days: 1
+      - name: Store C library
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.os }}-clib
+          path: binding/lib*
+          retention-days: 1

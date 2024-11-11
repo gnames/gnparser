@@ -361,64 +361,66 @@ gnparser -f pretty "Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo"
 Relevant flags:
 
 `--help -h`
-: help information about flags.
+: Displays help information about the available flags.
 
 `--batch_size -b`
-: Sets a maximum number of names collected into a batch before processing.
-This flag is ignored if parsing mode is set to streaming with `-s` flag.
+: Sets the maximum number of names processed in a batch. This is ignored
+in streaming mode (-s).
 
 `--cultivar -C`
-: Adds support for botanical cultivars like `Sarracenia flava 'Maxima'`
-and graft-chimaeras like `+ Crataegomespilus`
+: Deprecated. Use `--nomenclatural-code` instead.
 
 `--capitalize -c`
-: Capitalizes the first letter of name-strings.
+: Capitalizes the first letter of input name-strings.
 
 `--details -d`
-: Return more details for a parsed name. This flag is ignored for CSV/TSV
-formatting.
+: Provides more detailed output for each parsed name. Ignored for
+CSV/TSV formats.
 
 `--diaereses -D`
-: Preserves diaereses within names, e.g. `Leptochloöpsis virgata`. The stemmed
-canonical name will be generated without diaereses.
+: Preserves diaereses, e.g. `Leptochloöpsis virgata`. The stemmed
+canonical name not include diaereses.
 
 `--format -f`
-: output format. Can be `csv`, `tsv`, `compact`, `pretty`.
-Default is `csv`.
-
-CSV and TSV formats return a header row and the CSV/TSV-compatible
-parsed result.
+: Specifies the output format: `csv`, `tsv`, `compact`, or `pretty`.
+Defaults to `csv`. CSV and TSV formats include a header row.
 
 `--jobs -j`
-: number of jobs running concurrently.
+: Sets the number of jobs to run concurrently.
 
 `--ignore_tags -i`
-: keeps HTML entities and tags if they are present in a name-string. If your
-data is clean from HTML tags or entities, you can use this flag to increase
-performance.
+: Increases performance by skipping HTML entity and tag processing.
+Only use if your input is known to be free of HTML.
+
+`--nomenclatural-code -n`
+: Specifies the nomenclatural code (e.g., `botanical`, `zoological`) to use
+for parsing in ambiguous cases. For example `Aus (Bus)`: according
+to zoological code `Aus` is genus, `Bus` is subgenus, while according
+to botanical code `Bus` is the author of `Aus`.
+
+Supported values: `bact`, `bacterial`, `ICNP`, `bot`,
+`botanical`, `ICN`, `cult`, `cultivar`, `ICNCP`, `zoo`, `zoological`, `ICZN`.
 
 `--port -p`
-: set a port to run web-interface and [RESTful API][OpenAPI].
+: Sets the port for the web-interface and [RESTful API][OpenAPI].
 
 `--species-group-cut`
-: Changes stemmed canonical for autonym or species group names (e.g. `Aus bus bus`). It cuts infraspecific epithet, leaving only genus and specific
-epithet. All other data stays the same. This feature might be useful to
-match names like `Aus bus` and `Aus bus bus`.
+: Modifies the stemmed canonical form for autonyms and species-group names
+by removing the infraspecific epithet. Useful for matching names like
+`Aus bus` and `Aus bus bus`.
 
 `--stream -s`
-: `GNparser` can be used from any language using pipe-in/pipe-out of the
-command line application. This approach requires sending 1 name at a time
-to `GNparser` instead of sending names in batches. Streaming allows to
-achieve that.
+: Enables streaming mode, where names are processed one at a time.
+Useful for integrating gnparser with languages other than Go.
 
 `--unordered -u`
-: does not restore the order of output according to the order of input.
+: Disables output ordering. The output order may not match the input order.
 
 `--version -V`
-: shows the version number of `GNparser`.
+: Displays the version number of `GNparser`.
 
-` --web-logs`
-: requires `--port`. Enables output of logs for web-services.
+`--web-logs`
+: Requires `--port`. Enables output of logs for web-services.
 
 To parse one name:
 

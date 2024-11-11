@@ -141,12 +141,15 @@ func init() {
 		"maximum number of names in a batch send for processing.")
 
 	rootCmd.Flags().BoolP("cultivar", "C", false,
-		"parse according to  cultivar code ICNCP (DEPRECATED, use nomenclatural-code instead)")
+		`parse according to  cultivar code ICNCP
+(DEPRECATED, use nomenclatural-code instead)`,
+	)
 
 	codeHelp := `Modifies the parser's behavior in ambiguous cases, sometimes 
 introducing additional parsing rules.
 
 Accepted values are:
+  - 'bact', 'icnp', 'bacterial' for bacterial code
   - 'bot', 'icn', 'botanical' for botanical code
   - 'cult', 'icncp', 'cultivar' for cultivar code
   - 'zoo', 'iczn', 'zoological' for zoological code
