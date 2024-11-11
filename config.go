@@ -198,7 +198,7 @@ func NewConfig(opts ...Option) Config {
 		BatchSize:      50_000,
 		IgnoreHTMLTags: false,
 		Port:           8080,
-		Code:           nomcode.Cultivar,
+		Code:           nomcode.Unknown,
 	}
 	for i := range opts {
 		opts[i](&cfg)
