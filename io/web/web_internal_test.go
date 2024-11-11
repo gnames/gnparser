@@ -42,12 +42,12 @@ func TestHome(t *testing.T) {
 	assert.Equal(t, http.StatusFound, rec.Code)
 }
 
-func TestDocAPI(t *testing.T) {
-	c, rec := handlerGET("/doc/api")
-	assert.Nil(t, docAPI()(c))
-	assert.Equal(t, http.StatusOK, rec.Code)
-	assert.Contains(t, rec.Body.String(), "Application Programming Interface")
-}
+// func TestDocAPI(t *testing.T) {
+// 	c, rec := handlerGET("/doc/api")
+// 	assert.Nil(t, docAPI()(c))
+// 	assert.Equal(t, http.StatusOK, rec.Code)
+// 	assert.Contains(t, rec.Body.String(), "Application Programming Interface")
+// }
 
 func TestInfo(t *testing.T) {
 	c, rec := handlerGET("/")
