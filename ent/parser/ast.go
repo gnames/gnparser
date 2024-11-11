@@ -17,6 +17,7 @@ import (
 
 type scientificNameNode struct {
 	nameData
+	code             nomcode.Code
 	verbatim         string
 	verbatimID       string
 	cardinality      int
@@ -61,6 +62,7 @@ func (p *Engine) newScientificNameNode() {
 	}
 	sn := scientificNameNode{
 		nameData:    name,
+		code:        p.code,
 		cardinality: p.cardinality,
 		rank:        p.rank,
 		hybrid:      p.hybrid,
@@ -415,10 +417,7 @@ func (p *Engine) newNamedGenusGraftChimeraNode(n *node32) *namedGenusGraftChimer
 }
 
 func (p *Engine) botanicalUninomial(n *node32) bool {
-	switch p.code {
-	case nomcode.Botanical, nomcode.Cultivar:
-		return true
-	case nomcode.Zoological:
+	if p.code == nomcode.Zoological {
 		return false
 	}
 
@@ -432,6 +431,9 @@ func (p *Engine) botanicalUninomial(n *node32) bool {
 		return false
 	}
 	w := p.newWordNode(n, parsed.AuthorWordType)
+	if p.code == nomcode.Botanical || p.code == nomcode.Cultivar {
+		return true
+	}
 
 	if _, ok := dict.Dict.AuthorICN[w.Normalized]; ok {
 		return true

@@ -44,7 +44,6 @@ func (p *Engine) PreprocessAndParse(
 	capitalize bool,
 	preserveDiaereses bool,
 ) ScientificNameNode {
-
 	p.code = code
 	p.preserveDiaereses = preserveDiaereses
 

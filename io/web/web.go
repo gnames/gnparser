@@ -148,11 +148,12 @@ func parsingResults(
 		gnparser.OptWithDetails(data.WithDetails),
 		gnparser.OptWithPreserveDiaereses(data.PreserveDiaereses),
 	}
+
 	if data.WithCultivars {
 		opts = append(opts, gnparser.OptCode(nomcode.Cultivar))
 	}
-	code := nomcode.New(data.Code)
 
+	code := nomcode.New(data.Code)
 	if code != nomcode.Unknown {
 		// overrides data.WithCultivars
 		opts = append(opts, gnparser.OptCode(code))

@@ -12,6 +12,9 @@ type Parsed struct {
 	// Parsed is false if parsing did not succeed.
 	Parsed bool `json:"parsed"`
 
+	// NomCode modifies parsing rules according to provided nomenclatural code.
+	NomCode string `json:"nomenclaturalCode,omitempty"`
+
 	// ParseQuality is a number that represents the quality of the
 	// parsing.
 	//

@@ -1,6 +1,7 @@
 package nomcode
 
 import (
+	"log/slog"
 	"strings"
 )
 
@@ -22,8 +23,11 @@ const (
 // official abbreviations ('icn', 'iczn', 'icncp').
 // The input string is case-insensitive.
 func New(s string) Code {
+	sOrig := s
 	s = strings.ToLower(s)
 	switch s {
+	case "any", "":
+		return Unknown
 	case "bot", "botanical", "icn":
 		return Botanical
 	case "zoo", "zoological", "iczn":
@@ -33,6 +37,7 @@ func New(s string) Code {
 	case "bact", "bacterial", "icnp":
 		return Bacterial
 	default:
+		slog.Warn("Cannot determine code from input", "input", sOrig)
 		return Unknown
 	}
 }

@@ -122,7 +122,6 @@ gnparser -j 5 -p 8080
 			debugName(data, cfg)
 			os.Exit(0)
 		}
-
 		parse(data, cfg)
 	},
 }

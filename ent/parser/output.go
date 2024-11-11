@@ -13,6 +13,7 @@ import (
 func (sn *scientificNameNode) ToOutput(
 	withDetails, withSpGr bool) parsed.Parsed {
 	res := parsed.Parsed{
+		NomCode:       sn.code.String(),
 		Verbatim:      sn.verbatim,
 		Canonical:     sn.Canonical(withSpGr),
 		Virus:         sn.virus,
