@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v1.11.1] - 2024-11-11 Mon
+
+- Add: make web-interface remember nomenclatural code picked in the previous
+  GET query.
+
 ## [v1.11.0] - 2024-11-11 Mon
 
 - Add [#265]: add optional nomenclatural code option to parse names with

@@ -287,7 +287,8 @@ gnparser -d "Pardosa moesta Banks, 1892"
 Compiled programs in Go are self-sufficient and small (`GNparser` is only a
 few megabytes). As a result the binary file of `gnparser` is all you need to
 make it work. You can install it by downloading the [latest version of the
-binary][releases] for your operating system, and placing it in your `PATH`.
+binary][releases] for your operating system **and** CPU architecture, and
+placing it in your `PATH`.
 
 ### Install with Homebrew (Mac OS X, Linux)
 
@@ -309,7 +310,8 @@ Move `gnparser` executable somewhere in your PATH
 (for example `/usr/local/bin`)
 
 ```bash
-sudo mv path_to/gnparser /usr/local/bin
+tar xvf gnparser-xxx.tar.gz
+sudo mv gnparser /usr/local/bin
 ```
 
 ### Windows
@@ -394,7 +396,7 @@ Only use if your input is known to be free of HTML.
 
 `--nomenclatural-code -n`
 : Specifies the nomenclatural code (e.g., `botanical`, `zoological`) to use
-for parsing in ambiguous cases. For example `Aus (Bus)`: according
+for parsing in ambiguous cases. For example in `Aus (Bus) cus`: according
 to zoological code `Aus` is genus, `Bus` is subgenus, while according
 to botanical code `Bus` is the author of `Aus`.
 

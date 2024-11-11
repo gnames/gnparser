@@ -21,10 +21,10 @@
           <label for="code">Nomenclatural Code</label>
           <select id="code" name="code">
             <option value="">Any</option>
-            <option value="bacterial">Bacterial</option>
-            <option value="botanical">Botanical</option>
-            <option value="cultivar">Cultivar</option>
-            <option value="zoological">Zoological</option>
+            <option value="bacterial" {{ if eq .Code "bacterial" }}selected="selected"{{ end }}>Bacterial</option>
+            <option value="botanical" {{ if eq .Code "botanical" }}selected="selected"{{ end }}>Botanical</option>
+            <option value="cultivar" {{ if eq .Code "cultivar" }}selected="selected"{{ end }}>Cultivar</option>
+            <option value="zoological" {{ if eq .Code "zoological" }}selected="selected"{{ end }}>Zoological</option>
           </select>
           <label for="diaereses">Preserve diaereses</label>
           <input type="checkbox" id="diaereses" name="diaereses" />
