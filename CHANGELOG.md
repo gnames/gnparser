@@ -4,6 +4,7 @@
 
 ## [v1.11.1] - 2024-11-11 Mon
 
+- Add: minor improvements in web-interface.
 - Add: make web-interface remember nomenclatural code picked in the previous
   GET query.
 

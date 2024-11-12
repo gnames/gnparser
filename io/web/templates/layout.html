@@ -1,90 +1,125 @@
 {{ define "layout" }}
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>GNparser</title>
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <link href="/static/styles/screen.css" rel="stylesheet" />
+    <link href="/static/styles/parser.css" rel="stylesheet" />
+    <link href="/static/images/favicon.ico" rel="icon" type="image/x-icon" />
+  </head>
 
-<head>
-  <meta charset='UTF-8'>
-  <title>GNparser</title>
-  <meta content='width=device-width,initial-scale=1' name='viewport'>
-  <link href='/static/styles/screen.css' rel='stylesheet'>
-  <link href='/static/styles/parser.css' rel='stylesheet'>
-  <link href='/static/images/favicon.ico' rel='icon' type='image/x-icon'>
-</head>
-
-<body class='wrap'>
-  <header role='banner'>
-    <nav class='mobile-nav show-on-mobiles'>
-      <ul>
-        {{ if .HomePage }} <li class='current'> {{ else }} <li> {{ end }}
-          <a href='/'>Parser</a>
-        </li>
-        {{ if .HomePage }} <li> {{ else }} <li class='current'> {{ end }}
-          <a href='/doc/api'>API</a>
-        </li>
-        <li>
-          <a href='https://github.com/gnames/gnparser/blob/master/README.md'><span class='hide-on-mobiles'>Doc on</span>
-            GitHub</a>
-        </li>
-        <li>
-          <a href='https://globalnames.org/apps'>Projects</a>
-        </li>
-      </ul>
-    </nav>
-    <div class='grid'>
-      <div class='unit one-quarter center-on-mobiles'>
-        <div class='logo'>
-          <a href='/'>
-            <span class='sr-only'>GlobalNames</span>
-            <img alt='GNA Logo' src='/static/images/gna.svg' width='72'>
-          </a>
-        </div>
-      </div>
-      <nav class='main-nav unit three-quarters hide-on-mobiles'>
+  <body class="wrap">
+    <header role="banner">
+      <nav class="mobile-nav show-on-mobiles">
         <ul>
-          {{ if .HomePage }} <li class='current'> {{ else }} <li> {{ end }}
-            <a href='/'>Parser</a>
+          {{ if .HomePage }}
+          <li class="current">{{ else }}</li>
+          <li>
+            {{ end }}
+            <a href="/">Parser</a>
           </li>
-          {{ if .HomePage }} <li> {{ else }} <li class='current'> {{ end }}
-            <a href='/doc/api'>API</a>
+          {{ if .HomePage }}
+          <li>{{ else }}</li>
+          <li class="current">
+            {{ end }}
+            <a href="/doc/api">API</a>
           </li>
           <li>
-            <a href='https://github.com/gnames/gnparser/blob/master/README.md'><span class='hide-on-mobiles'>Doc on</span>
-              GitHub</a>
+            <a href="https://github.com/gnames/gnparser/blob/master/README.md"
+              ><span class="hide-on-mobiles">Doc on</span> GitHub</a
+            >
           </li>
           <li>
-            <a href='http://globalnames.org/apps'>Projects</a>
+            <a href="https://globalnames.org/apps">Projects</a>
           </li>
         </ul>
       </nav>
-    </div>
-  </header>
-  <section class='intro'>
-    <div class='grid'>
-      <div class='unit whole center-on-mobiles'>
-        <h1>Global Names Parser <span style="color:#aaa">({{ .Version }})</span></h1>
-        <h4>Scientific Names in Detail</h4>
+      <div class="grid">
+        <div class="unit one-quarter center-on-mobiles">
+          <div class="logo">
+            <a href="/">
+              <span class="sr-only">GlobalNames</span>
+              <img alt="GNA Logo" src="/static/images/gna.svg" width="72" />
+            </a>
+          </div>
+        </div>
+        <nav class="main-nav unit three-quarters hide-on-mobiles">
+          <ul>
+            {{ if .HomePage }}
+            <li class="current">{{ else }}</li>
+            <li>
+              {{ end }}
+              <a href="/">Parser</a>
+            </li>
+            {{ if .HomePage }}
+            <li>{{ else }}</li>
+            <li class="current">
+              {{ end }}
+              <a href="/doc/api">API</a>
+            </li>
+            <li>
+              <a href="https://github.com/gnames/gnparser/blob/master/README.md"
+                ><span class="hide-on-mobiles">Doc on</span> GitHub</a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/gnames/gnparser/issues">Issues</a>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </div>
-  </section>
-
-  {{ if .HomePage }} {{ template "home" . }}
-  {{ else }} {{ template "doc" .}} {{ end }}
-
-  <section class='footer'>
-    <div class='grid'>
-      <div class='unit whole center-on-mobiles' style='margin: 1em 0 1em 0'/>
-      <div class='unit whole center-on-mobiles' style='border-top: 1px solid grey; margin: 1em 0 1em 0'/>
-      <div class='unit whole center-on-mobiles'>
-        <div align='center'>
-          <span><a href='https://globalnames.org'>Global Names</a></span> |
-          <span><a href='https://parser.globalnames.org'>Global Names Parser</a></span> |
-          <span><a href='https://finder.globalnames.org'>Global Names Finder</a></span> |
-          <span><a href='https://verifier.globalnames.org'>Global Names Verifier</a></span>
+    </header>
+    <section class="intro">
+      <div class="grid">
+        <div class="unit whole center-on-mobiles">
+          <h1>Global Names Parser</h1>
+          <h4>Scientific Names in Detail</h4>
         </div>
       </div>
-    </div>
-  </section>
-</body>
+    </section>
 
+    {{ if .HomePage }} {{ template "home" . }} {{ else }} {{ template "doc" .}}
+    {{ end }}
+
+    <section class="footer">
+      <div class="grid">
+        <div class="unit whole center-on-mobiles" style="margin: 1em 0 1em 0" />
+        <div align="center" id="version">
+          <a href="https://github.com/gnames/gnparser">
+            <img src="/static/images/github-mark.svg" alt="GitHub link" />
+            Version {{ .Version }}
+          </a>
+        </div>
+        <div
+          class="unit whole center-on-mobiles"
+          style="border-top: 1px solid grey; margin: 1em 0 1em 0"
+        />
+        <div class="unit whole center-on-mobiles">
+          <div align="center">
+            <span><a href="https://globalnames.org">Global Names</a></span> |
+            <span
+              ><a href="https://parser.globalnames.org"
+                >Global Names Parser</a
+              ></span
+            >
+            |
+            <span
+              ><a href="https://finder.globalnames.org"
+                >Global Names Finder</a
+              ></span
+            >
+            |
+            <span
+              ><a href="https://verifier.globalnames.org"
+                >Global Names Verifier</a
+              ></span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
 {{ end }}
