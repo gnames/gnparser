@@ -300,6 +300,7 @@ now for Mac, Linux, or Windows X WSL (Windows susbsystem for Linux).
 2. Install `gnparser` with:
 
    ```bash
+   brew update
    brew tap gnames/gn
    brew install gnparser
    ```
