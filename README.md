@@ -315,6 +315,12 @@ tar xvf gnparser-xxx.tar.gz
 sudo mv gnparser /usr/local/bin
 ```
 
+Please note that Mac OS might prevent running executables that are not
+'signed' up officially by Apple. To overcome this problem go to
+`System Settings`, search for `developer tools`and under`Allow applications
+below to run software locally that does not meet the system's security policy`
+add the terminal emulation software that you normally use (e.g. Terminal app).
+
 ### Windows
 
 One possible way would be to create a default folder for executables and place
