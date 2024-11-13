@@ -334,7 +334,7 @@ If you're using Mac OS, you might encounter a security warning that prevents
    password when prompted. This will unblock the `gnparser` binary.
 
 After these steps, you should be able to use gnparser without any issues.
-You can also copy, move, or rename it freely."
+You can also copy, move, or rename it freely.
 
 ### Windows
 
