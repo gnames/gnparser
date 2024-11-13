@@ -318,7 +318,8 @@ sudo mv gnparser /usr/local/bin
 If you're using Mac OS, you might encounter a security warning that prevents
 `gnparser` from running. Here's how to fix it:
 
-1. In the warning dialog click `Done` button (not `Move to Trash` button).
+1. In the warning dialog click the `Done` button (not the `Move to Trash`
+   button).
 
 1. Locate the Security Settings: Go to `System Settings -> Privacy & Security`
    and scroll down to the `Security` section.
