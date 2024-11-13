@@ -315,11 +315,25 @@ tar xvf gnparser-xxx.tar.gz
 sudo mv gnparser /usr/local/bin
 ```
 
-Please note that Mac OS might prevent running executables that are not
-'approved' officially by Apple. To overcome this problem go to
-`System Settings`, search for `developer tools`and under`Allow applications
-below to run software locally that does not meet the system's security policy`
-add the terminal emulation software that you normally use (e.g. Terminal app).
+If you're using Mac OS, you might encounter a security warning that prevents
+`gnparser` from running. Here's how to fix it:
+
+1. In the warning dialog click `Done` button (not `Move to Trash` button).
+
+1. Locate the Security Settings: Go to `System Settings -> Privacy & Security`
+   and scroll down to the `Security` section.
+
+1. Allow `gnparser`: You should see a message saying `"gnparser" was blocked...`.
+   Click the `Allow Anyway` button next to it.
+
+1. Run gnparser again: Try running gnparser from your terminal. This time,
+   a dialog box will pop up with an `Open Anyway` button.
+
+1. Open and Unblock: Click `Open Anyway` and enter your administrator
+   password when prompted. This will unblock the `gnparser` binary.
+
+After these steps, you should be able to use gnparser without any issues.
+You can also copy, move, or rename it freely."
 
 ### Windows
 
