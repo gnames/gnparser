@@ -1,6 +1,6 @@
 # Global Names Parser: GNparser written in Go
 
-[![DOI](https://zenodo.org/badge/320967495.svg)](https://zenodo.org/badge/latestdoi/320967495)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14096467.svg)](https://doi.org/10.5281/zenodo.14096467)
 
 Try `GNparser` [online][parser-web].
 
@@ -686,7 +686,6 @@ provide a warning "Ambiguity: ICN author or subgenus".
 ## Contributors
 
 - [Toby Marsden]
-- [Geoff Ower]
 - [Hernan Lucas Pereira]
 
 If you want to submit a bug or add a feature read
