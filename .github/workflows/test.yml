@@ -38,7 +38,7 @@ jobs:
         run: make clib
 
       - name: Store C library
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.os }}-clib
           path: binding/lib*

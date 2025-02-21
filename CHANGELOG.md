@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## [v1.11.2] - 2025-02-21 Fri
+
+- Add: update modules.
+- Add [#282] remove varning for botanical names with `ex` authors.
+- Add [#280] prol. botanical rank.
+
 ## [v1.11.1] - 2024-11-11 Mon
 
 - Add: minor improvements in web-interface.
@@ -500,6 +506,11 @@
 
 This document follows [changelog guidelines]
 
+
+[v1.11.2]: https://github.com/gnames/gnparser/compare/v1.11.1...v1.11.2
+[v1.11.1]: https://github.com/gnames/gnparser/compare/v1.11.0...v1.11.1
+[v1.11.0]: https://github.com/gnames/gnparser/compare/v1.10.4...v1.11.0
+[v1.10.4]: https://github.com/gnames/gnparser/compare/v1.10.3...v1.10.4
 [v1.10.3]: https://github.com/gnames/gnparser/compare/v1.10.2...v1.10.3
 [v1.10.2]: https://github.com/gnames/gnparser/compare/v1.10.1...v1.10.2
 [v1.10.1]: https://github.com/gnames/gnparser/compare/v1.10.0...v1.10.1
@@ -576,6 +587,26 @@ This document follows [changelog guidelines]
 [v0.7.0]: https://github.com/gnames/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
+[#290]: https://github.com/gnames/gnparser/issues/290
+[#289]: https://github.com/gnames/gnparser/issues/289
+[#288]: https://github.com/gnames/gnparser/issues/288
+[#287]: https://github.com/gnames/gnparser/issues/287
+[#286]: https://github.com/gnames/gnparser/issues/286
+[#285]: https://github.com/gnames/gnparser/issues/285
+[#284]: https://github.com/gnames/gnparser/issues/284
+[#283]: https://github.com/gnames/gnparser/issues/283
+[#282]: https://github.com/gnames/gnparser/issues/282
+[#281]: https://github.com/gnames/gnparser/issues/281
+[#280]: https://github.com/gnames/gnparser/issues/280
+[#279]: https://github.com/gnames/gnparser/issues/279
+[#278]: https://github.com/gnames/gnparser/issues/278
+[#277]: https://github.com/gnames/gnparser/issues/277
+[#276]: https://github.com/gnames/gnparser/issues/276
+[#275]: https://github.com/gnames/gnparser/issues/275
+[#274]: https://github.com/gnames/gnparser/issues/274
+[#273]: https://github.com/gnames/gnparser/issues/273
+[#272]: https://github.com/gnames/gnparser/issues/272
+[#271]: https://github.com/gnames/gnparser/issues/271
 [#270]: https://github.com/gnames/gnparser/issues/270
 [#269]: https://github.com/gnames/gnparser/issues/269
 [#268]: https://github.com/gnames/gnparser/issues/268
