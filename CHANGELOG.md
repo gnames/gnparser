@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add: update upload-artifacts in Actions to v4.
 - Add [#279]: add `unr.` rank.
 
 ## [v1.11.2] - 2025-02-21 Fri
