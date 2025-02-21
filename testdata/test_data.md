@@ -1899,6 +1899,15 @@ Authorship: Krajina
 ```json
 {"parsed":true,"quality":3,"qualityWarnings":[{"quality":3,"warning":"Period character is not allowed in canonical"}],"verbatim":"Cibotium st.-johnii Krajina","normalized":"Cibotium st-johnii Krajina","canonical":{"stemmed":"Cibotium st-iohn","simple":"Cibotium st-johnii","full":"Cibotium st-johnii"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Krajina","normalized":"Krajina","authors":["Krajina"],"originalAuth":{"authors":["Krajina"]}},"details":{"species":{"genus":"Cibotium","species":"st-johnii","authorship":{"verbatim":"Krajina","normalized":"Krajina","authors":["Krajina"],"originalAuth":{"authors":["Krajina"]}}}},"words":[{"verbatim":"Cibotium","normalized":"Cibotium","wordType":"GENUS","start":0,"end":8},{"verbatim":"st.-johnii","normalized":"st-johnii","wordType":"SPECIES","start":9,"end":19},{"verbatim":"Krajina","normalized":"Krajina","wordType":"AUTHOR_WORD","start":20,"end":27}],"id":"6b34256d-6c3b-5870-a781-77eeac49b6c4","parserVersion":"test_version"}
 ```
+Name: Plantago major prol. lutulenta (Lamotte) Rouy
+
+Canoncal: Plantago major prol. lutulenta
+
+Authorship: (Lamotte) Rouy
+
+```json
+{"parsed":true,"quality":3,"qualityWarnings":[{"quality":3,"warning":"Uncommon rank"}],"verbatim":"Plantago major prol. lutulenta (Lamotte) Rouy","normalized":"Plantago major prol. lutulenta (Lamotte) Rouy","canonical":{"stemmed":"Plantago maior lutulent","simple":"Plantago major lutulenta","full":"Plantago major prol. lutulenta"},"cardinality":3,"rank":"prol.","authorship":{"verbatim":"(Lamotte) Rouy","normalized":"(Lamotte) Rouy","authors":["Lamotte","Rouy"],"originalAuth":{"authors":["Lamotte"]},"combinationAuth":{"authors":["Rouy"]}},"details":{"infraspecies":{"genus":"Plantago","species":"major","infraspecies":[{"value":"lutulenta","rank":"prol.","authorship":{"verbatim":"(Lamotte) Rouy","normalized":"(Lamotte) Rouy","authors":["Lamotte","Rouy"],"originalAuth":{"authors":["Lamotte"]},"combinationAuth":{"authors":["Rouy"]}}}]}},"words":[{"verbatim":"Plantago","normalized":"Plantago","wordType":"GENUS","start":0,"end":8},{"verbatim":"major","normalized":"major","wordType":"SPECIES","start":9,"end":14},{"verbatim":"prol.","normalized":"prol.","wordType":"RANK","start":15,"end":20},{"verbatim":"lutulenta","normalized":"lutulenta","wordType":"INFRASPECIES","start":21,"end":30},{"verbatim":"Lamotte","normalized":"Lamotte","wordType":"AUTHOR_WORD","start":32,"end":39},{"verbatim":"Rouy","normalized":"Rouy","wordType":"AUTHOR_WORD","start":41,"end":45}],"id":"43f4bf03-599c-5f88-ab3e-f08adeec98f5","parserVersion":"test_version"}
+```
 
 Name: Camponotus conspicuus st. zonatus
 

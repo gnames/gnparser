@@ -84,7 +84,7 @@ Rank <- (RankForma / RankVar / RankSsp / RankOther / RankOtherUncommon /
 RankNotho <- (('notho' ('var' / 'fo' / 'f' / 'subsp' / 'ssp' / 'sp' /
   'morth' / 'supsp' / 'su' )) / 'nvar') ('.' / &(SpaceCharEOI))
 
-RankOtherUncommon <- ('*' / 'natio' / 'nat.' / 'nat' / 'f.sp' /
+RankOtherUncommon <- ('*' / 'natio' / 'nat.' / 'nat' / 'f.sp' / 'prol.' /
    'α' / 'ββ' / 'β' / 'γ' / 'δ' / 'ε' / 'φ' / 'θ' / 'μ' / 'a.' / 'b.' /
     'c.' / 'd.' / 'e.' / 'g.' / 'k.' /
   'mut.') &(SpaceCharEOI)

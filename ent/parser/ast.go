@@ -1045,7 +1045,9 @@ func (p *Engine) newAuthorsGroupNode(n *node32) *authorsGroupNode {
 	}
 	switch n.pegRule {
 	case ruleAuthorEx:
-		p.addWarn(parsed.AuthExWarn)
+		if p.code == nomcode.Zoological || p.code == nomcode.Unknown {
+			p.addWarn(parsed.AuthExWarn)
+		}
 		t2t = teamEx
 		t2wrd = p.newWordNode(n, parsed.AuthorWordType)
 		ex := strings.TrimSpace(t2wrd.Verbatim)
