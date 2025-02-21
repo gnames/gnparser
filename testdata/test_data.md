@@ -2337,6 +2337,16 @@ Authorship: Hook. fil.
 {"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Deprecated Greek letter enumeration in rank"}],"verbatim":"Aristotelia fruticosa var. δ. microphylla Hook.f.","normalized":"Aristotelia fruticosa var. microphylla Hook. fil.","canonical":{"stemmed":"Aristotelia fruticos microphyll","simple":"Aristotelia fruticosa microphylla","full":"Aristotelia fruticosa var. microphylla"},"cardinality":3,"rank":"var.","authorship":{"verbatim":"Hook.f.","normalized":"Hook. fil.","authors":["Hook. fil."],"originalAuth":{"authors":["Hook. fil."]}},"details":{"infraspecies":{"genus":"Aristotelia","species":"fruticosa","infraspecies":[{"value":"microphylla","rank":"var.","authorship":{"verbatim":"Hook.f.","normalized":"Hook. fil.","authors":["Hook. fil."],"originalAuth":{"authors":["Hook. fil."]}}}]}},"words":[{"verbatim":"Aristotelia","normalized":"Aristotelia","wordType":"GENUS","start":0,"end":11},{"verbatim":"fruticosa","normalized":"fruticosa","wordType":"SPECIES","start":12,"end":21},{"verbatim":"var.","normalized":"var.","wordType":"RANK","start":22,"end":26},{"verbatim":"microphylla","normalized":"microphylla","wordType":"INFRASPECIES","start":30,"end":41},{"verbatim":"Hook.","normalized":"Hook.","wordType":"AUTHOR_WORD","start":42,"end":47},{"verbatim":"f.","normalized":"fil.","wordType":"AUTHOR_WORD_FILIUS","start":47,"end":49}],"id":"34378b1d-27ef-5a38-a3ad-b2da249bc9d4","parserVersion":"test_version"}
 ```
 
+Name: Hieracium unr. Verbasciformia Arv.-Touv.
+
+Canonical: Hieracium unr. Verbasciformia
+
+Authorship: Arv.-Touv.
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Combination of two uninomials"}],"verbatim":"Hieracium unr. Verbasciformia Arv.-Touv.","normalized":"Hieracium unr. Verbasciformia Arv.-Touv.","canonical":{"stemmed":"Verbasciformia","simple":"Verbasciformia","full":"Hieracium unr. Verbasciformia"},"cardinality":1,"rank":"unr.","authorship":{"verbatim":"Arv.-Touv.","normalized":"Arv.-Touv.","authors":["Arv.-Touv."],"originalAuth":{"authors":["Arv.-Touv."]}},"details":{"uninomial":{"uninomial":"Verbasciformia","rank":"unr.","parent":"Hieracium","authorship":{"verbatim":"Arv.-Touv.","normalized":"Arv.-Touv.","authors":["Arv.-Touv."],"originalAuth":{"authors":["Arv.-Touv."]}}}},"words":[{"verbatim":"unr.","normalized":"unr.","wordType":"RANK","start":10,"end":14},{"verbatim":"Verbasciformia","normalized":"Verbasciformia","wordType":"UNINOMIAL","start":15,"end":29},{"verbatim":"Arv.-Touv.","normalized":"Arv.-Touv.","wordType":"AUTHOR_WORD","start":30,"end":40}],"id":"eef49d0a-51d9-5452-ab36-53b1ab9083cb","parserVersion":"test_version"}
+```
+
 Name: Aristotelia fruticosa var. δ microphylla Hook.f.
 
 Canonical: Aristotelia fruticosa var. microphylla

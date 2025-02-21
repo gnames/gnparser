@@ -2,11 +2,13 @@
 
 ## Unreleased
 
+- Add [#279]: add `unr.` rank.
+
 ## [v1.11.2] - 2025-02-21 Fri
 
 - Add: update modules.
-- Add [#282] remove varning for botanical names with `ex` authors.
-- Add [#280] prol. botanical rank.
+- Add [#282]: remove varning for botanical names with `ex` authors.
+- Add [#280]: prol. botanical rank.
 
 ## [v1.11.1] - 2024-11-11 Mon
 

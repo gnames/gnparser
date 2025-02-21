@@ -84,10 +84,9 @@ Rank <- (RankForma / RankVar / RankSsp / RankOther / RankOtherUncommon /
 RankNotho <- (('notho' ('var' / 'fo' / 'f' / 'subsp' / 'ssp' / 'sp' /
   'morth' / 'supsp' / 'su' )) / 'nvar') ('.' / &(SpaceCharEOI))
 
-RankOtherUncommon <- ('*' / 'natio' / 'nat.' / 'nat' / 'f.sp' / 'prol.' /
-   'α' / 'ββ' / 'β' / 'γ' / 'δ' / 'ε' / 'φ' / 'θ' / 'μ' / 'a.' / 'b.' /
-    'c.' / 'd.' / 'e.' / 'g.' / 'k.' /
-  'mut.') &(SpaceCharEOI)
+RankOtherUncommon <- ('*' / 'natio' / 'nat.' / 'nat' / 'unr.' / 'f.sp' /
+  'prol.' / 'α' / 'ββ' / 'β' / 'γ' / 'δ' / 'ε' / 'φ' / 'θ' / 'μ' / 'a.' /
+  'b.' / 'c.' / 'd.' / 'e.' / 'g.' / 'k.' / 'mut.') &(SpaceCharEOI)
 
 RankOther <- ('morph' / 'convar' / 'pseudovar' / 'sect' /
   'ser' / 'subvar' / 'subf' / 'race' / 'pv' / 'pathovar' /
@@ -119,7 +118,7 @@ RankUninomial <- RankUninomialPlain / RankUninomialNotho
 
 RankUninomialPlain <- ('sect' / 'subsect' / 'trib' / 'tr' / 'subtrib' /
   'subtr' / 'subser' / 'ser' / 'subgen' / 'subg' / 'fam' / 'subfam' / 'div' /
-  'supertrib') ('.' / &(SpaceCharEOI))
+  'supertrib' / 'unr') ('.' / &(SpaceCharEOI))
 
 RankUninomialNotho <- ('notho' _? ('sect' / 'gen' / 'ser' / 'subgeen' /
   'subgen' / 'subg' / 'subsect' / 'subtrib')) ('.' / &(SpaceCharEOI))
