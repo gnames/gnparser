@@ -1,6 +1,6 @@
 module github.com/gnames/gnparser
 
-go 1.23.5
+go 1.23.6
 
 require (
 	github.com/dustin/go-humanize v1.0.1
