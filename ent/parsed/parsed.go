@@ -3,6 +3,7 @@
 package parsed
 
 import (
+	"github.com/gnames/gnparser/ent/parsed"
 	tb "github.com/gnames/tribool"
 )
 
@@ -174,9 +175,29 @@ type ParsedFlat struct {
 	// Normalized is a normalized version of the input name-string.
 	Normalized string `json:"normalized,omitempty"`
 
-	// Canonical are simplified versions of a name-string more suitable for
-	// matching and comparing name-strings than the verbatim version.
-	CanonicalSimple string `json:"canonical,omitempty"`
+	// CanonicalSimple is a simplified version of a name where some elements like ranks,
+	// or hybrid signs "×" are omitted (hybrid signs are present for hybrid
+	// formulas).
+	//
+	// It is most useful to match names in general.
+	CanonicalSimple string `json:"canonicalSimple,omitempty"`
+
+	// CanonicalFull is a canonical form that keeps hybrid signs "×" for named
+	// hybrids and shows infra-specific ranks.
+	//
+	// It is most useful for detection of the best matches from
+	// multiple results. It is also recommended for displaying
+	// canonical forms of botanical names.
+	CanonicalFull string `json:"canonicalFull,omitempty"`
+
+	// CanonicalStemmed is the most "normalized" and simplified version of the name.
+	// Species epithets are stripped of suffixes, "j" character converted to "i",
+	// "v" character converted to "u" according to "Schinke R, Greengrass M,
+	// Robertson AM and Willett P (1996)"
+	//
+	// It is most useful to match names when a variability in suffixes is
+	// possible.
+	CanonicalStemmed string `json:"canonicalStemmed,omitempty"`
 
 	// Cardinality allows to sort, partition names according to number of
 	// elements in their canonical forms.
@@ -203,7 +224,7 @@ type ParsedFlat struct {
 	//
 	// The bacterial names often contain strain information which are
 	// not parseable and are placed into the "tail" field.
-	Bacteria *tb.Tribool `json:"bacteria,omitempty"`
+	Bacteria string `json:"bacteria,omitempty"`
 
 	// Candidatus indicates that the parsed string is a candidatus bacterial name.
 	Candidatus bool `json:"candidatus,omitempty"`
@@ -272,9 +293,17 @@ type ParsedFlat struct {
 	// uninomial.
 	Genus string `json:"genus,omitempty"`
 
-	// InfragenericEpithet indicates the infrageneric epithet when present.
+	// Subgenus indicates the infrageneric epithet when present.
 	// This field is omitted if not applicable.
-	InfragenericEpithet string `json:"infragenericEpithet,omitempty"`
+	Subgenus string `json:"infragenericEpithet,omitempty"`
+
+	// Species is the specific epithet of a binomial or trinomial.
+	Species string `json:"specificEpithet,omitempty"`
+
+	// Infraspecies is the infraspecificEpither of trinomials (names with
+	// cardinality 3). We do not provide details for names with higher
+	// cardinality.
+	Infraspecies string `json:"infraspecificEpithet,omitempty"`
 
 	// CultivarEpithet contains the cultivar name for cultivated plant varieties
 	// (e.g., "Golden Delicious" in "Malus domestica 'Golden Delicious'"). This
@@ -298,7 +327,7 @@ type ParsedFlat struct {
 	CombinationExAuthorship string `json:"combinationExAuthorship,omitempty"`
 
 	// CombinationAuthorshipYear records the year associated with the combination
-	// authorship, if provided (e.g., "1753" in "Homo sapiens (L.) K. 1753").
+	// authorship, if provided (e.g., "1754" in "Homo sapiens (L.) K. 1753").
 	// This field is omitted if the year is not specified.
 	CombinationAuthorshipYear string `json:"combinationAuthorshipYear,omitempty"`
 
@@ -423,4 +452,51 @@ type Year struct {
 	// Approximate year might be represented by a range of years, by
 	// a question mark "188?", by parentheses "(1888)".
 	IsApproximate bool `json:"isApproximate,omitempty"`
+}
+
+func (p Parsed) Flatten() ParsedFlat {
+	res := ParsedFlat{
+		Parsed:        p.Parsed,
+		NomCode:       p.NomCode,
+		ParseQuality:  p.ParseQuality,
+		Verbatim:      p.Verbatim,
+		Normalized:    p.Normalized,
+		Cardinality:   p.Cardinality,
+		Rank:          p.Rank,
+		Bacteria:      p.Bacteria.String(),
+		Candidatus:    p.Candidatus,
+		Virus:         p.Virus,
+		Cultivar:      p.Cultivar,
+		DaggerChar:    p.DaggerChar,
+		Hybrid:        p.Hybrid.String(),
+		GraftChimera:  p.GraftChimera.String(),
+		Surrogate:     p.Surrogate.String(),
+		Tail:          p.Tail,
+		VerbatimID:    p.VerbatimID,
+		ParserVersion: p.ParserVersion,
+	}
+	if !p.Parsed {
+		return res
+	}
+
+	res.CanonicalSimple = p.Canonical.Simple
+	res.CanonicalFull = p.Canonical.Full
+	res.CanonicalStemmed = p.Canonical.Stemmed
+
+	switch detail := p.Details.(type) {
+	case parsed.DetailsUninomial:
+		res.Uninomial = detail.Uninomial.Value
+	case parsed.DetailsSpecies:
+		res.Genus = detail.Species.Genus
+		res.Subgenus = detail.Species.Subgenus
+		res.Species = detail.Species.Species
+	case parsed.DetailsInfraspecies:
+		if len(detail.Infraspecies.Infraspecies) == 1 {
+			res.Genus = detail.Infraspecies.Genus
+			res.Species = detail.Infraspecies.Species.Species
+			res.Rank = detail.Infraspecies.Infraspecies[0].Rank
+			res.Infraspecies = detail.Infraspecies.Infraspecies[0].Value
+		}
+	}
+	return res
 }
