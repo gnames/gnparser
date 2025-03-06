@@ -3,7 +3,6 @@
 package parsed
 
 import (
-	"github.com/gnames/gnparser/ent/parsed"
 	tb "github.com/gnames/tribool"
 )
 
@@ -483,14 +482,20 @@ func (p Parsed) Flatten() ParsedFlat {
 	res.CanonicalFull = p.Canonical.Full
 	res.CanonicalStemmed = p.Canonical.Stemmed
 
+	if p.Authorship != nil {
+		au := p.Authorship
+		res.Authorship = au.Verbatim
+
+	}
+
 	switch detail := p.Details.(type) {
-	case parsed.DetailsUninomial:
+	case DetailsUninomial:
 		res.Uninomial = detail.Uninomial.Value
-	case parsed.DetailsSpecies:
+	case DetailsSpecies:
 		res.Genus = detail.Species.Genus
 		res.Subgenus = detail.Species.Subgenus
 		res.Species = detail.Species.Species
-	case parsed.DetailsInfraspecies:
+	case DetailsInfraspecies:
 		if len(detail.Infraspecies.Infraspecies) == 1 {
 			res.Genus = detail.Infraspecies.Genus
 			res.Species = detail.Infraspecies.Species.Species
