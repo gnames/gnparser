@@ -2,7 +2,11 @@
 
 ## Unreleased
 
-## [v1.11.3] - dt
+## [v1.11.4] - 2025-03-10 Mon
+
+- Add: improve flatten output.
+
+## [v1.11.3] - 2025-03-07 Fri
 
 - Add [#283]: parsed.Flatten function to generate 'flat' version of parsed data.
 - Add: update upload-artifacts in Actions to v4.
@@ -513,6 +517,7 @@
 This document follows [changelog guidelines]
 
 
+[v1.11.4]: https://github.com/gnames/gnparser/compare/v1.11.3...v1.11.4
 [v1.11.3]: https://github.com/gnames/gnparser/compare/v1.11.2...v1.11.3
 [v1.11.2]: https://github.com/gnames/gnparser/compare/v1.11.1...v1.11.2
 [v1.11.1]: https://github.com/gnames/gnparser/compare/v1.11.0...v1.11.1

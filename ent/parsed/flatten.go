@@ -74,14 +74,8 @@ type ParsedFlat struct {
 	// Authorship is the verbatim authorship of the name.
 	Authorship string `json:"authorship,omitempty"`
 
-	// Bacteria is not nil if the input name has a genus
-	// that is registered as bacterial. Possible
-	// values are "maybe" - if the genus has homonyms in other groups
-	// and "yes" if GNparser dictionary does not detect any homonyms
-	//
-	// The bacterial names often contain strain information which are
-	// not parseable and are placed into the "tail" field.
-	Bacteria string `json:"bacteria,omitempty"`
+	// Authors is the list of all authors separated by pipe character.
+	Authors string `json:"authors,omitempty"`
 
 	// Candidatus indicates that the parsed string is a candidatus bacterial name.
 	Candidatus bool `json:"candidatus,omitempty"`
@@ -216,17 +210,6 @@ type ParsedFlat struct {
 // Flatten converts a Parsed struct into a ParsedFlat struct, which is a
 // flattened representation of the parsed data.
 func (p Parsed) Flatten() ParsedFlat {
-	var bact string
-	if p.Bacteria != nil && p.Bacteria.Valid {
-		switch p.Bacteria.Value {
-		case 0:
-			bact = "maybe"
-		case 1:
-			bact = "yes"
-		default:
-			bact = "no"
-		}
-	}
 	var hybrid string
 	if p.Hybrid != nil {
 		hybrid = p.Hybrid.String()
@@ -248,7 +231,6 @@ func (p Parsed) Flatten() ParsedFlat {
 		Normalized:    p.Normalized,
 		Cardinality:   p.Cardinality,
 		Rank:          p.Rank,
-		Bacteria:      bact,
 		Candidatus:    p.Candidatus,
 		Virus:         p.Virus,
 		Cultivar:      p.Cultivar,
@@ -271,6 +253,7 @@ func (p Parsed) Flatten() ParsedFlat {
 	if p.Authorship != nil {
 		au := p.Authorship
 		res.Authorship = au.Verbatim
+		res.Authors = strings.Join(au.Authors, "|")
 
 		if au.Original != nil {
 			res.BasionymAuthorship = authorship(au.Original)
@@ -299,7 +282,6 @@ func (p Parsed) Flatten() ParsedFlat {
 			res.Rank = detail.Infraspecies.Infraspecies[0].Rank
 			res.Infraspecies = detail.Infraspecies.Infraspecies[0].Value
 		}
-		res.BasionymAuthorshipYear = year(detail.Infraspecies.Authorship.Original)
 	}
 	return res
 }
