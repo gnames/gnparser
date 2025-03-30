@@ -248,6 +248,17 @@ func TestBacterialCode(t *testing.T) {
 	}
 }
 
+func TestHybridCF(t *testing.T) {
+	assert := assert.New(t)
+	name := "x Espostocactus cf. mirabilis (Rauh & Backeb.) G.D.Rowley"
+	gnp := gnparser.New(gnparser.NewConfig())
+	res := gnp.ParseName(name)
+	assert.Equal(
+		"× Espostocactus cf. mirabilis (Rauh & Backeb.) G. D. Rowley",
+		res.Normalized,
+	)
+}
+
 func TestOutputRestore(t *testing.T) {
 	name := "Homo zapiens Linn. 1758"
 	cfg := gnparser.NewConfig(gnparser.OptWithDetails(true))

@@ -297,6 +297,7 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 	if n.pegRule != ruleHybridChar {
 		return nhn
 	}
+	annot := parsed.NoAnnot
 	hybr := p.newWordNode(n, parsed.HybridCharType)
 	n = n.next
 	n = n.up
@@ -305,6 +306,11 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 		p.addWarn(parsed.HybridCharNoSpaceWarn)
 	}
 	switch n.pegRule {
+	case ruleNameComp:
+		p.addWarn(parsed.NameComparisonWarn)
+		annot = parsed.ComparisonAnnot
+		p.surrogate = &annot
+		name = p.newComparisonNode(n)
 	case ruleUninomial:
 		name = p.newUninomialNode(n)
 	case ruleUninomialCombo:

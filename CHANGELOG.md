@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.11.5] - 2025-03-30 Sun
+
+- Fix [#286]: parse names with named hybrid and comparison.
+
 ## [v1.11.4] - 2025-03-10 Mon
 
 - Add: improve flatten output.
