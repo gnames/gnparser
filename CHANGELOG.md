@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.11.6] - 2025-04-01 Tue
+
+- Add [#287]: parse names with genus and species hybrid.
+
 ## [v1.11.5] - 2025-03-30 Sun
 
 - Fix [#286]: parse names with named hybrid and comparison.
@@ -520,7 +524,8 @@
 
 This document follows [changelog guidelines]
 
-
+[v1.11.6]: https://github.com/gnames/gnparser/compare/v1.11.5...v1.11.6
+[v1.11.5]: https://github.com/gnames/gnparser/compare/v1.11.4...v1.11.5
 [v1.11.4]: https://github.com/gnames/gnparser/compare/v1.11.3...v1.11.4
 [v1.11.3]: https://github.com/gnames/gnparser/compare/v1.11.2...v1.11.3
 [v1.11.2]: https://github.com/gnames/gnparser/compare/v1.11.1...v1.11.2

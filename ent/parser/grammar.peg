@@ -19,10 +19,10 @@ HybridFormulaPart <- HybridChar _ SpeciesEpithet (_ InfraspGroup)?
 
 NamedHybrid <- NamedGenusHybrid / NamedSpeciesHybrid
 
+NamedGenusHybrid <- HybridChar _? (NamedSpeciesHybrid / SingleName)
+
 NamedSpeciesHybrid <- GenusWord (_ Subgenus)? (_ Comparison)? _ HybridChar _?
   SpeciesEpithet (_ InfraspGroup)?
-
-NamedGenusHybrid <- HybridChar _? SingleName
 
 GraftChimeraFormula <- SingleName (_ (GraftChimeraFormulaPart / GraftChimeraFormulaFull))+
 

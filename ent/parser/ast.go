@@ -300,6 +300,16 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 	annot := parsed.NoAnnot
 	hybr := p.newWordNode(n, parsed.HybridCharType)
 	n = n.next
+	if n.pegRule == ruleNamedSpeciesHybrid {
+		annot = parsed.NamedHybridAnnot
+		p.hybrid = &annot
+		name = p.newNamedSpeciesHybridNode(n)
+		nhn = &namedGenusHybridNode{
+			Hybrid:   hybr,
+			nameData: name,
+		}
+		return nhn
+	}
 	n = n.up
 	p.addWarn(parsed.HybridNamedWarn)
 	if n.begin == 1 {

@@ -2706,6 +2706,16 @@ Authorship: Andersson
 {"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Named hybrid"}],"verbatim":"Salix x capreola Andersson","normalized":"Salix × capreola Andersson","canonical":{"stemmed":"Salix capreol","simple":"Salix capreola","full":"Salix × capreola"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Andersson","normalized":"Andersson","authors":["Andersson"],"originalAuth":{"authors":["Andersson"]}},"hybrid":"NAMED_HYBRID","details":{"species":{"genus":"Salix","species":"capreola","authorship":{"verbatim":"Andersson","normalized":"Andersson","authors":["Andersson"],"originalAuth":{"authors":["Andersson"]}}}},"words":[{"verbatim":"Salix","normalized":"Salix","wordType":"GENUS","start":0,"end":5},{"verbatim":"x","normalized":"×","wordType":"HYBRID_CHAR","start":6,"end":7},{"verbatim":"capreola","normalized":"capreola","wordType":"SPECIES","start":8,"end":16},{"verbatim":"Andersson","normalized":"Andersson","wordType":"AUTHOR_WORD","start":17,"end":26}],"id":"5780473c-18ac-5386-9c3a-f74bbe426624","parserVersion":"test_version"}
 ```
 
+Name: x Abacopterella x altifrons T.E.Almeida & A.R.Field
+
+Canonical: × Abacopterella × altifrons
+
+Authorship: T. E. Almeida & A. R. Field
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Named hybrid"}],"verbatim":"x Abacopterella x altifrons T.E.Almeida \u0026 A.R.Field","normalized":"× Abacopterella × altifrons T. E. Almeida \u0026 A. R. Field","canonical":{"stemmed":"Abacopterella altifrons","simple":"Abacopterella altifrons","full":"× Abacopterella × altifrons"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"T.E.Almeida \u0026 A.R.Field","normalized":"T. E. Almeida \u0026 A. R. Field","authors":["T. E. Almeida","A. R. Field"],"originalAuth":{"authors":["T. E. Almeida","A. R. Field"]}},"hybrid":"NAMED_HYBRID","details":{"species":{"genus":"Abacopterella","species":"altifrons","authorship":{"verbatim":"T.E.Almeida \u0026 A.R.Field","normalized":"T. E. Almeida \u0026 A. R. Field","authors":["T. E. Almeida","A. R. Field"],"originalAuth":{"authors":["T. E. Almeida","A. R. Field"]}}}},"words":[{"verbatim":"x","normalized":"×","wordType":"HYBRID_CHAR","start":0,"end":1},{"verbatim":"Abacopterella","normalized":"Abacopterella","wordType":"GENUS","start":2,"end":15},{"verbatim":"x","normalized":"×","wordType":"HYBRID_CHAR","start":16,"end":17},{"verbatim":"altifrons","normalized":"altifrons","wordType":"SPECIES","start":18,"end":27},{"verbatim":"T.","normalized":"T.","wordType":"AUTHOR_WORD","start":28,"end":30},{"verbatim":"E.","normalized":"E.","wordType":"AUTHOR_WORD","start":30,"end":32},{"verbatim":"Almeida","normalized":"Almeida","wordType":"AUTHOR_WORD","start":32,"end":39},{"verbatim":"A.","normalized":"A.","wordType":"AUTHOR_WORD","start":42,"end":44},{"verbatim":"R.","normalized":"R.","wordType":"AUTHOR_WORD","start":44,"end":46},{"verbatim":"Field","normalized":"Field","wordType":"AUTHOR_WORD","start":46,"end":51}],"id":"37a0b362-f60f-506d-8db0-95fbba0b9fde","parserVersion":"test_version"}
+```
+
 ### Hybrid formulae
 
 Name: Stanhopea tigrina Bateman ex Lindl. x S. ecornuta Lem.
