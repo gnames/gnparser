@@ -28,7 +28,7 @@ func codeFlag(cmd *cobra.Command) {
 		return
 	}
 	code := nomcode.New(s)
-	if code == nomcode.Unknown {
+	if code == nomcode.Unknown && s != "any" {
 		slog.Warn("Cannot determine nomenclatural-code from input", "input", s)
 	}
 	opts = append(opts, gnparser.OptCode(code))
