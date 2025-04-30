@@ -5,7 +5,7 @@ import (
 	"runtime"
 
 	"github.com/gnames/gnfmt"
-	"github.com/gnames/gnparser/ent/nomcode"
+	"github.com/gnames/gnlib/ent/nomcode"
 )
 
 // Config keeps settings that might affect how parsing is done,

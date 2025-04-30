@@ -5,8 +5,8 @@ import (
 	"strings"
 	"unicode"
 
+	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/gnames/gnparser/ent/internal/preprocess"
-	"github.com/gnames/gnparser/ent/nomcode"
 
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/ent/str"
@@ -110,13 +110,13 @@ func (p *Engine) newName(n *node32) nameData {
 		p.hybrid = &annot
 		name = p.newNamedSpeciesHybridNode(n)
 	case ruleGraftChimeraFormula:
-		if p.code == nomcode.Cultivar {
+		if p.code == nomcode.Cultivars {
 			annot = parsed.GraftChimeraFormulaAnnot
 			p.hybrid = &annot
 			name = p.newGraftChimeraFormulaNode(n)
 		}
 	case ruleNamedGenusGraftChimera:
-		if p.code == nomcode.Cultivar {
+		if p.code == nomcode.Cultivars {
 			annot = parsed.NamedGraftChimeraAnnot
 			p.hybrid = &annot
 			name = p.newNamedGenusGraftChimeraNode(n)
@@ -447,7 +447,7 @@ func (p *Engine) botanicalUninomial(n *node32) bool {
 		return false
 	}
 	w := p.newWordNode(n, parsed.AuthorWordType)
-	if p.code == nomcode.Botanical || p.code == nomcode.Cultivar {
+	if p.code == nomcode.Botanical || p.code == nomcode.Cultivars {
 		return true
 	}
 
@@ -698,7 +698,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		case ruleSubgenus:
 			w := p.newWordNode(n.up, parsed.SubgenusType)
 			switch p.code {
-			case nomcode.Botanical, nomcode.Cultivar:
+			case nomcode.Botanical, nomcode.Cultivars:
 			// Botanical code has author of genus here
 			case nomcode.Zoological:
 				sg = w
@@ -717,7 +717,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 			infs = p.newInfraspeciesGroup(n)
 		case ruleCultivar, ruleCultivarRecursive:
 			switch p.code {
-			case nomcode.Cultivar:
+			case nomcode.Cultivars:
 				cultivar = p.newCultivarEpithetNode(n, parsed.CultivarType)
 			default:
 				p.tail = string(p.buffer[n.begin-2 : len(p.buffer)-1])
@@ -726,7 +726,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		n = n.next
 	}
 	p.cardinality = 2 + len(infs)
-	if cultivar != nil && p.code == nomcode.Cultivar {
+	if cultivar != nil && p.code == nomcode.Cultivars {
 		p.cultivar = true
 		p.cardinality += 1
 	}
@@ -879,7 +879,7 @@ func (p *Engine) newUninomialNode(n *node32) *uninomialNode {
 		CultivarEpithet: cultivar,
 	}
 	p.cardinality = 1
-	if cultivar != nil && p.code == nomcode.Cultivar {
+	if cultivar != nil && p.code == nomcode.Cultivars {
 		p.cultivar = true
 		p.cardinality += 1
 	}
@@ -1377,7 +1377,7 @@ func (p *Engine) newCultivarEpithetNode(n *node32, wt parsed.WordType) *cultivar
 		Start:      int(t.begin),
 		End:        int(t.end),
 	}
-	cult := p.code == nomcode.Cultivar
+	cult := p.code == nomcode.Cultivars
 	if !cult {
 		p.tail = " " + string(p.buffer[n.begin-1:len(p.buffer)-1])
 		return nil

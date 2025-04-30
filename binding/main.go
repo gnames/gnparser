@@ -12,8 +12,8 @@ import (
 	"unsafe"
 
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/ent/nomcode"
 )
 
 // ParseToString function takes a name-string, desired format, a withDetails

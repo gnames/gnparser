@@ -6,8 +6,8 @@ import (
 	"os"
 
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/spf13/cobra"
 )
 
@@ -115,7 +115,7 @@ func withDetailsFlag(cmd *cobra.Command) {
 func withEnableCultivarsFlag(cmd *cobra.Command) {
 	b, _ := cmd.Flags().GetBool("cultivar")
 	if b {
-		opts = append(opts, gnparser.OptCode(nomcode.Cultivar))
+		opts = append(opts, gnparser.OptCode(nomcode.Cultivars))
 	}
 }
 

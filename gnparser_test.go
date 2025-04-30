@@ -9,8 +9,8 @@ import (
 	"testing"
 
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnsys"
 	"github.com/stretchr/testify/assert"
@@ -56,7 +56,7 @@ func TestPool(t *testing.T) {
 func TestParseNameCultivars(t *testing.T) {
 	cfg := gnparser.NewConfig(
 		gnparser.OptWithDetails(true),
-		gnparser.OptCode(nomcode.Cultivar),
+		gnparser.OptCode(nomcode.Cultivars),
 		gnparser.OptFormat(gnfmt.CompactJSON),
 		gnparser.OptIsTest(true),
 	)
@@ -167,7 +167,7 @@ func TestCultivar(t *testing.T) {
 	}{
 		{"any", `Spathiphyllum Schott “Mauna Loa”`, nomcode.Unknown, 4, true},
 		{"bot", `Spathiphyllum Schott “Mauna Loa”`, nomcode.Botanical, 4, true},
-		{"cult", `Spathiphyllum Schott “Mauna Loa”`, nomcode.Cultivar, 1, false},
+		{"cult", `Spathiphyllum Schott “Mauna Loa”`, nomcode.Cultivars, 1, false},
 	}
 
 	for _, v := range tests {
@@ -198,11 +198,11 @@ func TestNomCode(t *testing.T) {
 		{"bot3", "Aus (Bus) cus", "", nomcode.Botanical, 1, false},
 		{"bot4", "Aus (Zubcova) cus", "", nomcode.Botanical, 1, false},
 		{"bot5", "Aus (Bus) cus \"Black Widow\"", "", nomcode.Botanical, 4, true},
-		{"cult1", "Aus (Bus)", "", nomcode.Cultivar, 1, false},
-		{"cult2", "Aus (Zubcova)", "", nomcode.Cultivar, 1, false},
-		{"cult3", "Aus (Bus) cus", "", nomcode.Cultivar, 1, false},
-		{"cult4", "Aus (Zubcova) cus", "", nomcode.Cultivar, 1, false},
-		{"cult5", "Aus (Bus) cus \"Black Widow\"", "", nomcode.Cultivar, 1, false},
+		{"cult1", "Aus (Bus)", "", nomcode.Cultivars, 1, false},
+		{"cult2", "Aus (Zubcova)", "", nomcode.Cultivars, 1, false},
+		{"cult3", "Aus (Bus) cus", "", nomcode.Cultivars, 1, false},
+		{"cult4", "Aus (Zubcova) cus", "", nomcode.Cultivars, 1, false},
+		{"cult5", "Aus (Bus) cus \"Black Widow\"", "", nomcode.Cultivars, 1, false},
 		{"zoo1", "Aus (Bus)", "Bus", nomcode.Zoological, 2, false},
 		{"zoo2", "Aus (Zubcova)", "Zubcova", nomcode.Zoological, 2, false},
 		{"zoo3", "Aus (Bus) cus", "Bus", nomcode.Zoological, 1, false},

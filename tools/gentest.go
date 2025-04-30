@@ -13,8 +13,8 @@ import (
 	"strings"
 
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 )
 
@@ -47,7 +47,7 @@ func newTestFile(file string) error {
 	sc := bufio.NewScanner(f)
 	opts := []gnparser.Option{gnparser.OptIsTest(true), gnparser.OptWithDetails(true)}
 	if file == "test_data_cultivars" {
-		opts = append(opts, gnparser.OptCode(nomcode.Cultivar))
+		opts = append(opts, gnparser.OptCode(nomcode.Cultivars))
 	}
 	cfg := gnparser.NewConfig(opts...)
 	gnp := gnparser.New(cfg)

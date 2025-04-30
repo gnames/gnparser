@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -146,7 +146,7 @@ func parseNamesPOST(gnps GNparserService) func(echo.Context) error {
 func getCode(codeStr string, cultivars bool) nomcode.Code {
 	code := nomcode.Unknown
 	if cultivars {
-		code = nomcode.Cultivar
+		code = nomcode.Cultivars
 	}
 	code2 := nomcode.New(codeStr)
 	if code2 == nomcode.Unknown {

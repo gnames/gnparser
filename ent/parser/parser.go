@@ -6,8 +6,8 @@ import (
 	"bytes"
 	"fmt"
 
+	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/gnames/gnparser/ent/internal/preprocess"
-	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/ent/str"
 )

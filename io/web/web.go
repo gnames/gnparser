@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/gnames/gnparser"
-	"github.com/gnames/gnparser/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/labstack/echo/v4"
 )
@@ -150,7 +150,7 @@ func parsingResults(
 	}
 
 	if data.WithCultivars {
-		opts = append(opts, gnparser.OptCode(nomcode.Cultivar))
+		opts = append(opts, gnparser.OptCode(nomcode.Cultivars))
 	}
 
 	code := nomcode.New(data.Code)
