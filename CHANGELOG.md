@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## [v1.11.8] - 2025-07-21 Mon
+
+- Add [#288] - add more authors' rules.
+
+## [v1.11.7] - 2025-04-30 Wed
+
+- Add: move nomenclatural code functionality to gnlib.
+
 ## [v1.11.6] - 2025-04-01 Tue
 
 - Add [#287]: parse names with genus and species hybrid.
@@ -524,6 +532,8 @@
 
 This document follows [changelog guidelines]
 
+[v1.11.8]: https://github.com/gnames/gnparser/compare/v1.11.7...v1.11.8
+[v1.11.7]: https://github.com/gnames/gnparser/compare/v1.11.6...v1.11.7
 [v1.11.6]: https://github.com/gnames/gnparser/compare/v1.11.5...v1.11.6
 [v1.11.5]: https://github.com/gnames/gnparser/compare/v1.11.4...v1.11.5
 [v1.11.4]: https://github.com/gnames/gnparser/compare/v1.11.3...v1.11.4

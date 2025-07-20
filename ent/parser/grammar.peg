@@ -238,7 +238,7 @@ AuthorWord <- !( HybridChar / "bold:") (AuthorDashInitials / AuthorWord1 /
 
 AuthorEtAl <- 'arg.' / 'et al.{?}' / ('et' / '&') ' al' '.'?
 
-AuthorWord1 <- 'duPont' / 'degli' / 'Arango y Molina'
+AuthorWord1 <- 'duPont' / 'degli' / 'Arango y Molina' 
 
 AuthorWord2 <- (AuthorWord3 / AuthorWord4) Dash 
   (AuthorWordSoft / AuthorInitial) ( Dash (AuthorWordSoft / AuthorInitial))?
@@ -274,17 +274,17 @@ AuthorPrefix <- AuthorPrefix1 / AuthorPrefix2
 
 AuthorPrefix2 <- ('v.' (_? 'd.')?) / Apostrophe 't'
 
-AuthorPrefix1 <- ('ab' / 'af' / 'bis' / 'da' / 'der' / 'des' / 'den' / 'dem' /
+AuthorPrefix1 <- ('ab' / 'af' / 'al' / 'bis' / 'da' / 'der' / 'des' / 'den' / 'dem' /
   'della' / 'dela' / 'delle' / 'del' / 'de los' / 'de' / 'di' / 'dos' /
-  'du' / 'do' / 'el' / 'la' / 'le' / 'ten' / 'ter' / 'van' / 'ver' /
-  'd' Apostrophe / 'in' Apostrophe 't' / 'zur' / 'zu' /
+  'du' / 'do' / 'el' / 'e' / 'in' Apostrophe 't' / 'i' / 'la' / 'le' / 'ten' / 
+  'ter' / 'van' / 'ver' / 'd' Apostrophe / 'zur' / 'zu' /
   ('von' (_ ('d.'/ 'dem'))?) / ('v' (_'d')?)) &_
 
 AuthorUpperChar <- UpperASCII / MiscodedChar /
-  [ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝĆČĎİĶĹĺĽľŁłŅŌŐŒŘŚŜŞŠŸŹŻŽƒǾȘȚ]
+  [ÀÁÂÃÄÅÆĆČÇĐĎÈÉÊËÌÍÎÏİĶĹĽľŁłĺÑŅÒÓÔÕÖØŌŐŒŘŚŜŞŠÙÚÛÜÝŸŹŻŽƒǾȘȚ]
 
 AuthorLowerChar <- LowerASCII / MiscodedChar / Apostrophe /
-  [àáâãäåæçèéêëìíîïðñòóóôõöøùúûüýÿāăąćĉčďđēĕėęěğīĭİıĺľłńņňŏőœŕřśşšţťũūŭůűźżžſǎǔǧșțȳß]
+  [àáâãäåăæçèéêëếìíîïðñòóóôõöøùúûüýÿāăąćĉčďđēĕėęěğīĭİıĺľłńņňŏőœŕřśşšţťũūŭůűźżžſǎǔǧșțȳß]
 
 Year <- YearRange / YearApprox / YearWithParens / YearWithPage / YearWithDot /
   YearWithChar / YearNum
