@@ -5,6 +5,7 @@
 <!-- vim-markdown-toc GFM -->
 
 * [Introduction](#introduction)
+  * [Test Structure](#test-structure)
 * [Tests](#tests)
   * [Uninomials without authorship](#uninomials-without-authorship)
   * [Uninomials with authorship](#uninomials-with-authorship)
@@ -29,7 +30,7 @@
   * [Hybrid formulae](#hybrid-formulae)
   * [Graft-chimeras](#graft-chimeras)
   * [Genus with hyphen (allowed by ICN)](#genus-with-hyphen-allowed-by-icn)
-  * [Misspeled name](#misspeled-name)
+  * [Misspelled name](#misspelled-name)
   * [A 'basionym' author in parenthesis (basionym is an ICN term)](#a-basionym-author-in-parenthesis-basionym-is-an-icn-term)
   * [Infrageneric epithets (ICZN)](#infrageneric-epithets-iczn)
   * [Names with multiple dashes in specific epithet](#names-with-multiple-dashes-in-specific-epithet)
@@ -50,18 +51,25 @@
 
 ## Introduction
 
-This test consists of a line-delimited input (scientific name), detailed
-parsed output in JSON format and simplified parsed output in
-pipe-delimited format
+This test suite validates scientific name parsing through structured test
+cases. Each test case provides an input scientific name with expected parsing
+results in JSON format.
 
-Test Structure
+### Test Structure
 
-The first line in every test is a scientific name to parse
-The second line corresponds to detailed JSON output from the gnparser
-The third line corresponds to pipe-delimited "simple" output. Simple output
-consists of name-string UUID v5, verbatim name-string, canonical form without
-ranks, canonical form with ranks, authorship of the most junior clade, year,
-parsing quality number
+Each test case follows a four-part format:
+
+1. **Name:** The scientific name to be parsed (input)
+2. **Canonical:** Expected canonical form of the name
+3. **Authorship:** Expected authorship information
+4. **JSON Block:** Detailed parsing results from gnparser containing:
+   - Parsing status and quality score
+   - Verbatim and normalized name forms
+   - Canonical forms (stemmed, simple, full)
+   - Cardinality and taxonomic rank
+   - Detailed authorship breakdown
+   - Word-by-word parsing analysis
+   - Unique name-string identifier
 
 [Parsing quality](https://github.com/gnames/gnparser/quality.md)
 
@@ -3162,7 +3170,7 @@ Authorship:
 {"parsed":false,"quality":0,"verbatim":"Tsugo-piceo-piceo-picea × crassifolia","cardinality":0,"id":"0ab8c5ed-b224-5c17-9957-298a80cc07be","parserVersion":"test_version"}
 ```
 
-### Misspeled name
+### Misspelled name
 
 Name: Ambrysus-Stål, 1862
 
