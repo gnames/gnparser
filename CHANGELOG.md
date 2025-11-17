@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## [v1.11.9] - 2025-11-17 Sun
+## [v1.11.9] - 2025-11-17 Mon 
 
 * Add: Improve test data documentation and fix typo.
 * Add: justfile for build automation with `just` command runner.
