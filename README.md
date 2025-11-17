@@ -132,18 +132,18 @@ more efficient JSON conversion.
 
 ## Features
 
-- Fastest parser ever.
-- Very easy to install, just placing executable somewhere in the PATH is
+* Fastest parser ever.
+* Very easy to install, just placing executable somewhere in the PATH is
   sufficient.
-- Extracts all elements from a name, not only canonical forms.
-- Works with very complex scientific names, including hybrid formulas.
-- Includes RESTful service and interactive web interface.
-- Can run as a command line application.
-- Can be used as a library in Go projects.
-- Can be scaled to many CPUs and computers (if 250 millions names an
+* Extracts all elements from a name, not only canonical forms.
+* Works with very complex scientific names, including hybrid formulas.
+* Includes RESTful service and interactive web interface.
+* Can run as a command line application.
+* Can be used as a library in Go projects.
+* Can be scaled to many CPUs and computers (if 250 millions names an
   hour is not enough).
-- Calculates a stable UUID version 5 ID from the content of a string.
-- Provides C-binding to incorporate parser to other [languages][biodiversity].
+* Calculates a stable UUID version 5 ID from the content of a string.
+* Provides C-binding to incorporate parser to other [languages][biodiversity].
 
 ## Use Cases
 
@@ -153,12 +153,12 @@ Canonical forms of a scientific name are the latinized components without
 annotations, authors or dates. They are great for matching lexical variants
 of names. Three versions of canonical forms are included:
 
-| Canonical | Example                         | Use                                                    |
-| :-------- | :------------------------------ | :----------------------------------------------------- |
-| -         | _Spiraea alba var. alba_ Du Roi | Best for disambiguation, but has many lexical variants |
-| Full      | _Spiraea alba var. alba_        | Presentation, infraspecies disambiguation              |
-| Simple    | _Spiraea alba alba_             | Name matching, presentation                            |
-| Stem      | _Spiraea alb alb_               | Best for matching fem./masc. inconsistencies           |
+| Canonical | Example | Use |
+| :-------- | :------ | :-- |
+| - | _Spiraea alba var. alba_ Du Roi | Best for disambiguation, but has many lexical variants |
+| Full | _Spiraea alba var. alba_ | Presentation, infraspecies disambiguation |
+| Simple | _Spiraea alba alba_ | Name matching, presentation |
+| Stem | _Spiraea alb alb_ | Best for matching fem./masc. inconsistencies |
 
 The `canonicalName -> full` is good for presentation, as it keeps more
 details.
@@ -196,10 +196,10 @@ CSV/TSV output has the following fields:
 Usually scientific names can be broken into groups according to the number of
 elements:
 
-- Uninomial
-- Binomial
-- Trinomial
-- Quadrinomial
+* Uninomial
+* Binomial
+* Trinomial
+* Quadrinomial
 
 The output of `GNparser` contains a `Cardinality` field that tells, when
 possible, how many elements are detected in the name.
@@ -237,13 +237,13 @@ If there are problems with parsing a name, parser generates `qualityWarnings`
 messages and lowers [parsing `quality`][quality] of the name. Quality values
 mean the following:
 
-- `"quality": 1` - No problems were detected.
-- `"quality": 2` - There were small problems, normalized result
+* `"quality": 1` - No problems were detected.
+* `"quality": 2` - There were small problems, normalized result
   should still be good.
-- `"quality": 3` - There are some significant problems with parsing.
-- `"quality": 4` - There were serious problems with the name, and the
+* `"quality": 3` - There are some significant problems with parsing.
+* `"quality": 4` - There were serious problems with the name, and the
   final result is rather doubtful.
-- `"quality": 0` - A string could not be recognized as a scientific
+* `"quality": 0` - A string could not be recognized as a scientific
   name and parsing failed.
 
 ### Creating stable GUIDs for name-strings
@@ -264,7 +264,7 @@ important to keep original spelling of the canonical forms or authorship.
 The `words` field attaches semantic meaning to every word in the
 original name-string and allows users to create canonical forms or other
 combinations using the original verbatim spelling of the words. Each element
-in `words` contains 3 parts:
+in `words` contains 4 parts:
 
 1. verbatim value of a word
 2. semantic meaning of the word
@@ -280,7 +280,7 @@ gnparser -d "Pardosa moesta Banks, 1892"
 
 ## Tutorials
 
-- Parsing names from CSV files [tutorial][tutGN]
+* Parsing names from CSV files [tutorial][tutGN]
 
 ## Installation
 
@@ -293,7 +293,7 @@ placing it in your `PATH`.
 ### Install with Homebrew (Mac OS X, Linux)
 
 [Homebrew] is a packaging system originally made for Mac OS X. You can use it
-now for Mac, Linux, or Windows X WSL (Windows susbsystem for Linux).
+now for Mac, Linux, or Windows X WSL (Windows subsystem for Linux).
 
 1. Install Homebrew according to their [instructions][Homebrew].
 
@@ -324,8 +324,8 @@ If you're using Mac OS, you might encounter a security warning that prevents
 1. Locate the Security Settings: Go to `System Settings -> Privacy & Security`
    and scroll down to the `Security` section.
 
-1. Allow `gnparser`: You should see a message saying `"gnparser" was blocked...`.
-   Click the `Allow Anyway` button next to it.
+1. Allow `gnparser`: You should see a message saying
+   `"gnparser" was blocked...`. Click the `Allow Anyway` button next to it.
 
 1. Run gnparser again: Try running gnparser from your terminal. This time,
    a dialog box will pop up with an `Open Anyway` button.
@@ -363,13 +363,13 @@ If you have Go installed on your computer use
 go get -u github.com/gnames/gnparser/gnparser
 ```
 
-For development install gnu make and use the following:
+For development install [just] and use the following:
 
 ```bash
 git clone https://github.com/gnames/gnparser.git
 cd gnparser
-make tools
-make install
+just tools
+just install
 ```
 
 You do need your `PATH` to include `$HOME/go/bin`
@@ -403,7 +403,7 @@ CSV/TSV formats.
 
 `--diaereses -D`
 : Preserves diaereses, e.g. `Leptochloöpsis virgata`. The stemmed
-canonical name not include diaereses.
+canonical name does not include diaereses.
 
 `--format -f`
 : Specifies the output format: `csv`, `tsv`, `compact`, or `pretty`.
@@ -570,13 +570,13 @@ gnparser -p 9000
 Opening a browser with this address will now show an interactive interface
 to parser. API calls would be accessible on `http://0.0.0.0:9000/api/v1/`.
 
-The api is and schema are described fully using [OpenAPI] specification.
+The API and schema are described fully using [OpenAPI] specification.
 
 Make sure to CGI-escape name-strings for GET requests. An '&' character
 needs to be converted to '%26'
 
-- `GET /api?q=Aus+bus|Aus+bus+D.+%26+M.,+1870`
-- `POST /api` with request body of JSON array of strings
+* `GET /api?q=Aus+bus|Aus+bus+D.+%26+M.,+1870`
+* `POST /api` with request body of JSON array of strings
 
 ```ruby
 require 'json'
@@ -598,13 +598,13 @@ There are several ways to enable logging from a web service.
 
 The following enables web-access logs to be printed to STDERR
 
-```
+```bash
 gnparser -p 80 --web-logs
 ```
 
 ### Use as a Docker image
 
-You need to have [docker runtime installed](https://docs.docker.com/install/)
+You need to have [docker runtime installed][docker-install]
 on your computer for these examples to work.
 
 ```bash
@@ -649,10 +649,10 @@ C Application Binary Interface. For example such languages include
 Python, Ruby, Rust, C, C++, Java (via JNI).
 
 To compile `GNparser` shared library for your platform/operating system of
-choice you need `GNU make` and `GNU gcc compiler` installed:
+choice you need [just] and `GNU gcc compiler` installed:
 
 ```bash
-make clib
+just clib
 cd binding
 cp libgnparser* /path/to/some/project
 ```
@@ -681,12 +681,12 @@ provide a warning "Ambiguity: ICN author or subgenus".
 
 ## Authors
 
-- [Dmitry Mozzherin]
+* [Dmitry Mozzherin]
 
 ## Contributors
 
-- [Toby Marsden]
-- [Hernan Lucas Pereira]
+* [Toby Marsden]
+* [Hernan Lucas Pereira]
 
 If you want to submit a bug or add a feature read
 [CONTRIBUTING] file.
@@ -706,8 +706,8 @@ Accessed 2019-04-10
 Released under [MIT license]
 
 [CONTRIBUTING]: https://github.com/gnames/gnparser/blob/master/CONTRIBUTING.md
+[docker-install]: https://docs.docker.com/install/
 [Dmitry Mozzherin]: https://github.com/dimus
-[Geoff Ower]: https://github.com/gdower
 [Toby Marsden]: https://github.com/tobymarsden
 [Hernan Lucas Pereira]: https://github.com/LocoDelAssembly
 [Homebrew]: https://brew.sh/
@@ -716,13 +716,10 @@ Released under [MIT license]
 [Schinke R et al (1996)]: https://caio.ueberalles.net/a_stemming_algorithm_for_latin_text_databases-schinke_et_al.pdf
 [Zenodo DOI]: https://zenodo.org/badge/latestdoi/320967495
 [biodiversity]: https://github.com/GlobalNamesArchitecture/biodiversity
-[export file]: https://github.com/gnames/gnparser/blob/master/binding/main.go
 [gna]: http://globalnames.org
 [node-gnparser]: https://github.com/amazingplants/node-gnparser
 [OpenAPI]: https://apidoc.globalnames.org/gnparser
-[gnparser ruby]: https://gitlab.com/gnames/gnparser_rb
 [gnparser-scala]: https://github.com/GlobalNamesArchitecture/gnparser
-[gnparser.proto]: https://github.com/gnames/gnparser/blob/master/pb/gnparser.proto
 [parser-web]: https://parser.globalnames.org
 [peg]: https://github.com/pointlander/peg
 [quality]: https://github.com/gnames/gnparser/blob/master/quality.md

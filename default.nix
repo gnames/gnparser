@@ -1,13 +1,24 @@
-{ lib, buildGoModule, fetchFromGitHub, stdenv, glibc }:
-
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  stdenv,
+  glibc,
+}:
 buildGoModule rec {
   pname = "gnparser";
-  version = "v1.6.6";
-  date = "2022-05-17";
+  version = "v1.11.9";
+  date = "2025-11-17";
 
-  src = ./.;
+  src = lib.cleanSourceWith {
+    filter = name: type: let
+      baseName = baseNameOf (toString name);
+    in
+      !(lib.hasInfix "/vendor" name || baseName == "vendor");
+    src = lib.cleanSource ./.;
+  };
 
-  vendorSha256 = "sha256-TY/vIgtu/GeVKJ1AonMMxCvIbK3ATc2jp9Zqq1YQ9Mg=";
+  vendorHash = "sha256-hPqKw7f8BzstznkqdiGm83sTIMYN3gcDWCczR9DpT1Y=";
 
   buildInputs = [
     stdenv
@@ -17,6 +28,8 @@ buildGoModule rec {
   doChecks = false;
 
   subPackages = "gnparser";
+
+  buildFlags = ["-mod=readonly"];
 
   ldflags = [
     "-s"
@@ -32,6 +45,6 @@ buildGoModule rec {
     description = "Parser for bio scientific names";
     homepage = "https://github.com/gnames/gnparser";
     license = licenses.mit;
-    maintainers = with maintainers; [ "dimus" ];
+    maintainers = with maintainers; ["dimus"];
   };
 }
