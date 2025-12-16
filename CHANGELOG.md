@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.11.10] - 2025-12-16 Tue
+
+* Fix [#291]: prefix `los` of an author is not parsed as part of canonical form.
+
 ## [v1.11.9] - 2025-11-17 Mon 
 
 * Add: Improve test data documentation and fix typo.
