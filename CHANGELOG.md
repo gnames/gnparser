@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## [v1.12.1] - 2025-12-19 Fri
+
+Add: virus code for web UI
+
+## [v1.12.0] - 2025-12-19 Fri
+
+* Add[#290]: support modern virus nomenclature (ICTV/ICVCN)
+
 ## [v1.11.10] - 2025-12-16 Tue
 
 * Fix [#291]: prefix `los` of an author is not parsed as part of canonical form.
@@ -548,6 +556,9 @@
 
 This document follows [changelog guidelines]
 
+[v1.12.1]: https://github.com/gnames/gnparser/compare/v1.12.0...v1.12.1
+[v1.12.0]: https://github.com/gnames/gnparser/compare/v1.11.10...v1.12.0
+[v1.11.10]: https://github.com/gnames/gnparser/compare/v1.11.9...v1.11.10
 [v1.11.9]: https://github.com/gnames/gnparser/compare/v1.11.8...v1.11.9
 [v1.11.8]: https://github.com/gnames/gnparser/compare/v1.11.7...v1.11.8
 [v1.11.7]: https://github.com/gnames/gnparser/compare/v1.11.6...v1.11.7
@@ -634,6 +645,9 @@ This document follows [changelog guidelines]
 [v0.7.0]: https://github.com/gnames/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
+[#291]: https://github.com/gnames/gnparser/issues/288
+[#290]: https://github.com/gnames/gnparser/issues/288
+[#289]: https://github.com/gnames/gnparser/issues/288
 [#288]: https://github.com/gnames/gnparser/issues/288
 [#287]: https://github.com/gnames/gnparser/issues/287
 [#286]: https://github.com/gnames/gnparser/issues/286
