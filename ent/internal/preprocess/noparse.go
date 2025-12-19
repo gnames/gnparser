@@ -5,7 +5,7 @@ package preprocess
 func NoParse(data []byte) bool {
 
   
-//line noparse.go:9
+//line noparse.go:7
 const noparse_start int = 0
 const noparse_first_final int = 86
 const noparse_error int = -1
@@ -26,12 +26,12 @@ const noparse_en_main int = 0
 
 
   
-//line noparse.go:30
+//line noparse.go:26
 	{
 	cs = noparse_start
 	}
 
-//line noparse.go:35
+//line noparse.go:30
 	{
 	if p == pe {
 		goto _test_eof
@@ -532,7 +532,7 @@ match = true
 			goto _test_eof86
 		}
 	st_case_86:
-//line noparse.go:536
+//line noparse.go:531
 		switch data[p] {
 		case 73:
 			goto st4
@@ -705,7 +705,7 @@ match = true
 			goto _test_eof87
 		}
 	st_case_87:
-//line noparse.go:709
+//line noparse.go:704
 		switch data[p] {
 		case 32:
 			goto tr20
@@ -888,7 +888,7 @@ match = true
 			goto _test_eof88
 		}
 	st_case_88:
-//line noparse.go:892
+//line noparse.go:887
 		switch data[p] {
 		case 32:
 			goto st2
@@ -2033,7 +2033,7 @@ match = true
 			goto _test_eof89
 		}
 	st_case_89:
-//line noparse.go:2037
+//line noparse.go:2032
 		switch data[p] {
 		case 32:
 			goto st2
@@ -3224,7 +3224,7 @@ match = true
 		case 8, 9, 10, 11, 12, 16, 52, 53, 64, 65, 66, 67, 68, 86, 87:
 //line noparse.rl:20
 match = true
-//line noparse.go:3228
+//line noparse.go:3223
 		}
 	}
 

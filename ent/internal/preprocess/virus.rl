@@ -18,7 +18,7 @@ func IsVirus(data []byte) bool {
     action setMatch {match = true}
 
     vir_str = (alnum* "virus"i "es"i?) |
-              'ICTV' | 'Ictv' |
+              'ICTV' | 'Ictv' | 
               ("cyano"i | "bacterio"i | "viro"i)? "phage"i "s"i? |
               ("vector"i | "viroid"i | "particle"i | "prion"i) "s"i? |
               alnum* "npv"i |

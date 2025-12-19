@@ -54,6 +54,9 @@ peg:
     cd ent/internal/preparser && \
     peg grammar.peg && \
     goimports -w grammar.peg.go
+    cd ent/icvcn && \
+    peg grammar.peg && \
+    goimports -w grammar.peg.go
 
 # Generate Ragel state machines
 ragel:

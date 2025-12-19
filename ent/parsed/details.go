@@ -79,6 +79,26 @@ type Approximation struct {
 	Ignored string `json:"ignored,omitempty"`
 }
 
+// UninomialICVCN are details for names higher than species
+// according to modern ICVCN nomenclature.
+type UninomialICVCN struct {
+	// Value is the name of the uninomial.
+	Value string `json:"uninomial"`
+	// Rank is the taxonomic rank of the ICVCN name.
+	Rank string `json:"rank"`
+}
+
+// SpeciesICVCN are details for species names according to
+// modern ICVCN nomenclature.
+type SpeciesICVCN struct {
+	// Genus is the value of a genus in a binomial ICVCN name.
+	Genus string `json:"genus"`
+	// Species is the value of a species epithet in a binomial ICVCN name.
+	Species string `json:"species"`
+	// Rank is the taxonomic rank of the ICVCN name.
+	Rank string `json:"rank"`
+}
+
 // DetailsHybridFormula are details for a hybrid formula names.
 type DetailsHybridFormula struct {
 	HybridFormula []Details `json:"hybridFormula"`
@@ -139,3 +159,21 @@ type DetailsApproximation struct {
 
 // isDetails implements Details interface.
 func (DetailsApproximation) isDetails() {}
+
+// DetailsUninomialICVCN are details for	ICVCN uninomials.
+type DetailsUninomialICVCN struct {
+	// UninomialICVCN details.
+	UninomialICVCN UninomialICVCN `json:"uninomialICVCN"`
+}
+
+// isDetails implements Details interface.
+func (DetailsUninomialICVCN) isDetails() {}
+
+// DetailsSpeciesICVCN are details for ICVCN species.
+type DetailsSpeciesICVCN struct {
+	// SpeciesICVCN details.
+	SpeciesICVCN SpeciesICVCN `json:"speciesICVCN"`
+}
+
+// isDetails implements Details interface.
+func (DetailsSpeciesICVCN) isDetails() {}

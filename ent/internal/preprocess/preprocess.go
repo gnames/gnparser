@@ -164,7 +164,7 @@ func Preprocess(ppr *preparser.PreParser, bs []byte) *Preprocessor {
 	if !isException(words, VirusException) {
 		pr.Virus = IsVirus(bs[0:i])
 	}
-	if pr.Virus {
+	if pr.Virus && !isVirusBinomial(string(bs)) {
 		pr.NoParse = true
 		return pr
 	}
@@ -295,4 +295,22 @@ func UnderscoreToSpace(bs []byte) (bool, error) {
 		}
 	}
 	return true, nil
+}
+
+func isVirusBinomial(s string) bool {
+	words := strings.Fields(s)
+	if len(words) == 0 || len(words) > 2 {
+		return false
+	}
+	firstWord := words[0]
+	if !unicode.IsUpper(rune(firstWord[0])) {
+		return false
+	}
+	suffixes := []string{"virus", "viroid", "viriform", "satellite"}
+	for _, v := range suffixes {
+		if strings.HasSuffix(firstWord, v) {
+			return true
+		}
+	}
+	return false
 }

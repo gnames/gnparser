@@ -1,0 +1,87 @@
+package icvcn
+
+type Parser Peg {}
+
+VirusName <- (Species / Uninomial) _? END
+
+Species <- Genus _ SpeciesEpithet
+
+SpeciesEpithet <- MixedCaseEpithet / LowercaseEpithetNum / LowercaseEpithet
+
+MixedCaseEpithet <- (CapsLetter / Letter / Num / Dash)+
+
+LowercaseEpithetNum <- LowercaseEpithet Num
+
+LowercaseEpithet <- Letter+ (Dash? Letter+)*
+
+Uninomial <- Genus / Subfamily / Family / Suborder / Order / Subclass /
+             Class / Subphylum / Phylum / Subkingdom / Kingdom /
+             Subrealm / Realm 
+             
+Genus <- CapsLetter (!GenusSuffix Letter)+ GenusSuffix
+
+GenusSuffix <- ('virus' / 'viroid' / 'satellite' / 'viriform') !Letter
+
+Subfamily <- CapsLetter (!SubfamilySuffix Letter)+ SubfamilySuffix
+
+SubfamilySuffix <- ('virinae' / 'viroidinae' / 'satellitinae' / 'viriforminae') !Letter
+
+Family <- CapsLetter (!FamilySuffix Letter)+ FamilySuffix
+
+FamilySuffix <- ('viridae' / 'viroidae' / 'satellitidae' / 'viriformidae') !Letter
+
+Suborder <- CapsLetter (!SuborderSuffix Letter)+ SuborderSuffix
+
+SuborderSuffix <- ('virineae' / 'viroidineae' / 'satellitineae' / 'viriformineae') !Letter
+
+Order <- CapsLetter (!OrderSuffix Letter)+ OrderSuffix
+
+OrderSuffix <- ('virales' / 'viroidales' / 'satellitales' / 'viriformales') !Letter
+
+Subclass <- CapsLetter (!SubclassSuffix Letter)+ SubclassSuffix
+
+SubclassSuffix <- ('viricetidae' / 'viroidicetidae' / 'satelliticetidae' / 'viriformicetidea') !Letter
+
+Class <- CapsLetter (!ClassSuffix Letter)+ ClassSuffix
+
+ClassSuffix <- ('viricetes' / 'viroidicetes' / 'satelliticetes' / 'viriformicetes') !Letter
+
+Subphylum <- CapsLetter (!SubphylumSuffix Letter)+ SubphylumSuffix
+
+SubphylumSuffix <- ('viricotina' / 'viroidicotina' / 'satelliticotina' / 'viriformicotina') !Letter
+
+Phylum <- CapsLetter (!PhylumSuffix Letter)+ PhylumSuffix
+
+PhylumSuffix <- ('viricota' / 'viroidicota' / 'satelliticota' / 'viriformicota') !Letter
+
+Subkingdom <- CapsLetter (!SubkingdomSuffix Letter)+ SubkingdomSuffix
+
+SubkingdomSuffix <- ('virites' / 'viroidites' / 'satellitites' / 'viriformites') !Letter
+
+Kingdom <- CapsLetter (!KingdomSuffix Letter)+ KingdomSuffix
+
+KingdomSuffix <- ('virae' / 'viroidae' / 'satellitae' / 'viriformae') !Letter
+
+Subrealm <- CapsLetter (!SubrealmSuffix Letter)+ SubrealmSuffix
+
+SubrealmSuffix <- ('vira' / 'viroida' / 'satellita' /  'viriforma') !Letter
+
+Realm <- CapsLetter (!RealmSuffix Letter)+ RealmSuffix
+
+RealmSuffix <- ('viria' / 'viroidia' / 'satellitia' / 'viriformia') !Letter
+
+Dash <- '-'
+
+Num <- [0-9]
+
+Letter <- [a-z]
+
+CapsLetter <- [A-Z]
+
+_ <- SingleSpace+
+
+SingleSpace <- ' ' / OtherSpace
+
+OtherSpace <- [　 \t\r\n\f\v]
+
+END <- !.

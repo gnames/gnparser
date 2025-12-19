@@ -145,13 +145,14 @@ func init() {
 (DEPRECATED, use nomenclatural-code instead)`,
 	)
 
-	codeHelp := `Modifies the parser's behavior in ambiguous cases, sometimes 
+	codeHelp := `Modifies the parser's behavior in ambiguous cases, sometimes
 introducing additional parsing rules.
 
 Accepted values are:
   - 'bact', 'icnp', 'bacterial' for bacterial code
   - 'bot', 'icn', 'botanical' for botanical code
   - 'cult', 'icncp', 'cultivar' for cultivar code
+  - 'vir', 'virus', 'viral', 'ictv', 'icvcn' for viral code
   - 'zoo', 'iczn', 'zoological' for zoological code
 
 If not set, the parser will attempt to determine the appropriate code/s.`

@@ -37,7 +37,7 @@ type scientificNameNode struct {
 	withSpGroup      bool
 }
 
-func (p *Engine) newScientificNameNode() {
+func (p *Engine) newScientificNameNode(pp *preprocess.Preprocessor) {
 	n := p.root.up
 	var name nameData
 	var tail string
@@ -70,6 +70,7 @@ func (p *Engine) newScientificNameNode() {
 		bacteria:    p.bacteria,
 		candidatus:  p.candidatus,
 		cultivar:    p.cultivar,
+		virus:       pp.Virus,
 		tail:        tail,
 	}
 	p.sn = &sn

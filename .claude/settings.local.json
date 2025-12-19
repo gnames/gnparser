@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go test:*)",
+      "Bash(peg:*)",
+      "Bash(make:*)",
+      "Bash(goimports:*)"
+    ]
+  }
+}

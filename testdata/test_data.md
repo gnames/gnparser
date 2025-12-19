@@ -7279,6 +7279,57 @@ Authorship: Dechambre 2006
 {"parsed":true,"quality":1,"verbatim":"Ruteloryctes bis Dechambre, 2006","normalized":"Ruteloryctes bis Dechambre 2006","canonical":{"stemmed":"Ruteloryctes bis","simple":"Ruteloryctes bis","full":"Ruteloryctes bis"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Dechambre, 2006","normalized":"Dechambre 2006","year":"2006","authors":["Dechambre"],"originalAuth":{"authors":["Dechambre"],"year":{"year":"2006"}}},"details":{"species":{"genus":"Ruteloryctes","species":"bis","authorship":{"verbatim":"Dechambre, 2006","normalized":"Dechambre 2006","year":"2006","authors":["Dechambre"],"originalAuth":{"authors":["Dechambre"],"year":{"year":"2006"}}}}},"words":[{"verbatim":"Ruteloryctes","normalized":"Ruteloryctes","wordType":"GENUS","start":0,"end":12},{"verbatim":"bis","normalized":"bis","wordType":"SPECIES","start":13,"end":16},{"verbatim":"Dechambre","normalized":"Dechambre","wordType":"AUTHOR_WORD","start":17,"end":26},{"verbatim":"2006","normalized":"2006","wordType":"YEAR","start":28,"end":32}],"id":"ec9442cc-46cf-5451-ab72-e5aca85d26c0","parserVersion":"test_version"}
 ```
 
+### ICVCN binomial names and exceptions
+
+Name: Tokiviricetes
+
+Canonical: Tokiviricetes
+
+Authorship:
+
+```json
+{"parsed":true,"nomenclaturalCode":"ICVCN","quality":1,"verbatim":"Tokiviricetes","normalized":"Tokiviricetes","canonical":{"stemmed":"Tokiviricetes","simple":"Tokiviricetes","full":"Tokiviricetes"},"cardinality":1,"rank":"Class","virus":true,"details":{"uninomialICVCN":{"uninomial":"Tokiviricetes","rank":"Class"}},"words":[{"verbatim":"Tokiviricetes","normalized":"Tokiviricetes","wordType":"CLASS_ICVCN","start":0,"end":13}],"id":"e8ec4986-4c02-5a80-8d43-db451a4fb3c1","parserVersion":"test_version"}
+```
+
+Name: Usarudivirus nymphense
+
+Canonical: Usarudivirus nymphense
+
+Authorship:
+
+```json
+{"parsed":true,"nomenclaturalCode":"ICVCN","quality":1,"verbatim":"Usarudivirus nymphense","normalized":"Usarudivirus nymphense","canonical":{"stemmed":"Usarudivirus nymphense","simple":"Usarudivirus nymphense","full":"Usarudivirus nymphense"},"cardinality":2,"rank":"Species","virus":true,"details":{"speciesICVCN":{"genus":"Usarudivirus","species":"nymphense","rank":"Species"}},"words":[{"verbatim":"Usarudivirus","normalized":"Usarudivirus","wordType":"GENUS_ICVCN","start":0,"end":12},{"verbatim":"nymphense","normalized":"nymphense","wordType":"SPECIES_ICVCN","start":13,"end":22}],"id":"0b0b51fd-96f3-5531-9abb-f295f19eb328","parserVersion":"test_version"}
+```
+
+Name: Ictavirus ictaluridallo1
+
+Canonical: Ictavirus ictaluridallo1
+
+Authorship:
+
+```json
+{"parsed":true,"nomenclaturalCode":"ICVCN","quality":1,"verbatim":"Ictavirus ictaluridallo1","normalized":"Ictavirus ictaluridallo1","canonical":{"stemmed":"Ictavirus ictaluridallo1","simple":"Ictavirus ictaluridallo1","full":"Ictavirus ictaluridallo1"},"cardinality":2,"rank":"Species","virus":true,"details":{"speciesICVCN":{"genus":"Ictavirus","species":"ictaluridallo1","rank":"Species"}},"words":[{"verbatim":"Ictavirus","normalized":"Ictavirus","wordType":"GENUS_ICVCN","start":0,"end":9},{"verbatim":"ictaluridallo1","normalized":"ictaluridallo1","wordType":"SPECIES_ICVCN","start":10,"end":24}],"id":"90bbb1c0-b45b-5784-b9dd-eac734aa4724","parserVersion":"test_version"}
+```
+Name: Aghbyvirus ISAO8
+
+Canonical: Aghbyvirus ISAO8
+
+Authorship:
+
+```json
+{"parsed":true,"nomenclaturalCode":"ICVCN","quality":1,"verbatim":"Aghbyvirus ISAO8","normalized":"Aghbyvirus ISAO8","canonical":{"stemmed":"Aghbyvirus ISAO8","simple":"Aghbyvirus ISAO8","full":"Aghbyvirus ISAO8"},"cardinality":2,"rank":"Species","virus":true,"details":{"speciesICVCN":{"genus":"Aghbyvirus","species":"ISAO8","rank":"Species"}},"words":[{"verbatim":"Aghbyvirus","normalized":"Aghbyvirus","wordType":"GENUS_ICVCN","start":0,"end":10},{"verbatim":"ISAO8","normalized":"ISAO8","wordType":"SPECIES_ICVCN","start":11,"end":16}],"id":"803541de-4454-58d6-a5b8-f9a73341e5c4","parserVersion":"test_version"}
+```
+
+Name: Mahavira
+
+Canonical: Mahavira
+
+Authorship:
+
+```json
+{"parsed":true,"quality":1,"verbatim":"Mahavira","normalized":"Mahavira","canonical":{"stemmed":"Mahavira","simple":"Mahavira","full":"Mahavira"},"cardinality":1,"details":{"uninomial":{"uninomial":"Mahavira"}},"words":[{"verbatim":"Mahavira","normalized":"Mahavira","wordType":"UNINOMIAL","start":0,"end":8}],"id":"bf79f3f1-9f15-5a33-a25c-81a5a299a827","parserVersion":"test_version"}
+```
+
 ### Not parsed OCR errors to get better precision/recall ratio
 
 Name: Mom.alpium (Osbeck, 1778)

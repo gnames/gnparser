@@ -34,6 +34,11 @@ func NormalizeByType(wrd string, wt WordType) string {
 		res = stemmer.Stem(wrd).Stem
 	case UninomialType, GenusType:
 		res = strings.ToLower(wrd)
+	case RealmIcvcnType, SubrealmIcvcnType, KingdomIcvcnType, SubkingdomIcvcnType,
+		PhylumIcvcnType, SubphylumIcvcnType, ClassIcvcnType, SubclassIcvcnType,
+		OrderIcvcnType, SuborderIcvcnType, FamilyIcvcnType, SubfamilyIcvcnType,
+		GenusIcvcnType, SpeciesIcvcnType:
+		res = strings.ToLower(wrd)
 	case AuthorWordType:
 		res = strings.ToLower(wrd)
 	default:
@@ -64,6 +69,20 @@ const (
 	UninomialType
 	YearApproximateType
 	YearType
+	RealmIcvcnType
+	SubrealmIcvcnType
+	KingdomIcvcnType
+	SubkingdomIcvcnType
+	PhylumIcvcnType
+	SubphylumIcvcnType
+	ClassIcvcnType
+	SubclassIcvcnType
+	OrderIcvcnType
+	SuborderIcvcnType
+	FamilyIcvcnType
+	SubfamilyIcvcnType
+	GenusIcvcnType
+	SpeciesIcvcnType
 )
 
 var wordTypeMap = map[WordType]string{
@@ -84,6 +103,20 @@ var wordTypeMap = map[WordType]string{
 	UninomialType:        "UNINOMIAL",
 	YearApproximateType:  "APPROXIMATE_YEAR",
 	YearType:             "YEAR",
+	RealmIcvcnType:        "REALM_ICVCN",
+	SubrealmIcvcnType:     "SUBREALM_ICVCN",
+	KingdomIcvcnType:      "KINGDOM_ICVCN",
+	SubkingdomIcvcnType:   "SUBKINGDOM_ICVCN",
+	PhylumIcvcnType:       "PHYLUM_ICVCN",
+	SubphylumIcvcnType:    "SUBPHYLUM_ICVCN",
+	ClassIcvcnType:        "CLASS_ICVCN",
+	SubclassIcvcnType:     "SUBCLASS_ICVCN",
+	OrderIcvcnType:        "ORDER_ICVCN",
+	SuborderIcvcnType:     "SUBORDER_ICVCN",
+	FamilyIcvcnType:       "FAMILY_ICVCN",
+	SubfamilyIcvcnType:    "SUBFAMILY_ICVCN",
+	GenusIcvcnType:        "GENUS_ICVCN",
+	SpeciesIcvcnType:      "SPECIES_ICVCN",
 }
 
 var wordTypeStrMap = func() map[string]WordType {

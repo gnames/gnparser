@@ -4,7 +4,7 @@ package preprocess
 
 func IsVirus(data []byte) bool {
   
-//line virus.go:8
+//line virus.go:6
 const virus_start int = 0
 const virus_first_final int = 67
 const virus_error int = -1
@@ -24,12 +24,12 @@ const virus_en_main int = 0
   var match bool
 
   
-//line virus.go:28
+//line virus.go:24
 	{
 	cs = virus_start
 	}
 
-//line virus.go:33
+//line virus.go:28
 	{
 	if p == pe {
 		goto _test_eof
@@ -495,7 +495,7 @@ match = true
 			goto _test_eof67
 		}
 	st_case_67:
-//line virus.go:499
+//line virus.go:494
 		switch data[p] {
 		case 65:
 			goto st6
@@ -4003,7 +4003,7 @@ match = true
 		case 5, 19, 20, 25, 57:
 //line virus.rl:18
 match = true
-//line virus.go:4007
+//line virus.go:4002
 		}
 	}
 
