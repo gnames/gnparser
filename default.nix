@@ -18,7 +18,7 @@ buildGoModule rec {
     src = lib.cleanSource ./.;
   };
 
-  vendorHash = "sha256-hPqKw7f8BzstznkqdiGm83sTIMYN3gcDWCczR9DpT1Y=";
+  vendorHash = "sha256-Yl2jBQw7UFq4djhX18/k25Bs81giwBQ1VG0y1uGI1Bc=";
 
   buildInputs = [
     stdenv
