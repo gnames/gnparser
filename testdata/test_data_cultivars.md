@@ -1,6 +1,6 @@
 # Global Names Parser Test With Cultivars
 
-<!-- vim-markdown-toc GFM -->
+<!-- TOC GFM -->
 
 * [Introduction](#introduction)
 * [Tests](#tests)
@@ -10,9 +10,9 @@
   * [Names with cultivars in double straight quotes](#names-with-cultivars-in-double-straight-quotes)
   * [Hybrid formulae with cultivars](#hybrid-formulae-with-cultivars)
   * [Uninomials with cultivars](#uninomials-with-cultivars)
-  * [Graft-chimeras](#graft-chieras)
+  * [Graft-chimeras](#graft-chimeras)
 
-<!-- vim-markdown-toc -->
+<!-- /TOC -->
 
 ## Introduction
 
