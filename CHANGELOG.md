@@ -4,7 +4,11 @@
 
 ## [v1.12.1] - 2025-12-19 Fri
 
-Add: virus code for web UI
+* Add: virus code for web UI.
+* Add: docs about viral code to README.
+* Add: update flake data.
+* Add: update nix build.
+* Add: update TOC for tests.
 
 ## [v1.12.0] - 2025-12-19 Fri
 
