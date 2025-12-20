@@ -40,7 +40,7 @@ gnparser -f pretty "Homo sapiens Linnaeus"
 gnparser -h
 ```
 
-<!-- vim-markdown-toc GFM -->
+<!-- TOC GFM -->
 
 * [Citing](#citing)
 * [Introduction](#introduction)
@@ -76,10 +76,11 @@ gnparser -h
   * [Names with subgenus (ICZN code) and genus author (ICN code)](#names-with-subgenus-iczn-code-and-genus-author-icn-code)
 * [Authors](#authors)
 * [Contributors](#contributors)
+* [Artificial Intelligence Policy](#artificial-intelligence-policy)
 * [References](#references)
 * [License](#license)
 
-<!-- vim-markdown-toc -->
+<!-- /TOC -->
 
 ## Citing
 
@@ -135,6 +136,8 @@ more efficient JSON conversion.
 * Fastest parser ever.
 * Very easy to install, just placing executable somewhere in the PATH is
   sufficient.
+* Parsing can be adjusted to rules of specific nomenclatural code (Botanical,
+  Botanical Cultivar, Zoological, Viral).
 * Extracts all elements from a name, not only canonical forms.
 * Works with very complex scientific names, including hybrid formulas.
 * Includes RESTful service and interactive web interface.
@@ -422,7 +425,7 @@ for parsing in ambiguous cases. For example in `Aus (Bus) cus`: according
 to zoological code `Aus` is genus, `Bus` is subgenus, while according
 to botanical code `Bus` is the author of `Aus`.
 
-Supported values: `bact`, `bacterial`, `ICNP`, `bot`,
+Supported values: `bact`, `bacterial`, `ICNP`, `bot`, `vir`, `viral`, `ICVCN`,
 `botanical`, `ICN`, `cult`, `cultivar`, `ICNCP`, `zoo`, `zoological`, `ICZN`.
 
 `--port -p`
@@ -690,6 +693,15 @@ provide a warning "Ambiguity: ICN author or subgenus".
 
 If you want to submit a bug or add a feature read
 [CONTRIBUTING] file.
+
+## Artificial Intelligence Policy
+
+We use artificial intelligence to help find algorithms, decide on
+implementation approaches, and generate code. We carefully review all
+automatically generated code, fixing inconsistencies, removing superfluous
+implementations, and improving optimization. No code that we do not understand
+or approve makes it into published versions of GNparser. We primarily use
+Claude Code, with limited use of Gemini CLI.
 
 ## References
 
