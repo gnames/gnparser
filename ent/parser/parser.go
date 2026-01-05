@@ -44,9 +44,11 @@ func (p *Engine) PreprocessAndParse(
 	keepHTML bool,
 	capitalize bool,
 	preserveDiaereses bool,
+	noSpacedInitials bool,
 ) ScientificNameNode {
 	p.code = code
 	p.preserveDiaereses = preserveDiaereses
+	p.noSpacedInitials = noSpacedInitials
 
 	originalString := s
 	var tagsOrEntities, lowCase bool

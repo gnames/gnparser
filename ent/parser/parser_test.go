@@ -20,7 +20,7 @@ func TestPreNParse(t *testing.T) {
 	}
 	for _, v := range testData {
 		sn := p.PreprocessAndParse(
-			v.name, "test_version", nomcode.Unknown, true, false, false,
+			v.name, "test_version", nomcode.Unknown, true, false, false, false,
 		)
 		parsed := sn.ToOutput(false, false)
 		can := parsed.Canonical
@@ -60,7 +60,7 @@ func TestToOutput(t *testing.T) {
 	}
 	for _, v := range testData {
 		sn := p.PreprocessAndParse(
-			v.name, "test_version", nomcode.Unknown, true, false, false,
+			v.name, "test_version", nomcode.Unknown, true, false, false, false,
 		)
 		out := sn.ToOutput(v.det, false)
 		msg := v.name
@@ -102,7 +102,7 @@ func TestSpecGroupOption(t *testing.T) {
 		sn := p.PreprocessAndParse(
 			v.name, "test_version",
 			nomcode.Unknown,
-			true, false, false,
+			true, false, false, false,
 		)
 		out := sn.ToOutput(false, v.spGrp)
 		msg := v.name

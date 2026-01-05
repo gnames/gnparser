@@ -1163,6 +1163,10 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 	var ws []*parsed.Word
 	val := ""
 	rawVal := ""
+	var sep string
+	if !p.noSpacedInitials {
+		sep = " "
+	}
 	n = n.up
 	for n != nil {
 		switch n.pegRule {
@@ -1186,7 +1190,7 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 			w = p.authorWord(n)
 		}
 		ws = append(ws, w)
-		val = str.JoinStrings(val, w.Normalized, " ")
+		val = str.JoinStrings(val, w.Normalized, sep)
 		rawVal = str.JoinStrings(rawVal, w.Verbatim, " ")
 		n = n.next
 	}

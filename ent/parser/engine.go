@@ -27,6 +27,7 @@ type baseEngine struct {
 	tail              string
 	cultivar          bool
 	preserveDiaereses bool
+	noSpacedInitials  bool
 }
 
 // New creates implementation of Parser interface.

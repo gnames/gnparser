@@ -100,6 +100,14 @@ Preserves diaereses present in names:
 
 The stemmed canonical name will be generated without diaereses.
 
+### -N, --no-spaced-initials
+
+Removes space between authors' initials:
+
+    gnparser "Schoenoplectus tabernaemontani (C. C. Gmel.) Palla" -N
+
+The normalized authorship will be generated without space between initials.
+
 ### -d, --details
 
 Return more details for a parsed name. This flag is ignored for CSV formatting:

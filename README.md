@@ -408,6 +408,11 @@ CSV/TSV formats.
 : Preserves diaereses, e.g. `Leptochloöpsis virgata`. The stemmed
 canonical name does not include diaereses.
 
+`--no-spaced-initials -N`
+: Removes space between authors' initials, e.g.
+`Schoenoplectus tabernaemontani (C. C. Gmel.) Palla`. The normalized
+authorship will be generated without space between initials.
+
 `--format -f`
 : Specifies the output format: `csv`, `tsv`, `compact`, or `pretty`.
 Defaults to `csv`. CSV and TSV formats include a header row.

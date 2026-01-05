@@ -67,6 +67,7 @@ func (gnp gnparser) ParseName(s string) parsed.Parsed {
 		gnp.cfg.IgnoreHTMLTags,
 		gnp.cfg.WithCapitalization,
 		gnp.cfg.WithPreserveDiaereses,
+		gnp.cfg.WithNoSpacedInitials,
 	)
 	res := sciNameNode.ToOutput(
 		gnp.cfg.WithDetails,

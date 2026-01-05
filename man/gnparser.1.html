@@ -188,6 +188,15 @@ if parsing mode is set to streaming with -s flag:</p>
 
 <p>The stemmed canonical name will be generated without diaereses.</p>
 
+<h3 id="-N-initials">-N, --no-spaced-initials</h3>
+
+<p>Removes space between authors' initials:</p>
+
+<pre><code>gnparser "Schoenoplectus tabernaemontani (C. C. Gmel.) Palla" -N
+</code></pre>
+
+<p>The normalized authorship will be generated without space between initials.</p>
+
 <h3 id="-d-details">-d, --details</h3>
 
 <p>Return more details for a parsed name. This flag is ignored for CSV formatting:</p>
