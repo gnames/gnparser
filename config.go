@@ -59,6 +59,10 @@ type Config struct {
 	// WithPreserveDiaereses flag, when true, diaereses will not be transliterated
 	WithPreserveDiaereses bool
 
+	// WithNoSpacedInitials flag, when true, authors' initials will not be
+	// separated by space
+	WithNoSpacedInitials bool
+
 	// WithStream changes from parsing a batch by batch, to parsing one name
 	// at a time. When WithStream is true, BatchSize setting is ignored.
 	WithStream bool
@@ -165,6 +169,13 @@ func OptWithNoOrder(b bool) Option {
 func OptWithPreserveDiaereses(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithPreserveDiaereses = b
+	}
+}
+
+// OptWithNoSpacedInitials sets the NoSpacedInitials field.
+func OptWithNoSpacedInitials(b bool) Option {
+	return func(cfg *Config) {
+		cfg.WithNoSpacedInitials = b
 	}
 }
 

@@ -25,6 +25,7 @@ type inputFORM struct {
 	// WithCultivars is deprecated and overriden by Code
 	WithCultivars     string `query:"cultivars" form:"cultivars"`
 	PreserveDiaereses string `query:"diaereses" form:"diaereses"`
+	NoSpacedInitials  string `query:"initials" form:"initials"`
 }
 
 // Data contains information required to render web-pages.
@@ -39,6 +40,7 @@ type Data struct {
 	// WithCultivars is deprecated by Code field
 	WithCultivars     bool
 	PreserveDiaereses bool
+	NoSpacedInitials  bool
 }
 
 // NewData creates new Data for web-page templates.
@@ -72,6 +74,7 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	withDetails := inp.WithDetails == "on"
 	withCultivars := inp.WithCultivars == "on"
 	preserveDiaereses := inp.PreserveDiaereses == "on"
+	noSpacedInitials := inp.NoSpacedInitials == "on"
 	q := make(url.Values)
 	q.Set("names", inp.Names)
 	q.Set("format", inp.Format)
@@ -83,6 +86,9 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	}
 	if preserveDiaereses {
 		q.Set("diaereses", inp.PreserveDiaereses)
+	}
+	if noSpacedInitials {
+		q.Set("initials", inp.NoSpacedInitials)
 	}
 	q.Set("code", inp.Code)
 
@@ -118,6 +124,7 @@ func parsingResults(
 	data.WithDetails = inp.WithDetails == "on"
 	data.WithCultivars = inp.WithCultivars == "on"
 	data.PreserveDiaereses = inp.PreserveDiaereses == "on"
+	data.NoSpacedInitials = inp.NoSpacedInitials == "on"
 	data.Code = inp.Code
 
 	format := inp.Format
@@ -147,6 +154,7 @@ func parsingResults(
 	opts := []gnparser.Option{
 		gnparser.OptWithDetails(data.WithDetails),
 		gnparser.OptWithPreserveDiaereses(data.PreserveDiaereses),
+		gnparser.OptWithNoSpacedInitials(data.NoSpacedInitials),
 	}
 
 	if data.WithCultivars {

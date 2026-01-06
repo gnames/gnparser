@@ -25,6 +25,7 @@ type inputREST struct {
 	CSV               bool     `json:"csv"`
 	WithDetails       bool     `json:"withDetails"`
 	PreserveDiaereses bool     `json:"preserveDiaereses"`
+	NoSpacedInitials  bool     `json:"noSpacedInitials"`
 	Code              string   `json:"code"`
 
 	// WithCultivars is deprecated by Code and overriden by it
@@ -102,11 +103,12 @@ func parseNamesGET(gnps GNparserService) func(echo.Context) error {
 		det := c.QueryParam("with_details") == "true"
 		cultivars := c.QueryParam("cultivars") == "true"
 		diaereses := c.QueryParam("diaereses") == "true"
+		initials := c.QueryParam("no_spaced_initials") == "true"
 		codeStr := c.QueryParam("code")
 
 		code := getCode(codeStr, cultivars)
 
-		gnp := gnps.ChangeConfig(opts(code, csv, det, diaereses)...)
+		gnp := gnps.ChangeConfig(opts(code, csv, det, diaereses, initials)...)
 		names := strings.Split(nameStr, "|")
 		res := gnp.ParseNames(names)
 		if l := len(names); l > 0 {
@@ -137,7 +139,12 @@ func parseNamesPOST(gnps GNparserService) func(echo.Context) error {
 		code := getCode(input.Code, input.WithCultivars)
 
 		gnp := gnps.ChangeConfig(
-			opts(code, input.CSV, input.WithDetails, input.PreserveDiaereses)...)
+			opts(code,
+				input.CSV,
+				input.WithDetails,
+				input.PreserveDiaereses,
+				input.NoSpacedInitials,
+			)...)
 		res := gnp.ParseNames(input.Names)
 		return formatNames(c, res, gnp.Format())
 	}
@@ -174,11 +181,13 @@ func formatNames(
 	}
 }
 
-func opts(code nomcode.Code, csv, details, diaereses bool) []gnparser.Option {
+func opts(code nomcode.Code, csv, details, diaereses,
+	initials bool) []gnparser.Option {
 	res := []gnparser.Option{
 		gnparser.OptWithDetails(details),
 		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(diaereses),
+		gnparser.OptWithNoSpacedInitials(initials),
 	}
 	if csv {
 		res = append(res, gnparser.OptFormat(gnfmt.CSV))

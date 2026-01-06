@@ -141,6 +141,17 @@ func withPreserveDiaeresesFlag(cmd *cobra.Command) {
 	}
 }
 
+func withNoSpacedInitialsFlag(cmd *cobra.Command) {
+	b, err := cmd.Flags().GetBool("no-spaced-initials")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	if b {
+		opts = append(opts, gnparser.OptWithNoSpacedInitials(true))
+	}
+}
+
 func spGrCutFlag(cmd *cobra.Command) {
 	b, err := cmd.Flags().GetBool("species-group-cut")
 	if err != nil {

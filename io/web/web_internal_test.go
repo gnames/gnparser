@@ -174,6 +174,7 @@ func TestParsePOST(t *testing.T) {
 	var response []parsed.Parsed
 	names := []string{
 		"Not name", "Bubo bubo", "Leptochloöpsis virgata",
+		"Solanum linnaeanum Hepper & P.-M. L. Jaeger",
 		"Pomatomus", "Pardosa moesta",
 		"Plantago major var major",
 		"Cytospora ribis mitovirus 2",
@@ -187,6 +188,7 @@ func TestParsePOST(t *testing.T) {
 		WithDetails:       false,
 		WithCultivars:     true,
 		PreserveDiaereses: true,
+		NoSpacedInitials:  true,
 	}
 	reqBody, err := gnfmt.GNjson{}.Encode(params)
 	assert.Nil(t, err)
@@ -215,7 +217,10 @@ func TestParsePOST(t *testing.T) {
 		case 2:
 			assert.Equal(t, "Leptochloöpsis virgata", v.Verbatim, v.Verbatim)
 			assert.Equal(t, "Leptochloöpsis virgata", v.Canonical.Simple)
-		case 11:
+		case 3:
+			assert.Equal(t, "Solanum linnaeanum Hepper & P.-M.L.Jaeger", v.Normalized)
+			assert.Equal(t, "Hepper & P.-M.L.Jaeger", v.Authorship.Normalized)
+		case 12:
 			assert.Equal(t, "Sarracenia flava ‘Maxima’", v.Normalized)
 			assert.Equal(t, 3, v.Cardinality)
 		}
@@ -228,6 +233,7 @@ func TestParsePOST(t *testing.T) {
 		WithDetails:       false,
 		WithCultivars:     false,
 		PreserveDiaereses: false,
+		NoSpacedInitials:  false,
 	}
 	reqBody, err = gnfmt.GNjson{}.Encode(params)
 	r = bytes.NewReader(reqBody)
@@ -235,6 +241,7 @@ func TestParsePOST(t *testing.T) {
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec = httptest.NewRecorder()
 	c = e.NewContext(req, rec)
+	assert.Nil(t, err)
 	assert.Nil(t, parseNamesPOST(gnps)(c))
 	assert.True(t, strings.HasPrefix(rec.Body.String(), "Id"))
 }

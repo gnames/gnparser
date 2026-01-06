@@ -139,6 +139,38 @@ func TestParsePreserveDiaereses(t *testing.T) {
 	}
 }
 
+func TestParseNoSpacedInitials(t *testing.T) {
+	tests := []struct {
+		msg, in, normalized, authorship string
+		quality                         int
+	}{
+		{
+			"InitialsInAuthorship",
+			"Schoenoplectus tabernaemontani (C. C. Gmel.) Palla",
+			"Schoenoplectus tabernaemontani (C.C.Gmel.) Palla",
+			"(C.C.Gmel.) Palla",
+			1,
+		},
+		{
+			"HyphenatedInitialsInAuthorship",
+			"Solanum linnaeanum Hepper & P.-M. L. Jaeger",
+			"Solanum linnaeanum Hepper & P.-M.L.Jaeger",
+			"Hepper & P.-M.L.Jaeger",
+			1,
+		},
+	}
+	cfg := gnparser.NewConfig(
+		gnparser.OptWithNoSpacedInitials(true),
+	)
+	gnp := gnparser.New(cfg)
+	for _, v := range tests {
+		parsed := gnp.ParseName(v.in)
+		assert.Equal(t, v.normalized, parsed.Normalized, v.msg)
+		assert.Equal(t, v.authorship, parsed.Authorship.Normalized, v.msg)
+		assert.Equal(t, v.quality, parsed.ParseQuality, v.msg)
+	}
+}
+
 func TestWordNormalizeByType(t *testing.T) {
 	tests := []struct {
 		msg, word, norm string
