@@ -5,7 +5,7 @@
 ## [v1.13.0] - 2026-01-07 Wed
 
 * Add[#298]: update CONTRIBUTING.md to reflect changes in gnparser's code.
-* Add[#297]: rename NomCode field to NomCodeSettin to clarify its intention.
+* Add[#297]: rename NomCode field to NomCodeSetting to clarify its intention.
   **WARNING** this creates some backward incompatibility.
 * Add[#294]: option to remove spaces between authors' names initials (PR
   #295 by @juillerat)
