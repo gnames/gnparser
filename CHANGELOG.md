@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## [v1.13.0] - 2026-01-07 Wed
+
+* Add[#298]: update CONTRIBUTING.md to reflect changes in gnparser's code.
+* Add[#297]: rename NomCode field to NomCodeSettin to clarify its intention.
+  **WARNING** this creates some backward incompatibility.
+* Add[#294]: option to remove spaces between authors' names initials (PR
+  #295 by @juillerat)
+* Fix[#296]: old virus names are marked as 'Virus' when nomenclatural code
+  is set to 'icvcn'.
+
 ## [v1.12.1] - 2025-12-19 Fri
 
 * Add: virus code for web UI.
@@ -560,6 +570,7 @@
 
 This document follows [changelog guidelines]
 
+[v1.13.0]: https://github.com/gnames/gnparser/compare/v1.12.1...v1.13.0
 [v1.12.1]: https://github.com/gnames/gnparser/compare/v1.12.0...v1.12.1
 [v1.12.0]: https://github.com/gnames/gnparser/compare/v1.11.10...v1.12.0
 [v1.11.10]: https://github.com/gnames/gnparser/compare/v1.11.9...v1.11.10
@@ -649,9 +660,18 @@ This document follows [changelog guidelines]
 [v0.7.0]: https://github.com/gnames/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
-[#291]: https://github.com/gnames/gnparser/issues/288
-[#290]: https://github.com/gnames/gnparser/issues/288
-[#289]: https://github.com/gnames/gnparser/issues/288
+[#300]: https://github.com/gnames/gnparser/issues/300
+[#299]: https://github.com/gnames/gnparser/issues/299
+[#298]: https://github.com/gnames/gnparser/issues/298
+[#297]: https://github.com/gnames/gnparser/issues/297
+[#296]: https://github.com/gnames/gnparser/issues/296
+[#295]: https://github.com/gnames/gnparser/issues/295
+[#294]: https://github.com/gnames/gnparser/issues/294
+[#293]: https://github.com/gnames/gnparser/issues/293
+[#292]: https://github.com/gnames/gnparser/issues/292
+[#291]: https://github.com/gnames/gnparser/issues/291
+[#290]: https://github.com/gnames/gnparser/issues/290
+[#289]: https://github.com/gnames/gnparser/issues/289
 [#288]: https://github.com/gnames/gnparser/issues/288
 [#287]: https://github.com/gnames/gnparser/issues/287
 [#286]: https://github.com/gnames/gnparser/issues/286
