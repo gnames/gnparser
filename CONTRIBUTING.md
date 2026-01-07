@@ -54,23 +54,10 @@ group](https://gitter.im/GlobalNamesArchitecture/GlobalNames).
 system. Make sure you [configured GOPATH environment
 library](https://github.com/golang/go/wiki/SettingGOPATH).
 
-You need Go v1.16.x or higher.
+You need Go v1.25 or higher.
 
 ### Install ``gnparser`` code
 
-Before Go v1.11 all Go code had to be organized inside of the ``GOPATH``
-directory. Now, for projects like ``gnparser`` that use Go modules it is not
-necessary, however many tools still behave assuming old ways, so we recommend
-to setup ``gnparser`` code traditional way.
-
-```bash
-mkdir -p $GOPATH/src/github.com/gnames
-cd $GOPATH/src/github.com/gnames
-git clone https://github.com/gnames/gnparser.git
-# or use URL of your fork on GitHub or GitLab
-
-cd gnparser
-```
 
 ``gnparser`` uses several external tools and technologies:
 
@@ -86,13 +73,13 @@ cd gnparser
 To install them run
 
 ```bash
-make tools
+just tools
 ```
 
 To create a ``gnparser`` executable and place it to $GOPATH/bin
 
 ```bash
-make
+just
 ```
 
 Now you should be able to use gnparser compiled from the code:
@@ -104,7 +91,7 @@ gnparser -f pretty "Pica pica (Linnaeus, 1758)"
 ### To run tests
 
 ```bash
-make test
+just test
 ```
 
 or
@@ -143,7 +130,7 @@ To run benchmarks from the project's root:
 
 ```bash
 # this command will install benchstat
-make tools
+just tools
 
 go test -bench=. -benchmem -count=10 -run=XXX > bench.txt && benchstat bench.txt
 ```
@@ -181,7 +168,7 @@ Parse/Parse_to_CSV-16                      240k ± 0%
 PEG parser generates it own abstract syntax tree (AST), that later gets
 conberted into a ``gnparser`` specific AST. Sometimes it is useful to see the
 raw tree of nodes. To do that, open gnparser/gnparser/cmd/root.go,
-change ``const debug`` to ``true`` and run ``make``. After that you will be
+change ``const debug`` to ``true`` and run ``just``. After that you will be
 able to examing raw tree of a string, for example:
 
 ```bash
