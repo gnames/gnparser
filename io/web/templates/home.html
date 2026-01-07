@@ -27,11 +27,15 @@
             <option value="viral" {{ if eq .Code "viral" }}selected="selected"{{ end }}>Viral</option>
             <option value="zoological" {{ if eq .Code "zoological" }}selected="selected"{{ end }}>Zoological</option>
           </select>
+        </div>
+
+        <div class="form-elements">
           <label for="diaereses">Preserve diaereses</label>
           <input type="checkbox" id="diaereses" name="diaereses" />
-          <label for="initials">No spaced initials</label>
+          <label for="initials">Compact authors' initials</label>
           <input type="checkbox" id="initials" name="initials" />
         </div>
+
         <textarea
           autofocus
           id="names"
