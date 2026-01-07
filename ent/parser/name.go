@@ -575,8 +575,7 @@ func (sp *speciesNode) words() []parsed.Word {
 		words = append(words, v.words()...)
 	}
 	if sp.CultivarEpithet != nil {
-		wrd = *sp.CultivarEpithet.Word
-		words = append(words, wrd)
+		words = append(words, sp.CultivarEpithet.Words...)
 	}
 	return words
 }
@@ -632,7 +631,7 @@ func (sp *speciesNode) details() parsed.Details {
 		Species: sp.SpEpithet.Word.Normalized,
 	}
 	if sp.CultivarEpithet != nil {
-		so.Cultivar = sp.CultivarEpithet.Word.Normalized
+		so.Cultivar = sp.CultivarEpithet.Word.Verbatim
 	}
 	if sp.SpEpithet.Authorship != nil {
 		so.Authorship = sp.SpEpithet.Authorship.details()
@@ -741,8 +740,7 @@ func (u *uninomialNode) words() []parsed.Word {
 	words = append(words, u.Authorship.words()...)
 
 	if u.CultivarEpithet != nil {
-		wrd = *u.CultivarEpithet.Word
-		words = append(words, wrd)
+		words = append(words, u.CultivarEpithet.Words...)
 	}
 
 	return words
@@ -781,7 +779,7 @@ func (u *uninomialNode) details() parsed.Details {
 		ud.Authorship = u.Authorship.details()
 	}
 	if u.CultivarEpithet != nil {
-		ud.Cultivar = u.CultivarEpithet.Word.Normalized
+		ud.Cultivar = u.CultivarEpithet.Word.Verbatim
 	}
 	uo := parsed.DetailsUninomial{Uninomial: ud}
 	return uo

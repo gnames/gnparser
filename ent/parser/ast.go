@@ -680,6 +680,7 @@ type speciesNode struct {
 
 type cultivarEpithetNode struct {
 	Word            *parsed.Word
+	Words           []parsed.Word
 	enableCultivars bool
 }
 
@@ -1387,7 +1388,27 @@ func (p *Engine) newCultivarEpithetNode(n *node32, wt parsed.WordType) *cultivar
 		p.tail = " " + string(p.buffer[n.begin-1:len(p.buffer)-1])
 		return nil
 	}
-	cv := cultivarEpithetNode{Word: &wrd, enableCultivars: cult}
+
+	// Split cultivar name into individual words
+	var words []parsed.Word
+	parts := strings.Fields(val)
+	pos := int(t.begin)
+	for _, part := range parts {
+		// Find the actual position of this part in the original string
+		idx := strings.Index(val[pos-int(t.begin):], part)
+		start := pos + idx
+		end := start + len(part)
+		words = append(words, parsed.Word{
+			Verbatim:   part,
+			Normalized: part,
+			Type:       wt,
+			Start:      start,
+			End:        end,
+		})
+		pos = end
+	}
+
+	cv := cultivarEpithetNode{Word: &wrd, Words: words, enableCultivars: cult}
 	return &cv
 }
 
