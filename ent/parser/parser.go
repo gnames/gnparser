@@ -20,7 +20,7 @@ func (p *Engine) Debug(s string) []byte {
 	var b bytes.Buffer
 	if ppr.NoParse || ppr.Virus {
 		b.WriteString("\n*** Preprocessing: NO PARSE ***\n")
-		b.WriteString(fmt.Sprintf("\n%s\n", s))
+		fmt.Fprintf(&b, "\n%s\n", s)
 		return b.Bytes()
 	}
 	p.Buffer = string(ppr.Body)
@@ -71,7 +71,8 @@ func (p *Engine) PreprocessAndParse(
 	// setting.
 	if p.code == nomcode.Unknown || p.code == nomcode.Virus {
 		icvcnParsed := icvcn.Parse(s)
-		if p.code == nomcode.Virus || icvcnParsed.Parsed {
+		icvcnParsed.Code = p.code
+		if icvcnParsed.Parsed {
 			icvcnParsed.ParserVersion = ver
 			return icvcnParsed
 		}
@@ -101,7 +102,9 @@ func (p *Engine) PreprocessAndParse(
 		p.sn.parserVersion = ver
 	}()
 
-	if preproc.NoParse {
+	// when we cannot parse or if we parse according to ICVCN code we
+	// stop here
+	if preproc.NoParse || p.code == nomcode.Virus {
 		p.newNotParsedScientificNameNode(preproc)
 		return p.sn
 	}

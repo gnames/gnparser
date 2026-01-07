@@ -4,11 +4,13 @@ import (
 	"slices"
 	"strings"
 
+	"github.com/gnames/gnlib/ent/nomcode"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnuuid"
 )
 
 type Parsed struct {
+	Code          nomcode.Code
 	Input         string
 	Rank          Rank
 	Uninomial     string
@@ -37,19 +39,19 @@ func (p *Parsed) ToOutput(withDetails, _ bool) parsed.Parsed {
 	// If parsing failed, return unparsed result
 	if !p.Parsed {
 		return parsed.Parsed{
-			Parsed:        false,
-			NomCode:       "ICVCN",
-			ParseQuality:  0,
-			Verbatim:      p.Input,
-			Virus:         false,
-			VerbatimID:    gnuuid.New(p.Input).String(),
-			ParserVersion: p.ParserVersion,
+			Parsed:         false,
+			NomCodeSetting: p.Code.Abbr(),
+			ParseQuality:   0,
+			Verbatim:       p.Input,
+			Virus:          false,
+			VerbatimID:     gnuuid.New(p.Input).String(),
+			ParserVersion:  p.ParserVersion,
 		}
 	}
 
 	res := parsed.Parsed{
 		Parsed:          true,
-		NomCode:         "ICVCN",
+		NomCodeSetting:  p.Code.Abbr(),
 		ParseQuality:    quality,
 		QualityWarnings: warns,
 		Verbatim:        p.Input,

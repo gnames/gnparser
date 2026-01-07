@@ -1,6 +1,6 @@
 # Global Names Parser: GNparser written in Go
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14096467.svg)](https://doi.org/10.5281/zenodo.14096467)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18002432.svg)](https://doi.org/10.5281/zenodo.18002432)
 
 Try `GNparser` [online][parser-web].
 
@@ -42,43 +42,44 @@ gnparser -h
 
 <!-- TOC GFM -->
 
-* [Citing](#citing)
-* [Introduction](#introduction)
-* [Speed](#speed)
-* [Features](#features)
-* [Use Cases](#use-cases)
-  * [Getting the simplest possible canonical form](#getting-the-simplest-possible-canonical-form)
-  * [Quickly partition names by the type](#quickly-partition-names-by-the-type)
-  * [Normalizing name-strings](#normalizing-name-strings)
-  * [Removing authorship from the middle of the name](#removing-authorship-from-the-middle-of-the-name)
-  * [Figuring out if names are well-formed](#figuring-out-if-names-are-well-formed)
-  * [Creating stable GUIDs for name-strings](#creating-stable-guids-for-name-strings)
-  * [Assembling canonical forms etc. from original spelling](#assembling-canonical-forms-etc-from-original-spelling)
-* [Tutorials](#tutorials)
-* [Installation](#installation)
-  * [Install with Homebrew (Mac OS X, Linux)](#install-with-homebrew-mac-os-x-linux)
-  * [Linux or Mac OS X](#linux-or-mac-os-x)
-  * [Windows](#windows)
-  * [Install with Go](#install-with-go)
-* [Usage](#usage)
-  * [Command Line](#command-line)
-  * [Pipes](#pipes)
-  * [R language package](#r-language-package)
-  * [Ruby Gem](#ruby-gem)
-  * [Node.js](#nodejs)
-  * [Usage as a REST API Interface or Web-based User Graphical Interface](#usage-as-a-rest-api-interface-or-web-based-user-graphical-interface)
-    * [Enabling logs for GNparser's web-service](#enabling-logs-for-gnparsers-web-service)
-  * [Use as a Docker image](#use-as-a-docker-image)
-  * [Use as a library in Go](#use-as-a-library-in-go)
-  * [Use as a shared C library](#use-as-a-shared-c-library)
-* [Parsing ambiguities](#parsing-ambiguities)
-  * [Names with `filius` (ICN code)](#names-with-filius-icn-code)
-  * [Names with subgenus (ICZN code) and genus author (ICN code)](#names-with-subgenus-iczn-code-and-genus-author-icn-code)
-* [Authors](#authors)
-* [Contributors](#contributors)
-* [Artificial Intelligence Policy](#artificial-intelligence-policy)
-* [References](#references)
-* [License](#license)
+- [Citing](#citing)
+- [Introduction](#introduction)
+- [Speed](#speed)
+- [Features](#features)
+- [Use Cases](#use-cases)
+  - [Getting the simplest possible canonical form](#getting-the-simplest-possible-canonical-form)
+  - [Quickly partition names by the type](#quickly-partition-names-by-the-type)
+  - [Normalizing name-strings](#normalizing-name-strings)
+  - [Removing authorship from the middle of the name](#removing-authorship-from-the-middle-of-the-name)
+  - [Figuring out if names are well-formed](#figuring-out-if-names-are-well-formed)
+  - [Creating stable GUIDs for name-strings](#creating-stable-guids-for-name-strings)
+  - [Assembling canonical forms etc. from original spelling](#assembling-canonical-forms-etc-from-original-spelling)
+- [Tutorials](#tutorials)
+- [Installation](#installation)
+  - [Install with Homebrew (Mac OS X, Linux)](#install-with-homebrew-mac-os-x-linux)
+  - [Linux or Mac OS X](#linux-or-mac-os-x)
+  - [Windows](#windows)
+  - [Install with Go](#install-with-go)
+- [Usage](#usage)
+  - [Command Line](#command-line)
+  - [Pipes](#pipes)
+  - [R language package](#r-language-package)
+  - [Ruby Gem](#ruby-gem)
+  - [Node.js](#nodejs)
+  - [Usage as a REST API Interface or Web-based User Graphical Interface](#usage-as-a-rest-api-interface-or-web-based-user-graphical-interface)
+    - [Enabling logs for GNparser's web-service](#enabling-logs-for-gnparsers-web-service)
+  - [Use as a Docker image](#use-as-a-docker-image)
+  - [Use as a library in Go](#use-as-a-library-in-go)
+  - [Use as a shared C library](#use-as-a-shared-c-library)
+- [Parsing ambiguities](#parsing-ambiguities)
+  - [Names with `filius` (ICN code)](#names-with-filius-icn-code)
+  - [Names with subgenus (ICZN code) and genus author (ICN code)](#names-with-subgenus-iczn-code-and-genus-author-icn-code)
+  - [Virus names according to modern ICVCN binomial nomenclature](#virus-names-according-to-modern-icvcn-binomial-nomenclature)
+- [Authors](#authors)
+- [Contributors](#contributors)
+- [Artificial Intelligence Policy](#artificial-intelligence-policy)
+- [References](#references)
+- [License](#license)
 
 <!-- /TOC -->
 
@@ -428,7 +429,9 @@ Only use if your input is known to be free of HTML.
 : Specifies the nomenclatural code (e.g., `botanical`, `zoological`) to use
 for parsing in ambiguous cases. For example in `Aus (Bus) cus`: according
 to zoological code `Aus` is genus, `Bus` is subgenus, while according
-to botanical code `Bus` is the author of `Aus`.
+to botanical code `Bus` is the author of `Aus`. For modern binomial `viral`
+code this setting is a hard constraint, while for other codes it sets
+a priority in ambiguous situations.
 
 Supported values: `bact`, `bacterial`, `ICNP`, `bot`, `vir`, `viral`, `ICVCN`,
 `botanical`, `ICN`, `cult`, `cultivar`, `ICNCP`, `zoo`, `zoological`, `ICZN`.
@@ -687,6 +690,16 @@ author of genus `Aus`. We created a list of ICN generic authors using data from
 [IRMNG] to distinguish such names from each other. For detected ICN names we
 provide a warning "Ambiguity: ICN author or subgenus".
 
+### Virus names according to modern ICVCN binomial nomenclature
+
+ICVCN code adopted binomial nomenclature in 2021, and converted most names to
+new rules by 2026. However the rules for viral names differ significanlty in
+comparison with other nomenclatural codes (e.g., names like `Batravirus
+ranidallo3` or `Pradovirus XAJ24` are legal ICVCN names), so we had to create a
+specialized parser for them. It creates parsing challenges for names like
+`Calviria`, `Euvira` (ICZN genera) that by chance matched ICVCN rules for Ream
+and Subrealm. We try to detect such names and place them in an exception list.
+
 ## Authors
 
 * [Dmitry Mozzherin]
@@ -694,6 +707,7 @@ provide a warning "Ambiguity: ICN author or subgenus".
 ## Contributors
 
 * [Toby Marsden]
+* [Philippe Juillerat]
 * [Hernan Lucas Pereira]
 
 If you want to submit a bug or add a feature read
@@ -722,33 +736,34 @@ Accessed 2019-04-10
 
 Released under [MIT license]
 
-[CONTRIBUTING]: https://github.com/gnames/gnparser/blob/master/CONTRIBUTING.md
-[docker-install]: https://docs.docker.com/install/
+[CONTRIBUTING]: CONTRIBUTING.md
 [Dmitry Mozzherin]: https://github.com/dimus
-[Toby Marsden]: https://github.com/tobymarsden
 [Hernan Lucas Pereira]: https://github.com/LocoDelAssembly
 [Homebrew]: https://brew.sh/
 [IRMNG]: http://www.irmng.org
 [MIT license]: https://github.com/gnames/gnparser/raw/master/LICENSE
+[OpenAPI]: https://apidoc.globalnames.org/gnparser
+[OpenRefine]: https://github.com/gnames/gnparser/wiki/GNparser-with-OpenRefine
+[PHP pipes]: https://gist.github.com/marcobrt/72b2a3d1b0649c1bf738c9fc88f74ec0
+[Philippe Juillerat]: https://github.com/juillerat
 [Schinke R et al (1996)]: https://caio.ueberalles.net/a_stemming_algorithm_for_latin_text_databases-schinke_et_al.pdf
+[Toby Marsden]: https://github.com/tobymarsden
 [Zenodo DOI]: https://zenodo.org/badge/latestdoi/320967495
 [biodiversity]: https://github.com/GlobalNamesArchitecture/biodiversity
+[docker-install]: https://docs.docker.com/install/
 [gna]: http://globalnames.org
-[node-gnparser]: https://github.com/amazingplants/node-gnparser
-[OpenAPI]: https://apidoc.globalnames.org/gnparser
+[gnparser paper]: https://doi.org/10.1186/s12859-017-1663-3
 [gnparser-scala]: https://github.com/GlobalNamesArchitecture/gnparser
+[node-gnparser]: https://github.com/amazingplants/node-gnparser
 [parser-web]: https://parser.globalnames.org
 [peg]: https://github.com/pointlander/peg
 [quality]: https://github.com/gnames/gnparser/blob/master/quality.md
 [releases]: https://github.com/gnames/gnparser/releases/latest
+[rgnparser]: https://github.com/ropensci/rgnparser
 [ruby_ffi_go_usage]: https://stackoverflow.com/questions/58866962/how-to-pass-an-array-of-strings-and-get-an-array-of-strings-in-ruby-using-go-sha
-[tutGN]: https://globalnames.org/docs/tut-xsv-gnparser/
 [test file]: https://github.com/gnames/gnparser/blob/master/testdata/test_data.md
+[tutGN]: https://globalnames.org/docs/tut-xsv-gnparser/
 [uuid5]: http://globalnames.org/news/2015/05/31/gn-uuid-0-5-0
+[v0diff]: https://github.com/gnames/gnparser/wiki/Changes-in-v1.0.0
 [winpath]: https://www.computerhope.com/issues/ch000549.htm
 [wsl]: https://docs.microsoft.com/en-us/windows/wsl/
-[gnparser paper]: https://doi.org/10.1186/s12859-017-1663-3
-[PHP pipes]: https://gist.github.com/marcobrt/72b2a3d1b0649c1bf738c9fc88f74ec0
-[rgnparser]: https://github.com/ropensci/rgnparser
-[v0diff]: https://github.com/gnames/gnparser/wiki/Changes-in-v1.0.0
-[OpenRefine]: https://github.com/gnames/gnparser/wiki/GNparser-with-OpenRefine

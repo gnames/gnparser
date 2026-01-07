@@ -8,8 +8,12 @@ type ParsedFlat struct {
 	// Parsed is false if parsing did not succeed.
 	Parsed bool `json:"parsed"`
 
-	// NomCode modifies parsing rules according to provided nomenclatural code.
-	NomCode string `json:"nomenclaturalCode,omitempty"`
+	// NomCodeSetting modifies parsing rules according to provided
+	// nomenclatural code. For all codes except ICVCN this setting is a
+	// hint for ambiguous cases, however for ICVCN it is a hard constraint,
+	// because its parsing rules are drastically different and wont work for
+	// most names from other codes.
+	NomCodeSetting string `json:"nomenclaturalCodeSetting,omitempty"`
 
 	// ParseQuality is a number that represents the quality of the
 	// parsing.
@@ -224,23 +228,23 @@ func (p Parsed) Flatten() ParsedFlat {
 	}
 
 	res := ParsedFlat{
-		Parsed:        p.Parsed,
-		NomCode:       p.NomCode,
-		ParseQuality:  p.ParseQuality,
-		Verbatim:      p.Verbatim,
-		Normalized:    p.Normalized,
-		Cardinality:   p.Cardinality,
-		Rank:          p.Rank,
-		Candidatus:    p.Candidatus,
-		Virus:         p.Virus,
-		Cultivar:      p.Cultivar,
-		DaggerChar:    p.DaggerChar,
-		Hybrid:        hybrid,
-		GraftChimera:  graft,
-		Surrogate:     surrogate,
-		Tail:          p.Tail,
-		VerbatimID:    p.VerbatimID,
-		ParserVersion: p.ParserVersion,
+		Parsed:         p.Parsed,
+		NomCodeSetting: p.NomCodeSetting,
+		ParseQuality:   p.ParseQuality,
+		Verbatim:       p.Verbatim,
+		Normalized:     p.Normalized,
+		Cardinality:    p.Cardinality,
+		Rank:           p.Rank,
+		Candidatus:     p.Candidatus,
+		Virus:          p.Virus,
+		Cultivar:       p.Cultivar,
+		DaggerChar:     p.DaggerChar,
+		Hybrid:         hybrid,
+		GraftChimera:   graft,
+		Surrogate:      surrogate,
+		Tail:           p.Tail,
+		VerbatimID:     p.VerbatimID,
+		ParserVersion:  p.ParserVersion,
 	}
 	if !p.Parsed {
 		return res

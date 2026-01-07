@@ -894,7 +894,7 @@ Name: Gazella farasani Thouless, al Bassri, 1991
 
 Canonical: Gazella farasani
 
-Authorship: Thouless, al Bassri, 1991
+Authorship: Thouless & al Bassri 1991
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Gazella farasani Thouless, al Bassri, 1991","normalized":"Gazella farasani Thouless \u0026 al Bassri 1991","canonical":{"stemmed":"Gazella farasan","simple":"Gazella farasani","full":"Gazella farasani"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Thouless, al Bassri, 1991","normalized":"Thouless \u0026 al Bassri 1991","year":"1991","authors":["Thouless","al Bassri"],"originalAuth":{"authors":["Thouless","al Bassri"],"year":{"year":"1991"}}},"details":{"species":{"genus":"Gazella","species":"farasani","authorship":{"verbatim":"Thouless, al Bassri, 1991","normalized":"Thouless \u0026 al Bassri 1991","year":"1991","authors":["Thouless","al Bassri"],"originalAuth":{"authors":["Thouless","al Bassri"],"year":{"year":"1991"}}}}},"words":[{"verbatim":"Gazella","normalized":"Gazella","wordType":"GENUS","start":0,"end":7},{"verbatim":"farasani","normalized":"farasani","wordType":"SPECIES","start":8,"end":16},{"verbatim":"Thouless","normalized":"Thouless","wordType":"AUTHOR_WORD","start":17,"end":25},{"verbatim":"al","normalized":"al","wordType":"AUTHOR_WORD","start":27,"end":29},{"verbatim":"Bassri","normalized":"Bassri","wordType":"AUTHOR_WORD","start":30,"end":36},{"verbatim":"1991","normalized":"1991","wordType":"YEAR","start":38,"end":42}],"id":"0d74f1da-010a-5049-a4f2-25cbd64bf261","parserVersion":"test_version"}
@@ -904,7 +904,7 @@ Name: Anomalurus laticeps Aguilar-Amat i Banús, 1922
 
 Canonical: Anomalurus laticeps
 
-Authorship: Aguilar-Amat i Banús, 1922
+Authorship: Aguilar-Amat i Banús 1922
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Anomalurus laticeps Aguilar-Amat i Banús, 1922","normalized":"Anomalurus laticeps Aguilar-Amat i Banús 1922","canonical":{"stemmed":"Anomalurus laticeps","simple":"Anomalurus laticeps","full":"Anomalurus laticeps"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Aguilar-Amat i Banús, 1922","normalized":"Aguilar-Amat i Banús 1922","year":"1922","authors":["Aguilar-Amat i Banús"],"originalAuth":{"authors":["Aguilar-Amat i Banús"],"year":{"year":"1922"}}},"details":{"species":{"genus":"Anomalurus","species":"laticeps","authorship":{"verbatim":"Aguilar-Amat i Banús, 1922","normalized":"Aguilar-Amat i Banús 1922","year":"1922","authors":["Aguilar-Amat i Banús"],"originalAuth":{"authors":["Aguilar-Amat i Banús"],"year":{"year":"1922"}}}}},"words":[{"verbatim":"Anomalurus","normalized":"Anomalurus","wordType":"GENUS","start":0,"end":10},{"verbatim":"laticeps","normalized":"laticeps","wordType":"SPECIES","start":11,"end":19},{"verbatim":"Aguilar-Amat","normalized":"Aguilar-Amat","wordType":"AUTHOR_WORD","start":20,"end":32},{"verbatim":"i","normalized":"i","wordType":"AUTHOR_WORD","start":33,"end":34},{"verbatim":"Banús","normalized":"Banús","wordType":"AUTHOR_WORD","start":35,"end":40},{"verbatim":"1922","normalized":"1922","wordType":"YEAR","start":42,"end":46}],"id":"7c304a40-4378-5885-ae1d-7ae96e7edfd7","parserVersion":"test_version"}
@@ -914,7 +914,7 @@ Name: Glis wagneri Đulić & Tortić, 1960
 
 Canonical: Glis wagneri
 
-Authorship: Đulić & Tortić, 1960
+Authorship: Đulić & Tortić 1960
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Glis wagneri Đulić \u0026 Tortić, 1960","normalized":"Glis wagneri Đulić \u0026 Tortić 1960","canonical":{"stemmed":"Glis wagner","simple":"Glis wagneri","full":"Glis wagneri"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Đulić \u0026 Tortić, 1960","normalized":"Đulić \u0026 Tortić 1960","year":"1960","authors":["Đulić","Tortić"],"originalAuth":{"authors":["Đulić","Tortić"],"year":{"year":"1960"}}},"details":{"species":{"genus":"Glis","species":"wagneri","authorship":{"verbatim":"Đulić \u0026 Tortić, 1960","normalized":"Đulić \u0026 Tortić 1960","year":"1960","authors":["Đulić","Tortić"],"originalAuth":{"authors":["Đulić","Tortić"],"year":{"year":"1960"}}}}},"words":[{"verbatim":"Glis","normalized":"Glis","wordType":"GENUS","start":0,"end":4},{"verbatim":"wagneri","normalized":"wagneri","wordType":"SPECIES","start":5,"end":12},{"verbatim":"Đulić","normalized":"Đulić","wordType":"AUTHOR_WORD","start":13,"end":18},{"verbatim":"Tortić","normalized":"Tortić","wordType":"AUTHOR_WORD","start":21,"end":27},{"verbatim":"1960","normalized":"1960","wordType":"YEAR","start":29,"end":33}],"id":"41947169-8e7f-5967-b7e3-04c41af9e563","parserVersion":"test_version"}
@@ -922,9 +922,9 @@ Authorship: Đulić & Tortić, 1960
 
 Name: Mico rondoni Ferrari, Sena, M. P. C. Schneider, & e Silva Júnior, 2010
 
-Canonical: Mico rondoni 
+Canonical: Mico rondoni
 
-Authorship: Ferrari, Sena, M. P. C. Schneider, & e Silva Júnior, 2010
+Authorship: Ferrari, Sena, M. P. C. Schneider & e Silva Júnior 2010
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Mico rondoni Ferrari, Sena, M. P. C. Schneider, \u0026 e Silva Júnior, 2010","normalized":"Mico rondoni Ferrari, Sena, M. P. C. Schneider \u0026 e Silva Júnior 2010","canonical":{"stemmed":"Mico rondon","simple":"Mico rondoni","full":"Mico rondoni"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Ferrari, Sena, M. P. C. Schneider, \u0026 e Silva Júnior, 2010","normalized":"Ferrari, Sena, M. P. C. Schneider \u0026 e Silva Júnior 2010","year":"2010","authors":["Ferrari","Sena","M. P. C. Schneider","e Silva Júnior"],"originalAuth":{"authors":["Ferrari","Sena","M. P. C. Schneider","e Silva Júnior"],"year":{"year":"2010"}}},"details":{"species":{"genus":"Mico","species":"rondoni","authorship":{"verbatim":"Ferrari, Sena, M. P. C. Schneider, \u0026 e Silva Júnior, 2010","normalized":"Ferrari, Sena, M. P. C. Schneider \u0026 e Silva Júnior 2010","year":"2010","authors":["Ferrari","Sena","M. P. C. Schneider","e Silva Júnior"],"originalAuth":{"authors":["Ferrari","Sena","M. P. C. Schneider","e Silva Júnior"],"year":{"year":"2010"}}}}},"words":[{"verbatim":"Mico","normalized":"Mico","wordType":"GENUS","start":0,"end":4},{"verbatim":"rondoni","normalized":"rondoni","wordType":"SPECIES","start":5,"end":12},{"verbatim":"Ferrari","normalized":"Ferrari","wordType":"AUTHOR_WORD","start":13,"end":20},{"verbatim":"Sena","normalized":"Sena","wordType":"AUTHOR_WORD","start":22,"end":26},{"verbatim":"M.","normalized":"M.","wordType":"AUTHOR_WORD","start":28,"end":30},{"verbatim":"P.","normalized":"P.","wordType":"AUTHOR_WORD","start":31,"end":33},{"verbatim":"C.","normalized":"C.","wordType":"AUTHOR_WORD","start":34,"end":36},{"verbatim":"Schneider","normalized":"Schneider","wordType":"AUTHOR_WORD","start":37,"end":46},{"verbatim":"e","normalized":"e","wordType":"AUTHOR_WORD","start":50,"end":51},{"verbatim":"Silva","normalized":"Silva","wordType":"AUTHOR_WORD","start":52,"end":57},{"verbatim":"Júnior","normalized":"Júnior","wordType":"AUTHOR_WORD","start":58,"end":64},{"verbatim":"2010","normalized":"2010","wordType":"YEAR","start":66,"end":70}],"id":"02c04ac1-21d0-5bac-98af-8615eb980938","parserVersion":"test_version"}
@@ -934,7 +934,7 @@ Name: Trachypithecus caudalis (Đào Văn Tiến, 1977)
 
 Canonical: Trachypithecus caudalis
 
-Authorship: (Đào Văn Tiến, 1977)
+Authorship: (Đào Văn Tiến 1977)
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Trachypithecus caudalis (Đào Văn Tiến, 1977)","normalized":"Trachypithecus caudalis (Đào Văn Tiến 1977)","canonical":{"stemmed":"Trachypithecus caudal","simple":"Trachypithecus caudalis","full":"Trachypithecus caudalis"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"(Đào Văn Tiến, 1977)","normalized":"(Đào Văn Tiến 1977)","year":"1977","authors":["Đào Văn Tiến"],"originalAuth":{"authors":["Đào Văn Tiến"],"year":{"year":"1977"}}},"details":{"species":{"genus":"Trachypithecus","species":"caudalis","authorship":{"verbatim":"(Đào Văn Tiến, 1977)","normalized":"(Đào Văn Tiến 1977)","year":"1977","authors":["Đào Văn Tiến"],"originalAuth":{"authors":["Đào Văn Tiến"],"year":{"year":"1977"}}}}},"words":[{"verbatim":"Trachypithecus","normalized":"Trachypithecus","wordType":"GENUS","start":0,"end":14},{"verbatim":"caudalis","normalized":"caudalis","wordType":"SPECIES","start":15,"end":23},{"verbatim":"Đào","normalized":"Đào","wordType":"AUTHOR_WORD","start":25,"end":28},{"verbatim":"Văn","normalized":"Văn","wordType":"AUTHOR_WORD","start":29,"end":32},{"verbatim":"Tiến","normalized":"Tiến","wordType":"AUTHOR_WORD","start":33,"end":37},{"verbatim":"1977","normalized":"1977","wordType":"YEAR","start":39,"end":43}],"id":"aa2a649b-a81f-5c2a-a2fa-1dd1ccab70f1","parserVersion":"test_version"}
@@ -1534,7 +1534,7 @@ Name: Gerrhonotus lazcanoi Banda-Leal, Manuel Nevárez-de los Reyes and Bryson, 
 
 Canonical: Gerrhonotus lazcanoi
 
-Authorship:  Banda-Leal, Manuel Nevárez-de los Reyes and Bryson, 2017
+Authorship: Banda-Leal, Manuel Nevárez-de los Reyes & Bryson 2017
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Gerrhonotus lazcanoi Banda-Leal, Manuel Nevárez-de los Reyes and Bryson, 2017","normalized":"Gerrhonotus lazcanoi Banda-Leal, Manuel Nevárez-de los Reyes \u0026 Bryson 2017","canonical":{"stemmed":"Gerrhonotus lazcano","simple":"Gerrhonotus lazcanoi","full":"Gerrhonotus lazcanoi"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Banda-Leal, Manuel Nevárez-de los Reyes and Bryson, 2017","normalized":"Banda-Leal, Manuel Nevárez-de los Reyes \u0026 Bryson 2017","year":"2017","authors":["Banda-Leal","Manuel Nevárez-de los Reyes","Bryson"],"originalAuth":{"authors":["Banda-Leal","Manuel Nevárez-de los Reyes","Bryson"],"year":{"year":"2017"}}},"details":{"species":{"genus":"Gerrhonotus","species":"lazcanoi","authorship":{"verbatim":"Banda-Leal, Manuel Nevárez-de los Reyes and Bryson, 2017","normalized":"Banda-Leal, Manuel Nevárez-de los Reyes \u0026 Bryson 2017","year":"2017","authors":["Banda-Leal","Manuel Nevárez-de los Reyes","Bryson"],"originalAuth":{"authors":["Banda-Leal","Manuel Nevárez-de los Reyes","Bryson"],"year":{"year":"2017"}}}}},"words":[{"verbatim":"Gerrhonotus","normalized":"Gerrhonotus","wordType":"GENUS","start":0,"end":11},{"verbatim":"lazcanoi","normalized":"lazcanoi","wordType":"SPECIES","start":12,"end":20},{"verbatim":"Banda-Leal","normalized":"Banda-Leal","wordType":"AUTHOR_WORD","start":21,"end":31},{"verbatim":"Manuel","normalized":"Manuel","wordType":"AUTHOR_WORD","start":33,"end":39},{"verbatim":"Nevárez-de","normalized":"Nevárez-de","wordType":"AUTHOR_WORD","start":40,"end":50},{"verbatim":"los","normalized":"los","wordType":"AUTHOR_WORD","start":51,"end":54},{"verbatim":"Reyes","normalized":"Reyes","wordType":"AUTHOR_WORD","start":55,"end":60},{"verbatim":"Bryson","normalized":"Bryson","wordType":"AUTHOR_WORD","start":65,"end":71},{"verbatim":"2017","normalized":"2017","wordType":"YEAR","start":73,"end":77}],"id":"6dbb3e2b-6689-5fae-b4bd-6ac175a42f38","parserVersion":"test_version"}
@@ -1544,7 +1544,7 @@ Name: Lynceus huentelauquensis  Sigvardt, Rogers, De los Ríos, Palero, and Oles
 
 Canonical: Lynceus huentelauquensis
 
-Authorship: Sigvardt, Rogers, De los Ríos, Palero, and Olesen, 2019
+Authorship: Sigvardt, Rogers, De los Ríos, Palero & Olesen 2019
 
 ```json
 {"parsed":true,"quality":1,"verbatim":"Lynceus huentelauquensis  Sigvardt, Rogers, De los Ríos, Palero, and Olesen, 2019","normalized":"Lynceus huentelauquensis Sigvardt, Rogers, De los Ríos, Palero \u0026 Olesen 2019","canonical":{"stemmed":"Lynceus huentelauquens","simple":"Lynceus huentelauquensis","full":"Lynceus huentelauquensis"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Sigvardt, Rogers, De los Ríos, Palero, and Olesen, 2019","normalized":"Sigvardt, Rogers, De los Ríos, Palero \u0026 Olesen 2019","year":"2019","authors":["Sigvardt","Rogers","De los Ríos","Palero","Olesen"],"originalAuth":{"authors":["Sigvardt","Rogers","De los Ríos","Palero","Olesen"],"year":{"year":"2019"}}},"details":{"species":{"genus":"Lynceus","species":"huentelauquensis","authorship":{"verbatim":"Sigvardt, Rogers, De los Ríos, Palero, and Olesen, 2019","normalized":"Sigvardt, Rogers, De los Ríos, Palero \u0026 Olesen 2019","year":"2019","authors":["Sigvardt","Rogers","De los Ríos","Palero","Olesen"],"originalAuth":{"authors":["Sigvardt","Rogers","De los Ríos","Palero","Olesen"],"year":{"year":"2019"}}}}},"words":[{"verbatim":"Lynceus","normalized":"Lynceus","wordType":"GENUS","start":0,"end":7},{"verbatim":"huentelauquensis","normalized":"huentelauquensis","wordType":"SPECIES","start":8,"end":24},{"verbatim":"Sigvardt","normalized":"Sigvardt","wordType":"AUTHOR_WORD","start":26,"end":34},{"verbatim":"Rogers","normalized":"Rogers","wordType":"AUTHOR_WORD","start":36,"end":42},{"verbatim":"De","normalized":"De","wordType":"AUTHOR_WORD","start":44,"end":46},{"verbatim":"los","normalized":"los","wordType":"AUTHOR_WORD","start":47,"end":50},{"verbatim":"Ríos","normalized":"Ríos","wordType":"AUTHOR_WORD","start":51,"end":55},{"verbatim":"Palero","normalized":"Palero","wordType":"AUTHOR_WORD","start":57,"end":63},{"verbatim":"Olesen","normalized":"Olesen","wordType":"AUTHOR_WORD","start":69,"end":75},{"verbatim":"2019","normalized":"2019","wordType":"YEAR","start":77,"end":81}],"id":"8f670ee4-2d89-5891-ba95-fb3f3c00d07f","parserVersion":"test_version"}
@@ -1980,7 +1980,7 @@ Authorship: Krajina
 ```
 Name: Plantago major prol. lutulenta (Lamotte) Rouy
 
-Canoncal: Plantago major prol. lutulenta
+Canonical: Plantago major prol. lutulenta
 
 Authorship: (Lamotte) Rouy
 
@@ -7289,7 +7289,7 @@ Canonical: Tokiviricetes
 Authorship:
 
 ```json
-{"parsed":true,"nomenclaturalCode":"ICVCN","quality":1,"verbatim":"Tokiviricetes","normalized":"Tokiviricetes","canonical":{"stemmed":"Tokiviricetes","simple":"Tokiviricetes","full":"Tokiviricetes"},"cardinality":1,"rank":"Class","virus":true,"details":{"uninomialICVCN":{"uninomial":"Tokiviricetes","rank":"Class"}},"words":[{"verbatim":"Tokiviricetes","normalized":"Tokiviricetes","wordType":"CLASS_ICVCN","start":0,"end":13}],"id":"e8ec4986-4c02-5a80-8d43-db451a4fb3c1","parserVersion":"test_version"}
+{"parsed":true,"quality":1,"verbatim":"Tokiviricetes","normalized":"Tokiviricetes","canonical":{"stemmed":"Tokiviricetes","simple":"Tokiviricetes","full":"Tokiviricetes"},"cardinality":1,"rank":"Class","virus":true,"details":{"uninomialICVCN":{"uninomial":"Tokiviricetes","rank":"Class"}},"words":[{"verbatim":"Tokiviricetes","normalized":"Tokiviricetes","wordType":"CLASS_ICVCN","start":0,"end":13}],"id":"e8ec4986-4c02-5a80-8d43-db451a4fb3c1","parserVersion":"test_version"}
 ```
 
 Name: Usarudivirus nymphense
@@ -7299,7 +7299,7 @@ Canonical: Usarudivirus nymphense
 Authorship:
 
 ```json
-{"parsed":true,"nomenclaturalCode":"ICVCN","quality":1,"verbatim":"Usarudivirus nymphense","normalized":"Usarudivirus nymphense","canonical":{"stemmed":"Usarudivirus nymphense","simple":"Usarudivirus nymphense","full":"Usarudivirus nymphense"},"cardinality":2,"rank":"Species","virus":true,"details":{"speciesICVCN":{"genus":"Usarudivirus","species":"nymphense","rank":"Species"}},"words":[{"verbatim":"Usarudivirus","normalized":"Usarudivirus","wordType":"GENUS_ICVCN","start":0,"end":12},{"verbatim":"nymphense","normalized":"nymphense","wordType":"SPECIES_ICVCN","start":13,"end":22}],"id":"0b0b51fd-96f3-5531-9abb-f295f19eb328","parserVersion":"test_version"}
+{"parsed":true,"quality":1,"verbatim":"Usarudivirus nymphense","normalized":"Usarudivirus nymphense","canonical":{"stemmed":"Usarudivirus nymphense","simple":"Usarudivirus nymphense","full":"Usarudivirus nymphense"},"cardinality":2,"rank":"Species","virus":true,"details":{"speciesICVCN":{"genus":"Usarudivirus","species":"nymphense","rank":"Species"}},"words":[{"verbatim":"Usarudivirus","normalized":"Usarudivirus","wordType":"GENUS_ICVCN","start":0,"end":12},{"verbatim":"nymphense","normalized":"nymphense","wordType":"SPECIES_ICVCN","start":13,"end":22}],"id":"0b0b51fd-96f3-5531-9abb-f295f19eb328","parserVersion":"test_version"}
 ```
 
 Name: Ictavirus ictaluridallo1
@@ -7309,7 +7309,7 @@ Canonical: Ictavirus ictaluridallo1
 Authorship:
 
 ```json
-{"parsed":true,"nomenclaturalCode":"ICVCN","quality":1,"verbatim":"Ictavirus ictaluridallo1","normalized":"Ictavirus ictaluridallo1","canonical":{"stemmed":"Ictavirus ictaluridallo1","simple":"Ictavirus ictaluridallo1","full":"Ictavirus ictaluridallo1"},"cardinality":2,"rank":"Species","virus":true,"details":{"speciesICVCN":{"genus":"Ictavirus","species":"ictaluridallo1","rank":"Species"}},"words":[{"verbatim":"Ictavirus","normalized":"Ictavirus","wordType":"GENUS_ICVCN","start":0,"end":9},{"verbatim":"ictaluridallo1","normalized":"ictaluridallo1","wordType":"SPECIES_ICVCN","start":10,"end":24}],"id":"90bbb1c0-b45b-5784-b9dd-eac734aa4724","parserVersion":"test_version"}
+{"parsed":true,"quality":1,"verbatim":"Ictavirus ictaluridallo1","normalized":"Ictavirus ictaluridallo1","canonical":{"stemmed":"Ictavirus ictaluridallo1","simple":"Ictavirus ictaluridallo1","full":"Ictavirus ictaluridallo1"},"cardinality":2,"rank":"Species","virus":true,"details":{"speciesICVCN":{"genus":"Ictavirus","species":"ictaluridallo1","rank":"Species"}},"words":[{"verbatim":"Ictavirus","normalized":"Ictavirus","wordType":"GENUS_ICVCN","start":0,"end":9},{"verbatim":"ictaluridallo1","normalized":"ictaluridallo1","wordType":"SPECIES_ICVCN","start":10,"end":24}],"id":"90bbb1c0-b45b-5784-b9dd-eac734aa4724","parserVersion":"test_version"}
 ```
 Name: Aghbyvirus ISAO8
 
@@ -7318,7 +7318,7 @@ Canonical: Aghbyvirus ISAO8
 Authorship:
 
 ```json
-{"parsed":true,"nomenclaturalCode":"ICVCN","quality":1,"verbatim":"Aghbyvirus ISAO8","normalized":"Aghbyvirus ISAO8","canonical":{"stemmed":"Aghbyvirus ISAO8","simple":"Aghbyvirus ISAO8","full":"Aghbyvirus ISAO8"},"cardinality":2,"rank":"Species","virus":true,"details":{"speciesICVCN":{"genus":"Aghbyvirus","species":"ISAO8","rank":"Species"}},"words":[{"verbatim":"Aghbyvirus","normalized":"Aghbyvirus","wordType":"GENUS_ICVCN","start":0,"end":10},{"verbatim":"ISAO8","normalized":"ISAO8","wordType":"SPECIES_ICVCN","start":11,"end":16}],"id":"803541de-4454-58d6-a5b8-f9a73341e5c4","parserVersion":"test_version"}
+{"parsed":true,"quality":1,"verbatim":"Aghbyvirus ISAO8","normalized":"Aghbyvirus ISAO8","canonical":{"stemmed":"Aghbyvirus ISAO8","simple":"Aghbyvirus ISAO8","full":"Aghbyvirus ISAO8"},"cardinality":2,"rank":"Species","virus":true,"details":{"speciesICVCN":{"genus":"Aghbyvirus","species":"ISAO8","rank":"Species"}},"words":[{"verbatim":"Aghbyvirus","normalized":"Aghbyvirus","wordType":"GENUS_ICVCN","start":0,"end":10},{"verbatim":"ISAO8","normalized":"ISAO8","wordType":"SPECIES_ICVCN","start":11,"end":16}],"id":"803541de-4454-58d6-a5b8-f9a73341e5c4","parserVersion":"test_version"}
 ```
 
 Name: Mahavira

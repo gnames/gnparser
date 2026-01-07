@@ -13,13 +13,13 @@ import (
 func (sn *scientificNameNode) ToOutput(
 	withDetails, withSpGr bool) parsed.Parsed {
 	res := parsed.Parsed{
-		NomCode:       sn.code.Abbr(),
-		Verbatim:      sn.verbatim,
-		Canonical:     sn.Canonical(withSpGr),
-		Virus:         sn.virus,
-		DaggerChar:    sn.daggerChar,
-		VerbatimID:    sn.verbatimID,
-		ParserVersion: sn.parserVersion,
+		NomCodeSetting: sn.code.Abbr(),
+		Verbatim:       sn.verbatim,
+		Canonical:      sn.Canonical(withSpGr),
+		Virus:          sn.virus,
+		DaggerChar:     sn.daggerChar,
+		VerbatimID:     sn.verbatimID,
+		ParserVersion:  sn.parserVersion,
 	}
 
 	if res.Canonical == nil {

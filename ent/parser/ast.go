@@ -77,7 +77,7 @@ func (p *Engine) newScientificNameNode(pp *preprocess.Preprocessor) {
 }
 
 func (p *Engine) newNotParsedScientificNameNode(pp *preprocess.Preprocessor) {
-	sn := &scientificNameNode{virus: pp.Virus}
+	sn := &scientificNameNode{code: p.code, virus: pp.Virus}
 	p.sn = sn
 }
 
