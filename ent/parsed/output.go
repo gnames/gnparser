@@ -7,16 +7,17 @@ import (
 )
 
 // Output creates a JSON or CSV representation of Parsed results.
-func (p Parsed) Output(f gnfmt.Format) string {
+// When flatten is true, JSON output uses the flattened structure.
+func (p Parsed) Output(f gnfmt.Format, flatten bool) string {
 	switch f {
 	case gnfmt.CSV:
 		return p.csvOutput(',')
 	case gnfmt.TSV:
 		return p.csvOutput('\t')
 	case gnfmt.CompactJSON:
-		return p.jsonOutput(false)
+		return p.jsonOutput(false, flatten)
 	case gnfmt.PrettyJSON:
-		return p.jsonOutput(true)
+		return p.jsonOutput(true, flatten)
 	default:
 		return "N/A"
 	}
@@ -63,8 +64,13 @@ func (p Parsed) csvOutput(sep rune) string {
 	return gnfmt.ToCSV(res, sep)
 }
 
-func (p Parsed) jsonOutput(pretty bool) string {
+func (p Parsed) jsonOutput(pretty bool, flatten bool) string {
 	enc := gnfmt.GNjson{Pretty: pretty}
-	res, _ := enc.Encode(p)
+	var res []byte
+	if flatten {
+		res, _ = enc.Encode(p.Flatten())
+	} else {
+		res, _ = enc.Encode(p)
+	}
 	return string(res)
 }

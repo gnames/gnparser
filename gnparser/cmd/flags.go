@@ -3,7 +3,6 @@ package cmd
 import (
 	"fmt"
 	"log/slog"
-	"os"
 
 	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnlib/ent/nomcode"
@@ -12,11 +11,7 @@ import (
 )
 
 func batchSizeFlag(cmd *cobra.Command) {
-	bs, err := cmd.Flags().GetInt("batch_size")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	bs, _ := cmd.Flags().GetInt("batch_size")
 	if bs > 0 {
 		opts = append(opts, gnparser.OptBatchSize(bs))
 	}
@@ -47,33 +42,21 @@ func formatFlag(cmd *cobra.Command) {
 }
 
 func jobsNumFlag(cmd *cobra.Command) {
-	jn, err := cmd.Flags().GetInt("jobs")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	jn, _ := cmd.Flags().GetInt("jobs")
 	if jn > 0 {
 		opts = append(opts, gnparser.OptJobsNum(jn))
 	}
 }
 
 func ignoreHTMLTagsFlag(cmd *cobra.Command) {
-	ignoreTags, err := cmd.Flags().GetBool("ignore_tags")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	ignoreTags, _ := cmd.Flags().GetBool("ignore_tags")
 	if ignoreTags {
 		opts = append(opts, gnparser.OptIgnoreHTMLTags(true))
 	}
 }
 
 func portFlag(cmd *cobra.Command) int {
-	webPort, err := cmd.Flags().GetInt("port")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	webPort, _ := cmd.Flags().GetInt("port")
 	if webPort > 0 {
 		opts = append(opts, gnparser.OptPort(webPort))
 	}
@@ -91,22 +74,14 @@ func versionFlag(cmd *cobra.Command) bool {
 }
 
 func withCapitalizeFlag(cmd *cobra.Command) {
-	b, err := cmd.Flags().GetBool("capitalize")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	b, _ := cmd.Flags().GetBool("capitalize")
 	if b {
 		opts = append(opts, gnparser.OptWithCapitaliation(true))
 	}
 }
 
 func withDetailsFlag(cmd *cobra.Command) {
-	withDet, err := cmd.Flags().GetBool("details")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	withDet, _ := cmd.Flags().GetBool("details")
 	if withDet {
 		opts = append(opts, gnparser.OptWithDetails(true))
 	}
@@ -120,66 +95,48 @@ func withEnableCultivarsFlag(cmd *cobra.Command) {
 }
 
 func withNoOrderFlag(cmd *cobra.Command) {
-	withOrd, err := cmd.Flags().GetBool("unordered")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	withOrd, _ := cmd.Flags().GetBool("unordered")
 	if withOrd {
 		opts = append(opts, gnparser.OptWithNoOrder(true))
 	}
 }
 
 func withPreserveDiaeresesFlag(cmd *cobra.Command) {
-	b, err := cmd.Flags().GetBool("diaereses")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	b, _ := cmd.Flags().GetBool("diaereses")
 	if b {
 		opts = append(opts, gnparser.OptWithPreserveDiaereses(true))
 	}
 }
 
 func withNoSpacedInitialsFlag(cmd *cobra.Command) {
-	b, err := cmd.Flags().GetBool("no-spaced-initials")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	b, _ := cmd.Flags().GetBool("no-spaced-initials")
 	if b {
 		opts = append(opts, gnparser.OptWithNoSpacedInitials(true))
 	}
 }
 
-func spGrCutFlag(cmd *cobra.Command) {
-	b, err := cmd.Flags().GetBool("species-group-cut")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+func withFlatOutputFlag(cmd *cobra.Command) {
+	b, _ := cmd.Flags().GetBool("flatten-output")
+	if b {
+		opts = append(opts, gnparser.OptWithFlatOutput(true))
 	}
+}
+
+func spGrCutFlag(cmd *cobra.Command) {
+	b, _ := cmd.Flags().GetBool("species-group-cut")
 	if b {
 		opts = append(opts, gnparser.OptWithSpeciesGroupCut(true))
 	}
-
 }
 
 func withStreamFlag(cmd *cobra.Command) {
-	withDet, err := cmd.Flags().GetBool("stream")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	withDet, _ := cmd.Flags().GetBool("stream")
 	if withDet {
 		opts = append(opts, gnparser.OptWithStream(true))
 	}
 }
 
 func withWebLogsFlag(cmd *cobra.Command) bool {
-	withLogs, err := cmd.Flags().GetBool("web-logs")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	withLogs, _ := cmd.Flags().GetBool("web-logs")
 	return withLogs
 }

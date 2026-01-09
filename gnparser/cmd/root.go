@@ -82,6 +82,7 @@ gnparser -j 5 -p 8080
 		codeFlag(cmd)
 		withPreserveDiaeresesFlag(cmd)
 		withNoSpacedInitialsFlag(cmd)
+		withFlatOutputFlag(cmd)
 		batchSizeFlag(cmd)
 		spGrCutFlag(cmd)
 		port := portFlag(cmd)
@@ -205,6 +206,10 @@ If not set, the output format defaults to 'csv'.`
 
 	rootCmd.Flags().
 		BoolP("species-group-cut", "", false, "cut autonym/species group names to species for stemmed version")
+
+	rootCmd.Flags().BoolP(
+		"flatten-output", "F", false, "convert nested results into a flat list",
+	)
 }
 
 func processStdin(cmd *cobra.Command, cfg gnparser.Config) {
