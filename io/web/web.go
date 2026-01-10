@@ -182,7 +182,7 @@ func parsingResults(
 		res := make([]string, len(data.Parsed)+1)
 		res[0] = parsed.HeaderCSV(f)
 		for i := range data.Parsed {
-			res[i+1] = data.Parsed[i].Output(f)
+			res[i+1] = data.Parsed[i].Output(f, false)
 		}
 		return c.String(http.StatusOK, strings.Join(res, "\n"))
 	default:

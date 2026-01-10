@@ -47,7 +47,7 @@ func ParseToString(
 	}
 	cfg := gnparser.NewConfig(opts...)
 	gnp := gnparser.New(cfg)
-	parsed := gnp.ParseName(goname).Output(gnp.Format())
+	parsed := gnp.ParseName(goname).Output(gnp.Format(), false)
 
 	return C.CString(parsed)
 }
@@ -107,7 +107,7 @@ func ParseAryToString(
 	if gnp.Format() == gnfmt.CSV {
 		csv := make([]string, length)
 		for i := range parsed {
-			csv[i] = parsed[i].Output(gnfmt.CSV)
+			csv[i] = parsed[i].Output(gnfmt.CSV, false)
 		}
 		res = strings.Join(csv, "\n")
 	} else {

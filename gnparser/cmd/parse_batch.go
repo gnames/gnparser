@@ -23,7 +23,7 @@ func parseBatch(
 	var wg sync.WaitGroup
 
 	wg.Add(1)
-	go processResults(chOut, &wg, gnp.Format())
+	go processResults(chOut, &wg, gnp.Format(), gnp.FlatOutput())
 
 	sc := bufio.NewScanner(f)
 	var i, count int
@@ -50,6 +50,7 @@ func processResults(
 	out <-chan []parsed.Parsed,
 	wg *sync.WaitGroup,
 	f gnfmt.Format,
+	flatten bool,
 ) {
 	defer wg.Done()
 
@@ -60,7 +61,7 @@ func processResults(
 
 	for pr := range out {
 		for i := range pr {
-			fmt.Println(pr[i].Output(f))
+			fmt.Println(pr[i].Output(f, flatten))
 		}
 	}
 }

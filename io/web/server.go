@@ -173,7 +173,7 @@ func formatNames(
 		resCSV := make([]string, 0, len(res)+1)
 		resCSV = append(resCSV, parsed.HeaderCSV(f))
 		for i := range res {
-			resCSV = append(resCSV, res[i].Output(f))
+			resCSV = append(resCSV, res[i].Output(f, false))
 		}
 		return c.String(http.StatusOK, strings.Join(resCSV, "\n"))
 	default:

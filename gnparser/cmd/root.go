@@ -289,7 +289,7 @@ func parseString(gnp gnparser.GNparser, name string) {
 		fmt.Println(header)
 	}
 
-	fmt.Println(res.Output(f))
+	fmt.Println(res.Output(f, gnp.FlatOutput()))
 }
 
 func progressLog(start time.Time, namesNum int) {

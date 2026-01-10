@@ -42,44 +42,44 @@ gnparser -h
 
 <!-- TOC GFM -->
 
-- [Citing](#citing)
-- [Introduction](#introduction)
-- [Speed](#speed)
-- [Features](#features)
-- [Use Cases](#use-cases)
-  - [Getting the simplest possible canonical form](#getting-the-simplest-possible-canonical-form)
-  - [Quickly partition names by the type](#quickly-partition-names-by-the-type)
-  - [Normalizing name-strings](#normalizing-name-strings)
-  - [Removing authorship from the middle of the name](#removing-authorship-from-the-middle-of-the-name)
-  - [Figuring out if names are well-formed](#figuring-out-if-names-are-well-formed)
-  - [Creating stable GUIDs for name-strings](#creating-stable-guids-for-name-strings)
-  - [Assembling canonical forms etc. from original spelling](#assembling-canonical-forms-etc-from-original-spelling)
-- [Tutorials](#tutorials)
-- [Installation](#installation)
-  - [Install with Homebrew (Mac OS X, Linux)](#install-with-homebrew-mac-os-x-linux)
-  - [Linux or Mac OS X](#linux-or-mac-os-x)
-  - [Windows](#windows)
-  - [Install with Go](#install-with-go)
-- [Usage](#usage)
-  - [Command Line](#command-line)
-  - [Pipes](#pipes)
-  - [R language package](#r-language-package)
-  - [Ruby Gem](#ruby-gem)
-  - [Node.js](#nodejs)
-  - [Usage as a REST API Interface or Web-based User Graphical Interface](#usage-as-a-rest-api-interface-or-web-based-user-graphical-interface)
-    - [Enabling logs for GNparser's web-service](#enabling-logs-for-gnparsers-web-service)
-  - [Use as a Docker image](#use-as-a-docker-image)
-  - [Use as a library in Go](#use-as-a-library-in-go)
-  - [Use as a shared C library](#use-as-a-shared-c-library)
-- [Parsing ambiguities](#parsing-ambiguities)
-  - [Names with `filius` (ICN code)](#names-with-filius-icn-code)
-  - [Names with subgenus (ICZN code) and genus author (ICN code)](#names-with-subgenus-iczn-code-and-genus-author-icn-code)
-  - [Virus names according to modern ICVCN binomial nomenclature](#virus-names-according-to-modern-icvcn-binomial-nomenclature)
-- [Authors](#authors)
-- [Contributors](#contributors)
-- [Artificial Intelligence Policy](#artificial-intelligence-policy)
-- [References](#references)
-- [License](#license)
+* [Citing](#citing)
+* [Introduction](#introduction)
+* [Speed](#speed)
+* [Features](#features)
+* [Use Cases](#use-cases)
+  * [Getting the simplest possible canonical form](#getting-the-simplest-possible-canonical-form)
+  * [Quickly partition names by the type](#quickly-partition-names-by-the-type)
+  * [Normalizing name-strings](#normalizing-name-strings)
+  * [Removing authorship from the middle of the name](#removing-authorship-from-the-middle-of-the-name)
+  * [Figuring out if names are well-formed](#figuring-out-if-names-are-well-formed)
+  * [Creating stable GUIDs for name-strings](#creating-stable-guids-for-name-strings)
+  * [Assembling canonical forms etc. from original spelling](#assembling-canonical-forms-etc-from-original-spelling)
+* [Tutorials](#tutorials)
+* [Installation](#installation)
+  * [Install with Homebrew (Mac OS X, Linux)](#install-with-homebrew-mac-os-x-linux)
+  * [Linux or Mac OS X](#linux-or-mac-os-x)
+  * [Windows](#windows)
+  * [Install with Go](#install-with-go)
+* [Usage](#usage)
+  * [Command Line](#command-line)
+  * [Pipes](#pipes)
+  * [R language package](#r-language-package)
+  * [Ruby Gem](#ruby-gem)
+  * [Node.js](#nodejs)
+  * [Usage as a REST API Interface or Web-based User Graphical Interface](#usage-as-a-rest-api-interface-or-web-based-user-graphical-interface)
+    * [Enabling logs for GNparser's web-service](#enabling-logs-for-gnparsers-web-service)
+  * [Use as a Docker image](#use-as-a-docker-image)
+  * [Use as a library in Go](#use-as-a-library-in-go)
+  * [Use as a shared C library](#use-as-a-shared-c-library)
+* [Parsing ambiguities](#parsing-ambiguities)
+  * [Names with `filius` (ICN code)](#names-with-filius-icn-code)
+  * [Names with subgenus (ICZN code) and genus author (ICN code)](#names-with-subgenus-iczn-code-and-genus-author-icn-code)
+  * [Virus names according to modern ICVCN binomial nomenclature](#virus-names-according-to-modern-icvcn-binomial-nomenclature)
+* [Authors](#authors)
+* [Contributors](#contributors)
+* [Artificial Intelligence Policy](#artificial-intelligence-policy)
+* [References](#references)
+* [License](#license)
 
 <!-- /TOC -->
 
@@ -409,6 +409,13 @@ CSV/TSV formats.
 : Preserves diaereses, e.g. `Leptochloöpsis virgata`. The stemmed
 canonical name does not include diaereses.
 
+`--flatten-output -F`
+: Converts nested JSON output into a flattened structure. Only applies to JSON
+formats (CSV/TSV formats are always flattened). Instead of nested objects like
+`canonical` and `authorship`, all fields are flattened to the top level, making
+the output easier to process in some applications. Some detailed information
+would be lost in the flattened format.
+
 `--no-spaced-initials -N`
 : Removes space between authors' initials, e.g.
 `Schoenoplectus tabernaemontani (C. C. Gmel.) Palla`. The normalized
@@ -473,6 +480,9 @@ gnparser "Parus major Linnaeus, 1788" -f compact
 
 # pretty format
 gnparser -f pretty "Parus major Linnaeus, 1788"
+
+# JSON with flattened output structure (no nested objects)
+gnparser -f compact -F "Parus major Linnaeus, 1788"
 
 # to parse a name from the standard input
 echo "Parus major Linnaeus, 1788" | gnparser
