@@ -184,6 +184,7 @@ func OptWithNoSpacedInitials(b bool) Option {
 	}
 }
 
+// OptWithFlatOutput sets WithFlatOutput field.
 func OptWithFlatOutput(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithFlatOutput = b
