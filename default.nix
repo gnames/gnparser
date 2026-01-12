@@ -7,8 +7,8 @@
 }:
 buildGoModule rec {
   pname = "gnparser";
-  version = "v1.13.0";
-  date = "2026-01-07";
+  version = "v1.14.0";
+  date = "2026-01-12";
 
   src = lib.cleanSourceWith {
     filter = name: type: let
@@ -18,7 +18,7 @@ buildGoModule rec {
     src = lib.cleanSource ./.;
   };
 
-  vendorHash = "sha256-Yl2jBQw7UFq4djhX18/k25Bs81giwBQ1VG0y1uGI1Bc=";
+  vendorHash = "sha256-NdD9rLZ5pX4M/4OD2zrN42HG+HtH49d1d+yXuLPtn7w=";
 
   buildInputs = [
     stdenv

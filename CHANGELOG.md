@@ -2,7 +2,12 @@
 
 ## Unreleased
 
+## [v1.14.0] - 2026-01-12 Mon
+
+* Add[#292]: add flattened option for JSON output, add more (optional) details
+  to CSV/TSV output.
 * Fix[#227]: Cultivars words show correctly in "words" section.
+  (PR #300 by @tobymarsden)
 
 ## [v1.13.0] - 2026-01-07 Wed
 
@@ -572,6 +577,7 @@
 
 This document follows [changelog guidelines]
 
+[v1.14.0]: https://github.com/gnames/gnparser/compare/v1.13.0...v1.14.0
 [v1.13.0]: https://github.com/gnames/gnparser/compare/v1.12.1...v1.13.0
 [v1.12.1]: https://github.com/gnames/gnparser/compare/v1.12.0...v1.12.1
 [v1.12.0]: https://github.com/gnames/gnparser/compare/v1.11.10...v1.12.0
