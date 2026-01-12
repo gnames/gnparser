@@ -24,7 +24,7 @@ type echoTempl struct {
 func (t *echoTempl) Render(
 	w io.Writer,
 	name string,
-	data interface{},
+	data any,
 	c echo.Context,
 ) error {
 	return t.templates.ExecuteTemplate(w, name, data)
@@ -76,8 +76,8 @@ func parseFiles() (*template.Template, error) {
 
 func addFuncs(tmpl *template.Template) {
 	tmpl.Funcs(template.FuncMap{
-		"parsedJSON": func(p parsed.Parsed) string {
-			return p.Output(gnfmt.PrettyJSON)
+		"parsedJSON": func(p parsed.Parsed, flatten bool) string {
+			return p.Output(gnfmt.PrettyJSON, flatten)
 		},
 	})
 }

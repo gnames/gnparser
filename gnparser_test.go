@@ -31,7 +31,7 @@ func TestParseName(t *testing.T) {
 	data := getTestData(t, "test_data.md")
 	for _, v := range data {
 		parsed := gnp.ParseName(v.name)
-		json := parsed.Output(gnp.Format())
+		json := parsed.Output(gnp.Format(), gnp.FlatOutput())
 		assert.Equal(t, v.jsonData, json, v.name)
 	}
 }
@@ -64,9 +64,52 @@ func TestParseNameCultivars(t *testing.T) {
 	data := getTestData(t, "test_data_cultivars.md")
 	for _, v := range data {
 		parsed := gnp.ParseName(v.name)
-		json := parsed.Output(gnp.Format())
+		json := parsed.Output(gnp.Format(), gnp.FlatOutput())
 		assert.Equal(t, v.jsonData, json, v.name)
 	}
+}
+
+func TestParseFlatOutput(t *testing.T) {
+	cfg := gnparser.NewConfig(
+		gnparser.OptFormat(gnfmt.CompactJSON),
+		gnparser.OptWithFlatOutput(true),
+		gnparser.OptIsTest(true),
+	)
+	gnp := gnparser.New(cfg)
+
+	// Test a simple binomial name
+	parsed := gnp.ParseName("Homo sapiens Linnaeus, 1758")
+	jsonFlat := parsed.Output(gnp.Format(), true)
+	jsonNested := parsed.Output(gnp.Format(), false)
+
+	// Verify flattened structure has no nested canonical/details objects
+	assert.NotContains(t, jsonFlat, `"canonical":`)
+	assert.NotContains(t, jsonFlat, `"details":`)
+
+	// Verify nested structure still has nested objects
+	assert.Contains(t, jsonNested, `"canonical":`)
+
+	// Verify basic flattened fields are present
+	assert.Contains(t, jsonFlat, `"parsed":true`)
+	assert.Contains(t, jsonFlat, `"canonicalSimple":"Homo sapiens"`)
+	assert.Contains(t, jsonFlat, `"authorship":"Linnaeus, 1758"`)
+	assert.Contains(t, jsonFlat, `"authors":"Linnaeus"`)
+
+	// Test a trinomial with details
+	cfgDetails := gnparser.NewConfig(
+		gnparser.OptFormat(gnfmt.CompactJSON),
+		gnparser.OptWithFlatOutput(true),
+		gnparser.OptWithDetails(true),
+		gnparser.OptIsTest(true),
+	)
+	gnpDetails := gnparser.New(cfgDetails)
+	parsedDetails := gnpDetails.ParseName("Aus bus cus")
+	jsonFlatDetails := parsedDetails.Output(gnpDetails.Format(), true)
+
+	// With details enabled, genus and species should be present
+	assert.Contains(t, jsonFlatDetails, `"genus":"Aus"`)
+	assert.Contains(t, jsonFlatDetails, `"specificEpithet":"bus"`)
+	assert.Contains(t, jsonFlatDetails, `"infraspecificEpithet":"cus"`)
 }
 
 func TestParseLowCaseName(t *testing.T) {
@@ -362,13 +405,13 @@ func Example() {
 	res := gnp.ParseNames(names)
 	fmt.Println(res[0].Authorship.Verbatim)
 	fmt.Println(res[1].Canonical.Simple)
-	fmt.Println(parsed.HeaderCSV(gnp.Format()))
-	fmt.Println(res[0].Output(gnp.Format()))
+	fmt.Println(parsed.HeaderCSV(gnp.Format(), gnp.WithDetails()))
+	fmt.Println(res[0].Output(gnp.Format(), gnp.FlatOutput()))
 	// Output:
 	// Banks, 1892
 	// Bubo bubo
-	// Id,Verbatim,Cardinality,CanonicalStem,CanonicalSimple,CanonicalFull,Authorship,Year,Quality
-	// e2fdf10b-6a36-5cc7-b6ca-be4d3b34b21f,"Pardosa moesta Banks, 1892",2,Pardosa moest,Pardosa moesta,Pardosa moesta,"Banks, 1892",1892,1
+	// Id,Verbatim,Cardinality,CanonicalStem,CanonicalSimple,CanonicalFull,Authorship,Year,Quality,NomCodeSetting
+	// e2fdf10b-6a36-5cc7-b6ca-be4d3b34b21f,"Pardosa moesta Banks, 1892",2,Pardosa moest,Pardosa moesta,Pardosa moesta,"Banks, 1892",1892,1,
 }
 
 // BenchmarkParse checks parsing event speed. Run it with:
@@ -431,7 +474,7 @@ func BenchmarkParse(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			for _, v := range test {
 				p := gnpJSON.ParseName(v)
-				s = p.Output(gnpJSON.Format())
+				s = p.Output(gnpJSON.Format(), gnpJSON.FlatOutput())
 				if err != nil {
 					panic(err)
 				}
@@ -445,7 +488,7 @@ func BenchmarkParse(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			for _, v := range test {
 				p := gnpJSON.ParseName(v)
-				s = p.Output(gnpDet.Format())
+				s = p.Output(gnpDet.Format(), gnpDet.FlatOutput())
 			}
 		}
 		_ = fmt.Sprintf("%d", len(s))
@@ -456,7 +499,7 @@ func BenchmarkParse(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			for _, v := range test {
 				p := gnpCSV.ParseName(v)
-				s = p.Output(gnpCSV.Format())
+				s = p.Output(gnpCSV.Format(), gnpCSV.FlatOutput())
 			}
 		}
 		_ = fmt.Sprintf("%d", len(s))

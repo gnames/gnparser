@@ -19,12 +19,18 @@ type GNparser interface {
 	// Debug parses a string and outputs raw AST tree from PEG engine.
 	Debug(s string) []byte
 
+	// FlatOutput returns whether flatten output is enabled.
+	FlatOutput() bool
+
 	// Format returns currently chosen desired output format of a JSON or
 	// CSV output.
 	Format() gnfmt.Format
 
 	// GetVersion provides a version and a build timestamp of gnparser.
 	GetVersion() gnvers.Version
+
+	// WithDetails returns whether detailed parsing is enabled.
+	WithDetails() bool
 
 	// ParseName takes a name-string, and returns parsed results for the name.
 	ParseName(string) parsed.Parsed

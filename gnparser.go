@@ -121,6 +121,16 @@ func (gnp gnparser) ParseNames(names []string) []parsed.Parsed {
 	return res
 }
 
+// FlatOutput returns whether flatten output is enabled.
+func (gnp gnparser) FlatOutput() bool {
+	return gnp.cfg.WithFlatOutput
+}
+
+// WithDetails returns true if detailed parsing is enabled.
+func (gnp gnparser) WithDetails() bool {
+	return gnp.cfg.WithDetails
+}
+
 // Format returns the configured output format value.
 func (gnp gnparser) Format() gnfmt.Format {
 	return gnp.cfg.Format

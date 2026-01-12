@@ -25,7 +25,8 @@ type inputFORM struct {
 	// WithCultivars is deprecated and overriden by Code
 	WithCultivars     string `query:"cultivars" form:"cultivars"`
 	PreserveDiaereses string `query:"diaereses" form:"diaereses"`
-	NoSpacedInitials  string `query:"initials" form:"initials"`
+	NoSpacedInitials  string `query:"initials"  form:"initials"`
+	FlatOutput        string `query:"flatten"   form:"flatten"`
 }
 
 // Data contains information required to render web-pages.
@@ -41,6 +42,7 @@ type Data struct {
 	WithCultivars     bool
 	PreserveDiaereses bool
 	NoSpacedInitials  bool
+	FlatOutput        bool
 }
 
 // NewData creates new Data for web-page templates.
@@ -75,6 +77,7 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	withCultivars := inp.WithCultivars == "on"
 	preserveDiaereses := inp.PreserveDiaereses == "on"
 	noSpacedInitials := inp.NoSpacedInitials == "on"
+	flatOutput := inp.FlatOutput == "on"
 	q := make(url.Values)
 	q.Set("names", inp.Names)
 	q.Set("format", inp.Format)
@@ -89,6 +92,9 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	}
 	if noSpacedInitials {
 		q.Set("initials", inp.NoSpacedInitials)
+	}
+	if flatOutput {
+		q.Set("flatten", inp.FlatOutput)
 	}
 	q.Set("code", inp.Code)
 
@@ -125,6 +131,7 @@ func parsingResults(
 	data.WithCultivars = inp.WithCultivars == "on"
 	data.PreserveDiaereses = inp.PreserveDiaereses == "on"
 	data.NoSpacedInitials = inp.NoSpacedInitials == "on"
+	data.FlatOutput = inp.FlatOutput == "on"
 	data.Code = inp.Code
 
 	format := inp.Format
@@ -155,6 +162,7 @@ func parsingResults(
 		gnparser.OptWithDetails(data.WithDetails),
 		gnparser.OptWithPreserveDiaereses(data.PreserveDiaereses),
 		gnparser.OptWithNoSpacedInitials(data.NoSpacedInitials),
+		gnparser.OptWithFlatOutput(data.FlatOutput),
 	}
 
 	if data.WithCultivars {
@@ -172,7 +180,12 @@ func parsingResults(
 
 	switch data.Format {
 	case "json":
-		return c.JSON(http.StatusOK, data.Parsed)
+		res := make([]string, len(data.Parsed))
+		for i := range data.Parsed {
+			res[i] = data.Parsed[i].Output(gnfmt.CompactJSON, data.FlatOutput)
+		}
+		jsonArray := "[" + strings.Join(res, ",") + "]"
+		return c.JSONBlob(http.StatusOK, []byte(jsonArray))
 	case "csv", "tsv":
 		f := gnfmt.CSV
 		if data.Format == "tsv" {
@@ -180,9 +193,9 @@ func parsingResults(
 		}
 
 		res := make([]string, len(data.Parsed)+1)
-		res[0] = parsed.HeaderCSV(f)
+		res[0] = parsed.HeaderCSV(f, data.WithDetails)
 		for i := range data.Parsed {
-			res[i+1] = data.Parsed[i].Output(f)
+			res[i+1] = data.Parsed[i].Output(f, data.FlatOutput)
 		}
 		return c.String(http.StatusOK, strings.Join(res, "\n"))
 	default:

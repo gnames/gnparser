@@ -63,6 +63,11 @@ type Config struct {
 	// separated by space
 	WithNoSpacedInitials bool
 
+	// WithFlatOutput flag, when true, JSON output is converted from nested
+	// structure to a flat one. It simplifies the output usage, but looses
+	// some information that requires nesting.
+	WithFlatOutput bool
+
 	// WithStream changes from parsing a batch by batch, to parsing one name
 	// at a time. When WithStream is true, BatchSize setting is ignored.
 	WithStream bool
@@ -176,6 +181,13 @@ func OptWithPreserveDiaereses(b bool) Option {
 func OptWithNoSpacedInitials(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithNoSpacedInitials = b
+	}
+}
+
+// OptWithFlatOutput sets WithFlatOutput field.
+func OptWithFlatOutput(b bool) Option {
+	return func(cfg *Config) {
+		cfg.WithFlatOutput = b
 	}
 }
 

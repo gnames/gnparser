@@ -34,6 +34,8 @@
           <input type="checkbox" id="diaereses" name="diaereses" />
           <label for="initials">Compact authors' initials</label>
           <input type="checkbox" id="initials" name="initials" />
+          <label for="flatten">Flatten output</label>
+          <input type="checkbox" id="flatten" name="flatten" />
         </div>
 
         <textarea
@@ -57,7 +59,7 @@
       {{ range .Parsed }}
       <p>
         <code class="unit whole" style="margin-bottom: 1em"
-          >{{ parsedJSON . }}</code
+          >{{ parsedJSON . $.FlatOutput }}</code
         >
       </p>
       <p></p>

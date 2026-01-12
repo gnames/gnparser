@@ -26,6 +26,7 @@ type inputREST struct {
 	WithDetails       bool     `json:"withDetails"`
 	PreserveDiaereses bool     `json:"preserveDiaereses"`
 	NoSpacedInitials  bool     `json:"noSpacedInitials"`
+	FlatOutput        bool     `json:"flatOutput"`
 	Code              string   `json:"code"`
 
 	// WithCultivars is deprecated by Code and overriden by it
@@ -104,11 +105,12 @@ func parseNamesGET(gnps GNparserService) func(echo.Context) error {
 		cultivars := c.QueryParam("cultivars") == "true"
 		diaereses := c.QueryParam("diaereses") == "true"
 		initials := c.QueryParam("no_spaced_initials") == "true"
+		flatten := c.QueryParam("flatten") == "true"
 		codeStr := c.QueryParam("code")
 
 		code := getCode(codeStr, cultivars)
 
-		gnp := gnps.ChangeConfig(opts(code, csv, det, diaereses, initials)...)
+		gnp := gnps.ChangeConfig(opts(code, csv, det, diaereses, initials, flatten)...)
 		names := strings.Split(nameStr, "|")
 		res := gnp.ParseNames(names)
 		if l := len(names); l > 0 {
@@ -117,7 +119,7 @@ func parseNamesGET(gnps GNparserService) func(echo.Context) error {
 				"parsedBy", "REST API", "method", "GET",
 			)
 		}
-		return formatNames(c, res, gnp.Format())
+		return formatNames(c, res, gnp)
 	}
 }
 
@@ -144,9 +146,10 @@ func parseNamesPOST(gnps GNparserService) func(echo.Context) error {
 				input.WithDetails,
 				input.PreserveDiaereses,
 				input.NoSpacedInitials,
+				input.FlatOutput,
 			)...)
 		res := gnp.ParseNames(input.Names)
-		return formatNames(c, res, gnp.Format())
+		return formatNames(c, res, gnp)
 	}
 }
 
@@ -165,29 +168,35 @@ func getCode(codeStr string, cultivars bool) nomcode.Code {
 func formatNames(
 	c echo.Context,
 	res []parsed.Parsed,
-	f gnfmt.Format,
+	gnp gnparser.GNparser,
 ) error {
-
+	f := gnp.Format()
 	switch f {
 	case gnfmt.CSV, gnfmt.TSV:
 		resCSV := make([]string, 0, len(res)+1)
-		resCSV = append(resCSV, parsed.HeaderCSV(f))
+		resCSV = append(resCSV, parsed.HeaderCSV(f, gnp.WithDetails()))
 		for i := range res {
-			resCSV = append(resCSV, res[i].Output(f))
+			resCSV = append(resCSV, res[i].Output(f, gnp.FlatOutput()))
 		}
 		return c.String(http.StatusOK, strings.Join(resCSV, "\n"))
 	default:
-		return c.JSON(http.StatusOK, res)
+		resJSON := make([]string, len(res))
+		for i := range res {
+			resJSON[i] = res[i].Output(f, gnp.FlatOutput())
+		}
+		str := "[" + strings.Join(resJSON, ",") + "]"
+		return c.JSONBlob(http.StatusOK, []byte(str))
 	}
 }
 
 func opts(code nomcode.Code, csv, details, diaereses,
-	initials bool) []gnparser.Option {
+	initials, flatten bool) []gnparser.Option {
 	res := []gnparser.Option{
 		gnparser.OptWithDetails(details),
 		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(diaereses),
 		gnparser.OptWithNoSpacedInitials(initials),
+		gnparser.OptWithFlatOutput(flatten),
 	}
 	if csv {
 		res = append(res, gnparser.OptFormat(gnfmt.CSV))

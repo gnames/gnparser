@@ -59,7 +59,7 @@ func parseStream(
 		defer wg.Done()
 		start := time.Now()
 
-		header := parsed.HeaderCSV(gnp.Format())
+		header := parsed.HeaderCSV(gnp.Format(), gnp.WithDetails())
 		if header != "" {
 			fmt.Println(header)
 		}
@@ -77,7 +77,7 @@ func parseStream(
 				if !ok {
 					return
 				}
-				fmt.Println(v.Output(gnp.Format()))
+				fmt.Println(v.Output(gnp.Format(), gnp.FlatOutput()))
 			}
 		}
 	}()

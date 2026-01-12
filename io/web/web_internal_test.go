@@ -245,3 +245,168 @@ func TestParsePOST(t *testing.T) {
 	assert.Nil(t, parseNamesPOST(gnps)(c))
 	assert.True(t, strings.HasPrefix(rec.Body.String(), "Id"))
 }
+
+func TestParsePOST_FlatOutput(t *testing.T) {
+	cfg := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
+	gnp := gnparser.New(cfg)
+	gnps := NewGNparserService(gnp, 0)
+
+	var response any
+	names := []string{"Homo sapiens Linnaeus, 1758"}
+
+	// Test with FlatOutput = true (flattened JSON)
+	params := inputREST{
+		Names:       names,
+		CSV:         false,
+		WithDetails: false,
+		FlatOutput:  true,
+	}
+	reqBody, err := gnfmt.GNjson{}.Encode(params)
+	assert.Nil(t, err)
+	r := bytes.NewReader(reqBody)
+	req := httptest.NewRequest(http.MethodPost, "/api/v1", r)
+	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
+	rec := httptest.NewRecorder()
+	e := echo.New()
+	c := e.NewContext(req, rec)
+
+	assert.Nil(t, parseNamesPOST(gnps)(c))
+
+	enc := gnfmt.GNjson{}
+	err = enc.Decode(rec.Body.Bytes(), &response)
+	assert.Nil(t, err)
+
+	responseSlice, ok := response.([]any)
+	assert.True(t, ok)
+	assert.Equal(t, 1, len(responseSlice))
+
+	body := rec.Body.String()
+	// Flattened output should not contain nested "canonical" object
+	assert.NotContains(t, body, `"canonical":`)
+	// Should contain flat fields
+	assert.Contains(t, body, `"canonicalSimple"`)
+	assert.Contains(t, body, `"authorship"`)
+
+	// Test with FlatOutput = false (nested JSON)
+	params = inputREST{
+		Names:       names,
+		CSV:         false,
+		WithDetails: false,
+		FlatOutput:  false,
+	}
+	reqBody, err = gnfmt.GNjson{}.Encode(params)
+	assert.Nil(t, err)
+	r = bytes.NewReader(reqBody)
+	req = httptest.NewRequest(http.MethodPost, "/api/v1", r)
+	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
+	rec = httptest.NewRecorder()
+	c = e.NewContext(req, rec)
+
+	assert.Nil(t, parseNamesPOST(gnps)(c))
+
+	body = rec.Body.String()
+	// Nested output should contain "canonical" object
+	assert.Contains(t, body, `"canonical":`)
+	assert.NotContains(t, body, `"canonicalSimple"`)
+}
+
+func TestParseGET_FlatOutput(t *testing.T) {
+	cfg := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
+	gnp := gnparser.New(cfg)
+	gnps := NewGNparserService(gnp, 0)
+
+	name := url.QueryEscape("Homo sapiens")
+
+	// Test with flatten=true
+	e := echo.New()
+	q := make(url.Values)
+	q.Set("flatten", "true")
+	req := httptest.NewRequest(http.MethodGet, "/?"+q.Encode(), nil)
+	rec := httptest.NewRecorder()
+	c := e.NewContext(req, rec)
+	c.SetPath("/:names")
+	c.SetParamNames("names")
+	c.SetParamValues(name)
+
+	assert.Nil(t, parseNamesGET(gnps)(c))
+
+	body := rec.Body.String()
+	assert.NotContains(t, body, `"canonical":`)
+	assert.Contains(t, body, `"canonicalSimple"`)
+
+	// Test with flatten=false (default)
+	req = httptest.NewRequest(http.MethodGet, "/", nil)
+	rec = httptest.NewRecorder()
+	c = e.NewContext(req, rec)
+	c.SetPath("/:names")
+	c.SetParamNames("names")
+	c.SetParamValues(name)
+
+	assert.Nil(t, parseNamesGET(gnps)(c))
+
+	body = rec.Body.String()
+	assert.Contains(t, body, `"canonical":`)
+	assert.NotContains(t, body, `"canonicalSimple"`)
+}
+
+func TestParsePOST_CSV_WithFlatOutput(t *testing.T) {
+	cfg := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
+	gnp := gnparser.New(cfg)
+	gnps := NewGNparserService(gnp, 0)
+
+	names := []string{"Homo sapiens Linnaeus, 1758", "Bubo bubo"}
+
+	// Test CSV output without details (simple 10 fields)
+	params := inputREST{
+		Names:       names,
+		CSV:         true,
+		WithDetails: false,
+		FlatOutput:  true,
+	}
+	reqBody, err := gnfmt.GNjson{}.Encode(params)
+	assert.Nil(t, err)
+	r := bytes.NewReader(reqBody)
+	req := httptest.NewRequest(http.MethodPost, "/api/v1", r)
+	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
+	rec := httptest.NewRecorder()
+	e := echo.New()
+	c := e.NewContext(req, rec)
+
+	assert.Nil(t, parseNamesPOST(gnps)(c))
+
+	body := rec.Body.String()
+	// CSV without details should have simple header (10 fields)
+	assert.Contains(t, body, "Id,Verbatim,Cardinality")
+	assert.Contains(t, body, "NomCodeSetting")
+	// Should NOT include extended fields when WithDetails=false
+	assert.NotContains(t, body, "Parsed,")
+	assert.NotContains(t, body, ",Authors,")
+	assert.NotContains(t, body, ",Genus,")
+	assert.NotContains(t, body, "CultivarEpithet")
+
+	// Test CSV with WithDetails=true (extended fields)
+	params = inputREST{
+		Names:       names,
+		CSV:         true,
+		WithDetails: true,
+		FlatOutput:  false, // FlatOutput is ignored for CSV
+	}
+	reqBody, err = gnfmt.GNjson{}.Encode(params)
+	assert.Nil(t, err)
+	r = bytes.NewReader(reqBody)
+	req = httptest.NewRequest(http.MethodPost, "/api/v1", r)
+	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
+	rec = httptest.NewRecorder()
+	c = e.NewContext(req, rec)
+
+	assert.Nil(t, parseNamesPOST(gnps)(c))
+
+	body = rec.Body.String()
+	// Should include all extended fields when WithDetails=true
+	assert.Contains(t, body, "Parsed,")
+	assert.Contains(t, body, ",Authors,")
+	assert.Contains(t, body, ",Genus,")
+	assert.Contains(t, body, ",Species,")
+	assert.Contains(t, body, ",Infraspecies")
+	assert.Contains(t, body, "CultivarEpithet")
+}

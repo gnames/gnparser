@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Fix[#227]: Cultivars words show correctly in "words" section.
+
 ## [v1.13.0] - 2026-01-07 Wed
 
 * Add[#298]: update CONTRIBUTING.md to reflect changes in gnparser's code.
