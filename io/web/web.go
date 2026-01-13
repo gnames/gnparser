@@ -31,18 +31,19 @@ type inputFORM struct {
 
 // Data contains information required to render web-pages.
 type Data struct {
-	Input       string
-	Parsed      []parsed.Parsed
-	Code        string
-	Format      string
-	HomePage    bool
-	Version     string
-	WithDetails bool
-	// WithCultivars is deprecated by Code field
-	WithCultivars     bool
+	Input             string
+	Parsed            []parsed.Parsed
+	Code              string
+	Format            string
+	HomePage          bool
+	Version           string
+	WithDetails       bool
 	PreserveDiaereses bool
-	NoSpacedInitials  bool
-	FlatOutput        bool
+	CompactAuthors    bool
+	FlattenOutput     bool
+
+	// WithCultivars is deprecated by Code field
+	WithCultivars bool
 }
 
 // NewData creates new Data for web-page templates.
@@ -76,8 +77,8 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	withDetails := inp.WithDetails == "on"
 	withCultivars := inp.WithCultivars == "on"
 	preserveDiaereses := inp.PreserveDiaereses == "on"
-	noSpacedInitials := inp.CompactAuthors == "on"
-	flatOutput := inp.FlattenOutput == "on"
+	compactAuthors := inp.CompactAuthors == "on"
+	flattenOutput := inp.FlattenOutput == "on"
 	q := make(url.Values)
 	q.Set("names", inp.Names)
 	q.Set("format", inp.Format)
@@ -90,10 +91,10 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	if preserveDiaereses {
 		q.Set("diaereses", inp.PreserveDiaereses)
 	}
-	if noSpacedInitials {
-		q.Set("initials", inp.CompactAuthors)
+	if compactAuthors {
+		q.Set("compact_authors", inp.CompactAuthors)
 	}
-	if flatOutput {
+	if flattenOutput {
 		q.Set("flatten", inp.FlattenOutput)
 	}
 	q.Set("code", inp.Code)
@@ -130,8 +131,8 @@ func parsingResults(
 	data.WithDetails = inp.WithDetails == "on"
 	data.WithCultivars = inp.WithCultivars == "on"
 	data.PreserveDiaereses = inp.PreserveDiaereses == "on"
-	data.NoSpacedInitials = inp.CompactAuthors == "on"
-	data.FlatOutput = inp.FlattenOutput == "on"
+	data.CompactAuthors = inp.CompactAuthors == "on"
+	data.FlattenOutput = inp.FlattenOutput == "on"
 	data.Code = inp.Code
 
 	format := inp.Format
@@ -161,8 +162,8 @@ func parsingResults(
 	opts := []gnparser.Option{
 		gnparser.OptWithDetails(data.WithDetails),
 		gnparser.OptWithPreserveDiaereses(data.PreserveDiaereses),
-		gnparser.OptWithNoSpacedInitials(data.NoSpacedInitials),
-		gnparser.OptWithFlatOutput(data.FlatOutput),
+		gnparser.OptWithCompactAuthors(data.CompactAuthors),
+		gnparser.OptWithFlatOutput(data.FlattenOutput),
 	}
 
 	if data.WithCultivars {
@@ -182,7 +183,7 @@ func parsingResults(
 	case "json":
 		res := make([]string, len(data.Parsed))
 		for i := range data.Parsed {
-			res[i] = data.Parsed[i].Output(gnfmt.CompactJSON, data.FlatOutput)
+			res[i] = data.Parsed[i].Output(gnfmt.CompactJSON, data.FlattenOutput)
 		}
 		jsonArray := "[" + strings.Join(res, ",") + "]"
 		return c.JSONBlob(http.StatusOK, []byte(jsonArray))
@@ -195,7 +196,7 @@ func parsingResults(
 		res := make([]string, len(data.Parsed)+1)
 		res[0] = parsed.HeaderCSV(f, data.WithDetails)
 		for i := range data.Parsed {
-			res[i+1] = data.Parsed[i].Output(f, data.FlatOutput)
+			res[i+1] = data.Parsed[i].Output(f, data.FlattenOutput)
 		}
 		return c.String(http.StatusOK, strings.Join(res, "\n"))
 	default:

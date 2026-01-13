@@ -195,7 +195,7 @@ func opts(code nomcode.Code, csv, details, diaereses,
 		gnparser.OptWithDetails(details),
 		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(diaereses),
-		gnparser.OptWithNoSpacedInitials(initials),
+		gnparser.OptWithCompactAuthors(initials),
 		gnparser.OptWithFlatOutput(flatten),
 	}
 	if csv {

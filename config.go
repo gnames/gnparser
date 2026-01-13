@@ -59,9 +59,9 @@ type Config struct {
 	// WithPreserveDiaereses flag, when true, diaereses will not be transliterated
 	WithPreserveDiaereses bool
 
-	// WithNoSpacedInitials flag, when true, authors' initials will not be
+	// WithCompactAuthors flag, when true, authors' initials will not be
 	// separated by space
-	WithNoSpacedInitials bool
+	WithCompactAuthors bool
 
 	// WithFlatOutput flag, when true, JSON output is converted from nested
 	// structure to a flat one. It simplifies the output usage, but looses
@@ -177,10 +177,10 @@ func OptWithPreserveDiaereses(b bool) Option {
 	}
 }
 
-// OptWithNoSpacedInitials sets the NoSpacedInitials field.
-func OptWithNoSpacedInitials(b bool) Option {
+// OptWithCompactAuthors sets the NoSpacedInitials field.
+func OptWithCompactAuthors(b bool) Option {
 	return func(cfg *Config) {
-		cfg.WithNoSpacedInitials = b
+		cfg.WithCompactAuthors = b
 	}
 }
 

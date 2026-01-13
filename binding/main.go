@@ -44,7 +44,7 @@ func ParseToString(
 		gnparser.OptWithDetails(int(details) > 0),
 		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(int(diaereses) > 0),
-		gnparser.OptWithNoSpacedInitials(int(noSpacedInitials) > 0),
+		gnparser.OptWithCompactAuthors(int(noSpacedInitials) > 0),
 		gnparser.OptWithFlatOutput(int(flatten) > 0),
 	}
 	cfg := gnparser.NewConfig(opts...)
@@ -90,7 +90,7 @@ func ParseAryToString(
 		gnparser.OptWithDetails(int(details) > 0),
 		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(int(diaereses) > 0),
-		gnparser.OptWithNoSpacedInitials(int(noSpacedInitials) > 0),
+		gnparser.OptWithCompactAuthors(int(noSpacedInitials) > 0),
 		gnparser.OptWithFlatOutput(int(flatten) > 0),
 	}
 	start := unsafe.Pointer(in)

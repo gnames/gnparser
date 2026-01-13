@@ -416,10 +416,11 @@ formats (CSV/TSV formats are always flattened). Instead of nested objects like
 the output easier to process in some applications. Some detailed information
 would be lost in the flattened format.
 
-`--no-spaced-initials -N`
+`--compact_authors -a`
 : Removes space between authors' initials, e.g.
 `Schoenoplectus tabernaemontani (C. C. Gmel.) Palla`. The normalized
-authorship will be generated without space between initials.
+authorship will be generated without space between initials
+`Schoenoplectus tabernaemontani (C.C.Gmel.) Palla`.
 
 `--format -f`
 : Specifies the output format: `csv`, `tsv`, `compact`, or `pretty`.
@@ -717,6 +718,7 @@ and Subrealm. We try to detect such names and place them in an exception list.
 ## Contributors
 
 * [Toby Marsden]
+* [Geoffrey Ower]
 * [Philippe Juillerat]
 * [Hernan Lucas Pereira]
 
@@ -748,6 +750,7 @@ Released under [MIT license]
 
 [CONTRIBUTING]: CONTRIBUTING.md
 [Dmitry Mozzherin]: https://github.com/dimus
+[Geoffrey Ower]: https://github.com/gdower
 [Hernan Lucas Pereira]: https://github.com/LocoDelAssembly
 [Homebrew]: https://brew.sh/
 [IRMNG]: http://www.irmng.org

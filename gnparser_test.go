@@ -203,7 +203,7 @@ func TestParseNoSpacedInitials(t *testing.T) {
 		},
 	}
 	cfg := gnparser.NewConfig(
-		gnparser.OptWithNoSpacedInitials(true),
+		gnparser.OptWithCompactAuthors(true),
 	)
 	gnp := gnparser.New(cfg)
 	for _, v := range tests {

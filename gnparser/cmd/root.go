@@ -81,7 +81,7 @@ gnparser -j 5 -p 8080
 		// overrides Cultivar flag
 		codeFlag(cmd)
 		withPreserveDiaeresesFlag(cmd)
-		withNoSpacedInitialsFlag(cmd)
+		withCompactAuthorsFlag(cmd)
 		withFlatOutputFlag(cmd)
 		batchSizeFlag(cmd)
 		spGrCutFlag(cmd)
@@ -166,7 +166,7 @@ If not set, the parser will attempt to determine the appropriate code/s.`
 	rootCmd.Flags().BoolP("diaereses", "D", false,
 		"preserve diaereses in names")
 
-	rootCmd.Flags().BoolP("no-spaced-initials", "N", false,
+	rootCmd.Flags().BoolP("compact-authors", "N", false,
 		"without space between initials of authors")
 
 	rootCmd.Flags().BoolP("details", "d", false, "provides more details")
