@@ -166,7 +166,7 @@ If not set, the parser will attempt to determine the appropriate code/s.`
 	rootCmd.Flags().BoolP("diaereses", "D", false,
 		"preserve diaereses in names")
 
-	rootCmd.Flags().BoolP("compact-authors", "N", false,
+	rootCmd.Flags().BoolP("compact-authors", "a", false,
 		"without space between initials of authors")
 
 	rootCmd.Flags().BoolP("details", "d", false, "provides more details")
