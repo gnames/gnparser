@@ -17,16 +17,16 @@ import (
 
 // inputFORM is used to collect data from HTML form.
 type inputFORM struct {
-	Names       string `query:"names"        form:"names"`
-	Code        string `query:"code"         form:"code"`
-	Format      string `query:"format"       form:"format"`
-	WithDetails string `query:"with_details" form:"with_details"`
+	Names             string `query:"names"           form:"names"`
+	Code              string `query:"code"            form:"code"`
+	Format            string `query:"format"          form:"format"`
+	WithDetails       string `query:"with_details"    form:"with_details"`
+	PreserveDiaereses string `query:"diaereses"       form:"diaereses"`
+	CompactAuthors    string `query:"compact_authors" form:"compact_authors"`
+	FlattenOutput     string `query:"flatten"         form:"flatten"`
 
 	// WithCultivars is deprecated and overriden by Code
-	WithCultivars     string `query:"cultivars" form:"cultivars"`
-	PreserveDiaereses string `query:"diaereses" form:"diaereses"`
-	NoSpacedInitials  string `query:"initials"  form:"initials"`
-	FlatOutput        string `query:"flatten"   form:"flatten"`
+	WithCultivars string `query:"cultivars" form:"cultivars"`
 }
 
 // Data contains information required to render web-pages.
@@ -76,8 +76,8 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	withDetails := inp.WithDetails == "on"
 	withCultivars := inp.WithCultivars == "on"
 	preserveDiaereses := inp.PreserveDiaereses == "on"
-	noSpacedInitials := inp.NoSpacedInitials == "on"
-	flatOutput := inp.FlatOutput == "on"
+	noSpacedInitials := inp.CompactAuthors == "on"
+	flatOutput := inp.FlattenOutput == "on"
 	q := make(url.Values)
 	q.Set("names", inp.Names)
 	q.Set("format", inp.Format)
@@ -91,10 +91,10 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 		q.Set("diaereses", inp.PreserveDiaereses)
 	}
 	if noSpacedInitials {
-		q.Set("initials", inp.NoSpacedInitials)
+		q.Set("initials", inp.CompactAuthors)
 	}
 	if flatOutput {
-		q.Set("flatten", inp.FlatOutput)
+		q.Set("flatten", inp.FlattenOutput)
 	}
 	q.Set("code", inp.Code)
 
@@ -130,8 +130,8 @@ func parsingResults(
 	data.WithDetails = inp.WithDetails == "on"
 	data.WithCultivars = inp.WithCultivars == "on"
 	data.PreserveDiaereses = inp.PreserveDiaereses == "on"
-	data.NoSpacedInitials = inp.NoSpacedInitials == "on"
-	data.FlatOutput = inp.FlatOutput == "on"
+	data.NoSpacedInitials = inp.CompactAuthors == "on"
+	data.FlatOutput = inp.FlattenOutput == "on"
 	data.Code = inp.Code
 
 	format := inp.Format
