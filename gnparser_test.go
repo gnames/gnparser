@@ -182,7 +182,7 @@ func TestParsePreserveDiaereses(t *testing.T) {
 	}
 }
 
-func TestParseNoSpacedInitials(t *testing.T) {
+func TestParseCompactAuthors(t *testing.T) {
 	tests := []struct {
 		msg, in, normalized, authorship string
 		quality                         int

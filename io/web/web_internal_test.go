@@ -188,7 +188,7 @@ func TestParsePOST(t *testing.T) {
 		WithDetails:       false,
 		WithCultivars:     true,
 		PreserveDiaereses: true,
-		NoSpacedInitials:  true,
+		CompactAuthors:    true,
 	}
 	reqBody, err := gnfmt.GNjson{}.Encode(params)
 	assert.Nil(t, err)
@@ -233,7 +233,7 @@ func TestParsePOST(t *testing.T) {
 		WithDetails:       false,
 		WithCultivars:     false,
 		PreserveDiaereses: false,
-		NoSpacedInitials:  false,
+		CompactAuthors:    false,
 	}
 	reqBody, err = gnfmt.GNjson{}.Encode(params)
 	r = bytes.NewReader(reqBody)

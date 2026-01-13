@@ -30,7 +30,7 @@ func ParseToString(
 	codeStr *C.char,
 	details C.int,
 	diaereses C.int,
-	noSpacedInitials C.int,
+	compactAuthors C.int,
 	flatten C.int,
 ) *C.char {
 	goname := C.GoString(name)
@@ -44,7 +44,7 @@ func ParseToString(
 		gnparser.OptWithDetails(int(details) > 0),
 		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(int(diaereses) > 0),
-		gnparser.OptWithCompactAuthors(int(noSpacedInitials) > 0),
+		gnparser.OptWithCompactAuthors(int(compactAuthors) > 0),
 		gnparser.OptWithFlatOutput(int(flatten) > 0),
 	}
 	cfg := gnparser.NewConfig(opts...)
@@ -75,7 +75,7 @@ func ParseAryToString(
 	codeStr *C.char,
 	details C.int,
 	diaereses C.int,
-	noSpacedInitials C.int,
+	compactAuthors C.int,
 	flatten C.int,
 ) *C.char {
 	names := make([]string, int(length))
@@ -90,7 +90,7 @@ func ParseAryToString(
 		gnparser.OptWithDetails(int(details) > 0),
 		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(int(diaereses) > 0),
-		gnparser.OptWithCompactAuthors(int(noSpacedInitials) > 0),
+		gnparser.OptWithCompactAuthors(int(compactAuthors) > 0),
 		gnparser.OptWithFlatOutput(int(flatten) > 0),
 	}
 	start := unsafe.Pointer(in)

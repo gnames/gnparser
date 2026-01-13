@@ -177,7 +177,7 @@ func OptWithPreserveDiaereses(b bool) Option {
 	}
 }
 
-// OptWithCompactAuthors sets the NoSpacedInitials field.
+// OptWithCompactAuthors sets the WithCompactAuthors field.
 func OptWithCompactAuthors(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithCompactAuthors = b

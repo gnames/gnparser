@@ -25,7 +25,7 @@ type inputREST struct {
 	CSV               bool     `json:"csv"`
 	WithDetails       bool     `json:"withDetails"`
 	PreserveDiaereses bool     `json:"preserveDiaereses"`
-	NoSpacedInitials  bool     `json:"noSpacedInitials"`
+	CompactAuthors    bool     `json:"compactAuthors"`
 	FlatOutput        bool     `json:"flatOutput"`
 	Code              string   `json:"code"`
 
@@ -104,13 +104,13 @@ func parseNamesGET(gnps GNparserService) func(echo.Context) error {
 		det := c.QueryParam("with_details") == "true"
 		cultivars := c.QueryParam("cultivars") == "true"
 		diaereses := c.QueryParam("diaereses") == "true"
-		initials := c.QueryParam("no_spaced_initials") == "true"
+		compactAuthors := c.QueryParam("compact_authors") == "true"
 		flatten := c.QueryParam("flatten") == "true"
 		codeStr := c.QueryParam("code")
 
 		code := getCode(codeStr, cultivars)
 
-		gnp := gnps.ChangeConfig(opts(code, csv, det, diaereses, initials, flatten)...)
+		gnp := gnps.ChangeConfig(opts(code, csv, det, diaereses, compactAuthors, flatten)...)
 		names := strings.Split(nameStr, "|")
 		res := gnp.ParseNames(names)
 		if l := len(names); l > 0 {
@@ -145,7 +145,7 @@ func parseNamesPOST(gnps GNparserService) func(echo.Context) error {
 				input.CSV,
 				input.WithDetails,
 				input.PreserveDiaereses,
-				input.NoSpacedInitials,
+				input.CompactAuthors,
 				input.FlatOutput,
 			)...)
 		res := gnp.ParseNames(input.Names)
@@ -190,12 +190,12 @@ func formatNames(
 }
 
 func opts(code nomcode.Code, csv, details, diaereses,
-	initials, flatten bool) []gnparser.Option {
+	compactAuthors, flatten bool) []gnparser.Option {
 	res := []gnparser.Option{
 		gnparser.OptWithDetails(details),
 		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(diaereses),
-		gnparser.OptWithCompactAuthors(initials),
+		gnparser.OptWithCompactAuthors(compactAuthors),
 		gnparser.OptWithFlatOutput(flatten),
 	}
 	if csv {
