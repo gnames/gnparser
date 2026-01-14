@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v1.14.2] - 2026-01-14 Wed
+
+* Fix: typo in REST API (change flatOutput to flattenOutput).
+* Improve hovering info for checkboxes in web ui.
+
 ## [v1.14.1] - 2026-01-14 Wed
 
 * Add[#301]: rename 'initials' flag to 'compact-authors'.

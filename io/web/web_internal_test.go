@@ -389,7 +389,7 @@ func TestParsePOST_CSV_WithFlatOutput(t *testing.T) {
 		Names:         names,
 		CSV:           true,
 		WithDetails:   true,
-		FlattenOutput: false, // FlatOutput is ignored for CSV
+		FlattenOutput: false, // FlattenOutput is always true for CSV
 	}
 	reqBody, err = gnfmt.GNjson{}.Encode(params)
 	assert.Nil(t, err)

@@ -26,7 +26,7 @@ type inputREST struct {
 	WithDetails       bool     `json:"withDetails"`
 	PreserveDiaereses bool     `json:"preserveDiaereses"`
 	CompactAuthors    bool     `json:"compactAuthors"`
-	FlattenOutput     bool     `json:"flatOutput"`
+	FlattenOutput     bool     `json:"flattenOutput"`
 	Code              string   `json:"code"`
 
 	// WithCultivars is deprecated by Code and overriden by it
