@@ -77,7 +77,7 @@ func parseStream(
 				if !ok {
 					return
 				}
-				fmt.Println(v.Output(gnp.Format(), gnp.FlatOutput()))
+				fmt.Println(v.Output(gnp.Format(), gnp.WithFlatOutput()))
 			}
 		}
 	}()

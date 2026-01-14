@@ -31,7 +31,7 @@ func TestParseName(t *testing.T) {
 	data := getTestData(t, "test_data.md")
 	for _, v := range data {
 		parsed := gnp.ParseName(v.name)
-		json := parsed.Output(gnp.Format(), gnp.FlatOutput())
+		json := parsed.Output(gnp.Format(), gnp.WithFlatOutput())
 		assert.Equal(t, v.jsonData, json, v.name)
 	}
 }
@@ -64,12 +64,12 @@ func TestParseNameCultivars(t *testing.T) {
 	data := getTestData(t, "test_data_cultivars.md")
 	for _, v := range data {
 		parsed := gnp.ParseName(v.name)
-		json := parsed.Output(gnp.Format(), gnp.FlatOutput())
+		json := parsed.Output(gnp.Format(), gnp.WithFlatOutput())
 		assert.Equal(t, v.jsonData, json, v.name)
 	}
 }
 
-func TestParseFlatOutput(t *testing.T) {
+func TestParseFlattenOutput(t *testing.T) {
 	cfg := gnparser.NewConfig(
 		gnparser.OptFormat(gnfmt.CompactJSON),
 		gnparser.OptWithFlatOutput(true),
@@ -406,7 +406,7 @@ func Example() {
 	fmt.Println(res[0].Authorship.Verbatim)
 	fmt.Println(res[1].Canonical.Simple)
 	fmt.Println(parsed.HeaderCSV(gnp.Format(), gnp.WithDetails()))
-	fmt.Println(res[0].Output(gnp.Format(), gnp.FlatOutput()))
+	fmt.Println(res[0].Output(gnp.Format(), gnp.WithFlatOutput()))
 	// Output:
 	// Banks, 1892
 	// Bubo bubo
@@ -474,7 +474,7 @@ func BenchmarkParse(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			for _, v := range test {
 				p := gnpJSON.ParseName(v)
-				s = p.Output(gnpJSON.Format(), gnpJSON.FlatOutput())
+				s = p.Output(gnpJSON.Format(), gnpJSON.WithFlatOutput())
 				if err != nil {
 					panic(err)
 				}
@@ -488,7 +488,7 @@ func BenchmarkParse(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			for _, v := range test {
 				p := gnpJSON.ParseName(v)
-				s = p.Output(gnpDet.Format(), gnpDet.FlatOutput())
+				s = p.Output(gnpDet.Format(), gnpDet.WithFlatOutput())
 			}
 		}
 		_ = fmt.Sprintf("%d", len(s))
@@ -499,7 +499,7 @@ func BenchmarkParse(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			for _, v := range test {
 				p := gnpCSV.ParseName(v)
-				s = p.Output(gnpCSV.Format(), gnpCSV.FlatOutput())
+				s = p.Output(gnpCSV.Format(), gnpCSV.WithFlatOutput())
 			}
 		}
 		_ = fmt.Sprintf("%d", len(s))

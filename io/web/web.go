@@ -29,7 +29,7 @@ type inputFORM struct {
 	WithCultivars string `query:"cultivars" form:"cultivars"`
 }
 
-// Data contains information required to render web-pages.
+// Data contains information required for web-pages templates.
 type Data struct {
 	Input             string
 	Parsed            []parsed.Parsed
@@ -116,7 +116,6 @@ func homeGET(gnps GNparserService) func(echo.Context) error {
 		if strings.TrimSpace(inp.Names) == "" {
 			return c.Render(http.StatusOK, "layout", data)
 		}
-
 		return parsingResults(c, gnps, inp, data)
 	}
 }

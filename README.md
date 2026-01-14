@@ -391,7 +391,7 @@ Relevant flags:
 `--help -h`
 : Displays help information about the available flags.
 
-`--batch-size -b`
+`--batch_size -b`
 : Sets the maximum number of names processed in a batch. This is ignored
 in streaming mode (-s).
 
@@ -429,7 +429,7 @@ Defaults to `csv`. CSV and TSV formats include a header row.
 `--jobs -j`
 : Sets the number of jobs to run concurrently.
 
-`--ignore-tags -i`
+`--ignore_tags -i`
 : Increases performance by skipping HTML entity and tag processing.
 Only use if your input is known to be free of HTML.
 

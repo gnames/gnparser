@@ -142,7 +142,7 @@ func init() {
 	rootCmd.Flags().BoolP("compact-authors", "a", false,
 		"remove spaces between initials of authors")
 
-	rootCmd.Flags().IntP("batch-size", "b", 0,
+	rootCmd.Flags().IntP("batch_size", "b", 0,
 		"maximum number of names in a batch send for processing.")
 
 	rootCmd.Flags().BoolP("cultivar", "C", false,
@@ -182,7 +182,7 @@ Accepted values are:
 If not set, the output format defaults to 'csv'.`
 	rootCmd.Flags().StringP("format", "f", "", formatHelp)
 
-	rootCmd.Flags().BoolP("ignore-tags", "i", false,
+	rootCmd.Flags().BoolP("ignore_tags", "i", false,
 		"ignore HTML entities and tags when parsing.")
 
 	rootCmd.Flags().IntP("jobs", "j", 0,
@@ -205,10 +205,13 @@ If not set, the output format defaults to 'csv'.`
 	rootCmd.Flags().BoolP("web-logs", "", false, "enable logs for the web service")
 
 	rootCmd.Flags().
-		BoolP("species-group-cut", "", false, "cut autonym/species group names to species for stemmed version")
+		BoolP(
+			"species-group-cut", "", false,
+			"cut autonym/species group names to species for stemmed version",
+		)
 
 	rootCmd.Flags().BoolP(
-		"flatten-output", "F", false, "flattens nested results",
+		"flatten-output", "F", false, "flattens nested JSON results",
 	)
 }
 
@@ -289,7 +292,7 @@ func parseString(gnp gnparser.GNparser, name string) {
 		fmt.Println(header)
 	}
 
-	fmt.Println(res.Output(f, gnp.FlatOutput()))
+	fmt.Println(res.Output(f, gnp.WithFlatOutput()))
 }
 
 func progressLog(start time.Time, namesNum int) {

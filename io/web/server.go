@@ -26,7 +26,7 @@ type inputREST struct {
 	WithDetails       bool     `json:"withDetails"`
 	PreserveDiaereses bool     `json:"preserveDiaereses"`
 	CompactAuthors    bool     `json:"compactAuthors"`
-	FlatOutput        bool     `json:"flatOutput"`
+	FlattenOutput     bool     `json:"flatOutput"`
 	Code              string   `json:"code"`
 
 	// WithCultivars is deprecated by Code and overriden by it
@@ -146,7 +146,7 @@ func parseNamesPOST(gnps GNparserService) func(echo.Context) error {
 				input.WithDetails,
 				input.PreserveDiaereses,
 				input.CompactAuthors,
-				input.FlatOutput,
+				input.FlattenOutput,
 			)...)
 		res := gnp.ParseNames(input.Names)
 		return formatNames(c, res, gnp)
@@ -176,13 +176,13 @@ func formatNames(
 		resCSV := make([]string, 0, len(res)+1)
 		resCSV = append(resCSV, parsed.HeaderCSV(f, gnp.WithDetails()))
 		for i := range res {
-			resCSV = append(resCSV, res[i].Output(f, gnp.FlatOutput()))
+			resCSV = append(resCSV, res[i].Output(f, gnp.WithFlatOutput()))
 		}
 		return c.String(http.StatusOK, strings.Join(resCSV, "\n"))
 	default:
 		resJSON := make([]string, len(res))
 		for i := range res {
-			resJSON[i] = res[i].Output(f, gnp.FlatOutput())
+			resJSON[i] = res[i].Output(f, gnp.WithFlatOutput())
 		}
 		str := "[" + strings.Join(resJSON, ",") + "]"
 		return c.JSONBlob(http.StatusOK, []byte(str))

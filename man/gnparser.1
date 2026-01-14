@@ -65,7 +65,7 @@ Prints help information:
 gnparser \-h
 .fi
 .IP "" 0
-.SS "\-b, \-\-batch\-size (values: positive integers, default 50,000)"
+.SS "\-b, \-\-batch_size (values: positive integers, default 50,000)"
 Sets a maximum number of names collected into a batch before processing\. This flag is ignored, if parsing is applied to only one name or if parsing mode is set to streaming with \-s flag:
 .P
 gnparser \-b 100 names\.txt
@@ -139,7 +139,7 @@ The \fBpretty\fR format returns a JSON\-encoded result in a more human\-readable
 gnparser "Pardosa moesta" \-f pretty
 .fi
 .IP "" 0
-.SS "\-i, \-\-ignore\-tags"
+.SS "\-i, \-\-ignore_tags"
 By default \fBgnparser\fR scans names for HTML tags and removes them before parsing\. It slows the process slightly\. If there are no HTML tags in names (no names are like \fB<i>Aus bus<i> L\.\fR, this flag allows to skip HTML removal step, increasing performance slightly:
 .IP "" 4
 .nf
