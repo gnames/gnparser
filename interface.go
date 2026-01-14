@@ -43,7 +43,4 @@ type GNparser interface {
 	// ParseNames takes a slice of name-strings, and returns a slice of
 	// parsed results in the same order as the input.
 	ParseNames([]string) []parsed.Parsed
-
-	// WebLogs returns a boolean to show or not the web-service logs.
-	WebLogs() bool
 }

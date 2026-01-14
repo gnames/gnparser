@@ -1,6 +1,6 @@
 # Global Names Parser: GNparser written in Go
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18002432.svg)](https://doi.org/10.5281/zenodo.18002432)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18221581.svg)](https://doi.org/10.5281/zenodo.18221581)
 
 Try `GNparser` [online][parser-web].
 
@@ -67,7 +67,6 @@ gnparser -h
   * [Ruby Gem](#ruby-gem)
   * [Node.js](#nodejs)
   * [Usage as a REST API Interface or Web-based User Graphical Interface](#usage-as-a-rest-api-interface-or-web-based-user-graphical-interface)
-    * [Enabling logs for GNparser's web-service](#enabling-logs-for-gnparsers-web-service)
   * [Use as a Docker image](#use-as-a-docker-image)
   * [Use as a library in Go](#use-as-a-library-in-go)
   * [Use as a shared C library](#use-as-a-shared-c-library)
@@ -462,9 +461,6 @@ Useful for integrating gnparser with languages other than Go.
 `--version -V`
 : Displays the version number of `GNparser`.
 
-`--web-logs`
-: Requires `--port`. Enables output of logs for web-services.
-
 To parse one name:
 
 ```bash
@@ -614,16 +610,6 @@ request.body = ['Solanum mariae Särkinen & S.Knapp',
 response = http.request(request)
 ```
 
-#### Enabling logs for GNparser's web-service
-
-There are several ways to enable logging from a web service.
-
-The following enables web-access logs to be printed to STDERR
-
-```bash
-gnparser -p 80 --web-logs
-```
-
 ### Use as a Docker image
 
 You need to have [docker runtime installed][docker-install]
@@ -631,7 +617,7 @@ on your computer for these examples to work.
 
 ```bash
 # run as a website and a RESTful service
-docker run -p 0.0.0.0:80:8080 gnames/gognparser -p 8080 --web-logs
+docker run -p 0.0.0.0:80:8080 gnames/gognparser -p 8080
 
 # just parse something
 docker run gnames/gognparser "Amaurorhinus bewichianus (Wollaston,1860) (s.str.)"

@@ -100,7 +100,6 @@ gnparser -j 5 -p 8080
 
 			webopts := []gnparser.Option{
 				gnparser.OptFormat(gnfmt.CompactJSON),
-				gnparser.OptWithWebLogs(withWebLogsFlag(cmd)),
 			}
 			cfg = gnparser.NewConfig(webopts...)
 			gnp := gnparser.New(cfg)
@@ -201,8 +200,6 @@ If not set, the output format defaults to 'csv'.`
 
 	rootCmd.PersistentFlags().BoolP("version", "V", false,
 		"shows build version and date, ignores other flags.")
-
-	rootCmd.Flags().BoolP("web-logs", "", false, "enable logs for the web service")
 
 	rootCmd.Flags().
 		BoolP(

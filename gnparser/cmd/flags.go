@@ -135,8 +135,3 @@ func withStreamFlag(cmd *cobra.Command) {
 		opts = append(opts, gnparser.OptWithStream(true))
 	}
 }
-
-func withWebLogsFlag(cmd *cobra.Command) bool {
-	withLogs, _ := cmd.Flags().GetBool("web-logs")
-	return withLogs
-}

@@ -72,10 +72,6 @@ type Config struct {
 	// at a time. When WithStream is true, BatchSize setting is ignored.
 	WithStream bool
 
-	// WithWebLogs flag enables logs when running web-service. This flag is
-	// ignored if `Port` value is not set.
-	WithWebLogs bool
-
 	// WithSpeciesGroupCut flag means that stemmed version of autonyms (ICN) and
 	// species group names (ICZN) will be truncated to species. It helps to
 	// simplify matching names like `Aus bus` and `Aus bus bus`.
@@ -195,13 +191,6 @@ func OptWithFlatOutput(b bool) Option {
 func OptWithStream(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithStream = b
-	}
-}
-
-// OptWithWebLogs sets the WithWebLogs field.
-func OptWithWebLogs(b bool) Option {
-	return func(cfg *Config) {
-		cfg.WithWebLogs = b
 	}
 }
 
