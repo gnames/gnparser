@@ -11,7 +11,7 @@
             <option value="csv">CSV</option>
             <option value="tsv">TSV</option>
           </select>
-          <label for="with_details">Show details</label>
+          <label for="with_details" title="Include more parsing details">Show details</label>
           <input
             type="checkbox"
             id="with_details"
@@ -31,11 +31,11 @@
         </div>
 
         <div class="form-elements">
-          <label for="diaereses">Preserve diaereses</label>
+          <label for="diaereses" title="Keep diaeresis marks (e.g., ë, ï) instead of converting to simple vowels">Preserve diaereses</label>
           <input type="checkbox" id="diaereses" name="diaereses" title="Keep diaeresis marks (e.g., ë, ï) instead of converting to simple vowels" {{ if .PreserveDiaereses }}checked="checked"{{ end }} />
-          <label for="compact_authors">Compact authors' initials</label>
-          <input type="checkbox" id="compact_authors" name="compact_authors" title="Remove spaces between author initials (e.g., 'L. R. Smith' becomes 'L.R. Smith')" {{ if .CompactAuthors }}checked="checked"{{ end }} />
-          <label for="flatten">Flatten output</label>
+          <label for="compact_authors" title="Remove spaces between author initials (e.g., 'L. R. Smith' becomes 'L.R.Smith')">Compact authors' initials</label>
+          <input type="checkbox" id="compact_authors" name="compact_authors" title="Remove spaces between author initials (e.g., 'L. R. Smith' becomes 'L.R.Smith')" {{ if .CompactAuthors }}checked="checked"{{ end }} />
+          <label for="flatten" title="Flatten nested JSON structure into a single level">Flatten output</label>
           <input type="checkbox" id="flatten" name="flatten" title="Flatten nested JSON structure into a single level" {{ if .FlattenOutput }}checked="checked"{{ end }} />
         </div>
 
