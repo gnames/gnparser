@@ -13,7 +13,7 @@ type Parser interface {
 	PreprocessAndParse(
 		name, version string,
 		code nomcode.Code,
-		keepHTML, capitalize, preserveDiaereses, noSpacedInitials bool,
+		keepHTML, capitalize, preserveDiaereses, compactAuthors bool,
 	) ScientificNameNode
 	Debug(name string) []byte
 }

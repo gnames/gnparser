@@ -17,32 +17,33 @@ import (
 
 // inputFORM is used to collect data from HTML form.
 type inputFORM struct {
-	Names       string `query:"names"        form:"names"`
-	Code        string `query:"code"         form:"code"`
-	Format      string `query:"format"       form:"format"`
-	WithDetails string `query:"with_details" form:"with_details"`
+	Names             string `query:"names"           form:"names"`
+	Code              string `query:"code"            form:"code"`
+	Format            string `query:"format"          form:"format"`
+	WithDetails       string `query:"with_details"    form:"with_details"`
+	PreserveDiaereses string `query:"diaereses"       form:"diaereses"`
+	CompactAuthors    string `query:"compact_authors" form:"compact_authors"`
+	FlattenOutput     string `query:"flatten"         form:"flatten"`
 
 	// WithCultivars is deprecated and overriden by Code
-	WithCultivars     string `query:"cultivars" form:"cultivars"`
-	PreserveDiaereses string `query:"diaereses" form:"diaereses"`
-	NoSpacedInitials  string `query:"initials"  form:"initials"`
-	FlatOutput        string `query:"flatten"   form:"flatten"`
+	WithCultivars string `query:"cultivars" form:"cultivars"`
 }
 
-// Data contains information required to render web-pages.
+// Data contains information required for web-pages templates.
 type Data struct {
-	Input       string
-	Parsed      []parsed.Parsed
-	Code        string
-	Format      string
-	HomePage    bool
-	Version     string
-	WithDetails bool
-	// WithCultivars is deprecated by Code field
-	WithCultivars     bool
+	Input             string
+	Parsed            []parsed.Parsed
+	Code              string
+	Format            string
+	HomePage          bool
+	Version           string
+	WithDetails       bool
 	PreserveDiaereses bool
-	NoSpacedInitials  bool
-	FlatOutput        bool
+	CompactAuthors    bool
+	FlattenOutput     bool
+
+	// WithCultivars is deprecated by Code field
+	WithCultivars bool
 }
 
 // NewData creates new Data for web-page templates.
@@ -76,8 +77,8 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	withDetails := inp.WithDetails == "on"
 	withCultivars := inp.WithCultivars == "on"
 	preserveDiaereses := inp.PreserveDiaereses == "on"
-	noSpacedInitials := inp.NoSpacedInitials == "on"
-	flatOutput := inp.FlatOutput == "on"
+	compactAuthors := inp.CompactAuthors == "on"
+	flattenOutput := inp.FlattenOutput == "on"
 	q := make(url.Values)
 	q.Set("names", inp.Names)
 	q.Set("format", inp.Format)
@@ -90,11 +91,11 @@ func redirectToHomeGET(c echo.Context, inp *inputFORM) error {
 	if preserveDiaereses {
 		q.Set("diaereses", inp.PreserveDiaereses)
 	}
-	if noSpacedInitials {
-		q.Set("initials", inp.NoSpacedInitials)
+	if compactAuthors {
+		q.Set("compact_authors", inp.CompactAuthors)
 	}
-	if flatOutput {
-		q.Set("flatten", inp.FlatOutput)
+	if flattenOutput {
+		q.Set("flatten", inp.FlattenOutput)
 	}
 	q.Set("code", inp.Code)
 
@@ -115,7 +116,6 @@ func homeGET(gnps GNparserService) func(echo.Context) error {
 		if strings.TrimSpace(inp.Names) == "" {
 			return c.Render(http.StatusOK, "layout", data)
 		}
-
 		return parsingResults(c, gnps, inp, data)
 	}
 }
@@ -130,8 +130,8 @@ func parsingResults(
 	data.WithDetails = inp.WithDetails == "on"
 	data.WithCultivars = inp.WithCultivars == "on"
 	data.PreserveDiaereses = inp.PreserveDiaereses == "on"
-	data.NoSpacedInitials = inp.NoSpacedInitials == "on"
-	data.FlatOutput = inp.FlatOutput == "on"
+	data.CompactAuthors = inp.CompactAuthors == "on"
+	data.FlattenOutput = inp.FlattenOutput == "on"
 	data.Code = inp.Code
 
 	format := inp.Format
@@ -161,8 +161,8 @@ func parsingResults(
 	opts := []gnparser.Option{
 		gnparser.OptWithDetails(data.WithDetails),
 		gnparser.OptWithPreserveDiaereses(data.PreserveDiaereses),
-		gnparser.OptWithNoSpacedInitials(data.NoSpacedInitials),
-		gnparser.OptWithFlatOutput(data.FlatOutput),
+		gnparser.OptWithCompactAuthors(data.CompactAuthors),
+		gnparser.OptWithFlatOutput(data.FlattenOutput),
 	}
 
 	if data.WithCultivars {
@@ -182,7 +182,7 @@ func parsingResults(
 	case "json":
 		res := make([]string, len(data.Parsed))
 		for i := range data.Parsed {
-			res[i] = data.Parsed[i].Output(gnfmt.CompactJSON, data.FlatOutput)
+			res[i] = data.Parsed[i].Output(gnfmt.CompactJSON, data.FlattenOutput)
 		}
 		jsonArray := "[" + strings.Join(res, ",") + "]"
 		return c.JSONBlob(http.StatusOK, []byte(jsonArray))
@@ -195,7 +195,7 @@ func parsingResults(
 		res := make([]string, len(data.Parsed)+1)
 		res[0] = parsed.HeaderCSV(f, data.WithDetails)
 		for i := range data.Parsed {
-			res[i+1] = data.Parsed[i].Output(f, data.FlatOutput)
+			res[i+1] = data.Parsed[i].Output(f, data.FlattenOutput)
 		}
 		return c.String(http.StatusOK, strings.Join(res, "\n"))
 	default:

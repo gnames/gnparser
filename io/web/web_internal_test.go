@@ -188,7 +188,7 @@ func TestParsePOST(t *testing.T) {
 		WithDetails:       false,
 		WithCultivars:     true,
 		PreserveDiaereses: true,
-		NoSpacedInitials:  true,
+		CompactAuthors:    true,
 	}
 	reqBody, err := gnfmt.GNjson{}.Encode(params)
 	assert.Nil(t, err)
@@ -233,7 +233,7 @@ func TestParsePOST(t *testing.T) {
 		WithDetails:       false,
 		WithCultivars:     false,
 		PreserveDiaereses: false,
-		NoSpacedInitials:  false,
+		CompactAuthors:    false,
 	}
 	reqBody, err = gnfmt.GNjson{}.Encode(params)
 	r = bytes.NewReader(reqBody)
@@ -246,7 +246,7 @@ func TestParsePOST(t *testing.T) {
 	assert.True(t, strings.HasPrefix(rec.Body.String(), "Id"))
 }
 
-func TestParsePOST_FlatOutput(t *testing.T) {
+func TestParsePOST_FlattenOutput(t *testing.T) {
 	cfg := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
@@ -254,12 +254,12 @@ func TestParsePOST_FlatOutput(t *testing.T) {
 	var response any
 	names := []string{"Homo sapiens Linnaeus, 1758"}
 
-	// Test with FlatOutput = true (flattened JSON)
+	// Test with FlattenOutput = true (flattened JSON)
 	params := inputREST{
-		Names:       names,
-		CSV:         false,
-		WithDetails: false,
-		FlatOutput:  true,
+		Names:         names,
+		CSV:           false,
+		WithDetails:   false,
+		FlattenOutput: true,
 	}
 	reqBody, err := gnfmt.GNjson{}.Encode(params)
 	assert.Nil(t, err)
@@ -287,12 +287,12 @@ func TestParsePOST_FlatOutput(t *testing.T) {
 	assert.Contains(t, body, `"canonicalSimple"`)
 	assert.Contains(t, body, `"authorship"`)
 
-	// Test with FlatOutput = false (nested JSON)
+	// Test with FlattenOutput = false (nested JSON)
 	params = inputREST{
-		Names:       names,
-		CSV:         false,
-		WithDetails: false,
-		FlatOutput:  false,
+		Names:         names,
+		CSV:           false,
+		WithDetails:   false,
+		FlattenOutput: false,
 	}
 	reqBody, err = gnfmt.GNjson{}.Encode(params)
 	assert.Nil(t, err)
@@ -310,7 +310,7 @@ func TestParsePOST_FlatOutput(t *testing.T) {
 	assert.NotContains(t, body, `"canonicalSimple"`)
 }
 
-func TestParseGET_FlatOutput(t *testing.T) {
+func TestParseGET_FlattenOutput(t *testing.T) {
 	cfg := gnparser.NewConfig(gnparser.OptFormat(gnfmt.CompactJSON))
 	gnp := gnparser.New(cfg)
 	gnps := NewGNparserService(gnp, 0)
@@ -358,10 +358,10 @@ func TestParsePOST_CSV_WithFlatOutput(t *testing.T) {
 
 	// Test CSV output without details (simple 10 fields)
 	params := inputREST{
-		Names:       names,
-		CSV:         true,
-		WithDetails: false,
-		FlatOutput:  true,
+		Names:         names,
+		CSV:           true,
+		WithDetails:   false,
+		FlattenOutput: true,
 	}
 	reqBody, err := gnfmt.GNjson{}.Encode(params)
 	assert.Nil(t, err)
@@ -386,10 +386,10 @@ func TestParsePOST_CSV_WithFlatOutput(t *testing.T) {
 
 	// Test CSV with WithDetails=true (extended fields)
 	params = inputREST{
-		Names:       names,
-		CSV:         true,
-		WithDetails: true,
-		FlatOutput:  false, // FlatOutput is ignored for CSV
+		Names:         names,
+		CSV:           true,
+		WithDetails:   true,
+		FlattenOutput: false, // FlatOutput is ignored for CSV
 	}
 	reqBody, err = gnfmt.GNjson{}.Encode(params)
 	assert.Nil(t, err)

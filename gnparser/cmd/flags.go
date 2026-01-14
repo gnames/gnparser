@@ -108,10 +108,10 @@ func withPreserveDiaeresesFlag(cmd *cobra.Command) {
 	}
 }
 
-func withNoSpacedInitialsFlag(cmd *cobra.Command) {
-	b, _ := cmd.Flags().GetBool("no-spaced-initials")
+func withCompactAuthorsFlag(cmd *cobra.Command) {
+	b, _ := cmd.Flags().GetBool("compact-authors")
 	if b {
-		opts = append(opts, gnparser.OptWithNoSpacedInitials(true))
+		opts = append(opts, gnparser.OptWithCompactAuthors(true))
 	}
 }
 
@@ -134,9 +134,4 @@ func withStreamFlag(cmd *cobra.Command) {
 	if withDet {
 		opts = append(opts, gnparser.OptWithStream(true))
 	}
-}
-
-func withWebLogsFlag(cmd *cobra.Command) bool {
-	withLogs, _ := cmd.Flags().GetBool("web-logs")
-	return withLogs
 }

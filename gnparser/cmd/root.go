@@ -81,7 +81,7 @@ gnparser -j 5 -p 8080
 		// overrides Cultivar flag
 		codeFlag(cmd)
 		withPreserveDiaeresesFlag(cmd)
-		withNoSpacedInitialsFlag(cmd)
+		withCompactAuthorsFlag(cmd)
 		withFlatOutputFlag(cmd)
 		batchSizeFlag(cmd)
 		spGrCutFlag(cmd)
@@ -100,7 +100,6 @@ gnparser -j 5 -p 8080
 
 			webopts := []gnparser.Option{
 				gnparser.OptFormat(gnfmt.CompactJSON),
-				gnparser.OptWithWebLogs(withWebLogsFlag(cmd)),
 			}
 			cfg = gnparser.NewConfig(webopts...)
 			gnp := gnparser.New(cfg)
@@ -139,6 +138,9 @@ func Execute() {
 }
 
 func init() {
+	rootCmd.Flags().BoolP("compact-authors", "a", false,
+		"remove spaces between initials of authors")
+
 	rootCmd.Flags().IntP("batch_size", "b", 0,
 		"maximum number of names in a batch send for processing.")
 
@@ -165,9 +167,6 @@ If not set, the parser will attempt to determine the appropriate code/s.`
 
 	rootCmd.Flags().BoolP("diaereses", "D", false,
 		"preserve diaereses in names")
-
-	rootCmd.Flags().BoolP("no-spaced-initials", "N", false,
-		"without space between initials of authors")
 
 	rootCmd.Flags().BoolP("details", "d", false, "provides more details")
 
@@ -202,13 +201,14 @@ If not set, the output format defaults to 'csv'.`
 	rootCmd.PersistentFlags().BoolP("version", "V", false,
 		"shows build version and date, ignores other flags.")
 
-	rootCmd.Flags().BoolP("web-logs", "", false, "enable logs for the web service")
-
 	rootCmd.Flags().
-		BoolP("species-group-cut", "", false, "cut autonym/species group names to species for stemmed version")
+		BoolP(
+			"species-group-cut", "", false,
+			"cut autonym/species group names to species for stemmed version",
+		)
 
 	rootCmd.Flags().BoolP(
-		"flatten-output", "F", false, "flattens nested results",
+		"flatten-output", "F", false, "flattens nested JSON results",
 	)
 }
 
@@ -289,7 +289,7 @@ func parseString(gnp gnparser.GNparser, name string) {
 		fmt.Println(header)
 	}
 
-	fmt.Println(res.Output(f, gnp.FlatOutput()))
+	fmt.Println(res.Output(f, gnp.WithFlatOutput()))
 }
 
 func progressLog(start time.Time, namesNum int) {

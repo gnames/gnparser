@@ -59,9 +59,9 @@ type Config struct {
 	// WithPreserveDiaereses flag, when true, diaereses will not be transliterated
 	WithPreserveDiaereses bool
 
-	// WithNoSpacedInitials flag, when true, authors' initials will not be
+	// WithCompactAuthors flag, when true, authors' initials will not be
 	// separated by space
-	WithNoSpacedInitials bool
+	WithCompactAuthors bool
 
 	// WithFlatOutput flag, when true, JSON output is converted from nested
 	// structure to a flat one. It simplifies the output usage, but looses
@@ -71,10 +71,6 @@ type Config struct {
 	// WithStream changes from parsing a batch by batch, to parsing one name
 	// at a time. When WithStream is true, BatchSize setting is ignored.
 	WithStream bool
-
-	// WithWebLogs flag enables logs when running web-service. This flag is
-	// ignored if `Port` value is not set.
-	WithWebLogs bool
 
 	// WithSpeciesGroupCut flag means that stemmed version of autonyms (ICN) and
 	// species group names (ICZN) will be truncated to species. It helps to
@@ -177,10 +173,10 @@ func OptWithPreserveDiaereses(b bool) Option {
 	}
 }
 
-// OptWithNoSpacedInitials sets the NoSpacedInitials field.
-func OptWithNoSpacedInitials(b bool) Option {
+// OptWithCompactAuthors sets the WithCompactAuthors field.
+func OptWithCompactAuthors(b bool) Option {
 	return func(cfg *Config) {
-		cfg.WithNoSpacedInitials = b
+		cfg.WithCompactAuthors = b
 	}
 }
 
@@ -195,13 +191,6 @@ func OptWithFlatOutput(b bool) Option {
 func OptWithStream(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithStream = b
-	}
-}
-
-// OptWithWebLogs sets the WithWebLogs field.
-func OptWithWebLogs(b bool) Option {
-	return func(cfg *Config) {
-		cfg.WithWebLogs = b
 	}
 }
 

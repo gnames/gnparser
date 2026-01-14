@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## [v1.14.1] - 2026-01-14 Wed
+
+* Add[#301]: rename 'initials' flag to 'compact-authors'.
+  **WARNING** this creates backward incompatibility (only for v1.14.0).
+* Add: normalize 'flatten' flag.
+* Add: remove useless web-log flag.
+
 ## [v1.14.0] - 2026-01-12 Mon
 
 * Add[#292]: add flattened option for JSON output, add more (optional) details
@@ -577,6 +584,7 @@
 
 This document follows [changelog guidelines]
 
+[v1.14.1]: https://github.com/gnames/gnparser/compare/v1.14.0...v1.14.1
 [v1.14.0]: https://github.com/gnames/gnparser/compare/v1.13.0...v1.14.0
 [v1.13.0]: https://github.com/gnames/gnparser/compare/v1.12.1...v1.13.0
 [v1.12.1]: https://github.com/gnames/gnparser/compare/v1.12.0...v1.12.1
@@ -668,6 +676,16 @@ This document follows [changelog guidelines]
 [v0.7.0]: https://github.com/gnames/gnparser/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/gnames/gnparser/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/gnames/gnparser/tree/v0.5.1
+[#310]: https://github.com/gnames/gnparser/issues/310
+[#309]: https://github.com/gnames/gnparser/issues/309
+[#308]: https://github.com/gnames/gnparser/issues/308
+[#307]: https://github.com/gnames/gnparser/issues/307
+[#306]: https://github.com/gnames/gnparser/issues/306
+[#305]: https://github.com/gnames/gnparser/issues/305
+[#304]: https://github.com/gnames/gnparser/issues/304
+[#303]: https://github.com/gnames/gnparser/issues/303
+[#302]: https://github.com/gnames/gnparser/issues/302
+[#301]: https://github.com/gnames/gnparser/issues/301
 [#300]: https://github.com/gnames/gnparser/issues/300
 [#299]: https://github.com/gnames/gnparser/issues/299
 [#298]: https://github.com/gnames/gnparser/issues/298

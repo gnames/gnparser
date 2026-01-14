@@ -100,19 +100,26 @@ Preserves diaereses present in names:
 
 The stemmed canonical name will be generated without diaereses.
 
-### -N, --no-spaced-initials
+### -a, --compact-authors
 
 Removes space between authors' initials:
 
-    gnparser "Schoenoplectus tabernaemontani (C. C. Gmel.) Palla" -N
+    gnparser "Schoenoplectus tabernaemontani (C. C. Gmel.) Palla" -a
 
-The normalized authorship will be generated without space between initials.
+The normalized authorship will be generated without space between initials:
+"Schoenoplectus tabernaemontani (C.C.Gmel.) Palla".
 
 ### -d, --details
 
 Return more details for a parsed name. This flag is ignored for CSV formatting:
 
     gnparser "Pardosa moesta Banks, 1982" -d -f pretty
+
+### -F, --flatten-output
+
+Converts nested output JSON structure to a 'flat' single level structure.
+
+    gnparser "Pardosa moesta Banks, 1982" -F -f compact
 
 ### -f, --format
 
@@ -154,6 +161,19 @@ one name:
 
     gnparser -j 200 names.txt
 
+### -n --nomenclatural-code
+
+Set parsing rules accoring to a specific nomenclatural code.
+
+Accepted values are:
+  - 'bact', 'icnp', 'bacterial' for bacterial code
+  - 'bot', 'icn', 'botanical' for botanical code
+  - 'cult', 'icncp', 'cultivar' for cultivar code
+  - 'vir', 'virus', 'viral', 'ictv', 'icvcn' for viral code
+  - 'zoo', 'iczn', 'zoological' for zoological code
+
+    gnparser "Smasvirus BUCT598" -n viral
+
 ### -p, --port (port number)
 
 Set a port to run web-interface and RESTful API and starts an HTTP service on
@@ -188,8 +208,8 @@ Shows the version number of gnparser.
 
 The MIT License (MIT)
 
-Copyright (c) 2018-2022 Dmitry Mozzherin
+Copyright (c) 2018 Dmitry Mozzherin
 
 ## Contributors
 
-Toby Marsden, Geoffrey Ower, Hernan Lucas Pereira
+Toby Marsden, Geoffrey Ower, Philippe Juillerat, Hernan Lucas Pereira

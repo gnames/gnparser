@@ -16,7 +16,8 @@
             type="checkbox"
             id="with_details"
             name="with_details"
-            checked="checked"
+            title="Include more parsing details"
+            {{ if or .WithDetails (not .Parsed) }}checked="checked"{{ end }}
           />
           <label for="code">Nomenclatural Code</label>
           <select id="code" name="code">
@@ -31,11 +32,11 @@
 
         <div class="form-elements">
           <label for="diaereses">Preserve diaereses</label>
-          <input type="checkbox" id="diaereses" name="diaereses" />
-          <label for="initials">Compact authors' initials</label>
-          <input type="checkbox" id="initials" name="initials" />
+          <input type="checkbox" id="diaereses" name="diaereses" title="Keep diaeresis marks (e.g., ë, ï) instead of converting to simple vowels" {{ if .PreserveDiaereses }}checked="checked"{{ end }} />
+          <label for="compact_authors">Compact authors' initials</label>
+          <input type="checkbox" id="compact_authors" name="compact_authors" title="Remove spaces between author initials (e.g., 'L. R. Smith' becomes 'L.R. Smith')" {{ if .CompactAuthors }}checked="checked"{{ end }} />
           <label for="flatten">Flatten output</label>
-          <input type="checkbox" id="flatten" name="flatten" />
+          <input type="checkbox" id="flatten" name="flatten" title="Flatten nested JSON structure into a single level" {{ if .FlattenOutput }}checked="checked"{{ end }} />
         </div>
 
         <textarea
@@ -59,7 +60,7 @@
       {{ range .Parsed }}
       <p>
         <code class="unit whole" style="margin-bottom: 1em"
-          >{{ parsedJSON . $.FlatOutput }}</code
+          >{{ parsedJSON . $.FlattenOutput }}</code
         >
       </p>
       <p></p>

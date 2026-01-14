@@ -23,7 +23,7 @@ func parseBatch(
 	var wg sync.WaitGroup
 
 	wg.Add(1)
-	go processResults(chOut, &wg, gnp.Format(), gnp.FlatOutput(), gnp.WithDetails())
+	go processResults(chOut, &wg, gnp.Format(), gnp.WithFlatOutput(), gnp.WithDetails())
 
 	sc := bufio.NewScanner(f)
 	var i, count int

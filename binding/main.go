@@ -30,7 +30,7 @@ func ParseToString(
 	codeStr *C.char,
 	details C.int,
 	diaereses C.int,
-	noSpacedInitials C.int,
+	compactAuthors C.int,
 	flatten C.int,
 ) *C.char {
 	goname := C.GoString(name)
@@ -44,12 +44,12 @@ func ParseToString(
 		gnparser.OptWithDetails(int(details) > 0),
 		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(int(diaereses) > 0),
-		gnparser.OptWithNoSpacedInitials(int(noSpacedInitials) > 0),
+		gnparser.OptWithCompactAuthors(int(compactAuthors) > 0),
 		gnparser.OptWithFlatOutput(int(flatten) > 0),
 	}
 	cfg := gnparser.NewConfig(opts...)
 	gnp := gnparser.New(cfg)
-	parsed := gnp.ParseName(goname).Output(gnp.Format(), gnp.FlatOutput())
+	parsed := gnp.ParseName(goname).Output(gnp.Format(), gnp.WithFlatOutput())
 
 	return C.CString(parsed)
 }
@@ -75,7 +75,7 @@ func ParseAryToString(
 	codeStr *C.char,
 	details C.int,
 	diaereses C.int,
-	noSpacedInitials C.int,
+	compactAuthors C.int,
 	flatten C.int,
 ) *C.char {
 	names := make([]string, int(length))
@@ -90,7 +90,7 @@ func ParseAryToString(
 		gnparser.OptWithDetails(int(details) > 0),
 		gnparser.OptCode(code),
 		gnparser.OptWithPreserveDiaereses(int(diaereses) > 0),
-		gnparser.OptWithNoSpacedInitials(int(noSpacedInitials) > 0),
+		gnparser.OptWithCompactAuthors(int(compactAuthors) > 0),
 		gnparser.OptWithFlatOutput(int(flatten) > 0),
 	}
 	start := unsafe.Pointer(in)
@@ -111,7 +111,7 @@ func ParseAryToString(
 	if gnp.Format() == gnfmt.CSV {
 		csv := make([]string, length)
 		for i := range parsed {
-			csv[i] = parsed[i].Output(gnfmt.CSV, gnp.FlatOutput())
+			csv[i] = parsed[i].Output(gnfmt.CSV, gnp.WithFlatOutput())
 		}
 		res = strings.Join(csv, "\n")
 	} else {

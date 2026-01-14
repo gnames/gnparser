@@ -1165,7 +1165,7 @@ func (p *Engine) newAuthorNode(n *node32) *authorNode {
 	val := ""
 	rawVal := ""
 	var sep string
-	if !p.noSpacedInitials {
+	if !p.compactAuthors {
 		sep = " "
 	}
 	n = n.up

@@ -67,7 +67,7 @@ func (gnp gnparser) ParseName(s string) parsed.Parsed {
 		gnp.cfg.IgnoreHTMLTags,
 		gnp.cfg.WithCapitalization,
 		gnp.cfg.WithPreserveDiaereses,
-		gnp.cfg.WithNoSpacedInitials,
+		gnp.cfg.WithCompactAuthors,
 	)
 	res := sciNameNode.ToOutput(
 		gnp.cfg.WithDetails,
@@ -121,8 +121,8 @@ func (gnp gnparser) ParseNames(names []string) []parsed.Parsed {
 	return res
 }
 
-// FlatOutput returns whether flatten output is enabled.
-func (gnp gnparser) FlatOutput() bool {
+// WithFlatOutput returns whether flatten output is enabled.
+func (gnp gnparser) WithFlatOutput() bool {
 	return gnp.cfg.WithFlatOutput
 }
 
@@ -134,11 +134,6 @@ func (gnp gnparser) WithDetails() bool {
 // Format returns the configured output format value.
 func (gnp gnparser) Format() gnfmt.Format {
 	return gnp.cfg.Format
-}
-
-// WebLogs returns a boolean to show or not the web-service logs.
-func (gnp gnparser) WebLogs() bool {
-	return gnp.cfg.WithWebLogs
 }
 
 // ChangeConfig allows change configuration of already created
