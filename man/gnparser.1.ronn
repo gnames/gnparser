@@ -71,7 +71,7 @@ Prints help information:
 
     gnparser -h
 
-### -b, --batch_size (values: positive integers, default 50,000)
+### -b, --batch-size (values: positive integers, default 50,000)
 
 Sets a maximum number of names collected into a batch before processing.
 This flag is ignored, if parsing is applied to only one name or
@@ -100,7 +100,7 @@ Preserves diaereses present in names:
 
 The stemmed canonical name will be generated without diaereses.
 
-### -a, --compact_authors
+### -a, --compact-authors
 
 Removes space between authors' initials:
 
@@ -145,7 +145,7 @@ form:
 
     gnparser "Pardosa moesta" -f pretty
 
-### -i, --ignore_tags
+### -i, --ignore-tags
 
 By default `gnparser` scans names for HTML tags and removes them before
 parsing. It slows the process slightly. If there are no HTML tags in names

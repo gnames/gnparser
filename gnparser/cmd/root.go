@@ -139,7 +139,10 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().IntP("batch_size", "b", 0,
+	rootCmd.Flags().BoolP("compact-authors", "a", false,
+		"remove spaces between initials of authors")
+
+	rootCmd.Flags().IntP("batch-size", "b", 0,
 		"maximum number of names in a batch send for processing.")
 
 	rootCmd.Flags().BoolP("cultivar", "C", false,
@@ -166,9 +169,6 @@ If not set, the parser will attempt to determine the appropriate code/s.`
 	rootCmd.Flags().BoolP("diaereses", "D", false,
 		"preserve diaereses in names")
 
-	rootCmd.Flags().BoolP("compact-authors", "a", false,
-		"without space between initials of authors")
-
 	rootCmd.Flags().BoolP("details", "d", false, "provides more details")
 
 	formatHelp := `Sets the output format.
@@ -182,7 +182,7 @@ Accepted values are:
 If not set, the output format defaults to 'csv'.`
 	rootCmd.Flags().StringP("format", "f", "", formatHelp)
 
-	rootCmd.Flags().BoolP("ignore_tags", "i", false,
+	rootCmd.Flags().BoolP("ignore-tags", "i", false,
 		"ignore HTML entities and tags when parsing.")
 
 	rootCmd.Flags().IntP("jobs", "j", 0,

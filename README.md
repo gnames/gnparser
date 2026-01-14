@@ -391,7 +391,7 @@ Relevant flags:
 `--help -h`
 : Displays help information about the available flags.
 
-`--batch_size -b`
+`--batch-size -b`
 : Sets the maximum number of names processed in a batch. This is ignored
 in streaming mode (-s).
 
@@ -416,7 +416,7 @@ formats (CSV/TSV formats are always flattened). Instead of nested objects like
 the output easier to process in some applications. Some detailed information
 would be lost in the flattened format.
 
-`--compact_authors -a`
+`--compact-authors -a`
 : Removes space between authors' initials, e.g.
 `Schoenoplectus tabernaemontani (C. C. Gmel.) Palla`. The normalized
 authorship will be generated without space between initials
@@ -429,7 +429,7 @@ Defaults to `csv`. CSV and TSV formats include a header row.
 `--jobs -j`
 : Sets the number of jobs to run concurrently.
 
-`--ignore_tags -i`
+`--ignore-tags -i`
 : Increases performance by skipping HTML entity and tag processing.
 Only use if your input is known to be free of HTML.
 

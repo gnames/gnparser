@@ -11,7 +11,7 @@ import (
 )
 
 func batchSizeFlag(cmd *cobra.Command) {
-	bs, _ := cmd.Flags().GetInt("batch_size")
+	bs, _ := cmd.Flags().GetInt("batch-size")
 	if bs > 0 {
 		opts = append(opts, gnparser.OptBatchSize(bs))
 	}
@@ -49,7 +49,7 @@ func jobsNumFlag(cmd *cobra.Command) {
 }
 
 func ignoreHTMLTagsFlag(cmd *cobra.Command) {
-	ignoreTags, _ := cmd.Flags().GetBool("ignore_tags")
+	ignoreTags, _ := cmd.Flags().GetBool("ignore-tags")
 	if ignoreTags {
 		opts = append(opts, gnparser.OptIgnoreHTMLTags(true))
 	}
