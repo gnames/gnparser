@@ -16,7 +16,7 @@
             type="checkbox"
             id="with_details"
             name="with_details"
-            checked="checked"
+            {{ if or .WithDetails (not .Parsed) }}checked="checked"{{ end }}
           />
           <label for="code">Nomenclatural Code</label>
           <select id="code" name="code">
@@ -31,11 +31,11 @@
 
         <div class="form-elements">
           <label for="diaereses">Preserve diaereses</label>
-          <input type="checkbox" id="diaereses" name="diaereses" />
+          <input type="checkbox" id="diaereses" name="diaereses" {{ if .PreserveDiaereses }}checked="checked"{{ end }} />
           <label for="compact_authors">Compact authors' initials</label>
-          <input type="checkbox" id="compact_authors" name="compact_authors" />
+          <input type="checkbox" id="compact_authors" name="compact_authors" {{ if .CompactAuthors }}checked="checked"{{ end }} />
           <label for="flatten">Flatten output</label>
-          <input type="checkbox" id="flatten" name="flatten" />
+          <input type="checkbox" id="flatten" name="flatten" {{ if .FlattenOutput }}checked="checked"{{ end }} />
         </div>
 
         <textarea
