@@ -1,6 +1,6 @@
 # Global Names Parser: GNparser written in Go
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18221581.svg)](https://doi.org/10.5281/zenodo.18221581)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18248840.svg)](https://doi.org/10.5281/zenodo.18248840)
 
 Try `GNparser` [online][parser-web].
 
