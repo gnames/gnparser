@@ -31,8 +31,8 @@
         </div>
 
         <div class="form-elements">
-          <label for="diaereses" title="Keep diaeresis marks (e.g., ë, ï) instead of converting to simple vowels">Preserve diaereses</label>
-          <input type="checkbox" id="diaereses" name="diaereses" title="Keep diaeresis marks (e.g., ë, ï) instead of converting to simple vowels" {{ if .PreserveDiaereses }}checked="checked"{{ end }} />
+          <label for="diaereses" title="Keep diaeresis marks (e.g., ë, ï) in canonical form">Preserve diaereses</label>
+          <input type="checkbox" id="diaereses" name="diaereses" title="Keep diaeresis marks (e.g., ë, ï) in canonical form" {{ if .PreserveDiaereses }}checked="checked"{{ end }} />
           <label for="compact_authors" title="Remove spaces between author initials (e.g., 'L. R. Smith' becomes 'L.R.Smith')">Compact authors' initials</label>
           <input type="checkbox" id="compact_authors" name="compact_authors" title="Remove spaces between author initials (e.g., 'L. R. Smith' becomes 'L.R.Smith')" {{ if .CompactAuthors }}checked="checked"{{ end }} />
           <label for="flatten" title="Flatten nested JSON structure into a single level">Flatten output</label>
