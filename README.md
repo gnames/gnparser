@@ -69,7 +69,6 @@ gnparser -h
   * [Usage as a REST API Interface or Web-based User Graphical Interface](#usage-as-a-rest-api-interface-or-web-based-user-graphical-interface)
   * [Use as a Docker image](#use-as-a-docker-image)
   * [Use as a library in Go](#use-as-a-library-in-go)
-  * [Use as a shared C library](#use-as-a-shared-c-library)
 * [Parsing ambiguities](#parsing-ambiguities)
   * [Names with `filius` (ICN code)](#names-with-filius-icn-code)
   * [Names with subgenus (ICZN code) and genus author (ICN code)](#names-with-subgenus-iczn-code-and-genus-author-icn-code)
@@ -146,7 +145,6 @@ more efficient JSON conversion.
 * Can be scaled to many CPUs and computers (if 250 millions names an
   hour is not enough).
 * Calculates a stable UUID version 5 ID from the content of a string.
-* Provides C-binding to incorporate parser to other [languages][biodiversity].
 
 ## Use Cases
 
@@ -569,12 +567,12 @@ be installed.
 ### Ruby Gem
 
 Ruby developers can use `GNparser` functionality via [biodiversity] gem. It
-uses C-binding and does not require an installed `gnparser` app.
+requires `gnparser` app be installed and uses the pipe approach.
 
 ### Node.js
 
-@tobymarsden created a [wrapper for node.js][node-gnparser]. It uses C-binding
-and does not require an installed `gnparser` app.
+@tobymarsden created a [wrapper for node.js][node-gnparser]. It requires
+`gnparser` app be installed.
 
 ### Usage as a REST API Interface or Web-based User Graphical Interface
 
@@ -649,24 +647,6 @@ func Example() {
   // e2fdf10b-6a36-5cc7-b6ca-be4d3b34b21f,"Pardosa moesta Banks, 1892",2,Pardosa moest,Pardosa moesta,Pardosa moesta,Banks 1892,1892,1
 }
 ```
-
-### Use as a shared C library
-
-It is possible to bind `GNparser` functionality with languages that can use
-C Application Binary Interface. For example such languages include
-Python, Ruby, Rust, C, C++, Java (via JNI).
-
-To compile `GNparser` shared library for your platform/operating system of
-choice you need [just] and `GNU gcc compiler` installed:
-
-```bash
-just clib
-cd binding
-cp libgnparser* /path/to/some/project
-```
-
-As an example how to use the shared library check this [StackOverflow
-question][ruby_ffi_go_usage] and [biodiversity] Ruby gem.
 
 ## Parsing ambiguities
 
@@ -759,7 +739,6 @@ Released under [MIT license]
 [quality]: https://github.com/gnames/gnparser/blob/master/quality.md
 [releases]: https://github.com/gnames/gnparser/releases/latest
 [rgnparser]: https://github.com/ropensci/rgnparser
-[ruby_ffi_go_usage]: https://stackoverflow.com/questions/58866962/how-to-pass-an-array-of-strings-and-get-an-array-of-strings-in-ruby-using-go-sha
 [test file]: https://github.com/gnames/gnparser/blob/master/testdata/test_data.md
 [tutGN]: https://globalnames.org/docs/tut-xsv-gnparser/
 [uuid5]: http://globalnames.org/news/2015/05/31/gn-uuid-0-5-0

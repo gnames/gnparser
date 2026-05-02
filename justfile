@@ -25,7 +25,6 @@ flags_rel := '-trimpath -ldflags "-s -w -X ' + org + app + \
 # Directories
 release_dir := '/tmp'
 build_dir := '.'
-clib_dir := '.'
 
 # Default recipe
 default: install
@@ -138,23 +137,6 @@ docker: build
 dockerhub: docker
     docker push gnames/go{{app}}
     docker push gnames/go{{app}}:{{version}}
-
-# Build C library for Darwin (macOS universal binary)
-clib_darwin: peg
-    #!/usr/bin/env bash
-    set -euo pipefail
-    cd binding
-    go clean
-    CGO_ENABLED=1 GOOS=darwin GOARCH=arm64 go build {{flags_ld}} -buildmode=c-shared -o {{clib_dir}}/lib{{app}}_arm64.so
-    CGO_ENABLED=1 GOOS=darwin GOARCH=amd64 go build {{flags_ld}} -buildmode=c-shared -o {{clib_dir}}/lib{{app}}_amd64.so
-    rm lib{{app}}_amd64.h
-    mv lib{{app}}_arm64.h lib{{app}}.h
-    lipo -create -output {{clib_dir}}/lib{{app}}.so {{clib_dir}}/lib{{app}}_arm64.so {{clib_dir}}/lib{{app}}_amd64.so
-
-# Build C library
-clib: peg
-    cd binding && \
-    go build {{flags_ld}} -buildmode=c-shared -o {{clib_dir}}/lib{{app}}.so
 
 # Generate quality report
 quality:
