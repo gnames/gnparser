@@ -4,6 +4,7 @@ import (
 	"io"
 
 	"github.com/gnames/gnlib/ent/nomcode"
+	"github.com/gnames/gnparser/ent/icvcn"
 	"github.com/gnames/gnparser/ent/internal/preparser"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/io/dict"
@@ -12,8 +13,11 @@ import (
 
 type baseEngine struct {
 	preParser         *preparser.PreParser
+	icvcnParser       *icvcn.Parser
 	sn                *scientificNameNode
 	root              *node32
+	nodePool          []node32
+	nodePoolIdx       int
 	code              nomcode.Code
 	cardinality       int
 	rank              string
@@ -35,6 +39,10 @@ func New() Parser {
 	p := Engine{}
 	p.Init()
 	p.preParser = preparser.New()
+	ip := &icvcn.Parser{}
+	ip.Init()
+	p.icvcnParser = ip
+	p.nodePool = make([]node32, 128)
 	return &p
 }
 
@@ -53,6 +61,7 @@ func (p *Engine) fullReset() {
 	p.warnings = warnReset
 	p.tail = ""
 	p.cultivar = false
+	p.nodePoolIdx = 0
 	p.Reset()
 }
 
@@ -153,7 +162,18 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 	case ruleIgnoredWord:
 		p.addWarn(parsed.ContainsIgnoredAnnotation)
 	}
-	if _, ok := nodeRules[t.pegRule]; ok {
+	if nodeRuleSet[t.pegRule] {
+		// Area allocation for nodes reduces GC pressure.
+		// if nodePool is has space, allocate node there, if it is full
+		// allocate node on the heap. Hopefully a scientific name generates
+		// less than 128 nodes, so most of the time the GC will not need to
+		// worry about releasing separate nodes.
+		if p.nodePoolIdx < len(p.nodePool) {
+			n := &p.nodePool[p.nodePoolIdx]
+			p.nodePoolIdx++
+			*n = node32{token32: t}
+			return n, false
+		}
 		node = &node32{token32: t}
 		return node, false
 	}
@@ -180,6 +200,16 @@ func (p *Engine) ParsedName() string {
 		}
 	}
 	return "noparse"
+}
+
+// nodeRuleSet is a fixed-size array for O(1) rule lookup
+// (pegRule is uint8, max 255).
+var nodeRuleSet [256]bool
+
+func init() {
+	for rule := range nodeRules {
+		nodeRuleSet[rule] = true
+	}
 }
 
 var nodeRules = map[pegRule]struct{}{

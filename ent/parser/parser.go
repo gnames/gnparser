@@ -7,7 +7,6 @@ import (
 	"fmt"
 
 	"github.com/gnames/gnlib/ent/nomcode"
-	"github.com/gnames/gnparser/ent/icvcn"
 	"github.com/gnames/gnparser/ent/internal/preprocess"
 	"github.com/gnames/gnparser/ent/parsed"
 	"github.com/gnames/gnparser/ent/str"
@@ -70,11 +69,13 @@ func (p *Engine) PreprocessAndParse(
 	// preference is not ICVCN parse virus names according to their
 	// setting.
 	if p.code == nomcode.Unknown || p.code == nomcode.Virus {
-		icvcnParsed := icvcn.Parse(s)
+		p.icvcnParser.Buffer = s
+		p.icvcnParser.Reset()
+		icvcnParsed := p.icvcnParser.ParseToStruct()
 		icvcnParsed.Code = p.code
 		if icvcnParsed.Parsed {
 			icvcnParsed.ParserVersion = ver
-			return icvcnParsed
+			return &icvcnParsed
 		}
 	}
 

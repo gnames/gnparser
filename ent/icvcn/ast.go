@@ -30,15 +30,6 @@ var blacklist = map[string]struct{}{
 }
 
 func Parse(inp string) *Parsed {
-	// Check blacklist before attempting to parse
-	trimmed := strings.TrimSpace(inp)
-	if _, ok := blacklist[trimmed]; ok {
-		return &Parsed{
-			Input:  inp,
-			Parsed: false,
-		}
-	}
-
 	p := &Parser{Buffer: inp}
 	p.Init()
 	res := p.ParseToStruct()
@@ -50,6 +41,13 @@ func Parse(inp string) *Parsed {
 func (p *Parser) ParseToStruct() Parsed {
 	res := Parsed{
 		Input: p.Buffer,
+	}
+
+	// Check blacklist before attempting to parse
+	trimmed := strings.TrimSpace(p.Buffer)
+	if _, ok := blacklist[trimmed]; ok {
+		res.Parsed = false
+		return res
 	}
 
 	// Attempt to parse the input

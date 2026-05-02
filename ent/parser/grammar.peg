@@ -11,7 +11,7 @@ Tail <- ((_ / ';' / ',') .*)?
 Name <- NamedGenusGraftChimera / GraftChimeraFormula / NamedHybrid / 
         HybridFormula / CandidatusName / SingleName
 
-HybridFormula <- SingleName (_ (HybridFormulaPart / HybridFormulaFull))+
+HybridFormula <- &((!HybridChar .)* HybridChar) SingleName (_ (HybridFormulaPart / HybridFormulaFull))+
 
 HybridFormulaFull <- HybridChar (_ SingleName)?
 
@@ -21,10 +21,10 @@ NamedHybrid <- NamedGenusHybrid / NamedSpeciesHybrid
 
 NamedGenusHybrid <- HybridChar _? (NamedSpeciesHybrid / SingleName)
 
-NamedSpeciesHybrid <- GenusWord (_ Subgenus)? (_ Comparison)? _ HybridChar _?
+NamedSpeciesHybrid <- &((!HybridChar .)* HybridChar) GenusWord (_ Subgenus)? (_ Comparison)? _ HybridChar _?
   SpeciesEpithet (_ InfraspGroup)?
 
-GraftChimeraFormula <- SingleName (_ (GraftChimeraFormulaPart / GraftChimeraFormulaFull))+
+GraftChimeraFormula <- &((!GraftChimeraChar .)* GraftChimeraChar) SingleName (_ (GraftChimeraFormulaPart / GraftChimeraFormulaFull))+
 
 GraftChimeraFormulaFull <- GraftChimeraChar (_ SingleName)?
 
@@ -40,9 +40,9 @@ SingleName <- NameComp / NameApprox / NameSpecies / NameUninomial
 
 NameUninomial <- (UninomialCombo / Uninomial) (_ CultivarWordGroup)?
 
-NameApprox <- GenusWord (_ SpeciesEpithet)? _ Approximation ApproxNameIgnored
+NameApprox <- &((!Approximation .)* Approximation) GenusWord (_ SpeciesEpithet)? _ Approximation ApproxNameIgnored
 
-NameComp <- NameCompIsp / NameCompSp
+NameComp <- &((!('cf' '.'?) .)* 'cf' '.'?) (NameCompIsp / NameCompSp)
 
 NameCompSp <- GenusWord _ Comparison (_ SpeciesEpithet)?
 
@@ -280,10 +280,10 @@ AuthorPrefix1 <- ('ab' / 'af' / 'al' / 'bis' / 'da' / 'der' / 'des' / 'den' / 'd
   'ter' / 'van' / 'ver' / 'd' Apostrophe / 'zur' / 'zu' /
   ('von' (_ ('d.'/ 'dem'))?) / ('v' (_'d')?)) &_
 
-AuthorUpperChar <- UpperASCII / MiscodedChar /
+AuthorUpperChar <- [A-Z] / MiscodedChar /
   [ÀÁÂÃÄÅÆĆČÇĐĎÈÉÊËÌÍÎÏİĶĹĽľŁłĺÑŅÒÓÔÕÖØŌŐŒŘŚŜŞŠÙÚÛÜÝŸŹŻŽƒǾȘȚ]
 
-AuthorLowerChar <- LowerASCII / MiscodedChar / Apostrophe /
+AuthorLowerChar <- [a-z] / MiscodedChar / Apostrophe /
   [àáâãäåăæçèéêëếìíîïðñòóóôõöøùúûüýÿāăąćĉčďđēĕėęěğīĭİıĺľłńņňŏőœŕřśşšţťũūŭůűźżžſǎǔǧșțȳß]
 
 Year <- YearRange / YearApprox / YearWithParens / YearWithPage / YearWithDot /
@@ -303,13 +303,13 @@ YearWithChar <- YearNum LowerASCII
 
 YearNum <- [12] [0789] Nums (Nums / '?') '?'*
 
-NameUpperChar <- UpperChar / UpperCharExtended
+NameUpperChar <- [A-Z] / UpperCharExtended
 
 UpperCharExtended <- [ÆŒÖ]
 
 UpperChar <- UpperASCII
 
-NameLowerChar <- LowerChar / LowerCharExtended / MiscodedChar
+NameLowerChar <- [a-z] / LowerCharExtended / MiscodedChar
 
 MiscodedChar <- '�'
 
@@ -339,9 +339,7 @@ DashOther <- [‑]
 
 Slash <- '/'
 
-_ <- MultipleSpace / SingleSpace
-
-MultipleSpace <- SingleSpace SingleSpace+
+_ <- SingleSpace+
 
 SingleSpace <- ' ' / OtherSpace
 

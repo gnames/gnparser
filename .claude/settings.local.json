@@ -4,7 +4,16 @@
       "Bash(go test:*)",
       "Bash(peg:*)",
       "Bash(make:*)",
-      "Bash(goimports:*)"
+      "Bash(goimports:*)",
+      "Bash(awk '{sum+=$3; n++} END {printf \"%.0f\\\\n\", sum/n}')",
+      "Bash(git add:*)",
+      "Bash(git -C /home/dimus/code/golang/gnparser add ent/parser/grammar.peg ent/parser/grammar.peg.go)",
+      "Bash(git commit:*)",
+      "Bash(go tool:*)",
+      "Bash(grep -n \"func Parse\\\\|func New\\\\|func Init\" /home/dimus/code/golang/gnparser/ent/icvcn/*.go)",
+      "Bash(go build:*)",
+      "Bash(git revert:*)",
+      "Bash(git checkout:*)"
     ]
   }
 }
