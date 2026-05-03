@@ -12,26 +12,27 @@ import (
 )
 
 type baseEngine struct {
-	preParser         *preparser.PreParser
-	icvcnParser       *icvcn.Parser
-	sn                *scientificNameNode
-	root              *node32
-	nodePool          []node32
-	nodePoolIdx       int
-	code              nomcode.Code
-	cardinality       int
-	rank              string
-	error             error
-	hybrid            *parsed.Annotation
-	graftChimera      *parsed.Annotation
-	surrogate         *parsed.Annotation
-	bacteria          *tribool.Tribool
-	candidatus        bool
-	warnings          map[parsed.Warning]struct{}
-	tail              string
-	cultivar          bool
-	preserveDiaereses bool
-	compactAuthors    bool
+	preParser          *preparser.PreParser
+	icvcnParser        *icvcn.Parser
+	sn                 *scientificNameNode
+	root               *node32
+	nodePool           []node32
+	runeToByteOffset   []int
+	nodePoolIdx        int
+	code               nomcode.Code
+	cardinality        int
+	rank               string
+	error              error
+	hybrid             *parsed.Annotation
+	graftChimera       *parsed.Annotation
+	surrogate          *parsed.Annotation
+	bacteria           *tribool.Tribool
+	candidatus         bool
+	warnings           map[parsed.Warning]struct{}
+	tail               string
+	cultivar           bool
+	preserveDiaereses  bool
+	compactAuthors     bool
 }
 
 // New creates implementation of Parser interface.
@@ -63,6 +64,7 @@ func (p *Engine) fullReset() {
 	p.cultivar = false
 	p.nodePoolIdx = 0
 	p.Reset()
+	p.buildRuneOffsets()
 }
 
 func (p *Engine) addWarn(w parsed.Warning) {
@@ -181,10 +183,28 @@ func (p *Engine) newNode(t token32) (*node32, bool) {
 	return node, true
 }
 
+// buildRuneOffsets builds a rune-index → byte-offset table from p.buffer,
+// which is already populated by Reset(). Stored in runeToByteOffset so it
+// can be reused across the pool without reallocating each parse.
+func (p *Engine) buildRuneOffsets() {
+	runeLen := len(p.buffer) // p.buffer = []rune(p.Buffer) + endSymbol
+	if cap(p.runeToByteOffset) < runeLen {
+		p.runeToByteOffset = make([]int, runeLen)
+	} else {
+		p.runeToByteOffset = p.runeToByteOffset[:runeLen]
+	}
+	ri := 0
+	for bytePos := range p.Buffer {
+		p.runeToByteOffset[ri] = bytePos
+		ri++
+	}
+	// Sentinel: endSymbol position maps past the end of p.Buffer.
+	p.runeToByteOffset[runeLen-1] = len(p.Buffer)
+}
+
 func (p *Engine) nodeValue(n *node32) string {
 	t := n.token32
-	v := string([]rune(p.Buffer)[t.begin:t.end])
-	return v
+	return p.Buffer[p.runeToByteOffset[t.begin]:p.runeToByteOffset[t.end]]
 }
 
 // ParseName returns the name the nodes. In case of parsing errors

@@ -1,6 +1,9 @@
 package preparser
 
-import "log/slog"
+import (
+	"log/slog"
+	"unicode/utf8"
+)
 
 func New() *PreParser {
 	res := &PreParser{}
@@ -27,9 +30,13 @@ func (ppr *PreParser) TailIndex(s string) int {
 	}
 	ppr.Execute()
 	if ppr.tailIndex >= 0 {
-		rs := []rune(s)
-		head := rs[0:ppr.tailIndex]
-		return len([]byte(string(head)))
+		// Convert rune index to byte index without allocating.
+		byteIdx := 0
+		for range ppr.tailIndex {
+			_, sz := utf8.DecodeRuneInString(s[byteIdx:])
+			byteIdx += sz
+		}
+		return byteIdx
 	}
 	return ppr.tailIndex
 }
