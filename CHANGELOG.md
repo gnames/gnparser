@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## [v1.15.0] - 2026-05-04 Mon
+
+* Remove: C-binding (all known solutions for other languages now use the
+  `gnparser` binary.
+* Add: code optimization with more than 2x performance improvement. Now on a
+  high end consumer CPU the GNparser speed is close to half a million names per
+  second.
+* Fix: license file.
+* Fix: tooltip for 'keep diareses' checkbox for Web UI.
+
 ## [v1.14.2] - 2026-01-14 Wed
 
 * Fix: typo in REST API (change flatOutput to flattenOutput).
@@ -589,6 +599,8 @@
 
 This document follows [changelog guidelines]
 
+[v1.15.0]: https://github.com/gnames/gnparser/compare/v1.14.2...v1.15.0
+[v1.14.2]: https://github.com/gnames/gnparser/compare/v1.14.1...v1.14.2
 [v1.14.1]: https://github.com/gnames/gnparser/compare/v1.14.0...v1.14.1
 [v1.14.0]: https://github.com/gnames/gnparser/compare/v1.13.0...v1.14.0
 [v1.13.0]: https://github.com/gnames/gnparser/compare/v1.12.1...v1.13.0

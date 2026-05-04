@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 title: "GNparser -- a powerful scientific names parser."
-version: v1.14.2
+version: v1.15.0
 authors:
   - family-names: "Mozzherin"
     given-names: "Dmitry"
@@ -19,5 +19,5 @@ authors:
     orcid: "https://orcid.org/0000-0001-6681-7038"
 repository-code: "https://github.com/gnames/gnparser"
 doi: 10.5281/zenodo.5111569
-date-released: 2026-01-14
+date-released: 2026-05-04
 license: MIT
