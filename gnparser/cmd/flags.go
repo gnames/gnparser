@@ -66,7 +66,7 @@ func portFlag(cmd *cobra.Command) int {
 func versionFlag(cmd *cobra.Command) bool {
 	version, _ := cmd.Flags().GetBool("version")
 	if version {
-		fmt.Printf("\nversion: %s\n\nbuild:   %s\n\n",
+		fmt.Fprintf(cmd.OutOrStdout(), "\nversion: %s\n\nbuild:   %s\n\n",
 			gnparser.Version, gnparser.Build)
 		return true
 	}

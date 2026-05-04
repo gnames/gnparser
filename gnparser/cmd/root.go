@@ -3,6 +3,7 @@ package cmd
 
 import (
 	"fmt"
+	"io"
 	"log/slog"
 	"os"
 	"time"
@@ -28,11 +29,7 @@ var (
 	batchSize int
 )
 
-// rootCmd represents the base command when called without any subcommands
-var rootCmd = &cobra.Command{
-	Use:   "gnparser file_or_name",
-	Short: "Parses scientific names into their semantic elements.",
-	Long: `
+const longHelp = `
 Parses scientific names into their semantic elements.
 
 To see version:
@@ -50,6 +47,7 @@ gnparser "Homo sapiens Linnaeus 1758" -f pretty [flags]
 
 To parse with maximum amount of details:
 gnparser "Homo sapiens Linnaeus 1758" -d -f pretty
+	gnparser "Homo sapiens Linnaeus 1758" -d -f csv
 
 To parse many names from a file (one name per line):
 gnparser names.txt [flags] > parsed_names.txt
@@ -59,85 +57,124 @@ gnparser names.txt -n > parsed_names.txt
 
 To start web service on port 8080 with 5 concurrent jobs:
 gnparser -j 5 -p 8080
- `,
+ `
 
-	Run: func(cmd *cobra.Command, args []string) {
-		if versionFlag(cmd) {
-			os.Exit(0)
-		}
-
-		if debug {
-			opts = append(opts, gnparser.OptDebug(true))
-		}
-
-		formatFlag(cmd)
-		jobsNumFlag(cmd)
-		ignoreHTMLTagsFlag(cmd)
-		withDetailsFlag(cmd)
-		withStreamFlag(cmd)
-		withNoOrderFlag(cmd)
-		withCapitalizeFlag(cmd)
-		withEnableCultivarsFlag(cmd)
-		// overrides Cultivar flag
-		codeFlag(cmd)
-		withPreserveDiaeresesFlag(cmd)
-		withCompactAuthorsFlag(cmd)
-		withFlatOutputFlag(cmd)
-		batchSizeFlag(cmd)
-		spGrCutFlag(cmd)
-		port := portFlag(cmd)
-		cfg := gnparser.NewConfig(opts...)
-		batchSize = cfg.BatchSize
-
-		if port != 0 {
-
-			// Create a JSON handler
-			handler := slog.NewJSONHandler(os.Stdout, nil)
-			logger := slog.New(handler).With(
-				slog.String("gnApp", "gnparser"),
-			)
-			slog.SetDefault(logger)
-
-			webopts := []gnparser.Option{
-				gnparser.OptFormat(gnfmt.CompactJSON),
-			}
-			cfg = gnparser.NewConfig(webopts...)
-			gnp := gnparser.New(cfg)
-			gnps := web.NewGNparserService(gnp, port)
-			web.Run(gnps)
-			os.Exit(0)
-		}
-
-		quiet, _ := cmd.Flags().GetBool("quiet")
-		if quiet {
-			slog.SetLogLoggerLevel(10)
-		}
-
-		if len(args) == 0 {
-			processStdin(cmd, cfg)
-			os.Exit(0)
-		}
-		data := getInput(cmd, args)
-
-		if debug {
-			debugName(data, cfg)
-			os.Exit(0)
-		}
-		parse(data, cfg)
-	},
+// newRootCmd builds a fresh root command. Tests construct a new instance per
+// invocation so flag values and cobra state do not leak between runs.
+func newRootCmd() *cobra.Command {
+	rootCmd := &cobra.Command{
+		Use:          "gnparser file_or_name",
+		Short:        "Parses scientific names into their semantic elements.",
+		Long:         longHelp,
+		SilenceUsage: true,
+		RunE:         runRoot,
+	}
+	registerFlags(rootCmd)
+	return rootCmd
 }
 
-// Execute adds all child commands to the root command and sets flags
-// appropriately. This is called by main.main(). It only needs to happen once to
-// the rootCmd.
+// rootCmd is the singleton used by the binary. ExecuteWith builds its own.
+var rootCmd = newRootCmd()
+
+func runRoot(cmd *cobra.Command, args []string) error {
+	// Reset package-level option accumulator so repeated invocations
+	// (e.g. in tests) do not inherit options from prior runs.
+	opts = nil
+	out := cmd.OutOrStdout()
+
+	if versionFlag(cmd) {
+		return nil
+	}
+
+	if debug {
+		opts = append(opts, gnparser.OptDebug(true))
+	}
+
+	formatFlag(cmd)
+	jobsNumFlag(cmd)
+	ignoreHTMLTagsFlag(cmd)
+	withDetailsFlag(cmd)
+	withStreamFlag(cmd)
+	withNoOrderFlag(cmd)
+	withCapitalizeFlag(cmd)
+	withEnableCultivarsFlag(cmd)
+	// overrides Cultivar flag
+	codeFlag(cmd)
+	withPreserveDiaeresesFlag(cmd)
+	withCompactAuthorsFlag(cmd)
+	withFlatOutputFlag(cmd)
+	batchSizeFlag(cmd)
+	spGrCutFlag(cmd)
+	port := portFlag(cmd)
+	cfg := gnparser.NewConfig(opts...)
+	batchSize = cfg.BatchSize
+
+	if port != 0 {
+		// Create a JSON handler
+		handler := slog.NewJSONHandler(os.Stdout, nil)
+		logger := slog.New(handler).With(
+			slog.String("gnApp", "gnparser"),
+		)
+		slog.SetDefault(logger)
+
+		webopts := []gnparser.Option{
+			gnparser.OptFormat(gnfmt.CompactJSON),
+		}
+		cfg = gnparser.NewConfig(webopts...)
+		gnp := gnparser.New(cfg)
+		gnps := web.NewGNparserService(gnp, port)
+		web.Run(gnps)
+		return nil
+	}
+
+	quiet, _ := cmd.Flags().GetBool("quiet")
+	if quiet {
+		slog.SetLogLoggerLevel(10)
+	}
+
+	if len(args) == 0 {
+		return processStdin(cmd, cfg, out)
+	}
+	data, ok := getInput(cmd, args)
+	if !ok {
+		return nil
+	}
+
+	if debug {
+		debugName(data, cfg, out)
+		return nil
+	}
+	parse(data, cfg, out)
+	return nil
+}
+
+// Execute runs the root command using process-level stdio. Called from main.
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(err)
+		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
 
-func init() {
+// ExecuteWith runs the root command with explicit args and IO streams. It is
+// intended for in-process callers (tests, embedding code) so that the gnparser
+// binary does not need to be built or installed to exercise the CLI surface.
+func ExecuteWith(args []string, in io.Reader, out, errW io.Writer) error {
+	rc := newRootCmd()
+	rc.SetArgs(args)
+	if in != nil {
+		rc.SetIn(in)
+	}
+	if out != nil {
+		rc.SetOut(out)
+	}
+	if errW != nil {
+		rc.SetErr(errW)
+	}
+	return rc.Execute()
+}
+
+func registerFlags(rootCmd *cobra.Command) {
 	rootCmd.Flags().BoolP("compact-authors", "a", false,
 		"remove spaces between initials of authors")
 
@@ -212,18 +249,24 @@ If not set, the output format defaults to 'csv'.`
 	)
 }
 
-func processStdin(cmd *cobra.Command, cfg gnparser.Config) {
-	if !checkStdin() {
-		_ = cmd.Help()
-		return
+func processStdin(cmd *cobra.Command, cfg gnparser.Config, out io.Writer) error {
+	in := cmd.InOrStdin()
+	// Only check terminal-ness when stdin really is the process stdin.
+	// Callers (tests) that supply an explicit reader bypass the TTY check.
+	if f, ok := in.(*os.File); ok && f == os.Stdin {
+		if !checkStdin() {
+			_ = cmd.Help()
+			return nil
+		}
 	}
 	gnp := gnparser.New(cfg)
 
 	if cfg.WithStream {
-		parseStream(gnp, os.Stdin)
+		parseStream(gnp, in, out)
 	} else {
-		parseBatch(gnp, os.Stdin)
+		parseBatch(gnp, in, out)
 	}
+	return nil
 }
 
 func checkStdin() bool {
@@ -235,31 +278,21 @@ func checkStdin() bool {
 	return (stat.Mode() & os.ModeCharDevice) == 0
 }
 
-func getInput(cmd *cobra.Command, args []string) string {
-	var data string
-	switch len(args) {
-	case 1:
-		data = args[0]
-	default:
-		_ = cmd.Help()
-		os.Exit(0)
+func getInput(cmd *cobra.Command, args []string) (string, bool) {
+	if len(args) == 1 {
+		return args[0], true
 	}
-	return data
+	_ = cmd.Help()
+	return "", false
 }
 
-func debugName(
-	data string,
-	cfg gnparser.Config,
-) {
+func debugName(data string, cfg gnparser.Config, out io.Writer) {
 	gnp := gnparser.New(cfg)
 	res := gnp.Debug(data)
-	fmt.Println(string(res))
+	fmt.Fprintln(out, string(res))
 }
 
-func parse(
-	data string,
-	cfg gnparser.Config,
-) {
+func parse(data string, cfg gnparser.Config, out io.Writer) {
 	gnp := gnparser.New(cfg)
 
 	path := string(data)
@@ -270,26 +303,26 @@ func parse(
 			slog.Error("Cannot open file", "error", err, "path", path)
 		}
 		if cfg.WithStream {
-			parseStream(gnp, f)
+			parseStream(gnp, f, out)
 		} else {
-			parseBatch(gnp, f)
+			parseBatch(gnp, f, out)
 		}
 		f.Close()
 	} else {
-		parseString(gnp, data)
+		parseString(gnp, data, out)
 	}
 }
 
-func parseString(gnp gnparser.GNparser, name string) {
+func parseString(gnp gnparser.GNparser, name string, out io.Writer) {
 	res := gnp.ParseName(name)
 	f := gnp.Format()
 
 	header := parsed.HeaderCSV(f, gnp.WithDetails())
 	if header != "" {
-		fmt.Println(header)
+		fmt.Fprintln(out, header)
 	}
 
-	fmt.Println(res.Output(f, gnp.WithFlatOutput()))
+	fmt.Fprintln(out, res.Output(f, gnp.WithFlatOutput()))
 }
 
 func progressLog(start time.Time, namesNum int) {

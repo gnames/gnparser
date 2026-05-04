@@ -43,6 +43,7 @@ func getNames(
 func parseStream(
 	gnp gnparser.GNparser,
 	f io.Reader,
+	out io.Writer,
 ) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -61,7 +62,7 @@ func parseStream(
 
 		header := parsed.HeaderCSV(gnp.Format(), gnp.WithDetails())
 		if header != "" {
-			fmt.Println(header)
+			fmt.Fprintln(out, header)
 		}
 
 		var count int
@@ -77,7 +78,7 @@ func parseStream(
 				if !ok {
 					return
 				}
-				fmt.Println(v.Output(gnp.Format(), gnp.WithFlatOutput()))
+				fmt.Fprintln(out, v.Output(gnp.Format(), gnp.WithFlatOutput()))
 			}
 		}
 	}()

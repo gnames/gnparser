@@ -30,7 +30,7 @@ build_dir := '.'
 default: install
 
 # Run tests
-test: deps install
+test: deps
     go test -shuffle=on -race -count=1 ./...
 
 # Test build

@@ -16,6 +16,7 @@ import (
 func parseBatch(
 	gnp gnparser.GNparser,
 	f io.Reader,
+	out io.Writer,
 ) {
 	batch := make([]string, batchSize)
 	chOut := make(chan []parsed.Parsed)
@@ -23,7 +24,7 @@ func parseBatch(
 	var wg sync.WaitGroup
 
 	wg.Add(1)
-	go processResults(chOut, &wg, gnp.Format(), gnp.WithFlatOutput(), gnp.WithDetails())
+	go processResults(out, chOut, &wg, gnp.Format(), gnp.WithFlatOutput(), gnp.WithDetails())
 
 	sc := bufio.NewScanner(f)
 	var i, count int
@@ -47,7 +48,8 @@ func parseBatch(
 }
 
 func processResults(
-	out <-chan []parsed.Parsed,
+	out io.Writer,
+	in <-chan []parsed.Parsed,
 	wg *sync.WaitGroup,
 	f gnfmt.Format,
 	flatten bool,
@@ -57,12 +59,12 @@ func processResults(
 
 	header := parsed.HeaderCSV(f, withDetails)
 	if header != "" {
-		fmt.Println(header)
+		fmt.Fprintln(out, header)
 	}
 
-	for pr := range out {
+	for pr := range in {
 		for i := range pr {
-			fmt.Println(pr[i].Output(f, flatten))
+			fmt.Fprintln(out, pr[i].Output(f, flatten))
 		}
 	}
 }
