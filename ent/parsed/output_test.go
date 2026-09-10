@@ -95,6 +95,50 @@ func TestOutput_JSON_Flatten(t *testing.T) {
 				`"authorship":{`,
 			},
 		},
+		{
+			name:    "Non-flatten JSON with tail annotations",
+			parsed:  tailParsed(),
+			flatten: false,
+			shouldContain: []string{
+				// JSON encoder escapes '>' as a unicode sequence.
+				`"tailAnnotations":{"verbatim":" s. lat.","sensu":[{` +
+					`"verbatim":"s. lat.","normalized":"sensu lato",` +
+					`"conceptRelation":{"type":"broader","rcc5":"` + `\` +
+					`u003e"}}]}`,
+			},
+			shouldNotContain: []string{
+				`"tail":`,
+				`"referenceAuthor"`,
+			},
+		},
+		{
+			name:    "Flatten JSON with tail annotations",
+			parsed:  tailParsed(),
+			flatten: true,
+			shouldContain: []string{
+				`"sensu":"sensu lato"`,
+				`"conceptRelation":"broader"`,
+			},
+			shouldNotContain: []string{
+				`"tailAnnotations"`,
+				`"nomenclaturalStatus"`,
+				`"publication"`,
+			},
+		},
+		{
+			name: "JSON without tail annotations",
+			parsed: parsed.Parsed{
+				Parsed:        true,
+				Verbatim:      "Homo sapiens",
+				VerbatimID:    "test-id",
+				ParserVersion: "v1.0.0",
+				Canonical:     &parsed.Canonical{Simple: "Homo sapiens"},
+			},
+			flatten: false,
+			shouldNotContain: []string{
+				`"tailAnnotations"`,
+			},
+		},
 	}
 
 	for _, tt := range tests {
@@ -327,6 +371,51 @@ func TestOutput_CSV_WithDetails(t *testing.T) {
 	// Check that genus and species are in the output
 	assert.Contains(t, csvOutput, "Homo")
 	assert.Contains(t, csvOutput, "sapiens")
+}
+
+func tailParsed() parsed.Parsed {
+	return parsed.Parsed{
+		Parsed:        true,
+		Verbatim:      "Aus bus Smith 1850 s. lat.",
+		Cardinality:   2,
+		ParseQuality:  1,
+		VerbatimID:    "test-id",
+		ParserVersion: "v1.0.0",
+		Canonical: &parsed.Canonical{
+			Simple:  "Aus bus",
+			Full:    "Aus bus",
+			Stemmed: "Aus bus",
+		},
+		TailAnnotations: &parsed.TailAnnotations{
+			Verbatim: " s. lat.",
+			Sensu: []parsed.SensuAnnotation{
+				{
+					Verbatim:   "s. lat.",
+					Normalized: "sensu lato",
+					ConceptRelation: &parsed.ConceptRelation{
+						Type: parsed.RelationBroader,
+						RCC5: ">",
+					},
+				},
+			},
+		},
+	}
+}
+
+func TestOutput_CSV_TailAnnotations(t *testing.T) {
+	p := tailParsed()
+
+	// Tail annotations do not add columns to CSV/TSV output.
+	csvOutput := p.Output(gnfmt.CSV, false)
+	assert.Equal(t, 10, len(strings.Split(csvOutput, ",")))
+	tsvOutput := p.Output(gnfmt.TSV, false)
+	assert.Equal(t, 10, len(strings.Split(tsvOutput, "\t")))
+
+	p.Details = parsed.DetailsSpecies{
+		Species: parsed.Species{Genus: "Aus", Species: "bus"},
+	}
+	csvOutput = p.Output(gnfmt.CSV, false)
+	assert.Equal(t, 36, len(strings.Split(csvOutput, ",")))
 }
 
 func TestOutput_InvalidFormat(t *testing.T) {

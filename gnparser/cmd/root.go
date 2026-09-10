@@ -51,6 +51,9 @@ gnparser "Homo sapiens Linnaeus 1758" -f pretty [flags]
 To parse with maximum amount of details:
 gnparser "Homo sapiens Linnaeus 1758" -d -f pretty
 
+To parse annotations in the tail of a name (sensu lato, nom. nud. etc.):
+gnparser "Aus bus Smith, 1850 s. lat." -t -f pretty
+
 To parse many names from a file (one name per line):
 gnparser names.txt [flags] > parsed_names.txt
 
@@ -85,6 +88,7 @@ gnparser -j 5 -p 8080
 		withFlatOutputFlag(cmd)
 		batchSizeFlag(cmd)
 		spGrCutFlag(cmd)
+		withTailFlag(cmd)
 		port := portFlag(cmd)
 		cfg := gnparser.NewConfig(opts...)
 		batchSize = cfg.BatchSize
@@ -194,6 +198,9 @@ If not set, the output format defaults to 'csv'.`
 
 	rootCmd.Flags().BoolP("stream", "s", false,
 		"parse one name at a time in a stream instead of a batch parsing")
+
+	rootCmd.Flags().BoolP("tail", "t", false,
+		"parse annotations in the tail (sensu lato, nom. nud., fide etc.)")
 
 	rootCmd.Flags().BoolP("unordered", "u", false,
 		"output and input are in different order")

@@ -184,6 +184,13 @@ Changes parsing method for large number of names from \fBbatch\fR to \fBstream\f
 gnparser \-s names\.json
 .fi
 .IP "" 0
+.SS "\-t, \-\-tail"
+Parses annotations in the tail of a name\-string: concept\-alignment annotations (sensu lato, sensu stricto, sensu \fIauthor\fR, auct\., auct\. non \fIauthor\fR, pro parte), nomenclatural status (nom\. nud\., nom\. illeg\., comb\. nov\. etc\.) and publication modifiers (ined\., hort\., fide \fIauthor\fR, emend\. \fIauthor\fR, ex \fIauthor\fR)\. Recognized annotations are moved from \fBtail\fR to \fBtailAnnotations\fR, and the quality is recalculated\. Without this flag the output does not change:
+.IP "" 4
+.nf
+gnparser "Aus bus Smith, 1850 s\. lat\." \-t \-f pretty
+.fi
+.IP "" 0
 .SS "\-u, \-\-unordered"
 If this flag is on, output and intput order will not be syncronized\. If there is only one parsing job running (\fB\-j\fR flag), the input and output will be of the same order even if \fB\-u\fR flag is given\.
 .IP "" 4

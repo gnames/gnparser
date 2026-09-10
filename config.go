@@ -76,6 +76,14 @@ type Config struct {
 	// species group names (ICZN) will be truncated to species. It helps to
 	// simplify matching names like `Aus bus` and `Aus bus bus`.
 	WithSpeciesGroupCut bool
+
+	// WithTail flag, when true, enables parsing of annotations in the
+	// unparsed tail of a name-string: concept-alignment annotations
+	// (sensu lato, auct. non <author> etc.), nomenclatural status
+	// (nom. nud. etc.) and publication modifiers (ined., fide <author> etc.).
+	// Recognized annotations are moved to TailAnnotations of the result, and
+	// the parsing quality is recalculated.
+	WithTail bool
 }
 
 // Option is a type that has to be returned by all Option functions. Such
@@ -198,6 +206,13 @@ func OptWithStream(b bool) Option {
 func OptWithSpeciesGroupCut(b bool) Option {
 	return func(cfg *Config) {
 		cfg.WithSpeciesGroupCut = b
+	}
+}
+
+// OptWithTail sets WithTail field.
+func OptWithTail(b bool) Option {
+	return func(cfg *Config) {
+		cfg.WithTail = b
 	}
 }
 

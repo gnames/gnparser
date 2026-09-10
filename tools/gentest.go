@@ -19,7 +19,7 @@ import (
 )
 
 func genTestData() error {
-	testFiles := []string{"test_data", "test_data_cultivars"}
+	testFiles := []string{"test_data", "test_data_cultivars", "test_data_tail"}
 	for _, v := range testFiles {
 		err := newTestFile(v)
 		if err != nil {
@@ -48,6 +48,9 @@ func newTestFile(file string) error {
 	opts := []gnparser.Option{gnparser.OptIsTest(true), gnparser.OptWithDetails(true)}
 	if file == "test_data_cultivars" {
 		opts = append(opts, gnparser.OptCode(nomcode.Cultivars))
+	}
+	if file == "test_data_tail" {
+		opts = append(opts, gnparser.OptWithTail(true))
 	}
 	cfg := gnparser.NewConfig(opts...)
 	gnp := gnparser.New(cfg)

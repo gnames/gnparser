@@ -73,6 +73,9 @@ func (gnp gnparser) ParseName(s string) parsed.Parsed {
 		gnp.cfg.WithDetails,
 		gnp.cfg.WithSpeciesGroupCut,
 	)
+	if gnp.cfg.WithTail && res.Tail != "" {
+		res = gnp.parser.ParseTail(res)
+	}
 	return res
 }
 

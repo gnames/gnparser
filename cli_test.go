@@ -143,3 +143,54 @@ func TestFlattenOutput(t *testing.T) {
 		assert.Contains(t, output, `"canonicalSimple"`)
 	})
 }
+
+func TestTail(t *testing.T) {
+	t.Run("parses tail annotations with -t", func(t *testing.T) {
+		c := testcli.Command("gnparser", "Aus bus sensu lato Smith, 1850",
+			"-t", "-f", "compact")
+		c.Run()
+		assert.True(t, c.Success())
+		output := c.Stdout()
+		assert.Contains(t, output, `"tailAnnotations":`)
+		assert.Contains(t, output, `"author":"Smith, 1850"`)
+		assert.Contains(t, output, `"quality":3`)
+		assert.NotContains(t, output, `"authorship":`)
+		assert.NotContains(t, output, `"tail":`)
+	})
+
+	t.Run("parses tail annotations with --tail", func(t *testing.T) {
+		c := testcli.Command("gnparser", "Aus bus Smith, 1850 nom. nud.",
+			"--tail", "-f", "compact")
+		c.Run()
+		assert.True(t, c.Success())
+		output := c.Stdout()
+		assert.Contains(t, output, `"normalized":"nomen nudum"`)
+		assert.Contains(t, output, `"quality":1`)
+	})
+
+	t.Run("keeps the tail without -t", func(t *testing.T) {
+		c := testcli.Command("gnparser", "Aus bus Smith, 1850 nom. nud.",
+			"-f", "compact")
+		c.Run()
+		assert.True(t, c.Success())
+		output := c.Stdout()
+		assert.NotContains(t, output, `"tailAnnotations":`)
+		assert.Contains(t, output, `"tail":" nom. nud."`)
+		assert.Contains(t, output, `"quality":4`)
+	})
+
+	t.Run("flattened output with -t", func(t *testing.T) {
+		c := testcli.Command("gnparser", "Aus bus Smith, 1850 nom. nud.",
+			"-t", "-F", "-f", "compact")
+		c.Run()
+		assert.True(t, c.Success())
+		assert.Contains(t, c.Stdout(), `"nomenclaturalStatus":"nomen nudum"`)
+	})
+
+	t.Run("CSV output with -t", func(t *testing.T) {
+		c := testcli.Command("gnparser", "Aus bus Smith, 1850 nom. nud.", "-t")
+		c.Run()
+		assert.True(t, c.Success())
+		assert.Contains(t, c.Stdout(), `"Smith, 1850",1850,1,`)
+	})
+}

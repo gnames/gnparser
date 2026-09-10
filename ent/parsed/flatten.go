@@ -137,6 +137,24 @@ type ParsedFlat struct {
 	// quality of the name-parsing is set to the worst category.
 	Tail string `json:"tail,omitempty"`
 
+	// Sensu lists concept-alignment annotations found by tail parsing,
+	// separated by pipe character. A cited author follows its annotation
+	// (e.g., "sensu Smith, 1850|pro parte").
+	Sensu string `json:"sensu,omitempty"`
+
+	// NomenclaturalStatus lists nomenclatural status annotations found by
+	// tail parsing, separated by pipe character (e.g., "nomen nudum").
+	NomenclaturalStatus string `json:"nomenclaturalStatus,omitempty"`
+
+	// Publication lists publication modifiers found by tail parsing,
+	// separated by pipe character (e.g., "fide Jones").
+	Publication string `json:"publication,omitempty"`
+
+	// ConceptRelation lists types of concept relations implied by
+	// concept-alignment annotations, separated by pipe character
+	// (e.g., "broader").
+	ConceptRelation string `json:"conceptRelation,omitempty"`
+
 	// Uninomial represents the single name used for uninomial nomenclature,
 	// typically applied to higher taxonomic ranks (e.g., family or order names
 	// like "Asteraceae"). This field is populated only for uninomial names and
@@ -246,6 +264,11 @@ func (p Parsed) Flatten() ParsedFlat {
 		VerbatimID:     p.VerbatimID,
 		ParserVersion:  p.ParserVersion,
 	}
+	if ta := p.TailAnnotations; ta != nil {
+		res.Sensu, res.ConceptRelation = flatSensu(ta.Sensu)
+		res.NomenclaturalStatus = flatStatus(ta.Status)
+		res.Publication = flatPublication(ta.Publication)
+	}
 	if !p.Parsed {
 		return res
 	}
@@ -328,4 +351,39 @@ func year(ag *AuthGroup) string {
 		return "(" + ag.Year.Value + ")"
 	}
 	return ag.Year.Value
+}
+
+func flatSensu(ss []SensuAnnotation) (string, string) {
+	annots := make([]string, 0, len(ss))
+	var rels []string
+	for _, v := range ss {
+		annots = append(annots, withAuthor(v.Normalized, v.Author))
+		if v.ConceptRelation != nil {
+			rels = append(rels, v.ConceptRelation.Type)
+		}
+	}
+	return strings.Join(annots, "|"), strings.Join(rels, "|")
+}
+
+func flatStatus(ss []StatusAnnotation) string {
+	annots := make([]string, len(ss))
+	for i, v := range ss {
+		annots[i] = v.Normalized
+	}
+	return strings.Join(annots, "|")
+}
+
+func flatPublication(ps []PublicationAnnotation) string {
+	annots := make([]string, len(ps))
+	for i, v := range ps {
+		annots[i] = withAuthor(v.Normalized, v.Author)
+	}
+	return strings.Join(annots, "|")
+}
+
+func withAuthor(annot, author string) string {
+	if author == "" {
+		return annot
+	}
+	return annot + " " + author
 }

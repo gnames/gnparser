@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+* Add: opt-in tail parsing (`-t`, `--tail` flag, `OptWithTail` option).
+  Recognized annotations (sensu lato, auct. non, nom. nud., fide etc.) are
+  moved from `tail` to the new `tailAnnotations` field, together with RCC5
+  concept-relation hints. The output does not change without the option.
+
 ## [v1.15.0] - 2026-05-04 Mon
 
 * Remove: C-binding (all known solutions for other languages now use the

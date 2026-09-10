@@ -128,8 +128,15 @@ type Parsed struct {
 	// Tail is an unparseable tail of a name. It might contain "junk",
 	// annotations, malformed parts of a scientific name, taxonomic concept
 	// indications, bacterial strains etc.  If there is an unparseable tail, the
-	// quality of the name-parsing is set to the worst category.
+	// quality of the name-parsing is set to the worst category. If tail
+	// parsing is enabled, recognized annotations are moved from Tail to
+	// TailAnnotations.
 	Tail string `json:"tail,omitempty"`
+
+	// TailAnnotations contains annotations recognized in the tail, for example
+	// sensu lato, nom. nud., fide <author>. It is set only if tail parsing is
+	// enabled and at least one annotation is recognized.
+	TailAnnotations *TailAnnotations `json:"tailAnnotations,omitempty"`
 
 	// Details contain more fine-grained information about parsed name.
 	Details Details `json:"details,omitempty"`

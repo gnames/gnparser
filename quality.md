@@ -40,8 +40,10 @@ Parsing finished without detecting any problems.
 
 ## Quality 3
 
+- Ambiguity: name author or concept author
 - Apostrophe is not allowed in canonical
 - Author is too short
+- Concept qualifier without author
 - HTML tags or entities in the name
 - Hybrid char is not separated by space
 - Not an ASCII apostrophe

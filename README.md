@@ -69,6 +69,10 @@ gnparser -h
   * [Usage as a REST API Interface or Web-based User Graphical Interface](#usage-as-a-rest-api-interface-or-web-based-user-graphical-interface)
   * [Use as a Docker image](#use-as-a-docker-image)
   * [Use as a library in Go](#use-as-a-library-in-go)
+* [Tail annotations](#tail-annotations)
+  * [Concept relations](#concept-relations)
+  * [Authors after sensu](#authors-after-sensu)
+  * [Quality of names with tail annotations](#quality-of-names-with-tail-annotations)
 * [Parsing ambiguities](#parsing-ambiguities)
   * [Names with `filius` (ICN code)](#names-with-filius-icn-code)
   * [Names with subgenus (ICZN code) and genus author (ICN code)](#names-with-subgenus-iczn-code-and-genus-author-icn-code)
@@ -453,6 +457,11 @@ by removing the infraspecific epithet. Useful for matching names like
 : Enables streaming mode, where names are processed one at a time.
 Useful for integrating gnparser with languages other than Go.
 
+`--tail -t`
+: Parses annotations in the tail of a name-string (`sensu lato`,
+`auct. non Smith`, `nom. nud.`, `fide Jones` etc.) into `tailAnnotations`.
+Off by default. See [Tail annotations](#tail-annotations).
+
 `--unordered -u`
 : Disables output ordering. The output order may not match the input order.
 
@@ -647,6 +656,156 @@ func Example() {
   // e2fdf10b-6a36-5cc7-b6ca-be4d3b34b21f,"Pardosa moesta Banks, 1892",2,Pardosa moest,Pardosa moesta,Pardosa moesta,Banks 1892,1892,1
 }
 ```
+
+## Tail annotations
+
+By default, everything that follows a parsed name and its authorship goes to
+the `tail` field, and the name gets quality 4. The `--tail` (`-t`) flag of the
+command line application, or `gnparser.OptWithTail(true)` in Go, enables
+recognition of common annotations in the tail. Recognized annotations are
+moved to the `tailAnnotations` field. Without the option the output does not
+change.
+
+```bash
+gnparser -t -f pretty "Aus bus Smith, 1850 sensu Jones, 1900"
+```
+
+```json
+{
+  "parsed": true,
+  "quality": 1,
+  "verbatim": "Aus bus Smith, 1850 sensu Jones, 1900",
+  "normalized": "Aus bus Smith 1850",
+  "canonical": {
+    "stemmed": "Aus bus",
+    "simple": "Aus bus",
+    "full": "Aus bus"
+  },
+  "cardinality": 2,
+  "rank": "sp.",
+  "authorship": {
+    "verbatim": "Smith, 1850",
+    "normalized": "Smith 1850",
+    "year": "1850",
+    "authors": [
+      "Smith"
+    ]
+  },
+  "tailAnnotations": {
+    "verbatim": " sensu Jones, 1900",
+    "sensu": [
+      {
+        "verbatim": "sensu",
+        "normalized": "sensu",
+        "author": "Jones, 1900",
+        "conceptRelation": {
+          "type": "same_as",
+          "rcc5": "==",
+          "referenceAuthor": "Jones, 1900"
+        }
+      }
+    ]
+  },
+  "id": "c231f640-b145-5d52-92ba-84ac60e7eaea",
+  "parserVersion": "v1.15.0"
+}
+```
+
+```go
+cfg := gnparser.NewConfig(gnparser.OptWithTail(true))
+gnp := gnparser.New(cfg)
+res := gnp.ParseName("Aus bus Smith, 1850 s. lat.")
+sensu := res.TailAnnotations.Sensu[0]
+fmt.Println(sensu.Normalized, sensu.ConceptRelation.RCC5)
+// Output: sensu lato >
+```
+
+Recognized annotations:
+
+| Field         | Verbatim                                              | Normalized           |
+| :------------ | :---------------------------------------------------- | :------------------- |
+| `sensu`       | `sensu lato`, `s.l.`, `s. l.`, `s.lat.`, `s. lat.`    | `sensu lato`         |
+| `sensu`       | `sensu stricto`, `s.s.`, `s. s.`, `s.str.`, `s. str.` | `sensu stricto`      |
+| `sensu`       | `sensu <author>`                                      | `sensu`              |
+| `sensu`       | `sensu auct.`                                         | `sensu auct.`        |
+| `sensu`       | `sensu auct. non <author>`                            | `sensu auct. non`    |
+| `sensu`       | `auct.`                                               | `auct.`              |
+| `sensu`       | `auct. non <author>`                                  | `auct. non`          |
+| `sensu`       | `pro parte`, `p.p.`, `pro p.`                         | `pro parte`          |
+| `status`      | `nom. dub.`, `nomen dubium`                           | `nomen dubium`       |
+| `status`      | `nom. nud.`, `nomen nudum`                            | `nomen nudum`        |
+| `status`      | `nom. illeg.`, `nomen illegitimum`                    | `nomen illegitimum`  |
+| `status`      | `nom. cons.`, `nomen conservandum`                    | `nomen conservandum` |
+| `status`      | `nom. rej.`, `nomen rejiciendum`                      | `nomen rejiciendum`  |
+| `status`      | `nom. prov.`, `nomen provisorium`                     | `nomen provisorium`  |
+| `status`      | `stat. nov.`, `status novus`                          | `status novus`       |
+| `status`      | `comb. nov.`, `combinatio nova`                       | `combinatio nova`    |
+| `status`      | `stat. rev.`, `status restitutus`                     | `status restitutus`  |
+| `publication` | `ined.`                                               | `ineditus`           |
+| `publication` | `hort.`                                               | `hortorum`           |
+| `publication` | `fide <author>`                                       | `fide`               |
+| `publication` | `em. <author>`, `emend. <author>`                     | `emend.`             |
+| `publication` | `ex <author>`                                         | `ex`                 |
+
+The cited author goes to the `author` field of an annotation. Annotations can
+be enclosed in parentheses or square brackets (`(s.str.)`, `[nom. nud.]`).
+Recognition goes from left to right and stops at the first unrecognized
+element. The rest of the tail stays in `tail`.
+
+`emend.` and `ex` authors are usually parsed as a part of the authorship, so
+they appear in `tailAnnotations` only after another annotation
+(`Aus bus hort. ex Smith`), or with an abbreviation the authorship does not
+support (`em.`). Spelled-out `status novus`, `combinatio nova` and
+`status restitutus` directly after a name are parsed as infraspecific
+epithets and do not reach the tail.
+
+### Concept relations
+
+Concept-alignment annotations imply a relation between the concept of the
+name and a reference concept. GNparser provides this relation as an RCC5
+(region connection calculus) hint in `conceptRelation`. Resolving the
+relation requires a comparator concept, so it is left to applications that
+use GNparser.
+
+| Annotation                                       | Type                | RCC5 |
+| :----------------------------------------------- | :------------------ | :--- |
+| `sensu lato`                                     | `broader`           | `>`  |
+| `sensu stricto`                                  | `narrower`          | `<`  |
+| `sensu <author>`                                 | `same_as`           | `==` |
+| `auct. non <author>`, `sensu auct. non <author>` | `misapplication_of` | `\|` |
+
+`auct.`, `sensu auct.` and `pro parte` do not imply a single relation and
+have no `conceptRelation`. If an annotation cites an author, the author is
+also given in `referenceAuthor`. JSON output encodes `<`, `>` and `&`
+characters as unicode escape sequences, JSON decoders restore the original
+characters.
+
+### Authors after sensu
+
+An author that follows a sensu annotation (`Aus bus sensu Smith, 1850`,
+`Aus bus sensu lato Smith, 1850`, `Aus bus auct. non Smith, 1850`) is
+treated as the author of the concept, not of the name. It goes to the
+`author` field of the annotation, and `authorship` of the name stays empty.
+
+After `sensu lato` or `sensu stricto` such an author might also be the author
+of the name. If the name has no other authorship, the quality is 3 with the
+warning "Ambiguity: name author or concept author".
+
+### Quality of names with tail annotations
+
+- If all of the tail is recognized, the quality is the same as for the name
+  without the tail.
+- `sensu lato`, `sensu stricto` or `pro parte` without an author, neither in
+  the name nor in annotations (`Aus bus sensu lato`), get quality 3 with the
+  warning "Concept qualifier without author".
+- An author after `sensu lato` or `sensu stricto` in a name without
+  authorship gets quality 3 (see above).
+- If a part of the tail is not recognized, it stays in `tail`, and the
+  quality stays 4 ("Unparsed tail").
+
+Flattened JSON output (`-F`) has `sensu`, `nomenclaturalStatus`,
+`publication` and `conceptRelation` fields with values separated by the pipe
+character. CSV and TSV outputs do not have columns for tail annotations.
 
 ## Parsing ambiguities
 

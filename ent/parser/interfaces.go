@@ -16,6 +16,9 @@ type Parser interface {
 		keepHTML, capitalize, preserveDiaereses, compactAuthors bool,
 	) ScientificNameNode
 	Debug(name string) []byte
+	// ParseTail recognizes annotations in the tail of a parsed name-string
+	// and returns the result with annotations moved to TailAnnotations.
+	ParseTail(res parsed.Parsed) parsed.Parsed
 }
 
 // ScientificNameNode is the Abstract Syntax Tree of a name-string.

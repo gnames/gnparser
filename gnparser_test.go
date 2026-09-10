@@ -69,6 +69,170 @@ func TestParseNameCultivars(t *testing.T) {
 	}
 }
 
+func TestParseNameTail(t *testing.T) {
+	cfg := gnparser.NewConfig(
+		gnparser.OptWithDetails(true),
+		gnparser.OptWithTail(true),
+		gnparser.OptFormat(gnfmt.CompactJSON),
+		gnparser.OptIsTest(true),
+	)
+	gnp := gnparser.New(cfg)
+	data := getTestData(t, "test_data_tail.md")
+	for _, v := range data {
+		parsed := gnp.ParseName(v.name)
+		json := parsed.Output(gnp.Format(), gnp.WithFlatOutput())
+		assert.Equal(t, v.jsonData, json, v.name)
+	}
+}
+
+// TestTailOff checks that output does not change when tail parsing is
+// disabled, and that tail parsing changes only names with recognized
+// annotations.
+func TestTailOff(t *testing.T) {
+	gnp := gnparser.New(gnparser.NewConfig(
+		gnparser.OptWithDetails(true),
+		gnparser.OptIsTest(true),
+	))
+	gnpOff := gnparser.New(gnparser.NewConfig(
+		gnparser.OptWithDetails(true),
+		gnparser.OptIsTest(true),
+		gnparser.OptWithTail(false),
+	))
+	gnpOn := gnparser.New(gnparser.NewConfig(
+		gnparser.OptWithDetails(true),
+		gnparser.OptIsTest(true),
+		gnparser.OptWithTail(true),
+	))
+
+	var names []string
+	for _, f := range []string{"test_data.md", "test_data_tail.md"} {
+		for _, v := range getTestData(t, f) {
+			names = append(names, v.name)
+		}
+	}
+
+	var changed int
+	for _, name := range names {
+		res := gnp.ParseName(name)
+		assert.Nil(t, res.TailAnnotations, name)
+		json := res.Output(gnfmt.CompactJSON, false)
+
+		resOff := gnpOff.ParseName(name)
+		assert.Equal(t, json, resOff.Output(gnfmt.CompactJSON, false), name)
+
+		resOn := gnpOn.ParseName(name)
+		if resOn.TailAnnotations == nil {
+			assert.Equal(t, json, resOn.Output(gnfmt.CompactJSON, false), name)
+			continue
+		}
+		changed++
+		assert.NotEqual(t, "", res.Tail, name)
+		assert.Equal(t, res.Tail, resOn.TailAnnotations.Verbatim, name)
+		assert.Equal(t, res.Canonical, resOn.Canonical, name)
+		assert.Equal(t, res.Authorship, resOn.Authorship, name)
+		assert.Equal(t, res.Normalized, resOn.Normalized, name)
+	}
+	assert.Greater(t, changed, 0)
+}
+
+func TestTailSensuAuthor(t *testing.T) {
+	assert := assert.New(t)
+	tests := []struct {
+		msg, name, normalized, author, rcc5 string
+		quality                             int
+	}{
+		{"s.l.", "Aus bus sensu lato Smith, 1850", "sensu lato", "Smith, 1850", ">", 3},
+		{"s.str.", "Aus bus s. str. Smith, 1850", "sensu stricto", "Smith, 1850", "<", 3},
+		{"basionym", "Aus bus s.l. (Smith) Jones", "sensu lato", "(Smith) Jones", ">", 3},
+		{"sensu", "Aus bus sensu Smith, 1850", "sensu", "Smith, 1850", "==", 1},
+		{"auct. non", "Aus bus auct. non Smith, 1850", "auct. non", "Smith, 1850", "|", 1},
+	}
+	gnp := gnparser.New(gnparser.NewConfig(
+		gnparser.OptWithDetails(true),
+		gnparser.OptWithTail(true),
+	))
+
+	for _, v := range tests {
+		res := gnp.ParseName(v.name)
+		assert.Nil(res.Authorship, v.msg)
+		assert.Equal("Aus bus", res.Normalized, v.msg)
+		assert.Equal("", res.Tail, v.msg)
+		assert.Equal(v.quality, res.ParseQuality, v.msg)
+		if sp, ok := res.Details.(parsed.DetailsSpecies); assert.True(ok, v.msg) {
+			assert.Nil(sp.Species.Authorship, v.msg)
+		}
+		ta := res.TailAnnotations
+		if !assert.NotNil(ta, v.msg) || !assert.Len(ta.Sensu, 1, v.msg) {
+			continue
+		}
+		sensu := ta.Sensu[0]
+		assert.Equal(v.normalized, sensu.Normalized, v.msg)
+		assert.Equal(v.author, sensu.Author, v.msg)
+		if assert.NotNil(sensu.ConceptRelation, v.msg) {
+			assert.Equal(v.rcc5, sensu.ConceptRelation.RCC5, v.msg)
+			assert.Equal(v.author, sensu.ConceptRelation.ReferenceAuthor, v.msg)
+		}
+	}
+}
+
+// TestTailCrossCode checks that annotations are parsed the same way for
+// all nomenclatural codes.
+func TestTailCrossCode(t *testing.T) {
+	names := []string{
+		"Aus bus Smith, 1850 s. lat.",
+		"Aus bus sensu lato Smith, 1850",
+		"Aus bus auct. non Smith, 1850",
+		"Aus bus Smith, 1850 nom. nud.",
+		"Aus bus Smith fide Jones, 1900",
+		"Aus bus s.l. p.p.",
+	}
+	codes := []nomcode.Code{
+		nomcode.Botanical,
+		nomcode.Zoological,
+		nomcode.Bacterial,
+		nomcode.Cultivars,
+	}
+	ref := gnparser.New(gnparser.NewConfig(gnparser.OptWithTail(true)))
+	for _, code := range codes {
+		gnp := gnparser.New(gnparser.NewConfig(
+			gnparser.OptWithTail(true),
+			gnparser.OptCode(code),
+		))
+		for _, name := range names {
+			msg := code.String() + ": " + name
+			want := ref.ParseName(name)
+			got := gnp.ParseName(name)
+			assert.NotNil(t, got.TailAnnotations, msg)
+			assert.Equal(t, want.TailAnnotations, got.TailAnnotations, msg)
+			assert.Equal(t, want.ParseQuality, got.ParseQuality, msg)
+			assert.Equal(t, want.Tail, got.Tail, msg)
+		}
+	}
+}
+
+func TestTailParseNames(t *testing.T) {
+	gnp := gnparser.New(gnparser.NewConfig()).
+		ChangeConfig(gnparser.OptWithTail(true))
+	res := gnp.ParseNames([]string{"Aus bus Smith, 1850 nom. nud.", "Aus bus"})
+	assert.NotNil(t, res[0].TailAnnotations)
+	assert.Equal(t, 1, res[0].ParseQuality)
+	assert.Nil(t, res[1].TailAnnotations)
+}
+
+func ExampleOptWithTail() {
+	cfg := gnparser.NewConfig(gnparser.OptWithTail(true))
+	gnp := gnparser.New(cfg)
+	res := gnp.ParseName("Aus bus Smith, 1850 s. lat.")
+	sensu := res.TailAnnotations.Sensu[0]
+	fmt.Println(res.ParseQuality)
+	fmt.Println(sensu.Verbatim, "->", sensu.Normalized)
+	fmt.Println(sensu.ConceptRelation.Type, sensu.ConceptRelation.RCC5)
+	// Output:
+	// 1
+	// s. lat. -> sensu lato
+	// broader >
+}
+
 func TestParseFlattenOutput(t *testing.T) {
 	cfg := gnparser.NewConfig(
 		gnparser.OptFormat(gnfmt.CompactJSON),

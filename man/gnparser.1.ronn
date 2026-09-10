@@ -191,6 +191,18 @@ to achieve that, but there is a slight decrease in performance:
 
     gnparser -s names.json
 
+### -t, --tail
+
+Parses annotations in the tail of a name-string: concept-alignment
+annotations (sensu lato, sensu stricto, sensu <author>, auct.,
+auct. non <author>, pro parte), nomenclatural status (nom. nud., nom. illeg.,
+comb. nov. etc.) and publication modifiers (ined., hort., fide <author>,
+emend. <author>, ex <author>). Recognized annotations are moved from `tail`
+to `tailAnnotations`, and the quality is recalculated. Without this flag
+the output does not change:
+
+    gnparser "Aus bus Smith, 1850 s. lat." -t -f pretty
+
 ### -u, --unordered
 
 If this flag is on, output and intput order will not be syncronized. If there

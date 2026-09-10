@@ -14,6 +14,11 @@ func TestStringWarn(t *testing.T) {
 		res   string
 	}{
 		{parsed.TailWarn, "Unparsed tail"},
+		{
+			parsed.SensuAuthorAmbiguousWarn,
+			"Ambiguity: name author or concept author",
+		},
+		{parsed.SensuNoAuthorWarn, "Concept qualifier without author"},
 	}
 
 	for i := range data {

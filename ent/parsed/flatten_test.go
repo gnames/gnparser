@@ -405,6 +405,84 @@ func TestFlatten(t *testing.T) {
 				Species:         "cus",
 			},
 		},
+		{
+			name: "Tail annotations",
+			input: parsed.Parsed{
+				Parsed:        true,
+				Verbatim:      "Aus bus s.l. sensu Smith, 1850 nom. nud. fide Jones",
+				VerbatimID:    "test-808",
+				ParserVersion: "1.0.0",
+				Canonical: &parsed.Canonical{
+					Simple: "Aus bus",
+				},
+				TailAnnotations: &parsed.TailAnnotations{
+					Verbatim: " s.l. sensu Smith, 1850 nom. nud. fide Jones",
+					Sensu: []parsed.SensuAnnotation{
+						{
+							Verbatim:   "s.l.",
+							Normalized: "sensu lato",
+							ConceptRelation: &parsed.ConceptRelation{
+								Type: parsed.RelationBroader,
+								RCC5: ">",
+							},
+						},
+						{
+							Verbatim:   "sensu",
+							Normalized: "sensu",
+							Author:     "Smith, 1850",
+							ConceptRelation: &parsed.ConceptRelation{
+								Type:            parsed.RelationSameAs,
+								RCC5:            "==",
+								ReferenceAuthor: "Smith, 1850",
+							},
+						},
+					},
+					Status: []parsed.StatusAnnotation{
+						{Verbatim: "nom. nud.", Normalized: "nomen nudum"},
+					},
+					Publication: []parsed.PublicationAnnotation{
+						{Verbatim: "fide", Normalized: "fide", Author: "Jones"},
+					},
+				},
+			},
+			expected: parsed.ParsedFlat{
+				Parsed:              true,
+				Verbatim:            "Aus bus s.l. sensu Smith, 1850 nom. nud. fide Jones",
+				VerbatimID:          "test-808",
+				ParserVersion:       "1.0.0",
+				CanonicalSimple:     "Aus bus",
+				Sensu:               "sensu lato|sensu Smith, 1850",
+				ConceptRelation:     "broader|same_as",
+				NomenclaturalStatus: "nomen nudum",
+				Publication:         "fide Jones",
+			},
+		},
+		{
+			name: "Tail annotations without concept relation",
+			input: parsed.Parsed{
+				Parsed:        true,
+				Verbatim:      "Aus bus auct.",
+				VerbatimID:    "test-909",
+				ParserVersion: "1.0.0",
+				Canonical: &parsed.Canonical{
+					Simple: "Aus bus",
+				},
+				TailAnnotations: &parsed.TailAnnotations{
+					Verbatim: " auct.",
+					Sensu: []parsed.SensuAnnotation{
+						{Verbatim: "auct.", Normalized: "auct."},
+					},
+				},
+			},
+			expected: parsed.ParsedFlat{
+				Parsed:          true,
+				Verbatim:        "Aus bus auct.",
+				VerbatimID:      "test-909",
+				ParserVersion:   "1.0.0",
+				CanonicalSimple: "Aus bus",
+				Sensu:           "auct.",
+			},
+		},
 	}
 
 	for _, tt := range tests {

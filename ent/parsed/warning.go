@@ -53,6 +53,8 @@ const (
 	NameApproxWarn
 	NameComparisonWarn
 	RankUncommonWarn
+	SensuAuthorAmbiguousWarn
+	SensuNoAuthorWarn
 	SpaceNonStandardWarn
 	SpanishAndAsSeparator
 	SpeciesNumericWarn
@@ -117,6 +119,8 @@ var warningMap = map[Warning]string{
 	NameApproxWarn:                        "Name is approximate",
 	NameComparisonWarn:                    "Name comparison",
 	RankUncommonWarn:                      "Uncommon rank",
+	SensuAuthorAmbiguousWarn:              "Ambiguity: name author or concept author",
+	SensuNoAuthorWarn:                     "Concept qualifier without author",
 	SpaceNonStandardWarn:                  "Non-standard space characters",
 	SpanishAndAsSeparator:                 "Spanish 'y' is used instead of '&'",
 	SpeciesNumericWarn:                    "Numeric prefix",
@@ -190,6 +194,8 @@ var WarningQualityMap = map[Warning]int{
 	NameApproxWarn:                        4,
 	NameComparisonWarn:                    4,
 	RankUncommonWarn:                      3,
+	SensuAuthorAmbiguousWarn:              3,
+	SensuNoAuthorWarn:                     3,
 	SpaceNonStandardWarn:                  2,
 	SpanishAndAsSeparator:                 2,
 	SpeciesNumericWarn:                    3,

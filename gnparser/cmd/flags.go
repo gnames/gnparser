@@ -135,3 +135,10 @@ func withStreamFlag(cmd *cobra.Command) {
 		opts = append(opts, gnparser.OptWithStream(true))
 	}
 }
+
+func withTailFlag(cmd *cobra.Command) {
+	b, _ := cmd.Flags().GetBool("tail")
+	if b {
+		opts = append(opts, gnparser.OptWithTail(true))
+	}
+}
