@@ -334,7 +334,7 @@ Canonical: Aus bus
 Authorship:
 
 ```json
-{"parsed":true,"quality":1,"verbatim":"Aus bus sensu Smith, 1850","normalized":"Aus bus","canonical":{"stemmed":"Aus bus","simple":"Aus bus","full":"Aus bus"},"cardinality":2,"rank":"sp.","tailAnnotations":{"verbatim":" sensu Smith, 1850","sensu":[{"verbatim":"sensu","normalized":"sensu","author":"Smith, 1850","conceptRelation":{"type":"same_as","rcc5":"==","referenceAuthor":"Smith, 1850"}}]},"details":{"species":{"genus":"Aus","species":"bus"}},"words":[{"verbatim":"Aus","normalized":"Aus","wordType":"GENUS","start":0,"end":3},{"verbatim":"bus","normalized":"bus","wordType":"SPECIES","start":4,"end":7}],"id":"e1bd779a-9660-5c74-97c9-1bb4b7d3a3e5","parserVersion":"test_version"}
+{"parsed":true,"quality":3,"qualityWarnings":[{"quality":3,"warning":"Ambiguity: name author or concept author"}],"verbatim":"Aus bus sensu Smith, 1850","normalized":"Aus bus","canonical":{"stemmed":"Aus bus","simple":"Aus bus","full":"Aus bus"},"cardinality":2,"rank":"sp.","tailAnnotations":{"verbatim":" sensu Smith, 1850","sensu":[{"verbatim":"sensu","normalized":"sensu","author":"Smith, 1850","conceptRelation":{"type":"same_as","rcc5":"==","referenceAuthor":"Smith, 1850"}}]},"details":{"species":{"genus":"Aus","species":"bus"}},"words":[{"verbatim":"Aus","normalized":"Aus","wordType":"GENUS","start":0,"end":3},{"verbatim":"bus","normalized":"bus","wordType":"SPECIES","start":4,"end":7}],"id":"e1bd779a-9660-5c74-97c9-1bb4b7d3a3e5","parserVersion":"test_version"}
 ```
 
 Name: Aus bus sensu. Smith & Jones 1850
@@ -344,7 +344,7 @@ Canonical: Aus bus
 Authorship:
 
 ```json
-{"parsed":true,"quality":1,"verbatim":"Aus bus sensu. Smith \u0026 Jones 1850","normalized":"Aus bus","canonical":{"stemmed":"Aus bus","simple":"Aus bus","full":"Aus bus"},"cardinality":2,"rank":"sp.","tailAnnotations":{"verbatim":" sensu. Smith \u0026 Jones 1850","sensu":[{"verbatim":"sensu.","normalized":"sensu","author":"Smith \u0026 Jones 1850","conceptRelation":{"type":"same_as","rcc5":"==","referenceAuthor":"Smith \u0026 Jones 1850"}}]},"details":{"species":{"genus":"Aus","species":"bus"}},"words":[{"verbatim":"Aus","normalized":"Aus","wordType":"GENUS","start":0,"end":3},{"verbatim":"bus","normalized":"bus","wordType":"SPECIES","start":4,"end":7}],"id":"562c4a87-c705-5b9b-88b5-2592f1f2a4ac","parserVersion":"test_version"}
+{"parsed":true,"quality":3,"qualityWarnings":[{"quality":3,"warning":"Ambiguity: name author or concept author"}],"verbatim":"Aus bus sensu. Smith \u0026 Jones 1850","normalized":"Aus bus","canonical":{"stemmed":"Aus bus","simple":"Aus bus","full":"Aus bus"},"cardinality":2,"rank":"sp.","tailAnnotations":{"verbatim":" sensu. Smith \u0026 Jones 1850","sensu":[{"verbatim":"sensu.","normalized":"sensu","author":"Smith \u0026 Jones 1850","conceptRelation":{"type":"same_as","rcc5":"==","referenceAuthor":"Smith \u0026 Jones 1850"}}]},"details":{"species":{"genus":"Aus","species":"bus"}},"words":[{"verbatim":"Aus","normalized":"Aus","wordType":"GENUS","start":0,"end":3},{"verbatim":"bus","normalized":"bus","wordType":"SPECIES","start":4,"end":7}],"id":"562c4a87-c705-5b9b-88b5-2592f1f2a4ac","parserVersion":"test_version"}
 ```
 
 Name: Aus bus auct. non Smith, 1850
@@ -766,7 +766,7 @@ Canonical: Aus bus
 Authorship:
 
 ```json
-{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Aus bus sensu Smith, non Jones","normalized":"Aus bus","canonical":{"stemmed":"Aus bus","simple":"Aus bus","full":"Aus bus"},"cardinality":2,"rank":"sp.","tail":", non Jones","tailAnnotations":{"verbatim":" sensu Smith, non Jones","sensu":[{"verbatim":"sensu","normalized":"sensu","author":"Smith","conceptRelation":{"type":"same_as","rcc5":"==","referenceAuthor":"Smith"}}]},"details":{"species":{"genus":"Aus","species":"bus"}},"words":[{"verbatim":"Aus","normalized":"Aus","wordType":"GENUS","start":0,"end":3},{"verbatim":"bus","normalized":"bus","wordType":"SPECIES","start":4,"end":7}],"id":"64df9ef5-0995-59fc-bc7c-596c6d8489ca","parserVersion":"test_version"}
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Unparsed tail"},{"quality":3,"warning":"Ambiguity: name author or concept author"}],"verbatim":"Aus bus sensu Smith, non Jones","normalized":"Aus bus","canonical":{"stemmed":"Aus bus","simple":"Aus bus","full":"Aus bus"},"cardinality":2,"rank":"sp.","tail":", non Jones","tailAnnotations":{"verbatim":" sensu Smith, non Jones","sensu":[{"verbatim":"sensu","normalized":"sensu","author":"Smith","conceptRelation":{"type":"same_as","rcc5":"==","referenceAuthor":"Smith"}}]},"details":{"species":{"genus":"Aus","species":"bus"}},"words":[{"verbatim":"Aus","normalized":"Aus","wordType":"GENUS","start":0,"end":3},{"verbatim":"bus","normalized":"bus","wordType":"SPECIES","start":4,"end":7}],"id":"64df9ef5-0995-59fc-bc7c-596c6d8489ca","parserVersion":"test_version"}
 ```
 
 ### Unrecognized tails

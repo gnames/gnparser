@@ -282,7 +282,15 @@ func TestParseTailQuality(t *testing.T) {
 			[]parsed.Warning{parsed.SensuAuthorAmbiguousWarn},
 		},
 		{"s.l. author with authorship", " sensu lato Jones", true, 1, nil},
-		{"sensu author", " sensu Jones", false, 1, nil},
+		{
+			"sensu author without authorship", " sensu Jones", false, 3,
+			[]parsed.Warning{parsed.SensuAuthorAmbiguousWarn},
+		},
+		{"sensu author with authorship", " sensu Jones", true, 1, nil},
+		{
+			"two ambiguous authors", " sensu lato Jones sensu Brown", false, 3,
+			[]parsed.Warning{parsed.SensuAuthorAmbiguousWarn},
+		},
 		{"auct. non author", " auct. non Jones", false, 1, nil},
 		{"auct.", " auct.", false, 1, nil},
 		{"status", " nom. nud.", false, 1, nil},

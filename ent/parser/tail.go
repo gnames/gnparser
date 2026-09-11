@@ -305,8 +305,16 @@ func addTailAnnotation(ta *parsed.TailAnnotations, m tailMatch) {
 	}
 }
 
+// sensuAuthorAnnots are annotations whose cited author might also be the
+// author of the name, if the name has no authorship.
+var sensuAuthorAnnots = map[string]struct{}{
+	"sensu":         {},
+	"sensu lato":    {},
+	"sensu stricto": {},
+}
+
 // tailWarnings returns warnings about recognized annotations. An author
-// after sensu lato or sensu stricto is ambiguous if the name has no
+// after sensu, sensu lato or sensu stricto is ambiguous if the name has no
 // authorship: it might be the author of the name or of the concept. An
 // annotation that extends or restricts a concept is not anchored if neither
 // the name nor any annotation provides an author.
@@ -315,23 +323,26 @@ func tailWarnings(
 	hasAuthorship bool,
 ) []parsed.Warning {
 	var res []parsed.Warning
-	var scope, cited bool
+	var scope, cited, ambiguous bool
 	for _, v := range ta.Publication {
 		if v.Author != "" {
 			cited = true
 		}
 	}
 	for _, v := range ta.Sensu {
-		if v.Author != "" {
-			cited = true
+		if _, ok := scopeAnnots[v.Normalized]; ok {
+			scope = true
 		}
-		if _, ok := scopeAnnots[v.Normalized]; !ok {
+		if v.Author == "" {
 			continue
 		}
-		scope = true
-		if v.Author != "" && !hasAuthorship {
-			res = append(res, parsed.SensuAuthorAmbiguousWarn)
+		cited = true
+		if _, ok := sensuAuthorAnnots[v.Normalized]; ok && !hasAuthorship {
+			ambiguous = true
 		}
+	}
+	if ambiguous {
+		res = append(res, parsed.SensuAuthorAmbiguousWarn)
 	}
 	if scope && !hasAuthorship && !cited {
 		res = append(res, parsed.SensuNoAuthorWarn)

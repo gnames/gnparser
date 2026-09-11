@@ -144,7 +144,7 @@ func TestTailSensuAuthor(t *testing.T) {
 		{"s.l.", "Aus bus sensu lato Smith, 1850", "sensu lato", "Smith, 1850", ">", 3},
 		{"s.str.", "Aus bus s. str. Smith, 1850", "sensu stricto", "Smith, 1850", "<", 3},
 		{"basionym", "Aus bus s.l. (Smith) Jones", "sensu lato", "(Smith) Jones", ">", 3},
-		{"sensu", "Aus bus sensu Smith, 1850", "sensu", "Smith, 1850", "==", 1},
+		{"sensu", "Aus bus sensu Smith, 1850", "sensu", "Smith, 1850", "==", 3},
 		{"auct. non", "Aus bus auct. non Smith, 1850", "auct. non", "Smith, 1850", "|", 1},
 	}
 	gnp := gnparser.New(gnparser.NewConfig(

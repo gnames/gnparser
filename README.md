@@ -782,14 +782,16 @@ characters.
 
 ### Authors after sensu
 
-An author that follows a sensu annotation (`Aus bus sensu Smith, 1850`,
-`Aus bus sensu lato Smith, 1850`, `Aus bus auct. non Smith, 1850`) is
-treated as the author of the concept, not of the name. It goes to the
-`author` field of the annotation, and `authorship` of the name stays empty.
+An author that follows a sensu annotation is treated as the author of the
+concept, not of the name: `Aus bus sensu Smith, 1850` is `Aus bus` in the
+sense of Smith, `Aus bus sensu lato Smith, 1850` is `Aus bus` in the broader
+sense of Smith. The author goes to the `author` field of the annotation, and
+`authorship` of the name stays empty. The same applies to the author in
+`Aus bus auct. non Smith, 1850`.
 
-After `sensu lato` or `sensu stricto` such an author might also be the author
-of the name. If the name has no other authorship, the quality is 3 with the
-warning "Ambiguity: name author or concept author".
+If the name has no other authorship, an author after `sensu`, `sensu lato` or
+`sensu stricto` might also be the author of the name. Such names get quality
+3 with the warning "Ambiguity: name author or concept author".
 
 ### Quality of names with tail annotations
 
@@ -798,7 +800,7 @@ warning "Ambiguity: name author or concept author".
 - `sensu lato`, `sensu stricto` or `pro parte` without an author, neither in
   the name nor in annotations (`Aus bus sensu lato`), get quality 3 with the
   warning "Concept qualifier without author".
-- An author after `sensu lato` or `sensu stricto` in a name without
+- An author after `sensu`, `sensu lato` or `sensu stricto` in a name without
   authorship gets quality 3 (see above).
 - If a part of the tail is not recognized, it stays in `tail`, and the
   quality stays 4 ("Unparsed tail").
