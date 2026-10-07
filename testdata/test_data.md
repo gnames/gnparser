@@ -3301,6 +3301,8 @@ Authorship:
 {"parsed":true,"quality":1,"verbatim":"Cyprideis (Cyprideis) thessalonike amasyaensis","normalized":"Cyprideis (Cyprideis) thessalonike amasyaensis","canonical":{"stemmed":"Cyprideis thessalonik amasyaens","simple":"Cyprideis thessalonike amasyaensis","full":"Cyprideis thessalonike amasyaensis"},"cardinality":3,"details":{"infraspecies":{"genus":"Cyprideis","subgenus":"Cyprideis","species":"thessalonike","infraspecies":[{"value":"amasyaensis"}]}},"words":[{"verbatim":"Cyprideis","normalized":"Cyprideis","wordType":"GENUS","start":0,"end":9},{"verbatim":"Cyprideis","normalized":"Cyprideis","wordType":"INFRA_GENUS","start":11,"end":20},{"verbatim":"thessalonike","normalized":"thessalonike","wordType":"SPECIES","start":22,"end":34},{"verbatim":"amasyaensis","normalized":"amasyaensis","wordType":"INFRASPECIES","start":35,"end":46}],"id":"19945ce1-52ee-5416-af46-0d6f0803b44e","parserVersion":"test_version"}
 ```
 
+<!-- Informal species-group annotation (ICZN Art. 6.2) is ignored in
+normalized and canonical forms -->
 Name: Acanthoderes (acanthoderes) satanas Aurivillius, 1923
 
 Canonical: Acanthoderes satanas
@@ -3308,7 +3310,80 @@ Canonical: Acanthoderes satanas
 Authorship: Aurivillius 1923
 
 ```json
-{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Ambiguity: subgenus or superspecies found"}],"verbatim":"Acanthoderes (acanthoderes) satanas Aurivillius, 1923","normalized":"Acanthoderes satanas Aurivillius 1923","canonical":{"stemmed":"Acanthoderes satan","simple":"Acanthoderes satanas","full":"Acanthoderes satanas"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Aurivillius, 1923","normalized":"Aurivillius 1923","year":"1923","authors":["Aurivillius"],"originalAuth":{"authors":["Aurivillius"],"year":{"year":"1923"}}},"details":{"species":{"genus":"Acanthoderes","species":"satanas","authorship":{"verbatim":"Aurivillius, 1923","normalized":"Aurivillius 1923","year":"1923","authors":["Aurivillius"],"originalAuth":{"authors":["Aurivillius"],"year":{"year":"1923"}}}}},"words":[{"verbatim":"Acanthoderes","normalized":"Acanthoderes","wordType":"GENUS","start":0,"end":12},{"verbatim":"satanas","normalized":"satanas","wordType":"SPECIES","start":28,"end":35},{"verbatim":"Aurivillius","normalized":"Aurivillius","wordType":"AUTHOR_WORD","start":36,"end":47},{"verbatim":"1923","normalized":"1923","wordType":"YEAR","start":49,"end":53}],"id":"f1082b19-d13f-54a2-95a9-6e342f2a9e6b","parserVersion":"test_version"}
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Informal species-group annotation"}],"verbatim":"Acanthoderes (acanthoderes) satanas Aurivillius, 1923","normalized":"Acanthoderes satanas Aurivillius 1923","canonical":{"stemmed":"Acanthoderes satan","simple":"Acanthoderes satanas","full":"Acanthoderes satanas"},"cardinality":2,"rank":"sp.","authorship":{"verbatim":"Aurivillius, 1923","normalized":"Aurivillius 1923","year":"1923","authors":["Aurivillius"],"originalAuth":{"authors":["Aurivillius"],"year":{"year":"1923"}}},"details":{"species":{"genus":"Acanthoderes","speciesGroup":"acanthoderes","species":"satanas","authorship":{"verbatim":"Aurivillius, 1923","normalized":"Aurivillius 1923","year":"1923","authors":["Aurivillius"],"originalAuth":{"authors":["Aurivillius"],"year":{"year":"1923"}}}}},"words":[{"verbatim":"Acanthoderes","normalized":"Acanthoderes","wordType":"GENUS","start":0,"end":12},{"verbatim":"acanthoderes","normalized":"acanthoderes","wordType":"SPECIES_GROUP","start":14,"end":26},{"verbatim":"satanas","normalized":"satanas","wordType":"SPECIES","start":28,"end":35},{"verbatim":"Aurivillius","normalized":"Aurivillius","wordType":"AUTHOR_WORD","start":36,"end":47},{"verbatim":"1923","normalized":"1923","wordType":"YEAR","start":49,"end":53}],"id":"f1082b19-d13f-54a2-95a9-6e342f2a9e6b","parserVersion":"test_version"}
+```
+
+Name: Aus (bus) cus dus L.
+
+Canonical: Aus cus dus
+
+Authorship: L.
+
+```json
+{"parsed":true,"quality":2,"qualityWarnings":[{"quality":2,"warning":"Informal species-group annotation"}],"verbatim":"Aus (bus) cus dus L.","normalized":"Aus cus dus L.","canonical":{"stemmed":"Aus cus dus","simple":"Aus cus dus","full":"Aus cus dus"},"cardinality":3,"authorship":{"verbatim":"L.","normalized":"L.","authors":["L."],"originalAuth":{"authors":["L."]}},"details":{"infraspecies":{"genus":"Aus","speciesGroup":"bus","species":"cus","infraspecies":[{"value":"dus","authorship":{"verbatim":"L.","normalized":"L.","authors":["L."],"originalAuth":{"authors":["L."]}}}]}},"words":[{"verbatim":"Aus","normalized":"Aus","wordType":"GENUS","start":0,"end":3},{"verbatim":"bus","normalized":"bus","wordType":"SPECIES_GROUP","start":5,"end":8},{"verbatim":"cus","normalized":"cus","wordType":"SPECIES","start":10,"end":13},{"verbatim":"dus","normalized":"dus","wordType":"INFRASPECIES","start":14,"end":17},{"verbatim":"L.","normalized":"L.","wordType":"AUTHOR_WORD","start":18,"end":20}],"id":"4971a5f9-be48-5281-85c4-73b9fa60c8fc","parserVersion":"test_version"}
+```
+
+<!-- Informal species-group aggregates (ICZN Art. 6.2) cited on their own
+are reduced to genus (or subgenus) and get quality 4. Anything after the
+species-group word, including authorship, goes to the unparsed tail -->
+Name: Aus (bus)
+
+Canonical: Aus
+
+Authorship: 
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Informal species-group aggregate (ICZN Art. 6.2)"}],"verbatim":"Aus (bus)","normalized":"Aus","canonical":{"stemmed":"Aus","simple":"Aus","full":"Aus"},"cardinality":0,"details":{"speciesGroup":{"genus":"Aus","speciesGroup":"bus"}},"words":[{"verbatim":"Aus","normalized":"Aus","wordType":"GENUS","start":0,"end":3},{"verbatim":"bus","normalized":"bus","wordType":"SPECIES_GROUP","start":5,"end":8}],"id":"17258c6f-94dc-502d-9b25-93a5abba8b14","parserVersion":"test_version"}
+```
+
+Name: Aus (bus) Smith, 1983
+
+Canonical: Aus
+
+Authorship: 
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Informal species-group aggregate (ICZN Art. 6.2)"},{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Aus (bus) Smith, 1983","normalized":"Aus","canonical":{"stemmed":"Aus","simple":"Aus","full":"Aus"},"cardinality":0,"tail":" Smith, 1983","details":{"speciesGroup":{"genus":"Aus","speciesGroup":"bus"}},"words":[{"verbatim":"Aus","normalized":"Aus","wordType":"GENUS","start":0,"end":3},{"verbatim":"bus","normalized":"bus","wordType":"SPECIES_GROUP","start":5,"end":8}],"id":"d96eea50-7df8-5573-b46e-6f86257ebf20","parserVersion":"test_version"}
+```
+
+Name: Cosmioperla supersp. australis (Theischinger, 1983)
+
+Canonical: Cosmioperla
+
+Authorship: 
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Informal species-group aggregate (ICZN Art. 6.2)"},{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Cosmioperla supersp. australis (Theischinger, 1983)","normalized":"Cosmioperla","canonical":{"stemmed":"Cosmioperla","simple":"Cosmioperla","full":"Cosmioperla"},"cardinality":0,"tail":" (Theischinger, 1983)","details":{"speciesGroup":{"genus":"Cosmioperla","speciesGroup":"australis","rank":"supersp."}},"words":[{"verbatim":"Cosmioperla","normalized":"Cosmioperla","wordType":"GENUS","start":0,"end":11},{"verbatim":"supersp.","normalized":"supersp.","wordType":"RANK","start":12,"end":20},{"verbatim":"australis","normalized":"australis","wordType":"SPECIES_GROUP","start":21,"end":30}],"id":"bce4d52e-9727-5780-9b08-3e2421aabc1f","parserVersion":"test_version"}
+```
+
+Name: Leuctra subsupersp. iliberis Sánchez-Ortega & Alba-Tercedor, 1988
+
+Canonical: Leuctra
+
+Authorship: 
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Informal species-group aggregate (ICZN Art. 6.2)"},{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Leuctra subsupersp. iliberis Sánchez-Ortega \u0026 Alba-Tercedor, 1988","normalized":"Leuctra","canonical":{"stemmed":"Leuctra","simple":"Leuctra","full":"Leuctra"},"cardinality":0,"tail":" Sánchez-Ortega \u0026 Alba-Tercedor, 1988","details":{"speciesGroup":{"genus":"Leuctra","speciesGroup":"iliberis","rank":"subsupersp."}},"words":[{"verbatim":"Leuctra","normalized":"Leuctra","wordType":"GENUS","start":0,"end":7},{"verbatim":"subsupersp.","normalized":"subsupersp.","wordType":"RANK","start":8,"end":19},{"verbatim":"iliberis","normalized":"iliberis","wordType":"SPECIES_GROUP","start":20,"end":28}],"id":"cc512952-b5a2-5a52-9cb1-550a66fcbbe0","parserVersion":"test_version"}
+```
+
+Name: Leuctra (Euleuctra) supersp. iliberis Sánchez-Ortega, 1988
+
+Canonical: Euleuctra
+
+Authorship: 
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Informal species-group aggregate (ICZN Art. 6.2)"},{"quality":4,"warning":"Unparsed tail"}],"verbatim":"Leuctra (Euleuctra) supersp. iliberis Sánchez-Ortega, 1988","normalized":"Leuctra subgen. Euleuctra","canonical":{"stemmed":"Euleuctra","simple":"Euleuctra","full":"Leuctra subgen. Euleuctra"},"cardinality":0,"tail":" Sánchez-Ortega, 1988","details":{"speciesGroup":{"genus":"Leuctra","subgenus":"Euleuctra","speciesGroup":"iliberis","rank":"supersp."}},"words":[{"verbatim":"Leuctra","normalized":"Leuctra","wordType":"GENUS","start":0,"end":7},{"verbatim":"Euleuctra","normalized":"Euleuctra","wordType":"INFRA_GENUS","start":9,"end":18},{"verbatim":"supersp.","normalized":"supersp.","wordType":"RANK","start":20,"end":28},{"verbatim":"iliberis","normalized":"iliberis","wordType":"SPECIES_GROUP","start":29,"end":37}],"id":"8bdedbf5-10f7-50bb-8d10-5d0034199f66","parserVersion":"test_version"}
+```
+
+Name: Aus supersp bus
+
+Canonical: Aus
+
+Authorship: 
+
+```json
+{"parsed":true,"quality":4,"qualityWarnings":[{"quality":4,"warning":"Informal species-group aggregate (ICZN Art. 6.2)"}],"verbatim":"Aus supersp bus","normalized":"Aus","canonical":{"stemmed":"Aus","simple":"Aus","full":"Aus"},"cardinality":0,"details":{"speciesGroup":{"genus":"Aus","speciesGroup":"bus","rank":"supersp."}},"words":[{"verbatim":"Aus","normalized":"Aus","wordType":"GENUS","start":0,"end":3},{"verbatim":"supersp","normalized":"supersp.","wordType":"RANK","start":4,"end":11},{"verbatim":"bus","normalized":"bus","wordType":"SPECIES_GROUP","start":12,"end":15}],"id":"cf083c84-3902-5fe1-98e5-0519ea2f2c41","parserVersion":"test_version"}
 ```
 
 <!-- A fake name to illustrate botaincal author instead of subgenus -->

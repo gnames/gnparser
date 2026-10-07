@@ -335,6 +335,8 @@ func (p *Engine) newNamedGenusHybridNode(n *node32) *namedGenusHybridNode {
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
 		name = p.newApproxNode(n)
+	case ruleNameSpGroup:
+		name = p.newSpeciesGroupNode(n)
 	}
 	nhn = &namedGenusHybridNode{
 		Hybrid:   hybr,
@@ -425,6 +427,8 @@ func (p *Engine) newNamedGenusGraftChimeraNode(n *node32) *namedGenusGraftChimer
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
 		name = p.newApproxNode(n)
+	case ruleNameSpGroup:
+		name = p.newSpeciesGroupNode(n)
 	}
 	nhn = &namedGenusGraftChimeraNode{
 		GraftChimera: gc,
@@ -503,6 +507,8 @@ func (p *Engine) newSingleName(n *node32) nameData {
 		name = p.newSpeciesNode(n)
 	case ruleNameApprox:
 		name = p.newApproxNode(n)
+	case ruleNameSpGroup:
+		name = p.newSpeciesGroupNode(n)
 	case ruleNameComp:
 		p.addWarn(parsed.NameComparisonWarn)
 		annot = parsed.ComparisonAnnot
@@ -590,6 +596,57 @@ func (p *Engine) newApproxNode(n *node32) *approxNode {
 	return an
 }
 
+// speciesGroupNode is an informal species-group aggregate (ICZN Art. 6.2)
+// cited on its own, for example "Aus (bus)" or "Aus supersp. bus".
+// The aggregate is an annotation, so the name is reduced to its genus
+// (or subgenus) in normalized and canonical forms. Anything after the
+// species-group word, including authorship, is left unparsed.
+type speciesGroupNode struct {
+	Genus        *parsed.Word
+	Subgenus     *parsed.Word
+	Rank         *parsed.Word
+	SpeciesGroup *parsed.Word
+}
+
+func (p *Engine) newSpeciesGroupNode(n *node32) *speciesGroupNode {
+	p.addWarn(parsed.SpeciesGroupWarn)
+	sgn := speciesGroupNode{}
+	n = n.up
+	for n != nil {
+		switch n.pegRule {
+		case ruleGenusWord:
+			sgn.Genus = p.newWordNode(n, parsed.GenusType)
+			if n.up.pegRule == ruleAbbrGenus {
+				p.addWarn(parsed.GenusAbbrWarn)
+			}
+		case ruleSubgenus:
+			sgn.Subgenus = p.newWordNode(n.up, parsed.SubgenusType)
+		case ruleSpGroupRanked, ruleSpGroupParens:
+			p.newSpGroupParts(n.up, &sgn)
+		}
+		n = n.next
+	}
+	p.cardinality = 0
+	return &sgn
+}
+
+func (p *Engine) newSpGroupParts(n *node32, sgn *speciesGroupNode) {
+	for n != nil {
+		switch n.pegRule {
+		case ruleRankSpGroup:
+			sgn.Rank = p.newWordNode(n, parsed.RankType)
+			if !strings.HasSuffix(sgn.Rank.Normalized, ".") {
+				sgn.Rank.Normalized += "."
+			}
+		case ruleSpGroupWord:
+			sgn.SpeciesGroup = p.newWordNode(n, parsed.SpeciesGroupType)
+		case ruleSpGroup:
+			sgn.SpeciesGroup = p.newWordNode(n.up, parsed.SpeciesGroupType)
+		}
+		n = n.next
+	}
+}
+
 type comparisonNode struct {
 	Genus          *parsed.Word
 	SpEpithet      *spEpithetNode
@@ -673,6 +730,7 @@ func (p *Engine) newCompSpNode(n *node32) *comparisonNode {
 type speciesNode struct {
 	Genus           *parsed.Word
 	Subgenus        *parsed.Word
+	SpeciesGroup    *parsed.Word
 	SpEpithet       *spEpithetNode
 	Infraspecies    []*infraspEpithetNode
 	CultivarEpithet *cultivarEpithetNode
@@ -689,6 +747,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 	var sg *parsed.Word
 	var infs []*infraspEpithetNode
 	var cultivar *cultivarEpithetNode
+	var spGr *parsed.Word
 	n = n.up
 	gen := p.newWordNode(n, parsed.GenusType)
 	if n.up.pegRule == ruleAbbrGenus {
@@ -711,8 +770,9 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 					sg = w
 				}
 			}
-		case ruleSubgenusOrSuperspecies:
+		case ruleSpGroup:
 			p.addWarn(parsed.SuperspeciesWarn)
+			spGr = p.newWordNode(n.up, parsed.SpeciesGroupType)
 		case ruleSpeciesEpithet:
 			sp = p.newSpeciesEpithetNode(n)
 		case ruleInfraspGroup:
@@ -735,6 +795,7 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 	sn := speciesNode{
 		Genus:           gen,
 		Subgenus:        sg,
+		SpeciesGroup:    spGr,
 		SpEpithet:       sp,
 		Infraspecies:    infs,
 		CultivarEpithet: cultivar,

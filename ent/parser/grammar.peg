@@ -36,7 +36,8 @@ CandidatusName <- Candidatus _ SingleName
 
 Candidatus <- 'Candidatus'
 
-SingleName <- NameComp / NameApprox / NameSpecies / NameUninomial
+SingleName <- NameComp / NameApprox / NameSpGroup / NameSpecies /
+              NameUninomial
 
 NameUninomial <- (UninomialCombo / Uninomial) (_ CultivarWordGroup)?
 
@@ -48,7 +49,17 @@ NameCompSp <- GenusWord _ Comparison (_ SpeciesEpithet)?
 
 NameCompIsp <- GenusWord _ SpeciesEpithet _ Comparison (_ InfraspEpithet)? 
 
-NameSpecies <- GenusWord (_? ( Subgenus / SubgenusOrSuperspecies))?
+# Informal species-group aggregates (ICZN Art. 6.2) cited on their own,
+# for example "Aus (bus)" or "Aus supersp. bus". Such names have little
+# nomenclatural sense, so parsing stops after the species-group word,
+# and the rest of the string (including authorship) goes to the tail.
+NameSpGroup <- GenusWord (_? Subgenus)? (SpGroupRanked / SpGroupParens)
+
+SpGroupRanked <- _ RankSpGroup _ SpGroupWord
+
+SpGroupParens <- _? SpGroup !(_ Word)
+
+NameSpecies <- GenusWord (_? ( Subgenus / SpGroup))?
                _ SpeciesEpithet (_ InfraspGroup)? (_ CultivarWordGroup)?
 
 GenusWord <- (AbbrGenus / UninomialWord) !(_ AuthorWord)
@@ -100,7 +111,11 @@ RankSsp <- ('ssp' / 'subspec' / 'subsp') ('.' / &(SpaceCharEOI))
 
 RankAgamo <- ('agamosp' / 'agamossp' / 'agamovar') ('.' / &(SpaceCharEOI))
 
-SubgenusOrSuperspecies <- '(' _? NameLowerChar+ _? ')'
+SpGroup <- '(' _? SpGroupWord _? ')'
+
+SpGroupWord <- NameLowerChar+
+
+RankSpGroup <- ('subsupersp' / 'supersp') ('.' / &(SpaceCharEOI))
 
 UninomialCombo <- UninomialCombo1 / UninomialCombo2
 

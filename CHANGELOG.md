@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Add [#304] - better support for names with informal spacies group annotation.
+
 ## [v1.15.0] - 2026-05-04 Mon
 
 * Remove: C-binding (all known solutions for other languages now use the

@@ -21,6 +21,9 @@ type Species struct {
 	Genus string `json:"genus"`
 	// Subgenus is a value of subgenus of binomial.
 	Subgenus string `json:"subgenus,omitempty"`
+	// SpeciesGroup is an informal species-group aggregate annotation
+	// (ICZN Art. 6.2), for example "bus" in "Aus (bus) cus".
+	SpeciesGroup string `json:"speciesGroup,omitempty"`
 	// Species is a value of a specific epithet.
 	Species string `json:"species"`
 	// Cultivar is a value of a cultivar of a binomial.
@@ -77,6 +80,20 @@ type Approximation struct {
 	ApproxMarker string `json:"approximationMarker,omitempty"`
 	// Part of a name after ApproxMarker.
 	Ignored string `json:"ignored,omitempty"`
+}
+
+// SpeciesGroup are details for an informal species-group aggregate
+// (ICZN Art. 6.2) cited on its own, for example "Aus (bus)" or
+// "Aus supersp. bus".
+type SpeciesGroup struct {
+	// Genus is the genus of the aggregate.
+	Genus string `json:"genus"`
+	// Subgenus is the subgenus of the aggregate.
+	Subgenus string `json:"subgenus,omitempty"`
+	// SpeciesGroup is the species-group name of the aggregate.
+	SpeciesGroup string `json:"speciesGroup"`
+	// Rank of the aggregate, if given (supersp., subsupersp.).
+	Rank string `json:"rank,omitempty"`
 }
 
 // UninomialICVCN are details for names higher than species
@@ -159,6 +176,15 @@ type DetailsApproximation struct {
 
 // isDetails implements Details interface.
 func (DetailsApproximation) isDetails() {}
+
+// DetailsSpeciesGroup are details for informal species-group aggregates.
+type DetailsSpeciesGroup struct {
+	// SpeciesGroup details.
+	SpeciesGroup SpeciesGroup `json:"speciesGroup"`
+}
+
+// isDetails implements Details interface.
+func (DetailsSpeciesGroup) isDetails() {}
 
 // DetailsUninomialICVCN are details for	ICVCN uninomials.
 type DetailsUninomialICVCN struct {

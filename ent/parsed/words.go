@@ -65,7 +65,7 @@ const (
 	RankType
 	SpEpithetType
 	SubgenusType
-	SuperspType
+	SpeciesGroupType
 	UninomialType
 	YearApproximateType
 	YearType
@@ -100,6 +100,7 @@ var wordTypeMap = map[WordType]string{
 	RankType:             "RANK",
 	SpEpithetType:        "SPECIES",
 	SubgenusType:         "INFRA_GENUS",
+	SpeciesGroupType:     "SPECIES_GROUP",
 	UninomialType:        "UNINOMIAL",
 	YearApproximateType:  "APPROXIMATE_YEAR",
 	YearType:             "YEAR",

@@ -58,6 +58,7 @@ const (
 	SpeciesNumericWarn
 	SubgenusAbbrWarn
 	SuperspeciesWarn
+	SpeciesGroupWarn
 	UTF8ConvBadWarn
 	UninomialComboWarn
 	UninomialWithRank
@@ -121,7 +122,8 @@ var warningMap = map[Warning]string{
 	SpanishAndAsSeparator:                 "Spanish 'y' is used instead of '&'",
 	SpeciesNumericWarn:                    "Numeric prefix",
 	SubgenusAbbrWarn:                      "Abbreviated subgenus",
-	SuperspeciesWarn:                      "Ambiguity: subgenus or superspecies found",
+	SuperspeciesWarn:                      "Informal species-group annotation",
+	SpeciesGroupWarn:                      "Informal species-group aggregate (ICZN Art. 6.2)",
 	UTF8ConvBadWarn:                       "Incorrect conversion to UTF-8",
 	UninomialComboWarn:                    "Combination of two uninomials",
 	UninomialWithRank:                     "Uninomial prepended by its rank",
@@ -195,6 +197,7 @@ var WarningQualityMap = map[Warning]int{
 	SpeciesNumericWarn:                    3,
 	SubgenusAbbrWarn:                      2,
 	SuperspeciesWarn:                      2,
+	SpeciesGroupWarn:                      4,
 	UTF8ConvBadWarn:                       4,
 	UninomialComboWarn:                    2,
 	UninomialWithRank:                     2,

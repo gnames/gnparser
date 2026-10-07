@@ -559,6 +559,58 @@ func (comp *comparisonNode) details() parsed.Details {
 	return parsed.DetailsComparison{Comparison: co}
 }
 
+func (sgn *speciesGroupNode) words() []parsed.Word {
+	words := []parsed.Word{*sgn.Genus}
+	if sgn.Subgenus != nil {
+		words = append(words, *sgn.Subgenus)
+	}
+	if sgn.Rank != nil {
+		words = append(words, *sgn.Rank)
+	}
+	words = append(words, *sgn.SpeciesGroup)
+	return words
+}
+
+func (sgn *speciesGroupNode) value() string {
+	if sgn.Subgenus != nil {
+		return sgn.Genus.Normalized + " subgen. " + sgn.Subgenus.Normalized
+	}
+	return sgn.Genus.Normalized
+}
+
+func (sgn *speciesGroupNode) canonical() *canonical {
+	if sgn.Subgenus != nil {
+		return &canonical{
+			Value:       sgn.Subgenus.Normalized,
+			ValueRanked: sgn.Genus.Normalized + " subgen. " + sgn.Subgenus.Normalized,
+		}
+	}
+	return &canonical{
+		Value:       sgn.Genus.Normalized,
+		ValueRanked: sgn.Genus.Normalized,
+	}
+}
+
+// lastAuthorship returns nil, because authorship of a species-group
+// aggregate is not parsed.
+func (sgn *speciesGroupNode) lastAuthorship() *authorshipNode {
+	return nil
+}
+
+func (sgn *speciesGroupNode) details() parsed.Details {
+	sg := parsed.SpeciesGroup{
+		Genus:        sgn.Genus.Normalized,
+		SpeciesGroup: sgn.SpeciesGroup.Normalized,
+	}
+	if sgn.Subgenus != nil {
+		sg.Subgenus = sgn.Subgenus.Normalized
+	}
+	if sgn.Rank != nil {
+		sg.Rank = sgn.Rank.Normalized
+	}
+	return parsed.DetailsSpeciesGroup{SpeciesGroup: sg}
+}
+
 func (sp *speciesNode) words() []parsed.Word {
 	var words []parsed.Word
 	var wrd parsed.Word
@@ -568,6 +620,10 @@ func (sp *speciesNode) words() []parsed.Word {
 	}
 	if sp.Subgenus != nil {
 		wrd = *sp.Subgenus
+		words = append(words, wrd)
+	}
+	if sp.SpeciesGroup != nil {
+		wrd = *sp.SpeciesGroup
 		words = append(words, wrd)
 	}
 	words = append(words, sp.SpEpithet.words()...)
@@ -639,6 +695,9 @@ func (sp *speciesNode) details() parsed.Details {
 
 	if sp.Subgenus != nil {
 		so.Subgenus = sp.Subgenus.Normalized
+	}
+	if sp.SpeciesGroup != nil {
+		so.SpeciesGroup = sp.SpeciesGroup.Normalized
 	}
 	if len(sp.Infraspecies) == 0 {
 		return parsed.DetailsSpecies{Species: so}

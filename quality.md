@@ -11,7 +11,7 @@ Parsing finished without detecting any problems.
 ## Quality 2
 
 - Abbreviated subgenus
-- Ambiguity: subgenus or superspecies found
+- Informal species-group annotation
 - Ambiguous f. (filius or forma)
 - Apparent genus with capital character after hyphen
 - Author in upper case
@@ -61,6 +61,7 @@ Parsing finished without detecting any problems.
 - Authorship is missing one parenthesis
 - Incomplete hybrid formula
 - Incorrect conversion to UTF-8
+- Informal species-group aggregate (ICZN Art. 6.2)
 - Name comparison
 - Name is approximate
 - Name starts with low-case character
