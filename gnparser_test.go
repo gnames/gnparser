@@ -69,6 +69,22 @@ func TestParseNameCultivars(t *testing.T) {
 	}
 }
 
+func TestParseNameZoological(t *testing.T) {
+	cfg := gnparser.NewConfig(
+		gnparser.OptWithDetails(true),
+		gnparser.OptCode(nomcode.Zoological),
+		gnparser.OptFormat(gnfmt.CompactJSON),
+		gnparser.OptIsTest(true),
+	)
+	gnp := gnparser.New(cfg)
+	data := getTestData(t, "test_data_zoo.md")
+	for _, v := range data {
+		parsed := gnp.ParseName(v.name)
+		json := parsed.Output(gnp.Format(), gnp.WithFlatOutput())
+		assert.Equal(t, v.jsonData, json, v.name)
+	}
+}
+
 func TestParseFlattenOutput(t *testing.T) {
 	cfg := gnparser.NewConfig(
 		gnparser.OptFormat(gnfmt.CompactJSON),

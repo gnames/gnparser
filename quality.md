@@ -23,7 +23,9 @@ Parsing finished without detecting any problems.
 - Emend authors are not required
 - `ex` authors are not required
 - Hybrid formula
+- Infraspecific rank other than subspecies (ICZN Art. 45.6)
 - Misplaced basionym year
+- More than one infraspecific epithet (ICZN Art. 5.2)
 - Multiple adjacent space characters
 - Named hybrid
 - Non-standard characters in canonical

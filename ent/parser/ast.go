@@ -788,6 +788,9 @@ func (p *Engine) newSpeciesNode(n *node32) *speciesNode {
 		n = n.next
 	}
 	p.cardinality = 2 + len(infs)
+	if len(infs) > 1 && p.code == nomcode.Zoological {
+		p.addWarn(parsed.InfraspMultipleICZNWarn)
+	}
 	if cultivar != nil && p.code == nomcode.Cultivars {
 		p.cultivar = true
 		p.cardinality += 1
@@ -894,6 +897,8 @@ type rankNode struct {
 
 func (p *Engine) newRankNode(n *node32) *rankNode {
 	if n.up == nil {
+		// RankOther, RankAgamo, RankNotho are not kept in the AST.
+		p.warnRankNotSubspICZN()
 		w := p.newWordNode(n, parsed.RankType)
 		r := rankNode{Word: w}
 		return &r
@@ -903,8 +908,10 @@ func (p *Engine) newRankNode(n *node32) *rankNode {
 	switch n.pegRule {
 	case ruleRankForma:
 		w.Normalized = "f."
+		p.warnRankNotSubspICZN()
 	case ruleRankVar:
 		w.Normalized = "var."
+		p.warnRankNotSubspICZN()
 	case ruleRankSsp:
 		w.Normalized = "subsp."
 	case ruleRankOtherUncommon:
@@ -912,6 +919,14 @@ func (p *Engine) newRankNode(n *node32) *rankNode {
 	}
 	r := rankNode{Word: w}
 	return &r
+}
+
+// warnRankNotSubspICZN adds a warning in ICZN mode, because zoological
+// code recognizes only subspecies rank below species.
+func (p *Engine) warnRankNotSubspICZN() {
+	if p.code == nomcode.Zoological {
+		p.addWarn(parsed.RankNotSubspICZNWarn)
+	}
 }
 
 type uninomialNode struct {

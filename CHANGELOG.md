@@ -4,6 +4,8 @@
 
 * Add: better organize the main test file.
 * Add [#304] - better support for names with informal spacies group annotation.
+* Add: ICZN mode (`-n zoo`) warns about infraspecific ranks other than
+  subspecies and about names with more than one infraspecific epithet.
 
 ## [v1.15.0] - 2026-05-04 Mon
 

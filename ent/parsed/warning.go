@@ -53,6 +53,8 @@ const (
 	NameApproxWarn
 	NameComparisonWarn
 	RankUncommonWarn
+	RankNotSubspICZNWarn
+	InfraspMultipleICZNWarn
 	SpaceNonStandardWarn
 	SpanishAndAsSeparator
 	SpeciesNumericWarn
@@ -118,6 +120,8 @@ var warningMap = map[Warning]string{
 	NameApproxWarn:                        "Name is approximate",
 	NameComparisonWarn:                    "Name comparison",
 	RankUncommonWarn:                      "Uncommon rank",
+	RankNotSubspICZNWarn:                  "Infraspecific rank other than subspecies (ICZN Art. 45.6)",
+	InfraspMultipleICZNWarn:               "More than one infraspecific epithet (ICZN Art. 5.2)",
 	SpaceNonStandardWarn:                  "Non-standard space characters",
 	SpanishAndAsSeparator:                 "Spanish 'y' is used instead of '&'",
 	SpeciesNumericWarn:                    "Numeric prefix",
@@ -192,6 +196,8 @@ var WarningQualityMap = map[Warning]int{
 	NameApproxWarn:                        4,
 	NameComparisonWarn:                    4,
 	RankUncommonWarn:                      3,
+	RankNotSubspICZNWarn:                  2,
+	InfraspMultipleICZNWarn:               2,
 	SpaceNonStandardWarn:                  2,
 	SpanishAndAsSeparator:                 2,
 	SpeciesNumericWarn:                    3,
