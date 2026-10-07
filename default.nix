@@ -7,8 +7,8 @@
 }:
 buildGoModule rec {
   pname = "gnparser";
-  version = "v1.15.0";
-  date = "2026-05-04";
+  version = "v1.15.1";
+  date = "2026-10-07";
 
   src = lib.cleanSourceWith {
     filter = name: type: let

@@ -2,8 +2,10 @@
 
 ## Unreleased
 
+## [v1.15.1] - 2026-10-07 Wed
+
 * Add: better organize the main test file.
-* Add [#304] - better support for names with informal spacies group annotation.
+* Add [#304] - better support for names with informal species group annotation.
 * Add: ICZN mode (`-n zoo`) warns about infraspecific ranks other than
   subspecies and about names with more than one infraspecific epithet.
 
@@ -604,6 +606,7 @@
 
 This document follows [changelog guidelines]
 
+[v1.15.1]: https://github.com/gnames/gnparser/compare/v1.15.0...v1.15.1
 [v1.15.0]: https://github.com/gnames/gnparser/compare/v1.14.2...v1.15.0
 [v1.14.2]: https://github.com/gnames/gnparser/compare/v1.14.1...v1.14.2
 [v1.14.1]: https://github.com/gnames/gnparser/compare/v1.14.0...v1.14.1
