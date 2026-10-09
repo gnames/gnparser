@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## [v1.15.2] - 2026-10-09 Fri
+
+* Add [#305]: `stemmer.AbbrKey` builds lookup keys for names with an
+  abbreviated genus (`C. elegans` -> `c-elegans`). Used by gndb to
+  build the abbreviation lookup table and by gnames to query it.
+
 ## [v1.15.1] - 2026-10-07 Wed
 
 * Add: better organize the main test file.
@@ -26,26 +32,26 @@
 
 ## [v1.14.1] - 2026-01-14 Wed
 
-* Add[#301]: rename 'initials' flag to 'compact-authors'.
+* Add [#301]: rename 'initials' flag to 'compact-authors'.
   **WARNING** this creates backward incompatibility (only for v1.14.0).
 * Add: normalize 'flatten' flag.
 * Add: remove useless web-log flag.
 
 ## [v1.14.0] - 2026-01-12 Mon
 
-* Add[#292]: add flattened option for JSON output, add more (optional) details
+* Add [#292]: add flattened option for JSON output, add more (optional) details
   to CSV/TSV output.
 * Fix[#227]: Cultivars words show correctly in "words" section.
   (PR #300 by @tobymarsden)
 
 ## [v1.13.0] - 2026-01-07 Wed
 
-* Add[#298]: update CONTRIBUTING.md to reflect changes in gnparser's code.
-* Add[#297]: rename NomCode field to NomCodeSetting to clarify its intention.
+* Add [#298]: update CONTRIBUTING.md to reflect changes in gnparser's code.
+* Add [#297]: rename NomCode field to NomCodeSetting to clarify its intention.
   **WARNING** this creates some backward incompatibility.
-* Add[#294]: option to remove spaces between authors' names initials (PR
+* Add [#294]: option to remove spaces between authors' names initials (PR
   #295 by @juillerat)
-* Fix[#296]: old virus names are marked as 'Virus' when nomenclatural code
+* Fix [#296]: old virus names are marked as 'Virus' when nomenclatural code
   is set to 'icvcn'.
 
 ## [v1.12.1] - 2025-12-19 Fri
@@ -58,7 +64,7 @@
 
 ## [v1.12.0] - 2025-12-19 Fri
 
-* Add[#290]: support modern virus nomenclature (ICTV/ICVCN)
+* Add [#290]: support modern virus nomenclature (ICTV/ICVCN)
 
 ## [v1.11.10] - 2025-12-16 Tue
 
@@ -606,6 +612,7 @@
 
 This document follows [changelog guidelines]
 
+[v1.15.2]: https://github.com/gnames/gnparser/compare/v1.15.1...v1.15.2
 [v1.15.1]: https://github.com/gnames/gnparser/compare/v1.15.0...v1.15.1
 [v1.15.0]: https://github.com/gnames/gnparser/compare/v1.14.2...v1.15.0
 [v1.14.2]: https://github.com/gnames/gnparser/compare/v1.14.1...v1.14.2
